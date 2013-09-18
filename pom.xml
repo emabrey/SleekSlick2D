@@ -3,62 +3,60 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.newdawn.slick</groupId>
     <artifactId>slick-project</artifactId>
-    <version>237-SNAPSHOT</version>
-
-    <packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>    
+	<packaging>pom</packaging>
 
     <description>
-        Slick2D is a simple set of tools wrapped around the LWJGL OpenGL binding for Java.
+		A port of Slick2D that aims to both streamline the complicated build process of Slick2D,
+		as well as to rewrite the codebase of Slick2D to be more readable and efficient.
     </description>
-    <url>http://slick.cokeandcode.com</url>
-    <organization>
-        <name>Slick2D</name>
-        <url>http://slick.cokeandcode.com</url>
-    </organization>
-    <inceptionYear>2006</inceptionYear>
-    <issueManagement>
-        <system>Bug Forum</system>
-        <url>http://slick.javaunlimited.net/viewforum.php?f=1</url>
+	
+    <url>https://github.com/emabrey/SleekSlick2D</url>
+   
+	<issueManagement>
+         <system>GitHub</system>
+        <url>https://github.com/emabrey/SleekSlick2D/issues</url>
     </issueManagement>
 
     <developers>
-        <developer>
-            <id>KevinGlass</id>
-            <name>Kevin Glass</name>
-            <email>slick@cokeandcode.com</email>
-        </developer>
-        <developer>
-            <id>TommyHaaks</id>
-            <name>Tommy Haaks</name>
-            <email>tommy@haaks.net</email>
-        </developer>
-        <developer>
-            <id>MarkBernard</id>
-            <name>Mark Bernard</name>
-            <email>captainjester@hotmail.com</email>
-        </developer>
-        <developer>
-            <id>AaronRoberts</id>
-            <name>Aaron Roberts</name>
-            <email>antamiga@gmail.com</email>
-        </developer>
-        <developer>
-            <id>liamzebedee</id>
-            <name>Liam Edwards-Playne</name>
-            <email>liamzebedee@yahoo.com.au</email>
-        </developer>
-    </developers>
+		<developer>
+			<id>emabrey</id>
+			<name>Emily Mabrey</name>
+			<email>emilymabrey93@gmail.com</email>
+			<roles>
+				<role>creator</role>
+				<role>contact</role>
+			</roles>
+			<timezone>-5</timezone>
+		</developer>
+	</developers>  
+	  
+	<contributors>
+		<contributor>
+			<name>Kevin Glass</name>
+			<email>slick@cokeandcode.com</email>
+		</contributor>
+		<contributor>
+			<name>Tommy Haaks</name>
+			<email>tommy@haaks.net</email>
+		</contributor>
+		<contributor>
+			<name>Mark Bernard</name>
+			<email>captainjester@hotmail.com</email>
+		</contributor>
+		<contributor>
+			<name>Aaron Roberts</name>
+			<email>antamiga@gmail.com</email>
+		</contributor>
+		<contributor>
+			<name>Liam Edwards-Playne</name>
+			<email>liamzebedee@yahoo.com.au</email>
+		</contributor>
+	</contributors>
 
     <prerequisites>
         <maven>3.0.4</maven>
     </prerequisites>
-
-    <mailingLists>
-        <mailingList>
-            <name>Slick Forum</name>
-            <archive>http://slick.javaunlimited.net</archive>
-        </mailingList>
-    </mailingLists>
 
     <licenses>
         <license>
@@ -68,26 +66,14 @@
     </licenses>
 
     <scm>
-        <connection>
-            scm:hg:${basedir}/..
-        </connection>
-        <developerConnection>
-            scm:hg:${basedir}/..
-        </developerConnection>
-        <url>http://slick.cokeandcode.com/index.php</url>
-        <tag>HEAD</tag>
-    </scm>
-
-    <!--   <scm>
-       <connection>scm:hg:https://bitbucket.org/j_mabrey/slick-maven/trunk/Slick</connection>
-       <developerConnection>scm:hg:https://bitbucket.org/j_mabrey/slick-maven/trunk/Slick</developerConnection>
-       <url>http://slick.cokeandcode.com/index.php</url>
-       <tag>HEAD</tag>
-   </scm> -->
+		<connection>scm:git:https://github.com/emabrey/SleekSlick2D.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/emabrey/SleekSlick2D.git</developerConnection>
+		<url>https://github.com/emabrey/SleekSlick2D.git</url>
+	</scm>
 
     <properties>
-        <java.source.version>1.5</java.source.version>
-        <java.source.target.version>1.5</java.source.target.version>
+        <java.source.version>1.7</java.source.version>
+        <java.source.target.version>1.7</java.source.target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!--<skipTests>true</skipTests>  -->
@@ -222,38 +208,38 @@
         The artifacts obtained from this repo are noted in the dependency section. They need to be moved to Maven Central
         before the Slick pom conforms to Maven Central requirements for pom inclusion. (Outside repos are =very= frowned upon)
 
-        Right now this repo is available on google code, but it can easily be moved to a slick webserver
-    -->
+		Right now this repo is available on google code, but it can easily be moved to a slick webserver
+	-->
 
-    <repositories>
-        <repository>
-            <id>slick2d-maven-dependencies</id>
-            <url>http://slick2d-maven-dependencies.googlecode.com/svn/trunk/repository/</url>
-        </repository>
-    </repositories>
+	<repositories>
+		<repository>
+			<id>slick2d-maven-dependencies</id>
+			<url>http://slick2d-maven-dependencies.googlecode.com/svn/trunk/repository/</url>
+		</repository>
+	</repositories>
 
-    <distributionManagement>
-        <repository>
-            <id>googlecode</id>
-            <name>slick2d-maven-dependencies</name>
-            <url>svn:https://slick2d-maven-dependencies.googlecode.com/svn/trunk/repository</url>
-        </repository>
-        <site>
-            <id>googlecode-site</id>
-            <name>slick2d-maven-dependencies-site</name>
-            <url>svn:https://slick2d-maven-dependencies.googlecode.com/svn/site/${project.artifactId}</url>
-        </site>
-    </distributionManagement>
+	<distributionManagement>
+		<repository>
+			<id>googlecode</id>
+			<name>slick2d-maven-dependencies</name>
+			<url>svn:https://slick2d-maven-dependencies.googlecode.com/svn/trunk/repository</url>
+		</repository>
+		<site>
+			<id>googlecode-site</id>
+			<name>slick2d-maven-dependencies-site</name>
+			<url>svn:https://slick2d-maven-dependencies.googlecode.com/svn/site/${project.artifactId}</url>
+		</site>
+	</distributionManagement>
 
-    <modules>
-        <module>slick</module>
-        <module>slick-demos</module>
-        <module>slick-examples</module>
-        <module>slick-hiero</module>
-        <module>slick-packulike</module>
-        <module>slick-peditor</module>
-        <module>slick-scalar</module>
-        <module>slick-util</module>
-    </modules>
+	<modules>
+		<module>slick</module>
+		<module>slick-demos</module>
+		<module>slick-examples</module>
+		<module>slick-hiero</module>
+		<module>slick-packulike</module>
+		<module>slick-peditor</module>
+		<module>slick-scalar</module>
+		<module>slick-util</module>
+	</modules>
 
 </project>
