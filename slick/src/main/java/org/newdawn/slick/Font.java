@@ -1,12 +1,12 @@
 package org.newdawn.slick;
 
-
 /**
  * The proprites of any font implementation
  * 
  * @author Kevin Glass
  */
 public interface Font {
+
 	/**
 	 * Get the width of the given string
 	 * 
@@ -14,7 +14,7 @@ public interface Font {
 	 * @return The width of the given string
 	 */
 	public abstract int getWidth(String str);
-	
+
 	/**
 	 * Get the height of the given string
 	 * 
@@ -22,14 +22,14 @@ public interface Font {
 	 * @return The width of the given string
 	 */
 	public abstract int getHeight(String str);
-	
+
 	/**
 	 * Get the maximum height of any line drawn by this font
 	 * 
 	 * @return The maxium height of any line drawn by this font
 	 */
 	public int getLineHeight();
-	
+
 	/**
 	 * Draw a string to the screen
 	 * 
@@ -49,7 +49,6 @@ public interface Font {
 	 */
 	public abstract void drawString(float x, float y, String text, Color col);
 
-
 	/**
 	 * Draw part of a string to the screen. Note that this will
 	 * still position the text as though it's part of the bigger string.
@@ -62,4 +61,5 @@ public interface Font {
 	 * @param endIndex The index of the last character from the string to draw
 	 */
 	public abstract void drawString(float x, float y, String text, Color col, int startIndex, int endIndex);
+
 }

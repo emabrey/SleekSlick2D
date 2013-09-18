@@ -26,9 +26,10 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author kevin
  */
 public abstract class CrossStateTransition implements Transition {
+
 	/** The second state to cross with */
 	private GameState secondState;
-	
+
 	/**
 	 * Create a cross state transitions
 	 * 
@@ -38,7 +39,7 @@ public abstract class CrossStateTransition implements Transition {
 	public CrossStateTransition(GameState secondState) {
 		this.secondState = secondState;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.state.transition.Transition#isComplete()
 	 */
@@ -77,7 +78,7 @@ public abstract class CrossStateTransition implements Transition {
 	 */
 	public void preRenderFirstState(StateBasedGame game, GameContainer container, Graphics g) throws SlickException {
 	}
-	
+
 	/**
 	 * Notification that the transition is about to render the second state is the cross
 	 * transition.
@@ -98,8 +99,8 @@ public abstract class CrossStateTransition implements Transition {
 	 * @param container The container holding the game
 	 * @param g The graphic context used to render
 	 * @throws SlickException Indicates a failure to setup the rendering state - throw for anything that goes wrong
-	 */	
+	 */
 	public void postRenderSecondState(StateBasedGame game, GameContainer container, Graphics g) throws SlickException {
 	}
-	
+
 }

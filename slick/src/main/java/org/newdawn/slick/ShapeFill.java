@@ -30,4 +30,5 @@ public interface ShapeFill {
 	 * @return The offset to apply to this vertex
 	 */
 	public Vector2f getOffsetAt(Shape shape, float x, float y);
+
 }

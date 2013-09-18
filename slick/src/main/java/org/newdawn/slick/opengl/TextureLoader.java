@@ -12,6 +12,7 @@ import org.lwjgl.opengl.GL11;
  * @author kevin
  */
 public class TextureLoader {
+
 	/**
 	 * Load a texture with a given format from the supplied input stream
 	 * 
@@ -33,7 +34,7 @@ public class TextureLoader {
 	 * @return The newly created texture
 	 * @throws IOException Indicates a failure to read the image data
 	 */
-	public static Texture getTexture(String format, InputStream in, boolean flipped)  throws IOException {
+	public static Texture getTexture(String format, InputStream in, boolean flipped) throws IOException {
 		return getTexture(format, in, flipped, GL11.GL_LINEAR);
 	}
 
@@ -61,6 +62,7 @@ public class TextureLoader {
 	 * @throws IOException Indicates a failure to read the image data
 	 */
 	public static Texture getTexture(String format, InputStream in, boolean flipped, int filter) throws IOException {
-		return InternalTextureLoader.get().getTexture(in, in.toString()+"."+format, flipped, filter);
+		return InternalTextureLoader.get().getTexture(in, in.toString() + "." + format, flipped, filter);
 	}
+
 }

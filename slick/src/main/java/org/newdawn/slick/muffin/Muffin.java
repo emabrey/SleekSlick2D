@@ -9,6 +9,7 @@ import java.util.HashMap;
  * @author kappaOne
  */
 public interface Muffin {
+
 	/**
 	 * Save a file of data
 	 *  
@@ -17,7 +18,7 @@ public interface Muffin {
 	 * @throws IOException Indicates a failure to save the state 
 	 */
 	public abstract void saveFile(HashMap data, String fileName) throws IOException;
-	
+
 	/**
 	 * Load a file of data from the store
 	 * 
@@ -26,4 +27,5 @@ public interface Muffin {
 	 * @throws IOException Indicates a failure to load the state 
 	 */
 	public abstract HashMap loadFile(String fileName) throws IOException;
+
 }

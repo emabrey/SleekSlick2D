@@ -7,6 +7,7 @@ package org.newdawn.slick.particles;
  * @author kevin
  */
 public interface ConfigurableEmitterFactory {
+
 	/**
 	 * Create a configurable emitter that will be populated with
 	 * loaded data
@@ -15,4 +16,5 @@ public interface ConfigurableEmitterFactory {
 	 * @return The newly created configurable emitter
 	 */
 	public ConfigurableEmitter createEmitter(String name);
+
 }

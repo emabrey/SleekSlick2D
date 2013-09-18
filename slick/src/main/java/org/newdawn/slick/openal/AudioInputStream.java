@@ -9,13 +9,14 @@ import java.io.IOException;
  * @author kevin
  */
 interface AudioInputStream {
+
 	/**
 	 * Get the number of channels used by the audio 
 	 * 
 	 * @return The number of channels used by the audio
 	 */
 	public int getChannels();
-	
+
 	/**
 	 * The play back rate described in the underling audio file
 	 * 
@@ -60,7 +61,7 @@ interface AudioInputStream {
 	 * @return True if the stream has no more data available
 	 */
 	public boolean atEnd();
-	
+
 	/**
 	 * Close the stream
 	 * 
@@ -68,4 +69,5 @@ interface AudioInputStream {
 	 * @throws IOException Indicates a failure to access the resource
 	 */
 	public void close() throws IOException;
+
 }

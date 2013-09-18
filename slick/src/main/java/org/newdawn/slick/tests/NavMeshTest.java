@@ -25,28 +25,37 @@ import org.newdawn.slick.util.pathfinding.navmesh.Space;
  * @author kevin
  */
 public class NavMeshTest extends BasicGame implements PathFindingContext {
+
 	/** The mesh built for this map */
 	private NavMesh navMesh;
+
 	/** The builder used to create the nav-mesh from the tile based map */
 	private NavMeshBuilder builder;
+
 	/** True if we're showing the open spaces from the mesh */
 	private boolean showSpaces = true;
+
 	/** True if we're showing the linking points */
 	private boolean showLinks = true;
+
 	/** The path if there is one current found between the two points */
 	private NavPath path;
-	
+
 	/** The x coordinate of the start of the search */
 	private float sx;
+
 	/** The y coordinate of the start of the search */
 	private float sy;
+
 	/** The x coordinate of the end of the search */
 	private float ex;
+
 	/** The y coordinate of the end of the search */
 	private float ey;
+
 	/** The tile based map we're searching across - loaded from a raw file */
 	private DataMap dataMap;
-	
+
 	/**
 	 * Create a new test
 	 */
@@ -69,10 +78,10 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 		}
 		builder = new NavMeshBuilder();
 		navMesh = builder.build(dataMap);
-		
-		System.out.println("Navmesh shapes: "+navMesh.getSpaceCount());
+
+		System.out.println("Navmesh shapes: " + navMesh.getSpaceCount());
 	}
-	
+
 	/**
 	 * Update data map etc
 	 */
@@ -94,45 +103,45 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 	 */
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
-		g.translate(50,50);
-		for (int x=0;x<50;x++) {
-			for (int y=0;y<50;y++) {
+		g.translate(50, 50);
+		for (int x = 0; x < 50; x++) {
+			for (int y = 0; y < 50; y++) {
 				if (dataMap.blocked(this, x, y)) {
 					g.setColor(Color.gray);
-					g.fillRect((x*10)+1,(y*10)+1,8,8);
+					g.fillRect((x * 10) + 1, (y * 10) + 1, 8, 8);
 				}
 			}
 		}
-		
+
 		if (showSpaces) {
-			for (int i=0;i<navMesh.getSpaceCount();i++) {
+			for (int i = 0; i < navMesh.getSpaceCount(); i++) {
 				Space space = navMesh.getSpace(i);
 				if (builder.clear(dataMap, space)) {
-					g.setColor(new Color(1,1,0,0.5f));
-					g.fillRect(space.getX()*10, space.getY()*10, space.getWidth()*10, space.getHeight()*10);
+					g.setColor(new Color(1, 1, 0, 0.5f));
+					g.fillRect(space.getX() * 10, space.getY() * 10, space.getWidth() * 10, space.getHeight() * 10);
 				}
 				g.setColor(Color.yellow);
-				g.drawRect(space.getX()*10, space.getY()*10, space.getWidth()*10, space.getHeight()*10);
+				g.drawRect(space.getX() * 10, space.getY() * 10, space.getWidth() * 10, space.getHeight() * 10);
 
 				if (showLinks) {
 					int links = space.getLinkCount();
-					for (int j=0;j<links;j++) {
+					for (int j = 0; j < links; j++) {
 						Link link = space.getLink(j);
 						g.setColor(Color.red);
-						g.fillRect((link.getX()*10)-2, (link.getY()*10)-2,5,5);
+						g.fillRect((link.getX() * 10) - 2, (link.getY() * 10) - 2, 5, 5);
 					}
 				}
 			}
 		}
-		
+
 		if (path != null) {
 			g.setColor(Color.white);
-			for (int i=0;i<path.length()-1;i++) {
-				g.drawLine(path.getX(i)*10, path.getY(i)*10, path.getX(i+1)*10, path.getY(i+1)*10);
+			for (int i = 0; i < path.length() - 1; i++) {
+				g.drawLine(path.getX(i) * 10, path.getY(i) * 10, path.getX(i + 1) * 10, path.getY(i + 1) * 10);
 			}
 		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.newdawn.slick.util.pathfinding.PathFindingContext#getMover()
@@ -172,7 +181,7 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 	public void mousePressed(int button, int x, int y) {
 		float mx = (x - 50) / 10.0f;
 		float my = (y - 50) / 10.0f;
-		
+
 		if (button == 0) {
 			sx = mx;
 			sy = my;
@@ -181,7 +190,7 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 			ey = my;
 		}
 
-		path = navMesh.findPath(sx,sy,ex,ey,true);
+		path = navMesh.findPath(sx, sy, ex, ey, true);
 	}
 
 	/**
@@ -190,9 +199,10 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 	 * @author kevin
 	 */
 	private class DataMap implements TileBasedMap {
+
 		/** The map data */
-		private byte[] map = new byte[50*50];
-	
+		private byte[] map = new byte[50 * 50];
+
 		/**
 		 * Create a new map loading it from a file
 		 * 
@@ -211,10 +221,10 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 			if ((tx < 0) || (ty < 0) || (tx >= 50) || (ty >= 50)) {
 				return false;
 			}
-			
-			return map[tx+(ty*50)] != 0;
+
+			return map[tx + (ty * 50)] != 0;
 		}
-		
+
 		/*
 		 * (non-Javadoc)
 		 * @see org.newdawn.slick.util.pathfinding.TileBasedMap#getCost(org.newdawn.slick.util.pathfinding.PathFindingContext, int, int)
@@ -245,8 +255,9 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 		 */
 		public void pathFinderVisited(int x, int y) {
 		}
+
 	}
-	
+
 	/**
 	 * Entry point to out application
 	 * 
@@ -255,4 +266,5 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 	public static void main(String[] argv) {
 		Bootstrap.runAsApplication(new NavMeshTest(), 600, 600, false);
 	}
+
 }

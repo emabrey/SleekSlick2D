@@ -6,6 +6,7 @@ package org.newdawn.slick.geom;
  * @author kevin
  */
 public interface GeomUtilListener {
+
 	/**
 	 * Notification that a point was excluded from geometry 
 	 * 
@@ -29,4 +30,5 @@ public interface GeomUtilListener {
 	 * @param y The y coordinate of the point
 	 */
 	public void pointUsed(float x, float y);
+
 }

@@ -16,15 +16,16 @@ import org.w3c.dom.Document;
  * @author kevin
  */
 public class XMLParser {
+
 	/** The factory used to to create document builders that parse XML into the DOM */
 	private static DocumentBuilderFactory factory;
-	
+
 	/**
 	 * Create a new parser
 	 */
 	public XMLParser() {
 	}
-	
+
 	/**
 	 * Parse the XML document located by the slick resource loader using the
 	 * reference given.
@@ -37,7 +38,7 @@ public class XMLParser {
 	public XMLElement parse(String ref) throws SlickException {
 		return parse(ref, ResourceLoader.getResourceAsStream(ref));
 	}
-	
+
 	/**
 	 * Parse the XML document that can be read from the given input stream
 	 * 
@@ -54,10 +55,11 @@ public class XMLParser {
 			}
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(in);
-			
+
 			return new XMLElement(doc.getDocumentElement());
 		} catch (Exception e) {
-			throw new SlickXMLException("Failed to parse document: "+name, e);
+			throw new SlickXMLException("Failed to parse document: " + name, e);
 		}
 	}
+
 }

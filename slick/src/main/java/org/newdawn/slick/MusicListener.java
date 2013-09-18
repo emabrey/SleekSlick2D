@@ -14,7 +14,7 @@ public interface MusicListener {
 	 * @param music The music that finished playing
 	 */
 	public void musicEnded(Music music);
-	
+
 	/**
 	 * Notification that a piece of music has been swapped 
 	 * for another.
@@ -23,4 +23,5 @@ public interface MusicListener {
 	 * @param newMusic The new music we're playing
 	 */
 	public void musicSwapped(Music music, Music newMusic);
+
 }

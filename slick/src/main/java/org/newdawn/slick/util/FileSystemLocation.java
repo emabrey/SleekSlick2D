@@ -12,9 +12,10 @@ import java.net.URL;
  * @author kevin
  */
 public class FileSystemLocation implements ResourceLocation {
+
 	/** The root of the file system to search */
 	private File root;
-	
+
 	/**
 	 * Create a new resoruce location based on the file system
 	 * 
@@ -23,7 +24,7 @@ public class FileSystemLocation implements ResourceLocation {
 	public FileSystemLocation(File root) {
 		this.root = root;
 	}
-	
+
 	/**
 	 * @see ResourceLocation#getResource(String)
 	 */
@@ -36,7 +37,7 @@ public class FileSystemLocation implements ResourceLocation {
 			if (!file.exists()) {
 				return null;
 			}
-			
+
 			return file.toURI().toURL();
 		} catch (IOException e) {
 			return null;

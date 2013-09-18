@@ -15,39 +15,43 @@ import org.lwjgl.opengl.GLContext;
  * @author kevin
  */
 public class ImmediateModeOGLRenderer implements SGL {
+
 	/** The width of the display */
 	private int width;
+
 	/** The height of the display */
 	private int height;
+
 	/** The current colour */
-	private float[] current = new float[] {1,1,1,1};
+	private float[] current = new float[]{1, 1, 1, 1};
+
 	/** The global colour scale */
 	protected float alphaScale = 1;
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.renderer.SGL#initDisplay(int, int)
 	 */
 	public void initDisplay(int width, int height) {
 		this.width = width;
 		this.height = height;
-		
+
 		String extensions = GL11.glGetString(GL11.GL_EXTENSIONS);
-		
+
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		GL11.glShadeModel(GL11.GL_SMOOTH);        
+		GL11.glShadeModel(GL11.GL_SMOOTH);
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
-		GL11.glDisable(GL11.GL_LIGHTING);                    
-        
-		GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);                
-        GL11.glClearDepth(1);                                       
-        
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        
-        GL11.glViewport(0,0,width,height);
+		GL11.glDisable(GL11.GL_LIGHTING);
+
+		GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		GL11.glClearDepth(1);
+
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
+		GL11.glViewport(0, 0, width, height);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.renderer.SGL#enterOrtho(int, int)
 	 */
@@ -56,9 +60,9 @@ public class ImmediateModeOGLRenderer implements SGL {
 		GL11.glLoadIdentity();
 		GL11.glOrtho(0, width, height, 0, 1, -1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
-		
-		GL11.glTranslatef((width-xsize)/2,
-						  (height-ysize)/2,0);
+
+		GL11.glTranslatef((width - xsize) / 2,
+				(height - ysize) / 2, 0);
 	}
 
 	/**
@@ -115,12 +119,12 @@ public class ImmediateModeOGLRenderer implements SGL {
 	 */
 	public void glColor4f(float r, float g, float b, float a) {
 		a *= alphaScale;
-		
+
 		current[0] = r;
 		current[1] = g;
 		current[2] = b;
 		current[3] = a;
-		
+
 		GL11.glColor4f(r, g, b, a);
 	}
 
@@ -325,7 +329,7 @@ public class ImmediateModeOGLRenderer implements SGL {
 	public float[] getCurrentColor() {
 		return current;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.renderer.SGL#glDeleteLists(int, int)
 	 */
@@ -391,7 +395,7 @@ public class ImmediateModeOGLRenderer implements SGL {
 	public void glTexImage2D(int target, int i, int dstPixelFormat,
 			int width, int height, int j, int srcPixelFormat,
 			int glUnsignedByte, ByteBuffer textureBuffer) {
-		GL11.glTexImage2D(target, i, dstPixelFormat, width, height, j, srcPixelFormat,glUnsignedByte,textureBuffer);						  
+		GL11.glTexImage2D(target, i, dstPixelFormat, width, height, j, srcPixelFormat, glUnsignedByte, textureBuffer);
 	}
 
 	public void glTexSubImage2D(int glTexture2d, int i, int pageX, int pageY,
@@ -421,6 +425,7 @@ public class ImmediateModeOGLRenderer implements SGL {
 	 * @see org.newdawn.slick.opengl.renderer.SGL#glSecondaryColor3ubEXT(byte, byte, byte)
 	 */
 	public void glSecondaryColor3ubEXT(byte b, byte c, byte d) {
-		EXTSecondaryColor.glSecondaryColor3ubEXT(b,c,d);
+		EXTSecondaryColor.glSecondaryColor3ubEXT(b, c, d);
 	}
+
 }

@@ -13,34 +13,43 @@ import org.newdawn.slick.util.pathfinding.heuristics.ClosestHeuristic;
  * @author Kevin Glass
  */
 public class AStarPathFinder implements PathFinder, PathFindingContext {
+
 	/** The set of nodes that have been searched through */
 	private ArrayList closed = new ArrayList();
+
 	/** The set of nodes that we do not yet consider fully searched */
 	private PriorityList open = new PriorityList();
-	
+
 	/** The map being searched */
 	private TileBasedMap map;
+
 	/** The maximum depth of search we're willing to accept before giving up */
 	private int maxSearchDistance;
-	
+
 	/** The complete set of nodes across the map */
 	private Node[][] nodes;
+
 	/** True if we allow diaganol movement */
 	private boolean allowDiagMovement;
+
 	/** The heuristic we're applying to determine which nodes to search first */
 	private AStarHeuristic heuristic;
+
 	/** The node we're currently searching from */
 	private Node current;
-	
+
 	/** The mover going through the path */
 	private Mover mover;
+
 	/** The x coordinate of the source tile we're moving from */
 	private int sourceX;
+
 	/** The y coordinate of the source tile we're moving from */
 	private int sourceY;
+
 	/** The distance searched so far */
 	private int distance;
-	
+
 	/**
 	 * Create a path finder with the default heuristic - closest to target.
 	 * 
@@ -60,43 +69,43 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	 * @param maxSearchDistance The maximum depth we'll search before giving up
 	 * @param allowDiagMovement True if the search should try diaganol movement
 	 */
-	public AStarPathFinder(TileBasedMap map, int maxSearchDistance, 
-						   boolean allowDiagMovement, AStarHeuristic heuristic) {
+	public AStarPathFinder(TileBasedMap map, int maxSearchDistance,
+			boolean allowDiagMovement, AStarHeuristic heuristic) {
 		this.heuristic = heuristic;
 		this.map = map;
 		this.maxSearchDistance = maxSearchDistance;
 		this.allowDiagMovement = allowDiagMovement;
-		
+
 		nodes = new Node[map.getWidthInTiles()][map.getHeightInTiles()];
-		for (int x=0;x<map.getWidthInTiles();x++) {
-			for (int y=0;y<map.getHeightInTiles();y++) {
-				nodes[x][y] = new Node(x,y);
+		for (int x = 0; x < map.getWidthInTiles(); x++) {
+			for (int y = 0; y < map.getHeightInTiles(); y++) {
+				nodes[x][y] = new Node(x, y);
 			}
 		}
 	}
-	
+
 	/**
 	 * @see PathFinder#findPath(Mover, int, int, int, int)
 	 */
 	public Path findPath(Mover mover, int sx, int sy, int tx, int ty) {
 		current = null;
-		
+
 		// easy first check, if the destination is blocked, we can't get there
 		this.mover = mover;
 		this.sourceX = tx;
 		this.sourceY = ty;
 		this.distance = 0;
-		
+
 		if (map.blocked(this, tx, ty)) {
 			return null;
 		}
 
-		for (int x=0;x<map.getWidthInTiles();x++) {
-			for (int y=0;y<map.getHeightInTiles();y++) {
+		for (int x = 0; x < map.getWidthInTiles(); x++) {
+			for (int y = 0; y < map.getHeightInTiles(); y++) {
 				nodes[x][y].reset();
 			}
 		}
-		
+
 		// initial state for A*. The closed group is empty. Only the starting
 		// tile is in the open list and it's cost is zero, i.e. we're already there
 		nodes[sx][sy].cost = 0;
@@ -104,9 +113,9 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		closed.clear();
 		open.clear();
 		addToOpen(nodes[sx][sy]);
-		
+
 		nodes[tx][ty].parent = null;
-		
+
 		// while we haven't found the goal and haven't exceeded our max search depth
 		int maxDepth = 0;
 		while ((maxDepth < maxSearchDistance) && (open.size() != 0)) {
@@ -118,28 +127,28 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 				lx = current.x;
 				ly = current.y;
 			}
-			
+
 			current = getFirstInOpen();
 			distance = current.depth;
-			
+
 			if (current == nodes[tx][ty]) {
-				if (isValidLocation(mover,lx,ly,tx,ty)) {
+				if (isValidLocation(mover, lx, ly, tx, ty)) {
 					break;
 				}
 			}
-			
+
 			removeFromOpen(current);
 			addToClosed(current);
-			
+
 			// search through all the neighbours of the current node evaluating
 			// them as next steps
-			for (int x=-1;x<2;x++) {
-				for (int y=-1;y<2;y++) {
+			for (int x = -1; x < 2; x++) {
+				for (int y = -1; y < 2; y++) {
 					// not a neighbour, its the current tile
 					if ((x == 0) && (y == 0)) {
 						continue;
 					}
-					
+
 					// if we're not allowing diaganol movement then only 
 					// one of x or y can be set
 					if (!allowDiagMovement) {
@@ -147,19 +156,19 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 							continue;
 						}
 					}
-					
+
 					// determine the location of the neighbour and evaluate it
 					int xp = x + current.x;
 					int yp = y + current.y;
-					
-					if (isValidLocation(mover,current.x,current.y,xp,yp)) {
+
+					if (isValidLocation(mover, current.x, current.y, xp, yp)) {
 						// the cost to get to this node is cost the current plus the movement
 						// cost to reach this node. Note that the heursitic value is only used
 						// in the sorted open list
 						float nextStepCost = current.cost + getMovementCost(mover, current.x, current.y, xp, yp);
 						Node neighbour = nodes[xp][yp];
 						map.pathFinderVisited(xp, yp);
-						
+
 						// if the new cost we've determined for this node is lower than 
 						// it has been previously makes sure the node hasn't been discarded. We've
 						// determined that there might have been a better path to get to
@@ -172,7 +181,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 								removeFromClosed(neighbour);
 							}
 						}
-						
+
 						// if the node hasn't already been processed and discarded then
 						// reset it's cost to our current cost and add it as a next possible
 						// step (i.e. to the open list)
@@ -181,7 +190,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 							neighbour.heuristic = getHeuristicCost(mover, xp, yp, tx, ty);
 							maxDepth = Math.max(maxDepth, neighbour.setParent(current));
 							addToOpen(neighbour);
-						} 
+						}
 					}
 				}
 			}
@@ -192,7 +201,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		if (nodes[tx][ty].parent == null) {
 			return null;
 		}
-		
+
 		// At this point we've definitely found a path so we can uses the parent
 		// references of the nodes to find out way from the target location back
 		// to the start recording the nodes on the way.
@@ -202,8 +211,8 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 			path.prependStep(target.x, target.y);
 			target = target.parent;
 		}
-		path.prependStep(sx,sy);
-		
+		path.prependStep(sx, sy);
+
 		// thats it, we have our path 
 		return path;
 	}
@@ -217,7 +226,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		if (current == null) {
 			return -1;
 		}
-		
+
 		return current.x;
 	}
 
@@ -230,10 +239,10 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		if (current == null) {
 			return -1;
 		}
-		
+
 		return current.y;
 	}
-	
+
 	/**
 	 * Get the first element from the open list. This is the next
 	 * one to be searched.
@@ -243,7 +252,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	protected Node getFirstInOpen() {
 		return (Node) open.first();
 	}
-	
+
 	/**
 	 * Add a node to the open list
 	 * 
@@ -253,7 +262,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		node.setOpen(true);
 		open.add(node);
 	}
-	
+
 	/**
 	 * Check if a node is in the open list
 	 * 
@@ -263,7 +272,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	protected boolean inOpenList(Node node) {
 		return node.isOpen();
 	}
-	
+
 	/**
 	 * Remove a node from the open list
 	 * 
@@ -273,7 +282,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		node.setOpen(false);
 		open.remove(node);
 	}
-	
+
 	/**
 	 * Add a node to the closed list
 	 * 
@@ -283,7 +292,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		node.setClosed(true);
 		closed.add(node);
 	}
-	
+
 	/**
 	 * Check if the node supplied is in the closed list
 	 * 
@@ -293,7 +302,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	protected boolean inClosedList(Node node) {
 		return node.isClosed();
 	}
-	
+
 	/**
 	 * Remove a node from the closed list
 	 * 
@@ -303,7 +312,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		node.setClosed(false);
 		closed.remove(node);
 	}
-	
+
 	/**
 	 * Check if a given location is valid for the supplied mover
 	 * 
@@ -316,17 +325,17 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	 */
 	protected boolean isValidLocation(Mover mover, int sx, int sy, int x, int y) {
 		boolean invalid = (x < 0) || (y < 0) || (x >= map.getWidthInTiles()) || (y >= map.getHeightInTiles());
-		
+
 		if ((!invalid) && ((sx != x) || (sy != y))) {
 			this.mover = mover;
 			this.sourceX = sx;
 			this.sourceY = sy;
 			invalid = map.blocked(this, x, y);
 		}
-		
+
 		return !invalid;
 	}
-	
+
 	/**
 	 * Get the cost to move through a given location
 	 * 
@@ -341,7 +350,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		this.mover = mover;
 		this.sourceX = sx;
 		this.sourceY = sy;
-		
+
 		return map.getCost(this, tx, ty);
 	}
 
@@ -359,16 +368,17 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	public float getHeuristicCost(Mover mover, int x, int y, int tx, int ty) {
 		return heuristic.getCost(map, mover, x, y, tx, ty);
 	}
-	
+
 	/**
 	 * A list that sorts any element provided into the list
 	 *
 	 * @author kevin
 	 */
 	private class PriorityList {
+
 		/** The list of elements */
 		private List list = new LinkedList();
-		
+
 		/**
 		 * Retrieve the first element from the list
 		 *  
@@ -377,14 +387,14 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		public Object first() {
 			return list.get(0);
 		}
-		
+
 		/**
 		 * Empty the list
 		 */
 		public void clear() {
 			list.clear();
 		}
-		
+
 		/**
 		 * Add an element to the list - causes sorting
 		 * 
@@ -392,7 +402,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		 */
 		public void add(Object o) {
 			// float the new entry 
-			for (int i=0;i<list.size();i++) {
+			for (int i = 0; i < list.size(); i++) {
 				if (((Comparable) list.get(i)).compareTo(o) > 0) {
 					list.add(i, o);
 					break;
@@ -403,7 +413,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 			}
 			//Collections.sort(list);
 		}
-		
+
 		/**
 		 * Remove an element from the list
 		 * 
@@ -412,16 +422,16 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		public void remove(Object o) {
 			list.remove(o);
 		}
-	
+
 		/**
 		 * Get the number of elements in the list
 		 * 
 		 * @return The number of element in the list
- 		 */
+		 */
 		public int size() {
 			return list.size();
 		}
-		
+
 		/**
 		 * Check if an element is in the list
 		 * 
@@ -431,39 +441,48 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		public boolean contains(Object o) {
 			return list.contains(o);
 		}
-		
+
 		public String toString() {
 			String temp = "{";
-			for (int i=0;i<size();i++) {
-				temp += list.get(i).toString()+",";
+			for (int i = 0; i < size(); i++) {
+				temp += list.get(i).toString() + ",";
 			}
 			temp += "}";
-			
+
 			return temp;
 		}
+
 	}
-	
+
 	/**
 	 * A single node in the search graph
 	 */
 	private class Node implements Comparable {
+
 		/** The x coordinate of the node */
 		private int x;
+
 		/** The y coordinate of the node */
 		private int y;
+
 		/** The path cost for this node */
 		private float cost;
+
 		/** The parent of this node, how we reached it in the search */
 		private Node parent;
+
 		/** The heuristic cost of this node */
 		private float heuristic;
+
 		/** The search depth of this node */
 		private int depth;
+
 		/** In the open list */
 		private boolean open;
+
 		/** In the closed list */
 		private boolean closed;
-		
+
 		/**
 		 * Create a new node
 		 * 
@@ -474,7 +493,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 			this.x = x;
 			this.y = y;
 		}
-		
+
 		/**
 		 * Set the parent of this node
 		 * 
@@ -484,19 +503,19 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		public int setParent(Node parent) {
 			depth = parent.depth + 1;
 			this.parent = parent;
-			
+
 			return depth;
 		}
-		
+
 		/**
 		 * @see Comparable#compareTo(Object)
 		 */
 		public int compareTo(Object other) {
 			Node o = (Node) other;
-			
+
 			float f = heuristic + cost;
 			float of = o.heuristic + o.cost;
-			
+
 			if (f < of) {
 				return -1;
 			} else if (f > of) {
@@ -505,7 +524,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 				return 0;
 			}
 		}
-		
+
 		/**
 		 * Indicate whether the node is in the open list
 		 * 
@@ -514,7 +533,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		public void setOpen(boolean open) {
 			this.open = open;
 		}
-		
+
 		/**
 		 * Check if the node is in the open list
 		 * 
@@ -523,7 +542,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		public boolean isOpen() {
 			return open;
 		}
-		
+
 		/**
 		 * Indicate whether the node is in the closed list
 		 * 
@@ -532,7 +551,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 		public void setClosed(boolean closed) {
 			this.closed = closed;
 		}
-		
+
 		/**
 		 * Check if the node is in the closed list
 		 * 
@@ -551,13 +570,14 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 			cost = 0;
 			depth = 0;
 		}
-		
+
 		/**
 		 * @see java.lang.Object#toString()
 		 */
 		public String toString() {
-			return "[Node "+x+","+y+"]";
+			return "[Node " + x + "," + y + "]";
 		}
+
 	}
 
 	/**
@@ -587,4 +607,5 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	public int getSourceY() {
 		return sourceY;
 	}
+
 }

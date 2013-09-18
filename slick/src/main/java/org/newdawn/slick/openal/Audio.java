@@ -20,7 +20,7 @@ public interface Audio {
 	 * @return The ID of the OpenAL buffer holding this data 
 	 */
 	public int getBufferID();
-	
+
 	/**
 	 * Check if the sound is playing as sound fx
 	 * 
@@ -61,7 +61,7 @@ public interface Audio {
 	 * @return The ID of the source playing the sound
 	 */
 	public int playAsMusic(float pitch, float gain, boolean loop);
-	
+
 	/**
 	 * Seeks to a position in the music.
 	 * 
@@ -76,4 +76,5 @@ public interface Audio {
 	 * @return The current position in seconds.
 	 */
 	public float getPosition();
+
 }

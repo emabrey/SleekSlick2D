@@ -12,16 +12,22 @@ import org.newdawn.slick.opengl.Texture;
  * @author Kevin Glass
  */
 public class SpriteSheet extends Image {
+
 	/** The width of a single element in pixels */
 	private int tw;
+
 	/** The height of a single element in pixels  */
 	private int th;
+
 	/** The margin of the image */
-	private int margin = 0;    
+	private int margin = 0;
+
 	/** Subimages */
 	private Image[][] subImages;
+
 	/** The spacing between tiles */
 	private int spacing;
+
 	/** The target image for this sheet */
 	private Image target;
 
@@ -34,10 +40,10 @@ public class SpriteSheet extends Image {
 	 * @throws SlickException Indicates a failure to read image data
 	 * @throws IOException Indicates the URL could not be opened
 	 */
-	public SpriteSheet(URL ref,int tw,int th) throws SlickException, IOException {
+	public SpriteSheet(URL ref, int tw, int th) throws SlickException, IOException {
 		this(new Image(ref.openStream(), ref.toString(), false), tw, th);
 	}
-	
+
 	/**
 	 * Create a new sprite sheet based on a image location
 	 * 
@@ -45,13 +51,13 @@ public class SpriteSheet extends Image {
 	 * @param tw The width of the tiles on the sheet 
 	 * @param th The height of the tiles on the sheet 
 	 */
-	public SpriteSheet(Image image,int tw,int th) {
+	public SpriteSheet(Image image, int tw, int th) {
 		super(image);
-		
+
 		this.target = image;
 		this.tw = tw;
 		this.th = th;
-		
+
 		// call init manually since constructing from an image will have previously initialised
 		// from incorrect values 
 		initImpl();
@@ -66,14 +72,14 @@ public class SpriteSheet extends Image {
 	 * @param spacing The spacing between tiles
 	 * @param margin The magrin around the tiles
 	 */
-	public SpriteSheet(Image image,int tw,int th,int spacing,int margin) {
+	public SpriteSheet(Image image, int tw, int th, int spacing, int margin) {
 		super(image);
-		
+
 		this.target = image;
 		this.tw = tw;
 		this.th = th;
 		this.spacing = spacing;
-		this.margin = margin; 
+		this.margin = margin;
 
 		// call init manually since constructing from an image will have previously initialised
 		// from incorrect values 
@@ -88,10 +94,10 @@ public class SpriteSheet extends Image {
 	 * @param th The height of the tiles on the sheet 
 	 * @param spacing The spacing between tiles
 	 */
-	public SpriteSheet(Image image,int tw,int th,int spacing) {
-		this(image,tw,th,spacing,0);
+	public SpriteSheet(Image image, int tw, int th, int spacing) {
+		this(image, tw, th, spacing, 0);
 	}
-	
+
 	/**
 	 * Create a new sprite sheet based on a image location
 	 * 
@@ -101,10 +107,10 @@ public class SpriteSheet extends Image {
 	 * @param spacing The spacing between tiles
 	 * @throws SlickException Indicates a failure to load the image
 	 */
-	public SpriteSheet(String ref,int tw,int th, int spacing) throws SlickException {
-		this(ref,tw,th,null,spacing);
+	public SpriteSheet(String ref, int tw, int th, int spacing) throws SlickException {
+		this(ref, tw, th, null, spacing);
 	}
-	
+
 	/**
 	 * Create a new sprite sheet based on a image location
 	 * 
@@ -113,8 +119,8 @@ public class SpriteSheet extends Image {
 	 * @param th The height of the tiles on the sheet 
 	 * @throws SlickException Indicates a failure to load the image
 	 */
-	public SpriteSheet(String ref,int tw,int th) throws SlickException {
-		this(ref,tw,th,null);
+	public SpriteSheet(String ref, int tw, int th) throws SlickException {
+		this(ref, tw, th, null);
 	}
 
 	/**
@@ -126,10 +132,10 @@ public class SpriteSheet extends Image {
 	 * @param col The colour to treat as transparent
 	 * @throws SlickException Indicates a failure to load the image
 	 */
-	public SpriteSheet(String ref,int tw,int th, Color col) throws SlickException {
+	public SpriteSheet(String ref, int tw, int th, Color col) throws SlickException {
 		this(ref, tw, th, col, 0);
 	}
-	
+
 	/**
 	 * Create a new sprite sheet based on a image location
 	 * 
@@ -140,7 +146,7 @@ public class SpriteSheet extends Image {
 	 * @param spacing The spacing between tiles
 	 * @throws SlickException Indicates a failure to load the image
 	 */
-	public SpriteSheet(String ref,int tw,int th, Color col, int spacing) throws SlickException {
+	public SpriteSheet(String ref, int tw, int th, Color col, int spacing) throws SlickException {
 		super(ref, false, FILTER_NEAREST, col);
 
 		this.target = this;
@@ -148,7 +154,7 @@ public class SpriteSheet extends Image {
 		this.th = th;
 		this.spacing = spacing;
 	}
-	
+
 	/**
 	 * Create a new sprite sheet based on a image location
 	 * 
@@ -158,14 +164,14 @@ public class SpriteSheet extends Image {
 	 * @param th The height of the tiles on the sheet 
 	 * @throws SlickException Indicates a failure to load the image
 	 */
-	public SpriteSheet(String name, InputStream ref,int tw,int th) throws SlickException {
-		super(ref,name,false);
+	public SpriteSheet(String name, InputStream ref, int tw, int th) throws SlickException {
+		super(ref, name, false);
 
 		this.target = this;
 		this.tw = tw;
 		this.th = th;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.Image#initImpl()
 	 */
@@ -173,17 +179,17 @@ public class SpriteSheet extends Image {
 		if (subImages != null) {
 			return;
 		}
-		
-		int tilesAcross = ((getWidth()-(margin*2) - tw) / (tw + spacing)) + 1;
-		int tilesDown = ((getHeight()-(margin*2) - th) / (th + spacing)) + 1; 
-		if ((getHeight() - th) % (th+spacing) != 0) {
+
+		int tilesAcross = ((getWidth() - (margin * 2) - tw) / (tw + spacing)) + 1;
+		int tilesDown = ((getHeight() - (margin * 2) - th) / (th + spacing)) + 1;
+		if ((getHeight() - th) % (th + spacing) != 0) {
 			tilesDown++;
 		}
-		
+
 		subImages = new Image[tilesAcross][tilesDown];
-		for (int x=0;x<tilesAcross;x++) {
-			for (int y=0;y<tilesDown;y++) {
-				subImages[x][y] = getSprite(x,y);
+		for (int x = 0; x < tilesAcross; x++) {
+			for (int y = 0; y < tilesDown; y++) {
+				subImages[x][y] = getSprite(x, y);
 			}
 		}
 	}
@@ -197,17 +203,17 @@ public class SpriteSheet extends Image {
 	 */
 	public Image getSubImage(int x, int y) {
 		init();
-		
+
 		if ((x < 0) || (x >= subImages.length)) {
-			throw new RuntimeException("SubImage out of sheet bounds: "+x+","+y);
+			throw new RuntimeException("SubImage out of sheet bounds: " + x + "," + y);
 		}
 		if ((y < 0) || (y >= subImages[0].length)) {
-			throw new RuntimeException("SubImage out of sheet bounds: "+x+","+y);
+			throw new RuntimeException("SubImage out of sheet bounds: " + x + "," + y);
 		}
-		
+
 		return subImages[x][y];
 	}
-	
+
 	/**
 	 * Get a sprite at a particular cell on the sprite sheet
 	 * 
@@ -220,15 +226,15 @@ public class SpriteSheet extends Image {
 		initImpl();
 
 		if ((x < 0) || (x >= subImages.length)) {
-			throw new RuntimeException("SubImage out of sheet bounds: "+x+","+y);
+			throw new RuntimeException("SubImage out of sheet bounds: " + x + "," + y);
 		}
 		if ((y < 0) || (y >= subImages[0].length)) {
-			throw new RuntimeException("SubImage out of sheet bounds: "+x+","+y);
+			throw new RuntimeException("SubImage out of sheet bounds: " + x + "," + y);
 		}
 
-		return target.getSubImage(x*(tw+spacing) + margin, y*(th+spacing) + margin,tw,th); 
+		return target.getSubImage(x * (tw + spacing) + margin, y * (th + spacing) + margin, tw, th);
 	}
-	
+
 	/**
 	 * Get the number of sprites across the sheet
 	 * 
@@ -237,10 +243,10 @@ public class SpriteSheet extends Image {
 	public int getHorizontalCount() {
 		target.init();
 		initImpl();
-		
+
 		return subImages.length;
 	}
-	
+
 	/**
 	 * Get the number of sprites down the sheet
 	 * 
@@ -249,10 +255,10 @@ public class SpriteSheet extends Image {
 	public int getVerticalCount() {
 		target.init();
 		initImpl();
-		
+
 		return subImages[0].length;
 	}
-	
+
 	/**
 	 * Render a sprite when this sprite sheet is in use. 
 	 * 
@@ -264,7 +270,7 @@ public class SpriteSheet extends Image {
 	 * @param sx The x location of the cell to render
 	 * @param sy The y location of the cell to render
 	 */
-	public void renderInUse(int x,int y,int sx,int sy) {
+	public void renderInUse(int x, int y, int sx, int sy) {
 		subImages[sx][sy].drawEmbedded(x, y, tw, th);
 	}
 
@@ -289,7 +295,7 @@ public class SpriteSheet extends Image {
 		}
 		target.startUse();
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.Image#setTexture(org.newdawn.slick.opengl.Texture)
 	 */
@@ -300,4 +306,5 @@ public class SpriteSheet extends Image {
 		}
 		target.setTexture(texture);
 	}
+
 }

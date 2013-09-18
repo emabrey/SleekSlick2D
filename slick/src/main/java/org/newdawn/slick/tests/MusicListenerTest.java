@@ -15,15 +15,19 @@ import org.newdawn.slick.SlickException;
  * @author kevin
  */
 public class MusicListenerTest extends BasicGame implements MusicListener {
+
 	/** True if we should display the music ended message */
 	private boolean musicEnded = false;
+
 	/** True if we should display the music swapped message */
 	private boolean musicSwapped = false;
+
 	/** The music to be played */
 	private Music music;
+
 	/** The music to be streamed */
 	private Music stream;
-	
+
 	/**
 	 * Create a new test
 	 */
@@ -37,7 +41,7 @@ public class MusicListenerTest extends BasicGame implements MusicListener {
 	public void init(GameContainer container) throws SlickException {
 		music = new Music("testdata/restart.ogg", false);
 		stream = new Music("testdata/restart.ogg", false);
-		
+
 		music.addListener(this);
 		stream.addListener(this);
 	}
@@ -61,7 +65,7 @@ public class MusicListenerTest extends BasicGame implements MusicListener {
 	public void musicSwapped(Music music, Music newMusic) {
 		musicSwapped = true;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.Game#render(org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
@@ -91,7 +95,7 @@ public class MusicListenerTest extends BasicGame implements MusicListener {
 			stream.play();
 		}
 	}
-	
+
 	/**
 	 * Entry point to the sound test
 	 * 
@@ -100,10 +104,11 @@ public class MusicListenerTest extends BasicGame implements MusicListener {
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new MusicListenerTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

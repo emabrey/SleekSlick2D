@@ -24,4 +24,5 @@ public interface AStarHeuristic {
 	 * @return The cost associated with the given tile
 	 */
 	public float getCost(TileBasedMap map, Mover mover, int x, int y, int tx, int ty);
+
 }

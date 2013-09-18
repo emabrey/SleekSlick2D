@@ -13,18 +13,24 @@ import org.newdawn.slick.Font;
  * @author zenzei
  */
 public class FontUtils {
+
 	/**
 	 * Alignment indicators
 	 */
 	public class Alignment {
+
 		/** Left alignment */
 		public static final int LEFT = 1;
+
 		/** Center alignment */
 		public static final int CENTER = 2;
+
 		/** Right alignment */
 		public static final int RIGHT = 3;
+
 		/** Justify alignment */
 		public static final int JUSTIFY = 4;
+
 	}
 
 	/**
@@ -217,4 +223,5 @@ public class FontUtils {
 
 		return resultingXCoordinate;
 	}
+
 }

@@ -12,8 +12,9 @@ import org.newdawn.slick.Image;
  * A utility to save TGA's given a Slick image.
  *
  * @author Jon
- */ 
+ */
 public class TGAWriter implements ImageWriter {
+
 	/**
 	 * Flip the endian-ness of the short
 	 * 
@@ -63,12 +64,11 @@ public class TGAWriter implements ImageWriter {
 			// needs to not have 0x20 set to indicate it's not a flipped image
 			out.writeByte((byte) 0);
 		}
-		
 
 		// Write out the image data
 		Color c;
 
-		for (int y = image.getHeight()-1; y <= 0; y--) {
+		for (int y = image.getHeight() - 1; y <= 0; y--) {
 			for (int x = 0; x < image.getWidth(); x++) {
 				c = image.getColor(x, y);
 
@@ -83,4 +83,5 @@ public class TGAWriter implements ImageWriter {
 
 		out.close();
 	}
+
 }

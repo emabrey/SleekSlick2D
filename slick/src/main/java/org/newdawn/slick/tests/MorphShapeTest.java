@@ -17,17 +17,22 @@ import org.newdawn.slick.geom.Transform;
  * @author Kevin Glass
  */
 public class MorphShapeTest extends BasicGame {
+
 	/** First shape of the morph */
 	private Shape a;
+
 	/** Second shape of the morph */
 	private Shape b;
+
 	/** Third shape of the morph */
 	private Shape c;
+
 	/** The morphing shape */
 	private MorphShape morph;
+
 	/** The current morph time */
 	private float time;
-	
+
 	/**
 	 * Create a simple test
 	 */
@@ -39,17 +44,17 @@ public class MorphShapeTest extends BasicGame {
 	 * @see BasicGame#init(GameContainer)
 	 */
 	public void init(GameContainer container) throws SlickException {
-		a = new Rectangle(100,100,50,200);
-		a = a.transform(Transform.createRotateTransform(0.1f,100,100));
-		b = new Rectangle(200,100,50,200);
-		b = b.transform(Transform.createRotateTransform(-0.6f,100,100));
-		c = new Rectangle(300,100,50,200);
-		c = c.transform(Transform.createRotateTransform(-0.2f,100,100));
-		
+		a = new Rectangle(100, 100, 50, 200);
+		a = a.transform(Transform.createRotateTransform(0.1f, 100, 100));
+		b = new Rectangle(200, 100, 50, 200);
+		b = b.transform(Transform.createRotateTransform(-0.6f, 100, 100));
+		c = new Rectangle(300, 100, 50, 200);
+		c = c.transform(Transform.createRotateTransform(-0.2f, 100, 100));
+
 		morph = new MorphShape(a);
 		morph.addShape(b);
 		morph.addShape(c);
-		
+
 		container.setVSync(true);
 	}
 
@@ -93,4 +98,5 @@ public class MorphShapeTest extends BasicGame {
 			e.printStackTrace();
 		}
 	}
+
 }

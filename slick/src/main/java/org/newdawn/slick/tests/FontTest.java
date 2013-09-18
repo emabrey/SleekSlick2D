@@ -1,5 +1,5 @@
 package org.newdawn.slick.tests;
-	
+
 import org.newdawn.slick.AngelCodeFont;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
@@ -17,26 +17,29 @@ import org.newdawn.slick.util.Log;
  * @author kevin
  */
 public class FontTest extends BasicGame {
+
 	/** The font we're going to use to render */
 	private AngelCodeFont font;
+
 	/** The font we're going to use to render */
 	private AngelCodeFont font2;
+
 	/** The image of the font to compare against */
 	private Image image;
-	
+
 	/**
 	 * Create a new test for font rendering
 	 */
 	public FontTest() {
 		super("Font Test");
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.Game#init(org.newdawn.slick.GameContainer)
 	 */
 	public void init(GameContainer container) throws SlickException {
-		font = new AngelCodeFont("testdata/demo2.fnt","testdata/demo2_00.tga");
-		font2 = new AngelCodeFont("testdata/hiero.fnt","testdata/hiero.png");
+		font = new AngelCodeFont("testdata/demo2.fnt", "testdata/demo2_00.tga");
+		font2 = new AngelCodeFont("testdata/hiero.fnt", "testdata/hiero.png");
 		image = new Image("testdata/demo2_00.tga", false);
 	}
 
@@ -46,22 +49,22 @@ public class FontTest extends BasicGame {
 	public void render(GameContainer container, Graphics g) {
 		font.drawString(80, 5, "A Font Example", Color.red);
 		font.drawString(100, 32, "We - AV - Here is a more complete line that hopefully");
-		font.drawString(100, 36 + font.getHeight("We Here is a more complete line that hopefully"), 
-				             "will show some kerning.");
-		
+		font.drawString(100, 36 + font.getHeight("We Here is a more complete line that hopefully"),
+				"will show some kerning.");
+
 		font2.drawString(80, 85, "A Font Example", Color.red);
 		font2.drawString(100, 132, "We - AV - Here is a more complete line that hopefully");
-		font2.drawString(100, 136 + font2.getHeight("We - Here is a more complete line that hopefully"), 
-				             "will show some kerning.");
-		image.draw(100,400);
-		
+		font2.drawString(100, 136 + font2.getHeight("We - Here is a more complete line that hopefully"),
+				"will show some kerning.");
+		image.draw(100, 400);
+
 		String testStr = "Testing Font";
 		font2.drawString(100, 300, testStr);
 		g.setColor(Color.white);
-		g.drawRect(100,300+font2.getYOffset(testStr),font2.getWidth(testStr),font2.getHeight(testStr)-font2.getYOffset(testStr));
+		g.drawRect(100, 300 + font2.getYOffset(testStr), font2.getWidth(testStr), font2.getHeight(testStr) - font2.getYOffset(testStr));
 		font.drawString(500, 300, testStr);
 		g.setColor(Color.white);
-		g.drawRect(500,300+font.getYOffset(testStr),font.getWidth(testStr),font.getHeight(testStr)-font.getYOffset(testStr));
+		g.drawRect(500, 300 + font.getYOffset(testStr), font.getWidth(testStr), font.getHeight(testStr) - font.getYOffset(testStr));
 	}
 
 	/**
@@ -69,7 +72,7 @@ public class FontTest extends BasicGame {
 	 */
 	public void update(GameContainer container, int delta) throws SlickException {
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.BasicGame#keyPressed(int, char)
 	 */
@@ -85,10 +88,10 @@ public class FontTest extends BasicGame {
 			}
 		}
 	}
-	
+
 	/** The container we're using */
 	private static AppGameContainer container;
-	
+
 	/**
 	 * Entry point to our test
 	 * 
@@ -97,10 +100,11 @@ public class FontTest extends BasicGame {
 	public static void main(String[] argv) {
 		try {
 			container = new AppGameContainer(new FontTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

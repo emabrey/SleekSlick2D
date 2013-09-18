@@ -6,11 +6,13 @@ package org.newdawn.slick.geom;
  * @author Kevin Glass
  */
 public class Rectangle extends Shape {
+
 	/** The width of the box */
 	protected float width;
+
 	/** The height of the box */
 	protected float height;
-	
+
 	/**
 	 * Create a new bounding box
 	 * 
@@ -24,11 +26,11 @@ public class Rectangle extends Shape {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		maxX = x+width;
-		maxY = y+height;
+		maxX = x + width;
+		maxY = y + height;
 		checkPoints();
 	}
-	
+
 	/**
 	 * Check if this rectangle contains a point
 	 * 
@@ -49,10 +51,10 @@ public class Rectangle extends Shape {
 		if (yp >= maxY) {
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Set the bounds of this rectangle based on the given rectangle
 	 * 
@@ -61,7 +63,7 @@ public class Rectangle extends Shape {
 	public void setBounds(Rectangle other) {
 		setBounds(other.getX(), other.getY(), other.getWidth(), other.getHeight());
 	}
-	
+
 	/**
 	 * Set the bounds of this rectangle
 	 * 
@@ -86,8 +88,7 @@ public class Rectangle extends Shape {
 		setWidth(width);
 		setHeight(height);
 	}
-	
-	
+
 	/**
 	 * Get the width of the box
 	 * 
@@ -96,7 +97,7 @@ public class Rectangle extends Shape {
 	public float getWidth() {
 		return width;
 	}
-	
+
 	/**
 	 * Get the height of the box
 	 * 
@@ -105,7 +106,7 @@ public class Rectangle extends Shape {
 	public float getHeight() {
 		return height;
 	}
-	
+
 	/**
 	 * Grow the rectangle at all edges by the given amounts. This will result in the
 	 * rectangle getting larger around it's centre.
@@ -116,8 +117,8 @@ public class Rectangle extends Shape {
 	public void grow(float h, float v) {
 		setX(getX() - h);
 		setY(getY() - v);
-		setWidth(getWidth() + (h*2));
-		setHeight(getHeight() + (v*2));
+		setWidth(getWidth() + (h * 2));
+		setHeight(getHeight() + (v * 2));
 	}
 
 	/**
@@ -127,9 +128,9 @@ public class Rectangle extends Shape {
 	 * @param v The scale to appy to the vertical
 	 */
 	public void scaleGrow(float h, float v) {
-		grow(getWidth() * (h-1), getHeight() * (v-1));
+		grow(getWidth() * (h - 1), getHeight() * (v - 1));
 	}
-	
+
 	/**
 	 * Set the width of this box
 	 * 
@@ -137,12 +138,12 @@ public class Rectangle extends Shape {
 	 */
 	public void setWidth(float width) {
 		if (width != this.width) {
-	        pointsDirty = true;
+			pointsDirty = true;
 			this.width = width;
-			maxX = x+width;
+			maxX = x + width;
 		}
 	}
-	
+
 	/**
 	 * Set the heightof this box
 	 * 
@@ -150,12 +151,12 @@ public class Rectangle extends Shape {
 	 */
 	public void setHeight(float height) {
 		if (height != this.height) {
-	        pointsDirty = true;
+			pointsDirty = true;
 			this.height = height;
-			maxY = y+height;
+			maxY = y + height;
 		}
 	}
-	
+
 	/**
 	 * Check if this box touches another
 	 * 
@@ -163,51 +164,49 @@ public class Rectangle extends Shape {
 	 * @return True if the rectangles touch
 	 */
 	public boolean intersects(Shape shape) {
-        if(shape instanceof Rectangle) {
-            Rectangle other = (Rectangle)shape;
-    		if ((x > (other.x + other.width)) || ((x + width) < other.x)) {
-    			return false;
-    		}
-    		if ((y > (other.y + other.height)) || ((y + height) < other.y)) {
-    			return false;
-    		}
-            return true;
-        }
-        else if(shape instanceof Circle) {
-            return intersects((Circle)shape);
-        }
-        else {
-            return super.intersects(shape);
-        }
+		if (shape instanceof Rectangle) {
+			Rectangle other = (Rectangle) shape;
+			if ((x > (other.x + other.width)) || ((x + width) < other.x)) {
+				return false;
+			}
+			if ((y > (other.y + other.height)) || ((y + height) < other.y)) {
+				return false;
+			}
+			return true;
+		} else if (shape instanceof Circle) {
+			return intersects((Circle) shape);
+		} else {
+			return super.intersects(shape);
+		}
 	}
 
 	protected void createPoints() {
-        float useWidth = width ;
-        float useHeight = height;
-        points = new float[8];
-        
-        points[0] = x;
-        points[1] = y;
-        
-        points[2] = x + useWidth;
-        points[3] = y;
-        
-        points[4] = x + useWidth;
-        points[5] = y + useHeight;
-        
-        points[6] = x;
-        points[7] = y + useHeight;
-        
-        maxX = points[2];
-        maxY = points[5];
-        minX = points[0];
-        minY = points[1];
-        
-        findCenter();
-        calculateRadius();
-    }
+		float useWidth = width;
+		float useHeight = height;
+		points = new float[8];
 
-    /**
+		points[0] = x;
+		points[1] = y;
+
+		points[2] = x + useWidth;
+		points[3] = y;
+
+		points[4] = x + useWidth;
+		points[5] = y + useHeight;
+
+		points[6] = x;
+		points[7] = y + useHeight;
+
+		maxX = points[2];
+		maxY = points[5];
+		minX = points[0];
+		minY = points[1];
+
+		findCenter();
+		calculateRadius();
+	}
+
+	/**
 	 * Check if a circle touches this rectangle
 	 * 
 	 * @param other The circle to check against
@@ -216,14 +215,14 @@ public class Rectangle extends Shape {
 	private boolean intersects(Circle other) {
 		return other.intersects(this);
 	}
-	
+
 	/**
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return "[Rectangle "+width+"x"+height+"]";
+		return "[Rectangle " + width + "x" + height + "]";
 	}
-	
+
 	/**
 	 * Check if a rectangle contains a point (static to use it everywhere)
 	 * 
@@ -245,25 +244,26 @@ public class Rectangle extends Shape {
 		return (xp >= xr) && (yp >= yr) && (xp <= xr + widthr)
 				&& (yp <= yr + heightr);
 	}
-	
-    /**
-     * Apply a transformation and return a new shape.  This will not alter the current shape but will 
-     * return the transformed shape.
-     * 
-     * @param transform The transform to be applied
-     * @return The transformed shape.
-     */
-    public Shape transform(Transform transform) {
-        checkPoints();
-        
-        Polygon resultPolygon = new Polygon();
-        
-        float result[] = new float[points.length];
-        transform.transform(points, 0, result, 0, points.length / 2);
-        resultPolygon.points = result;
-        resultPolygon.findCenter();
-        resultPolygon.checkPoints();
 
-        return resultPolygon;
-    }
+	/**
+	 * Apply a transformation and return a new shape.  This will not alter the current shape but will 
+	 * return the transformed shape.
+	 * 
+	 * @param transform The transform to be applied
+	 * @return The transformed shape.
+	 */
+	public Shape transform(Transform transform) {
+		checkPoints();
+
+		Polygon resultPolygon = new Polygon();
+
+		float result[] = new float[points.length];
+		transform.transform(points, 0, result, 0, points.length / 2);
+		resultPolygon.points = result;
+		resultPolygon.findCenter();
+		resultPolygon.checkPoints();
+
+		return resultPolygon;
+	}
+
 }

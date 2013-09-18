@@ -16,9 +16,10 @@ import org.newdawn.slick.util.Log;
  * @author Rockstar playAsMusic cleanup 
  */
 public class StreamSound extends AudioImpl {
+
 	/** The player we're going to ask to stream data */
 	private OpenALStreamPlayer player;
-	
+
 	/**
 	 * Create a new sound wrapped round a stream
 	 * 
@@ -27,7 +28,7 @@ public class StreamSound extends AudioImpl {
 	public StreamSound(OpenALStreamPlayer player) {
 		this.player = player;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.openal.AudioImpl#isPlaying()
 	 */
@@ -41,14 +42,14 @@ public class StreamSound extends AudioImpl {
 	public int playAsMusic(float pitch, float gain, boolean loop) {
 		try {
 			cleanUpSource();
-			
+
 			player.setup(pitch);
 			player.play(loop);
 			SoundStore.get().setStream(player);
 		} catch (IOException e) {
-			Log.error("Failed to read OGG source: "+player.getSource());
+			Log.error("Failed to read OGG source: " + player.getSource());
 		}
-		
+
 		return SoundStore.get().getSource(0);
 	}
 
@@ -57,20 +58,19 @@ public class StreamSound extends AudioImpl {
 	 */
 	private void cleanUpSource() {
 		SoundStore store = SoundStore.get();
-		
+
 		AL10.alSourceStop(store.getSource(0));
 		IntBuffer buffer = BufferUtils.createIntBuffer(1);
 		int queued = AL10.alGetSourcei(store.getSource(0), AL10.AL_BUFFERS_QUEUED);
-		
-		while (queued > 0)
-		{
+
+		while (queued > 0) {
 			AL10.alSourceUnqueueBuffers(store.getSource(0), buffer);
 			queued--;
 		}
-		
+
 		AL10.alSourcei(store.getSource(0), AL10.AL_BUFFER, 0);
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.openal.AudioImpl#playAsSoundEffect(float, float, boolean, float, float, float)
 	 */
@@ -105,4 +105,5 @@ public class StreamSound extends AudioImpl {
 	public float getPosition() {
 		return player.getPosition();
 	}
+
 }

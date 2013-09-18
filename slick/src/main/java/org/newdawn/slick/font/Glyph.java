@@ -1,4 +1,3 @@
-
 package org.newdawn.slick.font;
 
 import java.awt.Rectangle;
@@ -15,18 +14,25 @@ import org.newdawn.slick.UnicodeFont;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class Glyph {
+
 	/** The code point in which this glyph is found */
 	private int codePoint;
+
 	/** The width of this glyph in pixels */
 	private short width;
+
 	/** The height of this glyph in pixels */
 	private short height;
+
 	/** The offset on the y axis to draw the glyph at */
 	private short yOffset;
+
 	/** True if the glyph isn't defined */
 	private boolean isMissing;
+
 	/** The shape drawn for this glyph */
 	private Shape shape;
+
 	/** The image generated for this glyph */
 	private Image image;
 
@@ -43,10 +49,14 @@ public class Glyph {
 		this.codePoint = codePoint;
 
 		GlyphMetrics metrics = vector.getGlyphMetrics(index);
-		int lsb = (int)metrics.getLSB();
-		if (lsb > 0) lsb = 0;
-		int rsb = (int)metrics.getRSB();
-		if (rsb > 0) rsb = 0;
+		int lsb = (int) metrics.getLSB();
+		if (lsb > 0) {
+			lsb = 0;
+		}
+		int rsb = (int) metrics.getRSB();
+		if (rsb > 0) {
+			rsb = 0;
+		}
 
 		int glyphWidth = bounds.width - lsb - rsb;
 		int glyphHeight = bounds.height;
@@ -56,14 +66,14 @@ public class Glyph {
 			int padBottom = unicodeFont.getPaddingBottom();
 			int padLeft = unicodeFont.getPaddingLeft();
 			int glyphSpacing = 1; // Needed to prevent filtering problems.
-			width = (short)(glyphWidth + padLeft + padRight + glyphSpacing);
-			height = (short)(glyphHeight + padTop + padBottom + glyphSpacing);
-			yOffset = (short)(unicodeFont.getAscent() + bounds.y - padTop);
+			width = (short) (glyphWidth + padLeft + padRight + glyphSpacing);
+			height = (short) (glyphHeight + padTop + padBottom + glyphSpacing);
+			yOffset = (short) (unicodeFont.getAscent() + bounds.y - padTop);
 		}
 
 		shape = vector.getGlyphOutline(index, -bounds.x + unicodeFont.getPaddingLeft(), -bounds.y + unicodeFont.getPaddingTop());
 
-		isMissing = !unicodeFont.getFont().canDisplay((char)codePoint);
+		isMissing = !unicodeFont.getFont().canDisplay((char) codePoint);
 	}
 
 	/**
@@ -71,7 +81,7 @@ public class Glyph {
 	 * 
 	 * @return The codepoint the glyph represents
 	 */
-	public int getCodePoint () {
+	public int getCodePoint() {
 		return codePoint;
 	}
 
@@ -80,7 +90,7 @@ public class Glyph {
 	 * 
 	 * @return True if this glyph is not defined in the given code point
 	 */
-	public boolean isMissing () {
+	public boolean isMissing() {
 		return isMissing;
 	}
 
@@ -89,7 +99,7 @@ public class Glyph {
 	 * 
 	 * @return The width in pixels of the glyphs image
 	 */
-	public int getWidth () {
+	public int getWidth() {
 		return width;
 	}
 
@@ -98,7 +108,7 @@ public class Glyph {
 	 * 
 	 * @return The height in pixels of the glyphs image
 	 */
-	public int getHeight () {
+	public int getHeight() {
 		return height;
 	}
 
@@ -108,7 +118,7 @@ public class Glyph {
 	 * 
 	 * @return The shape drawn for this glyph
 	 */
-	public Shape getShape () {
+	public Shape getShape() {
 		return shape;
 	}
 
@@ -127,7 +137,7 @@ public class Glyph {
 	 * 
 	 * @return The image that has been generated for this glyph
 	 */
-	public Image getImage () {
+	public Image getImage() {
 		return image;
 	}
 
@@ -149,4 +159,5 @@ public class Glyph {
 	public int getYOffset() {
 		return yOffset;
 	}
+
 }

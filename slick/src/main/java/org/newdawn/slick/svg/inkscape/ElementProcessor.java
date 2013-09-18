@@ -13,6 +13,7 @@ import org.w3c.dom.Element;
  * @author kevin
  */
 public interface ElementProcessor {
+
 	/**
 	 * Process a document extracting all the elements that the processor is 
 	 * interested in and producing appropriate diagram components for the
@@ -33,4 +34,5 @@ public interface ElementProcessor {
 	 * @return True if this processor can handle the given element
 	 */
 	public boolean handles(Element element);
+
 }

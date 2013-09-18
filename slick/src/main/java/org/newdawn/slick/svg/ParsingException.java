@@ -18,7 +18,7 @@ public class ParsingException extends SlickException {
 	 * @param cause The exception causing this one
 	 */
 	public ParsingException(String nodeID, String message, Throwable cause) {
-		super("("+nodeID+") "+message, cause);
+		super("(" + nodeID + ") " + message, cause);
 	}
 
 	/**
@@ -29,7 +29,7 @@ public class ParsingException extends SlickException {
 	 * @param cause The exception causing this one
 	 */
 	public ParsingException(Element element, String message, Throwable cause) {
-		super("("+element.getAttribute("id")+") "+message, cause);
+		super("(" + element.getAttribute("id") + ") " + message, cause);
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class ParsingException extends SlickException {
 	 * @param message The description of the failure
 	 */
 	public ParsingException(String nodeID, String message) {
-		super("("+nodeID+") "+message);
+		super("(" + nodeID + ") " + message);
 	}
 
 	/**
@@ -49,6 +49,7 @@ public class ParsingException extends SlickException {
 	 * @param message The description of the failure
 	 */
 	public ParsingException(Element element, String message) {
-		super("("+element.getAttribute("id")+") "+message);
+		super("(" + element.getAttribute("id") + ") " + message);
 	}
+
 }

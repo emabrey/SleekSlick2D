@@ -21,6 +21,7 @@ import org.newdawn.slick.util.Log;
  * @author kevin
  */
 public class ConfigurableEmitter implements ParticleEmitter {
+
 	/** The path from which the images should be loaded */
 	private static String relativePath = "";
 
@@ -39,59 +40,80 @@ public class ConfigurableEmitter implements ParticleEmitter {
 
 	/** The spawn interval range property - how often spawn happens */
 	public Range spawnInterval = new Range(100, 100);
+
 	/** The spawn count property - how many particles are spawned each time */
 	public Range spawnCount = new Range(5, 5);
+
 	/** The initial life of the new pixels */
 	public Range initialLife = new Range(1000, 1000);
+
 	/** The initial size of the new pixels */
 	public Range initialSize = new Range(10, 10);
+
 	/** The offset from the x position */
 	public Range xOffset = new Range(0, 0);
+
 	/** The offset from the y position */
 	public Range yOffset = new Range(0, 0);
+
 	/** The spread of the particles */
 	public RandomValue spread = new RandomValue(360);
+
 	/** The angular offset */
 	public SimpleValue angularOffset = new SimpleValue(0);
+
 	/** The initial distance of the particles */
 	public Range initialDistance = new Range(0, 0);
+
 	/** The speed particles fly out */
 	public Range speed = new Range(50, 50);
+
 	/** The growth factor on the particles */
 	public SimpleValue growthFactor = new SimpleValue(0);
+
 	/** The factor of gravity to apply */
 	public SimpleValue gravityFactor = new SimpleValue(0);
+
 	/** The factor of wind to apply */
 	public SimpleValue windFactor = new SimpleValue(0);
+
 	/** The length of the effect */
 	public Range length = new Range(1000, 1000);
+
 	/**
 	 * The color range
 	 * 
 	 * @see ColorRecord
 	 */
 	public ArrayList colors = new ArrayList();
+
 	/** The starting alpha value */
 	public SimpleValue startAlpha = new SimpleValue(255);
+
 	/** The ending alpha value */
 	public SimpleValue endAlpha = new SimpleValue(0);
 
 	/** Whiskas - Interpolated value for alpha */
 	public LinearInterpolator alpha;
+
 	/** Whiskas - Interpolated value for size */
 	public LinearInterpolator size;
+
 	/** Whiskas - Interpolated value for velocity */
 	public LinearInterpolator velocity;
+
 	/** Whiskas - Interpolated value for y axis scaling */
 	public LinearInterpolator scaleY;
 
 	/** The number of particles that will be emitted */
 	public Range emitCount = new Range(1000, 1000);
+
 	/** The points indicate */
 	public int usePoints = Particle.INHERIT_POINTS;
 
 	/** True if the quads should be orieted based on velocity */
 	public boolean useOriented = false;
+
 	/**
 	 * True if the additivie blending mode should be used for particles owned by
 	 * this emitter
@@ -100,42 +122,55 @@ public class ConfigurableEmitter implements ParticleEmitter {
 
 	/** The name attribute */
 	public String name;
+
 	/** The name of the image in use */
 	public String imageName = "";
+
 	/** The image being used for the particles */
 	private Image image;
+
 	/** True if the image needs updating */
 	private boolean updateImage;
 
 	/** True if the emitter is enabled */
 	private boolean enabled = true;
+
 	/** The x coordinate of the position of this emitter */
 	private float x;
+
 	/** The y coordinate of the position of this emitter */
 	private float y;
+
 	/** The time in milliseconds til the next spawn */
 	private int nextSpawn = 0;
 
 	/** The timeout counting down to spawn */
 	private int timeout;
+
 	/** The number of particles in use by this emitter */
 	private int particleCount;
+
 	/** The system this emitter is being updated to */
 	private ParticleSystem engine;
+
 	/** The number of particles that are left ot emit */
 	private int leftToEmit;
 
 	/** True if we're wrapping up */
 	protected boolean wrapUp = false;
+
 	/** True if the system has completed due to a wrap up */
 	protected boolean completed = false;
+
 	/** True if we need to adjust particles for movement */
 	protected boolean adjust;
+
 	/** The amount to adjust on the x axis */
 	protected float adjustx;
+
 	/** The amount to adjust on the y axis */
 	protected float adjusty;
-	
+
 	/**
 	 * Create a new emitter configurable externally
 	 * 
@@ -192,7 +227,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 			updateImage = true;
 		}
 	}
-	
+
 	/**
 	 * The name of the image to load
 	 * 
@@ -218,7 +253,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 	 *            The y coodinate of that this emitter should spawn at
 	 */
 	public void setPosition(float x, float y) {
-		setPosition(x,y,true);
+		setPosition(x, y, true);
 	}
 
 	/**
@@ -238,9 +273,9 @@ public class ConfigurableEmitter implements ParticleEmitter {
 			adjusty -= this.y - y;
 		}
 		this.x = x;
-		this.y = y;		
+		this.y = y;
 	}
-	
+
 	/**
 	 * Get the base x coordiante for spawning particles
 	 * 
@@ -286,7 +321,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 		} else {
 			adjust = false;
 		}
-		
+
 		if (updateImage) {
 			updateImage = false;
 			try {
@@ -297,19 +332,19 @@ public class ConfigurableEmitter implements ParticleEmitter {
 			}
 		}
 
-		if ((wrapUp) || 
-		    ((length.isEnabled()) && (timeout < 0)) ||
-		    ((emitCount.isEnabled() && (leftToEmit <= 0)))) {
+		if ((wrapUp)
+				|| ((length.isEnabled()) && (timeout < 0))
+				|| ((emitCount.isEnabled() && (leftToEmit <= 0)))) {
 			if (particleCount == 0) {
 				completed = true;
 			}
 		}
 		particleCount = 0;
-		
+
 		if (wrapUp) {
 			return;
 		}
-		
+
 		if (length.isEnabled()) {
 			if (timeout < 0) {
 				return;
@@ -374,14 +409,14 @@ public class ConfigurableEmitter implements ParticleEmitter {
 	 */
 	public void updateParticle(Particle particle, int delta) {
 		particleCount++;
-		
+
 		// adjust the particles if required
 		particle.x += adjustx;
 		particle.y += adjusty;
 
 		particle.adjustVelocity(windFactor.getValue(0) * 0.00005f * delta, gravityFactor
 				.getValue(0) * 0.00005f * delta);
-		
+
 		float offset = particle.getLife() / particle.getOriginalLife();
 		float inv = 1 - offset;
 		float colOffset = 0;
@@ -462,7 +497,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 		if (wrapUp) {
 			return completed;
 		}
-		
+
 		return false;
 	}
 
@@ -480,7 +515,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 	 * Release all the particles held by this emitter
 	 */
 	public void reset() {
-	    completed = false; 
+		completed = false;
 		if (engine != null) {
 			engine.releaseAll(this);
 		}
@@ -498,7 +533,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 			}
 		}
 	}
-	
+
 	/**
 	 * Create a duplicate of this emitter.
 	 * The duplicate should be added to a ParticleSystem to be used.
@@ -524,6 +559,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 	 * @author void
 	 */
 	public interface Value {
+
 		/**
 		 * get the current value that might depend from the given time
 		 * 
@@ -531,6 +567,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 		 * @return the current value
 		 */
 		public float getValue(float time);
+
 	}
 
 	/**
@@ -539,8 +576,10 @@ public class ConfigurableEmitter implements ParticleEmitter {
 	 * @author void
 	 */
 	public class SimpleValue implements Value {
+
 		/** The value configured */
 		private float value;
+
 		/** The next value */
 		private float next;
 
@@ -572,6 +611,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 		public void setValue(float value) {
 			this.value = value;
 		}
+
 	}
 
 	/**
@@ -580,6 +620,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 	 * @author void
 	 */
 	public class RandomValue implements Value {
+
 		/** The value configured */
 		private float value;
 
@@ -620,6 +661,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 		public float getValue() {
 			return value;
 		}
+
 	}
 
 	/**
@@ -628,12 +670,16 @@ public class ConfigurableEmitter implements ParticleEmitter {
 	 * @author void
 	 */
 	public class LinearInterpolator implements Value {
+
 		/** The list of points to interpolate between */
 		private ArrayList curve;
+
 		/** True if this interpolation value is active */
 		private boolean active;
+
 		/** The minimum value in the data set */
 		private int min;
+
 		/** The maximum value in the data set */
 		private int max;
 
@@ -751,6 +797,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 		public void setMin(int min) {
 			this.min = min;
 		}
+
 	}
 
 	/**
@@ -759,8 +806,10 @@ public class ConfigurableEmitter implements ParticleEmitter {
 	 * @author kevin
 	 */
 	public class ColorRecord {
+
 		/** The position in the life cycle */
 		public float pos;
+
 		/** The color at this position */
 		public Color col;
 
@@ -776,6 +825,7 @@ public class ConfigurableEmitter implements ParticleEmitter {
 			this.pos = pos;
 			this.col = col;
 		}
+
 	}
 
 	/**
@@ -796,10 +846,13 @@ public class ConfigurableEmitter implements ParticleEmitter {
 	 * @author kevin
 	 */
 	public class Range {
+
 		/** The maximum value in the range */
 		private float max;
+
 		/** The minimum value in the range */
 		private float min;
+
 		/** True if this range application is enabled */
 		private boolean enabled = false;
 
@@ -881,19 +934,20 @@ public class ConfigurableEmitter implements ParticleEmitter {
 		public void setMin(float min) {
 			this.min = min;
 		}
+
 	}
 
 	public boolean useAdditive() {
 		return useAdditive;
 	}
-	
+
 	public boolean isOriented() {
 		return this.useOriented;
 	}
-	
+
 	public boolean usePoints(ParticleSystem system) {
-		return (this.usePoints == Particle.INHERIT_POINTS) && (system.usePoints()) ||
-			   (this.usePoints == Particle.USE_POINTS); 
+		return (this.usePoints == Particle.INHERIT_POINTS) && (system.usePoints())
+				|| (this.usePoints == Particle.USE_POINTS);
 	}
 
 	public Image getImage() {
@@ -908,4 +962,5 @@ public class ConfigurableEmitter implements ParticleEmitter {
 		wrapUp = false;
 		replay();
 	}
+
 }

@@ -1,29 +1,36 @@
 package org.newdawn.slick;
 
-
 /**
  * A basic implementation of a game to take out the boring bits
  *
  * @author kevin
  */
 public abstract class BasicGame implements Game, InputListener {
+
 	/** The maximum number of controllers supported by the basic game */
 	private static final int MAX_CONTROLLERS = 20;
+
 	/** The maximum number of controller buttons supported by the basic game */
 	private static final int MAX_CONTROLLER_BUTTONS = 100;
+
 	/** The title of the game */
 	private String title;
+
 	/** The state of the left control */
 	protected boolean[] controllerLeft = new boolean[MAX_CONTROLLERS];
+
 	/** The state of the right control */
 	protected boolean[] controllerRight = new boolean[MAX_CONTROLLERS];
+
 	/** The state of the up control */
 	protected boolean[] controllerUp = new boolean[MAX_CONTROLLERS];
+
 	/** The state of the down control */
 	protected boolean[] controllerDown = new boolean[MAX_CONTROLLERS];
+
 	/** The state of the button controlls */
 	protected boolean[][] controllerButton = new boolean[MAX_CONTROLLERS][MAX_CONTROLLER_BUTTONS];
-	
+
 	/**
 	 * Create a new basic game
 	 * 
@@ -36,9 +43,9 @@ public abstract class BasicGame implements Game, InputListener {
 	/**
 	 * @see org.newdawn.slick.InputListener#setInput(org.newdawn.slick.Input)
 	 */
-	public void setInput(Input input) {	
+	public void setInput(Input input) {
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.Game#closeRequested()
 	 */
@@ -81,20 +88,20 @@ public abstract class BasicGame implements Game, InputListener {
 	 */
 	public void mouseDragged(int oldx, int oldy, int newx, int newy) {
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.InputListener#mouseClicked(int, int, int, int)
 	 */
 	public void mouseClicked(int button, int x, int y, int clickCount) {
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.InputListener#mousePressed(int, int, int)
 	 */
 	public void mousePressed(int button, int x, int y) {
 
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.InputListener#controllerButtonPressed(int, int)
 	 */
@@ -164,7 +171,7 @@ public abstract class BasicGame implements Game, InputListener {
 	public void controllerUpReleased(int controller) {
 		controllerUp[controller] = false;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.InputListener#mouseReleased(int, int, int)
 	 */
@@ -188,18 +195,19 @@ public abstract class BasicGame implements Game, InputListener {
 	public boolean isAcceptingInput() {
 		return true;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.InputListener#inputEnded()
 	 */
 	public void inputEnded() {
-		
+
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.ControlledInputReciever#inputStarted()
 	 */
 	public void inputStarted() {
-		
+
 	}
+
 }

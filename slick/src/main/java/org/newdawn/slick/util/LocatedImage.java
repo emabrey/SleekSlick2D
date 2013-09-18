@@ -10,19 +10,25 @@ import org.newdawn.slick.Image;
  * @author kevin
  */
 public class LocatedImage {
+
 	/** The image to be rendered - prefer aggregation */
 	private Image image;
+
 	/** The x coordinate at which the image should be rendered */
 	private int x;
+
 	/** The y coordinate at which the image should be rendered */
 	private int y;
+
 	/** The filter to apply across the image */
 	private Color filter = Color.white;
+
 	/** The width to render the image */
 	private float width;
+
 	/** The height to render the image */
 	private float height;
-	
+
 	/**
 	 * Create a new located image
 	 * 
@@ -37,7 +43,7 @@ public class LocatedImage {
 		this.width = image.getWidth();
 		this.height = image.getHeight();
 	}
-	
+
 	/**
 	 * Get the height the image will be drawn at
 	 * 
@@ -55,7 +61,7 @@ public class LocatedImage {
 	public float getWidth() {
 		return width;
 	}
-	
+
 	/**
 	 * Set the height the image should be drawn at
 	 * 
@@ -73,16 +79,16 @@ public class LocatedImage {
 	public void setWidth(float width) {
 		this.width = width;
 	}
-	
+
 	/**
 	 * Set the colour filter to apply to the image
 	 * 
 	 * @param c The color filter to apply to the image
-	 */ 
+	 */
 	public void setColor(Color c) {
 		this.filter = c;
 	}
-	
+
 	/**
 	 * Get the colour filter being applied
 	 * 
@@ -91,7 +97,7 @@ public class LocatedImage {
 	public Color getColor() {
 		return filter;
 	}
-	
+
 	/**
 	 * Set the x position at which the image should be drawn
 	 * 
@@ -109,7 +115,7 @@ public class LocatedImage {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
+
 	/**
 	 * Get the x position at which the image will be drawn
 	 * 
@@ -127,11 +133,12 @@ public class LocatedImage {
 	public int getY() {
 		return y;
 	}
-	
+
 	/**
 	 * Draw the image based on the current configured state
 	 */
 	public void draw() {
-		image.draw(x,y,width,height,filter);
+		image.draw(x, y, width, height, filter);
 	}
+
 }

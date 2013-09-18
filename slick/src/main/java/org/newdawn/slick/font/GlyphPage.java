@@ -1,4 +1,3 @@
-
 package org.newdawn.slick.font;
 
 import java.awt.AlphaComposite;
@@ -30,6 +29,7 @@ import org.newdawn.slick.opengl.renderer.SGL;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class GlyphPage {
+
 	/** The interface to OpenGL */
 	private static final SGL GL = Renderer.get();
 
@@ -37,30 +37,30 @@ public class GlyphPage {
 	public static final int MAX_GLYPH_SIZE = 256;
 
 	/** A temporary working buffer */
-    private static ByteBuffer scratchByteBuffer = ByteBuffer.allocateDirect(MAX_GLYPH_SIZE * MAX_GLYPH_SIZE * 4);
+	private static ByteBuffer scratchByteBuffer = ByteBuffer.allocateDirect(MAX_GLYPH_SIZE * MAX_GLYPH_SIZE * 4);
 
-    static {
+	static {
 		scratchByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    }
-    
-    /** A temporary working buffer */
-    private static IntBuffer scratchIntBuffer = scratchByteBuffer.asIntBuffer();
-    
-    
+	}
+
+	/** A temporary working buffer */
+	private static IntBuffer scratchIntBuffer = scratchByteBuffer.asIntBuffer();
+
 	/** A temporary image used to generate the glyph page */
 	private static BufferedImage scratchImage = new BufferedImage(MAX_GLYPH_SIZE, MAX_GLYPH_SIZE, BufferedImage.TYPE_INT_ARGB);
+
 	/** The graphics context form the temporary image */
-	private static Graphics2D scratchGraphics = (Graphics2D)scratchImage.getGraphics();
-	
+	private static Graphics2D scratchGraphics = (Graphics2D) scratchImage.getGraphics();
+
 	static {
 		scratchGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		scratchGraphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		scratchGraphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
 	}
-	
+
 	/** The render context in which the glyphs will be generated */
-    public static FontRenderContext renderContext = scratchGraphics.getFontRenderContext();
-	
+	public static FontRenderContext renderContext = scratchGraphics.getFontRenderContext();
+
 	/**
 	 * Get the scratch graphics used to generate the page of glyphs
 	 * 
@@ -69,23 +69,31 @@ public class GlyphPage {
 	public static Graphics2D getScratchGraphics() {
 		return scratchGraphics;
 	}
-	
+
 	/** The font this page is part of */
 	private final UnicodeFont unicodeFont;
+
 	/** The width of this page's image */
 	private final int pageWidth;
+
 	/** The height of this page's image */
 	private final int pageHeight;
+
 	/** The image containing the glyphs */
 	private final Image pageImage;
+
 	/** The x position of the page */
 	private int pageX;
+
 	/** The y position of the page */
 	private int pageY;
+
 	/** The height of the last row on the page */
 	private int rowHeight;
+
 	/** True if the glyphs are ordered */
 	private boolean orderAscending;
+
 	/** The list of glyphs on this page */
 	private final List pageGlyphs = new ArrayList(32);
 
@@ -116,14 +124,14 @@ public class GlyphPage {
 	 * @return The number of glyphs that were actually loaded.
 	 * @throws SlickException if the glyph could not be rendered.
 	 */
-	public int loadGlyphs (List glyphs, int maxGlyphsToLoad) throws SlickException {
+	public int loadGlyphs(List glyphs, int maxGlyphsToLoad) throws SlickException {
 		if (rowHeight != 0 && maxGlyphsToLoad == -1) {
 			// If this page has glyphs and we are not loading incrementally, return zero if any of the glyphs don't fit.
 			int testX = pageX;
 			int testY = pageY;
 			int testRowHeight = rowHeight;
 			for (Iterator iter = getIterator(glyphs); iter.hasNext();) {
-				Glyph glyph = (Glyph)iter.next();
+				Glyph glyph = (Glyph) iter.next();
 				int width = glyph.getWidth();
 				int height = glyph.getHeight();
 				if (testX + width >= pageWidth) {
@@ -133,7 +141,9 @@ public class GlyphPage {
 				} else if (height > testRowHeight) {
 					testRowHeight = height;
 				}
-				if (testY + testRowHeight >= pageWidth) return 0;
+				if (testY + testRowHeight >= pageWidth) {
+					return 0;
+				}
 				testX += width;
 			}
 		}
@@ -143,7 +153,7 @@ public class GlyphPage {
 
 		int i = 0;
 		for (Iterator iter = getIterator(glyphs); iter.hasNext();) {
-			Glyph glyph = (Glyph)iter.next();
+			Glyph glyph = (Glyph) iter.next();
 			int width = Math.min(MAX_GLYPH_SIZE, glyph.getWidth());
 			int height = Math.min(MAX_GLYPH_SIZE, glyph.getHeight());
 
@@ -153,12 +163,16 @@ public class GlyphPage {
 			} else {
 				// Wrap to the next line if needed, or break if no more fit.
 				if (pageX + width >= pageWidth) {
-					if (pageY + rowHeight + height >= pageHeight) break;
+					if (pageY + rowHeight + height >= pageHeight) {
+						break;
+					}
 					pageX = 0;
 					pageY += rowHeight;
 					rowHeight = height;
 				} else if (height > rowHeight) {
-					if (pageY + height >= pageHeight) break;
+					if (pageY + height >= pageHeight) {
+						break;
+					}
 					rowHeight = height;
 				}
 			}
@@ -199,8 +213,9 @@ public class GlyphPage {
 		scratchGraphics.fillRect(0, 0, MAX_GLYPH_SIZE, MAX_GLYPH_SIZE);
 		scratchGraphics.setComposite(AlphaComposite.SrcOver);
 		scratchGraphics.setColor(java.awt.Color.white);
-		for (Iterator iter = unicodeFont.getEffects().iterator(); iter.hasNext();)
-			((Effect)iter.next()).draw(scratchImage, scratchGraphics, unicodeFont, glyph);
+		for (Iterator iter = unicodeFont.getEffects().iterator(); iter.hasNext();) {
+			((Effect) iter.next()).draw(scratchImage, scratchGraphics, unicodeFont, glyph);
+		}
 		glyph.setShape(null); // The shape will never be needed again.
 
 		WritableRaster raster = scratchImage.getRaster();
@@ -210,7 +225,7 @@ public class GlyphPage {
 			scratchIntBuffer.put(row);
 		}
 		GL.glTexSubImage2D(SGL.GL_TEXTURE_2D, 0, pageX, pageY, width, height, SGL.GL_BGRA, SGL.GL_UNSIGNED_BYTE,
-			scratchByteBuffer);
+				scratchByteBuffer);
 		scratchIntBuffer.clear();
 
 		glyph.setImage(pageImage.getSubImage(pageX, pageY, width, height));
@@ -223,20 +238,23 @@ public class GlyphPage {
 	 * @return An iterator of the sorted list of glyphs
 	 */
 	private Iterator getIterator(List glyphs) {
-		if (orderAscending) return glyphs.iterator();
+		if (orderAscending) {
+			return glyphs.iterator();
+		}
 		final ListIterator iter = glyphs.listIterator(glyphs.size());
 		return new Iterator() {
-			public boolean hasNext () {
+			public boolean hasNext() {
 				return iter.hasPrevious();
 			}
 
-			public Object next () {
+			public Object next() {
 				return iter.previous();
 			}
 
-			public void remove () {
+			public void remove() {
 				iter.remove();
 			}
+
 		};
 	}
 
@@ -245,7 +263,7 @@ public class GlyphPage {
 	 * 
 	 * @return A list of {@link Glyph} elements on this page
 	 */
-	public List getGlyphs () {
+	public List getGlyphs() {
 		return pageGlyphs;
 	}
 
@@ -254,7 +272,8 @@ public class GlyphPage {
 	 * 
 	 * @return The image of this page of glyphs
 	 */
-	public Image getImage () {
+	public Image getImage() {
 		return pageImage;
 	}
+
 }

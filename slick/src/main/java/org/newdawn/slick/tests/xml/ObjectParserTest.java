@@ -21,8 +21,9 @@ public class ObjectParserTest {
 	public static void main(String[] argv) throws SlickXMLException {
 		ObjectTreeParser parser = new ObjectTreeParser("org.newdawn.slick.tests.xml");
 		parser.addElementMapping("Bag", ItemContainer.class);
-		
+
 		GameData parsedData = (GameData) parser.parse("testdata/objxmltest.xml");
 		parsedData.dump("");
 	}
+
 }

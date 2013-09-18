@@ -13,16 +13,22 @@ import org.newdawn.slick.util.Log;
  * @author Onno Scheffers
  */
 public class SpriteSheetFont implements Font {
+
 	/** The SpriteSheet containing the bitmap font */
 	private SpriteSheet font;
+
 	/** First character in the SpriteSheet */
 	private char startingCharacter;
+
 	/** Width of each character in pixels */
 	private int charWidth;
+
 	/** Height of each character in pixels */
 	private int charHeight;
+
 	/** Number of characters in SpriteSheet horizontally */
 	private int horizontalCount;
+
 	/** Total number of characters in SpriteSheet */
 	private int numChars;
 
@@ -61,9 +67,9 @@ public class SpriteSheetFont implements Font {
 	 * @see org.newdawn.slick.Font#drawString(float, float, java.lang.String, org.newdawn.slick.Color)
 	 */
 	public void drawString(float x, float y, String text, Color col) {
-		drawString(x,y,text,col,0,text.length()-1);
+		drawString(x, y, text, col, 0, text.length() - 1);
 	}
-	
+
 	/**
 	 * @see Font#drawString(float, float, String, Color, int, int)
 	 */
@@ -75,7 +81,7 @@ public class SpriteSheetFont implements Font {
 				if (index < numChars) {
 					int xPos = (index % horizontalCount);
 					int yPos = (index / horizontalCount);
-					
+
 					if ((i >= startIndex) || (i <= endIndex)) {
 						font.getSprite(xPos, yPos)
 								.draw(x + (i * charWidth), y, col);
@@ -108,4 +114,5 @@ public class SpriteSheetFont implements Font {
 	public int getLineHeight() {
 		return charHeight;
 	}
+
 }

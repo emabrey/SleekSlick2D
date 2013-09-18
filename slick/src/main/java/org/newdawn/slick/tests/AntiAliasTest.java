@@ -40,12 +40,12 @@ public class AntiAliasTest extends BasicGame {
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		g.setAntiAlias(true);
 		g.setColor(Color.red);
-		g.drawOval(100,100,100,100);
-		g.fillOval(300,100,100,100);
+		g.drawOval(100, 100, 100, 100);
+		g.fillOval(300, 100, 100, 100);
 		g.setAntiAlias(false);
 		g.setColor(Color.red);
-		g.drawOval(100,300,100,100);
-		g.fillOval(300,300,100,100);
+		g.drawOval(100, 300, 100, 100);
+		g.fillOval(300, 300, 100, 100);
 	}
 
 	/**
@@ -56,10 +56,11 @@ public class AntiAliasTest extends BasicGame {
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new AntiAliasTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

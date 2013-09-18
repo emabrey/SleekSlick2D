@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author kevin
  */
 public class ItemContainer extends Item {
+
 	/** The items held in this container */
 	private ArrayList items = new ArrayList();
 
@@ -48,9 +49,10 @@ public class ItemContainer extends Item {
 	 * @param prefix The prefix to apply to all lines
 	 */
 	public void dump(String prefix) {
-		System.out.println(prefix+"Item Container "+name+","+condition);
-		for (int i=0;i<items.size();i++) {
-			((Item) items.get(i)).dump(prefix+"\t");
+		System.out.println(prefix + "Item Container " + name + "," + condition);
+		for (int i = 0; i < items.size(); i++) {
+			((Item) items.get(i)).dump(prefix + "\t");
 		}
 	}
+
 }

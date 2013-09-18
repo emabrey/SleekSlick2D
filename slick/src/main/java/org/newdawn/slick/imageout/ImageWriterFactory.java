@@ -12,21 +12,22 @@ import org.newdawn.slick.SlickException;
  * @author kevin
  */
 public class ImageWriterFactory {
+
 	/** The map from format names to image writer instances */
 	private static HashMap writers = new HashMap();
-	
+
 	// Initialise the list of writers based on the classes we know about
 	static {
 		String[] formats = ImageIO.getWriterFormatNames();
 		ImageIOWriter writer = new ImageIOWriter();
-		for (int i=0;i<formats.length;i++) {
+		for (int i = 0; i < formats.length; i++) {
 			registerWriter(formats[i], writer);
 		}
-		
+
 		TGAWriter tga = new TGAWriter();
 		registerWriter("tga", tga);
 	}
-	
+
 	/**
 	 * Register an image writer with the factory. This will allow users 
 	 * to use it to write out the explicit format
@@ -37,7 +38,7 @@ public class ImageWriterFactory {
 	public static void registerWriter(String format, ImageWriter writer) {
 		writers.put(format, writer);
 	}
-	
+
 	/**
 	 * Get the list of support format strings for this factory
 	 * 
@@ -46,7 +47,7 @@ public class ImageWriterFactory {
 	public static String[] getSupportedFormats() {
 		return (String[]) writers.keySet().toArray(new String[0]);
 	}
-	
+
 	/**
 	 * Get a Slick image writer for the given format
 	 *  
@@ -54,23 +55,23 @@ public class ImageWriterFactory {
 	 * @return The image write to use to produce these images
 	 * @throws SlickException
 	 */
-	public static ImageWriter getWriterForFormat(String format) throws SlickException
-	{
+	public static ImageWriter getWriterForFormat(String format) throws SlickException {
 		ImageWriter writer = (ImageWriter) writers.get(format);
 		if (writer != null) {
 			return writer;
 		}
-		
+
 		writer = (ImageWriter) writers.get(format.toLowerCase());
 		if (writer != null) {
 			return writer;
 		}
-		
+
 		writer = (ImageWriter) writers.get(format.toUpperCase());
 		if (writer != null) {
 			return writer;
 		}
-		
-		throw new SlickException("No image writer available for: "+format);
+
+		throw new SlickException("No image writer available for: " + format);
 	}
+
 }

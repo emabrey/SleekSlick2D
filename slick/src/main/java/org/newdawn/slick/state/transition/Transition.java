@@ -12,6 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author kevin
  */
 public interface Transition {
+
 	/** 
 	 * Update the transition. Cause what ever happens in the transition to happen
 	 * 
@@ -31,7 +32,7 @@ public interface Transition {
 	 * @throws SlickException Indicates a failure occured during the render 
 	 */
 	public void preRender(StateBasedGame game, GameContainer container, Graphics g) throws SlickException;
-	
+
 	/**
 	 * Render the transition over the existing state rendering
 	 * 
@@ -41,14 +42,14 @@ public interface Transition {
 	 * @throws SlickException Indicates a failure occured during the render 
 	 */
 	public void postRender(StateBasedGame game, GameContainer container, Graphics g) throws SlickException;
-	
+
 	/**
 	 * Check if this transtion has been completed
 	 * 
 	 * @return True if the transition has been completed
 	 */
 	public boolean isComplete();
-	
+
 	/**
 	 * Initialise the transition
 	 * 
@@ -56,4 +57,5 @@ public interface Transition {
 	 * @param secondState The second stat we're transitioning to or from (this one won't be rendered)
 	 */
 	public void init(GameState firstState, GameState secondState);
+
 }

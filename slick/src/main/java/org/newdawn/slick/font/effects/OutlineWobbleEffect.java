@@ -10,7 +10,6 @@
  * BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 package org.newdawn.slick.font.effects;
 
 import java.awt.BasicStroke;
@@ -23,7 +22,6 @@ import java.awt.geom.PathIterator;
 import java.util.Iterator;
 import java.util.List;
 
-
 /**
  * An effect that genrates a wobbly line around the outline of the text
  * 
@@ -31,15 +29,17 @@ import java.util.List;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class OutlineWobbleEffect extends OutlineEffect {
+
 	/** How often the line wobbles */
 	private float detail = 1;
+
 	/** The amount of the line wobbles */
 	private float amplitude = 1;
 
 	/**
 	 * Default constructor for injection
 	 */
-	public OutlineWobbleEffect () {
+	public OutlineWobbleEffect() {
 		setStroke(new WobbleStroke());
 	}
 
@@ -85,7 +85,7 @@ public class OutlineWobbleEffect extends OutlineEffect {
 	 * @param width The width of the line
 	 * @param color The colour of the line
 	 */
-	public OutlineWobbleEffect (int width, Color color) {
+	public OutlineWobbleEffect(int width, Color color) {
 		super(width, color);
 	}
 
@@ -103,7 +103,7 @@ public class OutlineWobbleEffect extends OutlineEffect {
 		List values = super.getValues();
 		values.remove(2); // Remove "Join".
 		values.add(EffectUtil.floatValue("Detail", detail, 1, 50, "This setting controls how detailed the outline will be. "
-			+ "Smaller numbers cause the outline to have more detail."));
+				+ "Smaller numbers cause the outline to have more detail."));
 		values.add(EffectUtil.floatValue("Amplitude", amplitude, 0.5f, 50, "This setting controls the amplitude of the outline."));
 		return values;
 	}
@@ -114,11 +114,11 @@ public class OutlineWobbleEffect extends OutlineEffect {
 	public void setValues(List values) {
 		super.setValues(values);
 		for (Iterator iter = values.iterator(); iter.hasNext();) {
-			Value value = (Value)iter.next();
+			Value value = (Value) iter.next();
 			if (value.getName().equals("Detail")) {
-				detail = ((Float)value.getObject()).floatValue();
+				detail = ((Float) value.getObject()).floatValue();
 			} else if (value.getName().equals("Amplitude")) {
-				amplitude = ((Float)value.getObject()).floatValue();
+				amplitude = ((Float) value.getObject()).floatValue();
 			}
 		}
 	}
@@ -130,13 +130,14 @@ public class OutlineWobbleEffect extends OutlineEffect {
 	 * @author Nathan Sweet <misc@n4te.com>
 	 */
 	private class WobbleStroke implements Stroke {
+
 		/** The flattening factor of the stroke */
 		private static final float FLATNESS = 1;
 
 		/**
 		 * @see java.awt.Stroke#createStrokedShape(java.awt.Shape)
 		 */
-		public Shape createStrokedShape (Shape shape) {
+		public Shape createStrokedShape(Shape shape) {
 			GeneralPath result = new GeneralPath();
 			shape = new BasicStroke(getWidth(), BasicStroke.CAP_SQUARE, getJoin()).createStrokedShape(shape);
 			PathIterator it = new FlatteningPathIterator(shape.getPathIterator(null), FLATNESS);
@@ -149,37 +150,37 @@ public class OutlineWobbleEffect extends OutlineEffect {
 			while (!it.isDone()) {
 				type = it.currentSegment(points);
 				switch (type) {
-				case PathIterator.SEG_MOVETO:
-					moveX = lastX = randomize(points[0]);
-					moveY = lastY = randomize(points[1]);
-					result.moveTo(moveX, moveY);
-					next = 0;
-					break;
+					case PathIterator.SEG_MOVETO:
+						moveX = lastX = randomize(points[0]);
+						moveY = lastY = randomize(points[1]);
+						result.moveTo(moveX, moveY);
+						next = 0;
+						break;
 
-				case PathIterator.SEG_CLOSE:
-					points[0] = moveX;
-					points[1] = moveY;
+					case PathIterator.SEG_CLOSE:
+						points[0] = moveX;
+						points[1] = moveY;
 					// Fall into....
 
-				case PathIterator.SEG_LINETO:
-					thisX = randomize(points[0]);
-					thisY = randomize(points[1]);
-					float dx = thisX - lastX;
-					float dy = thisY - lastY;
-					float distance = (float)Math.sqrt(dx * dx + dy * dy);
-					if (distance >= next) {
-						float r = 1.0f / distance;
-						while (distance >= next) {
-							float x = lastX + next * dx * r;
-							float y = lastY + next * dy * r;
-							result.lineTo(randomize(x), randomize(y));
-							next += detail;
+					case PathIterator.SEG_LINETO:
+						thisX = randomize(points[0]);
+						thisY = randomize(points[1]);
+						float dx = thisX - lastX;
+						float dy = thisY - lastY;
+						float distance = (float) Math.sqrt(dx * dx + dy * dy);
+						if (distance >= next) {
+							float r = 1.0f / distance;
+							while (distance >= next) {
+								float x = lastX + next * dx * r;
+								float y = lastY + next * dy * r;
+								result.lineTo(randomize(x), randomize(y));
+								next += detail;
+							}
 						}
-					}
-					next -= distance;
-					lastX = thisX;
-					lastY = thisY;
-					break;
+						next -= distance;
+						lastX = thisX;
+						lastY = thisY;
+						break;
 				}
 				it.next();
 			}
@@ -194,7 +195,8 @@ public class OutlineWobbleEffect extends OutlineEffect {
 		 * @return The wobble factor
 		 */
 		private float randomize(float x) {
-			return x + (float)Math.random() * amplitude * 2 - 1;
+			return x + (float) Math.random() * amplitude * 2 - 1;
 		}
+
 	}
 }

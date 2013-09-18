@@ -14,18 +14,20 @@ import org.newdawn.slick.SlickException;
  * @author kevin
  */
 public class AlphaMapTest extends BasicGame {
+
 	/** The alpha map being applied */
 	private Image alphaMap;
+
 	/** The texture to apply over the top */
 	private Image textureMap;
-	
+
 	/**
 	 * Create a new tester for the clip plane based clipping
 	 */
 	public AlphaMapTest() {
 		super("AlphaMap Test");
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
 	 */
@@ -49,15 +51,15 @@ public class AlphaMapTest extends BasicGame {
 			throws SlickException {
 		g.clearAlphaMap();
 		g.setDrawMode(Graphics.MODE_NORMAL);
-		textureMap.draw(10,50);
+		textureMap.draw(10, 50);
 		g.setColor(Color.red);
-		g.fillRect(290,40,200,200);
+		g.fillRect(290, 40, 200, 200);
 		g.setColor(Color.white);
 		// write only alpha
 		g.setDrawMode(Graphics.MODE_ALPHA_MAP);
-		alphaMap.draw(300,50);
+		alphaMap.draw(300, 50);
 		g.setDrawMode(Graphics.MODE_ALPHA_BLEND);
-		textureMap.draw(300,50);
+		textureMap.draw(300, 50);
 		g.setDrawMode(Graphics.MODE_NORMAL);
 	}
 
@@ -66,7 +68,7 @@ public class AlphaMapTest extends BasicGame {
 	 */
 	public void keyPressed(int key, char c) {
 	}
-	
+
 	/**
 	 * Entry point to our test
 	 * 
@@ -75,10 +77,11 @@ public class AlphaMapTest extends BasicGame {
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new AlphaMapTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

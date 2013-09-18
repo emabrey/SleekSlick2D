@@ -23,32 +23,43 @@ import org.w3c.dom.NodeList;
  * @author kevin
  */
 public class TileSet {
+
 	/** The map this tileset was loaded as part of */
 	private final TiledMap map;
+
 	/** The index of the tile set */
 	public int index;
+
 	/** The name of the tile set */
 	public String name;
+
 	/** The first global tile id in the set */
 	public int firstGID;
+
 	/** The local global tile id in the set */
 	public int lastGID = Integer.MAX_VALUE;
+
 	/** The width of the tiles */
 	public int tileWidth;
+
 	/** The height of the tiles */
 	public int tileHeight;
+
 	/** The image containing the tiles */
 	public SpriteSheet tiles;
 
 	/** The number of tiles across the sprite sheet */
 	public int tilesAcross;
+
 	/** The number of tiles down the sprite sheet */
 	public int tilesDown;
 
 	/** The properties for each tile */
 	private HashMap props = new HashMap();
+
 	/** The padding of the tiles */
 	protected int tileSpacing = 0;
+
 	/** The margin of the tileset */
 	protected int tileMargin = 0;
 
@@ -80,12 +91,12 @@ public class TileSet {
 				Document doc = builder.parse(in);
 				Element docElement = doc.getDocumentElement();
 				element = docElement; // (Element)
-										// docElement.getElementsByTagName("tileset").item(0);
+				// docElement.getElementsByTagName("tileset").item(0);
 			} catch (Exception e) {
 				Log.error(e);
 				throw new SlickException(
 						"Unable to load or parse sourced tileset: "
-								+ this.map.tilesLocation + "/" + source);
+						+ this.map.tilesLocation + "/" + source);
 			}
 		}
 		String tileWidthString = element.getAttribute("tilewidth");
@@ -93,7 +104,7 @@ public class TileSet {
 		if (tileWidthString.length() == 0 || tileHeightString.length() == 0) {
 			throw new SlickException(
 					"TiledMap requires that the map be created with tilesets that use a "
-							+ "single image.  Check the WiKi for more complete information.");
+					+ "single image.  Check the WiKi for more complete information.");
 		}
 		tileWidth = Integer.parseInt(tileWidthString);
 		tileHeight = Integer.parseInt(tileHeightString);
@@ -262,4 +273,5 @@ public class TileSet {
 	public boolean contains(int gid) {
 		return (gid >= firstGID) && (gid <= lastGID);
 	}
+
 }

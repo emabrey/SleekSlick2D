@@ -10,9 +10,10 @@ import org.w3c.dom.Element;
  * @author kevin
  */
 public class InkscapeNonGeometricData extends NonGeometricData {
+
 	/** The element read from the SVG */
 	private Element element;
-	
+
 	/**
 	 * Create a new non-geometric data holder
 	 * 
@@ -21,7 +22,7 @@ public class InkscapeNonGeometricData extends NonGeometricData {
 	 */
 	public InkscapeNonGeometricData(String metaData, Element element) {
 		super(metaData);
-		
+
 		this.element = element;
 	}
 
@@ -33,7 +34,7 @@ public class InkscapeNonGeometricData extends NonGeometricData {
 		if (result == null) {
 			result = element.getAttribute(attribute);
 		}
-		
+
 		return result;
 	}
 
@@ -44,6 +45,6 @@ public class InkscapeNonGeometricData extends NonGeometricData {
 	 */
 	public Element getElement() {
 		return element;
-	} 
+	}
 
 }

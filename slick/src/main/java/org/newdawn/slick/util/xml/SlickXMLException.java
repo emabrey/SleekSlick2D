@@ -18,7 +18,7 @@ public class SlickXMLException extends SlickException {
 	public SlickXMLException(String message) {
 		super(message);
 	}
-	
+
 	/**
 	 * Create a new exception 
 	 * 

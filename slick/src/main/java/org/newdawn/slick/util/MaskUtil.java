@@ -9,6 +9,7 @@ import org.newdawn.slick.opengl.renderer.SGL;
  * @author kevin
  */
 public class MaskUtil {
+
 	/** The renderer to use for all GL operations */
 	protected static SGL GL = Renderer.get();
 
@@ -25,7 +26,7 @@ public class MaskUtil {
 		GL.glDepthMask(true);
 		GL.glColorMask(false, false, false, false);
 	}
-	
+
 	/**
 	 * Finish defining the screen mask
 	 */
@@ -33,7 +34,7 @@ public class MaskUtil {
 		GL.glDepthMask(false);
 		GL.glColorMask(true, true, true, true);
 	}
-	
+
 	/**
 	 * Start drawing only on the masked area
 	 */
@@ -47,7 +48,7 @@ public class MaskUtil {
 	public static void drawOffMask() {
 		GL.glDepthFunc(SGL.GL_NOTEQUAL);
 	}
-	
+
 	/**
 	 * Reset the masked area - should be done after you've finished rendering
 	 */
@@ -56,7 +57,8 @@ public class MaskUtil {
 		GL.glClearDepth(0);
 		GL.glClear(SGL.GL_DEPTH_BUFFER_BIT);
 		GL.glDepthMask(false);
-		
+
 		GL.glDisable(SGL.GL_DEPTH_TEST);
 	}
+
 }

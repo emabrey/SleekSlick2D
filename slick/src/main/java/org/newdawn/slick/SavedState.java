@@ -18,15 +18,19 @@ import org.newdawn.slick.util.Log;
  * @author kappaOne
  */
 public class SavedState {
+
 	/** file name of where the scores will be saved */
 	private String fileName;
+
 	/** Type of Muffin to use */
 	private Muffin muffin;
+
 	/** hash map where int data will be stored */
 	private HashMap numericData = new HashMap();
+
 	/** hash map where string data will be stored */
 	private HashMap stringData = new HashMap();
-	
+
 	/**
 	 * Create and Test to see if the app is running 
 	 * as webstart or local app and select the appropriate 
@@ -37,20 +41,19 @@ public class SavedState {
 	 */
 	public SavedState(String fileName) throws SlickException {
 		this.fileName = fileName;
-		
+
 		if (isWebstartAvailable()) {
 			muffin = new WebstartMuffin();
-		}
-		else {
+		} else {
 			muffin = new FileMuffin();
 		}
-		
+
 		try {
 			load();
 		} catch (IOException e) {
-			throw new SlickException("Failed to load state on startup",e);
+			throw new SlickException("Failed to load state on startup", e);
 		}
-	}	
+	}
 
 	/**
 	 * Get number stored at given location
@@ -61,7 +64,7 @@ public class SavedState {
 	public double getNumber(String nameOfField) {
 		return getNumber(nameOfField, 0);
 	}
-	
+
 	/**
 	 * Get number stored at given location
 	 * 
@@ -70,15 +73,15 @@ public class SavedState {
 	 * @return The number saved at this location
 	 */
 	public double getNumber(String nameOfField, double defaultValue) {
-		Double value = ((Double)numericData.get(nameOfField));
-		
+		Double value = ((Double) numericData.get(nameOfField));
+
 		if (value == null) {
 			return defaultValue;
 		}
-		
+
 		return value.doubleValue();
 	}
-	
+
 	/**
 	 * Save the given value at the given location
 	 * will overwrite any previous value at this location
@@ -86,7 +89,7 @@ public class SavedState {
 	 * @param nameOfField The name to store the value against
 	 * @param value The value to store
 	 */
-	public void setNumber(String nameOfField, double value){
+	public void setNumber(String nameOfField, double value) {
 		numericData.put(nameOfField, new Double(value));
 	}
 
@@ -99,7 +102,7 @@ public class SavedState {
 	public String getString(String nameOfField) {
 		return getString(nameOfField, null);
 	}
-	
+
 	/**
 	 * Get the String at the given location
 	 * 
@@ -109,14 +112,14 @@ public class SavedState {
 	 */
 	public String getString(String nameOfField, String defaultValue) {
 		String value = (String) stringData.get(nameOfField);
-		
+
 		if (value == null) {
 			return defaultValue;
 		}
-		
+
 		return value;
 	}
-	
+
 	/**
 	 * Save the given value at the given location
 	 * will overwrite any previous value at this location
@@ -124,10 +127,10 @@ public class SavedState {
 	 * @param nameOfField location to store int
 	 * @param value The value to store
 	 */
-	public void setString(String nameOfField, String value){
+	public void setString(String nameOfField, String value) {
 		stringData.put(nameOfField, value);
 	}
-	
+
 	/**
 	 * Save the stored data to file/muffin
 	 * 
@@ -137,7 +140,7 @@ public class SavedState {
 		muffin.saveFile(numericData, fileName + "_Number");
 		muffin.saveFile(stringData, fileName + "_String");
 	}
-	
+
 	/**
 	 * Load the data from file/muffin
 	 * 
@@ -147,7 +150,7 @@ public class SavedState {
 		numericData = muffin.loadFile(fileName + "_Number");
 		stringData = muffin.loadFile(fileName + "_String");
 	}
-	
+
 	/**
 	 * Will delete all current data held in Score
 	 */
@@ -155,7 +158,7 @@ public class SavedState {
 		numericData.clear();
 		stringData.clear();
 	}
-	
+
 	/**
 	 * Quick test to see if running through Java webstart
 	 * 
@@ -173,4 +176,5 @@ public class SavedState {
 		}
 		return true;
 	}
+
 }

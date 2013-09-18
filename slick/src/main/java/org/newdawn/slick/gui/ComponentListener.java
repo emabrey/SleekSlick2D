@@ -14,4 +14,5 @@ public interface ComponentListener {
 	 * @param source The source of the event
 	 */
 	public void componentActivated(AbstractComponent source);
+
 }

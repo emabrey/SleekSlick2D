@@ -16,162 +16,169 @@ import java.util.HashMap;
  * @author kevin
  */
 public abstract class ControlPanel extends DefaultPanel implements InputPanelListener {
-    /**
-     * A map from visual control to data element
-     */
-    protected HashMap controlToData = new HashMap();
-    /**
-     * A map from name to visual control
-     */
-    protected HashMap named = new HashMap();
-    /**
-     * The emitter being configured
-     */
-    protected ConfigurableEmitter emitter;
-    /**
-     * The offset on the y axis for components
-     */
-    protected int yPos;
 
-    /**
-     * Create a new panel for controls
-     */
-    public ControlPanel() {
-        setLayout(null);
-    }
+	/**
+	 * A map from visual control to data element
+	 */
+	protected HashMap controlToData = new HashMap();
 
-    /**
-     * Add a configurable value to the mapping table
-     *
-     * @param name       The name of the control
-     * @param valuePanel The panel used to set the value in the emitter
-     */
-    protected void addValue(String name, ValuePanel valuePanel) {
-        named.put(name, valuePanel);
+	/**
+	 * A map from name to visual control
+	 */
+	protected HashMap named = new HashMap();
 
-        valuePanel.setBounds(0, 10 + yPos, 280, 63);
-        valuePanel.addListener(this);
-        add(valuePanel);
+	/**
+	 * The emitter being configured
+	 */
+	protected ConfigurableEmitter emitter;
 
-        yPos += 63;
-    }
+	/**
+	 * The offset on the y axis for components
+	 */
+	protected int yPos;
 
-    /**
-     * Add a configurable range panel to the mapping table
-     *
-     * @param name   The name of the control
-     * @param minMax The panel used to set the range in the emitter
-     */
-    protected void addMinMax(String name, MinMaxPanel minMax) {
-        named.put(name, minMax);
+	/**
+	 * Create a new panel for controls
+	 */
+	public ControlPanel() {
+		setLayout(null);
+	}
 
-        minMax.setBounds(0, 10 + yPos, 280, minMax.getOffset());
-        minMax.addListener(this);
-        add(minMax);
+	/**
+	 * Add a configurable value to the mapping table
+	 *
+	 * @param name       The name of the control
+	 * @param valuePanel The panel used to set the value in the emitter
+	 */
+	protected void addValue(String name, ValuePanel valuePanel) {
+		named.put(name, valuePanel);
 
-        yPos += minMax.getOffset();
-    }
+		valuePanel.setBounds(0, 10 + yPos, 280, 63);
+		valuePanel.addListener(this);
+		add(valuePanel);
 
-    /**
-     * Set the emitter to be configured
-     *
-     * @param emitter The emitter to be configured
-     */
-    public final void setTarget(ConfigurableEmitter emitter) {
-        this.emitter = emitter;
+		yPos += 63;
+	}
 
-        linkEmitterToFields(emitter);
-    }
+	/**
+	 * Add a configurable range panel to the mapping table
+	 *
+	 * @param name   The name of the control
+	 * @param minMax The panel used to set the range in the emitter
+	 */
+	protected void addMinMax(String name, MinMaxPanel minMax) {
+		named.put(name, minMax);
 
-    /**
-     * Link the fields in the emitter to the panels on this control panel
-     *
-     * @param emitter The emitter to be configured
-     */
-    protected abstract void linkEmitterToFields(ConfigurableEmitter emitter);
+		minMax.setBounds(0, 10 + yPos, 280, minMax.getOffset());
+		minMax.addListener(this);
+		add(minMax);
 
-    /**
-     * Link a emitter configurable range to a named component
-     *
-     * @param range The configurable range from the emitter
-     * @param name  The name of the component to link to
-     */
-    protected void link(Range range, String name) {
-        link(range, (MinMaxPanel) named.get(name));
-    }
+		yPos += minMax.getOffset();
+	}
 
-    /**
-     * Link a emitter configurable value to a named component
-     *
-     * @param value The configurable value from the emitter
-     * @param name  The name of the component to link to
-     */
-    protected void link(Value value, String name) {
-        link(value, (ValuePanel) named.get(name));
-    }
+	/**
+	 * Set the emitter to be configured
+	 *
+	 * @param emitter The emitter to be configured
+	 */
+	public final void setTarget(ConfigurableEmitter emitter) {
+		this.emitter = emitter;
 
-    /**
-     * Link a emitter configurable value to a value panel
-     *
-     * @param value The configurable value from the emitter
-     * @param panel The component to link against
-     */
-    private void link(Value value, ValuePanel panel) {
-        controlToData.put(panel, value);
+		linkEmitterToFields(emitter);
+	}
 
-        if (value instanceof SimpleValue)
-            panel.setValue((int) ((SimpleValue) value).getValue(0));
-        else if (value instanceof RandomValue)
-            panel.setValue((int) ((RandomValue) value).getValue());
-    }
+	/**
+	 * Link the fields in the emitter to the panels on this control panel
+	 *
+	 * @param emitter The emitter to be configured
+	 */
+	protected abstract void linkEmitterToFields(ConfigurableEmitter emitter);
 
-    /**
-     * Link a emitter configurable range to a value panel
-     *
-     * @param range The configurable range from the emitter
-     * @param panel The component to link against
-     */
-    private void link(Range range, MinMaxPanel panel) {
-        controlToData.put(panel, range);
-        panel.setMax((int) range.getMax());
-        panel.setMin((int) range.getMin());
-        panel.setEnabledValue(range.isEnabled());
-    }
+	/**
+	 * Link a emitter configurable range to a named component
+	 *
+	 * @param range The configurable range from the emitter
+	 * @param name  The name of the component to link to
+	 */
+	protected void link(Range range, String name) {
+		link(range, (MinMaxPanel) named.get(name));
+	}
 
-    /**
-     * @see InputPanelListener#minMaxUpdated(MinMaxPanel)
-     */
-    public void minMaxUpdated(MinMaxPanel source) {
-        if (emitter == null) {
-            return;
-        }
+	/**
+	 * Link a emitter configurable value to a named component
+	 *
+	 * @param value The configurable value from the emitter
+	 * @param name  The name of the component to link to
+	 */
+	protected void link(Value value, String name) {
+		link(value, (ValuePanel) named.get(name));
+	}
 
-        Range range = (Range) controlToData.get(source);
-        if (range != null) {
-            range.setMax(source.getMax());
-            range.setMin(source.getMin());
-            range.setEnabled(source.getEnabled());
-        } else {
-            throw new RuntimeException("No data set specified for the GUI source");
-        }
-    }
+	/**
+	 * Link a emitter configurable value to a value panel
+	 *
+	 * @param value The configurable value from the emitter
+	 * @param panel The component to link against
+	 */
+	private void link(Value value, ValuePanel panel) {
+		controlToData.put(panel, value);
 
-    /**
-     * @see InputPanelListener#valueUpdated(ValuePanel)
-     */
-    public void valueUpdated(ValuePanel source) {
-        if (emitter == null) {
-            return;
-        }
+		if (value instanceof SimpleValue) {
+			panel.setValue((int) ((SimpleValue) value).getValue(0));
+		} else if (value instanceof RandomValue) {
+			panel.setValue((int) ((RandomValue) value).getValue());
+		}
+	}
 
-        Value value = (Value) controlToData.get(source);
-        if (value != null) {
-            if (value instanceof SimpleValue)
-                ((SimpleValue) value).setValue(source.getValue());
-            else if (value instanceof RandomValue)
-                ((RandomValue) value).setValue(source.getValue());
-        } else {
-            throw new RuntimeException("No data set specified for the GUI source");
-        }
-    }
+	/**
+	 * Link a emitter configurable range to a value panel
+	 *
+	 * @param range The configurable range from the emitter
+	 * @param panel The component to link against
+	 */
+	private void link(Range range, MinMaxPanel panel) {
+		controlToData.put(panel, range);
+		panel.setMax((int) range.getMax());
+		panel.setMin((int) range.getMin());
+		panel.setEnabledValue(range.isEnabled());
+	}
+
+	/**
+	 * @see InputPanelListener#minMaxUpdated(MinMaxPanel)
+	 */
+	public void minMaxUpdated(MinMaxPanel source) {
+		if (emitter == null) {
+			return;
+		}
+
+		Range range = (Range) controlToData.get(source);
+		if (range != null) {
+			range.setMax(source.getMax());
+			range.setMin(source.getMin());
+			range.setEnabled(source.getEnabled());
+		} else {
+			throw new RuntimeException("No data set specified for the GUI source");
+		}
+	}
+
+	/**
+	 * @see InputPanelListener#valueUpdated(ValuePanel)
+	 */
+	public void valueUpdated(ValuePanel source) {
+		if (emitter == null) {
+			return;
+		}
+
+		Value value = (Value) controlToData.get(source);
+		if (value != null) {
+			if (value instanceof SimpleValue) {
+				((SimpleValue) value).setValue(source.getValue());
+			} else if (value instanceof RandomValue) {
+				((RandomValue) value).setValue(source.getValue());
+			}
+		} else {
+			throw new RuntimeException("No data set specified for the GUI source");
+		}
+	}
+
 }

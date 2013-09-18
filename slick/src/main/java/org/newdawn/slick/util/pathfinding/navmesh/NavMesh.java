@@ -12,16 +12,17 @@ import java.util.ArrayList;
  *
  */
 public class NavMesh {
+
 	/** The list of spaces that build up this navigation mesh */
 	private ArrayList spaces = new ArrayList();
-	
+
 	/**
 	 * Create a new empty mesh
 	 */
 	public NavMesh() {
-		
+
 	}
-	
+
 	/**
 	 * Create a new mesh with a set of spaces
 	 * 
@@ -30,7 +31,7 @@ public class NavMesh {
 	public NavMesh(ArrayList spaces) {
 		this.spaces.addAll(spaces);
 	}
-	
+
 	/**
 	 * Get the number of spaces that are in the mesh
 	 * 
@@ -39,7 +40,7 @@ public class NavMesh {
 	public int getSpaceCount() {
 		return spaces.size();
 	}
-	
+
 	/**
 	 * Get the space at a given index
 	 * 
@@ -49,7 +50,7 @@ public class NavMesh {
 	public Space getSpace(int index) {
 		return (Space) spaces.get(index);
 	}
-	
+
 	/**
 	 * Add a single space to the mesh
 	 * 
@@ -58,7 +59,7 @@ public class NavMesh {
 	public void addSpace(Space space) {
 		spaces.add(space);
 	}
-	
+
 	/**
 	 * Find the space at a given location
 	 * 
@@ -67,16 +68,16 @@ public class NavMesh {
 	 * @return The space at the given location
 	 */
 	public Space findSpace(float x, float y) {
-		for (int i=0;i<spaces.size();i++) {
+		for (int i = 0; i < spaces.size(); i++) {
 			Space space = getSpace(i);
-			if (space.contains(x,y)) {
+			if (space.contains(x, y)) {
 				return space;
 			}
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * Find a path from the source to the target coordinates 
 	 * 
@@ -88,24 +89,24 @@ public class NavMesh {
 	 * @return The path between the two spaces
 	 */
 	public NavPath findPath(float sx, float sy, float tx, float ty, boolean optimize) {
-		Space source = findSpace(sx,sy);
-		Space target = findSpace(tx,ty);
-		
+		Space source = findSpace(sx, sy);
+		Space target = findSpace(tx, ty);
+
 		if ((source == null) || (target == null)) {
 			return null;
 		}
-		
-		for (int i=0;i<spaces.size();i++) {
+
+		for (int i = 0; i < spaces.size(); i++) {
 			((Space) spaces.get(i)).clearCost();
 		}
-		target.fill(source,tx, ty, 0);
+		target.fill(source, tx, ty, 0);
 		if (target.getCost() == Float.MAX_VALUE) {
 			return null;
 		}
 		if (source.getCost() == Float.MAX_VALUE) {
 			return null;
 		}
-		
+
 		NavPath path = new NavPath();
 		path.push(new Link(sx, sy, null));
 		if (source.pickLowestCost(target, path)) {
@@ -115,10 +116,10 @@ public class NavMesh {
 			}
 			return path;
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * Check if a particular path is clear
 	 * 
@@ -132,25 +133,25 @@ public class NavMesh {
 	private boolean isClear(float x1, float y1, float x2, float y2, float step) {
 		float dx = (x2 - x1);
 		float dy = (y2 - y1);
-		float len = (float) Math.sqrt((dx*dx)+(dy*dy));
+		float len = (float) Math.sqrt((dx * dx) + (dy * dy));
 		dx *= step;
 		dx /= len;
 		dy *= step;
 		dy /= len;
 		int steps = (int) (len / step);
-		
-		for (int i=0;i<steps;i++) {
-			float x = x1 + (dx*i);
-			float y = y1 + (dy*i);
-			
-			if (findSpace(x,y) == null) {
+
+		for (int i = 0; i < steps; i++) {
+			float x = x1 + (dx * i);
+			float y = y1 + (dy * i);
+
+			if (findSpace(x, y) == null) {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Optimize a path by removing segments that arn't required
 	 * to reach the end point
@@ -159,18 +160,19 @@ public class NavMesh {
 	 */
 	private void optimize(NavPath path) {
 		int pt = 0;
-		
-		while (pt < path.length()-2) {
+
+		while (pt < path.length() - 2) {
 			float sx = path.getX(pt);
 			float sy = path.getY(pt);
-			float nx = path.getX(pt+2);
-			float ny = path.getY(pt+2);
-			
-			if (isClear(sx,sy,nx,ny,0.1f)) {
-				path.remove(pt+1);
+			float nx = path.getX(pt + 2);
+			float ny = path.getY(pt + 2);
+
+			if (isClear(sx, sy, nx, ny, 0.1f)) {
+				path.remove(pt + 1);
 			} else {
 				pt++;
 			}
 		}
 	}
+
 }

@@ -14,5 +14,5 @@ public interface Renderable {
 	 * @param y The y coordinate to draw the artefact at 
 	 */
 	public void draw(float x, float y);
-	
+
 }

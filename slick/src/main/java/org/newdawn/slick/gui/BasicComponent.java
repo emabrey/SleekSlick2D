@@ -10,12 +10,16 @@ import org.newdawn.slick.SlickException;
  * @deprecated
  */
 public abstract class BasicComponent extends AbstractComponent {
+
 	/** The x position of the component */
 	protected int x;
+
 	/** The y position of the component */
 	protected int y;
+
 	/** The width of the component */
 	protected int width;
+
 	/** The height of the component */
 	protected int height;
 
@@ -28,7 +32,7 @@ public abstract class BasicComponent extends AbstractComponent {
 	public BasicComponent(GUIContext container) {
 		super(container);
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.gui.AbstractComponent#getHeight()
 	 */
@@ -64,12 +68,12 @@ public abstract class BasicComponent extends AbstractComponent {
 	 * @param g The graphics context into which we should render
 	 */
 	public abstract void renderImpl(GUIContext container, Graphics g);
-	
+
 	/**
 	 * @see org.newdawn.slick.gui.AbstractComponent#render(org.newdawn.slick.gui.GUIContext, org.newdawn.slick.Graphics)
 	 */
 	public void render(GUIContext container, Graphics g) throws SlickException {
-		renderImpl(container,g);
+		renderImpl(container, g);
 	}
 
 	/**

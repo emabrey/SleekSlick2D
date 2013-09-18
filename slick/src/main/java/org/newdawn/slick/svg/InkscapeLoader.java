@@ -33,6 +33,7 @@ import org.xml.sax.SAXException;
  * @author kevin
  */
 public class InkscapeLoader implements Loader {
+
 	/**
 	 * The number of times to over trigulate to get enough tesselation for
 	 * smooth shading
@@ -65,7 +66,7 @@ public class InkscapeLoader implements Loader {
 	public static void addElementProcessor(ElementProcessor proc) {
 		processors.add(proc);
 	}
-	
+
 	/**
 	 * Load a SVG document into a diagram
 	 * 
@@ -156,6 +157,7 @@ public class InkscapeLoader implements Loader {
 					return new InputSource(
 							new ByteArrayInputStream(new byte[0]));
 				}
+
 			});
 
 			Document doc = builder.parse(in);
@@ -170,7 +172,7 @@ public class InkscapeLoader implements Loader {
 			String heightString = root.getAttribute("height");
 			while (Character.isLetter(heightString
 					.charAt(heightString.length() - 1))) {
-				heightString = heightString.substring(0,heightString.length() - 1);
+				heightString = heightString.substring(0, heightString.length() - 1);
 			}
 
 			float docWidth = Float.parseFloat(widthString);
@@ -223,4 +225,5 @@ public class InkscapeLoader implements Loader {
 			}
 		}
 	}
+
 }

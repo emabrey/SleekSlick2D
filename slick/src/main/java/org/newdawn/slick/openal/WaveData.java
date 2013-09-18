@@ -55,6 +55,7 @@ import org.lwjgl.openal.AL10;
  * $Id: WaveData.java 2286 2006-03-23 19:32:21Z matzon $
  */
 public class WaveData {
+
 	/** actual wave data */
 	public final ByteBuffer data;
 
@@ -93,15 +94,15 @@ public class WaveData {
 	public static WaveData create(URL path) {
 		try {
 			return create(
-				AudioSystem.getAudioInputStream(
-					new BufferedInputStream(path.openStream())));
+					AudioSystem.getAudioInputStream(
+							new BufferedInputStream(path.openStream())));
 		} catch (Exception e) {
 			org.lwjgl.LWJGLUtil.log("Unable to create from: " + path);
 			e.printStackTrace();
 			return null;
-		}		
+		}
 	}
-	
+
 	/**
 	 * Creates a WaveData container from the specified in the classpath
 	 * 
@@ -111,7 +112,7 @@ public class WaveData {
 	public static WaveData create(String path) {
 		return create(WaveData.class.getClassLoader().getResource(path));
 	}
-	
+
 	/**
 	 * Creates a WaveData container from the specified inputstream
 	 * 
@@ -121,14 +122,14 @@ public class WaveData {
 	public static WaveData create(InputStream is) {
 		try {
 			return create(
-				AudioSystem.getAudioInputStream(is));
+					AudioSystem.getAudioInputStream(is));
 		} catch (Exception e) {
 			org.lwjgl.LWJGLUtil.log("Unable to create from inputstream");
 			e.printStackTrace();
 			return null;
-		}		
-	}	
-	
+		}
+	}
+
 	/**	
 	 * Creates a WaveData container from the specified bytes
 	 *
@@ -138,14 +139,14 @@ public class WaveData {
 	public static WaveData create(byte[] buffer) {
 		try {
 			return create(
-				AudioSystem.getAudioInputStream(
-					new BufferedInputStream(new ByteArrayInputStream(buffer))));
+					AudioSystem.getAudioInputStream(
+							new BufferedInputStream(new ByteArrayInputStream(buffer))));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
+
 	/**	
 	 * Creates a WaveData container from the specified ByetBuffer.
 	 * If the buffer is backed by an array, it will be used directly, 
@@ -157,8 +158,8 @@ public class WaveData {
 	public static WaveData create(ByteBuffer buffer) {
 		try {
 			byte[] bytes = null;
-			
-			if(buffer.hasArray()) {
+
+			if (buffer.hasArray()) {
 				bytes = buffer.array();
 			} else {
 				bytes = new byte[buffer.capacity()];
@@ -169,7 +170,7 @@ public class WaveData {
 			e.printStackTrace();
 			return null;
 		}
-	}	
+	}
 
 	/**
 	 * Creates a WaveData container from the specified stream
@@ -204,15 +205,15 @@ public class WaveData {
 		}
 
 		//read data into buffer
-		byte[] buf =
-			new byte[audioformat.getChannels()
+		byte[] buf
+				= new byte[audioformat.getChannels()
 				* (int) ais.getFrameLength()
 				* audioformat.getSampleSizeInBits()
 				/ 8];
 		int read = 0, total = 0;
 		try {
 			while ((read = ais.read(buf, total, buf.length - total)) != -1
-				&& total < buf.length) {
+					&& total < buf.length) {
 				total += read;
 			}
 		} catch (IOException ioe) {
@@ -221,13 +222,13 @@ public class WaveData {
 
 		//insert data into bytebuffer
 		ByteBuffer buffer = convertAudioBytes(buf, audioformat.getSampleSizeInBits() == 16);
-/*		ByteBuffer buffer = ByteBuffer.allocateDirect(buf.length);
-		buffer.put(buf);
-		buffer.rewind();*/
+		/*		ByteBuffer buffer = ByteBuffer.allocateDirect(buf.length);
+		 buffer.put(buf);
+		 buffer.rewind();*/
 
 		//create our result
-		WaveData wavedata =
-			new WaveData(buffer, channels, (int) audioformat.getSampleRate());
+		WaveData wavedata
+				= new WaveData(buffer, channels, (int) audioformat.getSampleRate());
 
 		//close stream
 		try {
@@ -253,13 +254,16 @@ public class WaveData {
 		if (two_bytes_data) {
 			ShortBuffer dest_short = dest.asShortBuffer();
 			ShortBuffer src_short = src.asShortBuffer();
-			while (src_short.hasRemaining())
+			while (src_short.hasRemaining()) {
 				dest_short.put(src_short.get());
+			}
 		} else {
-			while (src.hasRemaining())
+			while (src.hasRemaining()) {
 				dest.put(src.get());
+			}
 		}
 		dest.rewind();
 		return dest;
 	}
+
 }

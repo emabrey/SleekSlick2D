@@ -14,8 +14,10 @@ import org.newdawn.slick.util.Log;
  * @author kevin
  */
 public class CanvasGameContainer extends Canvas {
+
 	/** The actual container implementation */
 	protected Container container;
+
 	/** The game being held in this container */
 	protected Game game;
 
@@ -28,7 +30,7 @@ public class CanvasGameContainer extends Canvas {
 	public CanvasGameContainer(Game game) throws SlickException {
 		this(game, false);
 	}
-	
+
 	/**
 	 * Create a new panel
 	 * 
@@ -43,8 +45,8 @@ public class CanvasGameContainer extends Canvas {
 		this.game = game;
 		setIgnoreRepaint(true);
 		requestFocus();
-		setSize(500,500);
-		
+		setSize(500, 500);
+
 		container = new Container(game, shared);
 		container.setForceExit(false);
 	}
@@ -59,13 +61,13 @@ public class CanvasGameContainer extends Canvas {
 			public void run() {
 				try {
 					Input.disableControllers();
-					
+
 					try {
 						Display.setParent(CanvasGameContainer.this);
 					} catch (LWJGLException e) {
 						throw new SlickException("Failed to setParent of canvas", e);
 					}
-					
+
 					container.setup();
 					scheduleUpdate();
 				} catch (SlickException e) {
@@ -73,9 +75,10 @@ public class CanvasGameContainer extends Canvas {
 					System.exit(0);
 				}
 			}
+
 		});
 	}
-	
+
 	/**
 	 * Schedule an update on the EDT
 	 */
@@ -83,7 +86,7 @@ public class CanvasGameContainer extends Canvas {
 		if (!isVisible()) {
 			return;
 		}
-		
+
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -94,8 +97,10 @@ public class CanvasGameContainer extends Canvas {
 				container.checkDimensions();
 				scheduleUpdate();
 			}
+
 		});
 	}
+
 	/**
 	 * Dispose the container and any resources it holds
 	 */
@@ -117,6 +122,7 @@ public class CanvasGameContainer extends Canvas {
 	 * @author kevin
 	 */
 	private class Container extends AppGameContainer {
+
 		/**
 		 * Create a new container wrapped round the game
 		 * 
@@ -131,7 +137,7 @@ public class CanvasGameContainer extends Canvas {
 
 			width = CanvasGameContainer.this.getWidth();
 			height = CanvasGameContainer.this.getHeight();
-			
+
 			if (shared) {
 				enableSharedContext();
 			}
@@ -169,16 +175,17 @@ public class CanvasGameContainer extends Canvas {
 		 * Check the dimensions of the canvas match the display
 		 */
 		public void checkDimensions() {
-			if ((width != CanvasGameContainer.this.getWidth()) ||
-			    (height != CanvasGameContainer.this.getHeight())) {
-				
+			if ((width != CanvasGameContainer.this.getWidth())
+					|| (height != CanvasGameContainer.this.getHeight())) {
+
 				try {
-					setDisplayMode(CanvasGameContainer.this.getWidth(), 
-								   CanvasGameContainer.this.getHeight(), false);
+					setDisplayMode(CanvasGameContainer.this.getWidth(),
+							CanvasGameContainer.this.getHeight(), false);
 				} catch (SlickException e) {
 					Log.error(e);
 				}
 			}
 		}
+
 	}
 }

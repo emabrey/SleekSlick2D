@@ -12,44 +12,61 @@ import org.newdawn.slick.opengl.renderer.SGL;
  * @author kevin
  */
 public class Particle {
+
 	/** The renderer to use for all GL operations */
 	protected static SGL GL = Renderer.get();
-	
+
 	/** Indicates the particle should inherit it's use of points */
 	public static final int INHERIT_POINTS = 1;
+
 	/** Indicates the particle should explicitly use points */
 	public static final int USE_POINTS = 2;
+
 	/** Indicates the particle should explicitly not use points */
 	public static final int USE_QUADS = 3;
 
 	/** The x coordinate of the particle */
 	protected float x;
+
 	/** The y coordinate of the particle */
 	protected float y;
+
 	/** The x component of the direction vector of the particle */
 	protected float velx;
+
 	/** The y component of the direction vector of the particle */
 	protected float vely;
+
 	/** The current size in pixels of the particle */
 	protected float size = 10;
+
 	/** The colour of the particle */
 	protected Color color = Color.white;
+
 	/** The life left in the particle */
 	protected float life;
+
 	/** The original life of this particle */
 	protected float originalLife;
+
 	/** The engine this particle belongs to */
 	private ParticleSystem engine;
+
 	/** The emitter controllng this particle */
 	private ParticleEmitter emitter;
+
 	/** The image for this particle */
 	protected Image image;
+
 	/** The type identifier of this particle */
 	protected int type;
+
 	/** How this particle should be rendered */
 	protected int usePoints = INHERIT_POINTS;
+
 	/** True if this particle's quad should be oritented based on it's direction */
 	protected boolean oriented = false;
+
 	/** The currently scalar applied on the y axis */
 	protected float scaleY = 1.0f;
 
@@ -80,7 +97,7 @@ public class Particle {
 	public float getY() {
 		return y;
 	}
-	
+
 	/**
 	 * Move this particle a fixed amount
 	 * 
@@ -192,7 +209,7 @@ public class Particle {
 	public void update(int delta) {
 		emitter.updateParticle(this, delta);
 		life -= delta;
-		
+
 		if (life > 0) {
 			x += delta * velx;
 			y += delta * vely;
@@ -317,7 +334,7 @@ public class Particle {
 	 */
 	public void setColor(float r, float g, float b, float a) {
 		if (color == Color.white) {
-			color = new Color(r,g,b,a);
+			color = new Color(r, g, b, a);
 		} else {
 			color.r = r;
 			color.g = g;
@@ -360,13 +377,13 @@ public class Particle {
 	 * @param speed The speed of this particle
 	 */
 	public void setSpeed(float speed) {
-		float currentSpeed = (float) Math.sqrt((velx*velx) + (vely*vely));
+		float currentSpeed = (float) Math.sqrt((velx * velx) + (vely * vely));
 		velx *= speed;
 		vely *= speed;
 		velx /= currentSpeed;
 		vely /= currentSpeed;
 	}
-	
+
 	/**
 	 * Set the velocity of the particle
 	 * 
@@ -374,9 +391,9 @@ public class Particle {
 	 * @param vely The y component of the new velocity
 	 */
 	public void setVelocity(float velx, float vely) {
-		setVelocity(velx,vely,1);
+		setVelocity(velx, vely, 1);
 	}
-	
+
 	/**
 	 * Adjust (add) the position of this particle
 	 * 
@@ -404,8 +421,8 @@ public class Particle {
 	 */
 	public void adjustColor(float r, float g, float b, float a) {
 		if (color == Color.white) {
-			color = new Color(1,1,1,1f);
-		} 
+			color = new Color(1, 1, 1, 1f);
+		}
 		color.r += r;
 		color.g += g;
 		color.b += b;
@@ -426,9 +443,9 @@ public class Particle {
 	 */
 	public void adjustColor(int r, int g, int b, int a) {
 		if (color == Color.white) {
-			color = new Color(1,1,1,1f);
-		} 
-		
+			color = new Color(1, 1, 1, 1f);
+		}
+
 		color.r += (r / 255.0f);
 		color.g += (g / 255.0f);
 		color.b += (b / 255.0f);
@@ -499,4 +516,5 @@ public class Particle {
 	public void setScaleY(float scaleY) {
 		this.scaleY = scaleY;
 	}
+
 }

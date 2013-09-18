@@ -1,4 +1,3 @@
-
 package org.newdawn.slick.font.effects;
 
 import java.awt.AlphaComposite;
@@ -22,21 +21,28 @@ import org.newdawn.slick.font.Glyph;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class ShadowEffect implements ConfigurableEffect {
+
 	/** The number of kernels to apply */
 	public static final int NUM_KERNELS = 16;
+
 	/** The blur kernels applied across the effect */
 	public static final float[][] GAUSSIAN_BLUR_KERNELS = generateGaussianBlurKernels(NUM_KERNELS);
 
 	/** The colour of the shadow to render */
 	private Color color = Color.black;
+
 	/** The transparency factor of the shadow */
 	private float opacity = 0.6f;
+
 	/** The distance on the x axis of the shadow from the text */
 	private float xDistance = 2;
+
 	/** The distance on the y axis of the shadow from the text */
 	private float yDistance = 2;
+
 	/** The size of the kernel used to blur the shadow */
 	private int blurKernelSize = 0;
+
 	/** The number of passes applied to create the blur */
 	private int blurPasses = 1;
 
@@ -54,7 +60,7 @@ public class ShadowEffect implements ConfigurableEffect {
 	 * @param yDistance The distance from the text on the y axis the shadow should be rendered
 	 * @param opacity The transparency factor of the shadow
 	 */
-	public ShadowEffect (Color color, int xDistance, int yDistance, float opacity) {
+	public ShadowEffect(Color color, int xDistance, int yDistance, float opacity) {
 		this.color = color;
 		this.xDistance = xDistance;
 		this.yDistance = yDistance;
@@ -65,19 +71,19 @@ public class ShadowEffect implements ConfigurableEffect {
 	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D, org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
 	 */
 	public void draw(BufferedImage image, Graphics2D g, UnicodeFont unicodeFont, Glyph glyph) {
-		g = (Graphics2D)g.create();
+		g = (Graphics2D) g.create();
 		g.translate(xDistance, yDistance);
 		g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), Math.round(opacity * 255)));
 		g.fill(glyph.getShape());
 
 		// Also shadow the outline, if one exists.
 		for (Iterator iter = unicodeFont.getEffects().iterator(); iter.hasNext();) {
-			Effect effect = (Effect)iter.next();
+			Effect effect = (Effect) iter.next();
 			if (effect instanceof OutlineEffect) {
 				Composite composite = g.getComposite();
 				g.setComposite(AlphaComposite.Src); // Prevent shadow and outline shadow alpha from combining.
 
-				g.setStroke(((OutlineEffect)effect).getStroke());
+				g.setStroke(((OutlineEffect) effect).getStroke());
 				g.draw(glyph.getShape());
 
 				g.setComposite(composite);
@@ -86,7 +92,9 @@ public class ShadowEffect implements ConfigurableEffect {
 		}
 
 		g.dispose();
-		if (blurKernelSize > 1 && blurKernelSize < NUM_KERNELS && blurPasses > 0) blur(image);
+		if (blurKernelSize > 1 && blurKernelSize < NUM_KERNELS && blurPasses > 0) {
+			blur(image);
+		}
 	}
 
 	/**
@@ -162,7 +170,7 @@ public class ShadowEffect implements ConfigurableEffect {
 	 * 
 	 * @param distance The offset on the y axis
 	 */
-	public void setYDistance (float distance) {
+	public void setYDistance(float distance) {
 		yDistance = distance;
 	}
 
@@ -180,7 +188,7 @@ public class ShadowEffect implements ConfigurableEffect {
 	 * 
 	 * @param blurKernelSize The size of the kernel to apply the blur with
 	 */
-	public void setBlurKernelSize (int blurKernelSize) {
+	public void setBlurKernelSize(int blurKernelSize) {
 		this.blurKernelSize = blurKernelSize;
 	}
 
@@ -198,7 +206,7 @@ public class ShadowEffect implements ConfigurableEffect {
 	 * 
 	 * @param blurPasses The number of passes to apply when blurring
 	 */
-	public void setBlurPasses (int blurPasses) {
+	public void setBlurPasses(int blurPasses) {
 		this.blurPasses = blurPasses;
 	}
 
@@ -235,20 +243,21 @@ public class ShadowEffect implements ConfigurableEffect {
 		values.add(EffectUtil.colorValue("Color", color));
 		values.add(EffectUtil.floatValue("Opacity", opacity, 0, 1, "This setting sets the translucency of the shadow."));
 		values.add(EffectUtil.floatValue("X distance", xDistance, Float.MIN_VALUE, Float.MAX_VALUE, "This setting is the amount of pixels to offset the shadow on the"
-			+ " x axis. The glyphs will need padding so the shadow doesn't get clipped."));
+				+ " x axis. The glyphs will need padding so the shadow doesn't get clipped."));
 		values.add(EffectUtil.floatValue("Y distance", yDistance, Float.MIN_VALUE, Float.MAX_VALUE, "This setting is the amount of pixels to offset the shadow on the"
-			+ " y axis. The glyphs will need padding so the shadow doesn't get clipped."));
+				+ " y axis. The glyphs will need padding so the shadow doesn't get clipped."));
 
 		List options = new ArrayList();
-		options.add(new String[] {"None", "0"});
-		for (int i = 2; i < NUM_KERNELS; i++)
-			options.add(new String[] {String.valueOf(i)});
-		String[][] optionsArray = (String[][])options.toArray(new String[options.size()][]);
+		options.add(new String[]{"None", "0"});
+		for (int i = 2; i < NUM_KERNELS; i++) {
+			options.add(new String[]{String.valueOf(i)});
+		}
+		String[][] optionsArray = (String[][]) options.toArray(new String[options.size()][]);
 		values.add(EffectUtil.optionValue("Blur kernel size", String.valueOf(blurKernelSize), optionsArray,
-			"This setting controls how many neighboring pixels are used to blur the shadow. Set to \"None\" for no blur."));
+				"This setting controls how many neighboring pixels are used to blur the shadow. Set to \"None\" for no blur."));
 
 		values.add(EffectUtil.intValue("Blur passes", blurPasses,
-			"The setting is the number of times to apply a blur to the shadow. Set to \"0\" for no blur."));
+				"The setting is the number of times to apply a blur to the shadow. Set to \"0\" for no blur."));
 		return values;
 	}
 
@@ -257,19 +266,19 @@ public class ShadowEffect implements ConfigurableEffect {
 	 */
 	public void setValues(List values) {
 		for (Iterator iter = values.iterator(); iter.hasNext();) {
-			Value value = (Value)iter.next();
+			Value value = (Value) iter.next();
 			if (value.getName().equals("Color")) {
-				color = (Color)value.getObject();
+				color = (Color) value.getObject();
 			} else if (value.getName().equals("Opacity")) {
-				opacity = ((Float)value.getObject()).floatValue();
+				opacity = ((Float) value.getObject()).floatValue();
 			} else if (value.getName().equals("X distance")) {
-				xDistance = ((Float)value.getObject()).floatValue();
+				xDistance = ((Float) value.getObject()).floatValue();
 			} else if (value.getName().equals("Y distance")) {
-				yDistance = ((Float)value.getObject()).floatValue();
+				yDistance = ((Float) value.getObject()).floatValue();
 			} else if (value.getName().equals("Blur kernel size")) {
-				blurKernelSize = Integer.parseInt((String)value.getObject());
+				blurKernelSize = Integer.parseInt((String) value.getObject());
 			} else if (value.getName().equals("Blur passes")) {
-				blurPasses = ((Integer)value.getObject()).intValue();
+				blurPasses = ((Integer) value.getObject()).intValue();
 			}
 		}
 	}
@@ -286,11 +295,13 @@ public class ShadowEffect implements ConfigurableEffect {
 		for (int i = 0; i < gaussianTriangle.length; i++) {
 			float total = 0.0f;
 			gaussianTriangle[i] = new float[pascalsTriangle[i].length];
-			for (int j = 0; j < pascalsTriangle[i].length; j++)
+			for (int j = 0; j < pascalsTriangle[i].length; j++) {
 				total += pascalsTriangle[i][j];
+			}
 			float coefficient = 1 / total;
-			for (int j = 0; j < pascalsTriangle[i].length; j++)
+			for (int j = 0; j < pascalsTriangle[i].length; j++) {
 				gaussianTriangle[i][j] = coefficient * pascalsTriangle[i][j];
+			}
 		}
 		return gaussianTriangle;
 	}
@@ -302,7 +313,9 @@ public class ShadowEffect implements ConfigurableEffect {
 	 * @return The Pascal's triangle kernel
 	 */
 	private static float[][] generatePascalsTriangle(int level) {
-		if (level < 2) level = 2;
+		if (level < 2) {
+			level = 2;
+		}
 		float[][] triangle = new float[level][];
 		triangle[0] = new float[1];
 		triangle[1] = new float[2];
@@ -313,9 +326,11 @@ public class ShadowEffect implements ConfigurableEffect {
 			triangle[i] = new float[i + 1];
 			triangle[i][0] = 1.0f;
 			triangle[i][i] = 1.0f;
-			for (int j = 1; j < triangle[i].length - 1; j++)
+			for (int j = 1; j < triangle[i].length - 1; j++) {
 				triangle[i][j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
+			}
 		}
 		return triangle;
 	}
+
 }

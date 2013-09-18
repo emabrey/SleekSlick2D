@@ -6,6 +6,7 @@ package org.newdawn.slick;
  * @author kevin
  */
 public class SlickException extends Exception {
+
 	/**
 	 * Create a new exception with a detail message
 	 * 
@@ -24,4 +25,5 @@ public class SlickException extends Exception {
 	public SlickException(String message, Throwable e) {
 		super(message, e);
 	}
+
 }

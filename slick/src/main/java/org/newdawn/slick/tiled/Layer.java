@@ -17,6 +17,7 @@ import org.w3c.dom.NodeList;
  * @author kevin
  */
 public class Layer {
+
 	/** The code used to decode Base64 encoding */
 	private static byte[] baseCodes = new byte[256];
 
@@ -24,31 +25,40 @@ public class Layer {
 	 * Static initialiser for the codes created against Base64
 	 */
 	static {
-		for (int i = 0; i < 256; i++)
+		for (int i = 0; i < 256; i++) {
 			baseCodes[i] = -1;
-		for (int i = 'A'; i <= 'Z'; i++)
+		}
+		for (int i = 'A'; i <= 'Z'; i++) {
 			baseCodes[i] = (byte) (i - 'A');
-		for (int i = 'a'; i <= 'z'; i++)
+		}
+		for (int i = 'a'; i <= 'z'; i++) {
 			baseCodes[i] = (byte) (26 + i - 'a');
-		for (int i = '0'; i <= '9'; i++)
+		}
+		for (int i = '0'; i <= '9'; i++) {
 			baseCodes[i] = (byte) (52 + i - '0');
+		}
 		baseCodes['+'] = 62;
 		baseCodes['/'] = 63;
 	}
 
 	/** The map this layer belongs to */
 	private final TiledMap map;
+
 	/** The index of this layer */
 	public int index;
+
 	/** The name of this layer - read from the XML */
 	public String name;
+
 	/**
 	 * The tile data representing this data, index 0 = tileset, index 1 = tile
 	 * id
 	 */
 	public int[][][] data;
+
 	/** The width of this layer */
 	public int width;
+
 	/** The height of this layer */
 	public int height;
 
@@ -257,10 +267,12 @@ public class Layer {
 		}
 
 		int len = (temp / 4) * 3;
-		if ((temp % 4) == 3)
+		if ((temp % 4) == 3) {
 			len += 2;
-		if ((temp % 4) == 2)
+		}
+		if ((temp % 4) == 2) {
 			len += 1;
+		}
 
 		byte[] out = new byte[len];
 
@@ -285,9 +297,10 @@ public class Layer {
 		if (index != out.length) {
 			throw new RuntimeException(
 					"Data length appears to be wrong (wrote " + index
-							+ " should be " + out.length + ")");
+					+ " should be " + out.length + ")");
 		}
 
 		return out;
 	}
+
 }

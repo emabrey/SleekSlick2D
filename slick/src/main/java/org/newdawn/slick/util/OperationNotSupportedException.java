@@ -7,6 +7,7 @@ package org.newdawn.slick.util;
  * @author kevin
  */
 public class OperationNotSupportedException extends RuntimeException {
+
 	/**
 	 * Create a new exception
 	 * 
@@ -15,4 +16,5 @@ public class OperationNotSupportedException extends RuntimeException {
 	public OperationNotSupportedException(String msg) {
 		super(msg);
 	}
+
 }

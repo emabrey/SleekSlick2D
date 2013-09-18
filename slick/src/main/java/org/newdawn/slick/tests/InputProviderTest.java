@@ -21,31 +21,36 @@ import org.newdawn.slick.command.MouseButtonControl;
  * @author kevin
  */
 public class InputProviderTest extends BasicGame implements InputProviderListener {
+
 	/** The command for attack */
 	private Command attack = new BasicCommand("attack");
+
 	/** The command for jump */
 	private Command jump = new BasicCommand("jump");
+
 	/** The command for jump */
 	private Command run = new BasicCommand("run");
+
 	/** The input provider abstracting input */
 	private InputProvider provider;
+
 	/** The message to be displayed */
 	private String message = "";
-	
+
 	/**
 	 * Create a new image rendering test
 	 */
 	public InputProviderTest() {
 		super("InputProvider Test");
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
 	 */
 	public void init(GameContainer container) throws SlickException {
 		provider = new InputProvider(container.getInput());
 		provider.addListener(this);
-		
+
 		provider.bindCommand(new KeyControl(Input.KEY_LEFT), run);
 		provider.bindCommand(new KeyControl(Input.KEY_A), run);
 		provider.bindCommand(new ControllerDirectionControl(0, ControllerDirectionControl.LEFT), run);
@@ -61,8 +66,8 @@ public class InputProviderTest extends BasicGame implements InputProviderListene
 	 * @see org.newdawn.slick.BasicGame#render(org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void render(GameContainer container, Graphics g) {
-		g.drawString("Press A, W, Left, Up, space, mouse button 1,and gamepad controls",10,50);
-		g.drawString(message,100,150);
+		g.drawString("Press A, W, Left, Up, space, mouse button 1,and gamepad controls", 10, 50);
+		g.drawString(message, 100, 150);
 	}
 
 	/**
@@ -75,16 +80,16 @@ public class InputProviderTest extends BasicGame implements InputProviderListene
 	 * @see org.newdawn.slick.command.InputProviderListener#controlPressed(org.newdawn.slick.command.Command)
 	 */
 	public void controlPressed(Command command) {
-		message = "Pressed: "+command;
+		message = "Pressed: " + command;
 	}
 
 	/**
 	 * @see org.newdawn.slick.command.InputProviderListener#controlReleased(org.newdawn.slick.command.Command)
 	 */
 	public void controlReleased(Command command) {
-		message = "Released: "+command;
+		message = "Released: " + command;
 	}
-	
+
 	/**
 	 * Entry point to our test
 	 * 
@@ -93,10 +98,11 @@ public class InputProviderTest extends BasicGame implements InputProviderListene
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new InputProviderTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

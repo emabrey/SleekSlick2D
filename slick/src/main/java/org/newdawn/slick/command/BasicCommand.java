@@ -6,9 +6,10 @@ package org.newdawn.slick.command;
  * @author kevin
  */
 public class BasicCommand implements Command {
+
 	/** The name of the command */
 	private String name;
-	
+
 	/** 
 	 * Create a new basic command
 	 * 
@@ -17,7 +18,7 @@ public class BasicCommand implements Command {
 	public BasicCommand(String name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * Get the name given for this basic command
 	 * 
@@ -26,14 +27,14 @@ public class BasicCommand implements Command {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * @see java.lang.Object#hashCode()
 	 */
 	public int hashCode() {
 		return name.hashCode();
 	}
-	
+
 	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -41,14 +42,15 @@ public class BasicCommand implements Command {
 		if (other instanceof BasicCommand) {
 			return ((BasicCommand) other).name.equals(name);
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return "[Command="+name+"]";
+		return "[Command=" + name + "]";
 	}
+
 }

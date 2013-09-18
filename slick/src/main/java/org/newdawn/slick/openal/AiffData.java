@@ -55,6 +55,7 @@ import org.lwjgl.openal.AL10;
  * @version $Revision: 2286 $
  */
 public class AiffData {
+
 	/** actual AIFF data */
 	public final ByteBuffer data;
 
@@ -93,15 +94,15 @@ public class AiffData {
 	public static AiffData create(URL path) {
 		try {
 			return create(
-				AudioSystem.getAudioInputStream(
-					new BufferedInputStream(path.openStream())));
+					AudioSystem.getAudioInputStream(
+							new BufferedInputStream(path.openStream())));
 		} catch (Exception e) {
 			org.lwjgl.LWJGLUtil.log("Unable to create from: " + path);
 			e.printStackTrace();
 			return null;
-		}		
+		}
 	}
-	
+
 	/**
 	 * Creates a AiffData container from the specified in the classpath
 	 * 
@@ -111,7 +112,7 @@ public class AiffData {
 	public static AiffData create(String path) {
 		return create(AiffData.class.getClassLoader().getResource(path));
 	}
-	
+
 	/**
 	 * Creates a AiffData container from the specified inputstream
 	 * 
@@ -121,14 +122,14 @@ public class AiffData {
 	public static AiffData create(InputStream is) {
 		try {
 			return create(
-				AudioSystem.getAudioInputStream(is));
+					AudioSystem.getAudioInputStream(is));
 		} catch (Exception e) {
 			org.lwjgl.LWJGLUtil.log("Unable to create from inputstream");
 			e.printStackTrace();
 			return null;
-		}		
-	}	
-	
+		}
+	}
+
 	/**	
 	 * Creates a AiffData container from the specified bytes
 	 *
@@ -138,14 +139,14 @@ public class AiffData {
 	public static AiffData create(byte[] buffer) {
 		try {
 			return create(
-				AudioSystem.getAudioInputStream(
-					new BufferedInputStream(new ByteArrayInputStream(buffer))));
+					AudioSystem.getAudioInputStream(
+							new BufferedInputStream(new ByteArrayInputStream(buffer))));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
+
 	/**	
 	 * Creates a AiffData container from the specified ByetBuffer.
 	 * If the buffer is backed by an array, it will be used directly, 
@@ -157,8 +158,8 @@ public class AiffData {
 	public static AiffData create(ByteBuffer buffer) {
 		try {
 			byte[] bytes = null;
-			
-			if(buffer.hasArray()) {
+
+			if (buffer.hasArray()) {
 				bytes = buffer.array();
 			} else {
 				bytes = new byte[buffer.capacity()];
@@ -169,7 +170,7 @@ public class AiffData {
 			e.printStackTrace();
 			return null;
 		}
-	}	
+	}
 
 	/**
 	 * Creates a AiffData container from the specified stream
@@ -180,7 +181,7 @@ public class AiffData {
 	public static AiffData create(AudioInputStream ais) {
 		//get format of data
 		AudioFormat audioformat = ais.getFormat();
-		
+
 		// get channels
 		int channels = 0;
 		if (audioformat.getChannels() == 1) {
@@ -204,15 +205,15 @@ public class AiffData {
 		}
 
 		//read data into buffer
-		byte[] buf =
-			new byte[audioformat.getChannels()
+		byte[] buf
+				= new byte[audioformat.getChannels()
 				* (int) ais.getFrameLength()
 				* audioformat.getSampleSizeInBits()
 				/ 8];
 		int read = 0, total = 0;
 		try {
 			while ((read = ais.read(buf, total, buf.length - total)) != -1
-				&& total < buf.length) {
+					&& total < buf.length) {
 				total += read;
 			}
 		} catch (IOException ioe) {
@@ -223,8 +224,8 @@ public class AiffData {
 		ByteBuffer buffer = convertAudioBytes(audioformat, buf, audioformat.getSampleSizeInBits() == 16);
 
 		//create our result
-		AiffData Aiffdata =
-			new AiffData(buffer, channels, (int) audioformat.getSampleRate());
+		AiffData Aiffdata
+				= new AiffData(buffer, channels, (int) audioformat.getSampleRate());
 
 		//close stream
 		try {
@@ -251,8 +252,9 @@ public class AiffData {
 		if (two_bytes_data) {
 			ShortBuffer dest_short = dest.asShortBuffer();
 			ShortBuffer src_short = src.asShortBuffer();
-			while (src_short.hasRemaining())
+			while (src_short.hasRemaining()) {
 				dest_short.put(src_short.get());
+			}
 		} else {
 			while (src.hasRemaining()) {
 				byte b = src.get();
@@ -265,4 +267,5 @@ public class AiffData {
 		dest.rewind();
 		return dest;
 	}
+
 }

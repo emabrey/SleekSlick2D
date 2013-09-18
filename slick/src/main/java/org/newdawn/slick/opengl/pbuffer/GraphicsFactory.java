@@ -16,17 +16,22 @@ import org.newdawn.slick.util.Log;
  * @author kevin
  */
 public class GraphicsFactory {
+
 	/** The graphics list of graphics contexts created */
 	private static HashMap graphics = new HashMap();
+
 	/** True if pbuffers are supported */
 	private static boolean pbuffer = true;
+
 	/** True if pbuffer render to texture are supported */
 	private static boolean pbufferRT = true;
+
 	/** True if fbo are supported */
 	private static boolean fbo = true;
+
 	/** True if we've initialised */
 	private static boolean init = false;
-	
+
 	/**
 	 * Initialise offscreen rendering by checking what buffers are supported
 	 * by the card
@@ -35,20 +40,20 @@ public class GraphicsFactory {
 	 */
 	private static void init() throws SlickException {
 		init = true;
-		
+
 		if (fbo) {
 			fbo = GLContext.getCapabilities().GL_EXT_framebuffer_object;
 		}
 		pbuffer = (Pbuffer.getCapabilities() & Pbuffer.PBUFFER_SUPPORTED) != 0;
 		pbufferRT = (Pbuffer.getCapabilities() & Pbuffer.RENDER_TEXTURE_SUPPORTED) != 0;
-		
+
 		if (!fbo && !pbuffer && !pbufferRT) {
 			throw new SlickException("Your OpenGL card does not support offscreen buffers and hence can't handle the dynamic images required for this application.");
 		}
-		
-		Log.info("Offscreen Buffers FBO="+fbo+" PBUFFER="+pbuffer+" PBUFFERRT="+pbufferRT);
+
+		Log.info("Offscreen Buffers FBO=" + fbo + " PBUFFER=" + pbuffer + " PBUFFERRT=" + pbufferRT);
 	}
-	
+
 	/**
 	 * Force FBO use on or off
 	 * 
@@ -57,7 +62,7 @@ public class GraphicsFactory {
 	public static void setUseFBO(boolean useFBO) {
 		fbo = useFBO;
 	}
-	
+
 	/**
 	 * Check if we're using FBO for dynamic textures
 	 * 
@@ -75,7 +80,7 @@ public class GraphicsFactory {
 	public static boolean usingPBuffer() {
 		return !fbo && pbuffer;
 	}
-	
+
 	/**
 	 * Get a graphics context for a particular image
 	 * 
@@ -86,15 +91,15 @@ public class GraphicsFactory {
 	 */
 	public static Graphics getGraphicsForImage(Image image) throws SlickException {
 		Graphics g = (Graphics) graphics.get(image.getTexture());
-		
+
 		if (g == null) {
 			g = createGraphics(image);
 			graphics.put(image.getTexture(), g);
 		}
-		
+
 		return g;
 	}
-	
+
 	/**
 	 * Release any graphics context that is assocaited with the given image
 	 * 
@@ -103,12 +108,12 @@ public class GraphicsFactory {
 	 */
 	public static void releaseGraphicsForImage(Image image) throws SlickException {
 		Graphics g = (Graphics) graphics.remove(image.getTexture());
-		
+
 		if (g != null) {
 			g.destroy();
 		}
 	}
-	
+
 	/** 
 	 * Create an underlying graphics context for the given image
 	 * 
@@ -118,7 +123,7 @@ public class GraphicsFactory {
 	 */
 	private static Graphics createGraphics(Image image) throws SlickException {
 		init();
-		
+
 		if (fbo) {
 			try {
 				return new FBOGraphics(image);
@@ -127,7 +132,7 @@ public class GraphicsFactory {
 				Log.warn("FBO failed in use, falling back to PBuffer");
 			}
 		}
-		
+
 		if (pbuffer) {
 			if (pbufferRT) {
 				return new PBufferGraphics(image);
@@ -135,7 +140,8 @@ public class GraphicsFactory {
 				return new PBufferUniqueGraphics(image);
 			}
 		}
-		
+
 		throw new SlickException("Failed to create offscreen buffer even though the card reports it's possible");
 	}
+
 }

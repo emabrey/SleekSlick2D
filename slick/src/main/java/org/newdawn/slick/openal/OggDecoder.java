@@ -11,17 +11,19 @@ import java.nio.ByteBuffer;
  * @author Kevin Glass
  */
 public class OggDecoder {
+
 	/** The conversion buffer size */
 	private int convsize = 4096 * 4;
+
 	/** The buffer used to read OGG file */
 	private byte[] convbuffer = new byte[convsize]; // take 8k out of the data segment, not the stack
-	
+
 	/**
 	 * Create a new OGG decoder
 	 */
 	public OggDecoder() {
 	}
-	
+
 	/**
 	 * Get the data out of an OGG file 
 	 * 
@@ -34,7 +36,7 @@ public class OggDecoder {
 			throw new IOException("Failed to read OGG, source does not exist?");
 		}
 		ByteArrayOutputStream dataout = new ByteArrayOutputStream();
-		
+
 //		SyncState oy = new SyncState(); // sync and verify incoming physical bitstream
 //		StreamState os = new StreamState(); // take physical pages, weld into a logical stream of packets
 //		Page og = new Page(); // one Ogg bitstream page.  Vorbis packets are inside
@@ -307,23 +309,23 @@ public class OggDecoder {
 //		OggData ogg = new OggData();
 //		ogg.channels = vi.channels;
 //		ogg.rate = vi.rate;
-
 		OggInputStream oggInput = new OggInputStream(input);
-		
+
 		boolean done = false;
 		while (!oggInput.atEnd()) {
 			dataout.write(oggInput.read());
 		}
-	
+
 		OggData ogg = new OggData();
 		ogg.channels = oggInput.getChannels();
 		ogg.rate = oggInput.getRate();
-		
+
 		byte[] data = dataout.toByteArray();
 		ogg.data = ByteBuffer.allocateDirect(data.length);
 		ogg.data.put(data);
 		ogg.data.rewind();
-		
+
 		return ogg;
 	}
+
 }

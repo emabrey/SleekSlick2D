@@ -9,33 +9,35 @@ import java.security.PrivilegedAction;
  * @author kevin
  */
 public final class Log {
+
 	/** True if we're doing verbose logging INFO and DEBUG */
 	private static boolean verbose = true;
+
 	/** true if activated by the system property "org.newdawn.slick.forceVerboseLog" */
 	private static boolean forcedVerbose = false;
-	
+
 	/**
 	 * The debug property which can be set via JNLP or startup parameter to switch
 	 * logging mode to verbose for games that were released without verbose logging
 	 * value must be "true"
 	 */
 	private static final String forceVerboseProperty = "org.newdawn.slick.forceVerboseLog";
-	
+
 	/**
 	 * the verbose property must be set to "true" to switch on verbose logging
 	 */
 	private static final String forceVerbosePropertyOnValue = "true";
-	
+
 	/** The log system plugin in use */
 	private static LogSystem logSystem = new DefaultLogSystem();
-	
+
 	/**
 	 * The log is a simple static utility, no construction
 	 */
 	private Log() {
-		
+
 	}
-	
+
 	/**
 	 * Set the log system that will have all of the log info 
 	 * sent to it.
@@ -45,7 +47,7 @@ public final class Log {
 	public static void setLogSystem(LogSystem system) {
 		logSystem = system;
 	}
-	
+
 	/**
 	 * Indicate that we want verbose logging.
 	 * The call is ignored if verbose logging is forced by the system property
@@ -54,8 +56,9 @@ public final class Log {
 	 * @param v True if we want verbose logging (INFO and DEBUG)
 	 */
 	public static void setVerbose(boolean v) {
-		if (forcedVerbose)
+		if (forcedVerbose) {
 			return;
+		}
 		verbose = v;
 	}
 
@@ -66,20 +69,21 @@ public final class Log {
 	public static void checkVerboseLogSetting() {
 		try {
 			AccessController.doPrivileged(new PrivilegedAction() {
-	            public Object run() {
+				public Object run() {
 					String val = System.getProperty(Log.forceVerboseProperty);
 					if ((val != null) && (val.equalsIgnoreCase(Log.forceVerbosePropertyOnValue))) {
 						Log.setForcedVerboseOn();
 					}
-					
+
 					return null;
-	            }
+				}
+
 			});
 		} catch (Throwable e) {
 			// ignore, security failure - probably an applet
 		}
 	}
-	
+
 	/**
 	 * Indicate that we want verbose logging, even if switched off in game code.
 	 * Only be called when system property "org.newdawn.slick.forceVerboseLog" is set to true.
@@ -89,7 +93,7 @@ public final class Log {
 		forcedVerbose = true;
 		verbose = true;
 	}
-	
+
 	/**
 	 * Log an error
 	 * 
@@ -126,7 +130,7 @@ public final class Log {
 	public static void warn(String message) {
 		logSystem.warn(message);
 	}
-	
+
 	/**
 	 * Log a warning
 	 * 
@@ -158,4 +162,5 @@ public final class Log {
 			logSystem.debug(message);
 		}
 	}
+
 }

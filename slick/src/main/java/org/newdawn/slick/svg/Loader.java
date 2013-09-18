@@ -9,6 +9,7 @@ import org.w3c.dom.Element;
  * @author kevin
  */
 public interface Loader {
+
 	/**
 	 * Load the children of a given element
 	 * 
@@ -17,4 +18,5 @@ public interface Loader {
 	 * @throws ParsingException Indicates a failure to read the XML
 	 */
 	public void loadChildren(Element element, Transform t) throws ParsingException;
+
 }

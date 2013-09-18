@@ -26,4 +26,5 @@ public interface ResourceLocation {
 	 * @return A URL from which the resource can be read
 	 */
 	public URL getResource(String ref);
+
 }

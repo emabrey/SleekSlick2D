@@ -18,6 +18,7 @@ import org.newdawn.slick.util.InputAdapter;
  * @author joverton
  */
 public class InputProvider {
+
 	/** The commands that have been defined */
 	private HashMap commands;
 
@@ -155,12 +156,12 @@ public class InputProvider {
 	 */
 	public void clearCommand(Command command) {
 		List controls = getControlsFor(command);
-		
-		for (int i=0;i<controls.size();i++) {
-	    	unbindCommand((Control) controls.get(i));
-	    }
+
+		for (int i = 0; i < controls.size(); i++) {
+			unbindCommand((Control) controls.get(i));
+		}
 	}
-	
+
 	/**
 	 * Unbinds the command associated with this control
 	 * 
@@ -257,6 +258,7 @@ public class InputProvider {
 	 * @author kevin
 	 */
 	private class CommandState {
+
 		/** True if one of the controls for this command is down */
 		private boolean down;
 
@@ -285,6 +287,7 @@ public class InputProvider {
 		public boolean isDown() {
 			return down;
 		}
+
 	}
 
 	/**
@@ -293,6 +296,7 @@ public class InputProvider {
 	 * @author kevin
 	 */
 	private class InputListenerImpl extends InputAdapter {
+
 		/**
 		 * @see org.newdawn.slick.util.InputAdapter#isAcceptingInput()
 		 */
@@ -348,7 +352,7 @@ public class InputProvider {
 		public void controllerLeftPressed(int controller) {
 			Command command = (Command) commands
 					.get(new ControllerDirectionControl(controller,
-							ControllerDirectionControl.LEFT));
+									ControllerDirectionControl.LEFT));
 			if (command != null) {
 				firePressed(command);
 			}
@@ -360,7 +364,7 @@ public class InputProvider {
 		public void controllerLeftReleased(int controller) {
 			Command command = (Command) commands
 					.get(new ControllerDirectionControl(controller,
-							ControllerDirectionControl.LEFT));
+									ControllerDirectionControl.LEFT));
 			if (command != null) {
 				fireReleased(command);
 			}
@@ -372,7 +376,7 @@ public class InputProvider {
 		public void controllerRightPressed(int controller) {
 			Command command = (Command) commands
 					.get(new ControllerDirectionControl(controller,
-							ControllerDirectionControl.RIGHT));
+									ControllerDirectionControl.RIGHT));
 			if (command != null) {
 				firePressed(command);
 			}
@@ -384,7 +388,7 @@ public class InputProvider {
 		public void controllerRightReleased(int controller) {
 			Command command = (Command) commands
 					.get(new ControllerDirectionControl(controller,
-							ControllerDirectionControl.RIGHT));
+									ControllerDirectionControl.RIGHT));
 			if (command != null) {
 				fireReleased(command);
 			}
@@ -396,9 +400,10 @@ public class InputProvider {
 		public void controllerUpPressed(int controller) {
 			Command command = (Command) commands
 					.get(new ControllerDirectionControl(controller,
-							ControllerDirectionControl.UP));
-			if (command != null)
+									ControllerDirectionControl.UP));
+			if (command != null) {
 				firePressed(command);
+			}
 		}
 
 		/**
@@ -407,7 +412,7 @@ public class InputProvider {
 		public void controllerUpReleased(int controller) {
 			Command command = (Command) commands
 					.get(new ControllerDirectionControl(controller,
-							ControllerDirectionControl.UP));
+									ControllerDirectionControl.UP));
 			if (command != null) {
 				fireReleased(command);
 			}
@@ -419,7 +424,7 @@ public class InputProvider {
 		public void controllerDownPressed(int controller) {
 			Command command = (Command) commands
 					.get(new ControllerDirectionControl(controller,
-							ControllerDirectionControl.DOWN));
+									ControllerDirectionControl.DOWN));
 			if (command != null) {
 				firePressed(command);
 			}
@@ -431,7 +436,7 @@ public class InputProvider {
 		public void controllerDownReleased(int controller) {
 			Command command = (Command) commands
 					.get(new ControllerDirectionControl(controller,
-							ControllerDirectionControl.DOWN));
+									ControllerDirectionControl.DOWN));
 			if (command != null) {
 				fireReleased(command);
 			}
@@ -460,5 +465,6 @@ public class InputProvider {
 				fireReleased(command);
 			}
 		}
+
 	};
 }

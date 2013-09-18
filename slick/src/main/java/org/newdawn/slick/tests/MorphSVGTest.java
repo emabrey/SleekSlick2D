@@ -16,15 +16,19 @@ import org.newdawn.slick.svg.SimpleDiagramRenderer;
  * @author Kevin Glass
  */
 public class MorphSVGTest extends BasicGame {
+
 	/** The morphing SVG */
 	private SVGMorph morph;
+
 	/** First shape of the morph */
 	private Diagram base;
+
 	/** The time index of the morph being display */
 	private float time;
+
 	/** The current x position */
 	private float x = -300;
-	
+
 	/**
 	 * Create a simple test
 	 */
@@ -41,7 +45,7 @@ public class MorphSVGTest extends BasicGame {
 		morph.addStep(InkscapeLoader.load("testdata/svg/walk2.svg"));
 		morph.addStep(InkscapeLoader.load("testdata/svg/walk3.svg"));
 		morph.addStep(InkscapeLoader.load("testdata/svg/walk4.svg"));
-		
+
 		container.setVSync(true);
 	}
 
@@ -51,7 +55,7 @@ public class MorphSVGTest extends BasicGame {
 	public void update(GameContainer container, int delta)
 			throws SlickException {
 		morph.updateMorphTime(delta * 0.003f);
-		
+
 		x += delta * 0.2f;
 		if (x > 550) {
 			x = -450;
@@ -83,4 +87,5 @@ public class MorphSVGTest extends BasicGame {
 			e.printStackTrace();
 		}
 	}
+
 }

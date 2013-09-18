@@ -7,9 +7,10 @@ package org.newdawn.slick.opengl.renderer;
  * @author kevin
  */
 public class DefaultLineStripRenderer implements LineStripRenderer {
+
 	/** The access to OpenGL */
 	private SGL GL = Renderer.get();
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.renderer.LineStripRenderer#end()
 	 */
@@ -46,7 +47,7 @@ public class DefaultLineStripRenderer implements LineStripRenderer {
 	 * @see org.newdawn.slick.opengl.renderer.LineStripRenderer#vertex(float, float)
 	 */
 	public void vertex(float x, float y) {
-		GL.glVertex2f(x,y);
+		GL.glVertex2f(x, y);
 	}
 
 	/**

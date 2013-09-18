@@ -1,4 +1,3 @@
-
 package org.newdawn.slick.font.effects;
 
 import java.awt.Color;
@@ -17,6 +16,7 @@ import org.newdawn.slick.font.Glyph;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class ColorEffect implements ConfigurableEffect {
+
 	/** The colour that will be applied across the text */
 	private Color color = Color.white;
 
@@ -58,14 +58,16 @@ public class ColorEffect implements ConfigurableEffect {
 	 * @param color The colour being applied by this effect
 	 */
 	public void setColor(Color color) {
-		if (color == null) throw new IllegalArgumentException("color cannot be null.");
+		if (color == null) {
+			throw new IllegalArgumentException("color cannot be null.");
+		}
 		this.color = color;
 	}
 
 	/**
 	 * @see java.lang.Object#toString()
 	 */
-	public String toString () {
+	public String toString() {
 		return "Color";
 	}
 
@@ -83,10 +85,11 @@ public class ColorEffect implements ConfigurableEffect {
 	 */
 	public void setValues(List values) {
 		for (Iterator iter = values.iterator(); iter.hasNext();) {
-			Value value = (Value)iter.next();
+			Value value = (Value) iter.next();
 			if (value.getName().equals("Color")) {
-				setColor((Color)value.getObject());
+				setColor((Color) value.getObject());
 			}
 		}
 	}
+
 }

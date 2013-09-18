@@ -16,14 +16,19 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author kevin
  */
 public class RotateTransition implements Transition {
+
 	/** The previous state */
 	private GameState prev;
+
 	/** The current angle of rotation */
 	private float ang;
+
 	/** True if the state has finished */
 	private boolean finish;
+
 	/** The current scale */
 	private float scale = 1;
+
 	/** The background applied under the previous state if any */
 	private Color background;
 
@@ -31,7 +36,7 @@ public class RotateTransition implements Transition {
 	 * Create a new transition
 	 */
 	public RotateTransition() {
-		
+
 	}
 
 	/**
@@ -42,7 +47,7 @@ public class RotateTransition implements Transition {
 	public RotateTransition(Color background) {
 		this.background = background;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.state.transition.Transition#init(org.newdawn.slick.state.GameState, org.newdawn.slick.state.GameState)
 	 */
@@ -61,21 +66,21 @@ public class RotateTransition implements Transition {
 	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void postRender(StateBasedGame game, GameContainer container, Graphics g) throws SlickException {
-		g.translate(container.getWidth()/2, container.getHeight()/2);
-		g.scale(scale,scale);
+		g.translate(container.getWidth() / 2, container.getHeight() / 2);
+		g.scale(scale, scale);
 		g.rotate(0, 0, ang);
-		g.translate(-container.getWidth()/2, -container.getHeight()/2);
+		g.translate(-container.getWidth() / 2, -container.getHeight() / 2);
 		if (background != null) {
 			Color c = g.getColor();
 			g.setColor(background);
-			g.fillRect(0,0,container.getWidth(),container.getHeight());
+			g.fillRect(0, 0, container.getWidth(), container.getHeight());
 			g.setColor(c);
 		}
 		prev.render(container, game, g);
-		g.translate(container.getWidth()/2, container.getHeight()/2);
+		g.translate(container.getWidth() / 2, container.getHeight() / 2);
 		g.rotate(0, 0, -ang);
-		g.scale(1/scale,1/scale);
-		g.translate(-container.getWidth()/2, -container.getHeight()/2);
+		g.scale(1 / scale, 1 / scale);
+		g.translate(-container.getWidth() / 2, -container.getHeight() / 2);
 	}
 
 	/**

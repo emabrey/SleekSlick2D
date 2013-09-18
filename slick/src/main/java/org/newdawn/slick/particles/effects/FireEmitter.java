@@ -11,18 +11,22 @@ import org.newdawn.slick.particles.ParticleSystem;
  * @author kevin
  */
 public class FireEmitter implements ParticleEmitter {
+
 	/** The x coordinate of the center of the fire effect */
 	private int x;
+
 	/** The y coordinate of the center of the fire effect */
 	private int y;
-	
+
 	/** The particle emission rate */
 	private int interval = 50;
+
 	/** Time til the next particle */
 	private int timer;
+
 	/** The size of the initial particles */
 	private float size = 40;
-	
+
 	/**
 	 * Create a default fire effect at 0,0
 	 */
@@ -52,7 +56,7 @@ public class FireEmitter implements ParticleEmitter {
 		this.y = y;
 		this.size = size;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.particles.ParticleEmitter#update(org.newdawn.slick.particles.ParticleSystem, int)
 	 */
@@ -66,7 +70,7 @@ public class FireEmitter implements ParticleEmitter {
 			p.setSize(size);
 			float vx = (float) (-0.02f + (Math.random() * 0.04f));
 			float vy = (float) (-(Math.random() * 0.15f));
-			p.setVelocity(vx,vy,1.1f);
+			p.setVelocity(vx, vy, 1.1f);
 		}
 	}
 
@@ -80,7 +84,7 @@ public class FireEmitter implements ParticleEmitter {
 			particle.adjustSize(-0.04f * delta * (size / 40.0f));
 		}
 		float c = 0.002f * delta;
-		particle.adjustColor(0,-c/2,-c*2,-c/4);
+		particle.adjustColor(0, -c / 2, -c * 2, -c / 4);
 	}
 
 	/**
@@ -142,4 +146,5 @@ public class FireEmitter implements ParticleEmitter {
 	 */
 	public void resetState() {
 	}
+
 }

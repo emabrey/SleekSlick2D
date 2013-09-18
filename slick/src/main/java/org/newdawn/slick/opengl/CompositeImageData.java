@@ -14,12 +14,14 @@ import org.newdawn.slick.util.Log;
  * 
  * @author kevin
  */
-public class CompositeImageData implements LoadableImageData  {
+public class CompositeImageData implements LoadableImageData {
+
 	/** The list of images sources in order of preference to try loading the data with */
 	private ArrayList sources = new ArrayList();
+
 	/** The data source that worked and was used - or null if no luck */
 	private LoadableImageData picked;
-	
+
 	/**
 	 * Add a potentional source of image data
 	 * 
@@ -28,7 +30,7 @@ public class CompositeImageData implements LoadableImageData  {
 	public void add(LoadableImageData data) {
 		sources.add(data);
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.LoadableImageData#loadImage(java.io.InputStream)
 	 */
@@ -49,29 +51,29 @@ public class CompositeImageData implements LoadableImageData  {
 	public ByteBuffer loadImage(InputStream is, boolean flipped, boolean forceAlpha, int[] transparent) throws IOException {
 		CompositeIOException exception = new CompositeIOException();
 		ByteBuffer buffer = null;
-		
+
 		BufferedInputStream in = new BufferedInputStream(is, is.available());
 		in.mark(is.available());
-		
+
 		// cycle through our source until one of them works
-		for (int i=0;i<sources.size();i++) {
+		for (int i = 0; i < sources.size(); i++) {
 			in.reset();
 			try {
 				LoadableImageData data = (LoadableImageData) sources.get(i);
-				
+
 				buffer = data.loadImage(in, flipped, forceAlpha, transparent);
 				picked = data;
 				break;
 			} catch (Exception e) {
-				Log.warn(sources.get(i).getClass()+" failed to read the data", e);
+				Log.warn(sources.get(i).getClass() + " failed to read the data", e);
 				exception.addException(e);
 			}
 		}
-		
+
 		if (picked == null) {
 			throw exception;
 		}
-		
+
 		return buffer;
 	}
 
@@ -84,13 +86,13 @@ public class CompositeImageData implements LoadableImageData  {
 			throw new RuntimeException("Attempt to make use of uninitialised or invalid composite image data");
 		}
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.ImageData#getDepth()
 	 */
 	public int getDepth() {
 		checkPicked();
-		
+
 		return picked.getDepth();
 	}
 
@@ -99,7 +101,7 @@ public class CompositeImageData implements LoadableImageData  {
 	 */
 	public int getHeight() {
 		checkPicked();
-		
+
 		return picked.getHeight();
 	}
 
@@ -108,7 +110,7 @@ public class CompositeImageData implements LoadableImageData  {
 	 */
 	public ByteBuffer getImageBufferData() {
 		checkPicked();
-		
+
 		return picked.getImageBufferData();
 	}
 
@@ -117,7 +119,7 @@ public class CompositeImageData implements LoadableImageData  {
 	 */
 	public int getTexHeight() {
 		checkPicked();
-		
+
 		return picked.getTexHeight();
 	}
 
@@ -126,7 +128,7 @@ public class CompositeImageData implements LoadableImageData  {
 	 */
 	public int getTexWidth() {
 		checkPicked();
-		
+
 		return picked.getTexWidth();
 	}
 
@@ -135,7 +137,7 @@ public class CompositeImageData implements LoadableImageData  {
 	 */
 	public int getWidth() {
 		checkPicked();
-		
+
 		return picked.getWidth();
 	}
 
@@ -143,7 +145,7 @@ public class CompositeImageData implements LoadableImageData  {
 	 * @see org.newdawn.slick.opengl.LoadableImageData#configureEdging(boolean)
 	 */
 	public void configureEdging(boolean edging) {
-		for (int i=0;i<sources.size();i++) {
+		for (int i = 0; i < sources.size(); i++) {
 			((LoadableImageData) sources.get(i)).configureEdging(edging);
 		}
 	}

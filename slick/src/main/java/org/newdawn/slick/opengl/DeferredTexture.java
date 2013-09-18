@@ -14,25 +14,31 @@ import org.newdawn.slick.opengl.renderer.SGL;
  * @author kevin
  */
 public class DeferredTexture extends TextureImpl implements DeferredResource {
+
 	/** The stream to read the texture from */
 	private InputStream in;
+
 	/** The name of the resource to load */
 	private String resourceName;
+
 	/** True if the image should be flipped */
 	private boolean flipped;
+
 	/** The filter to apply to the texture */
 	private int filter;
+
 	/** The texture we're proxying for */
 	private TextureImpl target;
+
 	/** The color to be transparent */
 	private int[] trans;
-	
+
 	/**
 	 * Create a new deferred texture
 	 * 
 	 * @param in The input stream from which to read the texture
 	 * @param resourceName The name to give the resource
- 	 * @param flipped True if the image should be flipped
+	 * @param flipped True if the image should be flipped
 	 * @param filter The filter to apply
 	 * @param trans The colour to defined as transparent
 	 */
@@ -42,7 +48,7 @@ public class DeferredTexture extends TextureImpl implements DeferredResource {
 		this.flipped = flipped;
 		this.filter = filter;
 		this.trans = trans;
-		
+
 		LoadingList.get().add(this);
 	}
 
@@ -55,7 +61,7 @@ public class DeferredTexture extends TextureImpl implements DeferredResource {
 		target = InternalTextureLoader.get().getTexture(in, resourceName, flipped, filter, trans);
 		InternalTextureLoader.get().setDeferredLoading(before);
 	}
-	
+
 	/**
 	 * Check if the target has been obtained already
 	 */
@@ -66,11 +72,11 @@ public class DeferredTexture extends TextureImpl implements DeferredResource {
 				LoadingList.get().remove(this);
 				return;
 			} catch (IOException e) {
-				throw new RuntimeException("Attempt to use deferred texture before loading and resource not found: "+resourceName);
+				throw new RuntimeException("Attempt to use deferred texture before loading and resource not found: " + resourceName);
 			}
 		}
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.TextureImpl#bind()
 	 */
@@ -200,7 +206,7 @@ public class DeferredTexture extends TextureImpl implements DeferredResource {
 		checkTarget();
 		target.setWidth(width);
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.TextureImpl#getTextureData()
 	 */
@@ -215,20 +221,21 @@ public class DeferredTexture extends TextureImpl implements DeferredResource {
 	public String getDescription() {
 		return resourceName;
 	}
-	
-    /**
+
+	/**
 	 * @see org.newdawn.slick.opengl.Texture#hasAlpha()
 	 */
-    public boolean hasAlpha() {
+	public boolean hasAlpha() {
 		checkTarget();
 		return target.hasAlpha();
-    }
-    
-    /**
-     * @see org.newdawn.slick.opengl.Texture#setTextureFilter(int)
-     */
+	}
+
+	/**
+	 * @see org.newdawn.slick.opengl.Texture#setTextureFilter(int)
+	 */
 	public void setTextureFilter(int textureFilter) {
 		checkTarget();
 		target.setTextureFilter(textureFilter);
 	}
+
 }

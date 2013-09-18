@@ -31,6 +31,7 @@ import org.xml.sax.SAXException;
  * @author Loads of others!
  */
 public class TiledMap {
+
 	/** Indicates if we're running on a headless system */
 	private static boolean headless;
 
@@ -47,10 +48,13 @@ public class TiledMap {
 
 	/** The width of the map */
 	protected int width;
+
 	/** The height of the map */
 	protected int height;
+
 	/** The width of the tiles used on the map */
 	protected int tileWidth;
+
 	/** The height of the tiles used on the map */
 	protected int tileHeight;
 
@@ -62,13 +66,16 @@ public class TiledMap {
 
 	/** The list of tilesets defined in the map */
 	protected ArrayList tileSets = new ArrayList();
+
 	/** The list of layers defined in the map */
 	protected ArrayList layers = new ArrayList();
+
 	/** The list of object-groups defined in the map */
 	protected ArrayList objectGroups = new ArrayList();
 
 	/** Indicates a orthogonal map */
 	protected static final int ORTHOGONAL = 1;
+
 	/** Indicates an isometric map */
 	protected static final int ISOMETRIC = 2;
 
@@ -291,8 +298,9 @@ public class TiledMap {
 	 *         value if none is supplied)
 	 */
 	public String getMapProperty(String propertyName, String def) {
-		if (props == null)
+		if (props == null) {
 			return def;
+		}
 		return props.getProperty(propertyName, def);
 	}
 
@@ -313,8 +321,9 @@ public class TiledMap {
 	public String getLayerProperty(int layerIndex, String propertyName,
 			String def) {
 		Layer layer = (Layer) layers.get(layerIndex);
-		if (layer == null || layer.props == null)
+		if (layer == null || layer.props == null) {
 			return def;
+		}
 		return layer.props.getProperty(propertyName, def);
 	}
 
@@ -419,16 +428,16 @@ public class TiledMap {
 		Layer layer = (Layer) layers.get(l);
 
 		switch (orientation) {
-		case ORTHOGONAL:
-			for (int ty = 0; ty < height; ty++) {
-				layer.render(x, y, sx, sy, width, ty, lineByLine, tileWidth,
-						tileHeight);
-			}
-			break;
-		case ISOMETRIC:
-			renderIsometricMap(x, y, sx, sy, width, height, layer, lineByLine);
-			break;
-		default:
+			case ORTHOGONAL:
+				for (int ty = 0; ty < height; ty++) {
+					layer.render(x, y, sx, sy, width, ty, lineByLine, tileWidth,
+							tileHeight);
+				}
+				break;
+			case ISOMETRIC:
+				renderIsometricMap(x, y, sx, sy, width, height, layer, lineByLine);
+				break;
+			default:
 			// log error or something
 		}
 	}
@@ -456,19 +465,19 @@ public class TiledMap {
 	public void render(int x, int y, int sx, int sy, int width, int height,
 			boolean lineByLine) {
 		switch (orientation) {
-		case ORTHOGONAL:
-			for (int ty = 0; ty < height; ty++) {
-				for (int i = 0; i < layers.size(); i++) {
-					Layer layer = (Layer) layers.get(i);
-					layer.render(x, y, sx, sy, width, ty, lineByLine,
-							tileWidth, tileHeight);
+			case ORTHOGONAL:
+				for (int ty = 0; ty < height; ty++) {
+					for (int i = 0; i < layers.size(); i++) {
+						Layer layer = (Layer) layers.get(i);
+						layer.render(x, y, sx, sy, width, ty, lineByLine,
+								tileWidth, tileHeight);
+					}
 				}
-			}
-			break;
-		case ISOMETRIC:
-			renderIsometricMap(x, y, sx, sy, width, height, null, lineByLine);
-			break;
-		default:
+				break;
+			case ISOMETRIC:
+				renderIsometricMap(x, y, sx, sy, width, height, null, lineByLine);
+				break;
+			default:
 			// log error or something
 		}
 	}
@@ -524,14 +533,15 @@ public class TiledMap {
 			int currentLineX = initialLineX;
 
 			int min = 0;
-			if (height > width)
+			if (height > width) {
 				min = (startLineTileY < width - 1) ? startLineTileY : (width
 						- currentTileX < height) ? width - currentTileX - 1
 						: width - 1;
-			else
+			} else {
 				min = (startLineTileY < height - 1) ? startLineTileY : (width
 						- currentTileX < height) ? width - currentTileX - 1
 						: height - 1;
+			}
 
 			for (int burner = 0; burner <= min; currentTileX++, currentTileY--, burner++) {
 				for (int layerIdx = 0; layerIdx < drawLayers.size(); layerIdx++) {
@@ -547,7 +557,6 @@ public class TiledMap {
 
 			// System.out.println("Line : " + counter++ + " - " + count +
 			// "allcount : " + allCount);
-
 			if (startLineTileY < (height - 1)) {
 				startLineTileY += 1;
 				initialLineX -= tileWidth / 2;
@@ -558,8 +567,9 @@ public class TiledMap {
 				initialLineY += tileHeight / 2;
 			}
 
-			if (allCount >= maxCount)
+			if (allCount >= maxCount) {
 				allProcessed = true;
+			}
 		}
 	}
 
@@ -612,15 +622,17 @@ public class TiledMap {
 					return new InputSource(
 							new ByteArrayInputStream(new byte[0]));
 				}
+
 			});
 
 			Document doc = builder.parse(in);
 			Element docElement = doc.getDocumentElement();
 
-			if (docElement.getAttribute("orientation").equals("orthogonal"))
+			if (docElement.getAttribute("orientation").equals("orthogonal")) {
 				orientation = ORTHOGONAL;
-			else
+			} else {
 				orientation = ISOMETRIC;
+			}
 			/*
 			 * if (!orient.equals("orthogonal")) { throw new
 			 * SlickException("Only orthogonal maps supported, found: "+orient);
@@ -981,14 +993,19 @@ public class TiledMap {
 	 * @author kulpae
 	 */
 	protected class ObjectGroup {
+
 		/** The index of this group */
 		public int index;
+
 		/** The name of this group - read from the XML */
 		public String name;
+
 		/** The Objects of this group */
 		public ArrayList objects;
+
 		/** The width of this layer */
 		public int width;
+
 		/** The height of this layer */
 		public int height;
 
@@ -1035,6 +1052,7 @@ public class TiledMap {
 				objects.add(object);
 			}
 		}
+
 	}
 
 	/**
@@ -1043,20 +1061,28 @@ public class TiledMap {
 	 * @author kulpae
 	 */
 	protected class GroupObject {
+
 		/** The index of this object */
 		public int index;
+
 		/** The name of this object - read from the XML */
 		public String name;
+
 		/** The type of this object - read from the XML */
 		public String type;
+
 		/** The x-coordinate of this object */
 		public int x;
+
 		/** The y-coordinate of this object */
 		public int y;
+
 		/** The width of this object */
 		public int width;
+
 		/** The height of this object */
 		public int height;
+
 		/** The image source */
 		private String image;
 
@@ -1103,6 +1129,7 @@ public class TiledMap {
 				}
 			}
 		}
+
 	}
 
 }

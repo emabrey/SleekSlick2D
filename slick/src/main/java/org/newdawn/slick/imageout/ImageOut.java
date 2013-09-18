@@ -15,16 +15,19 @@ import org.newdawn.slick.SlickException;
  * @author kevin
  */
 public class ImageOut {
+
 	/** The default setting for writing out the alpha channel */
-	private static final boolean  DEFAULT_ALPHA_WRITE = false;
-	
+	private static final boolean DEFAULT_ALPHA_WRITE = false;
+
 	/** The format string for TGA */
 	public static String TGA = "tga";
+
 	/** The format string for PNG */
 	public static String PNG = "png";
+
 	/** The format string for JPG */
 	public static String JPG = "jpg";
-	
+
 	/**
 	 * Get a list of supported formats
 	 * 
@@ -46,7 +49,7 @@ public class ImageOut {
 	public static void write(Image image, String format, OutputStream out) throws SlickException {
 		write(image, format, out, DEFAULT_ALPHA_WRITE);
 	}
-	
+
 	/**
 	 * Write an image out to a specified output stream
 	 * 
@@ -61,7 +64,7 @@ public class ImageOut {
 			ImageWriter writer = ImageWriterFactory.getWriterForFormat(format);
 			writer.saveImage(image, format, out, writeAlpha);
 		} catch (IOException e) {
-			throw new SlickException("Unable to write out the image in format: "+format, e);
+			throw new SlickException("Unable to write out the image in format: " + format, e);
 		}
 	}
 
@@ -76,7 +79,7 @@ public class ImageOut {
 	public static void write(Image image, String dest) throws SlickException {
 		write(image, dest, DEFAULT_ALPHA_WRITE);
 	}
-	
+
 	/**
 	 * Write an image out to a file on the local file system. The format of the output
 	 * is determined based on the file name extension
@@ -90,16 +93,16 @@ public class ImageOut {
 		try {
 			int ext = dest.lastIndexOf('.');
 			if (ext < 0) {
-				throw new SlickException("Unable to determine format from: "+dest);
+				throw new SlickException("Unable to determine format from: " + dest);
 			}
-			
-			String format = dest.substring(ext+1);
+
+			String format = dest.substring(ext + 1);
 			write(image, format, new FileOutputStream(dest), writeAlpha);
 		} catch (IOException e) {
-			throw new SlickException("Unable to write to the destination: "+dest, e);
+			throw new SlickException("Unable to write to the destination: " + dest, e);
 		}
 	}
-	
+
 	/**
 	 * Write an image out to a file on the local file system. 
 	 * 
@@ -111,7 +114,7 @@ public class ImageOut {
 	public static void write(Image image, String format, String dest) throws SlickException {
 		write(image, format, dest, DEFAULT_ALPHA_WRITE);
 	}
-	
+
 	/**
 	 * Write an image out to a file on the local file system. 
 	 * 
@@ -125,7 +128,8 @@ public class ImageOut {
 		try {
 			write(image, format, new FileOutputStream(dest), writeAlpha);
 		} catch (IOException e) {
-			throw new SlickException("Unable to write to the destination: "+dest, e);
+			throw new SlickException("Unable to write to the destination: " + dest, e);
 		}
 	}
+
 }

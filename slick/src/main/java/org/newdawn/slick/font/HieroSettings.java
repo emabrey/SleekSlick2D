@@ -1,4 +1,3 @@
-
 package org.newdawn.slick.font;
 
 import java.io.BufferedReader;
@@ -24,28 +23,40 @@ import org.newdawn.slick.util.ResourceLoader;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class HieroSettings {
+
 	/** The size of the font to be generated */
 	private int fontSize = 12;
+
 	/** True if the font is rendered bold */
 	private boolean bold = false;
+
 	/** True fi the font if rendered italic */
 	private boolean italic = false;
+
 	/** The padding applied in pixels to the top of the glyph rendered area */
 	private int paddingTop;
+
 	/** The padding applied in pixels to the left of the glyph rendered area */
 	private int paddingLeft;
+
 	/** The padding applied in pixels to the bottom of the glyph rendered area */
 	private int paddingBottom;
+
 	/** The padding applied in pixels to the right of the glyph rendered area */
 	private int paddingRight;
+
 	/** The padding applied in pixels to horizontal advance for each glyph */
 	private int paddingAdvanceX;
+
 	/** The padding applied in pixels to vertical advance for each glyph */
 	private int paddingAdvanceY;
+
 	/** The width of the glyph page generated */
 	private int glyphPageWidth = 512;
+
 	/** The height of the glyph page generated */
 	private int glyphPageHeight = 512;
+
 	/** The list of effects applied */
 	private final List effects = new ArrayList();
 
@@ -64,7 +75,7 @@ public class HieroSettings {
 	public HieroSettings(String hieroFileRef) throws SlickException {
 		this(ResourceLoader.getResourceAsStream(hieroFileRef));
 	}
-	
+
 	/**
 	 * Create a new set of configuration from a file
 	 * 
@@ -76,9 +87,13 @@ public class HieroSettings {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			while (true) {
 				String line = reader.readLine();
-				if (line == null) break;
+				if (line == null) {
+					break;
+				}
 				line = line.trim();
-				if (line.length() == 0) continue;
+				if (line.length() == 0) {
+					continue;
+				}
 				String[] pieces = line.split("=", 2);
 				String name = pieces[0].trim();
 				String value = pieces[1];
@@ -113,10 +128,10 @@ public class HieroSettings {
 				} else if (name.startsWith("effect.")) {
 					// Set an effect value on the last added effect.
 					name = name.substring(7);
-					ConfigurableEffect effect = (ConfigurableEffect)effects.get(effects.size() - 1);
+					ConfigurableEffect effect = (ConfigurableEffect) effects.get(effects.size() - 1);
 					List values = effect.getValues();
 					for (Iterator iter = values.iterator(); iter.hasNext();) {
-						Value effectValue = (Value)iter.next();
+						Value effectValue = (Value) iter.next();
 						if (effectValue.getName().equals(name)) {
 							effectValue.setString(value);
 							break;
@@ -136,7 +151,7 @@ public class HieroSettings {
 	 * 
 	 * @return The padding for the top of the glyph area in pixels
 	 */
-	public int getPaddingTop () {
+	public int getPaddingTop() {
 		return paddingTop;
 	}
 
@@ -291,7 +306,7 @@ public class HieroSettings {
 	 * 
 	 * @param fontSize The point size of the font generated
 	 */
-	public void setFontSize (int fontSize) {
+	public void setFontSize(int fontSize) {
 		this.fontSize = fontSize;
 	}
 
@@ -301,7 +316,7 @@ public class HieroSettings {
 	 * 
 	 * @return True if the font was generated in bold typeface
 	 */
-	public boolean isBold () {
+	public boolean isBold() {
 		return bold;
 	}
 
@@ -311,7 +326,7 @@ public class HieroSettings {
 	 * 
 	 * @param bold True if the font was generated in bold typeface
 	 */
-	public void setBold (boolean bold) {
+	public void setBold(boolean bold) {
 		this.bold = bold;
 	}
 
@@ -321,7 +336,7 @@ public class HieroSettings {
 	 * 
 	 * @return True if the font was generated in italic typeface
 	 */
-	public boolean isItalic () {
+	public boolean isItalic() {
 		return italic;
 	}
 
@@ -331,7 +346,7 @@ public class HieroSettings {
 	 * 
 	 * @param italic True if the font was generated in italic typeface
 	 */
-	public void setItalic (boolean italic) {
+	public void setItalic(boolean italic) {
 		this.italic = italic;
 	}
 
@@ -367,14 +382,15 @@ public class HieroSettings {
 		out.println("glyph.page.height=" + glyphPageHeight);
 		out.println();
 		for (Iterator iter = effects.iterator(); iter.hasNext();) {
-			ConfigurableEffect effect = (ConfigurableEffect)iter.next();
+			ConfigurableEffect effect = (ConfigurableEffect) iter.next();
 			out.println("effect.class=" + effect.getClass().getName());
 			for (Iterator iter2 = effect.getValues().iterator(); iter2.hasNext();) {
-				Value value = (Value)iter2.next();
+				Value value = (Value) iter2.next();
 				out.println("effect." + value.getName() + "=" + value.getString());
 			}
 			out.println();
 		}
 		out.close();
 	}
+
 }

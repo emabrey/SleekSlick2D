@@ -14,6 +14,7 @@ import org.newdawn.slick.util.Log;
  * @author kevin
  */
 public class Sound {
+
 	/** The internal sound effect represent this sound */
 	private Audio sound;
 
@@ -26,7 +27,7 @@ public class Sound {
 	 */
 	public Sound(InputStream in, String ref) throws SlickException {
 		SoundStore.get().init();
-		
+
 		try {
 			if (ref.toLowerCase().endsWith(".ogg")) {
 				sound = SoundStore.get().getOgg(in);
@@ -41,10 +42,10 @@ public class Sound {
 			}
 		} catch (Exception e) {
 			Log.error(e);
-			throw new SlickException("Failed to load sound: "+ref);
+			throw new SlickException("Failed to load sound: " + ref);
 		}
 	}
-	
+
 	/**
 	 * Create a new Sound 
 	 * 
@@ -54,7 +55,7 @@ public class Sound {
 	public Sound(URL url) throws SlickException {
 		SoundStore.get().init();
 		String ref = url.getFile();
-		
+
 		try {
 			if (ref.toLowerCase().endsWith(".ogg")) {
 				sound = SoundStore.get().getOgg(url.openStream());
@@ -69,10 +70,10 @@ public class Sound {
 			}
 		} catch (Exception e) {
 			Log.error(e);
-			throw new SlickException("Failed to load sound: "+ref);
+			throw new SlickException("Failed to load sound: " + ref);
 		}
 	}
-	
+
 	/**
 	 * Create a new Sound 
 	 * 
@@ -81,7 +82,7 @@ public class Sound {
 	 */
 	public Sound(String ref) throws SlickException {
 		SoundStore.get().init();
-		
+
 		try {
 			if (ref.toLowerCase().endsWith(".ogg")) {
 				sound = SoundStore.get().getOgg(ref);
@@ -96,17 +97,17 @@ public class Sound {
 			}
 		} catch (Exception e) {
 			Log.error(e);
-			throw new SlickException("Failed to load sound: "+ref);
+			throw new SlickException("Failed to load sound: " + ref);
 		}
 	}
-	
+
 	/**
 	 * Play this sound effect at default volume and pitch
 	 */
 	public void play() {
 		play(1.0f, 1.0f);
 	}
-	
+
 	/**
 	 * Play this sound effect at a given volume and pitch
 	 * 
@@ -121,32 +122,33 @@ public class Sound {
 	 * Play a sound effect from a particular location
 	 * 
 	 * @param x The x position of the source of the effect
- 	 * @param y The y position of the source of the effect
+	 * @param y The y position of the source of the effect
 	 * @param z The z position of the source of the effect
 	 */
 	public void playAt(float x, float y, float z) {
-		playAt(1.0f, 1.0f, x,y,z);
+		playAt(1.0f, 1.0f, x, y, z);
 	}
-	
+
 	/**
 	 * Play a sound effect from a particular location
 	 * 
 	 * @param pitch The pitch to play the sound effect at
 	 * @param volume The volumen to play the sound effect at
 	 * @param x The x position of the source of the effect
- 	 * @param y The y position of the source of the effect
+	 * @param y The y position of the source of the effect
 	 * @param z The z position of the source of the effect
 	 */
 	public void playAt(float pitch, float volume, float x, float y, float z) {
-		sound.playAsSoundEffect(pitch, volume * SoundStore.get().getSoundVolume(), false, x,y,z);
+		sound.playAsSoundEffect(pitch, volume * SoundStore.get().getSoundVolume(), false, x, y, z);
 	}
+
 	/**
 	 * Loop this sound effect at default volume and pitch
 	 */
 	public void loop() {
 		loop(1.0f, 1.0f);
 	}
-	
+
 	/**
 	 * Loop this sound effect at a given volume and pitch
 	 * 
@@ -156,7 +158,7 @@ public class Sound {
 	public void loop(float pitch, float volume) {
 		sound.playAsSoundEffect(pitch, volume * SoundStore.get().getSoundVolume(), true);
 	}
-	
+
 	/**
 	 * Check if the sound is currently playing
 	 * 
@@ -165,11 +167,12 @@ public class Sound {
 	public boolean playing() {
 		return sound.isPlaying();
 	}
-	
+
 	/**
 	 * Stop the sound being played
 	 */
 	public void stop() {
 		sound.stop();
 	}
+
 }

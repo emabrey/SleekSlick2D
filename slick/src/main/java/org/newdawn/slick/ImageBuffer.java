@@ -20,17 +20,22 @@ import org.newdawn.slick.opengl.ImageData;
  * @author kevin
  */
 public class ImageBuffer implements ImageData {
+
 	/** The width of the image */
 	private int width;
+
 	/** The height of the image */
 	private int height;
+
 	/** The width of the texture */
 	private int texWidth;
+
 	/** The height of the texture */
 	private int texHeight;
+
 	/** The raw data generated for the image */
 	private byte[] rawData;
-	
+
 	/**
 	 * 
 	 * @param width
@@ -39,10 +44,10 @@ public class ImageBuffer implements ImageData {
 	public ImageBuffer(int width, int height) {
 		this.width = width;
 		this.height = height;
-		
+
 		texWidth = get2Fold(width);
 		texHeight = get2Fold(height);
-		
+
 		rawData = new byte[texWidth * texHeight * 4];
 	}
 
@@ -54,7 +59,7 @@ public class ImageBuffer implements ImageData {
 	public byte[] getRGBA() {
 		return rawData;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.ImageData#getDepth()
 	 */
@@ -97,7 +102,7 @@ public class ImageBuffer implements ImageData {
 		ByteBuffer scratch = BufferUtils.createByteBuffer(rawData.length);
 		scratch.put(rawData);
 		scratch.flip();
-		
+
 		return scratch;
 	}
 
@@ -113,11 +118,11 @@ public class ImageBuffer implements ImageData {
 	 */
 	public void setRGBA(int x, int y, int r, int g, int b, int a) {
 		if ((x < 0) || (x >= width) || (y < 0) || (y >= height)) {
-			throw new RuntimeException("Specified location: "+x+","+y+" outside of image");
+			throw new RuntimeException("Specified location: " + x + "," + y + " outside of image");
 		}
-		
+
 		int ofs = ((x + (y * texWidth)) * 4);
-		
+
 		if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN) {
 			rawData[ofs] = (byte) b;
 			rawData[ofs + 1] = (byte) g;
@@ -130,7 +135,7 @@ public class ImageBuffer implements ImageData {
 			rawData[ofs + 3] = (byte) a;
 		}
 	}
-	
+
 	/**
 	 * Get an image generated based on this buffer
 	 * 
@@ -149,19 +154,19 @@ public class ImageBuffer implements ImageData {
 	public Image getImage(int filter) {
 		return new Image(this, filter);
 	}
-	
-    /**
-     * Get the closest greater power of 2 to the fold number
-     * 
-     * @param fold The target number
-     * @return The power of 2
-     */
-    private int get2Fold(int fold) {
-        int ret = 2;
-        while (ret < fold) {
-            ret *= 2;
-        }
-        return ret;
-    }
-	
+
+	/**
+	 * Get the closest greater power of 2 to the fold number
+	 * 
+	 * @param fold The target number
+	 * @return The power of 2
+	 */
+	private int get2Fold(int fold) {
+		int ret = 2;
+		while (ret < fold) {
+			ret *= 2;
+		}
+		return ret;
+	}
+
 }

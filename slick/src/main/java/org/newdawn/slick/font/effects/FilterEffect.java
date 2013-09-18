@@ -1,4 +1,3 @@
-
 package org.newdawn.slick.font.effects;
 
 import java.awt.Graphics2D;
@@ -15,13 +14,14 @@ import org.newdawn.slick.font.Glyph;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class FilterEffect implements Effect {
+
 	/** The filter to be applied */
 	private BufferedImageOp filter;
 
 	/**
 	 * Default constructor for injection
 	 */
-	public FilterEffect () {
+	public FilterEffect() {
 	}
 
 	/**
@@ -29,7 +29,7 @@ public class FilterEffect implements Effect {
 	 * 
 	 * @param filter The filter to apply
 	 */
-	public FilterEffect (BufferedImageOp filter) {
+	public FilterEffect(BufferedImageOp filter) {
 		this.filter = filter;
 	}
 
@@ -59,4 +59,5 @@ public class FilterEffect implements Effect {
 	public void setFilter(BufferedImageOp filter) {
 		this.filter = filter;
 	}
+
 }

@@ -12,6 +12,7 @@ import org.newdawn.slick.Image;
  * @author Jon 
  */
 public interface ImageWriter {
+
 	/**
 	 * Save an Image to an given location
 	 * 
@@ -21,5 +22,6 @@ public interface ImageWriter {
 	 * @param writeAlpha True if we should write alpha information to the file
 	 * @throws IOException Indicates a failure to write out the image to the specified location
 	 */
-	void saveImage(Image image, String format, OutputStream out, boolean writeAlpha) throws IOException; 
+	void saveImage(Image image, String format, OutputStream out, boolean writeAlpha) throws IOException;
+
 }

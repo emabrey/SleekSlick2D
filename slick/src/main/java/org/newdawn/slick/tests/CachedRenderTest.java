@@ -16,34 +16,38 @@ import org.newdawn.slick.SlickException;
  * @author kevin
  */
 public class CachedRenderTest extends BasicGame {
+
 	/** The set of operations to be cached */
 	private Runnable operations;
+
 	/** The cached version of the operations */
 	private CachedRender cached;
+
 	/** True if we're drawing the cached version */
 	private boolean drawCached;
-	
+
 	/**
 	 * Create a new simple test for cached rendering (aka display lists)
 	 */
 	public CachedRenderTest() {
 		super("Cached Render Test");
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
 	 */
 	public void init(final GameContainer container) throws SlickException {
 		operations = new Runnable() {
 			public void run() {
-				for (int i=0;i<100;i++) {
-					int c = i+100;
-					container.getGraphics().setColor(new Color(c,c,c,c));
-					container.getGraphics().drawOval((i*5)+50,(i*3)+50,100,100);
+				for (int i = 0; i < 100; i++) {
+					int c = i + 100;
+					container.getGraphics().setColor(new Color(c, c, c, c));
+					container.getGraphics().drawOval((i * 5) + 50, (i * 3) + 50, 100, 100);
 				}
 			}
+
 		};
-		
+
 		cached = new CachedRender(operations);
 	}
 
@@ -79,10 +83,11 @@ public class CachedRenderTest extends BasicGame {
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new CachedRenderTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

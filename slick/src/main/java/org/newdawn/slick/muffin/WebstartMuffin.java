@@ -51,7 +51,7 @@ public class WebstartMuffin implements Muffin {
 		} catch (Exception e) {
 			Log.info("No exisiting Muffin Found - First Save");
 		}
-		
+
 		try {
 			ps.create(configURL, 1024); // 1024 bytes for our data
 
@@ -135,4 +135,5 @@ public class WebstartMuffin implements Muffin {
 
 		return hashMap;
 	}
+
 }

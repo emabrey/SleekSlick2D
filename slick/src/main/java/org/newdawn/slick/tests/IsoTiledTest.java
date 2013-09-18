@@ -13,9 +13,10 @@ import org.newdawn.slick.util.Bootstrap;
  * @author kevin
  */
 public class IsoTiledTest extends BasicGame {
+
 	/** The tilemap we're going to render */
 	private TiledMap tilemap;
-	
+
 	/**
 	 * Create a new test
 	 */
@@ -45,7 +46,7 @@ public class IsoTiledTest extends BasicGame {
 	 */
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
-		tilemap.render(350,150);
+		tilemap.render(350, 150);
 	}
 
 	/**
@@ -54,6 +55,7 @@ public class IsoTiledTest extends BasicGame {
 	 * @param argv The arguments passed in from the command line
 	 */
 	public static void main(String[] argv) {
-		Bootstrap.runAsApplication(new IsoTiledTest(), 800,600,false);
+		Bootstrap.runAsApplication(new IsoTiledTest(), 800, 600, false);
 	}
+
 }

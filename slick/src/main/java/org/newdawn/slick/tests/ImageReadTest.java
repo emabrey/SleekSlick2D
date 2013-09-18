@@ -14,20 +14,23 @@ import org.newdawn.slick.SlickException;
  * @author kevin
  */
 public class ImageReadTest extends BasicGame {
+
 	/** The image loaded to be read */
 	private Image image;
+
 	/** The four pixels read */
 	private Color[] read = new Color[6];
+
 	/** The main graphics context */
 	private Graphics g;
-	
+
 	/**
 	 * Create a new image reading test
 	 */
 	public ImageReadTest() {
 		super("Image Read Test");
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
 	 */
@@ -44,25 +47,25 @@ public class ImageReadTest extends BasicGame {
 	 */
 	public void render(GameContainer container, Graphics g) {
 		this.g = g;
-		
-		image.draw(100,100);
+
+		image.draw(100, 100);
 		g.setColor(Color.white);
 		g.drawString("Move mouse over test image", 200, 20);
 		g.setColor(read[0]);
-		g.drawString(read[0].toString(), 100,300);
+		g.drawString(read[0].toString(), 100, 300);
 		g.setColor(read[1]);
-		g.drawString(read[1].toString(), 150,320);
+		g.drawString(read[1].toString(), 150, 320);
 		g.setColor(read[2]);
-		g.drawString(read[2].toString(), 200,340);
+		g.drawString(read[2].toString(), 200, 340);
 		g.setColor(read[3]);
-		g.drawString(read[3].toString(), 250,360);
+		g.drawString(read[3].toString(), 250, 360);
 		if (read[4] != null) {
 			g.setColor(read[4]);
-			g.drawString("On image: "+read[4].toString(), 100,250);
+			g.drawString("On image: " + read[4].toString(), 100, 250);
 		}
 		if (read[5] != null) {
 			g.setColor(Color.white);
-			g.drawString("On screen: "+read[5].toString(), 100,270);
+			g.drawString("On screen: " + read[5].toString(), 100, 270);
 		}
 	}
 
@@ -72,13 +75,13 @@ public class ImageReadTest extends BasicGame {
 	public void update(GameContainer container, int delta) {
 		int mx = container.getInput().getMouseX();
 		int my = container.getInput().getMouseY();
-		
+
 		if ((mx >= 100) && (my >= 100) && (mx < 200) && (my < 200)) {
-			read[4] = image.getColor(mx-100,my-100);
+			read[4] = image.getColor(mx - 100, my - 100);
 		} else {
 			read[4] = Color.black;
 		}
-		
+
 		read[5] = g.getPixel(mx, my);
 	}
 
@@ -90,10 +93,11 @@ public class ImageReadTest extends BasicGame {
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new ImageReadTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

@@ -1,4 +1,3 @@
-
 package org.newdawn.slick.font.effects;
 
 import java.awt.Color;
@@ -18,14 +17,19 @@ import org.newdawn.slick.font.Glyph;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class GradientEffect implements ConfigurableEffect {
+
 	/** The top of gradients colour */
 	private Color topColor = Color.cyan;
+
 	/** The bottom of the gradient's colour */
 	private Color bottomColor = Color.blue;
+
 	/** The offset the gradient starts at */
 	private int offset = 0;
+
 	/** The scaling of the graident */
 	private float scale = 1;
+
 	/** True if the graident should cycle back and forth across the surface */
 	private boolean cyclic;
 
@@ -82,7 +86,7 @@ public class GradientEffect implements ConfigurableEffect {
 	 * 
 	 * @return The colour at the bottom of the gradient
 	 */
-	public Color getBottomColor () {
+	public Color getBottomColor() {
 		return bottomColor;
 	}
 
@@ -110,7 +114,7 @@ public class GradientEffect implements ConfigurableEffect {
 	 * 
 	 * @param offset The offset the gradient is moved by
 	 */
-	public void setOffset (int offset) {
+	public void setOffset(int offset) {
 		this.offset = offset;
 	}
 
@@ -129,7 +133,7 @@ public class GradientEffect implements ConfigurableEffect {
 	 * 
 	 * @param scale The scale to apply
 	 */
-	public void setScale (float scale) {
+	public void setScale(float scale) {
 		this.scale = scale;
 	}
 
@@ -166,9 +170,9 @@ public class GradientEffect implements ConfigurableEffect {
 		values.add(EffectUtil.colorValue("Top color", topColor));
 		values.add(EffectUtil.colorValue("Bottom color", bottomColor));
 		values.add(EffectUtil.intValue("Offset", offset,
-			"This setting allows you to move the gradient up or down. The gradient is normally centered on the glyph."));
+				"This setting allows you to move the gradient up or down. The gradient is normally centered on the glyph."));
 		values.add(EffectUtil.floatValue("Scale", scale, 0, 1, "This setting allows you to change the height of the gradient by a"
-			+ "percentage. The gradient is normally the height of most glyphs in the font."));
+				+ "percentage. The gradient is normally the height of most glyphs in the font."));
 		values.add(EffectUtil.booleanValue("Cyclic", cyclic, "If this setting is checked, the gradient will repeat."));
 		return values;
 	}
@@ -178,18 +182,19 @@ public class GradientEffect implements ConfigurableEffect {
 	 */
 	public void setValues(List values) {
 		for (Iterator iter = values.iterator(); iter.hasNext();) {
-			Value value = (Value)iter.next();
+			Value value = (Value) iter.next();
 			if (value.getName().equals("Top color")) {
-				topColor = (Color)value.getObject();
+				topColor = (Color) value.getObject();
 			} else if (value.getName().equals("Bottom color")) {
-				bottomColor = (Color)value.getObject();
+				bottomColor = (Color) value.getObject();
 			} else if (value.getName().equals("Offset")) {
-				offset = ((Integer)value.getObject()).intValue();
+				offset = ((Integer) value.getObject()).intValue();
 			} else if (value.getName().equals("Scale")) {
-				scale = ((Float)value.getObject()).floatValue();
+				scale = ((Float) value.getObject()).floatValue();
 			} else if (value.getName().equals("Cyclic")) {
-				cyclic = ((Boolean)value.getObject()).booleanValue();
+				cyclic = ((Boolean) value.getObject()).booleanValue();
 			}
 		}
 	}
+
 }

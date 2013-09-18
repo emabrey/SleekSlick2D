@@ -21,7 +21,7 @@ public class ScalableTest extends BasicGame {
 	public ScalableTest() {
 		super("Scalable Test For Widescreen");
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
 	 */
@@ -38,17 +38,17 @@ public class ScalableTest extends BasicGame {
 	 * @see org.newdawn.slick.Game#render(org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void render(GameContainer container, Graphics g) throws SlickException {
-		g.setColor(new Color(0.4f,0.6f,0.8f));
-		g.fillRect(0,0, 1024,568);
+		g.setColor(new Color(0.4f, 0.6f, 0.8f));
+		g.fillRect(0, 0, 1024, 568);
 		g.setColor(Color.white);
-		g.drawRect(5,5, 1024-10,568-10);
-		
+		g.drawRect(5, 5, 1024 - 10, 568 - 10);
+
 		g.setColor(Color.white);
-		g.drawString(container.getInput().getMouseX()+","+container.getInput().getMouseY(), 10, 400);
+		g.drawString(container.getInput().getMouseX() + "," + container.getInput().getMouseY(), 10, 400);
 		g.setColor(Color.red);
-		g.fillOval(container.getInput().getMouseX()-10,container.getInput().getMouseY()-10,20,20);
+		g.fillOval(container.getInput().getMouseX() - 10, container.getInput().getMouseY() - 10, 20, 20);
 	}
-	
+
 	/**
 	 * Entry point to our test
 	 * 
@@ -82,21 +82,22 @@ public class ScalableTest extends BasicGame {
 
 		// maintain aspect ratio
 		try {
-			ScalableGame game = new ScalableGame(new ScalableTest(),1024,568,true) {
+			ScalableGame game = new ScalableGame(new ScalableTest(), 1024, 568, true) {
 
 				protected void renderOverlay(GameContainer container, Graphics g) {
 					g.setColor(Color.white);
 					g.drawString("Outside The Game", 350, 10);
-					g.drawString(container.getInput().getMouseX()+","+container.getInput().getMouseY(), 400, 20);
+					g.drawString(container.getInput().getMouseX() + "," + container.getInput().getMouseY(), 400, 20);
 				}
-				
+
 			};
-			
+
 			AppGameContainer container = new AppGameContainer(game);
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

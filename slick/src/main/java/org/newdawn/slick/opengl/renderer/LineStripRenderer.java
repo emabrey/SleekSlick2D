@@ -7,13 +7,14 @@ package org.newdawn.slick.opengl.renderer;
  * @author kevin
  */
 public interface LineStripRenderer {
+
 	/** 
 	 * Check if we should apply default line fixes
 	 * 
 	 * @return True if we should apply GL fixes
 	 */
 	public abstract boolean applyGLLineFixes();
-	
+
 	/** 
 	 * Start the line strips 
 	 */
@@ -31,7 +32,7 @@ public interface LineStripRenderer {
 	 * @param y The y coordinate of the vertex
 	 */
 	public abstract void vertex(float x, float y);
-	
+
 	/**
 	 * Apply a colour to the next vertex
 	 * 

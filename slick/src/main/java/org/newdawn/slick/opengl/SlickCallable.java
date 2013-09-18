@@ -41,22 +41,22 @@ import org.newdawn.slick.opengl.renderer.Renderer;
  * @author kevin
  */
 public abstract class SlickCallable {
+
 	/** The last texture used */
 	private static Texture lastUsed;
+
 	/** True if we're in a safe block */
 	private static boolean inSafe = false;
-	
-	
+
 	/**
 	 * Enter a safe block ensuring that all the OpenGL state that slick 
 	 * uses is safe before touching the GL state directly.
 	 */
-	public static void enterSafeBlock() 
-	{
+	public static void enterSafeBlock() {
 		if (inSafe) {
 			return;
 		}
-		
+
 		Renderer.get().flush();
 		lastUsed = TextureImpl.getLastBind();
 		TextureImpl.bindNone();
@@ -67,7 +67,7 @@ public abstract class SlickCallable {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glPushMatrix();
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
-		
+
 		inSafe = true;
 	}
 
@@ -75,8 +75,7 @@ public abstract class SlickCallable {
 	 * Leave a safe block ensuring that all of Slick's OpenGL state is
 	 * restored since the last enter.
 	 */
-	public static void leaveSafeBlock() 
-	{
+	public static void leaveSafeBlock() {
 		if (!inSafe) {
 			return;
 		}
@@ -87,16 +86,16 @@ public abstract class SlickCallable {
 		GL11.glPopMatrix();
 		GL11.glPopClientAttrib();
 		GL11.glPopAttrib();
-		
+
 		if (lastUsed != null) {
 			lastUsed.bind();
 		} else {
 			TextureImpl.bindNone();
 		}
-		
+
 		inSafe = false;
 	}
-	
+
 	/**
 	 * Cause this callable to perform it's GL operations (@see performGLOperations()). This
 	 * method will block until the GL operations have been performed.
@@ -106,12 +105,12 @@ public abstract class SlickCallable {
 	 */
 	public final void call() throws SlickException {
 		enterSafeBlock();
-		
+
 		performGLOperations();
-		
+
 		leaveSafeBlock();
 	}
-	
+
 	/**
 	 * Perform the GL operations that this callable is intended to. This operations should
 	 * not effect the slick OpenGL state.
@@ -119,4 +118,5 @@ public abstract class SlickCallable {
 	 * @throws SlickException Indicates a failure of some sort. This is user exception
 	 */
 	protected abstract void performGLOperations() throws SlickException;
+
 }

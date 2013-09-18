@@ -17,41 +17,47 @@ import org.newdawn.slick.SpriteSheet;
  * @author kevin
  */
 public class PackedSheetTest extends BasicGame {
+
 	/** The sheet loaded */
 	private PackedSpriteSheet sheet;
+
 	/** The container holding this game */
 	private GameContainer container;
+
 	/** The position of the rocket */
 	private float r = -500;
+
 	/** The rocket's image */
 	private Image rocket;
+
 	/** The animation for the runner */
 	private Animation runner;
+
 	/** The angle of roatation */
 	private float ang;
-	
+
 	/**
 	 * Create a new image rendering test
 	 */
 	public PackedSheetTest() {
 		super("Packed Sprite Sheet Test");
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
 	 */
 	public void init(GameContainer container) throws SlickException {
 		this.container = container;
-		
+
 		sheet = new PackedSpriteSheet("testdata/testpack.def", Image.FILTER_NEAREST);
 		rocket = sheet.getSprite("rocket");
-		
+
 		SpriteSheet anim = sheet.getSpriteSheet("runner");
 		runner = new Animation();
-		
-		for (int y=0;y<2;y++) {
-			for (int x=0;x<6;x++) {
-				runner.addFrame(anim.getSprite(x,y), 50);
+
+		for (int y = 0; y < 2; y++) {
+			for (int x = 0; x < 6; x++) {
+				runner.addFrame(anim.getSprite(x, y), 50);
 			}
 		}
 	}
@@ -60,16 +66,16 @@ public class PackedSheetTest extends BasicGame {
 	 * @see org.newdawn.slick.BasicGame#render(org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void render(GameContainer container, Graphics g) {
-		rocket.draw((int) r,100);
-		runner.draw(250,250);
-		g.scale(1.2f,1.2f);
-		runner.draw(250,250);
-		g.scale(1.2f,1.2f);
-		runner.draw(250,250);
+		rocket.draw((int) r, 100);
+		runner.draw(250, 250);
+		g.scale(1.2f, 1.2f);
+		runner.draw(250, 250);
+		g.scale(1.2f, 1.2f);
+		runner.draw(250, 250);
 		g.resetTransform();
-		
+
 		g.rotate(670, 470, ang);
-		sheet.getSprite("floppy").draw(600,400);
+		sheet.getSprite("floppy").draw(600, 400);
 	}
 
 	/**
@@ -80,7 +86,7 @@ public class PackedSheetTest extends BasicGame {
 		if (r > 900) {
 			r = -500;
 		}
-		
+
 		ang += delta * 0.1f;
 	}
 
@@ -92,7 +98,7 @@ public class PackedSheetTest extends BasicGame {
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new PackedSheetTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
@@ -107,4 +113,5 @@ public class PackedSheetTest extends BasicGame {
 			container.exit();
 		}
 	}
+
 }

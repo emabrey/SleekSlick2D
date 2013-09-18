@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author kevin
  */
 public class GameData {
+
 	/** The list of entities added */
 	private ArrayList entities = new ArrayList();
 
@@ -26,9 +27,10 @@ public class GameData {
 	 * @param prefix The prefix to apply to all lines
 	 */
 	public void dump(String prefix) {
-		System.out.println(prefix+"GameData");
-		for (int i=0;i<entities.size();i++) {
-			((Entity) entities.get(i)).dump(prefix+"\t");
+		System.out.println(prefix + "GameData");
+		for (int i = 0; i < entities.size(); i++) {
+			((Entity) entities.get(i)).dump(prefix + "\t");
 		}
 	}
+
 }

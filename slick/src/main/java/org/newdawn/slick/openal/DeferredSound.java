@@ -14,24 +14,31 @@ import org.newdawn.slick.util.Log;
  * @author kevin
  */
 public class DeferredSound extends AudioImpl implements DeferredResource {
+
 	/** Indicate a OGG to be loaded */
 	public static final int OGG = 1;
+
 	/** Indicate a WAV to be loaded */
 	public static final int WAV = 2;
+
 	/** Indicate a MOD/XM to be loaded */
 	public static final int MOD = 3;
+
 	/** Indicate a AIF to be loaded */
 	public static final int AIF = 4;
-	
+
 	/** The type of sound to be loader */
 	private int type;
+
 	/** The location of the sound this proxy wraps */
 	private String ref;
+
 	/** The loaded sound if it's already been brought up */
 	private Audio target;
+
 	/** The input stream to load the sound this proxy wraps from (can be null) */
 	private InputStream in;
-	
+
 	/**
 	 * Create a new sound on request to load
 	 * 
@@ -42,12 +49,12 @@ public class DeferredSound extends AudioImpl implements DeferredResource {
 	public DeferredSound(String ref, InputStream in, int type) {
 		this.ref = ref;
 		this.type = type;
-		
+
 		// nasty hack to detect when we're loading from a stream
 		if (ref.equals(in.toString())) {
 			this.in = in;
 		}
-		
+
 		LoadingList.get().add(this);
 	}
 
@@ -59,7 +66,7 @@ public class DeferredSound extends AudioImpl implements DeferredResource {
 			throw new RuntimeException("Attempt to use deferred sound before loading");
 		}
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.loading.DeferredResource#load()
 	 */
@@ -68,39 +75,39 @@ public class DeferredSound extends AudioImpl implements DeferredResource {
 		SoundStore.get().setDeferredLoading(false);
 		if (in != null) {
 			switch (type) {
-			case OGG:
-				target = SoundStore.get().getOgg(in);
-				break;
-			case WAV:
-				target = SoundStore.get().getWAV(in);
-				break;
-			case MOD:
-				target = SoundStore.get().getMOD(in);
-				break;
-			case AIF:
-				target = SoundStore.get().getAIF(in);
-				break;
-			default:
-				Log.error("Unrecognised sound type: "+type);
-				break;
+				case OGG:
+					target = SoundStore.get().getOgg(in);
+					break;
+				case WAV:
+					target = SoundStore.get().getWAV(in);
+					break;
+				case MOD:
+					target = SoundStore.get().getMOD(in);
+					break;
+				case AIF:
+					target = SoundStore.get().getAIF(in);
+					break;
+				default:
+					Log.error("Unrecognised sound type: " + type);
+					break;
 			}
 		} else {
 			switch (type) {
-			case OGG:
-				target = SoundStore.get().getOgg(ref);
-				break;
-			case WAV:
-				target = SoundStore.get().getWAV(ref);
-				break;
-			case MOD:
-				target = SoundStore.get().getMOD(ref);
-				break;
-			case AIF:
-				target = SoundStore.get().getAIF(ref);
-				break;
-			default:
-				Log.error("Unrecognised sound type: "+type);
-				break;
+				case OGG:
+					target = SoundStore.get().getOgg(ref);
+					break;
+				case WAV:
+					target = SoundStore.get().getWAV(ref);
+					break;
+				case MOD:
+					target = SoundStore.get().getMOD(ref);
+					break;
+				case AIF:
+					target = SoundStore.get().getAIF(ref);
+					break;
+				default:
+					Log.error("Unrecognised sound type: " + type);
+					break;
 			}
 		}
 		SoundStore.get().setDeferredLoading(before);
@@ -111,7 +118,7 @@ public class DeferredSound extends AudioImpl implements DeferredResource {
 	 */
 	public boolean isPlaying() {
 		checkTarget();
-		
+
 		return target.isPlaying();
 	}
 
@@ -145,7 +152,7 @@ public class DeferredSound extends AudioImpl implements DeferredResource {
 		checkTarget();
 		return target.playAsSoundEffect(pitch, gain, loop, x, y, z);
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.openal.AudioImpl#stop()
 	 */

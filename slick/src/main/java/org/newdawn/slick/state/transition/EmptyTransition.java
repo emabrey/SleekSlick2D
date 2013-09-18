@@ -21,7 +21,6 @@ public class EmptyTransition implements Transition {
 		return true;
 	}
 
-
 	/**
 	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
@@ -43,9 +42,9 @@ public class EmptyTransition implements Transition {
 		// no op
 	}
 
-
 	public void init(GameState firstState, GameState secondState) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 }

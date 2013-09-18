@@ -9,6 +9,7 @@ import java.util.Date;
  * @author kevin
  */
 public class DefaultLogSystem implements LogSystem {
+
 	/** The output stream for dumping the log out on */
 	public static PrintStream out = System.out;
 
@@ -29,7 +30,7 @@ public class DefaultLogSystem implements LogSystem {
 	 * @param e The exception causing the error
 	 */
 	public void error(Throwable e) {
-		out.println(new Date()+" ERROR:" +e.getMessage());
+		out.println(new Date() + " ERROR:" + e.getMessage());
 		e.printStackTrace(out);
 	}
 
@@ -39,7 +40,7 @@ public class DefaultLogSystem implements LogSystem {
 	 * @param message The message describing the error
 	 */
 	public void error(String message) {
-		out.println(new Date()+" ERROR:" +message);
+		out.println(new Date() + " ERROR:" + message);
 	}
 
 	/**
@@ -48,7 +49,7 @@ public class DefaultLogSystem implements LogSystem {
 	 * @param message The message describing the warning
 	 */
 	public void warn(String message) {
-		out.println(new Date()+" WARN:" +message);
+		out.println(new Date() + " WARN:" + message);
 	}
 
 	/**
@@ -56,8 +57,8 @@ public class DefaultLogSystem implements LogSystem {
 	 * 
 	 * @param message The message describing the infomation
 	 */
-	public  void info(String message) {
-		out.println(new Date()+" INFO:" +message);
+	public void info(String message) {
+		out.println(new Date() + " INFO:" + message);
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class DefaultLogSystem implements LogSystem {
 	 * @param message The message describing the debug
 	 */
 	public void debug(String message) {
-		out.println(new Date()+" DEBUG:" +message);
+		out.println(new Date() + " DEBUG:" + message);
 	}
 
 	/**
@@ -79,4 +80,5 @@ public class DefaultLogSystem implements LogSystem {
 		warn(message);
 		e.printStackTrace(out);
 	}
+
 }

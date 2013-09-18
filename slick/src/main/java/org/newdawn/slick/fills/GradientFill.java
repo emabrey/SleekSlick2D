@@ -15,19 +15,25 @@ import org.newdawn.slick.geom.Vector2f;
  * @author kevin
  */
 public class GradientFill implements ShapeFill {
+
 	/** The contant offset */
-	private Vector2f none = new Vector2f(0,0);
+	private Vector2f none = new Vector2f(0, 0);
+
 	/** The start position of the gradient */
 	private Vector2f start;
+
 	/** The end poisition of the gradient */
 	private Vector2f end;
+
 	/** The starting colour of the gradient */
 	private Color startCol;
+
 	/** The ending colour of the gradient */
 	private Color endCol;
+
 	/** True if the graident is defined in shape coordinates */
 	private boolean local = false;
-	
+
 	/**
 	 * Create a gradient fill
 	 * 
@@ -38,9 +44,8 @@ public class GradientFill implements ShapeFill {
 	 * @param ey The y coordinate of the ending control point
 	 * @param endCol The colour to apply at the ending control point
 	 */
-	public GradientFill(float sx, float sy, Color startCol, float ex, float ey, Color endCol) 
-	{
-		this(sx,sy,startCol,ex,ey,endCol,false);
+	public GradientFill(float sx, float sy, Color startCol, float ex, float ey, Color endCol) {
+		this(sx, sy, startCol, ex, ey, endCol, false);
 	}
 
 	/**
@@ -54,11 +59,10 @@ public class GradientFill implements ShapeFill {
 	 * @param endCol The colour to apply at the ending control point
 	 * @param local True if the gradient is defined in local shape coordinates
 	 */
-	public GradientFill(float sx, float sy, Color startCol, float ex, float ey, Color endCol, boolean local) 
-	{
-		this(new Vector2f(sx,sy), startCol, new Vector2f(ex,ey), endCol, local);
+	public GradientFill(float sx, float sy, Color startCol, float ex, float ey, Color endCol, boolean local) {
+		this(new Vector2f(sx, sy), startCol, new Vector2f(ex, ey), endCol, local);
 	}
-	
+
 	/**
 	 * Create a gradient fill
 	 * 
@@ -75,7 +79,7 @@ public class GradientFill implements ShapeFill {
 		this.endCol = new Color(endCol);
 		this.local = local;
 	}
-	
+
 	/**
 	 * Get an inverted copy of the gradient
 	 * 
@@ -84,16 +88,16 @@ public class GradientFill implements ShapeFill {
 	public GradientFill getInvertedCopy() {
 		return new GradientFill(start, endCol, end, startCol, local);
 	}
-	
+
 	/**
 	 * Indicate if the gradient is defined in shape local coordinates
 	 * 
 	 * @param local True if the gradient is defined in shape local coordinates
- 	 */
+	 */
 	public void setLocal(boolean local) {
 		this.local = local;
 	}
-	
+
 	/**
 	 * Get the position of the start control point
 	 * 
@@ -111,7 +115,7 @@ public class GradientFill implements ShapeFill {
 	public Vector2f getEnd() {
 		return end;
 	}
-	
+
 	/**
 	 * Get the colour at the start control point
 	 * 
@@ -129,7 +133,7 @@ public class GradientFill implements ShapeFill {
 	public Color getEndColor() {
 		return endCol;
 	}
-	
+
 	/**
 	 * Set the start point's position
 	 * 
@@ -137,9 +141,9 @@ public class GradientFill implements ShapeFill {
 	 * @param y The y coordinate of the start control point
 	 */
 	public void setStart(float x, float y) {
-		setStart(new Vector2f(x,y));
+		setStart(new Vector2f(x, y));
 	}
-	
+
 	/**
 	 * Set the start control point's position
 	 * 
@@ -148,7 +152,7 @@ public class GradientFill implements ShapeFill {
 	public void setStart(Vector2f start) {
 		this.start = new Vector2f(start);
 	}
-	
+
 	/**
 	 * Set the end control point's position
 	 * 
@@ -156,9 +160,9 @@ public class GradientFill implements ShapeFill {
 	 * @param y The y coordinate of the end control point
 	 */
 	public void setEnd(float x, float y) {
-		setEnd(new Vector2f(x,y));
+		setEnd(new Vector2f(x, y));
 	}
-	
+
 	/**
 	 * Set the end control point's position
 	 * 
@@ -167,7 +171,7 @@ public class GradientFill implements ShapeFill {
 	public void setEnd(Vector2f end) {
 		this.end = new Vector2f(end);
 	}
-	
+
 	/**
 	 * Set the colour to apply at the start control's position
 	 * 
@@ -185,7 +189,7 @@ public class GradientFill implements ShapeFill {
 	public void setEndColor(Color color) {
 		this.endCol = new Color(color);
 	}
-	
+
 	/**
 	 * Get the colour that should be applied at the specified location
 	 * 
@@ -196,9 +200,9 @@ public class GradientFill implements ShapeFill {
 	 */
 	public Color colorAt(Shape shape, float x, float y) {
 		if (local) {
-			return colorAt(x-shape.getCenterX(),y-shape.getCenterY());
+			return colorAt(x - shape.getCenterX(), y - shape.getCenterY());
 		} else {
-			return colorAt(x,y);
+			return colorAt(x, y);
 		}
 	}
 
@@ -212,15 +216,15 @@ public class GradientFill implements ShapeFill {
 	public Color colorAt(float x, float y) {
 		float dx1 = end.getX() - start.getX();
 		float dy1 = end.getY() - start.getY();
-		
+
 		float dx2 = -dy1;
 		float dy2 = dx1;
 		float denom = (dy2 * dx1) - (dx2 * dy1);
-		
+
 		if (denom == 0) {
 			return Color.black;
 		}
-		
+
 		float ua = (dx2 * (start.getY() - y)) - (dy2 * (start.getX() - x));
 		ua /= denom;
 		float ub = (dx1 * (start.getY() - y)) - (dy1 * (start.getX() - x));
@@ -228,19 +232,19 @@ public class GradientFill implements ShapeFill {
 		float u = ua;
 		if (u < 0) {
 			u = 0;
-		} 
+		}
 		if (u > 1) {
 			u = 1;
 		}
 		float v = 1 - u;
 
 		// u is the proportion down the line we are
-		Color col = new Color(1,1,1,1);
+		Color col = new Color(1, 1, 1, 1);
 		col.r = (u * endCol.r) + (v * startCol.r);
 		col.b = (u * endCol.b) + (v * startCol.b);
 		col.g = (u * endCol.g) + (v * startCol.g);
 		col.a = (u * endCol.a) + (v * startCol.a);
-		
+
 		return col;
 	}
 
@@ -250,4 +254,5 @@ public class GradientFill implements ShapeFill {
 	public Vector2f getOffsetAt(Shape shape, float x, float y) {
 		return none;
 	}
+
 }

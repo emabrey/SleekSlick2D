@@ -16,16 +16,17 @@ import org.newdawn.slick.SlickException;
  * @author kevin
  */
 public class DistanceFieldTest extends BasicGame {
+
 	/** The font */
 	private AngelCodeFont font;
-	
+
 	/**
 	 * Create a new tester for the clip plane based clipping
 	 */
 	public DistanceFieldTest() {
 		super("DistanceMapTest Test");
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
 	 */
@@ -47,34 +48,34 @@ public class DistanceFieldTest extends BasicGame {
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
 		String text = "abc";
-		font.drawString(610,100,text);
-		
-		GL11.glDisable(GL11.GL_BLEND);
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
-		GL11.glAlphaFunc(GL11.GL_GEQUAL, 0.5f);
-		font.drawString(610,150,text);
-		GL11.glDisable(GL11.GL_ALPHA_TEST);
-		GL11.glEnable(GL11.GL_BLEND);
-		
-		g.translate(-50,-130);
-		g.scale(10,10);
-		font.drawString(0,0,text);
+		font.drawString(610, 100, text);
 
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glAlphaFunc(GL11.GL_GEQUAL, 0.5f);
-		font.drawString(0,26,text);
+		font.drawString(610, 150, text);
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
 		GL11.glEnable(GL11.GL_BLEND);
-		
+
+		g.translate(-50, -130);
+		g.scale(10, 10);
+		font.drawString(0, 0, text);
+
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glEnable(GL11.GL_ALPHA_TEST);
+		GL11.glAlphaFunc(GL11.GL_GEQUAL, 0.5f);
+		font.drawString(0, 26, text);
+		GL11.glDisable(GL11.GL_ALPHA_TEST);
+		GL11.glEnable(GL11.GL_BLEND);
+
 		g.resetTransform();
 		g.setColor(Color.lightGray);
 		g.drawString("Original Size on Sheet", 620, 210);
 		g.drawString("10x Scale Up", 40, 575);
-		
+
 		g.setColor(Color.darkGray);
-		g.drawRect(40, 40, 560,530);
-		g.drawRect(610, 105, 150,100);
+		g.drawRect(40, 40, 560, 530);
+		g.drawRect(610, 105, 150, 100);
 
 		g.setColor(Color.white);
 		g.drawString("512x512 Font Sheet", 620, 300);
@@ -88,7 +89,7 @@ public class DistanceFieldTest extends BasicGame {
 	 */
 	public void keyPressed(int key, char c) {
 	}
-	
+
 	/**
 	 * Entry point to our test
 	 * 
@@ -97,10 +98,11 @@ public class DistanceFieldTest extends BasicGame {
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new DistanceFieldTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

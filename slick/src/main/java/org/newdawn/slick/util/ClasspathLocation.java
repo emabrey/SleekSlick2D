@@ -9,6 +9,7 @@ import java.net.URL;
  * @author kevin
  */
 public class ClasspathLocation implements ResourceLocation {
+
 	/**
 	 * @see org.newdawn.slick.util.ResourceLocation#getResource(java.lang.String)
 	 */
@@ -22,7 +23,7 @@ public class ClasspathLocation implements ResourceLocation {
 	 */
 	public InputStream getResourceAsStream(String ref) {
 		String cpRef = ref.replace('\\', '/');
-		return ResourceLoader.class.getClassLoader().getResourceAsStream(cpRef);	
+		return ResourceLoader.class.getClassLoader().getResourceAsStream(cpRef);
 	}
 
 }

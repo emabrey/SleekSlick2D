@@ -10,11 +10,13 @@ import org.lwjgl.BufferUtils;
  * @author kevin
  */
 public class EmptyImageData implements ImageData {
+
 	/** The width of the data */
 	private int width;
+
 	/** The height of the data */
 	private int height;
-	
+
 	/**
 	 * Create an empty image data source
 	 * 
@@ -25,7 +27,7 @@ public class EmptyImageData implements ImageData {
 		this.width = width;
 		this.height = height;
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.opengl.ImageData#getDepth()
 	 */

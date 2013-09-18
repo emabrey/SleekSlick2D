@@ -21,7 +21,7 @@ public class StateBasedTest extends StateBasedGame {
 	public StateBasedTest() {
 		super("State Based Test");
 	}
-	
+
 	/**
 	 * @see org.newdawn.slick.state.StateBasedGame#initStatesList(org.newdawn.slick.GameContainer)
 	 */
@@ -30,7 +30,7 @@ public class StateBasedTest extends StateBasedGame {
 		addState(new TestState2());
 		addState(new TestState3());
 	}
-	
+
 	/**
 	 * Entry point to our test
 	 * 
@@ -39,10 +39,11 @@ public class StateBasedTest extends StateBasedGame {
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new StateBasedTest());
-			container.setDisplayMode(800,600,false);
+			container.setDisplayMode(800, 600, false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

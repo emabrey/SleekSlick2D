@@ -17,9 +17,10 @@ import org.newdawn.slick.util.Log;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class Music {
+
 	/** The music currently being played or null if none */
 	private static Music currentMusic;
-	
+
 	/**
 	 * Poll the state of the current music. This causes streaming music
 	 * to stream and checks listeners. Note that if you're using a game container
@@ -41,30 +42,40 @@ public class Music {
 			}
 		}
 	}
-	
+
 	/** The sound from FECK representing this music */
 	private Audio sound;
+
 	/** True if the music is playing */
 	private boolean playing;
+
 	/** The list of listeners waiting for notification that the music ended */
 	private ArrayList listeners = new ArrayList();
+
 	/** The volume of this music */
 	private float volume = 1.0f;
+
 	/** Start gain for fading in/out */
 	private float fadeStartGain;
+
 	/** End gain for fading in/out */
 	private float fadeEndGain;
+
 	/** Countdown for fading in/out */
 	private int fadeTime;
+
 	/** Duration for fading in/out */
 	private int fadeDuration;
+
 	/** True if music should be stopped after fading in/out */
 	private boolean stopAfterFade;
+
 	/** True if the music is being repositioned and it is therefore normal that it's not playing */
-	private boolean positioning; 
+	private boolean positioning;
+
 	/** The position that was requested */
 	private float requiredPosition = -1;
-	
+
 	/**
 	 * Create and load a piece of music (either OGG or MOD/XM)
 	 * 
@@ -93,7 +104,7 @@ public class Music {
 	 */
 	public Music(InputStream in, String ref) throws SlickException {
 		SoundStore.get().init();
-		
+
 		try {
 			if (ref.toLowerCase().endsWith(".ogg")) {
 				sound = SoundStore.get().getOgg(in);
@@ -108,10 +119,10 @@ public class Music {
 			}
 		} catch (Exception e) {
 			Log.error(e);
-			throw new SlickException("Failed to load music: "+ref);
+			throw new SlickException("Failed to load music: " + ref);
 		}
 	}
-	
+
 	/**
 	 * Create and load a piece of music (either OGG or MOD/XM)
 	 * 
@@ -122,7 +133,7 @@ public class Music {
 	public Music(URL url, boolean streamingHint) throws SlickException {
 		SoundStore.get().init();
 		String ref = url.getFile();
-		
+
 		try {
 			if (ref.toLowerCase().endsWith(".ogg")) {
 				if (streamingHint) {
@@ -141,10 +152,10 @@ public class Music {
 			}
 		} catch (Exception e) {
 			Log.error(e);
-			throw new SlickException("Failed to load sound: "+url);
+			throw new SlickException("Failed to load sound: " + url);
 		}
 	}
-	
+
 	/**
 	 * Create and load a piece of music (either OGG or MOD/XM)
 	 * 
@@ -154,7 +165,7 @@ public class Music {
 	 */
 	public Music(String ref, boolean streamingHint) throws SlickException {
 		SoundStore.get().init();
-		
+
 		try {
 			if (ref.toLowerCase().endsWith(".ogg")) {
 				if (streamingHint) {
@@ -173,7 +184,7 @@ public class Music {
 			}
 		} catch (Exception e) {
 			Log.error(e);
-			throw new SlickException("Failed to load sound: "+ref);
+			throw new SlickException("Failed to load sound: " + ref);
 		}
 	}
 
@@ -194,13 +205,13 @@ public class Music {
 	public void removeListener(MusicListener listener) {
 		listeners.remove(listener);
 	}
-	
+
 	/**
 	 * Fire notifications that this music ended
 	 */
 	private void fireMusicEnded() {
 		playing = false;
-		for (int i=0;i<listeners.size();i++) {
+		for (int i = 0; i < listeners.size(); i++) {
 			((MusicListener) listeners.get(i)).musicEnded(this);
 		}
 	}
@@ -212,22 +223,23 @@ public class Music {
 	 */
 	private void fireMusicSwapped(Music newMusic) {
 		playing = false;
-		for (int i=0;i<listeners.size();i++) {
+		for (int i = 0; i < listeners.size(); i++) {
 			((MusicListener) listeners.get(i)).musicSwapped(this, newMusic);
 		}
 	}
+
 	/**
 	 * Loop the music
 	 */
 	public void loop() {
-		loop(1.0f, 1.0f); 
+		loop(1.0f, 1.0f);
 	}
-	
+
 	/**
 	 * Play the music
 	 */
 	public void play() {
-		play(1.0f, 1.0f); 
+		play(1.0f, 1.0f);
 	}
 
 	/**
@@ -249,7 +261,7 @@ public class Music {
 	public void loop(float pitch, float volume) {
 		startMusic(pitch, volume, true);
 	}
-	
+
 	/**
 	 * play or loop the music at a given pitch and volume
 	 * @param pitch The pitch to play the music at (1.0 = default)
@@ -261,12 +273,14 @@ public class Music {
 			currentMusic.stop();
 			currentMusic.fireMusicSwapped(this);
 		}
-		
+
 		currentMusic = this;
-		if (volume < 0.0f)
+		if (volume < 0.0f) {
 			volume = 0.0f;
-		if (volume > 1.0f)
+		}
+		if (volume > 1.0f) {
 			volume = 1.0f;
+		}
 
 		sound.playAsMusic(pitch, volume, loop);
 		playing = true;
@@ -275,7 +289,7 @@ public class Music {
 			setPosition(requiredPosition);
 		}
 	}
-	
+
 	/**
 	 * Pause the music playback
 	 */
@@ -283,14 +297,14 @@ public class Music {
 		playing = false;
 		AudioImpl.pauseMusic();
 	}
-	
+
 	/**
 	 * Stop the music playing
 	 */
 	public void stop() {
 		sound.stop();
 	}
-	
+
 	/**
 	 * Resume the music playback
 	 */
@@ -298,7 +312,7 @@ public class Music {
 		playing = true;
 		AudioImpl.restartMusic();
 	}
-	
+
 	/**
 	 * Check if the music is being played
 	 * 
@@ -307,7 +321,7 @@ public class Music {
 	public boolean playing() {
 		return (currentMusic == this) && (playing);
 	}
-	
+
 	/**
 	 * Set the volume of the music as a factor of the global volume setting
 	 * 
@@ -315,12 +329,12 @@ public class Music {
 	 */
 	public void setVolume(float volume) {
 		// Bounds check
-		if(volume > 1) {
+		if (volume > 1) {
 			volume = 1;
-		} else if(volume < 0) {
+		} else if (volume < 0) {
 			volume = 0;
 		}
-		
+
 		this.volume = volume;
 		// This sound is being played as music
 		if (currentMusic == this) {
@@ -343,7 +357,7 @@ public class Music {
 	 * @param endVolume The target volume
 	 * @param stopAfterFade True if music should be stopped after fading in/out
 	 */
-	public void fade (int duration, float endVolume, boolean stopAfterFade) {
+	public void fade(int duration, float endVolume, boolean stopAfterFade) {
 		this.stopAfterFade = stopAfterFade;
 		fadeStartGain = volume;
 		fadeEndGain = endVolume;
@@ -361,7 +375,7 @@ public class Music {
 		if (!playing) {
 			return;
 		}
-       
+
 		if (fadeTime > 0) {
 			fadeTime -= delta;
 			if (fadeTime < 0) {
@@ -371,8 +385,8 @@ public class Music {
 					return;
 				}
 			}
-			
-			float offset = (fadeEndGain - fadeStartGain) * (1 - (fadeTime / (float)fadeDuration));
+
+			float offset = (fadeEndGain - fadeStartGain) * (1 - (fadeTime / (float) fadeDuration));
 			setVolume(fadeStartGain + offset);
 		}
 	}
@@ -387,7 +401,7 @@ public class Music {
 	public boolean setPosition(float position) {
 		if (playing) {
 			requiredPosition = -1;
-			
+
 			positioning = true;
 			playing = false;
 			boolean result = sound.setPosition(position);
@@ -406,7 +420,8 @@ public class Music {
 	 * 
 	 * @return The current position in seconds.
 	 */
-	public float getPosition () {
+	public float getPosition() {
 		return sound.getPosition();
 	}
+
 }

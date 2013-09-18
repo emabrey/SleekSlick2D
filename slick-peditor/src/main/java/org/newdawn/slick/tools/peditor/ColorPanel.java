@@ -16,222 +16,233 @@ import java.awt.event.ActionListener;
  * @author kevin
  */
 public class ColorPanel extends ControlPanel {
-    /**
-     * The editor used to define the change in color
-     */
-    private GradientEditor grad;
-    /**
-     * True if we should ignore update events
-     */
-    private boolean blockUpdates = false;
 
-    /**
-     * The selection for inherit the rendering settings
-     */
-    private JRadioButton inherit;
-    /**
-     * The selection for using quads
-     */
-    private JRadioButton quads;
-    /**
-     * The selection for using points
-     */
-    private JRadioButton points;
-    /**
-     * The selection for using oriented quads
-     */
-    private JCheckBox oriented;
-    /**
-     * The selection for additive blend mode
-     */
-    private JCheckBox additive;
+	/**
+	 * The editor used to define the change in color
+	 */
+	private GradientEditor grad;
 
-    /**
-     * The panel displaying the starting alpha value
-     */
-    private ValuePanel startAlpha;
-    /**
-     * The panel displayint the ending alpha value
-     */
-    private ValuePanel endAlpha;
+	/**
+	 * True if we should ignore update events
+	 */
+	private boolean blockUpdates = false;
 
-    /**
-     * Create a new panel to allow particle colour configuration
-     */
-    public ColorPanel() {
-        grad = new GradientEditor();
-        grad.setBorder(BorderFactory.createTitledBorder("Color Change"));
-        grad.setBounds(0, 0, 280, 100);
-        add(grad);
+	/**
+	 * The selection for inherit the rendering settings
+	 */
+	private JRadioButton inherit;
 
-        grad.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                updateColors();
-            }
-        });
+	/**
+	 * The selection for using quads
+	 */
+	private JRadioButton quads;
 
-        yPos += 70;
-        startAlpha = new ValuePanel("Starting Alpha", 0, 255, 255, "The alpha value for particles at their birth", false);
-        addValue("startAlpha", startAlpha);
-        endAlpha = new ValuePanel("Ending Alpha", 0, 255, 0, "The alpha value for particles at their death", false);
-        addValue("endAlpha", endAlpha);
+	/**
+	 * The selection for using points
+	 */
+	private JRadioButton points;
 
-        // rendering panel
-        JPanel renderingPrimitivePanel = new DefaultPanel();
-        renderingPrimitivePanel.setLayout(new BoxLayout(renderingPrimitivePanel, BoxLayout.X_AXIS));
+	/**
+	 * The selection for using oriented quads
+	 */
+	private JCheckBox oriented;
 
-        inherit = new JRadioButton("Inherit");
-        quads = new JRadioButton("Quads");
-        points = new JRadioButton("Points");
+	/**
+	 * The selection for additive blend mode
+	 */
+	private JCheckBox additive;
 
-        ButtonGroup group = new ButtonGroup();
-        group.add(inherit);
-        group.add(quads);
-        group.add(points);
+	/**
+	 * The panel displaying the starting alpha value
+	 */
+	private ValuePanel startAlpha;
 
-        ActionListener al = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                updateRender();
-            }
-        };
+	/**
+	 * The panel displayint the ending alpha value
+	 */
+	private ValuePanel endAlpha;
 
-        inherit.addActionListener(al);
-        inherit.setOpaque(false);
-        inherit.setSelected(true);
-        renderingPrimitivePanel.add(inherit);
+	/**
+	 * Create a new panel to allow particle colour configuration
+	 */
+	public ColorPanel() {
+		grad = new GradientEditor();
+		grad.setBorder(BorderFactory.createTitledBorder("Color Change"));
+		grad.setBounds(0, 0, 280, 100);
+		add(grad);
 
-        quads.addActionListener(al);
-        quads.setOpaque(false);
-        renderingPrimitivePanel.add(quads);
+		grad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateColors();
+			}
 
-        points.addActionListener(al);
-        points.setOpaque(false);
-        renderingPrimitivePanel.add(points);
+		});
 
-        renderingPrimitivePanel.setBounds(0, yPos + 15, 280, 45);
-        add(renderingPrimitivePanel);
-        yPos += 35;
+		yPos += 70;
+		startAlpha = new ValuePanel("Starting Alpha", 0, 255, 255, "The alpha value for particles at their birth", false);
+		addValue("startAlpha", startAlpha);
+		endAlpha = new ValuePanel("Ending Alpha", 0, 255, 0, "The alpha value for particles at their death", false);
+		addValue("endAlpha", endAlpha);
 
-        // rendering type panel
-        JPanel renderingTypePanel = new DefaultPanel();
-        renderingTypePanel.setLayout(new BoxLayout(renderingTypePanel, BoxLayout.X_AXIS));
+		// rendering panel
+		JPanel renderingPrimitivePanel = new DefaultPanel();
+		renderingPrimitivePanel.setLayout(new BoxLayout(renderingPrimitivePanel, BoxLayout.X_AXIS));
 
-        oriented = new JCheckBox("Oriented Quad");
-        oriented.addActionListener(al);
-        oriented.setOpaque(false);
-        renderingTypePanel.add(oriented);
+		inherit = new JRadioButton("Inherit");
+		quads = new JRadioButton("Quads");
+		points = new JRadioButton("Points");
 
-        additive = new JCheckBox("Additive Blending");
-        additive.addActionListener(al);
-        additive.setOpaque(false);
-        renderingTypePanel.add(additive);
+		ButtonGroup group = new ButtonGroup();
+		group.add(inherit);
+		group.add(quads);
+		group.add(points);
 
-        renderingTypePanel.setBounds(0, yPos + 15, 230, 45);
-        add(renderingTypePanel);
-        yPos += 35;
-    }
+		ActionListener al = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateRender();
+			}
 
-    /**
-     * Update the render setting
-     */
-    private void updateRender() {
-        if (inherit.isSelected()) {
-            emitter.usePoints = Particle.INHERIT_POINTS;
-            oriented.setEnabled(true);
-        }
-        if (quads.isSelected()) {
-            emitter.usePoints = Particle.USE_QUADS;
-            oriented.setEnabled(true);
-        }
-        if (points.isSelected()) {
-            emitter.usePoints = Particle.USE_POINTS;
-            oriented.setEnabled(false);
-            oriented.setSelected(false);
-        }
+		};
 
-        // oriented
-        if (oriented.isSelected())
-            emitter.useOriented = true;
-        else
-            emitter.useOriented = false;
+		inherit.addActionListener(al);
+		inherit.setOpaque(false);
+		inherit.setSelected(true);
+		renderingPrimitivePanel.add(inherit);
 
-        // additive blending
-        if (additive.isSelected())
-            emitter.useAdditive = true;
-        else
-            emitter.useAdditive = false;
-    }
+		quads.addActionListener(al);
+		quads.setOpaque(false);
+		renderingPrimitivePanel.add(quads);
 
-    /**
-     * Update the state of the emitter based on colours in the editor
-     */
-    private void updateColors() {
-        if (blockUpdates) {
-            return;
-        }
-        emitter.colors.clear();
-        for (int i = 0; i < grad.getControlPointCount(); i++) {
-            float pos = grad.getPointPos(i);
-            java.awt.Color col = grad.getColor(i);
-            Color slick = new Color(col.getRed() / 255.0f, col.getGreen() / 255.0f, col.getBlue() / 255.0f, 1.0f);
+		points.addActionListener(al);
+		points.setOpaque(false);
+		renderingPrimitivePanel.add(points);
 
-            emitter.addColorPoint(pos, slick);
-        }
-    }
+		renderingPrimitivePanel.setBounds(0, yPos + 15, 280, 45);
+		add(renderingPrimitivePanel);
+		yPos += 35;
 
-    /**
-     * @see ControlPanel#linkEmitterToFields(org.newdawn.slick.particles.ConfigurableEmitter)
-     */
-    protected void linkEmitterToFields(ConfigurableEmitter emitter) {
-        blockUpdates = true;
-        link(emitter.startAlpha, "startAlpha");
-        link(emitter.endAlpha, "endAlpha");
+		// rendering type panel
+		JPanel renderingTypePanel = new DefaultPanel();
+		renderingTypePanel.setLayout(new BoxLayout(renderingTypePanel, BoxLayout.X_AXIS));
 
-        grad.clearPoints();
-        Color start = ((ColorRecord) emitter.colors.get(0)).col;
-        Color end = ((ColorRecord) emitter.colors.get(emitter.colors.size() - 1)).col;
+		oriented = new JCheckBox("Oriented Quad");
+		oriented.addActionListener(al);
+		oriented.setOpaque(false);
+		renderingTypePanel.add(oriented);
 
-        grad.setStart(new java.awt.Color(start.r, start.g, start.b, 1.0f));
-        grad.setEnd(new java.awt.Color(end.r, end.g, end.b, 1.0f));
+		additive = new JCheckBox("Additive Blending");
+		additive.addActionListener(al);
+		additive.setOpaque(false);
+		renderingTypePanel.add(additive);
 
-        for (int i = 1; i < emitter.colors.size() - 1; i++) {
-            float pos = ((ColorRecord) emitter.colors.get(i)).pos;
-            Color col = ((ColorRecord) emitter.colors.get(i)).col;
-            grad.addPoint(pos, new java.awt.Color(col.r, col.g, col.b, 1.0f));
-        }
-        blockUpdates = false;
+		renderingTypePanel.setBounds(0, yPos + 15, 230, 45);
+		add(renderingTypePanel);
+		yPos += 35;
+	}
 
-        if (emitter.usePoints == Particle.INHERIT_POINTS) {
-            inherit.setSelected(true);
-        }
-        if (emitter.usePoints == Particle.USE_POINTS) {
-            points.setSelected(true);
-        }
-        if (emitter.usePoints == Particle.USE_QUADS) {
-            quads.setSelected(true);
-        }
-        oriented.setSelected(emitter.useOriented);
-        additive.setSelected(emitter.useAdditive);
-    }
+	/**
+	 * Update the render setting
+	 */
+	private void updateRender() {
+		if (inherit.isSelected()) {
+			emitter.usePoints = Particle.INHERIT_POINTS;
+			oriented.setEnabled(true);
+		}
+		if (quads.isSelected()) {
+			emitter.usePoints = Particle.USE_QUADS;
+			oriented.setEnabled(true);
+		}
+		if (points.isSelected()) {
+			emitter.usePoints = Particle.USE_POINTS;
+			oriented.setEnabled(false);
+			oriented.setSelected(false);
+		}
 
-    /**
-     * Get the panel controlling the alpha value of particles at the
-     * end of their life
-     *
-     * @return The panel controlling the alpha value
-     */
-    public ValuePanel getEndAlpha() {
-        return endAlpha;
-    }
+		// oriented
+		if (oriented.isSelected()) {
+			emitter.useOriented = true;
+		} else {
+			emitter.useOriented = false;
+		}
 
-    /**
-     * Get the panel controlling the alpha value of particles at the
-     * start of their life
-     *
-     * @return The panel controlling the alpha value
-     */
-    public ValuePanel getStartAlpha() {
-        return startAlpha;
-    }
+		// additive blending
+		if (additive.isSelected()) {
+			emitter.useAdditive = true;
+		} else {
+			emitter.useAdditive = false;
+		}
+	}
+
+	/**
+	 * Update the state of the emitter based on colours in the editor
+	 */
+	private void updateColors() {
+		if (blockUpdates) {
+			return;
+		}
+		emitter.colors.clear();
+		for (int i = 0; i < grad.getControlPointCount(); i++) {
+			float pos = grad.getPointPos(i);
+			java.awt.Color col = grad.getColor(i);
+			Color slick = new Color(col.getRed() / 255.0f, col.getGreen() / 255.0f, col.getBlue() / 255.0f, 1.0f);
+
+			emitter.addColorPoint(pos, slick);
+		}
+	}
+
+	/**
+	 * @see ControlPanel#linkEmitterToFields(org.newdawn.slick.particles.ConfigurableEmitter)
+	 */
+	protected void linkEmitterToFields(ConfigurableEmitter emitter) {
+		blockUpdates = true;
+		link(emitter.startAlpha, "startAlpha");
+		link(emitter.endAlpha, "endAlpha");
+
+		grad.clearPoints();
+		Color start = ((ColorRecord) emitter.colors.get(0)).col;
+		Color end = ((ColorRecord) emitter.colors.get(emitter.colors.size() - 1)).col;
+
+		grad.setStart(new java.awt.Color(start.r, start.g, start.b, 1.0f));
+		grad.setEnd(new java.awt.Color(end.r, end.g, end.b, 1.0f));
+
+		for (int i = 1; i < emitter.colors.size() - 1; i++) {
+			float pos = ((ColorRecord) emitter.colors.get(i)).pos;
+			Color col = ((ColorRecord) emitter.colors.get(i)).col;
+			grad.addPoint(pos, new java.awt.Color(col.r, col.g, col.b, 1.0f));
+		}
+		blockUpdates = false;
+
+		if (emitter.usePoints == Particle.INHERIT_POINTS) {
+			inherit.setSelected(true);
+		}
+		if (emitter.usePoints == Particle.USE_POINTS) {
+			points.setSelected(true);
+		}
+		if (emitter.usePoints == Particle.USE_QUADS) {
+			quads.setSelected(true);
+		}
+		oriented.setSelected(emitter.useOriented);
+		additive.setSelected(emitter.useAdditive);
+	}
+
+	/**
+	 * Get the panel controlling the alpha value of particles at the
+	 * end of their life
+	 *
+	 * @return The panel controlling the alpha value
+	 */
+	public ValuePanel getEndAlpha() {
+		return endAlpha;
+	}
+
+	/**
+	 * Get the panel controlling the alpha value of particles at the
+	 * start of their life
+	 *
+	 * @return The panel controlling the alpha value
+	 */
+	public ValuePanel getStartAlpha() {
+		return startAlpha;
+	}
 
 }

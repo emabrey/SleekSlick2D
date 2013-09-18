@@ -55,7 +55,7 @@ public interface MouseListener extends ControlledInputReciever {
 	 * @param newy The new y position of the mouse
 	 */
 	public abstract void mouseMoved(int oldx, int oldy, int newx, int newy);
-	
+
 	/**
 	 * Notification that mouse cursor was dragged
 	 * 

@@ -7,6 +7,7 @@ package org.newdawn.slick.openal;
  * @author kevin
  */
 public class NullAudio implements Audio {
+
 	/**
 	 * @see org.newdawn.slick.openal.Audio#getBufferID()
 	 */
