@@ -7,24 +7,34 @@ import org.newdawn.slick.particles.ParticleSystem;
 
 /**
  * A stock effect for fire usin the particle system
- *
+ * <p>
  * @author kevin
  */
 public class FireEmitter implements ParticleEmitter {
 
-	/** The x coordinate of the center of the fire effect */
+	/**
+	 * The x coordinate of the center of the fire effect
+	 */
 	private int x;
 
-	/** The y coordinate of the center of the fire effect */
+	/**
+	 * The y coordinate of the center of the fire effect
+	 */
 	private int y;
 
-	/** The particle emission rate */
+	/**
+	 * The particle emission rate
+	 */
 	private int interval = 50;
 
-	/** Time til the next particle */
+	/**
+	 * Time til the next particle
+	 */
 	private int timer;
 
-	/** The size of the initial particles */
+	/**
+	 * The size of the initial particles
+	 */
 	private float size = 40;
 
 	/**
@@ -35,7 +45,7 @@ public class FireEmitter implements ParticleEmitter {
 
 	/**
 	 * Create a default fire effect at x,y
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the fire effect
 	 * @param y The y coordinate of the fire effect
 	 */
@@ -46,7 +56,7 @@ public class FireEmitter implements ParticleEmitter {
 
 	/**
 	 * Create a default fire effect at x,y
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the fire effect
 	 * @param y The y coordinate of the fire effect
 	 * @param size The size of the particle being pumped out

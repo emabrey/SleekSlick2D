@@ -9,10 +9,9 @@ import org.newdawn.slick.particles.ConfigurableEmitter.Value;
 import java.util.HashMap;
 
 /**
- * The common bits between all the different control panels. This gives a way to link controls
- * to data elements within the emitter. Plumbing it this way saves the effort of writing
- * bespoke code for each editor type/
- *
+ * The common bits between all the different control panels. This gives a way to link controls to data elements within
+ * the emitter. Plumbing it this way saves the effort of writing bespoke code for each editor type/
+ * <p>
  * @author kevin
  */
 public abstract class ControlPanel extends DefaultPanel implements InputPanelListener {
@@ -46,8 +45,8 @@ public abstract class ControlPanel extends DefaultPanel implements InputPanelLis
 
 	/**
 	 * Add a configurable value to the mapping table
-	 *
-	 * @param name       The name of the control
+	 * <p>
+	 * @param name The name of the control
 	 * @param valuePanel The panel used to set the value in the emitter
 	 */
 	protected void addValue(String name, ValuePanel valuePanel) {
@@ -62,8 +61,8 @@ public abstract class ControlPanel extends DefaultPanel implements InputPanelLis
 
 	/**
 	 * Add a configurable range panel to the mapping table
-	 *
-	 * @param name   The name of the control
+	 * <p>
+	 * @param name The name of the control
 	 * @param minMax The panel used to set the range in the emitter
 	 */
 	protected void addMinMax(String name, MinMaxPanel minMax) {
@@ -78,7 +77,7 @@ public abstract class ControlPanel extends DefaultPanel implements InputPanelLis
 
 	/**
 	 * Set the emitter to be configured
-	 *
+	 * <p>
 	 * @param emitter The emitter to be configured
 	 */
 	public final void setTarget(ConfigurableEmitter emitter) {
@@ -89,16 +88,16 @@ public abstract class ControlPanel extends DefaultPanel implements InputPanelLis
 
 	/**
 	 * Link the fields in the emitter to the panels on this control panel
-	 *
+	 * <p>
 	 * @param emitter The emitter to be configured
 	 */
 	protected abstract void linkEmitterToFields(ConfigurableEmitter emitter);
 
 	/**
 	 * Link a emitter configurable range to a named component
-	 *
+	 * <p>
 	 * @param range The configurable range from the emitter
-	 * @param name  The name of the component to link to
+	 * @param name The name of the component to link to
 	 */
 	protected void link(Range range, String name) {
 		link(range, (MinMaxPanel) named.get(name));
@@ -106,9 +105,9 @@ public abstract class ControlPanel extends DefaultPanel implements InputPanelLis
 
 	/**
 	 * Link a emitter configurable value to a named component
-	 *
+	 * <p>
 	 * @param value The configurable value from the emitter
-	 * @param name  The name of the component to link to
+	 * @param name The name of the component to link to
 	 */
 	protected void link(Value value, String name) {
 		link(value, (ValuePanel) named.get(name));
@@ -116,7 +115,7 @@ public abstract class ControlPanel extends DefaultPanel implements InputPanelLis
 
 	/**
 	 * Link a emitter configurable value to a value panel
-	 *
+	 * <p>
 	 * @param value The configurable value from the emitter
 	 * @param panel The component to link against
 	 */
@@ -132,7 +131,7 @@ public abstract class ControlPanel extends DefaultPanel implements InputPanelLis
 
 	/**
 	 * Link a emitter configurable range to a value panel
-	 *
+	 * <p>
 	 * @param range The configurable range from the emitter
 	 * @param panel The component to link against
 	 */

@@ -13,12 +13,14 @@ import org.w3c.dom.NodeList;
 
 /**
  * A layer of tiles on the map
- * 
+ * <p>
  * @author kevin
  */
 public class Layer {
 
-	/** The code used to decode Base64 encoding */
+	/**
+	 * The code used to decode Base64 encoding
+	 */
 	private static byte[] baseCodes = new byte[256];
 
 	/**
@@ -41,39 +43,48 @@ public class Layer {
 		baseCodes['/'] = 63;
 	}
 
-	/** The map this layer belongs to */
+	/**
+	 * The map this layer belongs to
+	 */
 	private final TiledMap map;
 
-	/** The index of this layer */
+	/**
+	 * The index of this layer
+	 */
 	public int index;
 
-	/** The name of this layer - read from the XML */
+	/**
+	 * The name of this layer - read from the XML
+	 */
 	public String name;
 
 	/**
-	 * The tile data representing this data, index 0 = tileset, index 1 = tile
-	 * id
+	 * The tile data representing this data, index 0 = tileset, index 1 = tile id
 	 */
 	public int[][][] data;
 
-	/** The width of this layer */
+	/**
+	 * The width of this layer
+	 */
 	public int width;
 
-	/** The height of this layer */
+	/**
+	 * The height of this layer
+	 */
 	public int height;
 
-	/** the properties of this layer */
+	/**
+	 * the properties of this layer
+	 */
 	public Properties props;
 
 	/**
 	 * Create a new layer based on the XML definition
-	 * 
-	 * @param element
-	 *            The XML element describing the layer
-	 * @param map
-	 *            The map this layer is part of
-	 * @throws SlickException
-	 *             Indicates a failure to parse the XML layer
+	 * <p>
+	 * @param element The XML element describing the layer
+	 * @param map The map this layer is part of
+	 * <p>
+	 * @throws SlickException Indicates a failure to parse the XML layer
 	 */
 	public Layer(TiledMap map, Element element) throws SlickException {
 		this.map = map;
@@ -135,7 +146,8 @@ public class Layer {
 						}
 					}
 				}
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				Log.error(e);
 				throw new SlickException("Unable to decode base 64 block");
 			}
@@ -147,11 +159,10 @@ public class Layer {
 
 	/**
 	 * Get the gloal ID of the tile at the specified location in this layer
-	 * 
-	 * @param x
-	 *            The x coorindate of the tile
-	 * @param y
-	 *            The y coorindate of the tile
+	 * <p>
+	 * @param x The x coorindate of the tile
+	 * @param y The y coorindate of the tile
+	 * <p>
 	 * @return The global ID of the tile
 	 */
 	public int getTileID(int x, int y) {
@@ -160,13 +171,10 @@ public class Layer {
 
 	/**
 	 * Set the global tile ID at a specified location
-	 * 
-	 * @param x
-	 *            The x location to set
-	 * @param y
-	 *            The y location to set
-	 * @param tile
-	 *            The tile value to set
+	 * <p>
+	 * @param x The x location to set
+	 * @param y The y location to set
+	 * @param tile The tile value to set
 	 */
 	public void setTileID(int x, int y, int tile) {
 		if (tile == 0) {
@@ -184,29 +192,20 @@ public class Layer {
 
 	/**
 	 * Render a section of this layer
-	 * 
-	 * @param x
-	 *            The x location to render at
-	 * @param y
-	 *            The y location to render at
-	 * @param sx
-	 *            The x tile location to start rendering
-	 * @param sy
-	 *            The y tile location to start rendering
-	 * @param width
-	 *            The number of tiles across to render
-	 * @param ty
-	 *            The line of tiles to render
-	 * @param lineByLine
-	 *            True if we should render line by line, i.e. giving us a chance
-	 *            to render something else between lines
-	 * @param mapTileWidth
-	 *            the tile width specified in the map file
-	 * @param mapTileHeight
-	 *            the tile height specified in the map file
+	 * <p>
+	 * @param x The x location to render at
+	 * @param y The y location to render at
+	 * @param sx The x tile location to start rendering
+	 * @param sy The y tile location to start rendering
+	 * @param width The number of tiles across to render
+	 * @param ty The line of tiles to render
+	 * @param lineByLine True if we should render line by line, i.e. giving us a chance to render something else between
+	 * lines
+	 * @param mapTileWidth the tile width specified in the map file
+	 * @param mapTileHeight the tile height specified in the map file
 	 */
 	public void render(int x, int y, int sx, int sy, int width, int ty,
-			boolean lineByLine, int mapTileWidth, int mapTileHeight) {
+					   boolean lineByLine, int mapTileWidth, int mapTileHeight) {
 		for (int tileset = 0; tileset < map.getTileSetCount(); tileset++) {
 			TileSet set = null;
 
@@ -253,9 +252,9 @@ public class Layer {
 
 	/**
 	 * Decode a Base64 string as encoded by TilED
-	 * 
-	 * @param data
-	 *            The string of character to decode
+	 * <p>
+	 * @param data The string of character to decode
+	 * <p>
 	 * @return The byte array represented by character encoding
 	 */
 	private byte[] decodeBase64(char[] data) {

@@ -1,8 +1,5 @@
 /**
- * Filename: DataSet.java
- * Version: $Version$
- * Copyright(c) Ubiquity Software Corporation
- *         http://www.ubiquitysoftware.com 
+ * Filename: DataSet.java Version: $Version$ Copyright(c) Ubiquity Software Corporation http://www.ubiquitysoftware.com
  */
 package org.newdawn.slick.tools.hiero;
 
@@ -24,7 +21,7 @@ import java.util.ArrayList;
 
 /**
  * The data set generated from the font rendering
- *
+ * <p>
  * @author kevin
  */
 public class DataSet {
@@ -76,14 +73,14 @@ public class DataSet {
 
 	/**
 	 * Create a new data set
-	 *
-	 * @param fontName   The name of the font generated
-	 * @param size       The size of the font generated
+	 * <p>
+	 * @param fontName The name of the font generated
+	 * @param size The size of the font generated
 	 * @param lineHeight The height of a line of text
-	 * @param width      The width of the texture generated
-	 * @param height     The height of the texture generated
-	 * @param setName    The name of the set
-	 * @param imageName  The name of the image
+	 * @param width The width of the texture generated
+	 * @param height The height of the texture generated
+	 * @param setName The name of the set
+	 * @param imageName The name of the image
 	 */
 	public DataSet(String fontName, int size, int lineHeight, int width, int height, String setName, String imageName) {
 		this.fontName = fontName;
@@ -111,9 +108,9 @@ public class DataSet {
 
 	/**
 	 * Output this data set as an angel code data file
-	 *
+	 * <p>
 	 * @param imageName The name of the image to reference
-	 * @param out       The output stream to write to
+	 * @param out The output stream to write to
 	 */
 	public void toAngelCodeText(PrintStream out, String imageName) {
 		out.println("info face=\"" + fontName + "\" size=" + size + " bold=0 italic=0 charset=\"" + setName + "\" unicode=0 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1");
@@ -134,9 +131,10 @@ public class DataSet {
 
 	/**
 	 * Output this data set as an angle code XML data file
-	 *
-	 * @param out       The output stream to write to
+	 * <p>
+	 * @param out The output stream to write to
 	 * @param imageName The name of the image
+	 * <p>
 	 * @throws IOException Indicates a failure to build the XML
 	 */
 	public void toAngelCodeXML(PrintStream out, String imageName) throws IOException {
@@ -216,7 +214,8 @@ public class DataSet {
 			xformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
 			xformer.transform(source, result);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			IOException x = new IOException();
 			x.initCause(e);
@@ -227,14 +226,14 @@ public class DataSet {
 
 	/**
 	 * Add a character to the data set
-	 *
-	 * @param code     The character code
+	 * <p>
+	 * @param code The character code
 	 * @param xadvance The advance on the x axis after writing this character
-	 * @param x        The x position on the sheet of the character
-	 * @param y        The y position on the sheet of the character
-	 * @param width    The width of the character on the sheet
-	 * @param height   The height of the character on the sheet
-	 * @param yoffset  The offset on the y axis when drawing the character
+	 * @param x The x position on the sheet of the character
+	 * @param y The y position on the sheet of the character
+	 * @param width The width of the character on the sheet
+	 * @param height The height of the character on the sheet
+	 * @param yoffset The offset on the y axis when drawing the character
 	 */
 	public void addCharacter(int code, int xadvance, int x, int y, int width, int height, int yoffset) {
 		chars.add(new CharData(code, xadvance, x, y, width, height, size + yoffset));
@@ -242,8 +241,8 @@ public class DataSet {
 
 	/**
 	 * Add some kerning data
-	 *
-	 * @param first  The first character
+	 * <p>
+	 * @param first The first character
 	 * @param second The second character
 	 * @param offset The kerning offset to apply
 	 */
@@ -253,7 +252,7 @@ public class DataSet {
 
 	/**
 	 * Info about a single character
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	public class CharData {
@@ -295,14 +294,14 @@ public class DataSet {
 
 		/**
 		 * Create a new set of character data
-		 *
-		 * @param id       The character code
+		 * <p>
+		 * @param id The character code
 		 * @param xadvance The advance on the x axis after writing this character
-		 * @param x        The x position on the sheet of the character
-		 * @param y        The y position on the sheet of the character
-		 * @param width    The width of the character on the sheet
-		 * @param height   The height of the character on the sheet
-		 * @param yoffset  The offset on the y axis when drawing the character
+		 * @param x The x position on the sheet of the character
+		 * @param y The y position on the sheet of the character
+		 * @param width The width of the character on the sheet
+		 * @param height The height of the character on the sheet
+		 * @param yoffset The offset on the y axis when drawing the character
 		 */
 		public CharData(int id, int xadvance, int x, int y, int width, int height, int yoffset) {
 			this.id = id;
@@ -316,7 +315,7 @@ public class DataSet {
 
 		/**
 		 * Get the character code
-		 *
+		 * <p>
 		 * @return The character code
 		 */
 		public int getID() {
@@ -325,7 +324,7 @@ public class DataSet {
 
 		/**
 		 * Get the advance on the X axis
-		 *
+		 * <p>
 		 * @return The advance on the X axis
 		 */
 		public int getXAdvance() {
@@ -334,7 +333,7 @@ public class DataSet {
 
 		/**
 		 * Get the x position of the character on the sheet
-		 *
+		 * <p>
 		 * @return The x position of the character on the sheet
 		 */
 		public int getX() {
@@ -343,7 +342,7 @@ public class DataSet {
 
 		/**
 		 * Get the y position of the character on the sheet
-		 *
+		 * <p>
 		 * @return The y position of the character on the sheet
 		 */
 		public int getY() {
@@ -352,7 +351,7 @@ public class DataSet {
 
 		/**
 		 * Get the width of the character on the sheet
-		 *
+		 * <p>
 		 * @return The width of the character on the sheet
 		 */
 		public int getWidth() {
@@ -361,7 +360,7 @@ public class DataSet {
 
 		/**
 		 * Get the height of the character on the sheet
-		 *
+		 * <p>
 		 * @return The height of the character on the sheet
 		 */
 		public int getHeight() {
@@ -370,7 +369,7 @@ public class DataSet {
 
 		/**
 		 * The offset on the y axis when drawing the character
-		 *
+		 * <p>
 		 * @return The offset on the y axis when drawing the character
 		 */
 		public int getYOffset() {
@@ -381,7 +380,7 @@ public class DataSet {
 
 	/**
 	 * Kerning data for a particular character pair
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	public class KerningData {
@@ -403,8 +402,8 @@ public class DataSet {
 
 		/**
 		 * Create a new kerning pair
-		 *
-		 * @param first  The first character
+		 * <p>
+		 * @param first The first character
 		 * @param second The second character
 		 * @param offset The kerning offset to apply
 		 */

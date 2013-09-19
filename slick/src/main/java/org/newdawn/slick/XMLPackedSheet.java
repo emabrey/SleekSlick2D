@@ -12,22 +12,27 @@ import org.w3c.dom.NodeList;
 
 /**
  * A sprite sheet based on an XML descriptor generated from the simple slick tool
- * 
+ * <p>
  * @author kevin
  */
 public class XMLPackedSheet {
 
-	/** The full sheet image */
+	/**
+	 * The full sheet image
+	 */
 	private Image image;
 
-	/** The sprites stored on the image */
+	/**
+	 * The sprites stored on the image
+	 */
 	private HashMap sprites = new HashMap();
 
 	/**
 	 * Create a new XML packed sheet from the XML output by the slick tool
-	 * 
+	 * <p>
 	 * @param imageRef The reference to the image
 	 * @param xmlRef The reference to the XML
+	 * <p>
 	 * @throws SlickException Indicates a failure to parse the XML or read the image
 	 */
 	public XMLPackedSheet(String imageRef, String xmlRef) throws SlickException {
@@ -49,15 +54,17 @@ public class XMLPackedSheet {
 
 				sprites.put(name, image.getSubImage(x, y, width, height));
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new SlickException("Failed to parse sprite sheet XML", e);
 		}
 	}
 
 	/**
 	 * Get a sprite by it's given name
-	 * 
+	 * <p>
 	 * @param name The name of the sprite to retrieve
+	 * <p>
 	 * @return The sprite from the sheet or null if the name isn't used in this sheet
 	 */
 	public Image getSprite(String name) {

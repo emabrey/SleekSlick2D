@@ -22,7 +22,7 @@ import java.util.Map;
 
 /**
  * A wrapper that brings Java font and TTF read fonts together.
- *
+ * <p>
  * @author kevin
  */
 public class FontData {
@@ -48,17 +48,17 @@ public class FontData {
 	 * The macos list of possible font locations
 	 */
 	private static File[] macos = new File[]{new File("/System/Library/Fonts/"),
-		new File("/Library/Fonts/"),
-		new File("/System Folder/Fonts/"),
-		new File("/Network/Library/Fonts/"),
-		new File(userhome + "/Library/Fonts")
+											 new File("/Library/Fonts/"),
+											 new File("/System Folder/Fonts/"),
+											 new File("/Network/Library/Fonts/"),
+											 new File(userhome + "/Library/Fonts")
 	};
 
 	/**
 	 * The linux list of possible font locations
 	 */
 	private static File[] linux = new File[]{new File("/usr/share/fonts"),
-		new File("/usr/share/X11/fonts")
+											 new File("/usr/share/X11/fonts")
 	};
 
 	/**
@@ -108,7 +108,7 @@ public class FontData {
 
 	/**
 	 * Set the the status listener that will be notified of font loading progress
-	 *
+	 * <p>
 	 * @param listener The listener to be notified of font loading progress
 	 */
 	public static void setStatusListener(StatusListener listener) {
@@ -117,7 +117,7 @@ public class FontData {
 
 	/**
 	 * Get the list of all the font family names available
-	 *
+	 * <p>
 	 * @return The list of family names available
 	 */
 	public static String[] getFamilyNames() {
@@ -130,8 +130,9 @@ public class FontData {
 
 	/**
 	 * Get the plain version of a family name
-	 *
+	 * <p>
 	 * @param familyName The font family to retrieve
+	 * <p>
 	 * @return The plain version of the font or null if no plain version exits
 	 */
 	public static FontData getPlain(String familyName) {
@@ -142,8 +143,9 @@ public class FontData {
 
 	/**
 	 * Get the bold version of the font
-	 *
+	 * <p>
 	 * @param familyName The name of the font family
+	 * <p>
 	 * @return The bold version of the font or null if no bold version exists
 	 */
 	public static FontData getBold(String familyName) {
@@ -153,10 +155,11 @@ public class FontData {
 	}
 
 	/**
-	 * Get the bold italic  version of the font
-	 *
+	 * Get the bold italic version of the font
+	 * <p>
 	 * @param familyName The name of the font family
-	 * @return The bold italic  version of the font or null if no bold italic version exists
+	 * <p>
+	 * @return The bold italic version of the font or null if no bold italic version exists
 	 */
 	public static FontData getBoldItalic(String familyName) {
 		FontData data = (FontData) bolditalic.get(familyName);
@@ -166,8 +169,9 @@ public class FontData {
 
 	/**
 	 * Get the italic version of the font
-	 *
+	 * <p>
 	 * @param familyName The name of the font family
+	 * <p>
 	 * @return The italic version of the font or null if no italic version exists
 	 */
 	public static FontData getItalic(String familyName) {
@@ -178,9 +182,10 @@ public class FontData {
 
 	/**
 	 * Get a styled version of a particular font family
-	 *
+	 * <p>
 	 * @param familyName The name of the font family
-	 * @param style      The style (@see java.awt.Font#PLAIN)
+	 * @param style The style (@see java.awt.Font#PLAIN)
+	 * <p>
 	 * @return The styled font or null if no such font exists
 	 */
 	public static FontData getStyled(String familyName, int style) {
@@ -200,8 +205,8 @@ public class FontData {
 
 	/**
 	 * Process a directory potentially full of fonts
-	 *
-	 * @param dir   The directory of fonts to process
+	 * <p>
+	 * @param dir The directory of fonts to process
 	 * @param fonts The fonts list to add to
 	 */
 	private static void processFontDirectory(File dir, ArrayList fonts) {
@@ -256,7 +261,8 @@ public class FontData {
 					} else {
 						plain.put(famName, data);
 					}
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					if (DEBUG) {
 						System.err.println("Unable to process: " + source.getAbsolutePath() + " (" + e.getClass() + ": " + e.getMessage() + ")");
 					}
@@ -270,7 +276,7 @@ public class FontData {
 
 	/**
 	 * Get all the fonts available
-	 *
+	 * <p>
 	 * @return The list of fonts available
 	 */
 	public static FontData[] getAllFonts() {
@@ -306,7 +312,7 @@ public class FontData {
 
 	/**
 	 * Locate the linux fonts based on the XML configuration file
-	 *
+	 * <p>
 	 * @param file The location of the XML file
 	 */
 	private static void locateLinuxFonts(File file) {
@@ -359,7 +365,8 @@ public class FontData {
 
 				locateLinuxFonts(new File(inc));
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("Unable to process: " + file.getAbsolutePath());
 		}
@@ -367,7 +374,7 @@ public class FontData {
 
 	/**
 	 * Add a font directory
-	 *
+	 * <p>
 	 * @param dir The directory containing fonts
 	 */
 	public static void addFontDirectory(File dir) {
@@ -411,9 +418,10 @@ public class FontData {
 
 	/**
 	 * Create a new font data element
-	 *
-	 * @param ttf  The TTF file to read
+	 * <p>
+	 * @param ttf The TTF file to read
 	 * @param size The size of the new font
+	 * <p>
 	 * @throws IOException Indicates a failure to
 	 */
 	private FontData(InputStream ttf, float size) throws IOException {
@@ -460,7 +468,8 @@ public class FontData {
 			} else if (it) {
 				javaFont = javaFont.deriveFont(Font.ITALIC);
 			}
-		} catch (FontFormatException e) {
+		}
+		catch (FontFormatException e) {
 			IOException x = new IOException("Failed to read font");
 			x.initCause(e);
 			throw x;
@@ -475,8 +484,9 @@ public class FontData {
 
 	/**
 	 * Derive a new version of this font based on a new size
-	 *
+	 * <p>
 	 * @param size The size of the new font
+	 * <p>
 	 * @return The new font data
 	 */
 	public FontData deriveFont(float size) {
@@ -485,9 +495,10 @@ public class FontData {
 
 	/**
 	 * Derive a new version of this font based on a new size
-	 *
-	 * @param size  The size of the new font
+	 * <p>
+	 * @param size The size of the new font
 	 * @param style The style of the new font
+	 * <p>
 	 * @return The new font data
 	 */
 	public FontData deriveFont(float size, int style) {
@@ -504,7 +515,7 @@ public class FontData {
 
 	/**
 	 * Get the full name of this font
-	 *
+	 * <p>
 	 * @return The full name of this font
 	 */
 	public String getName() {
@@ -513,7 +524,7 @@ public class FontData {
 
 	/**
 	 * Get the family name of this font
-	 *
+	 * <p>
 	 * @return The family name of this font
 	 */
 	public String getFamilyName() {
@@ -522,7 +533,7 @@ public class FontData {
 
 	/**
 	 * Get the size of this instance of the font data
-	 *
+	 * <p>
 	 * @return The size of the font
 	 */
 	public float getSize() {
@@ -531,7 +542,7 @@ public class FontData {
 
 	/**
 	 * Get the Java font representing this font data
-	 *
+	 * <p>
 	 * @return The Java font representing this font data
 	 */
 	public Font getJavaFont() {
@@ -540,9 +551,10 @@ public class FontData {
 
 	/**
 	 * Get the kerning value between two characters
-	 *
-	 * @param first  The first character
+	 * <p>
+	 * @param first The first character
 	 * @param second The second character
+	 * <p>
 	 * @return The amount of kerning to apply between the two characters
 	 */
 	public int getKerning(char first, char second) {
@@ -560,11 +572,11 @@ public class FontData {
 	}
 
 	/**
-	 * Covert a "units" value to a point value based on a given
-	 * point size.
-	 *
+	 * Covert a "units" value to a point value based on a given point size.
+	 * <p>
 	 * @param ptSize The point size of the font being rendered
-	 * @param units  The units to be converted
+	 * @param units The units to be converted
+	 * <p>
 	 * @return The size in points
 	 */
 	public float convertUnitToEm(float ptSize, int units) {
@@ -573,8 +585,9 @@ public class FontData {
 
 	/**
 	 * Get the "advance" value for the given character
-	 *
+	 * <p>
 	 * @param c The character to get the advance for
+	 * <p>
 	 * @return The adavance value for the given character
 	 */
 	public float getAdvance(char c) {

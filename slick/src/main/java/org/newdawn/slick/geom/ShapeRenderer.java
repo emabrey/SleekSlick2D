@@ -10,21 +10,25 @@ import org.newdawn.slick.opengl.renderer.SGL;
 
 /**
  * @author Mark Bernard
- *
- * Use this class to render shpaes directly to OpenGL.  Allows you to bypass the Graphics class.
+ * <p>
+ * Use this class to render shpaes directly to OpenGL. Allows you to bypass the Graphics class.
  */
 public final class ShapeRenderer {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	private static SGL GL = Renderer.get();
 
-	/** The renderer to use line strips */
+	/**
+	 * The renderer to use line strips
+	 */
 	private static LineStripRenderer LSR = Renderer.getLineStripRenderer();
 
 	/**
-	 * Draw the outline of the given shape.  Only the vertices are set.  
-	 * The colour has to be set independently of this method.
-	 * 
+	 * Draw the outline of the given shape. Only the vertices are set. The colour has to be set independently of this
+	 * method.
+	 * <p>
 	 * @param shape The shape to draw.
 	 */
 	public static final void draw(Shape shape) {
@@ -52,9 +56,9 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the outline of the given shape.  Only the vertices are set.  
-	 * The colour has to be set independently of this method.
-	 * 
+	 * Draw the outline of the given shape. Only the vertices are set. The colour has to be set independently of this
+	 * method.
+	 * <p>
 	 * @param shape The shape to draw.
 	 * @param fill The fill to apply
 	 */
@@ -88,8 +92,9 @@ public final class ShapeRenderer {
 
 	/**
 	 * Check there are enough points to fill
-	 * 
+	 * <p>
 	 * @param shape THe shape we're drawing
+	 * <p>
 	 * @return True if the fill is valid
 	 */
 	public static boolean validFill(Shape shape) {
@@ -100,9 +105,9 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the the given shape filled in.  Only the vertices are set.  
-	 * The colour has to be set independently of this method.
-	 * 
+	 * Draw the the given shape filled in. Only the vertices are set. The colour has to be set independently of this
+	 * method.
+	 * <p>
 	 * @param shape The shape to fill.
 	 */
 	public static final void fill(Shape shape) {
@@ -129,9 +134,9 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the the given shape filled in.  Only the vertices are set.  
-	 * The colour has to be set independently of this method.
-	 * 
+	 * Draw the the given shape filled in. Only the vertices are set. The colour has to be set independently of this
+	 * method.
+	 * <p>
 	 * @param shape The shape to fill.
 	 * @param callback The callback that will be invoked for each shape point
 	 */
@@ -155,9 +160,9 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the the given shape filled in with a texture.  Only the vertices are set.  
-	 * The colour has to be set independently of this method.
-	 * 
+	 * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
+	 * independently of this method.
+	 * <p>
 	 * @param shape The shape to texture.
 	 * @param image The image to tile across the shape
 	 */
@@ -166,10 +171,9 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the the given shape filled in with a texture.  Only the vertices are set.  
-	 * The colour has to be set independently of this method. This method is required to 
-	 * fit the texture once across the shape.
-	 * 
+	 * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
+	 * independently of this method. This method is required to fit the texture once across the shape.
+	 * <p>
 	 * @param shape The shape to texture.
 	 * @param image The image to tile across the shape
 	 */
@@ -178,9 +182,9 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the the given shape filled in with a texture.  Only the vertices are set.  
-	 * The colour has to be set independently of this method.
-	 * 
+	 * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
+	 * independently of this method.
+	 * <p>
 	 * @param shape The shape to texture.
 	 * @param image The image to tile across the shape
 	 * @param scaleX The scale to apply on the x axis for texturing
@@ -218,10 +222,10 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the the given shape filled in with a texture.  Only the vertices are set.  
-	 * The colour has to be set independently of this method. This method is required to 
-	 * fit the texture scaleX times across the shape and scaleY times down the shape.
-	 * 
+	 * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
+	 * independently of this method. This method is required to fit the texture scaleX times across the shape and scaleY
+	 * times down the shape.
+	 * <p>
 	 * @param shape The shape to texture.
 	 * @param image The image to tile across the shape
 	 * @param scaleX The scale to apply on the x axis for texturing
@@ -270,9 +274,9 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the the given shape filled in.  Only the vertices are set.  
-	 * The colour has to be set independently of this method.
-	 * 
+	 * Draw the the given shape filled in. Only the vertices are set. The colour has to be set independently of this
+	 * method.
+	 * <p>
 	 * @param shape The shape to fill.
 	 * @param fill The fill to apply
 	 */
@@ -303,16 +307,17 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the the given shape filled in with a texture.  Only the vertices are set.  
-	 * The colour has to be set independently of this method.
-	 * 
+	 * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
+	 * independently of this method.
+	 * <p>
 	 * @param shape The shape to texture.
 	 * @param image The image to tile across the shape
 	 * @param scaleX The scale to apply on the x axis for texturing
 	 * @param scaleY The scale to apply on the y axis for texturing
 	 * @param fill The fill to apply
 	 */
-	public static final void texture(final Shape shape, final Image image, final float scaleX, final float scaleY, final ShapeFill fill) {
+	public static final void texture(final Shape shape, final Image image, final float scaleX, final float scaleY,
+									 final ShapeFill fill) {
 		if (!validFill(shape)) {
 			return;
 		}
@@ -350,9 +355,9 @@ public final class ShapeRenderer {
 	}
 
 	/**
-	 * Draw the the given shape filled in with a texture.  Only the vertices are set.  
-	 * The colour has to be set independently of this method.
-	 * 
+	 * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
+	 * independently of this method.
+	 * <p>
 	 * @param shape The shape to texture.
 	 * @param image The image to tile across the shape
 	 * @param gen The texture coordinate generator to create coordiantes for the shape
@@ -382,17 +387,18 @@ public final class ShapeRenderer {
 
 	/**
 	 * Description of some feature that will be applied to each point render
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	private static interface PointCallback {
 
-		/** 
+		/**
 		 * Apply feature before the call to glVertex
-		 * 
+		 * <p>
 		 * @param shape The shape the point belongs to
 		 * @param x The x poisiton the vertex will be at
 		 * @param y The y position the vertex will be at
+		 * <p>
 		 * @return The new coordinates of null
 		 */
 		float[] preRenderPoint(Shape shape, float x, float y);

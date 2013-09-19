@@ -21,12 +21,14 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A test to view the different transitions that are currently implemented
- * 
+ * <p>
  * @author kevin
  */
 public class TransitionTest extends StateBasedGame {
 
-	/** The transitions under test */
+	/**
+	 * The transitions under test
+	 */
 	private Class[][] transitions = new Class[][]{
 		{null, VerticalSplitTransition.class},
 		{FadeOutTransition.class, FadeInTransition.class},
@@ -35,7 +37,9 @@ public class TransitionTest extends StateBasedGame {
 		{null, BlobbyTransition.class},
 		{null, SelectTransition.class},};
 
-	/** The index of the next transition to use */
+	/**
+	 * The index of the next transition to use
+	 */
 	private int index;
 
 	/**
@@ -56,7 +60,7 @@ public class TransitionTest extends StateBasedGame {
 
 	/**
 	 * Get the next transition pair that we'lluse
-	 * 
+	 * <p>
 	 * @return The pair of transitions used to enter and leave the next state
 	 */
 	public Transition[] getNextTransitionPair() {
@@ -69,7 +73,8 @@ public class TransitionTest extends StateBasedGame {
 			if (transitions[index][1] != null) {
 				pair[1] = (Transition) transitions[index][1].newInstance();
 			}
-		} catch (Throwable e) {
+		}
+		catch (Throwable e) {
 			Log.error(e);
 		}
 
@@ -83,26 +88,34 @@ public class TransitionTest extends StateBasedGame {
 
 	/**
 	 * A test state that just displayed one image full scren
-	 * 
+	 * <p>
 	 * @author kevin
 	 */
 	private class ImageState extends BasicGameState {
 
-		/** The id of this state */
+		/**
+		 * The id of this state
+		 */
 		private int id;
 
-		/** The next state we'll move to */
+		/**
+		 * The next state we'll move to
+		 */
 		private int next;
 
-		/** The reference to the image to be displayed */
+		/**
+		 * The reference to the image to be displayed
+		 */
 		private String ref;
 
-		/** The loaded image */
+		/**
+		 * The loaded image
+		 */
 		private Image image;
 
 		/**
 		 * Create a new image state
-		 * 
+		 * <p>
 		 * @param id The id of the this state
 		 * @param ref The reference to the image to display
 		 * @param next The next state we'll mvoe to
@@ -121,14 +134,16 @@ public class TransitionTest extends StateBasedGame {
 		}
 
 		/**
-		 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
+		 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer,
+		 * org.newdawn.slick.state.StateBasedGame)
 		 */
 		public void init(GameContainer container, StateBasedGame game) throws SlickException {
 			image = new Image(ref);
 		}
 
 		/**
-		 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
+		 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer,
+		 * org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
 		 */
 		public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 			image.draw(0, 0, 800, 600);
@@ -137,7 +152,8 @@ public class TransitionTest extends StateBasedGame {
 		}
 
 		/**
-		 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
+		 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer,
+		 * org.newdawn.slick.state.StateBasedGame, int)
 		 */
 		public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 			if (container.getInput().isKeyPressed(Input.KEY_SPACE)) {
@@ -150,9 +166,8 @@ public class TransitionTest extends StateBasedGame {
 
 	/**
 	 * Entry point to our test
-	 * 
-	 * @param argv
-	 *            The arguments passed to the test
+	 * <p>
+	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
 		try {
@@ -160,7 +175,8 @@ public class TransitionTest extends StateBasedGame {
 					new TransitionTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

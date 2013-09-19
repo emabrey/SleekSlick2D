@@ -10,53 +10,78 @@ import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 /**
- * A transition that moves to the next as though it was selected by some background menu. Note
- * this transition is provided as an example more than intended for use. The values contained 
- * are designed for 800x600 resolution.
- * 
+ * A transition that moves to the next as though it was selected by some background menu. Note this transition is
+ * provided as an example more than intended for use. The values contained are designed for 800x600 resolution.
+ * <p>
  * This is an enter transition
- * 
+ * <p>
  * @author kevin
  */
 public class SelectTransition implements Transition {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
-	/** The previous state */
+	/**
+	 * The previous state
+	 */
 	private GameState prev;
 
-	/** True if the state has finished */
+	/**
+	 * True if the state has finished
+	 */
 	private boolean finish;
 
-	/** The background applied under the previous state if any */
+	/**
+	 * The background applied under the previous state if any
+	 */
 	private Color background;
 
-	/** The scale of the first state */
+	/**
+	 * The scale of the first state
+	 */
 	private float scale1 = 1;
 
-	/** The x coordinate to render the first state */
+	/**
+	 * The x coordinate to render the first state
+	 */
 	private float xp1 = 0;
 
-	/** The y coordinate to render the first state */
+	/**
+	 * The y coordinate to render the first state
+	 */
 	private float yp1 = 0;
 
-	/** The scale of the second state */
+	/**
+	 * The scale of the second state
+	 */
 	private float scale2 = 0.4f;
 
-	/** The x coordinate to render the second state */
+	/**
+	 * The x coordinate to render the second state
+	 */
 	private float xp2 = 0;
 
-	/** The y coordinate to render the second state */
+	/**
+	 * The y coordinate to render the second state
+	 */
 	private float yp2 = 0;
 
-	/** True if this transition has been initialised */
+	/**
+	 * True if this transition has been initialised
+	 */
 	private boolean init = false;
 
-	/** True if the move back of the first state is complete */
+	/**
+	 * True if the move back of the first state is complete
+	 */
 	private boolean moveBackDone = false;
 
-	/** The length of the pause between selection */
+	/**
+	 * The length of the pause between selection
+	 */
 	private int pause = 300;
 
 	/**
@@ -68,7 +93,7 @@ public class SelectTransition implements Transition {
 
 	/**
 	 * Create a new transition
-	 * 
+	 * <p>
 	 * @param background The background colour to draw under the previous state
 	 */
 	public SelectTransition(Color background) {
@@ -76,7 +101,8 @@ public class SelectTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#init(org.newdawn.slick.state.GameState, org.newdawn.slick.state.GameState)
+	 * @see org.newdawn.slick.state.transition.Transition#init(org.newdawn.slick.state.GameState,
+	 * org.newdawn.slick.state.GameState)
 	 */
 	public void init(GameState firstState, GameState secondState) {
 		prev = secondState;
@@ -90,7 +116,8 @@ public class SelectTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void postRender(StateBasedGame game, GameContainer container, Graphics g) throws SlickException {
 		g.resetTransform();
@@ -106,10 +133,11 @@ public class SelectTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void preRender(StateBasedGame game, GameContainer container,
-			Graphics g) throws SlickException {
+						  Graphics g) throws SlickException {
 		if (moveBackDone) {
 			g.translate(xp1, yp1);
 			g.scale(scale1, scale1);
@@ -125,7 +153,8 @@ public class SelectTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, int)
+	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, int)
 	 */
 	public void update(StateBasedGame game, GameContainer container, int delta)
 			throws SlickException {

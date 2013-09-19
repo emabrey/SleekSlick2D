@@ -17,7 +17,7 @@ import java.nio.FloatBuffer;
 
 /**
  * A test for slick callables giving the chance to perform normal GL in mid Slick render
- *
+ * <p>
  * @author kevin
  */
 public class SlickCallableTest extends BasicGame {
@@ -91,9 +91,8 @@ public class SlickCallableTest extends BasicGame {
 	}
 
 	/**
-	 * Render the GL scene, this isn't efficient and if you know
-	 * OpenGL I'm assuming you can see why. If not, you probably
-	 * don't want to use this feature anyway
+	 * Render the GL scene, this isn't efficient and if you know OpenGL I'm assuming you can see why. If not, you
+	 * probably don't want to use this feature anyway
 	 */
 	public void renderGL() {
 		FloatBuffer pos = BufferUtils.createFloatBuffer(4);
@@ -123,12 +122,12 @@ public class SlickCallableTest extends BasicGame {
 
 	/**
 	 * Render a single gear
-	 *
+	 * <p>
 	 * @param inner_radius The inner radius of the gear
 	 * @param outer_radius The outer radius of the gear
-	 * @param width        The width/depth of the gear
-	 * @param teeth        The number of teeth
-	 * @param tooth_depth  The depth of each tooth
+	 * @param width The width/depth of the gear
+	 * @param teeth The number of teeth
+	 * @param tooth_depth The depth of each tooth
 	 */
 	private void gear(float inner_radius, float outer_radius, float width, int teeth, float tooth_depth) {
 		int i;
@@ -245,7 +244,7 @@ public class SlickCallableTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -253,7 +252,8 @@ public class SlickCallableTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new SlickCallableTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

@@ -2,25 +2,24 @@ package org.newdawn.slick;
 
 /**
  * Description of classes that respond to mouse related input events
- * 
+ * <p>
  * @author kevin
  */
 public interface MouseListener extends ControlledInputReciever {
 
 	/**
 	 * Notification that the mouse wheel position was updated
-	 * 
+	 * <p>
 	 * @param change The amount of the wheel has moved
 	 */
 	public abstract void mouseWheelMoved(int change);
 
 	/**
-	 * Notification that a mouse button was clicked. Due to double click
-	 * handling the single click may be delayed slightly. For absolute notification
-	 * of single clicks use mousePressed().
-	 * 
+	 * Notification that a mouse button was clicked. Due to double click handling the single click may be delayed
+	 * slightly. For absolute notification of single clicks use mousePressed().
+	 * <p>
 	 * To be absolute this method should only be used when considering double clicks
-	 * 
+	 * <p>
 	 * @param button The index of the button (starting at 0)
 	 * @param x The x position of the mouse when the button was pressed
 	 * @param y The y position of the mouse when the button was pressed
@@ -30,7 +29,7 @@ public interface MouseListener extends ControlledInputReciever {
 
 	/**
 	 * Notification that a mouse button was pressed
-	 * 
+	 * <p>
 	 * @param button The index of the button (starting at 0)
 	 * @param x The x position of the mouse when the button was pressed
 	 * @param y The y position of the mouse when the button was pressed
@@ -39,7 +38,7 @@ public interface MouseListener extends ControlledInputReciever {
 
 	/**
 	 * Notification that a mouse button was released
-	 * 
+	 * <p>
 	 * @param button The index of the button (starting at 0)
 	 * @param x The x position of the mouse when the button was released
 	 * @param y The y position of the mouse when the button was released
@@ -48,7 +47,7 @@ public interface MouseListener extends ControlledInputReciever {
 
 	/**
 	 * Notification that mouse cursor was moved
-	 * 
+	 * <p>
 	 * @param oldx The old x position of the mouse
 	 * @param oldy The old y position of the mouse
 	 * @param newx The new x position of the mouse
@@ -58,7 +57,7 @@ public interface MouseListener extends ControlledInputReciever {
 
 	/**
 	 * Notification that mouse cursor was dragged
-	 * 
+	 * <p>
 	 * @param oldx The old x position of the mouse
 	 * @param oldy The old y position of the mouse
 	 * @param newx The new x position of the mouse

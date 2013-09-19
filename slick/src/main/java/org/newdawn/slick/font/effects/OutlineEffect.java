@@ -14,21 +14,29 @@ import org.newdawn.slick.font.Glyph;
 
 /**
  * Strokes glyphs with an outline.
- * 
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class OutlineEffect implements ConfigurableEffect {
 
-	/** The width of the outline in pixels */
+	/**
+	 * The width of the outline in pixels
+	 */
 	private float width = 2;
 
-	/** The colour of the outline */
+	/**
+	 * The colour of the outline
+	 */
 	private Color color = Color.black;
 
-	/** The type of join at the line joins of the out line */
+	/**
+	 * The type of join at the line joins of the out line
+	 */
 	private int join = BasicStroke.JOIN_BEVEL;
 
-	/** The stroke used to draw the outline */
+	/**
+	 * The stroke used to draw the outline
+	 */
 	private Stroke stroke;
 
 	/**
@@ -39,7 +47,7 @@ public class OutlineEffect implements ConfigurableEffect {
 
 	/**
 	 * Create a new effect to draw the outline of the text
-	 * 
+	 * <p>
 	 * @param width The width of the outline
 	 * @param color The colour of the outline
 	 */
@@ -49,7 +57,8 @@ public class OutlineEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D, org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
+	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D,
+	 * org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
 	 */
 	public void draw(BufferedImage image, Graphics2D g, UnicodeFont unicodeFont, Glyph glyph) {
 		g = (Graphics2D) g.create();
@@ -65,7 +74,7 @@ public class OutlineEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the width of the outline being drawn
-	 * 
+	 * <p>
 	 * @return The width of the outline being drawn
 	 */
 	public float getWidth() {
@@ -73,9 +82,8 @@ public class OutlineEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * Sets the width of the outline. The glyphs will need padding so the 
-	 * outline doesn't get clipped.
-	 * 
+	 * Sets the width of the outline. The glyphs will need padding so the outline doesn't get clipped.
+	 * <p>
 	 * @param width The width of the outline being drawn
 	 */
 	public void setWidth(int width) {
@@ -84,7 +92,7 @@ public class OutlineEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the colour of the outline being drawn
-	 * 
+	 * <p>
 	 * @return The colour of the outline being drawn
 	 */
 	public Color getColor() {
@@ -93,7 +101,7 @@ public class OutlineEffect implements ConfigurableEffect {
 
 	/**
 	 * Set the colour of the outline being drawn
-	 * 
+	 * <p>
 	 * @param color The colour of the outline to draw
 	 */
 	public void setColor(Color color) {
@@ -102,8 +110,8 @@ public class OutlineEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the join type as indicated by @see BasicStroke
-	 * 
-	 * @return The join type between segments in the outline 
+	 * <p>
+	 * @return The join type between segments in the outline
 	 */
 	public int getJoin() {
 		return join;
@@ -111,7 +119,7 @@ public class OutlineEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the stroke being used to draw the outline
-	 * 
+	 * <p>
 	 * @return The stroke being used to draw the outline
 	 */
 	public Stroke getStroke() {
@@ -123,9 +131,8 @@ public class OutlineEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * Sets the stroke to use for the outline. If this is set, 
-	 * the other outline settings are ignored.
-	 * 
+	 * Sets the stroke to use for the outline. If this is set, the other outline settings are ignored.
+	 * <p>
 	 * @param stroke The stroke to be used to draw the outline
 	 */
 	public void setStroke(Stroke stroke) {
@@ -133,10 +140,10 @@ public class OutlineEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * Sets how the corners of the outline are drawn. This is usually only noticeable 
-	 * at large outline widths.
-	 * 
-	 * @param join One of: {@link BasicStroke#JOIN_BEVEL}, {@link BasicStroke#JOIN_MITER}, {@link BasicStroke#JOIN_ROUND}
+	 * Sets how the corners of the outline are drawn. This is usually only noticeable at large outline widths.
+	 * <p>
+	 * @param join One of:
+	 * {@link BasicStroke#JOIN_BEVEL}, {@link BasicStroke#JOIN_MITER}, {@link BasicStroke#JOIN_ROUND}
 	 */
 	public void setJoin(int join) {
 		this.join = join;
@@ -157,8 +164,11 @@ public class OutlineEffect implements ConfigurableEffect {
 		values.add(EffectUtil.colorValue("Color", color));
 		values.add(EffectUtil.floatValue("Width", width, 0.1f, 999, "This setting controls the width of the outline. "
 				+ "The glyphs will need padding so the outline doesn't get clipped."));
-		values.add(EffectUtil.optionValue("Join", String.valueOf(join), new String[][]{{"Bevel", BasicStroke.JOIN_BEVEL + ""},
-		{"Miter", BasicStroke.JOIN_MITER + ""}, {"Round", BasicStroke.JOIN_ROUND + ""}},
+		values.add(EffectUtil.optionValue("Join", String.valueOf(join), new String[][]{{"Bevel",
+																						BasicStroke.JOIN_BEVEL + ""},
+																					   {"Miter",
+																						BasicStroke.JOIN_MITER + ""}, {
+			"Round", BasicStroke.JOIN_ROUND + ""}},
 				"This setting defines how the corners of the outline are drawn. "
 				+ "This is usually only noticeable at large outline widths."));
 		return values;

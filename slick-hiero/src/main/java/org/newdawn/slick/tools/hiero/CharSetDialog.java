@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * A dialog to allow the configuration of a character set
- *
+ * <p>
  * @author kevin
  */
 public class CharSetDialog extends JDialog {
@@ -28,9 +28,9 @@ public class CharSetDialog extends JDialog {
 
 	/**
 	 * Create a new dialog
-	 *
+	 * <p>
 	 * @param parent The parent window
-	 * @param s      The character set being edited
+	 * @param s The character set being edited
 	 */
 	public CharSetDialog(Hiero parent, CharSet s) {
 		super(parent, "Editing " + s.getName(), true);
@@ -56,7 +56,8 @@ public class CharSetDialog extends JDialog {
 				try {
 					set.save(set.getSource());
 					dispose();
-				} catch (IOException x) {
+				}
+				catch (IOException x) {
 					x.printStackTrace();
 					JOptionPane.showMessageDialog(CharSetDialog.this, "Failed to resave character set");
 				}
@@ -73,7 +74,8 @@ public class CharSetDialog extends JDialog {
 					}
 					newSetName = name;
 					dispose();
-				} catch (IOException x) {
+				}
+				catch (IOException x) {
 					x.printStackTrace();
 					JOptionPane.showMessageDialog(CharSetDialog.this, "Failed to resave character set");
 				}
@@ -99,7 +101,7 @@ public class CharSetDialog extends JDialog {
 
 	/**
 	 * Get the new character set created
-	 *
+	 * <p>
 	 * @return The name of the new set or null if no set was generated
 	 */
 	public String getNewSet() {
@@ -108,7 +110,7 @@ public class CharSetDialog extends JDialog {
 
 	/**
 	 * A panel to display the selected characters
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	public class CharsPanel extends JPanel {
@@ -150,9 +152,9 @@ public class CharSetDialog extends JDialog {
 
 		/**
 		 * Set the tile at a given location
-		 *
-		 * @param x            The x position
-		 * @param y            The y position
+		 * <p>
+		 * @param x The x position
+		 * @param y The y position
 		 * @param updateIfSame True if we should update if it's the same as the last update
 		 */
 		private void select(int x, int y, boolean updateIfSame) {

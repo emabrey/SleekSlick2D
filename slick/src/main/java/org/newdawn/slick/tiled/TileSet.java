@@ -19,61 +19,84 @@ import org.w3c.dom.NodeList;
 
 /**
  * A holder for tileset information
- * 
+ * <p>
  * @author kevin
  */
 public class TileSet {
 
-	/** The map this tileset was loaded as part of */
+	/**
+	 * The map this tileset was loaded as part of
+	 */
 	private final TiledMap map;
 
-	/** The index of the tile set */
+	/**
+	 * The index of the tile set
+	 */
 	public int index;
 
-	/** The name of the tile set */
+	/**
+	 * The name of the tile set
+	 */
 	public String name;
 
-	/** The first global tile id in the set */
+	/**
+	 * The first global tile id in the set
+	 */
 	public int firstGID;
 
-	/** The local global tile id in the set */
+	/**
+	 * The local global tile id in the set
+	 */
 	public int lastGID = Integer.MAX_VALUE;
 
-	/** The width of the tiles */
+	/**
+	 * The width of the tiles
+	 */
 	public int tileWidth;
 
-	/** The height of the tiles */
+	/**
+	 * The height of the tiles
+	 */
 	public int tileHeight;
 
-	/** The image containing the tiles */
+	/**
+	 * The image containing the tiles
+	 */
 	public SpriteSheet tiles;
 
-	/** The number of tiles across the sprite sheet */
+	/**
+	 * The number of tiles across the sprite sheet
+	 */
 	public int tilesAcross;
 
-	/** The number of tiles down the sprite sheet */
+	/**
+	 * The number of tiles down the sprite sheet
+	 */
 	public int tilesDown;
 
-	/** The properties for each tile */
+	/**
+	 * The properties for each tile
+	 */
 	private HashMap props = new HashMap();
 
-	/** The padding of the tiles */
+	/**
+	 * The padding of the tiles
+	 */
 	protected int tileSpacing = 0;
 
-	/** The margin of the tileset */
+	/**
+	 * The margin of the tileset
+	 */
 	protected int tileMargin = 0;
 
 	/**
 	 * Create a tile set based on an XML definition
-	 * 
-	 * @param element
-	 *            The XML describing the tileset
-	 * @param map
-	 *            The map this tileset was loaded from (gives context to paths)
-	 * @param loadImage
-	 *            True if we should load the image (useful in headless mode)
-	 * @throws SlickException
-	 *             Indicates a failure to parse the tileset
+	 * <p>
+	 * @param element The XML describing the tileset
+	 * @param map The map this tileset was loaded from (gives context to paths)
+	 * @param loadImage True if we should load the image (useful in headless mode)
+	 * <p>
+	 * @throws SlickException Indicates a failure to parse the tileset
 	 */
 	public TileSet(TiledMap map, Element element, boolean loadImage)
 			throws SlickException {
@@ -92,7 +115,8 @@ public class TileSet {
 				Element docElement = doc.getDocumentElement();
 				element = docElement; // (Element)
 				// docElement.getElementsByTagName("tileset").item(0);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				Log.error(e);
 				throw new SlickException(
 						"Unable to load or parse sourced tileset: "
@@ -163,7 +187,7 @@ public class TileSet {
 
 	/**
 	 * Get the width of each tile in this set
-	 * 
+	 * <p>
 	 * @return The width of each tile in this set
 	 */
 	public int getTileWidth() {
@@ -172,7 +196,7 @@ public class TileSet {
 
 	/**
 	 * Get the height of each tile in this set
-	 * 
+	 * <p>
 	 * @return The height of each tile in this set
 	 */
 	public int getTileHeight() {
@@ -181,7 +205,7 @@ public class TileSet {
 
 	/**
 	 * Get the spacing between tiles in this set
-	 * 
+	 * <p>
 	 * @return The spacing between tiles in this set
 	 */
 	public int getTileSpacing() {
@@ -190,7 +214,7 @@ public class TileSet {
 
 	/**
 	 * Get the margin around tiles in this set
-	 * 
+	 * <p>
 	 * @return The maring around tiles in this set
 	 */
 	public int getTileMargin() {
@@ -199,9 +223,8 @@ public class TileSet {
 
 	/**
 	 * Set the image to use for this sprite sheet image to use for this tileset
-	 * 
-	 * @param image
-	 *            The image to use for this tileset
+	 * <p>
+	 * @param image The image to use for this tileset
 	 */
 	public void setTileSetImage(Image image) {
 		tiles = new SpriteSheet(image, tileWidth, tileHeight, tileSpacing,
@@ -221,11 +244,10 @@ public class TileSet {
 
 	/**
 	 * Get the properties for a specific tile in this tileset
-	 * 
-	 * @param globalID
-	 *            The global ID of the tile whose properties should be retrieved
-	 * @return The properties for the specified tile, or null if no properties
-	 *         are defined
+	 * <p>
+	 * @param globalID The global ID of the tile whose properties should be retrieved
+	 * <p>
+	 * @return The properties for the specified tile, or null if no properties are defined
 	 */
 	public Properties getProperties(int globalID) {
 		return (Properties) props.get(new Integer(globalID));
@@ -233,9 +255,9 @@ public class TileSet {
 
 	/**
 	 * Get the x position of a tile on this sheet
-	 * 
-	 * @param id
-	 *            The tileset specific ID (i.e. not the global one)
+	 * <p>
+	 * @param id The tileset specific ID (i.e. not the global one)
+	 * <p>
 	 * @return The index of the tile on the x-axis
 	 */
 	public int getTileX(int id) {
@@ -244,9 +266,9 @@ public class TileSet {
 
 	/**
 	 * Get the y position of a tile on this sheet
-	 * 
-	 * @param id
-	 *            The tileset specific ID (i.e. not the global one)
+	 * <p>
+	 * @param id The tileset specific ID (i.e. not the global one)
+	 * <p>
 	 * @return The index of the tile on the y-axis
 	 */
 	public int getTileY(int id) {
@@ -255,9 +277,8 @@ public class TileSet {
 
 	/**
 	 * Set the limit of the tiles in this set
-	 * 
-	 * @param limit
-	 *            The limit of the tiles in this set
+	 * <p>
+	 * @param limit The limit of the tiles in this set
 	 */
 	public void setLimit(int limit) {
 		lastGID = limit;
@@ -265,9 +286,9 @@ public class TileSet {
 
 	/**
 	 * Check if this tileset contains a particular tile
-	 * 
-	 * @param gid
-	 *            The global id to seach for
+	 * <p>
+	 * @param gid The global id to seach for
+	 * <p>
 	 * @return True if the ID is contained in this tileset
 	 */
 	public boolean contains(int gid) {

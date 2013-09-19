@@ -7,25 +7,28 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A static utility to create the appropriate image data for a particular reference.
- *
+ * <p>
  * @author kevin
  */
 public class ImageDataFactory {
 
-	/** True if we're going to use the native PNG loader - cached so it doesn't have
-	 *  the security check repeatedly
+	/**
+	 * True if we're going to use the native PNG loader - cached so it doesn't have the security check repeatedly
 	 */
 	private static boolean usePngLoader = true;
 
-	/** True if the PNG loader property has been checked */
+	/**
+	 * True if the PNG loader property has been checked
+	 */
 	private static boolean pngLoaderPropertyChecked = false;
 
-	/** The name of the PNG loader configuration property */
+	/**
+	 * The name of the PNG loader configuration property
+	 */
 	private static final String PNG_LOADER = "org.newdawn.slick.pngloader";
 
 	/**
-	 * Check PNG loader property. If set the native PNG loader will
-	 * not be used.
+	 * Check PNG loader property. If set the native PNG loader will not be used.
 	 */
 	private static void checkProperty() {
 		if (!pngLoaderPropertyChecked) {
@@ -44,7 +47,8 @@ public class ImageDataFactory {
 					}
 
 				});
-			} catch (Throwable e) {
+			}
+			catch (Throwable e) {
 				// ignore, security failure - probably an applet
 			}
 		}
@@ -52,8 +56,9 @@ public class ImageDataFactory {
 
 	/**
 	 * Create an image data that is appropriate for the reference supplied
-	 * 
+	 * <p>
 	 * @param ref The reference to the image to retrieve
+	 * <p>
 	 * @return The image data that can be used to retrieve the data for that resource
 	 */
 	public static LoadableImageData getImageDataFor(String ref) {

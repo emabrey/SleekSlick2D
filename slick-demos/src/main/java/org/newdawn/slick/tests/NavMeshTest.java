@@ -21,7 +21,7 @@ import java.io.IOException;
 
 /**
  * A test to show nav-mesh generation on tile based maps.
- *
+ * <p>
  * @author kevin
  */
 public class NavMeshTest extends BasicGame implements PathFindingContext {
@@ -85,7 +85,7 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 	/**
 	 * Initialise resources and the map data
-	 *
+	 * <p>
 	 * @param container the container the game is running in
 	 */
 	public void init(GameContainer container) throws SlickException {
@@ -93,7 +93,8 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 		try {
 			dataMap = new DataMap("testdata/map.dat");
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load map data", e);
 		}
 		builder = new NavMeshBuilder();
@@ -117,9 +118,9 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 	/**
 	 * Render the game - in this case render the map and diagnostic data
-	 *
+	 * <p>
 	 * @param container The container we're running the game in
-	 * @param g         The graphics context on which to render
+	 * @param g The graphics context on which to render
 	 */
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
@@ -215,7 +216,7 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 	/**
 	 * A simple raw map implementation for testing purposes
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	private class DataMap implements TileBasedMap {
@@ -227,8 +228,9 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 		/**
 		 * Create a new map loading it from a file
-		 *
+		 * <p>
 		 * @param ref The location to load the map from
+		 * <p>
 		 * @throws IOException Indicatese a failure to access map data
 		 */
 		public DataMap(String ref) throws IOException {
@@ -282,7 +284,7 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 	/**
 	 * Entry point to out application
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the application
 	 */
 	public static void main(String[] argv) {

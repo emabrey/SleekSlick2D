@@ -1,9 +1,8 @@
 package org.newdawn.slick.tools.scalar;
 
 /**
- * A simple implementation of the Scale3x algorithm for scaling raw
- * image data.
- *
+ * A simple implementation of the Scale3x algorithm for scaling raw image data.
+ * <p>
  * @author Kevin Glass
  */
 public class RawScale3x {
@@ -29,11 +28,11 @@ public class RawScale3x {
 	private int height;
 
 	/**
-	 * Create a new scaler based on some raw data. Right now it doesn't
-	 * matter what order the channels in, just that its an int per pixel
-	 *
-	 * @param imageData  The source image data
-	 * @param dataWidth  The width of the source image
+	 * Create a new scaler based on some raw data. Right now it doesn't matter what order the channels in, just that its
+	 * an int per pixel
+	 * <p>
+	 * @param imageData The source image data
+	 * @param dataWidth The width of the source image
 	 * @param dataHeight The height of the source image
 	 */
 	public RawScale3x(int[] imageData, int dataWidth, int dataHeight) {
@@ -44,11 +43,11 @@ public class RawScale3x {
 	}
 
 	/**
-	 * Check if two pixels are different. Place holder for maybe
-	 * some clever code about tolerance checking
-	 *
+	 * Check if two pixels are different. Place holder for maybe some clever code about tolerance checking
+	 * <p>
 	 * @param a The first pixel value
 	 * @param b The second pixel value
+	 * <p>
 	 * @return True if the pixels are different
 	 */
 	private boolean different(int a, int b) {
@@ -57,7 +56,7 @@ public class RawScale3x {
 
 	/**
 	 * Set a pixel in the destination image data
-	 *
+	 * <p>
 	 * @param x The x location of the pixel to set
 	 * @param y The y location of the pixel to set
 	 * @param p The value of the pixel to set
@@ -67,11 +66,11 @@ public class RawScale3x {
 	}
 
 	/**
-	 * Get a pixel from the source image. This handles bonds checks
-	 * and resolves to edge pixels
-	 *
+	 * Get a pixel from the source image. This handles bonds checks and resolves to edge pixels
+	 * <p>
 	 * @param x The x location of the pixel to retrieve
 	 * @param y The y location of the pixel to retrieve
+	 * <p>
 	 * @return The pixel value at the specified location
 	 */
 	private int getSourcePixel(int x, int y) {
@@ -84,9 +83,8 @@ public class RawScale3x {
 	}
 
 	/**
-	 * Process a specific pixel. This will generate 4 pixels in the destination
-	 * image based on the scale2x algorithm
-	 *
+	 * Process a specific pixel. This will generate 4 pixels in the destination image based on the scale2x algorithm
+	 * <p>
 	 * @param x The x location in the source image of the pixel to process
 	 * @param y The y location in the source image of the pixel to process
 	 */
@@ -134,11 +132,9 @@ public class RawScale3x {
 	}
 
 	/**
-	 * Get the scale image data. Note this is the method that does the work
-	 * so it might take some time to process.
-	 *
-	 * @return An array of pixels 9 times the size of the input array containing
-	 *         the smoothly scaled image
+	 * Get the scale image data. Note this is the method that does the work so it might take some time to process.
+	 * <p>
+	 * @return An array of pixels 9 times the size of the input array containing the smoothly scaled image
 	 */
 	public int[] getScaledData() {
 		for (int x = 0; x < width; x++) {

@@ -14,18 +14,25 @@ import org.newdawn.slick.particles.ParticleSystem;
 
 /**
  * A test for duplicating a ConfigurableEmitter several times
+ * <p>
  * @author Tommy
- *
+ * <p>
  */
 public class DuplicateEmitterTest extends BasicGame {
 
-	/** the game container */
+	/**
+	 * the game container
+	 */
 	private GameContainer container;
 
-	/** the particle system which contains an explosion emitter which we want to duplicate */
+	/**
+	 * the particle system which contains an explosion emitter which we want to duplicate
+	 */
 	private ParticleSystem explosionSystem;
 
-	/** The original emitter we've duplicated */
+	/**
+	 * The original emitter we've duplicated
+	 */
 	private ConfigurableEmitter explosionEmitter;
 
 	/**
@@ -36,8 +43,8 @@ public class DuplicateEmitterTest extends BasicGame {
 	}
 
 	/**
-	 * load ressources (the particle system) and create our duplicate emitters
-	 * and place them nicely on the screen
+	 * load ressources (the particle system) and create our duplicate emitters and place them nicely on the screen
+	 * <p>
 	 * @param container The surrounding game container
 	 */
 	public void init(GameContainer container) throws SlickException {
@@ -65,7 +72,8 @@ public class DuplicateEmitterTest extends BasicGame {
 				// and add it to the original particle system to get the new emitter updated and rendered
 				explosionSystem.addEmitter(newOne);
 			}
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load particle systems", e);
 		}
 	}
@@ -98,7 +106,7 @@ public class DuplicateEmitterTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test, not used here
 	 */
 	public static void main(String[] argv) {
@@ -106,7 +114,8 @@ public class DuplicateEmitterTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new DuplicateEmitterTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

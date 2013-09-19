@@ -8,29 +8,39 @@ import org.newdawn.slick.geom.Vector2f;
 
 /**
  * A filler for shapes that applys SVG linear gradients
- * 
+ * <p>
  * @author kevin
  */
 public class LinearGradientFill implements TexCoordGenerator {
 
-	/** The start position of the gradient line */
+	/**
+	 * The start position of the gradient line
+	 */
 	private Vector2f start;
 
-	/** The ends position of the gradient line */
+	/**
+	 * The ends position of the gradient line
+	 */
 	private Vector2f end;
 
-	/** The gradient being applied */
+	/**
+	 * The gradient being applied
+	 */
 	private Gradient gradient;
 
-	/** The line of the gradient */
+	/**
+	 * The line of the gradient
+	 */
 	private Line line;
 
-	/** The shape being filled with gradient */
+	/**
+	 * The shape being filled with gradient
+	 */
 	private Shape shape;
 
 	/**
 	 * Create a new fill for gradients
-	 * 
+	 * <p>
 	 * @param shape The shape being filled
 	 * @param trans The transform given for the shape
 	 * @param gradient The gradient to apply

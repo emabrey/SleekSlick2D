@@ -29,21 +29,24 @@ import org.xml.sax.SAXException;
 
 /**
  * A loader specifically for the SVG that is produced from Inkscape
- * 
+ * <p>
  * @author kevin
  */
 public class InkscapeLoader implements Loader {
 
 	/**
-	 * The number of times to over trigulate to get enough tesselation for
-	 * smooth shading
+	 * The number of times to over trigulate to get enough tesselation for smooth shading
 	 */
 	public static int RADIAL_TRIANGULATION_LEVEL = 1;
 
-	/** The list of XML element processors */
+	/**
+	 * The list of XML element processors
+	 */
 	private static ArrayList processors = new ArrayList();
 
-	/** The diagram loaded */
+	/**
+	 * The diagram loaded
+	 */
 	private Diagram diagram;
 
 	static {
@@ -58,9 +61,9 @@ public class InkscapeLoader implements Loader {
 	}
 
 	/**
-	 * Add an <code>ElementProcessor</code> which will be passed
-	 * each element read as the Inkscape SVG document is processed.
-	 * 
+	 * Add an <code>ElementProcessor</code> which will be passed each element read as the Inkscape SVG document is
+	 * processed.
+	 * <p>
 	 * @param proc The processor to be added
 	 */
 	public static void addElementProcessor(ElementProcessor proc) {
@@ -69,14 +72,13 @@ public class InkscapeLoader implements Loader {
 
 	/**
 	 * Load a SVG document into a diagram
-	 * 
-	 * @param ref
-	 *            The reference in the classpath to load the diagram from
-	 * @param offset
-	 *            Offset the diagram for the height of the document
+	 * <p>
+	 * @param ref The reference in the classpath to load the diagram from
+	 * @param offset Offset the diagram for the height of the document
+	 * <p>
 	 * @return The diagram loaded
-	 * @throws SlickException
-	 *             Indicates a failure to process the document
+	 * <p>
+	 * @throws SlickException Indicates a failure to process the document
 	 */
 	public static Diagram load(String ref, boolean offset)
 			throws SlickException {
@@ -85,12 +87,12 @@ public class InkscapeLoader implements Loader {
 
 	/**
 	 * Load a SVG document into a diagram
-	 * 
-	 * @param ref
-	 *            The reference in the classpath to load the diagram from
+	 * <p>
+	 * @param ref The reference in the classpath to load the diagram from
+	 * <p>
 	 * @return The diagram loaded
-	 * @throws SlickException
-	 *             Indicates a failure to process the document
+	 * <p>
+	 * @throws SlickException Indicates a failure to process the document
 	 */
 	public static Diagram load(String ref) throws SlickException {
 		return load(ResourceLoader.getResourceAsStream(ref), false);
@@ -98,14 +100,13 @@ public class InkscapeLoader implements Loader {
 
 	/**
 	 * Load a SVG document into a diagram
-	 * 
-	 * @param offset
-	 *            Offset the diagram for the height of the document
-	 * @param in
-	 *            The input stream from which to read the SVG
+	 * <p>
+	 * @param offset Offset the diagram for the height of the document
+	 * @param in The input stream from which to read the SVG
+	 * <p>
 	 * @return The diagram loaded
-	 * @throws SlickException
-	 *             Indicates a failure to process the document
+	 * <p>
+	 * @throws SlickException Indicates a failure to process the document
 	 */
 	public static Diagram load(InputStream in, boolean offset)
 			throws SlickException {
@@ -120,12 +121,12 @@ public class InkscapeLoader implements Loader {
 
 	/**
 	 * Load a SVG document into a diagram
-	 * 
-	 * @param in
-	 *            The input stream from which to read the SVG
+	 * <p>
+	 * @param in The input stream from which to read the SVG
+	 * <p>
 	 * @return The diagram loaded
-	 * @throws SlickException
-	 *             Indicates a failure to process the document
+	 * <p>
+	 * @throws SlickException Indicates a failure to process the document
 	 */
 	private Diagram loadDiagram(InputStream in) throws SlickException {
 		return loadDiagram(in, false);
@@ -133,14 +134,13 @@ public class InkscapeLoader implements Loader {
 
 	/**
 	 * Load a SVG document into a diagram
-	 * 
-	 * @param in
-	 *            The input stream from which to read the SVG
-	 * @param offset
-	 *            Offset the diagram for the height of the document
+	 * <p>
+	 * @param in The input stream from which to read the SVG
+	 * @param offset Offset the diagram for the height of the document
+	 * <p>
 	 * @return The diagram loaded
-	 * @throws SlickException
-	 *             Indicates a failure to process the document
+	 * <p>
+	 * @throws SlickException Indicates a failure to process the document
 	 */
 	private Diagram loadDiagram(InputStream in, boolean offset)
 			throws SlickException {
@@ -153,7 +153,7 @@ public class InkscapeLoader implements Loader {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			builder.setEntityResolver(new EntityResolver() {
 				public InputSource resolveEntity(String publicId,
-						String systemId) throws SAXException, IOException {
+												 String systemId) throws SAXException, IOException {
 					return new InputSource(
 							new ByteArrayInputStream(new byte[0]));
 				}
@@ -186,14 +186,14 @@ public class InkscapeLoader implements Loader {
 					.createTranslateTransform(0, -docHeight));
 
 			return diagram;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new SlickException("Failed to load inkscape document", e);
 		}
 	}
 
 	/**
-	 * @see org.newdawn.slick.svg.Loader#loadChildren(org.w3c.dom.Element,
-	 *      org.newdawn.slick.geom.Transform)
+	 * @see org.newdawn.slick.svg.Loader#loadChildren(org.w3c.dom.Element, org.newdawn.slick.geom.Transform)
 	 */
 	public void loadChildren(Element element, Transform t)
 			throws ParsingException {
@@ -207,13 +207,11 @@ public class InkscapeLoader implements Loader {
 
 	/**
 	 * Load a single element into the diagram
-	 * 
-	 * @param element
-	 *            The element ot be loaded
-	 * @param t
-	 *            The transform to apply to the loaded element from the parent
-	 * @throws ParsingException
-	 *             Indicates a failure to parse the element
+	 * <p>
+	 * @param element The element ot be loaded
+	 * @param t The transform to apply to the loaded element from the parent
+	 * <p>
+	 * @throws ParsingException Indicates a failure to parse the element
 	 */
 	private void loadElement(Element element, Transform t)
 			throws ParsingException {

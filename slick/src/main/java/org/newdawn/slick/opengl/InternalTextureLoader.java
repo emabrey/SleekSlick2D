@@ -18,55 +18,67 @@ import org.newdawn.slick.opengl.renderer.SGL;
 import org.newdawn.slick.util.ResourceLoader;
 
 /**
- * A texture loaded based on many old versions that will load image data from a file
- * and produce OpenGL textures.
- * 
+ * A texture loaded based on many old versions that will load image data from a file and produce OpenGL textures.
+ * <p>
  * @see ImageData
- * 
+ * <p>
  * @author kevin
  */
 public class InternalTextureLoader {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
-	/** The standard texture loaded used everywhere */
+	/**
+	 * The standard texture loaded used everywhere
+	 */
 	private static final InternalTextureLoader loader = new InternalTextureLoader();
 
 	/**
 	 * Get the single instance of this texture loader
-	 * 
+	 * <p>
 	 * @return The single instance of the texture loader
 	 */
 	public static InternalTextureLoader get() {
 		return loader;
 	}
 
-	/** The table of textures that have been loaded in this loader */
+	/**
+	 * The table of textures that have been loaded in this loader
+	 */
 	private HashMap texturesLinear = new HashMap();
 
-	/** The table of textures that have been loaded in this loader */
+	/**
+	 * The table of textures that have been loaded in this loader
+	 */
 	private HashMap texturesNearest = new HashMap();
 
-	/** The destination pixel format */
+	/**
+	 * The destination pixel format
+	 */
 	private int dstPixelFormat = SGL.GL_RGBA8;
 
-	/** True if we're using deferred loading */
+	/**
+	 * True if we're using deferred loading
+	 */
 	private boolean deferred;
 
-	/** True if we should hold texture data */
+	/**
+	 * True if we should hold texture data
+	 */
 	private boolean holdTextureData;
 
-	/** 
+	/**
 	 * Create a new texture loader based on the game panel
 	 */
 	private InternalTextureLoader() {
 	}
 
 	/**
-	 * Indicate where texture data should be held for reinitialising at a future
-	 * point.
-	 * 
+	 * Indicate where texture data should be held for reinitialising at a future point.
+	 * <p>
 	 * @param holdTextureData True if we should hold texture data
 	 */
 	public void setHoldTextureData(boolean holdTextureData) {
@@ -74,9 +86,8 @@ public class InternalTextureLoader {
 	}
 
 	/**
-	 * True if we should only record the request to load in the intention
-	 * of loading the texture later
-	 * 
+	 * True if we should only record the request to load in the intention of loading the texture later
+	 * <p>
 	 * @param deferred True if the we should load a token
 	 */
 	public void setDeferredLoading(boolean deferred) {
@@ -85,7 +96,7 @@ public class InternalTextureLoader {
 
 	/**
 	 * Check if we're using deferred loading
-	 * 
+	 * <p>
 	 * @return True if we're loading deferred textures
 	 */
 	public boolean isDeferredLoading() {
@@ -94,7 +105,7 @@ public class InternalTextureLoader {
 
 	/**
 	 * Remove a particular named image from the cache
-	 * 
+	 * <p>
 	 * @param name The name of the image to be cleared
 	 */
 	public void clear(String name) {
@@ -118,8 +129,8 @@ public class InternalTextureLoader {
 	}
 
 	/**
-	 * Create a new texture ID 
-	 *
+	 * Create a new texture ID
+	 * <p>
 	 * @return A new texture ID
 	 */
 	public static int createTextureID() {
@@ -130,11 +141,13 @@ public class InternalTextureLoader {
 
 	/**
 	 * Get a texture from a specific file
-	 * 
+	 * <p>
 	 * @param source The file to load the texture from
 	 * @param flipped True if we should flip the texture on the y axis while loading
 	 * @param filter The filter to use
+	 * <p>
 	 * @return The texture loaded
+	 * <p>
 	 * @throws IOException Indicates a failure to load the image
 	 */
 	public Texture getTexture(File source, boolean flipped, int filter) throws IOException {
@@ -146,12 +159,14 @@ public class InternalTextureLoader {
 
 	/**
 	 * Get a texture from a specific file
-	 * 
+	 * <p>
 	 * @param source The file to load the texture from
 	 * @param flipped True if we should flip the texture on the y axis while loading
 	 * @param filter The filter to use
 	 * @param transparent The colour to interpret as transparent or null if none
+	 * <p>
 	 * @return The texture loaded
+	 * <p>
 	 * @throws IOException Indicates a failure to load the image
 	 */
 	public Texture getTexture(File source, boolean flipped, int filter, int[] transparent) throws IOException {
@@ -163,11 +178,13 @@ public class InternalTextureLoader {
 
 	/**
 	 * Get a texture from a resource location
-	 * 
+	 * <p>
 	 * @param resourceName The location to load the texture from
 	 * @param flipped True if we should flip the texture on the y axis while loading
 	 * @param filter The filter to use when scaling the texture
+	 * <p>
 	 * @return The texture loaded
+	 * <p>
 	 * @throws IOException Indicates a failure to load the image
 	 */
 	public Texture getTexture(String resourceName, boolean flipped, int filter) throws IOException {
@@ -178,12 +195,14 @@ public class InternalTextureLoader {
 
 	/**
 	 * Get a texture from a resource location
-	 * 
+	 * <p>
 	 * @param resourceName The location to load the texture from
 	 * @param flipped True if we should flip the texture on the y axis while loading
 	 * @param filter The filter to use when scaling the texture
 	 * @param transparent The colour to interpret as transparent or null if none
+	 * <p>
 	 * @return The texture loaded
+	 * <p>
 	 * @throws IOException Indicates a failure to load the image
 	 */
 	public Texture getTexture(String resourceName, boolean flipped, int filter, int[] transparent) throws IOException {
@@ -194,12 +213,14 @@ public class InternalTextureLoader {
 
 	/**
 	 * Get a texture from a image file
-	 * 
+	 * <p>
 	 * @param in The stream from which we can load the image
 	 * @param resourceName The name to give this image in the internal cache
 	 * @param flipped True if we should flip the image on the y-axis while loading
 	 * @param filter The filter to use when scaling the texture
+	 * <p>
 	 * @return The texture loaded
+	 * <p>
 	 * @throws IOException Indicates a failure to load the image
 	 */
 	public Texture getTexture(InputStream in, String resourceName, boolean flipped, int filter) throws IOException {
@@ -208,16 +229,19 @@ public class InternalTextureLoader {
 
 	/**
 	 * Get a texture from a image file
-	 * 
+	 * <p>
 	 * @param in The stream from which we can load the image
 	 * @param resourceName The name to give this image in the internal cache
 	 * @param flipped True if we should flip the image on the y-axis while loading
 	 * @param filter The filter to use when scaling the texture
 	 * @param transparent The colour to interpret as transparent or null if none
+	 * <p>
 	 * @return The texture loaded
+	 * <p>
 	 * @throws IOException Indicates a failure to load the image
 	 */
-	public TextureImpl getTexture(InputStream in, String resourceName, boolean flipped, int filter, int[] transparent) throws IOException {
+	public TextureImpl getTexture(InputStream in, String resourceName, boolean flipped, int filter, int[] transparent)
+			throws IOException {
 		if (deferred) {
 			return new DeferredTexture(in, resourceName, flipped, filter, transparent);
 		}
@@ -253,7 +277,8 @@ public class InternalTextureLoader {
 		// horrible test until I can find something more suitable
 		try {
 			GL.glGetError();
-		} catch (NullPointerException e) {
+		}
+		catch (NullPointerException e) {
 			throw new RuntimeException("Image based resources must be loaded as part of init() or the game loop. They cannot be loaded before initialisation.");
 		}
 
@@ -274,7 +299,7 @@ public class InternalTextureLoader {
 
 	/**
 	 * Get a texture from a image file
-	 * 
+	 * <p>
 	 * @param in The stream from which we can load the image
 	 * @param resourceName The name to give this image in the internal cache
 	 * @param flipped True if we should flip the image on the y-axis while loading
@@ -282,14 +307,16 @@ public class InternalTextureLoader {
 	 * @param minFilter The scaling down filter
 	 * @param magFilter The scaling up filter
 	 * @param transparent The colour to interpret as transparent or null if none
+	 * <p>
 	 * @return The texture loaded
+	 * <p>
 	 * @throws IOException Indicates a failure to load the image
 	 */
 	private TextureImpl getTexture(InputStream in,
-			String resourceName,
-			int target,
-			int magFilter,
-			int minFilter, boolean flipped, int[] transparent) throws IOException {
+								   String resourceName,
+								   int target,
+								   int magFilter,
+								   int minFilter, boolean flipped, int[] transparent) throws IOException {
 		// create the texture ID for this texture 
 		ByteBuffer textureBuffer;
 
@@ -355,10 +382,12 @@ public class InternalTextureLoader {
 
 	/**
 	 * Create an empty texture
-	 * 
+	 * <p>
 	 * @param width The width of the new texture
 	 * @param height The height of the new texture
+	 * <p>
 	 * @return The created empty texture
+	 * <p>
 	 * @throws IOException Indicates a failure to create the texture on the graphics hardware
 	 */
 	public Texture createTexture(final int width, final int height) throws IOException {
@@ -367,10 +396,12 @@ public class InternalTextureLoader {
 
 	/**
 	 * Create an empty texture
-	 * 
+	 * <p>
 	 * @param width The width of the new texture
 	 * @param height The height of the new texture
+	 * <p>
 	 * @return The created empty texture
+	 * <p>
 	 * @throws IOException Indicates a failure to create the texture on the graphics hardware
 	 */
 	public Texture createTexture(final int width, final int height, final int filter) throws IOException {
@@ -381,10 +412,12 @@ public class InternalTextureLoader {
 
 	/**
 	 * Get a texture from a image file
-	 * 
+	 * <p>
 	 * @param dataSource The image data to generate the texture from
 	 * @param filter The filter to use when scaling the texture
+	 * <p>
 	 * @return The texture created
+	 * <p>
 	 * @throws IOException Indicates the texture is too big for the hardware
 	 */
 	public Texture getTexture(ImageData dataSource, int filter) throws IOException {
@@ -458,8 +491,9 @@ public class InternalTextureLoader {
 
 	/**
 	 * Get the closest greater power of 2 to the fold number
-	 * 
+	 * <p>
 	 * @param fold The target number
+	 * <p>
 	 * @return The power of 2
 	 */
 	public static int get2Fold(int fold) {
@@ -471,10 +505,10 @@ public class InternalTextureLoader {
 	}
 
 	/**
-	 * Creates an integer buffer to hold specified ints
-	 * - strictly a utility method
-	 *
+	 * Creates an integer buffer to hold specified ints - strictly a utility method
+	 * <p>
 	 * @param size how many int to contain
+	 * <p>
 	 * @return created IntBuffer
 	 */
 	public static IntBuffer createIntBuffer(int size) {
@@ -500,17 +534,18 @@ public class InternalTextureLoader {
 
 	/**
 	 * Reload a given texture blob
-	 * 
+	 * <p>
 	 * @param texture The texture being reloaded
 	 * @param srcPixelFormat The source pixel format
 	 * @param componentCount The component count
 	 * @param minFilter The minification filter
-	 * @param magFilter The magnification filter 
-	 * @param textureBuffer The pixel data 
+	 * @param magFilter The magnification filter
+	 * @param textureBuffer The pixel data
+	 * <p>
 	 * @return The ID of the newly created texture
 	 */
 	public int reload(TextureImpl texture, int srcPixelFormat, int componentCount,
-			int minFilter, int magFilter, ByteBuffer textureBuffer) {
+					  int minFilter, int magFilter, ByteBuffer textureBuffer) {
 		int target = SGL.GL_TEXTURE_2D;
 		int textureID = createTextureID();
 		GL.glBindTexture(target, textureID);

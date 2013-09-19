@@ -14,7 +14,7 @@ import java.awt.event.WindowEvent;
 
 /**
  * A test for the AWT Canvas container
- *
+ * <p>
  * @author kevin
  */
 public class CanvasContainerTest extends BasicGame {
@@ -111,7 +111,7 @@ public class CanvasContainerTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -131,7 +131,8 @@ public class CanvasContainerTest extends BasicGame {
 			});
 			frame.setVisible(true);
 			container.start();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

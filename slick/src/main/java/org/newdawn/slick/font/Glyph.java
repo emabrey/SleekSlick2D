@@ -10,35 +10,49 @@ import org.newdawn.slick.UnicodeFont;
 
 /**
  * Represents the glyph in a font for a unicode codepoint.
- * 
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class Glyph {
 
-	/** The code point in which this glyph is found */
+	/**
+	 * The code point in which this glyph is found
+	 */
 	private int codePoint;
 
-	/** The width of this glyph in pixels */
+	/**
+	 * The width of this glyph in pixels
+	 */
 	private short width;
 
-	/** The height of this glyph in pixels */
+	/**
+	 * The height of this glyph in pixels
+	 */
 	private short height;
 
-	/** The offset on the y axis to draw the glyph at */
+	/**
+	 * The offset on the y axis to draw the glyph at
+	 */
 	private short yOffset;
 
-	/** True if the glyph isn't defined */
+	/**
+	 * True if the glyph isn't defined
+	 */
 	private boolean isMissing;
 
-	/** The shape drawn for this glyph */
+	/**
+	 * The shape drawn for this glyph
+	 */
 	private Shape shape;
 
-	/** The image generated for this glyph */
+	/**
+	 * The image generated for this glyph
+	 */
 	private Image image;
 
 	/**
 	 * Create a new glyph
-	 * 
+	 * <p>
 	 * @param codePoint The code point in which this glyph can be found
 	 * @param bounds The bounds that this glrph can fill
 	 * @param vector The vector this glyph is part of
@@ -78,7 +92,7 @@ public class Glyph {
 
 	/**
 	 * The unicode codepoint the glyph represents.
-	 * 
+	 * <p>
 	 * @return The codepoint the glyph represents
 	 */
 	public int getCodePoint() {
@@ -87,7 +101,7 @@ public class Glyph {
 
 	/**
 	 * Returns true if the font does not have a glyph for this codepoint.
-	 * 
+	 * <p>
 	 * @return True if this glyph is not defined in the given code point
 	 */
 	public boolean isMissing() {
@@ -96,7 +110,7 @@ public class Glyph {
 
 	/**
 	 * The width of the glyph's image.
-	 * 
+	 * <p>
 	 * @return The width in pixels of the glyphs image
 	 */
 	public int getWidth() {
@@ -105,7 +119,7 @@ public class Glyph {
 
 	/**
 	 * The height of the glyph's image.
-	 * 
+	 * <p>
 	 * @return The height in pixels of the glyphs image
 	 */
 	public int getHeight() {
@@ -113,9 +127,8 @@ public class Glyph {
 	}
 
 	/**
-	 * The shape to use to draw this glyph. This is set to null after the glyph is stored 
-	 * in a GlyphPage.
-	 * 
+	 * The shape to use to draw this glyph. This is set to null after the glyph is stored in a GlyphPage.
+	 * <p>
 	 * @return The shape drawn for this glyph
 	 */
 	public Shape getShape() {
@@ -124,7 +137,7 @@ public class Glyph {
 
 	/**
 	 * Set the shape that should be drawn for this glyph
-	 * 
+	 * <p>
 	 * @param shape The shape that should be drawn for this glyph
 	 */
 	public void setShape(Shape shape) {
@@ -132,9 +145,8 @@ public class Glyph {
 	}
 
 	/**
-	 * The image to use for this glyph. This is null until after the glyph is stored in a 
-	 * GlyphPage.
-	 * 
+	 * The image to use for this glyph. This is null until after the glyph is stored in a GlyphPage.
+	 * <p>
 	 * @return The image that has been generated for this glyph
 	 */
 	public Image getImage() {
@@ -143,7 +155,7 @@ public class Glyph {
 
 	/**
 	 * Set the image that has been generated for this glyph
-	 * 
+	 * <p>
 	 * @param image The image that has been generated for this glyph
 	 */
 	public void setImage(Image image) {
@@ -151,9 +163,8 @@ public class Glyph {
 	}
 
 	/**
-	 * The distance from drawing y location to top of this glyph, causing the glyph to sit 
-	 * on the baseline.
-	 * 
+	 * The distance from drawing y location to top of this glyph, causing the glyph to sit on the baseline.
+	 * <p>
 	 * @return The offset on the y axis this glyph should be drawn at
 	 */
 	public int getYOffset() {

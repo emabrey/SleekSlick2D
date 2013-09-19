@@ -5,12 +5,14 @@ import org.newdawn.slick.InputListener;
 
 /**
  * An implement implementation of the InputListener interface
- *
+ * <p>
  * @author kevin
  */
 public class InputAdapter implements InputListener {
 
-	/** A flag to indicate if we're accepting input here */
+	/**
+	 * A flag to indicate if we're accepting input here
+	 */
 	private boolean acceptingInput = true;
 
 	/**
@@ -88,7 +90,7 @@ public class InputAdapter implements InputListener {
 
 	/**
 	 * Indicate if we should be accepting input of any sort
-	 * 
+	 * <p>
 	 * @param acceptingInput True if we should accept input
 	 */
 	public void setAcceptingInput(boolean acceptingInput) {

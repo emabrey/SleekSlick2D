@@ -1,32 +1,41 @@
 package org.newdawn.slick.geom;
 
 /**
- * A beizer curve implementation. The curve is defined by a start point, an end point
- * and two control points that it will tend towards. This is implementation is fixed
- * segmenting meaning it doesn't scale too well.
- *
+ * A beizer curve implementation. The curve is defined by a start point, an end point and two control points that it
+ * will tend towards. This is implementation is fixed segmenting meaning it doesn't scale too well.
+ * <p>
  * @author kevin
  */
 public class Curve extends Shape {
 
-	/** The start point of the curve */
+	/**
+	 * The start point of the curve
+	 */
 	private Vector2f p1;
 
-	/** The first control point */
+	/**
+	 * The first control point
+	 */
 	private Vector2f c1;
 
-	/** The second control point */
+	/**
+	 * The second control point
+	 */
 	private Vector2f c2;
 
-	/** The end point of the curve */
+	/**
+	 * The end point of the curve
+	 */
 	private Vector2f p2;
 
-	/** The number of lines segments the curve is built out of */
+	/**
+	 * The number of lines segments the curve is built out of
+	 */
 	private int segments;
 
 	/**
 	 * Create a new curve with the default segments (20)
-	 * 
+	 * <p>
 	 * @param p1 The start of the curve
 	 * @param c1 The first control point
 	 * @param c2 The second control point
@@ -37,8 +46,8 @@ public class Curve extends Shape {
 	}
 
 	/**
-	 * Create a new curve 
-	 * 
+	 * Create a new curve
+	 * <p>
 	 * @param p1 The start of the curve
 	 * @param c1 The first control point
 	 * @param c2 The second control point
@@ -57,8 +66,9 @@ public class Curve extends Shape {
 
 	/**
 	 * Get the point at a particular location on the curve
-	 * 
+	 * <p>
 	 * @param t A value between 0 and 1 defining the location of the curve the point is at
+	 * <p>
 	 * @return The point on the curve
 	 */
 	public Vector2f pointAt(float t) {
@@ -113,7 +123,7 @@ public class Curve extends Shape {
 
 	/**
 	 * True if this is a closed shape
-	 * 
+	 * <p>
 	 * @return True if this is a closed shape
 	 */
 	public boolean closed() {

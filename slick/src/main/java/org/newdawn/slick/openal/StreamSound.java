@@ -8,21 +8,23 @@ import org.lwjgl.openal.AL10;
 import org.newdawn.slick.util.Log;
 
 /**
- * A sound implementation wrapped round a player which reads (and potentially) rereads
- * a stream. This supplies streaming audio
- *
+ * A sound implementation wrapped round a player which reads (and potentially) rereads a stream. This supplies streaming
+ * audio
+ * <p>
  * @author kevin
  * @author Nathan Sweet <misc@n4te.com>
- * @author Rockstar playAsMusic cleanup 
+ * @author Rockstar playAsMusic cleanup
  */
 public class StreamSound extends AudioImpl {
 
-	/** The player we're going to ask to stream data */
+	/**
+	 * The player we're going to ask to stream data
+	 */
 	private OpenALStreamPlayer player;
 
 	/**
 	 * Create a new sound wrapped round a stream
-	 * 
+	 * <p>
 	 * @param player The stream player we'll use to access the stream
 	 */
 	public StreamSound(OpenALStreamPlayer player) {
@@ -46,7 +48,8 @@ public class StreamSound extends AudioImpl {
 			player.setup(pitch);
 			player.play(loop);
 			SoundStore.get().setStream(player);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			Log.error("Failed to read OGG source: " + player.getSource());
 		}
 

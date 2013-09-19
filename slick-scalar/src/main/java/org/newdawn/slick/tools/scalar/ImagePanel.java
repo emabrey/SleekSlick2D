@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * A panel to display the current image
- *
+ * <p>
  * @author kevin
  */
 public class ImagePanel extends JPanel {
@@ -47,7 +47,7 @@ public class ImagePanel extends JPanel {
 
 	/**
 	 * Set the image to be displayed
-	 *
+	 * <p>
 	 * @param image The image to be displayed
 	 */
 	public void setImage(BufferedImage image) {
@@ -59,7 +59,7 @@ public class ImagePanel extends JPanel {
 
 	/**
 	 * Get the image currently being displayed
-	 *
+	 * <p>
 	 * @return The image currently being displayed
 	 */
 	public BufferedImage getImage() {

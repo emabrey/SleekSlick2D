@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * Test to view the effects of antialiasing on cirles
- *
+ * <p>
  * @author kevin
  */
 public class AntiAliasTest extends BasicGame {
@@ -50,7 +50,7 @@ public class AntiAliasTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -58,7 +58,8 @@ public class AntiAliasTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new AntiAliasTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

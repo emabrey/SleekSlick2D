@@ -12,11 +12,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 /**
- * A simple tool for applying Scale2X and Scale3X for small cartoon
- * style images. The Scale2X and 3X algorithms provide a better scaling
- * for block/cartoon images since they're based on pattern analysis rather
- * than simple pixel scaling and filtering.
- *
+ * A simple tool for applying Scale2X and Scale3X for small cartoon style images. The Scale2X and 3X algorithms provide
+ * a better scaling for block/cartoon images since they're based on pattern analysis rather than simple pixel scaling
+ * and filtering.
+ * <p>
  * @author kevin
  */
 public class Scalar extends JFrame {
@@ -172,7 +171,8 @@ public class Scalar extends JFrame {
 			try {
 				BufferedImage image = ImageIO.read(lastSelected);
 				imagePanel.setImage(image);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(this, "Unable to load image " + lastSelected.getName() + " ");
 			}
@@ -203,7 +203,8 @@ public class Scalar extends JFrame {
 
 			try {
 				ImageIO.write(imagePanel.getImage(), type, file);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(this, "Unable to save file " + file.getName());
 			}
@@ -233,7 +234,7 @@ public class Scalar extends JFrame {
 
 	/**
 	 * Entry point to the scalar tool
-	 *
+	 * <p>
 	 * @param argv The arguments passed into the application
 	 */
 	public static void main(String[] argv) {

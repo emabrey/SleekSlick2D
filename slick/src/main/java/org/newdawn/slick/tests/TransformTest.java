@@ -10,18 +10,24 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for transforming the graphics context
- *
+ * <p>
  * @author kevin
  */
 public class TransformTest extends BasicGame {
 
-	/** The current scale applied to the graphics context */
+	/**
+	 * The current scale applied to the graphics context
+	 */
 	private float scale = 1;
 
-	/** True if we should be scaling up */
+	/**
+	 * True if we should be scaling up
+	 */
 	private boolean scaleUp;
 
-	/** True if we should be scaling down */
+	/**
+	 * True if we should be scaling down
+	 */
 	private boolean scaleDown;
 
 	/**
@@ -99,7 +105,7 @@ public class TransformTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -107,7 +113,8 @@ public class TransformTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new TransformTest());
 			container.setDisplayMode(640, 480, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

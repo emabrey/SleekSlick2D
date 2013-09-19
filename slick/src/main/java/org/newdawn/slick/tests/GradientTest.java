@@ -15,39 +15,59 @@ import org.newdawn.slick.opengl.renderer.Renderer;
 
 /**
  * A test for gradient fill on polygons
- *
+ * <p>
  * @author kevin
  */
 public class GradientTest extends BasicGame {
 
-	/** The container for the test */
+	/**
+	 * The container for the test
+	 */
 	private GameContainer container;
 
-	/** The paint we'll use */
+	/**
+	 * The paint we'll use
+	 */
 	private GradientFill gradient;
 
-	/** The paint we'll use */
+	/**
+	 * The paint we'll use
+	 */
 	private GradientFill gradient2;
 
-	/** The paint we'll use */
+	/**
+	 * The paint we'll use
+	 */
 	private GradientFill gradient4;
 
-	/** The shape to render */
+	/**
+	 * The shape to render
+	 */
 	private Rectangle rect;
 
-	/** The shape to render */
+	/**
+	 * The shape to render
+	 */
 	private Rectangle center;
 
-	/** The shape to render */
+	/**
+	 * The shape to render
+	 */
 	private RoundedRectangle round;
 
-	/** The shape to render */
+	/**
+	 * The shape to render
+	 */
 	private RoundedRectangle round2;
 
-	/** The shape to render */
+	/**
+	 * The shape to render
+	 */
 	private Polygon poly;
 
-	/** The angle of rotation */
+	/**
+	 * The angle of rotation
+	 */
 	private float ang;
 
 	/**
@@ -114,7 +134,7 @@ public class GradientTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -124,7 +144,8 @@ public class GradientTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new GradientTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

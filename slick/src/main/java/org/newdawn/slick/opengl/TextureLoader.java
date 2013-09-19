@@ -6,19 +6,20 @@ import java.io.InputStream;
 import org.lwjgl.opengl.GL11;
 
 /**
- * A utility class to wrap the Slick internal texture loader and present a
- * rational interface.
- * 
+ * A utility class to wrap the Slick internal texture loader and present a rational interface.
+ * <p>
  * @author kevin
  */
 public class TextureLoader {
 
 	/**
 	 * Load a texture with a given format from the supplied input stream
-	 * 
+	 * <p>
 	 * @param format The format of the texture to be loaded (something like "PNG" or "TGA")
 	 * @param in The input stream from which the image data will be read
+	 * <p>
 	 * @return The newly created texture
+	 * <p>
 	 * @throws IOException Indicates a failure to read the image data
 	 */
 	public static Texture getTexture(String format, InputStream in) throws IOException {
@@ -27,11 +28,13 @@ public class TextureLoader {
 
 	/**
 	 * Load a texture with a given format from the supplied input stream
-	 * 
+	 * <p>
 	 * @param format The format of the texture to be loaded (something like "PNG" or "TGA")
 	 * @param in The input stream from which the image data will be read
 	 * @param flipped True if the image should be flipped vertically on loading
+	 * <p>
 	 * @return The newly created texture
+	 * <p>
 	 * @throws IOException Indicates a failure to read the image data
 	 */
 	public static Texture getTexture(String format, InputStream in, boolean flipped) throws IOException {
@@ -40,11 +43,13 @@ public class TextureLoader {
 
 	/**
 	 * Load a texture with a given format from the supplied input stream
-	 * 
+	 * <p>
 	 * @param format The format of the texture to be loaded (something like "PNG" or "TGA")
 	 * @param in The input stream from which the image data will be read
 	 * @param filter The GL texture filter to use for scaling up and down
+	 * <p>
 	 * @return The newly created texture
+	 * <p>
 	 * @throws IOException Indicates a failure to read the image data
 	 */
 	public static Texture getTexture(String format, InputStream in, int filter) throws IOException {
@@ -53,12 +58,14 @@ public class TextureLoader {
 
 	/**
 	 * Load a texture with a given format from the supplied input stream
-	 * 
+	 * <p>
 	 * @param format The format of the texture to be loaded (something like "PNG" or "TGA")
 	 * @param in The input stream from which the image data will be read
 	 * @param flipped True if the image should be flipped vertically on loading
 	 * @param filter The GL texture filter to use for scaling up and down
+	 * <p>
 	 * @return The newly created texture
+	 * <p>
 	 * @throws IOException Indicates a failure to read the image data
 	 */
 	public static Texture getTexture(String format, InputStream in, boolean flipped, int filter) throws IOException {

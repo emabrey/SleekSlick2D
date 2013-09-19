@@ -12,25 +12,32 @@ import org.lwjgl.openal.AL10;
 
 /**
  * A sound as a MOD file - can only be played as music
- * 
+ * <p>
  * @author Kevin Glass
  */
 public class MODSound extends AudioImpl {
 
-	/** The MOD play back system */
+	/**
+	 * The MOD play back system
+	 */
 	private static OpenALMODPlayer player = new OpenALMODPlayer();
 
-	/** The module to play back */
+	/**
+	 * The module to play back
+	 */
 	private Module module;
 
-	/** The sound store this belongs to */
+	/**
+	 * The sound store this belongs to
+	 */
 	private SoundStore store;
 
 	/**
-	 * Create a mod sound to be played back 
-	 * 
-	 * @param store The store this sound belongs to 
+	 * Create a mod sound to be played back
+	 * <p>
+	 * @param store The store this sound belongs to
 	 * @param in The input stream to read the data from
+	 * <p>
 	 * @throws IOException Indicates a failure to load a sound
 	 */
 	public MODSound(SoundStore store, InputStream in) throws IOException {

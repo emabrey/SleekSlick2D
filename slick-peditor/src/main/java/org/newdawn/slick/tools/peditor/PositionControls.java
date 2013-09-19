@@ -4,7 +4,7 @@ import org.newdawn.slick.particles.ConfigurableEmitter;
 
 /**
  * A set of controls for the spawning position of particles from the emitter
- *
+ * <p>
  * @author kevin
  */
 public class PositionControls extends ControlPanel implements InputPanelListener {
@@ -36,7 +36,7 @@ public class PositionControls extends ControlPanel implements InputPanelListener
 
 	/**
 	 * Set the position of the emitter
-	 *
+	 * <p>
 	 * @param x The x position of the emitter
 	 * @param y The y position of the emitter
 	 */

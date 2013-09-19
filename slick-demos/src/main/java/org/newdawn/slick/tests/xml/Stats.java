@@ -2,7 +2,7 @@ package org.newdawn.slick.tests.xml;
 
 /**
  * A test example of some object data that can be configured via XML
- *
+ * <p>
  * @author kevin
  */
 public class Stats {
@@ -29,7 +29,7 @@ public class Stats {
 
 	/**
 	 * Dump this object to sysout
-	 *
+	 * <p>
 	 * @param prefix The prefix to apply to all lines
 	 */
 	public void dump(String prefix) {

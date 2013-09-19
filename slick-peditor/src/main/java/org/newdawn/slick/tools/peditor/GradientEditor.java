@@ -15,7 +15,7 @@ import java.util.Comparator;
 
 /**
  * A generic editor for configuring a multiple point varying gradient
- *
+ * <p>
  * @author kevin
  */
 public class GradientEditor extends JPanel {
@@ -152,7 +152,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Add a listener that will be notified on change of this editor
-	 *
+	 * <p>
 	 * @param listener The listener to be notified on change of this editor
 	 */
 	public void addActionListener(ActionListener listener) {
@@ -161,7 +161,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Remove a listener from this editor. It will no longer be notified
-	 *
+	 * <p>
 	 * @param listener The listener to be removed
 	 */
 	public void removeActionListener(ActionListener listener) {
@@ -180,10 +180,11 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Check if there is a control point at the specified mouse location
-	 *
+	 * <p>
 	 * @param mx The mouse x coordinate
 	 * @param my The mouse y coordinate
 	 * @param pt The point to check agianst
+	 * <p>
 	 * @return True if the mouse point conincides with the control point
 	 */
 	private boolean checkPoint(int mx, int my, ControlPoint pt) {
@@ -259,7 +260,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Select the control point at the specified mouse coordinate
-	 *
+	 * <p>
 	 * @param mx The mouse x coordinate
 	 * @param my The mouse y coordinate
 	 */
@@ -312,7 +313,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Move the current point to the specified mouse location
-	 *
+	 * <p>
 	 * @param mx The x coordinate of the mouse
 	 * @param my The y coordinate of teh mouse
 	 */
@@ -382,7 +383,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Add a control point to the gradient
-	 *
+	 * <p>
 	 * @param pos The position in the gradient (0 -> 1)
 	 * @param col The color at the new control point
 	 */
@@ -401,7 +402,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Set the starting colour
-	 *
+	 * <p>
 	 * @param col The color at the start of the gradient
 	 */
 	public void setStart(Color col) {
@@ -411,7 +412,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Set the ending colour
-	 *
+	 * <p>
 	 * @param col The color at the end of the gradient
 	 */
 	public void setEnd(Color col) {
@@ -420,8 +421,7 @@ public class GradientEditor extends JPanel {
 	}
 
 	/**
-	 * Remove all the control points from the gradient editor (this does
-	 * not include start and end points)
+	 * Remove all the control points from the gradient editor (this does not include start and end points)
 	 */
 	public void clearPoints() {
 		for (int i = 1; i < list.size() - 1; i++) {
@@ -434,7 +434,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Get the number of control points in the gradient
-	 *
+	 * <p>
 	 * @return The number of control points in the gradient
 	 */
 	public int getControlPointCount() {
@@ -442,10 +442,10 @@ public class GradientEditor extends JPanel {
 	}
 
 	/**
-	 * Get the graident position of the control point at the specified
-	 * index.
-	 *
+	 * Get the graident position of the control point at the specified index.
+	 * <p>
 	 * @param index The index of the control point
+	 * <p>
 	 * @return The graident position of the control point
 	 */
 	public float getPointPos(int index) {
@@ -453,10 +453,10 @@ public class GradientEditor extends JPanel {
 	}
 
 	/**
-	 * Get the color of the control point at the specified
-	 * index.
-	 *
+	 * Get the color of the control point at the specified index.
+	 * <p>
 	 * @param index The index of the control point
+	 * <p>
 	 * @return The color of the control point
 	 */
 	public Color getColor(int index) {
@@ -465,7 +465,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * A control point defining the gradient
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	public class ControlPoint {
@@ -482,7 +482,7 @@ public class GradientEditor extends JPanel {
 
 		/**
 		 * Create a new control point
-		 *
+		 * <p>
 		 * @param col The color at this control point
 		 * @param pos The position of this control point (0 -> 1)
 		 */
@@ -495,7 +495,7 @@ public class GradientEditor extends JPanel {
 
 	/**
 	 * Simple test case for the gradient painter
-	 *
+	 * <p>
 	 * @param argv The arguments supplied at the command line
 	 */
 	public static void main(String[] argv) {

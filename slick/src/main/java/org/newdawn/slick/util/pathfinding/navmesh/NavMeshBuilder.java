@@ -7,31 +7,38 @@ import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
 
 /**
- * The builder responsible for converting a tile based map into
- * a navigation mesh
- * 
+ * The builder responsible for converting a tile based map into a navigation mesh
+ * <p>
  * @author kevin
  */
 public class NavMeshBuilder implements PathFindingContext {
 
-	/** The current x position we're searching */
+	/**
+	 * The current x position we're searching
+	 */
 	private int sx;
 
-	/** The current y position we've searching */
+	/**
+	 * The current y position we've searching
+	 */
 	private int sy;
 
-	/** The smallest space allowed */
+	/**
+	 * The smallest space allowed
+	 */
 	private float smallestSpace = 0.2f;
 
-	/** True if we're working tile based */
+	/**
+	 * True if we're working tile based
+	 */
 	private boolean tileBased;
 
 	/**
 	 * Build a navigation mesh based on a tile map
-	 * 
+	 * <p>
 	 * @param map The map to build the navigation mesh from
-	 * 
-	 * @return The newly created navigation mesh 
+	 * <p>
+	 * @return The newly created navigation mesh
 	 */
 	public NavMesh build(TileBasedMap map) {
 		return build(map, true);
@@ -39,11 +46,11 @@ public class NavMeshBuilder implements PathFindingContext {
 
 	/**
 	 * Build a navigation mesh based on a tile map
-	 * 
+	 * <p>
 	 * @param map The map to build the navigation mesh from
-	 * @param tileBased True if we'll use the tiles for the mesh initially 
-	 * rather than quad spacing
-	 * @return The newly created navigation mesh 
+	 * @param tileBased True if we'll use the tiles for the mesh initially rather than quad spacing
+	 * <p>
+	 * @return The newly created navigation mesh
 	 */
 	public NavMesh build(TileBasedMap map, boolean tileBased) {
 		this.tileBased = tileBased;
@@ -72,12 +79,11 @@ public class NavMeshBuilder implements PathFindingContext {
 	}
 
 	/**
-	 * Merge the spaces that have been created to optimize out anywhere
-	 * we can.
-	 * 
+	 * Merge the spaces that have been created to optimize out anywhere we can.
+	 * <p>
 	 * @param spaces The list of spaces to be merged
-	 * @return True if a merge occured and we'll have to start the merge
-	 * process again
+	 * <p>
+	 * @return True if a merge occured and we'll have to start the merge process again
 	 */
 	private boolean mergeSpaces(ArrayList spaces) {
 		for (int source = 0; source < spaces.size(); source++) {
@@ -100,7 +106,7 @@ public class NavMeshBuilder implements PathFindingContext {
 
 	/**
 	 * Determine the links between spaces
-	 * 
+	 * <p>
 	 * @param spaces The spaces to link up
 	 */
 	private void linkSpaces(ArrayList spaces) {
@@ -120,9 +126,10 @@ public class NavMeshBuilder implements PathFindingContext {
 
 	/**
 	 * Check if a particular space is clear of blockages
-	 * 
+	 * <p>
 	 * @param map The map the spaces are being built from
 	 * @param space The space to check
+	 * <p>
 	 * @return True if there are no blockages in the space
 	 */
 	public boolean clear(TileBasedMap map, Space space) {
@@ -163,9 +170,8 @@ public class NavMeshBuilder implements PathFindingContext {
 	}
 
 	/**
-	 * Subsection a space into smaller spaces if required to find a non-blocked
-	 * area.
-	 * 
+	 * Subsection a space into smaller spaces if required to find a non-blocked area.
+	 * <p>
 	 * @param map The map being processed
 	 * @param space The space being sections
 	 * @param spaces The list of spaces that have been created
@@ -190,7 +196,7 @@ public class NavMeshBuilder implements PathFindingContext {
 
 	/**
 	 * Path finding context implementation
-	 * 
+	 * <p>
 	 * @return The current mover
 	 */
 	public Mover getMover() {
@@ -199,7 +205,7 @@ public class NavMeshBuilder implements PathFindingContext {
 
 	/**
 	 * Path finding context implementation
-	 * 
+	 * <p>
 	 * @return The current search distance
 	 */
 	public int getSearchDistance() {
@@ -208,7 +214,7 @@ public class NavMeshBuilder implements PathFindingContext {
 
 	/**
 	 * Path finding context implementation
-	 * 
+	 * <p>
 	 * @return The current x location
 	 */
 	public int getSourceX() {
@@ -217,7 +223,7 @@ public class NavMeshBuilder implements PathFindingContext {
 
 	/**
 	 * Path finding context implementation
-	 * 
+	 * <p>
 	 * @return The current y location
 	 */
 	public int getSourceY() {

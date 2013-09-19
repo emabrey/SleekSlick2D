@@ -13,7 +13,7 @@ import org.newdawn.slick.svg.SimpleDiagramRenderer;
 
 /**
  * A rudimentry test of loading SVG from inkscape
- *
+ * <p>
  * @author kevin
  */
 public class InkscapeTest extends BasicGame {
@@ -121,7 +121,7 @@ public class InkscapeTest extends BasicGame {
 
 	/**
 	 * Entry point to our simple test
-	 *
+	 * <p>
 	 * @param argv The arguments passed in
 	 */
 	public static void main(String argv[]) {
@@ -132,7 +132,8 @@ public class InkscapeTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new InkscapeTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

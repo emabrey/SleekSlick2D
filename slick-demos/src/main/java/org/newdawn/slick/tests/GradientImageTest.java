@@ -15,7 +15,7 @@ import org.newdawn.slick.geom.Shape;
 
 /**
  * A test for applying gradients to images
- *
+ * <p>
  * @author kevin
  */
 public class GradientImageTest extends BasicGame {
@@ -119,7 +119,7 @@ public class GradientImageTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -127,7 +127,8 @@ public class GradientImageTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new GradientImageTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

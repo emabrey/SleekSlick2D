@@ -3,34 +3,45 @@ package org.newdawn.slick.geom;
 import java.util.ArrayList;
 
 /**
- * A shape built from lines and curves. Hole support is present but 
- * restricted.
- *
+ * A shape built from lines and curves. Hole support is present but restricted.
+ * <p>
  * @author kevin
  */
 public class Path extends Shape {
 
-	/** The local list of points */
+	/**
+	 * The local list of points
+	 */
 	private ArrayList localPoints = new ArrayList();
 
-	/** The current x coordinate */
+	/**
+	 * The current x coordinate
+	 */
 	private float cx;
 
-	/** The current y coordiante */
+	/**
+	 * The current y coordiante
+	 */
 	private float cy;
 
-	/** True if the path has been closed */
+	/**
+	 * True if the path has been closed
+	 */
 	private boolean closed;
 
-	/** The list of holes placed */
+	/**
+	 * The list of holes placed
+	 */
 	private ArrayList holes = new ArrayList();
 
-	/** The current hole being built */
+	/**
+	 * The current hole being built
+	 */
 	private ArrayList hole;
 
 	/**
 	 * Create a new path
-	 * 
+	 * <p>
 	 * @param sx The start x coordinate of the path
 	 * @param sy The start y coordiante of the path
 	 */
@@ -43,7 +54,7 @@ public class Path extends Shape {
 
 	/**
 	 * Start building a hole in the previously defined contour
-	 * 
+	 * <p>
 	 * @param sx The start point of the hole
 	 * @param sy The start point of the hole
 	 */
@@ -53,9 +64,8 @@ public class Path extends Shape {
 	}
 
 	/**
-	 * Add a line to the contour or hole which ends at the specified 
-	 * location.
-	 * 
+	 * Add a line to the contour or hole which ends at the specified location.
+	 * <p>
 	 * @param x The x coordinate to draw the line to
 	 * @param y The y coordiante to draw the line to
 	 */
@@ -79,7 +89,7 @@ public class Path extends Shape {
 
 	/**
 	 * Add a curve to the specified location (using the default segments 10)
-	 * 
+	 * <p>
 	 * @param x The destination x coordinate
 	 * @param y The destination y coordiante
 	 * @param cx1 The x coordiante of the first control point
@@ -93,7 +103,7 @@ public class Path extends Shape {
 
 	/**
 	 * Add a curve to the specified location (specifing the number of segments)
-	 * 
+	 * <p>
 	 * @param x The destination x coordinate
 	 * @param y The destination y coordiante
 	 * @param cx1 The x coordiante of the first control point
@@ -153,9 +163,10 @@ public class Path extends Shape {
 
 	/**
 	 * Transform a list of points
-	 * 
+	 * <p>
 	 * @param pts The pts to transform
 	 * @param t The transform to apply
+	 * <p>
 	 * @return The transformed points
 	 */
 	private ArrayList transform(ArrayList pts, Transform t) {
@@ -237,7 +248,7 @@ public class Path extends Shape {
 //    }
 	/**
 	 * True if this is a closed shape
-	 * 
+	 * <p>
 	 * @return True if this is a closed shape
 	 */
 	public boolean closed() {

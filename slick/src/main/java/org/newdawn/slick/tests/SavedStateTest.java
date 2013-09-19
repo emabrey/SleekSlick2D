@@ -13,27 +13,39 @@ import org.newdawn.slick.gui.TextField;
 
 /**
  * A test of the the local storage utilities
- *
+ * <p>
  * @author kevin
  */
 public class SavedStateTest extends BasicGame implements ComponentListener {
 
-	/** The field taking the name */
+	/**
+	 * The field taking the name
+	 */
 	private TextField name;
 
-	/** The field taking the age */
+	/**
+	 * The field taking the age
+	 */
 	private TextField age;
 
-	/** The name value */
+	/**
+	 * The name value
+	 */
 	private String nameValue = "none";
 
-	/** The age value */
+	/**
+	 * The age value
+	 */
 	private int ageValue = 0;
 
-	/** The saved state */
+	/**
+	 * The saved state
+	 */
 	private SavedState state;
 
-	/** The status message to display */
+	/**
+	 * The status message to display
+	 */
 	private String message = "Enter a name and age to store";
 
 	/**
@@ -82,12 +94,14 @@ public class SavedStateTest extends BasicGame implements ComponentListener {
 		}
 	}
 
-	/** The container we're using */
+	/**
+	 * The container we're using
+	 */
 	private static AppGameContainer container;
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed in the test
 	 */
 	public static void main(String[] argv) {
@@ -95,7 +109,8 @@ public class SavedStateTest extends BasicGame implements ComponentListener {
 			container = new AppGameContainer(new SavedStateTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
@@ -112,14 +127,16 @@ public class SavedStateTest extends BasicGame implements ComponentListener {
 			try {
 				ageValue = Integer.parseInt(age.getText());
 				state.setNumber("age", ageValue);
-			} catch (NumberFormatException e) {
+			}
+			catch (NumberFormatException e) {
 				// ignone
 			}
 		}
 
 		try {
 			state.save();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			message = System.currentTimeMillis() + " : Failed to save state";
 		}
 	}

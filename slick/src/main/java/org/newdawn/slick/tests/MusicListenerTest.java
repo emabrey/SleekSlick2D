@@ -11,21 +11,29 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for music listeners which notify you when the music has eneded
- *
+ * <p>
  * @author kevin
  */
 public class MusicListenerTest extends BasicGame implements MusicListener {
 
-	/** True if we should display the music ended message */
+	/**
+	 * True if we should display the music ended message
+	 */
 	private boolean musicEnded = false;
 
-	/** True if we should display the music swapped message */
+	/**
+	 * True if we should display the music swapped message
+	 */
 	private boolean musicSwapped = false;
 
-	/** The music to be played */
+	/**
+	 * The music to be played
+	 */
 	private Music music;
 
-	/** The music to be streamed */
+	/**
+	 * The music to be streamed
+	 */
 	private Music stream;
 
 	/**
@@ -98,7 +106,7 @@ public class MusicListenerTest extends BasicGame implements MusicListener {
 
 	/**
 	 * Entry point to the sound test
-	 * 
+	 * <p>
 	 * @param argv The arguments provided to the test
 	 */
 	public static void main(String[] argv) {
@@ -106,7 +114,8 @@ public class MusicListenerTest extends BasicGame implements MusicListener {
 			AppGameContainer container = new AppGameContainer(new MusicListenerTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

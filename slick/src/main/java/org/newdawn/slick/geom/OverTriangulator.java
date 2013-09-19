@@ -1,19 +1,21 @@
 package org.newdawn.slick.geom;
 
 /**
- * A triangulator implementation that splits the triangules of another, subdividing
- * to give a higher tesselation - and hence smoother transitions.
- * 
+ * A triangulator implementation that splits the triangules of another, subdividing to give a higher tesselation - and
+ * hence smoother transitions.
+ * <p>
  * @author kevin
  */
 public class OverTriangulator implements Triangulator {
 
-	/** The triangles data */
+	/**
+	 * The triangles data
+	 */
 	private float[][] triangles;
 
 	/**
 	 * Create a new triangulator
-	 * 
+	 * <p>
 	 * @param tris The original set of triangles to be sub-dividied
 	 */
 	public OverTriangulator(Triangulator tris) {

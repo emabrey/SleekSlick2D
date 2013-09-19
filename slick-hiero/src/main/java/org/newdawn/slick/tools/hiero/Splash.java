@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  * A splash screen to show startup progress
- *
+ * <p>
  * @author kevin
  */
 public class Splash extends Window implements StatusListener {
@@ -39,7 +39,8 @@ public class Splash extends Window implements StatusListener {
 			setSize(400, 250);
 			setLocation((size.width - getWidth()) / 2, (size.height - getHeight()) / 2);
 			setVisible(true);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

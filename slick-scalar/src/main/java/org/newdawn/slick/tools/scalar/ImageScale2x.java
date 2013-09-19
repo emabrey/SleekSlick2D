@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * A utility to perform the scale2x algorithm on a Java Image
- *
+ * <p>
  * @author Kevin Glass
  */
 public class ImageScale2x {
@@ -26,7 +26,7 @@ public class ImageScale2x {
 
 	/**
 	 * Create a new scaler that will scale the passed image
-	 *
+	 * <p>
 	 * @param srcImage The image to be scaled
 	 */
 	public ImageScale2x(BufferedImage srcImage) {
@@ -38,9 +38,8 @@ public class ImageScale2x {
 	}
 
 	/**
-	 * Retrieve the scaled image. Note this is the method that actually
-	 * does the work so it may take some time to return
-	 *
+	 * Retrieve the scaled image. Note this is the method that actually does the work so it may take some time to return
+	 * <p>
 	 * @return The newly scaled image
 	 */
 	public BufferedImage getScaledImage() {

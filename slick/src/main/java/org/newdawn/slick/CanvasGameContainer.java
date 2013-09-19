@@ -10,21 +10,26 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A game container that displays the game on an AWT Canvas.
- * 
+ * <p>
  * @author kevin
  */
 public class CanvasGameContainer extends Canvas {
 
-	/** The actual container implementation */
+	/**
+	 * The actual container implementation
+	 */
 	protected Container container;
 
-	/** The game being held in this container */
+	/**
+	 * The game being held in this container
+	 */
 	protected Game game;
 
 	/**
 	 * Create a new panel
-	 * 
+	 * <p>
 	 * @param game The game being held
+	 * <p>
 	 * @throws SlickException Indicates a failure during creation of the container
 	 */
 	public CanvasGameContainer(Game game) throws SlickException {
@@ -33,10 +38,11 @@ public class CanvasGameContainer extends Canvas {
 
 	/**
 	 * Create a new panel
-	 * 
+	 * <p>
 	 * @param game The game being held
-	 * @param shared True if shared GL context should be enabled. This allows multiple panels
-	 * to share textures and other GL resources.
+	 * @param shared True if shared GL context should be enabled. This allows multiple panels to share textures and
+	 * other GL resources.
+	 * <p>
 	 * @throws SlickException Indicates a failure during creation of the container
 	 */
 	public CanvasGameContainer(Game game, boolean shared) throws SlickException {
@@ -53,7 +59,7 @@ public class CanvasGameContainer extends Canvas {
 
 	/**
 	 * Start the game container rendering
-	 * 
+	 * <p>
 	 * @throws SlickException Indicates a failure during game execution
 	 */
 	public void start() throws SlickException {
@@ -64,13 +70,15 @@ public class CanvasGameContainer extends Canvas {
 
 					try {
 						Display.setParent(CanvasGameContainer.this);
-					} catch (LWJGLException e) {
+					}
+					catch (LWJGLException e) {
 						throw new SlickException("Failed to setParent of canvas", e);
 					}
 
 					container.setup();
 					scheduleUpdate();
-				} catch (SlickException e) {
+				}
+				catch (SlickException e) {
 					e.printStackTrace();
 					System.exit(0);
 				}
@@ -91,7 +99,8 @@ public class CanvasGameContainer extends Canvas {
 			public void run() {
 				try {
 					container.gameLoop();
-				} catch (SlickException e) {
+				}
+				catch (SlickException e) {
 					e.printStackTrace();
 				}
 				container.checkDimensions();
@@ -109,7 +118,7 @@ public class CanvasGameContainer extends Canvas {
 
 	/**
 	 * Get the GameContainer providing this canvas
-	 * 
+	 * <p>
 	 * @return The game container providing this canvas
 	 */
 	public GameContainer getContainer() {
@@ -118,18 +127,18 @@ public class CanvasGameContainer extends Canvas {
 
 	/**
 	 * A game container to provide the canvas context
-	 * 
+	 * <p>
 	 * @author kevin
 	 */
 	private class Container extends AppGameContainer {
 
 		/**
 		 * Create a new container wrapped round the game
-		 * 
-		 * @param game
-		 *            The game to be held in this container
-		 * @param shared True if shared GL context should be enabled. This allows multiple panels
-		 * to share textures and other GL resources.
+		 * <p>
+		 * @param game The game to be held in this container
+		 * @param shared True if shared GL context should be enabled. This allows multiple panels to share textures and
+		 * other GL resources.
+		 * <p>
 		 * @throws SlickException Indicates a failure to initialise
 		 */
 		public Container(Game game, boolean shared) throws SlickException {
@@ -181,7 +190,8 @@ public class CanvasGameContainer extends Canvas {
 				try {
 					setDisplayMode(CanvasGameContainer.this.getWidth(),
 							CanvasGameContainer.this.getHeight(), false);
-				} catch (SlickException e) {
+				}
+				catch (SlickException e) {
 					Log.error(e);
 				}
 			}

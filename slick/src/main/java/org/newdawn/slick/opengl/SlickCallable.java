@@ -5,12 +5,11 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.opengl.renderer.Renderer;
 
 /**
- * A utility to allow performing GL operations without contaminating the
- * Slick OpenGL state. Note this will not protect you from OpenGL programming errors
- * like a glBegin() without a glEnd(), or glPush() without glPop() etc.
- * 
+ * A utility to allow performing GL operations without contaminating the Slick OpenGL state. Note this will not protect
+ * you from OpenGL programming errors like a glBegin() without a glEnd(), or glPush() without glPop() etc.
+ * <p>
  * Expected usage:
- * 
+ * <p>
  * <code>
  * SlickCallable callable = new SlickCallable() {
  * 	   public performGLOperations() throws SlickException {
@@ -23,34 +22,34 @@ import org.newdawn.slick.opengl.renderer.Renderer;
  * }
  * callable.call();
  * </code>
- * 
+ * <p>
  * Alternatively you can use the static methods directly
- * 
+ * <p>
  * <code>
  * SlickCallable.enterSafeBlock();
- * 
- * GL.glTranslate(0,0,1);
- * glBegin(GL.GL_POLYGONS);
- *     glVertex(..);
- *     ...
- * glEnd();
- * 
+ * <p>
+ * GL.glTranslate(0,0,1); glBegin(GL.GL_POLYGONS); glVertex(..); ... glEnd();
+ * <p>
  * SlickCallable.leaveSafeBlock();
  * </code>
- * 
+ * <p>
  * @author kevin
  */
 public abstract class SlickCallable {
 
-	/** The last texture used */
+	/**
+	 * The last texture used
+	 */
 	private static Texture lastUsed;
 
-	/** True if we're in a safe block */
+	/**
+	 * True if we're in a safe block
+	 */
 	private static boolean inSafe = false;
 
 	/**
-	 * Enter a safe block ensuring that all the OpenGL state that slick 
-	 * uses is safe before touching the GL state directly.
+	 * Enter a safe block ensuring that all the OpenGL state that slick uses is safe before touching the GL state
+	 * directly.
 	 */
 	public static void enterSafeBlock() {
 		if (inSafe) {
@@ -72,8 +71,7 @@ public abstract class SlickCallable {
 	}
 
 	/**
-	 * Leave a safe block ensuring that all of Slick's OpenGL state is
-	 * restored since the last enter.
+	 * Leave a safe block ensuring that all of Slick's OpenGL state is restored since the last enter.
 	 */
 	public static void leaveSafeBlock() {
 		if (!inSafe) {
@@ -97,11 +95,10 @@ public abstract class SlickCallable {
 	}
 
 	/**
-	 * Cause this callable to perform it's GL operations (@see performGLOperations()). This
-	 * method will block until the GL operations have been performed.
-	 *
-	 * @throws SlickException Indicates a failure while performing the GL operations or 
-	 * maintaing SlickState
+	 * Cause this callable to perform it's GL operations (@see performGLOperations()). This method will block until the
+	 * GL operations have been performed.
+	 * <p>
+	 * @throws SlickException Indicates a failure while performing the GL operations or maintaing SlickState
 	 */
 	public final void call() throws SlickException {
 		enterSafeBlock();
@@ -112,9 +109,9 @@ public abstract class SlickCallable {
 	}
 
 	/**
-	 * Perform the GL operations that this callable is intended to. This operations should
-	 * not effect the slick OpenGL state.
-	 * 
+	 * Perform the GL operations that this callable is intended to. This operations should not effect the slick OpenGL
+	 * state.
+	 * <p>
 	 * @throws SlickException Indicates a failure of some sort. This is user exception
 	 */
 	protected abstract void performGLOperations() throws SlickException;

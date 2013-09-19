@@ -14,7 +14,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 /**
  * A simple test state to display an image and rotate it
- *
+ * <p>
  * @author kevin
  */
 public class TestState3 extends BasicGameState {
@@ -52,7 +52,8 @@ public class TestState3 extends BasicGameState {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.BasicGameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
+	 * @see org.newdawn.slick.state.BasicGameState#init(org.newdawn.slick.GameContainer,
+	 * org.newdawn.slick.state.StateBasedGame)
 	 */
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		font = new AngelCodeFont("testdata/demo2.fnt", "testdata/demo2_00.tga");
@@ -60,7 +61,8 @@ public class TestState3 extends BasicGameState {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.BasicGameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.BasicGameState#render(org.newdawn.slick.GameContainer,
+	 * org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
 	 */
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 		g.setFont(font);
@@ -77,7 +79,8 @@ public class TestState3 extends BasicGameState {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.BasicGameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
+	 * @see org.newdawn.slick.state.BasicGameState#update(org.newdawn.slick.GameContainer,
+	 * org.newdawn.slick.state.StateBasedGame, int)
 	 */
 	public void update(GameContainer container, StateBasedGame game, int delta) {
 	}

@@ -5,7 +5,7 @@ import java.awt.*;
 
 /**
  * A dialog to show progress of the distance map generation
- *
+ * <p>
  * @author kevin
  */
 public class ProgressDialog extends JDialog implements ProgressListener {
@@ -27,7 +27,7 @@ public class ProgressDialog extends JDialog implements ProgressListener {
 
 	/**
 	 * Create a new dialog
-	 *
+	 * <p>
 	 * @param frame The owner frame that should be blocked
 	 */
 	public ProgressDialog(JFrame frame) {

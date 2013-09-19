@@ -14,7 +14,7 @@ import org.newdawn.slick.geom.RoundedRectangle;
 
 /**
  * A simple graphics test for the context allowing vector based graphics
- *
+ * <p>
  * @author kevin
  */
 public class GeomAccuracyTest extends BasicGame {
@@ -134,7 +134,7 @@ public class GeomAccuracyTest extends BasicGame {
 
 	/**
 	 * Draws arcs
-	 *
+	 * <p>
 	 * @param g
 	 */
 	void arcTest(Graphics g) {
@@ -152,7 +152,7 @@ public class GeomAccuracyTest extends BasicGame {
 
 	/**
 	 * Draws ovals
-	 *
+	 * <p>
 	 * @param g
 	 */
 	void ovalTest(Graphics g) {
@@ -186,7 +186,7 @@ public class GeomAccuracyTest extends BasicGame {
 
 	/**
 	 * Draws rects
-	 *
+	 * <p>
 	 * @param g
 	 */
 	void rectTest(Graphics g) {
@@ -305,7 +305,7 @@ public class GeomAccuracyTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -313,7 +313,8 @@ public class GeomAccuracyTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new GeomAccuracyTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

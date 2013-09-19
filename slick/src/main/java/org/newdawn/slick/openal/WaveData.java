@@ -49,25 +49,30 @@ import org.lwjgl.openal.AL10;
 /**
  *
  * Utitlity class for loading wavefiles.
- *
+ * <p>
  * @author Brian Matzon <brian@matzon.dk>
- * @version $Revision: 2286 $
- * $Id: WaveData.java 2286 2006-03-23 19:32:21Z matzon $
+ * @version $Revision: 2286 $ $Id: WaveData.java 2286 2006-03-23 19:32:21Z matzon $
  */
 public class WaveData {
 
-	/** actual wave data */
+	/**
+	 * actual wave data
+	 */
 	public final ByteBuffer data;
 
-	/** format type of data */
+	/**
+	 * format type of data
+	 */
 	public final int format;
 
-	/** sample rate of data */
+	/**
+	 * sample rate of data
+	 */
 	public final int samplerate;
 
 	/**
 	 * Creates a new WaveData
-	 * 
+	 * <p>
 	 * @param data actual wavedata
 	 * @param format format of wave data
 	 * @param samplerate sample rate of data
@@ -87,8 +92,9 @@ public class WaveData {
 
 	/**
 	 * Creates a WaveData container from the specified url
-	 * 
-	 * @param path URL to file 
+	 * <p>
+	 * @param path URL to file
+	 * <p>
 	 * @return WaveData containing data, or null if a failure occured
 	 */
 	public static WaveData create(URL path) {
@@ -96,7 +102,8 @@ public class WaveData {
 			return create(
 					AudioSystem.getAudioInputStream(
 							new BufferedInputStream(path.openStream())));
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			org.lwjgl.LWJGLUtil.log("Unable to create from: " + path);
 			e.printStackTrace();
 			return null;
@@ -105,8 +112,9 @@ public class WaveData {
 
 	/**
 	 * Creates a WaveData container from the specified in the classpath
-	 * 
-	 * @param path path to file (relative, and in classpath) 
+	 * <p>
+	 * @param path path to file (relative, and in classpath)
+	 * <p>
 	 * @return WaveData containing data, or null if a failure occured
 	 */
 	public static WaveData create(String path) {
@@ -115,25 +123,28 @@ public class WaveData {
 
 	/**
 	 * Creates a WaveData container from the specified inputstream
-	 * 
-	 * @param is InputStream to read from 
+	 * <p>
+	 * @param is InputStream to read from
+	 * <p>
 	 * @return WaveData containing data, or null if a failure occured
 	 */
 	public static WaveData create(InputStream is) {
 		try {
 			return create(
 					AudioSystem.getAudioInputStream(is));
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			org.lwjgl.LWJGLUtil.log("Unable to create from inputstream");
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	/**	
+	/**
 	 * Creates a WaveData container from the specified bytes
-	 *
+	 * <p>
 	 * @param buffer array of bytes containing the complete wave file
+	 * <p>
 	 * @return WaveData containing data, or null if a failure occured
 	 */
 	public static WaveData create(byte[] buffer) {
@@ -141,18 +152,19 @@ public class WaveData {
 			return create(
 					AudioSystem.getAudioInputStream(
 							new BufferedInputStream(new ByteArrayInputStream(buffer))));
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	/**	
-	 * Creates a WaveData container from the specified ByetBuffer.
-	 * If the buffer is backed by an array, it will be used directly, 
-	 * else the contents of the buffer will be copied using get(byte[]).
-	 *
+	/**
+	 * Creates a WaveData container from the specified ByetBuffer. If the buffer is backed by an array, it will be used
+	 * directly, else the contents of the buffer will be copied using get(byte[]).
+	 * <p>
 	 * @param buffer ByteBuffer containing sound file
+	 * <p>
 	 * @return WaveData containing data, or null if a failure occured
 	 */
 	public static WaveData create(ByteBuffer buffer) {
@@ -166,7 +178,8 @@ public class WaveData {
 				buffer.get(bytes);
 			}
 			return create(bytes);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -174,8 +187,9 @@ public class WaveData {
 
 	/**
 	 * Creates a WaveData container from the specified stream
-	 * 
+	 * <p>
 	 * @param ais AudioInputStream to read from
+	 * <p>
 	 * @return WaveData containing data, or null if a failure occured
 	 */
 	public static WaveData create(AudioInputStream ais) {
@@ -216,7 +230,8 @@ public class WaveData {
 					&& total < buf.length) {
 				total += read;
 			}
-		} catch (IOException ioe) {
+		}
+		catch (IOException ioe) {
 			return null;
 		}
 
@@ -233,7 +248,8 @@ public class WaveData {
 		//close stream
 		try {
 			ais.close();
-		} catch (IOException ioe) {
+		}
+		catch (IOException ioe) {
 		}
 
 		return wavedata;
@@ -241,9 +257,10 @@ public class WaveData {
 
 	/**
 	 * Convert the audio bytes into the stream
-	 * 
+	 * <p>
 	 * @param audio_bytes The audio byts
 	 * @param two_bytes_data True if we using double byte data
+	 * <p>
 	 * @return The byte bufer of data
 	 */
 	private static ByteBuffer convertAudioBytes(byte[] audio_bytes, boolean two_bytes_data) {

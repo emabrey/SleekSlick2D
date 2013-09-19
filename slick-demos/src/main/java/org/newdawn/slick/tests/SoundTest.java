@@ -18,7 +18,7 @@ import java.io.IOException;
 
 /**
  * A test for the sound system of the library
- *
+ * <p>
  * @author kevin
  * @author aaron
  */
@@ -92,7 +92,8 @@ public class SoundTest extends BasicGame {
 		charlie = new Sound("testdata/cbrown01.wav");
 		try {
 			engine = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("testdata/engine.wav"));
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load engine", e);
 		}
 		music = musica = new Music("testdata/SMB-X.XM");
@@ -247,7 +248,7 @@ public class SoundTest extends BasicGame {
 
 	/**
 	 * Entry point to the sound test
-	 *
+	 * <p>
 	 * @param argv The arguments provided to the test
 	 */
 	public static void main(String[] argv) {
@@ -255,7 +256,8 @@ public class SoundTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new SoundTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

@@ -6,20 +6,24 @@ import org.lwjgl.BufferUtils;
 
 /**
  * An image data implementation which represents an empty texture
- * 
+ * <p>
  * @author kevin
  */
 public class EmptyImageData implements ImageData {
 
-	/** The width of the data */
+	/**
+	 * The width of the data
+	 */
 	private int width;
 
-	/** The height of the data */
+	/**
+	 * The height of the data
+	 */
 	private int height;
 
 	/**
 	 * Create an empty image data source
-	 * 
+	 * <p>
 	 * @param width The width of the source
 	 * @param height The height of the source
 	 */

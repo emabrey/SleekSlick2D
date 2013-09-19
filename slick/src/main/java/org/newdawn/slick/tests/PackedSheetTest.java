@@ -13,27 +13,39 @@ import org.newdawn.slick.SpriteSheet;
 
 /**
  * A test for packed sprite sheets
- *
+ * <p>
  * @author kevin
  */
 public class PackedSheetTest extends BasicGame {
 
-	/** The sheet loaded */
+	/**
+	 * The sheet loaded
+	 */
 	private PackedSpriteSheet sheet;
 
-	/** The container holding this game */
+	/**
+	 * The container holding this game
+	 */
 	private GameContainer container;
 
-	/** The position of the rocket */
+	/**
+	 * The position of the rocket
+	 */
 	private float r = -500;
 
-	/** The rocket's image */
+	/**
+	 * The rocket's image
+	 */
 	private Image rocket;
 
-	/** The animation for the runner */
+	/**
+	 * The animation for the runner
+	 */
 	private Animation runner;
 
-	/** The angle of roatation */
+	/**
+	 * The angle of roatation
+	 */
 	private float ang;
 
 	/**
@@ -92,7 +104,7 @@ public class PackedSheetTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -100,7 +112,8 @@ public class PackedSheetTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new PackedSheetTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

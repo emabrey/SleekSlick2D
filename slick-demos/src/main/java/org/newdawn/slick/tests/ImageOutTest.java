@@ -15,7 +15,7 @@ import java.io.IOException;
 
 /**
  * A test for saving images
- *
+ * <p>
  * @author kevin
  */
 public class ImageOutTest extends BasicGame {
@@ -60,7 +60,8 @@ public class ImageOutTest extends BasicGame {
 
 		try {
 			fire = ParticleIO.loadConfiguredSystem("testdata/system.xml");
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load particle systems", e);
 		}
 
@@ -96,8 +97,9 @@ public class ImageOutTest extends BasicGame {
 
 	/**
 	 * Capture and save to the specified file name
-	 *
+	 * <p>
 	 * @param fname The name of the file to write to
+	 * <p>
 	 * @throws SlickException Indicates a failure to capture or write
 	 */
 	private void writeTo(String fname) throws SlickException {
@@ -125,7 +127,7 @@ public class ImageOutTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -133,7 +135,8 @@ public class ImageOutTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ImageOutTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

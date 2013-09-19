@@ -2,36 +2,44 @@ package org.newdawn.slick.tests.xml;
 
 /**
  * A test example of some object data that can be configured via XML
- * 
+ * <p>
  * @author kevin
  */
 public class Entity {
 
-	/** X position for the entity */
+	/**
+	 * X position for the entity
+	 */
 	private float x;
 
-	/** Y position for the entity */
+	/**
+	 * Y position for the entity
+	 */
 	private float y;
 
-	/** items held */
+	/**
+	 * items held
+	 */
 	private Inventory invent;
 
-	/** Entity statistics */
+	/**
+	 * Entity statistics
+	 */
 	private Stats stats;
 
 	/**
-	 * Called by XML parser to add a configured inventory to the entity 
-	 * 
-	 * @param inventory The inventory to be added 
+	 * Called by XML parser to add a configured inventory to the entity
+	 * <p>
+	 * @param inventory The inventory to be added
 	 */
 	private void add(Inventory inventory) {
 		this.invent = inventory;
 	}
 
 	/**
-	 * Called by XML parser to add a configured statistics object to the entity 
-	 * 
-	 * @param stats The statistics to be added 
+	 * Called by XML parser to add a configured statistics object to the entity
+	 * <p>
+	 * @param stats The statistics to be added
 	 */
 	private void add(Stats stats) {
 		this.stats = stats;
@@ -39,7 +47,7 @@ public class Entity {
 
 	/**
 	 * Dump this object to sysout
-	 * 
+	 * <p>
 	 * @param prefix The prefix to apply to all lines
 	 */
 	public void dump(String prefix) {

@@ -10,7 +10,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test to demonstrate world clipping as opposed to screen clipping
- *
+ * <p>
  * @author kevin
  */
 public class ClipTest extends BasicGame {
@@ -104,7 +104,7 @@ public class ClipTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -112,7 +112,8 @@ public class ClipTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ClipTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

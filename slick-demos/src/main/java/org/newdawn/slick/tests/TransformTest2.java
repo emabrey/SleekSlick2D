@@ -10,7 +10,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for transforming the graphics context
- *
+ * <p>
  * @author Jesse Aldridge
  */
 public class TransformTest2 extends BasicGame {
@@ -179,7 +179,7 @@ public class TransformTest2 extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -187,7 +187,8 @@ public class TransformTest2 extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new TransformTest2());
 			container.setDisplayMode(640, 480, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

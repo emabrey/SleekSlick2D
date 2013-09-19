@@ -13,23 +13,30 @@ import org.newdawn.slick.opengl.SlickCallable;
 import org.newdawn.slick.util.Log;
 
 /**
- * A test box containing a bunch of tests that can be used for quickly sanity
- * checking tests.
- *
+ * A test box containing a bunch of tests that can be used for quickly sanity checking tests.
+ * <p>
  * @author kevin
  */
 public class TestBox extends BasicGame {
 
-	/** The games that have been added */
+	/**
+	 * The games that have been added
+	 */
 	private ArrayList games = new ArrayList();
 
-	/** The current game */
+	/**
+	 * The current game
+	 */
 	private BasicGame currentGame;
 
-	/** The index of the current game */
+	/**
+	 * The index of the current game
+	 */
 	private int index;
 
-	/** The game container */
+	/**
+	 * The game container
+	 */
 	private AppGameContainer container;
 
 	/**
@@ -41,7 +48,7 @@ public class TestBox extends BasicGame {
 
 	/**
 	 * Add a game to the box
-	 * 
+	 * <p>
 	 * @param game The game to add to the test box
 	 */
 	public void addGame(Class game) {
@@ -73,7 +80,8 @@ public class TestBox extends BasicGame {
 			container.getGraphics().setBackground(Color.black);
 			currentGame.init(container);
 			currentGame.render(container, container.getGraphics());
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 		}
 
@@ -239,7 +247,7 @@ public class TestBox extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -272,7 +280,8 @@ public class TestBox extends BasicGame {
 			AppGameContainer container = new AppGameContainer(box);
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

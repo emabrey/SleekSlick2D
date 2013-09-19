@@ -13,34 +13,50 @@ import org.newdawn.slick.util.ResourceLoader;
 
 /**
  * A test for the sound system of the library
- * 
+ * <p>
  * @author kevin
  * @author aaron
  */
 public class SoundURLTest extends BasicGame {
 
-	/** The sound to be played */
+	/**
+	 * The sound to be played
+	 */
 	private Sound sound;
 
-	/** The sound to be played */
+	/**
+	 * The sound to be played
+	 */
 	private Sound charlie;
 
-	/** The sound to be played */
+	/**
+	 * The sound to be played
+	 */
 	private Sound burp;
 
-	/** The music to be played */
+	/**
+	 * The music to be played
+	 */
 	private Music music;
 
-	/** The music to be played */
+	/**
+	 * The music to be played
+	 */
 	private Music musica;
 
-	/** The music to be played */
+	/**
+	 * The music to be played
+	 */
 	private Music musicb;
 
-	/** The sound to be played */
+	/**
+	 * The sound to be played
+	 */
 	private Sound engine;
 
-	/** The Volume of the playing music */
+	/**
+	 * The Volume of the playing music
+	 */
 	private int volume = 1;
 
 	/**
@@ -146,7 +162,7 @@ public class SoundURLTest extends BasicGame {
 	}
 
 	/**
-	 *  Convenience routine to set volume of current music 
+	 * Convenience routine to set volume of current music
 	 */
 	private void setVolume() {
 		// Do bounds checking
@@ -161,7 +177,7 @@ public class SoundURLTest extends BasicGame {
 
 	/**
 	 * Entry point to the sound test
-	 * 
+	 * <p>
 	 * @param argv The arguments provided to the test
 	 */
 	public static void main(String[] argv) {
@@ -169,7 +185,8 @@ public class SoundURLTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new SoundURLTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

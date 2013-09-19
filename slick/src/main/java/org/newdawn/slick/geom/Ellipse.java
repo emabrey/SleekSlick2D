@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import org.newdawn.slick.util.FastTrig;
 
 /**
- * An ellipse meeting the <code>Shape</code> contract. The ellipse is actually an approximation using 
- * a series of points generated around the contour of the ellipse.
- * 
+ * An ellipse meeting the <code>Shape</code> contract. The ellipse is actually an approximation using a series of points
+ * generated around the contour of the ellipse.
+ * <p>
  * @author Mark
  */
 public class Ellipse extends Shape {
@@ -34,7 +34,7 @@ public class Ellipse extends Shape {
 
 	/**
 	 * Creates a new Ellipse object.
-	 *
+	 * <p>
 	 * @param centerPointX x coordinate of the center of the ellipse
 	 * @param centerPointY y coordinate of the center of the ellipse
 	 * @param radius1 horizontal radius
@@ -46,7 +46,7 @@ public class Ellipse extends Shape {
 
 	/**
 	 * Creates a new Ellipse object.
-	 *
+	 * <p>
 	 * @param centerPointX x coordinate of the center of the ellipse
 	 * @param centerPointY y coordinate of the center of the ellipse
 	 * @param radius1 horizontal radius
@@ -64,7 +64,7 @@ public class Ellipse extends Shape {
 
 	/**
 	 * Change the shape of this Ellipse
-	 * 
+	 * <p>
 	 * @param radius1 horizontal radius
 	 * @param radius2 vertical radius
 	 */
@@ -75,7 +75,7 @@ public class Ellipse extends Shape {
 
 	/**
 	 * Get the horizontal radius of the ellipse
-	 * 
+	 * <p>
 	 * @return The horizontal radius of the ellipse
 	 */
 	public float getRadius1() {
@@ -84,7 +84,7 @@ public class Ellipse extends Shape {
 
 	/**
 	 * Set the horizontal radius of the ellipse
-	 * 
+	 * <p>
 	 * @param radius1 The horizontal radius to set
 	 */
 	public void setRadius1(float radius1) {
@@ -96,7 +96,7 @@ public class Ellipse extends Shape {
 
 	/**
 	 * Get the vertical radius of the ellipse
-	 * 
+	 * <p>
 	 * @return The vertical radius of the ellipse
 	 */
 	public float getRadius2() {
@@ -105,7 +105,7 @@ public class Ellipse extends Shape {
 
 	/**
 	 * Set the vertical radius of the ellipse
-	 * 
+	 * <p>
 	 * @param radius2 The vertical radius to set
 	 */
 	public void setRadius2(float radius2) {
@@ -117,7 +117,7 @@ public class Ellipse extends Shape {
 
 	/**
 	 * Generate the points to outline this ellipse.
-	 *
+	 * <p>
 	 */
 	protected void createPoints() {
 		ArrayList tempPoints = new ArrayList();

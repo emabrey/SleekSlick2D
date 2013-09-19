@@ -4,7 +4,7 @@ import org.newdawn.slick.*;
 
 /**
  * A test for basic image rendering
- *
+ * <p>
  * @author kevin
  */
 public class BigImageTest extends BasicGame {
@@ -101,7 +101,7 @@ public class BigImageTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -109,7 +109,8 @@ public class BigImageTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new BigImageTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

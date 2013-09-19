@@ -13,7 +13,7 @@ import java.awt.event.WindowEvent;
 
 /**
  * Quick test to confirm canvas size is reported correctly
- *
+ * <p>
  * @author kevin
  */
 public class CanvasSizeTest extends BasicGame {
@@ -48,7 +48,7 @@ public class CanvasSizeTest extends BasicGame {
 
 	/**
 	 * Entry point to the test
-	 *
+	 * <p>
 	 * @param args The command line arguments passed in (none honoured)
 	 */
 	public static void main(String[] args) {
@@ -69,7 +69,8 @@ public class CanvasSizeTest extends BasicGame {
 			frame.setVisible(true);
 
 			container.start();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 		}
 	}

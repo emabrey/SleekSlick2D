@@ -26,9 +26,8 @@ import java.util.Comparator;
 import java.util.Hashtable;
 
 /**
- * A visual control to allow the editing of linear interpolated values effecting
- * the generated particles.
- *
+ * A visual control to allow the editing of linear interpolated values effecting the generated particles.
+ * <p>
  * @author void
  */
 public class GraphEditorWindow extends JPanel {
@@ -159,7 +158,7 @@ public class GraphEditorWindow extends JPanel {
 
 	/**
 	 * Set the emitter that is being controlled
-	 *
+	 * <p>
 	 * @param emitter The emitter that is configured by this panel
 	 */
 	public void setLinkedEmitter(ConfigurableEmitter emitter) {
@@ -179,7 +178,7 @@ public class GraphEditorWindow extends JPanel {
 
 	/**
 	 * Create the top panel
-	 *
+	 * <p>
 	 * @return A fully configured component
 	 */
 	private DefaultPanel createTopPanel() {
@@ -274,7 +273,7 @@ public class GraphEditorWindow extends JPanel {
 
 	/**
 	 * Fire a notification that the panel has been changed
-	 *
+	 * <p>
 	 * @param control The source of the update
 	 */
 	private void fireUpdated(Object control) {
@@ -301,9 +300,9 @@ public class GraphEditorWindow extends JPanel {
 
 	/**
 	 * Register a configurable value with the graph panel
-	 *
+	 * <p>
 	 * @param value The value to be registered
-	 * @param name  The name to display for this value
+	 * @param name The name to display for this value
 	 */
 	public void registerValue(LinearInterpolator value, String name) {
 		// add to properties combobox
@@ -332,7 +331,7 @@ public class GraphEditorWindow extends JPanel {
 
 	/**
 	 * Remove a configurable value from the graph
-	 *
+	 * <p>
 	 * @param name The name of the value to be removed
 	 */
 	public void removeValue(String name) {
@@ -363,7 +362,7 @@ public class GraphEditorWindow extends JPanel {
 
 	/**
 	 * The actual panel the graph is drawn on
-	 *
+	 * <p>
 	 * @author void
 	 */
 	public class GraphPanel extends JPanel {
@@ -500,7 +499,7 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Load a background image and apply it (add some style to whiskas =))
-		 *
+		 * <p>
 		 * @return The image to display in the background
 		 */
 		private BufferedImage loadBackgroundImage() {
@@ -510,7 +509,8 @@ public class GraphEditorWindow extends JPanel {
 			BufferedImage backgroundImage = null;
 			try {
 				backgroundImage = ImageIO.read(in);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				e.printStackTrace();
 			}
 
@@ -519,7 +519,7 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Set the interpolator being configured
-		 *
+		 * <p>
 		 * @param value The value to be configured
 		 */
 		public void setInterpolator(LinearInterpolator value) {
@@ -541,8 +541,7 @@ public class GraphEditorWindow extends JPanel {
 		}
 
 		/**
-		 * Change the current curve and make sure that the whole curve is in the
-		 * worldMinY and worldMaxY interval
+		 * Change the current curve and make sure that the whole curve is in the worldMinY and worldMaxY interval
 		 */
 		private void makeSureCurveFits() {
 			for (int i = 0; i < curve.size(); i++) {
@@ -560,8 +559,9 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Find the first selected point in the given curve
-		 *
+		 * <p>
 		 * @param curve The list of points to search
+		 * <p>
 		 * @return The index of the selected point
 		 */
 		private int findSelectedPoint(ArrayList curve) {
@@ -576,11 +576,11 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Return the index of the previous point in the given curve
-		 *
+		 * <p>
 		 * @param curve The list of points to search
-		 * @param idx   The index of the current point
-		 * @return The index of the point that is previous to the point with the
-		 *         given index
+		 * @param idx The index of the current point
+		 * <p>
+		 * @return The index of the point that is previous to the point with the given index
 		 */
 		private int getPrev(ArrayList curve, int idx) {
 			if (idx == -1) {
@@ -596,11 +596,11 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Return the index of the next point in the given curve
-		 *
+		 * <p>
 		 * @param curve The list of points to search
-		 * @param idx   The index of the current point
-		 * @return The index of the point that follows the point with the given
-		 *         index
+		 * @param idx The index of the current point
+		 * <p>
+		 * @return The index of the point that follows the point with the given index
 		 */
 		private int getNext(ArrayList curve, int idx) {
 			if (idx == -1) {
@@ -616,9 +616,9 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Drag a curve point based on the reception of an event
-		 *
-		 * @param x         The new x position
-		 * @param y         The new y position
+		 * <p>
+		 * @param x The new x position
+		 * @param y The new y position
 		 * @param shiftDown True if shift is pressed
 		 */
 		public void mouseDraggedEvent(int x, int y, boolean shiftDown) {
@@ -683,7 +683,7 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Notified that the mouse pointer has moved
-		 *
+		 * <p>
 		 * @param x The x position of the new mouse position
 		 * @param y The y position of the new mouse position
 		 */
@@ -716,15 +716,15 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Notification that the mouse was pressed on the panel
-		 *
-		 * @param leftButton   True if the left button was pressed
-		 * @param rightButton  True if the right button was pressed
+		 * <p>
+		 * @param leftButton True if the left button was pressed
+		 * @param rightButton True if the right button was pressed
 		 * @param middleButton True if the middle button was pressed
-		 * @param x            The x position of the mouse press
-		 * @param y            The y position of the mouse press
+		 * @param x The x position of the mouse press
+		 * @param y The y position of the mouse press
 		 */
 		public void mousePressedEvent(int x, int y, boolean leftButton,
-				boolean rightButton, boolean middleButton) {
+									  boolean rightButton, boolean middleButton) {
 			if (!isActive()) {
 				return;
 			}
@@ -757,8 +757,9 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Convert given control point from world to viewport coordinates
-		 *
+		 * <p>
 		 * @param in The point to convert
+		 * <p>
 		 * @return A new control point representing the point in view space
 		 */
 		private CurvePoint worldToView(CurvePoint in) {
@@ -773,8 +774,9 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Convert the given point in view space into world space
-		 *
+		 * <p>
 		 * @param view The point to convert
+		 * <p>
 		 * @return A new control point that represent the point in world space
 		 */
 		public CurvePoint viewToWorld(CurvePoint view) {
@@ -789,15 +791,15 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Draw the legen of the graph
-		 *
-		 * @param g   The graphics context on which to draw the legend
+		 * <p>
+		 * @param g The graphics context on which to draw the legend
 		 * @param vx0 The view top-left x coordinate
 		 * @param vy0 The view top-left y coordinate
 		 * @param vx1 The view bottom-right x coordinate
 		 * @param vy1 The view bottom-right y coordinate
 		 */
 		private void drawLegend(Graphics2D g, float vx0, float vy0, float vx1,
-				float vy1) {
+								float vy1) {
 			g.setColor(COLOR_BACKGROUND);
 			g.fillRect((int) vx0, (int) (vy1 - viewBorderY),
 					(int) (vx1 - vx0 + viewBorderX),
@@ -919,8 +921,9 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Convert the list of the given CurvePoint
-		 *
+		 * <p>
 		 * @param curve The list of points to convert
+		 * <p>
 		 * @return The new list of points in Point2D format
 		 */
 		private ArrayList convertToPoint2DCurve(ArrayList curve) {
@@ -934,8 +937,9 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Convert a point 2d curve into a curve point curve
-		 *
+		 * <p>
 		 * @param point2DCurve The list of points to convert
+		 * <p>
 		 * @return The list of points in CurvePoint format
 		 */
 		private ArrayList convertToCurvePointCurve(ArrayList point2DCurve) {
@@ -949,8 +953,8 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Paint the display
-		 *
-		 * @param g   The graphics context to draw onto
+		 * <p>
+		 * @param g The graphics context to draw onto
 		 * @param vx0 The top-left x coordinate
 		 * @param vy0 The top-left y coordinate
 		 * @param vx1 The bottom-right x coordinate
@@ -1089,7 +1093,7 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Check if this graph panel is currently being used
-		 *
+		 * <p>
 		 * @return True if the graph panel is current being used
 		 */
 		private boolean isActive() {
@@ -1098,8 +1102,9 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Convert a float to a string format
-		 *
+		 * <p>
 		 * @param f The float to convert
+		 * <p>
 		 * @return The string formatted from the float
 		 */
 		private String convertFloat(float f) {
@@ -1113,7 +1118,7 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * A point on the curve
-		 *
+		 * <p>
 		 * @author void
 		 */
 		private class CurvePoint {
@@ -1135,7 +1140,7 @@ public class GraphEditorWindow extends JPanel {
 
 			/**
 			 * Create a new curve point
-			 *
+			 * <p>
 			 * @param x The x coordinate of the curve point
 			 * @param y The y coordinate of the curve point
 			 */
@@ -1147,7 +1152,7 @@ public class GraphEditorWindow extends JPanel {
 
 			/**
 			 * Check if this point is selected
-			 *
+			 * <p>
 			 * @return True if the point is selected
 			 */
 			public boolean isSelected() {
@@ -1156,7 +1161,7 @@ public class GraphEditorWindow extends JPanel {
 
 			/**
 			 * Get the x coordinate of this point
-			 *
+			 * <p>
 			 * @return The x coordinate of this point
 			 */
 			public float getX() {
@@ -1165,7 +1170,7 @@ public class GraphEditorWindow extends JPanel {
 
 			/**
 			 * Get the y coordinate of this point
-			 *
+			 * <p>
 			 * @return The y coordinate of this point
 			 */
 			public float getY() {
@@ -1176,7 +1181,7 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Get the world minimum y value
-		 *
+		 * <p>
 		 * @return The world minimum y value
 		 */
 		public float getWorldMinY() {
@@ -1185,7 +1190,7 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Set the world minimum y value
-		 *
+		 * <p>
 		 * @param worldMinY The world minimum y value
 		 */
 		public void setWorldMinY(float worldMinY) {
@@ -1194,7 +1199,7 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Get the world maximum y value
-		 *
+		 * <p>
 		 * @return The world maximum y value
 		 */
 		public float getWorldMaxY() {
@@ -1203,7 +1208,7 @@ public class GraphEditorWindow extends JPanel {
 
 		/**
 		 * Set the world maximum y value
-		 *
+		 * <p>
 		 * @param worldMaxY The world maximum y value
 		 */
 		public void setWorldMaxY(float worldMaxY) {
@@ -1214,7 +1219,7 @@ public class GraphEditorWindow extends JPanel {
 
 	/**
 	 * Simple test case for the gradient painter
-	 *
+	 * <p>
 	 * @param argv The arguments supplied at the command line
 	 */
 	public static void main(String[] argv) {

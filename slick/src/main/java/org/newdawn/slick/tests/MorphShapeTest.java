@@ -13,24 +13,34 @@ import org.newdawn.slick.geom.Transform;
 
 /**
  * A test to try shape morphing
- * 
+ * <p>
  * @author Kevin Glass
  */
 public class MorphShapeTest extends BasicGame {
 
-	/** First shape of the morph */
+	/**
+	 * First shape of the morph
+	 */
 	private Shape a;
 
-	/** Second shape of the morph */
+	/**
+	 * Second shape of the morph
+	 */
 	private Shape b;
 
-	/** Third shape of the morph */
+	/**
+	 * Third shape of the morph
+	 */
 	private Shape c;
 
-	/** The morphing shape */
+	/**
+	 * The morphing shape
+	 */
 	private MorphShape morph;
 
-	/** The current morph time */
+	/**
+	 * The current morph time
+	 */
 	private float time;
 
 	/**
@@ -84,9 +94,8 @@ public class MorphShapeTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
-	 * @param argv
-	 *            The arguments passed to the test
+	 * <p>
+	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
 		try {
@@ -94,7 +103,8 @@ public class MorphShapeTest extends BasicGame {
 					new MorphShapeTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 /**
  * A visual list of the emitter being editing
- *
+ * <p>
  * @author kevin
  */
 public class EmitterList extends JPanel {
@@ -51,7 +51,7 @@ public class EmitterList extends JPanel {
 
 	/**
 	 * Create a new visual list of emitters
-	 *
+	 * <p>
 	 * @param editor The editor to report updates to
 	 */
 	public EmitterList(final ParticleEditor editor) {
@@ -115,7 +115,7 @@ public class EmitterList extends JPanel {
 
 	/**
 	 * Set the currently selected emitter
-	 *
+	 * <p>
 	 * @param emitter The emitter to be selected
 	 */
 	public void setSelected(ConfigurableEmitter emitter) {
@@ -124,7 +124,7 @@ public class EmitterList extends JPanel {
 
 	/**
 	 * Set the currently selected index in the list
-	 *
+	 * <p>
 	 * @param index The index to be selected
 	 */
 	public void setSelected(int index) {
@@ -135,7 +135,7 @@ public class EmitterList extends JPanel {
 
 	/**
 	 * Update the visual state of the specified emitter in the list
-	 *
+	 * <p>
 	 * @param emitter The emitter to be updated
 	 */
 	public void update(ConfigurableEmitter emitter) {
@@ -151,7 +151,7 @@ public class EmitterList extends JPanel {
 
 	/**
 	 * Add an emitter to the list
-	 *
+	 * <p>
 	 * @param emitter The emitter to add
 	 */
 	public void add(ConfigurableEmitter emitter) {
@@ -160,7 +160,7 @@ public class EmitterList extends JPanel {
 
 	/**
 	 * Remove an emitter from the list
-	 *
+	 * <p>
 	 * @param emitter The emitter to remove
 	 */
 	public void remove(ConfigurableEmitter emitter) {
@@ -169,15 +169,17 @@ public class EmitterList extends JPanel {
 
 	/**
 	 * Renderer for the emitter list, shows check boxes
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	public class Renderer extends DefaultListCellRenderer {
 
 		/**
-		 * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int, boolean, boolean)
+		 * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object,
+		 * int, boolean, boolean)
 		 */
-		public Component getListCellRendererComponent(JList list, final Object value, int index, boolean isSelected, boolean cellHasFocus) {
+		public Component getListCellRendererComponent(JList list, final Object value, int index, boolean isSelected,
+													  boolean cellHasFocus) {
 			JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected,
 					cellHasFocus);
 

@@ -17,43 +17,63 @@ import org.newdawn.slick.opengl.renderer.Renderer;
 
 /**
  * A geomertry test
- *
+ * <p>
  * @author kevin
  */
 public class GeomTest extends BasicGame {
 
-	/** The rectangle drawn */
+	/**
+	 * The rectangle drawn
+	 */
 	private Shape rect = new Rectangle(100, 100, 100, 100);
 
-	/** The rectangle drawn */
+	/**
+	 * The rectangle drawn
+	 */
 	private Shape circle = new Circle(500, 200, 50);
 
-	/** The rectangle tested */
+	/**
+	 * The rectangle tested
+	 */
 	private Shape rect1 = new Rectangle(150, 120, 50, 100).transform(Transform.createTranslateTransform(50, 50));
 
-	/** The rectangle tested */
+	/**
+	 * The rectangle tested
+	 */
 	private Shape rect2 = new Rectangle(310, 210, 50, 100).transform(
 			Transform.createRotateTransform((float) Math.toRadians(45), 335, 260));
 
-	/** The circle tested */
+	/**
+	 * The circle tested
+	 */
 	private Shape circle1 = new Circle(150, 90, 30);
 
-	/** The circle tested */
+	/**
+	 * The circle tested
+	 */
 	private Shape circle2 = new Circle(310, 110, 70);
 
-	/** The circle tested */
+	/**
+	 * The circle tested
+	 */
 	private Shape circle3 = new Ellipse(510, 150, 70, 70);
 
-	/** The circle tested */
+	/**
+	 * The circle tested
+	 */
 	private Shape circle4 = new Ellipse(510, 350, 30, 30).transform(
 			Transform.createTranslateTransform(-510, -350)).transform(
 					Transform.createScaleTransform(2, 2)).transform(
 					Transform.createTranslateTransform(510, 350));
 
-	/** The RoundedRectangle tested */
+	/**
+	 * The RoundedRectangle tested
+	 */
 	private Shape roundRect = new RoundedRectangle(50, 175, 100, 100, 20);
 
-	/** The RoundedRectangle tested - less cornders */
+	/**
+	 * The RoundedRectangle tested - less cornders
+	 */
 	private Shape roundRect2 = new RoundedRectangle(50, 280, 50, 50, 20, 20, RoundedRectangle.TOP_LEFT | RoundedRectangle.BOTTOM_RIGHT);
 
 	/**
@@ -136,7 +156,7 @@ public class GeomTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -146,7 +166,8 @@ public class GeomTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new GeomTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

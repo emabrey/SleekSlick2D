@@ -2,39 +2,59 @@ package org.newdawn.slick.geom;
 
 /**
  * A second triangulator that seems slightly more robust
- * 
+ * <p>
  * @author Online examples
  */
 public class NeatTriangulator implements Triangulator {
 
-	/** The error factor */
+	/**
+	 * The error factor
+	 */
 	static final float EPSILON = 1E-006F;
 
-	/** The x coordinates */
+	/**
+	 * The x coordinates
+	 */
 	private float pointsX[];
 
-	/** The y coordiantes */
+	/**
+	 * The y coordiantes
+	 */
 	private float pointsY[];
 
-	/** The number of points that have been added */
+	/**
+	 * The number of points that have been added
+	 */
 	private int numPoints;
 
-	/** The edges defines by triangulation */
+	/**
+	 * The edges defines by triangulation
+	 */
 	private Edge edges[];
 
-	/** Voroni */
+	/**
+	 * Voroni
+	 */
 	private int V[];
 
-	/** The number of edges found */
+	/**
+	 * The number of edges found
+	 */
 	private int numEdges;
 
-	/** The triangles that have been found */
+	/**
+	 * The triangles that have been found
+	 */
 	private Triangle triangles[];
 
-	/** The number of triangles found */
+	/**
+	 * The number of triangles found
+	 */
 	private int numTriangles;
 
-	/** The current offset */
+	/**
+	 * The current offset
+	 */
 	private float offset = EPSILON;
 
 	/**
@@ -51,7 +71,7 @@ public class NeatTriangulator implements Triangulator {
 	}
 
 	/**
-	 * Clear the triangulator status 
+	 * Clear the triangulator status
 	 */
 	public void clear() {
 		numPoints = 0;
@@ -60,10 +80,11 @@ public class NeatTriangulator implements Triangulator {
 	}
 
 	/**
-	 * Find an edge between two verts 
-	 * 
+	 * Find an edge between two verts
+	 * <p>
 	 * @param i The index of the first vert
 	 * @param j The index of the second vert
+	 * <p>
 	 * @return The index of the dge
 	 */
 	private int findEdge(int i, int j) {
@@ -87,7 +108,7 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * Add a discovered edge
-	 * 
+	 * <p>
 	 * @param i The index of the first vert
 	 * @param j The index of the second vert
 	 * @param k The index of the spread vert
@@ -132,9 +153,10 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * Remove and edge identified by it's verts
-	 * 
+	 * <p>
 	 * @param i The index of the first vert
 	 * @param j The index of the second vert
+	 * <p>
 	 * @throws InternalException Indicates the edge didn't exist
 	 */
 	private void deleteEdge(int i, int j) throws InternalException {
@@ -149,10 +171,11 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * Mark an edge as either a suspect or not
-	 * 
+	 * <p>
 	 * @param i The index of the first vert
 	 * @param j The index of the second vert
 	 * @param flag True if the edge is a suspect
+	 * <p>
 	 * @throws InternalException Indicates the edge didn't exist
 	 */
 	void markSuspect(int i, int j, boolean flag) throws InternalException {
@@ -167,7 +190,7 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * Choose the suspect to become part of the triangle
-	 * 
+	 * <p>
 	 * @return The edge selected
 	 */
 	private Edge chooseSuspect() {
@@ -186,13 +209,14 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * Factor rho.
-	 * 
+	 * <p>
 	 * @param f Factor 1
 	 * @param f1 Factor 2
 	 * @param f2 Factor 3
 	 * @param f3 Factor 4
 	 * @param f4 Factor 5
 	 * @param f5 Factor 6
+	 * <p>
 	 * @return The computation of rho
 	 */
 	private static float rho(float f, float f1, float f2, float f3, float f4, float f5) {
@@ -220,9 +244,8 @@ public class NeatTriangulator implements Triangulator {
 	}
 
 	/**
-	 * Check if the point P is inside the triangle defined by
-	 * the points A,B,C
-	 * 
+	 * Check if the point P is inside the triangle defined by the points A,B,C
+	 * <p>
 	 * @param f Point A x-coordinate
 	 * @param f1 Point A y-coordinate
 	 * @param f2 Point B x-coordinate
@@ -231,6 +254,7 @@ public class NeatTriangulator implements Triangulator {
 	 * @param f5 Point C y-coordinate
 	 * @param f6 Point P x-coordinate
 	 * @param f7 Point P y-coordinate
+	 * <p>
 	 * @return True if the point specified is within the triangle
 	 */
 	private static boolean insideTriangle(float f, float f1, float f2, float f3, float f4, float f5, float f6, float f7) {
@@ -253,13 +277,13 @@ public class NeatTriangulator implements Triangulator {
 	}
 
 	/**
-	 * Cut a the contour and add a triangle into V to describe the 
-	 * location of the cut
-	 * 
+	 * Cut a the contour and add a triangle into V to describe the location of the cut
+	 * <p>
 	 * @param i The index of the first point
 	 * @param j The index of the second point
 	 * @param k The index of the third point
 	 * @param l ?
+	 * <p>
 	 * @return True if a triangle was found
 	 */
 	private boolean snip(int i, int j, int k, int l) {
@@ -287,7 +311,7 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * Get the area defined by the points
-	 * 
+	 * <p>
 	 * @return The area defined by the points
 	 */
 	private float area() {
@@ -303,7 +327,7 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * Perform simple triangulation
-	 * 
+	 * <p>
 	 * @throws InternalException Indicates a polygon that can't be triangulated
 	 */
 	public void basicTriangulation() throws InternalException {
@@ -374,7 +398,7 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * Optimize the triangulation by applying delauney rules
-	 * 
+	 * <p>
 	 * @throws InternalException Indicates an invalid polygon
 	 */
 	private void optimize() throws InternalException {
@@ -461,13 +485,14 @@ public class NeatTriangulator implements Triangulator {
 			basicTriangulation();
 			//optimize();
 			return true;
-		} catch (InternalException e) {
+		}
+		catch (InternalException e) {
 			numEdges = 0;
 		}
 		return false;
 	}
 
-	/** 
+	/**
 	 * Add a point to the polygon
 	 */
 	public void addPolyPoint(float x, float y) {
@@ -495,17 +520,19 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * A single triangle
-	 *
+	 * <p>
 	 * @author Online Source
 	 */
 	class Triangle {
 
-		/** The verticies index */
+		/**
+		 * The verticies index
+		 */
 		int v[];
 
 		/**
 		 * Create a new triangle
-		 * 
+		 * <p>
 		 * @param i The index of vert 1
 		 * @param j The index of vert 2
 		 * @param k The index of vert 3
@@ -521,24 +548,34 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * A single edge between two points
-	 * 
+	 * <p>
 	 * @author Online Source
 	 */
 	class Edge {
 
-		/** The start vert */
+		/**
+		 * The start vert
+		 */
 		int v0;
 
-		/** The end vert */
+		/**
+		 * The end vert
+		 */
 		int v1;
 
-		/** The start tangent vert */
+		/**
+		 * The start tangent vert
+		 */
 		int t0;
 
-		/** The end tangent vert */
+		/**
+		 * The end tangent vert
+		 */
 		int t1;
 
-		/** True if the edge is marked as a suspect */
+		/**
+		 * True if the edge is marked as a suspect
+		 */
 		boolean suspect;
 
 		/**
@@ -555,14 +592,14 @@ public class NeatTriangulator implements Triangulator {
 
 	/**
 	 * A failure to triangulate, hidden from outside and handled
-	 * 
+	 * <p>
 	 * @author Online Source
 	 */
 	class InternalException extends Exception {
 
 		/**
 		 * Create an internal exception
-		 * 
+		 * <p>
 		 * @param msg The message describing the exception
 		 */
 		public InternalException(String msg) {

@@ -16,34 +16,50 @@ import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.Glyph;
 
 /**
- * An effect to generate soft shadows beneath text 
- * 
+ * An effect to generate soft shadows beneath text
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class ShadowEffect implements ConfigurableEffect {
 
-	/** The number of kernels to apply */
+	/**
+	 * The number of kernels to apply
+	 */
 	public static final int NUM_KERNELS = 16;
 
-	/** The blur kernels applied across the effect */
+	/**
+	 * The blur kernels applied across the effect
+	 */
 	public static final float[][] GAUSSIAN_BLUR_KERNELS = generateGaussianBlurKernels(NUM_KERNELS);
 
-	/** The colour of the shadow to render */
+	/**
+	 * The colour of the shadow to render
+	 */
 	private Color color = Color.black;
 
-	/** The transparency factor of the shadow */
+	/**
+	 * The transparency factor of the shadow
+	 */
 	private float opacity = 0.6f;
 
-	/** The distance on the x axis of the shadow from the text */
+	/**
+	 * The distance on the x axis of the shadow from the text
+	 */
 	private float xDistance = 2;
 
-	/** The distance on the y axis of the shadow from the text */
+	/**
+	 * The distance on the y axis of the shadow from the text
+	 */
 	private float yDistance = 2;
 
-	/** The size of the kernel used to blur the shadow */
+	/**
+	 * The size of the kernel used to blur the shadow
+	 */
 	private int blurKernelSize = 0;
 
-	/** The number of passes applied to create the blur */
+	/**
+	 * The number of passes applied to create the blur
+	 */
 	private int blurPasses = 1;
 
 	/**
@@ -54,7 +70,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Create a new effect to apply a drop shadow to text
-	 * 
+	 * <p>
 	 * @param color The colour of the shadow to generate
 	 * @param xDistance The distance from the text on the x axis the shadow should be rendered
 	 * @param yDistance The distance from the text on the y axis the shadow should be rendered
@@ -68,7 +84,8 @@ public class ShadowEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D, org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
+	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D,
+	 * org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
 	 */
 	public void draw(BufferedImage image, Graphics2D g, UnicodeFont unicodeFont, Glyph glyph) {
 		g = (Graphics2D) g.create();
@@ -99,7 +116,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Apply blurring to the generate image
-	 * 
+	 * <p>
 	 * @param image The image to be blurred
 	 */
 	private void blur(BufferedImage image) {
@@ -118,7 +135,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the colour of the shadow generated
-	 * 
+	 * <p>
 	 * @return The colour of the shadow generated
 	 */
 	public Color getColor() {
@@ -127,7 +144,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Set the colour of the shadow to be generated
-	 * 
+	 * <p>
 	 * @param color The colour ofthe shadow to be generated
 	 */
 	public void setColor(Color color) {
@@ -135,9 +152,8 @@ public class ShadowEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * Get the distance on the X axis from the text the shadow should
-	 * be generated at
-	 * 
+	 * Get the distance on the X axis from the text the shadow should be generated at
+	 * <p>
 	 * @return The distance on the X axis the shadow will be from the text
 	 */
 	public float getXDistance() {
@@ -145,9 +161,9 @@ public class ShadowEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * Sets the pixels to offset the shadow on the x axis. The glyphs will need padding so the 
-	 * shadow doesn't get clipped.
-	 * 
+	 * Sets the pixels to offset the shadow on the x axis. The glyphs will need padding so the shadow doesn't get
+	 * clipped.
+	 * <p>
 	 * @param distance The offset on the x axis
 	 */
 	public void setXDistance(float distance) {
@@ -155,9 +171,8 @@ public class ShadowEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * Get the distance on the Y axis from the text the shadow should
-	 * be generated at
-	 * 
+	 * Get the distance on the Y axis from the text the shadow should be generated at
+	 * <p>
 	 * @return The distance on the Y axis the shadow will be from the text
 	 */
 	public float getYDistance() {
@@ -165,9 +180,9 @@ public class ShadowEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * Sets the pixels to offset the shadow on the y axis. The glyphs will need 
-	 * padding so the shadow doesn't get clipped.
-	 * 
+	 * Sets the pixels to offset the shadow on the y axis. The glyphs will need padding so the shadow doesn't get
+	 * clipped.
+	 * <p>
 	 * @param distance The offset on the y axis
 	 */
 	public void setYDistance(float distance) {
@@ -176,7 +191,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the size of the kernel used to apply the blur
-	 * 
+	 * <p>
 	 * @return The blur kernel size
 	 */
 	public int getBlurKernelSize() {
@@ -185,7 +200,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Sets how many neighboring pixels are used to blur the shadow. Set to 0 for no blur.
-	 * 
+	 * <p>
 	 * @param blurKernelSize The size of the kernel to apply the blur with
 	 */
 	public void setBlurKernelSize(int blurKernelSize) {
@@ -194,7 +209,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the number of passes to apply the kernel for blurring
-	 * 
+	 * <p>
 	 * @return The number of passes
 	 */
 	public int getBlurPasses() {
@@ -203,7 +218,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Sets the number of times to apply a blur to the shadow. Set to 0 for no blur.
-	 * 
+	 * <p>
 	 * @param blurPasses The number of passes to apply when blurring
 	 */
 	public void setBlurPasses(int blurPasses) {
@@ -212,7 +227,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the opacity of the shadow, i.e. how transparent it is
-	 * 
+	 * <p>
 	 * @return The opacity of the shadow
 	 */
 	public float getOpacity() {
@@ -221,7 +236,7 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Set the opacity of the shadow, i.e. how transparent it is
-	 * 
+	 * <p>
 	 * @param opacity The opacity of the shadow
 	 */
 	public void setOpacity(float opacity) {
@@ -285,8 +300,9 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Generate the blur kernels which will be repeatedly applied when blurring images
-	 * 
+	 * <p>
 	 * @param level The number of kernels to generate
+	 * <p>
 	 * @return The kernels generated
 	 */
 	private static float[][] generateGaussianBlurKernels(int level) {
@@ -308,8 +324,9 @@ public class ShadowEffect implements ConfigurableEffect {
 
 	/**
 	 * Generate Pascal's triangle
-	 * 
+	 * <p>
 	 * @param level The level of the triangle to generate
+	 * <p>
 	 * @return The Pascal's triangle kernel
 	 */
 	private static float[][] generatePascalsTriangle(int level) {

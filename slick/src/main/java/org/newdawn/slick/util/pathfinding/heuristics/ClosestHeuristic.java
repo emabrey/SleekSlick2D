@@ -5,9 +5,8 @@ import org.newdawn.slick.util.pathfinding.Mover;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
 
 /**
- * A heuristic that uses the tile that is closest to the target
- * as the next best tile.
- * 
+ * A heuristic that uses the tile that is closest to the target as the next best tile.
+ * <p>
  * @author Kevin Glass
  */
 public class ClosestHeuristic implements AStarHeuristic {

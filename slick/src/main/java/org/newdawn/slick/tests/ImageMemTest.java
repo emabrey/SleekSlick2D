@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for basic image rendering
- *
+ * <p>
  * @author kevin
  */
 public class ImageMemTest extends BasicGame {
@@ -31,7 +31,8 @@ public class ImageMemTest extends BasicGame {
 			img.destroy();
 			img = new Image(2400, 2400);
 			img.getGraphics();
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
@@ -50,7 +51,7 @@ public class ImageMemTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -58,7 +59,8 @@ public class ImageMemTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ImageMemTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

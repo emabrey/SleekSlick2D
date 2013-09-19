@@ -8,40 +8,55 @@ import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.util.Log;
 
 /**
- * A sound implementation that can load the actual sound file at a later 
- * point.
- *
+ * A sound implementation that can load the actual sound file at a later point.
+ * <p>
  * @author kevin
  */
 public class DeferredSound extends AudioImpl implements DeferredResource {
 
-	/** Indicate a OGG to be loaded */
+	/**
+	 * Indicate a OGG to be loaded
+	 */
 	public static final int OGG = 1;
 
-	/** Indicate a WAV to be loaded */
+	/**
+	 * Indicate a WAV to be loaded
+	 */
 	public static final int WAV = 2;
 
-	/** Indicate a MOD/XM to be loaded */
+	/**
+	 * Indicate a MOD/XM to be loaded
+	 */
 	public static final int MOD = 3;
 
-	/** Indicate a AIF to be loaded */
+	/**
+	 * Indicate a AIF to be loaded
+	 */
 	public static final int AIF = 4;
 
-	/** The type of sound to be loader */
+	/**
+	 * The type of sound to be loader
+	 */
 	private int type;
 
-	/** The location of the sound this proxy wraps */
+	/**
+	 * The location of the sound this proxy wraps
+	 */
 	private String ref;
 
-	/** The loaded sound if it's already been brought up */
+	/**
+	 * The loaded sound if it's already been brought up
+	 */
 	private Audio target;
 
-	/** The input stream to load the sound this proxy wraps from (can be null) */
+	/**
+	 * The input stream to load the sound this proxy wraps from (can be null)
+	 */
 	private InputStream in;
 
 	/**
 	 * Create a new sound on request to load
-	 * 
+	 * <p>
 	 * @param ref The location of the sound to load
 	 * @param type The type of sound to load
 	 * @param in The input stream to load from
@@ -140,7 +155,7 @@ public class DeferredSound extends AudioImpl implements DeferredResource {
 
 	/**
 	 * Play this sound as a sound effect
-	 * 
+	 * <p>
 	 * @param pitch The pitch of the play back
 	 * @param gain The gain of the play back
 	 * @param loop True if we should loop

@@ -8,36 +8,45 @@ import org.newdawn.slick.opengl.ImageData;
 
 /**
  * A utility for creating images from pixel operations
- *
- * Expected usage is:
- * <code>
+ * <p>
+ * Expected usage is:  <code>
  * ImageBuffer buffer = new ImageBuffer(320,200);
  * buffer.setRGBA(100,100,50,50,20,255);
  * ..
  * Image image = buffer.getImage();
  * </code>
- * 
+ * <p>
  * @author kevin
  */
 public class ImageBuffer implements ImageData {
 
-	/** The width of the image */
+	/**
+	 * The width of the image
+	 */
 	private int width;
 
-	/** The height of the image */
+	/**
+	 * The height of the image
+	 */
 	private int height;
 
-	/** The width of the texture */
+	/**
+	 * The width of the texture
+	 */
 	private int texWidth;
 
-	/** The height of the texture */
+	/**
+	 * The height of the texture
+	 */
 	private int texHeight;
 
-	/** The raw data generated for the image */
+	/**
+	 * The raw data generated for the image
+	 */
 	private byte[] rawData;
 
 	/**
-	 * 
+	 *
 	 * @param width
 	 * @param height
 	 */
@@ -53,7 +62,7 @@ public class ImageBuffer implements ImageData {
 
 	/**
 	 * Retrieve the raw data stored within the image buffer
-	 * 
+	 * <p>
 	 * @return The raw data in RGBA packed format from within the image buffer
 	 */
 	public byte[] getRGBA() {
@@ -108,7 +117,7 @@ public class ImageBuffer implements ImageData {
 
 	/**
 	 * Set a pixel in the image buffer
-	 * 
+	 * <p>
 	 * @param x The x position of the pixel to set
 	 * @param y The y position of the pixel to set
 	 * @param r The red component to set (0->255)
@@ -138,7 +147,7 @@ public class ImageBuffer implements ImageData {
 
 	/**
 	 * Get an image generated based on this buffer
-	 * 
+	 * <p>
 	 * @return The image generated from this buffer
 	 */
 	public Image getImage() {
@@ -147,8 +156,9 @@ public class ImageBuffer implements ImageData {
 
 	/**
 	 * Get an image generated based on this buffer
-	 * 
+	 * <p>
 	 * @param filter The filtering method to use when scaling this image
+	 * <p>
 	 * @return The image generated from this buffer
 	 */
 	public Image getImage(int filter) {
@@ -157,8 +167,9 @@ public class ImageBuffer implements ImageData {
 
 	/**
 	 * Get the closest greater power of 2 to the fold number
-	 * 
+	 * <p>
 	 * @param fold The target number
+	 * <p>
 	 * @return The power of 2
 	 */
 	private int get2Fold(int fold) {

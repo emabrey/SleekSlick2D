@@ -12,7 +12,7 @@ import org.newdawn.slick.particles.effects.FireEmitter;
 
 /**
  * A particle test using built in effects
- *
+ * <p>
  * @author kevin
  */
 public class ParticleTest extends BasicGame {
@@ -83,7 +83,7 @@ public class ParticleTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -91,7 +91,8 @@ public class ParticleTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ParticleTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

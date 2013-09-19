@@ -18,40 +18,60 @@ import org.newdawn.slick.util.ResourceLoader;
 
 /**
  * A test for the sound system of the library
- * 
+ * <p>
  * @author kevin
  * @author aaron
  */
 public class SoundTest extends BasicGame {
 
-	/** the GameContainer instance for this game/testcase */
+	/**
+	 * the GameContainer instance for this game/testcase
+	 */
 	private GameContainer myContainer;
 
-	/** The sound to be played */
+	/**
+	 * The sound to be played
+	 */
 	private Sound sound;
 
-	/** The sound to be played */
+	/**
+	 * The sound to be played
+	 */
 	private Sound charlie;
 
-	/** The sound to be played */
+	/**
+	 * The sound to be played
+	 */
 	private Sound burp;
 
-	/** The music to be played */
+	/**
+	 * The music to be played
+	 */
 	private Music music;
 
-	/** first music that can be played */
+	/**
+	 * first music that can be played
+	 */
 	private Music musica;
 
-	/** second music that can be played */
+	/**
+	 * second music that can be played
+	 */
 	private Music musicb;
 
-	/** The sound to be played */
+	/**
+	 * The sound to be played
+	 */
 	private Audio engine;
 
-	/** The Volume of the playing music */
+	/**
+	 * The Volume of the playing music
+	 */
 	private int volume = 10;
 
-	/** The IDs of the sources used for each engine noise */
+	/**
+	 * The IDs of the sources used for each engine noise
+	 */
 	private int[] engines = new int[3];
 
 	/**
@@ -72,7 +92,8 @@ public class SoundTest extends BasicGame {
 		charlie = new Sound("testdata/cbrown01.wav");
 		try {
 			engine = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("testdata/engine.wav"));
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load engine", e);
 		}
 		music = musica = new Music("testdata/SMB-X.XM");
@@ -212,7 +233,7 @@ public class SoundTest extends BasicGame {
 	}
 
 	/**
-	 *  Convenience routine to set global volume of music 
+	 * Convenience routine to set global volume of music
 	 */
 	private void setVolume() {
 		// Do bounds checking
@@ -227,7 +248,7 @@ public class SoundTest extends BasicGame {
 
 	/**
 	 * Entry point to the sound test
-	 * 
+	 * <p>
 	 * @param argv The arguments provided to the test
 	 */
 	public static void main(String[] argv) {
@@ -235,7 +256,8 @@ public class SoundTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new SoundTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

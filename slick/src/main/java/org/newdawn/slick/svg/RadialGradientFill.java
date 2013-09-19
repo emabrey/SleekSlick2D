@@ -7,26 +7,34 @@ import org.newdawn.slick.geom.Vector2f;
 
 /**
  * A filler to apply a SVG radial gradient across a shape
- * 
+ * <p>
  * @author kevin
  */
 public class RadialGradientFill implements TexCoordGenerator {
 
-	/** The centre of the gradient */
+	/**
+	 * The centre of the gradient
+	 */
 	private Vector2f centre;
 
-	/** The radius before the gradient is complete */
+	/**
+	 * The radius before the gradient is complete
+	 */
 	private float radius;
 
-	/** The gradient to apply */
+	/**
+	 * The gradient to apply
+	 */
 	private Gradient gradient;
 
-	/** The shape being filled */
+	/**
+	 * The shape being filled
+	 */
 	private Shape shape;
 
 	/**
 	 * Create a new fill for a radial gradient
-	 * 
+	 * <p>
 	 * @param shape The shape being filled
 	 * @param trans The transform given for the shape in the SVG
 	 * @param gradient The gradient to apply across the shape

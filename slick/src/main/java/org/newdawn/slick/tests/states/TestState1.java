@@ -16,19 +16,25 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 /**
- * A simple test state to display a message describing the test 
- *
+ * A simple test state to display a message describing the test
+ * <p>
  * @author kevin
  */
 public class TestState1 extends BasicGameState {
 
-	/** The ID given to this state */
+	/**
+	 * The ID given to this state
+	 */
 	public static final int ID = 1;
 
-	/** The font to write the message with */
+	/**
+	 * The font to write the message with
+	 */
 	private Font font;
 
-	/** The game holding this state */
+	/**
+	 * The game holding this state
+	 */
 	private StateBasedGame game;
 
 	/**
@@ -39,7 +45,8 @@ public class TestState1 extends BasicGameState {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.BasicGameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
+	 * @see org.newdawn.slick.state.BasicGameState#init(org.newdawn.slick.GameContainer,
+	 * org.newdawn.slick.state.StateBasedGame)
 	 */
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = game;
@@ -47,7 +54,8 @@ public class TestState1 extends BasicGameState {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.BasicGameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.BasicGameState#render(org.newdawn.slick.GameContainer,
+	 * org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
 	 */
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 		g.setFont(font);
@@ -59,7 +67,8 @@ public class TestState1 extends BasicGameState {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.BasicGameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
+	 * @see org.newdawn.slick.state.BasicGameState#update(org.newdawn.slick.GameContainer,
+	 * org.newdawn.slick.state.StateBasedGame, int)
 	 */
 	public void update(GameContainer container, StateBasedGame game, int delta) {
 	}

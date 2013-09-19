@@ -13,7 +13,7 @@ import java.nio.ByteOrder;
 
 /**
  * Quick test for endianess in image buffers
- *
+ * <p>
  * @author thaaks
  */
 public class ImageBufferEndianTest extends BasicGame {
@@ -52,7 +52,7 @@ public class ImageBufferEndianTest extends BasicGame {
 
 	/**
 	 * Entry point to the test
-	 *
+	 * <p>
 	 * @param args The arguments passed into the test
 	 */
 	public static void main(String[] args) {
@@ -60,7 +60,8 @@ public class ImageBufferEndianTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ImageBufferEndianTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
@@ -105,10 +106,10 @@ public class ImageBufferEndianTest extends BasicGame {
 
 	/**
 	 * Fill a buffer with a given color
-	 *
+	 * <p>
 	 * @param buffer The buffer to fill
-	 * @param c      The color to apply
-	 * @param width  The width of the image
+	 * @param c The color to apply
+	 * @param width The width of the image
 	 * @param height The height of the image
 	 */
 	private void fillImageBufferWithColor(ImageBuffer buffer, Color c, int width, int height) {

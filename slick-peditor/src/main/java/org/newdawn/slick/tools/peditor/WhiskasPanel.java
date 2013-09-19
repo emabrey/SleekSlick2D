@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 /**
  * A panel to display the whiskas controls within pedigree GUI
- *
+ * <p>
  * @author void
  */
 public class WhiskasPanel extends ControlPanel {
@@ -42,13 +42,14 @@ public class WhiskasPanel extends ControlPanel {
 
 	/**
 	 * Create a new panel for limiting controls
-	 *
-	 * @param l                The list to be notified when the name changes
-	 * @param colorPanel       The panel controlling the colours that needs to be controlled based on the enablement here
-	 * @param emissionControls The panel controlling the emissions that needs to be controlled based on the enablement here
+	 * <p>
+	 * @param l The list to be notified when the name changes
+	 * @param colorPanel The panel controlling the colours that needs to be controlled based on the enablement here
+	 * @param emissionControls The panel controlling the emissions that needs to be controlled based on the enablement
+	 * here
 	 */
 	public WhiskasPanel(EmitterList l, final ColorPanel colorPanel,
-			final EmissionControls emissionControls) {
+						final EmissionControls emissionControls) {
 		setLayout(null);
 		setBorder(BorderFactory
 				.createTitledBorder("Particle Life Time Gradients"));
@@ -89,8 +90,8 @@ public class WhiskasPanel extends ControlPanel {
 
 	/**
 	 * Add a control for enablement
-	 *
-	 * @param text     The label to be associated with the check box
+	 * <p>
+	 * @param text The label to be associated with the check box
 	 * @param listener The listener to be notified of updates to the new control
 	 */
 	private void addEnableControl(String text, ItemListener listener) {
@@ -106,7 +107,7 @@ public class WhiskasPanel extends ControlPanel {
 
 	/**
 	 * Notificaiton that one of the configuration option has changed state
-	 *
+	 * <p>
 	 * @param e The event describing the change of state
 	 */
 	public void itemStateChangedHandler(ItemEvent e) {
@@ -124,7 +125,7 @@ public class WhiskasPanel extends ControlPanel {
 
 	/**
 	 * Links this whiskas panel to the given editor
-	 *
+	 * <p>
 	 * @param editor The particle editor in use
 	 */
 	public void setEditor(GraphEditorWindow editor) {
@@ -151,15 +152,15 @@ public class WhiskasPanel extends ControlPanel {
 
 	/**
 	 * Link this set of controls to a linear interpolater within the particle emitter
-	 *
-	 * @param name     The name of the article emitter being linked
+	 * <p>
+	 * @param name The name of the article emitter being linked
 	 * @param interpol The interpolator being configured
 	 */
 	private void linkToEmitter(String name, LinearInterpolator interpol) {
 		// put to value map
 		valueMap.put(name, interpol);
 
-        // now update the checkbox to represent the state of the given
+		// now update the checkbox to represent the state of the given
 		// interpolator
 		boolean checked = interpol.isActive();
 		JCheckBox enableControl = (JCheckBox) valueNameToControl.get(name);

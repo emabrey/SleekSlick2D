@@ -8,17 +8,19 @@ import java.net.URL;
 
 /**
  * A resource loading location that searches somewhere on the classpath
- * 
+ * <p>
  * @author kevin
  */
 public class FileSystemLocation implements ResourceLocation {
 
-	/** The root of the file system to search */
+	/**
+	 * The root of the file system to search
+	 */
 	private File root;
 
 	/**
 	 * Create a new resoruce location based on the file system
-	 * 
+	 * <p>
 	 * @param root The root of the file system to search
 	 */
 	public FileSystemLocation(File root) {
@@ -39,7 +41,8 @@ public class FileSystemLocation implements ResourceLocation {
 			}
 
 			return file.toURI().toURL();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			return null;
 		}
 	}
@@ -54,7 +57,8 @@ public class FileSystemLocation implements ResourceLocation {
 				file = new File(ref);
 			}
 			return new FileInputStream(file);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			return null;
 		}
 	}

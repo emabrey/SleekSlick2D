@@ -12,18 +12,24 @@ import org.newdawn.slick.SpriteSheet;
 
 /**
  * A test for big images used as sprites sheets
- *
+ * <p>
  * @author kevin
  */
 public class BigSpriteSheetTest extends BasicGame {
 
-	/** The original 1024x768 image loaded */
+	/**
+	 * The original 1024x768 image loaded
+	 */
 	private Image original;
 
-	/** A sprite sheet made from the big image */
+	/**
+	 * A sprite sheet made from the big image
+	 */
 	private SpriteSheet bigSheet;
 
-	/** True if we should use the old method */
+	/**
+	 * True if we should use the old method
+	 */
 	private boolean oldMethod = true;
 
 	/**
@@ -68,7 +74,7 @@ public class BigSpriteSheetTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -76,7 +82,8 @@ public class BigSpriteSheetTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new BigSpriteSheetTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

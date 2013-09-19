@@ -18,40 +18,58 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A test for the GUI components available in Slick. Very simple stuff
- *
+ * <p>
  * @author kevin
  */
 public class GUITest extends BasicGame implements ComponentListener {
 
-	/** The image being rendered */
+	/**
+	 * The image being rendered
+	 */
 	private Image image;
 
-	/** The areas defined */
+	/**
+	 * The areas defined
+	 */
 	private MouseOverArea[] areas = new MouseOverArea[4];
 
-	/** The game container */
+	/**
+	 * The game container
+	 */
 	private GameContainer container;
 
-	/** The message to display */
+	/**
+	 * The message to display
+	 */
 	private String message = "Demo Menu System with stock images";
 
-	/** The text field */
+	/**
+	 * The text field
+	 */
 	private TextField field;
 
-	/** The text field */
+	/**
+	 * The text field
+	 */
 	private TextField field2;
 
-	/** The background image */
+	/**
+	 * The background image
+	 */
 	private Image background;
 
-	/** The font used to render */
+	/**
+	 * The font used to render
+	 */
 	private Font font;
 
-	/** The container */
+	/**
+	 * The container
+	 */
 	private AppGameContainer app;
 
 	/**
-	 * Create a new test of GUI  rendering
+	 * Create a new test of GUI rendering
 	 */
 	public GUITest() {
 		super("GUI Test");
@@ -132,7 +150,8 @@ public class GUITest extends BasicGame implements ComponentListener {
 			if (app != null) {
 				try {
 					app.setDisplayMode(640, 480, false);
-				} catch (SlickException e) {
+				}
+				catch (SlickException e) {
 					Log.error(e);
 				}
 			}
@@ -141,7 +160,7 @@ public class GUITest extends BasicGame implements ComponentListener {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -149,7 +168,8 @@ public class GUITest extends BasicGame implements ComponentListener {
 			AppGameContainer container = new AppGameContainer(new GUITest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * The top level node of our test structure for XML -> object parsing
- *
+ * <p>
  * @author kevin
  */
 public class GameData {
@@ -16,7 +16,7 @@ public class GameData {
 
 	/**
 	 * Called by XML parser to add a configured entity to the GameData
-	 *
+	 * <p>
 	 * @param entity The entity to be added
 	 */
 	private void add(Entity entity) {
@@ -25,7 +25,7 @@ public class GameData {
 
 	/**
 	 * Dump this object to sysout
-	 *
+	 * <p>
 	 * @param prefix The prefix to apply to all lines
 	 */
 	public void dump(String prefix) {

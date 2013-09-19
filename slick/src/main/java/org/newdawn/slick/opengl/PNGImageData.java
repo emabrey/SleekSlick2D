@@ -8,30 +8,44 @@ import org.lwjgl.BufferUtils;
 
 /**
  * The PNG imge data source that is pure java reading PNGs
- * 
+ * <p>
  * @author Matthias Mann (original code)
  */
 public class PNGImageData implements LoadableImageData {
 
-	/** The width of the data loaded */
+	/**
+	 * The width of the data loaded
+	 */
 	private int width;
 
-	/** The height of the data loaded */
+	/**
+	 * The height of the data loaded
+	 */
 	private int height;
 
-	/** The texture height */
+	/**
+	 * The texture height
+	 */
 	private int texHeight;
 
-	/** The texture width */
+	/**
+	 * The texture width
+	 */
 	private int texWidth;
 
-	/** The decoder used to load the PNG */
+	/**
+	 * The decoder used to load the PNG
+	 */
 	private PNGDecoder decoder;
 
-	/** The bit depth of the image */
+	/**
+	 * The bit depth of the image
+	 */
 	private int bitDepth;
 
-	/** The scratch buffer storing the image data */
+	/**
+	 * The scratch buffer storing the image data
+	 */
 	private ByteBuffer scratch;
 
 	/**
@@ -79,7 +93,8 @@ public class PNGImageData implements LoadableImageData {
 	/**
 	 * @see org.newdawn.slick.opengl.LoadableImageData#loadImage(java.io.InputStream, boolean, boolean, int[])
 	 */
-	public ByteBuffer loadImage(InputStream fis, boolean flipped, boolean forceAlpha, int[] transparent) throws IOException {
+	public ByteBuffer loadImage(InputStream fis, boolean flipped, boolean forceAlpha, int[] transparent) throws
+			IOException {
 		if (transparent != null) {
 			forceAlpha = true;
 			throw new IOException("Transparent color not support in custom PNG Decoder");
@@ -166,8 +181,9 @@ public class PNGImageData implements LoadableImageData {
 
 	/**
 	 * Safe convert byte to int
-	 *  
+	 * <p>
 	 * @param b The byte to convert
+	 * <p>
 	 * @return The converted byte
 	 */
 	private int toInt(byte b) {
@@ -180,8 +196,9 @@ public class PNGImageData implements LoadableImageData {
 
 	/**
 	 * Get the closest greater power of 2 to the fold number
-	 * 
+	 * <p>
 	 * @param fold The target number
+	 * <p>
 	 * @return The power of 2
 	 */
 	private int get2Fold(int fold) {

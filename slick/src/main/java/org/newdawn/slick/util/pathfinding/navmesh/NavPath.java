@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 /**
  * A path across a navigation mesh
- * 
+ * <p>
  * @author kevin
  */
 public class NavPath {
 
-	/** The list of links that form this path */
+	/**
+	 * The list of links that form this path
+	 */
 	private ArrayList links = new ArrayList();
 
 	/**
@@ -20,7 +22,7 @@ public class NavPath {
 
 	/**
 	 * Push a link to the end of the path
-	 * 
+	 * <p>
 	 * @param link The link to the end of the path
 	 */
 	public void push(Link link) {
@@ -29,7 +31,7 @@ public class NavPath {
 
 	/**
 	 * Get the length of the path
-	 * 
+	 * <p>
 	 * @return The number of steps in the path
 	 */
 	public int length() {
@@ -38,8 +40,9 @@ public class NavPath {
 
 	/**
 	 * Get the x coordinate of the given step
-	 * 
+	 * <p>
 	 * @param step The index of the step to retrieve
+	 * <p>
 	 * @return The x coordinate at the given step index
 	 */
 	public float getX(int step) {
@@ -48,8 +51,9 @@ public class NavPath {
 
 	/**
 	 * Get the y coordinate of the given step
-	 * 
+	 * <p>
 	 * @param step The index of the step to retrieve
+	 * <p>
 	 * @return The y coordinate at the given step index
 	 */
 	public float getY(int step) {
@@ -58,7 +62,7 @@ public class NavPath {
 
 	/**
 	 * Get a string representation of this instance
-	 * 
+	 * <p>
 	 * @return The string representation of this instance
 	 */
 	public String toString() {
@@ -67,7 +71,7 @@ public class NavPath {
 
 	/**
 	 * Remove a step in the path
-	 * 
+	 * <p>
 	 * @param i
 	 */
 	public void remove(int i) {

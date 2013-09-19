@@ -6,37 +6,48 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
 /**
- * A fill effect used to define gradients when filling and drawing shapes. A gradient is defined
- * by two control points. Each point that is rendered is coloured based on it's proximity to the 
- * points. Note that the points are defined relative to the center of the shape being drawn. This 
- * is with the intention that the gradient fills can be used and do not need to be updated when
- * the geometry is moved
- *
+ * A fill effect used to define gradients when filling and drawing shapes. A gradient is defined by two control points.
+ * Each point that is rendered is coloured based on it's proximity to the points. Note that the points are defined
+ * relative to the center of the shape being drawn. This is with the intention that the gradient fills can be used and
+ * do not need to be updated when the geometry is moved
+ * <p>
  * @author kevin
  */
 public class GradientFill implements ShapeFill {
 
-	/** The contant offset */
+	/**
+	 * The contant offset
+	 */
 	private Vector2f none = new Vector2f(0, 0);
 
-	/** The start position of the gradient */
+	/**
+	 * The start position of the gradient
+	 */
 	private Vector2f start;
 
-	/** The end poisition of the gradient */
+	/**
+	 * The end poisition of the gradient
+	 */
 	private Vector2f end;
 
-	/** The starting colour of the gradient */
+	/**
+	 * The starting colour of the gradient
+	 */
 	private Color startCol;
 
-	/** The ending colour of the gradient */
+	/**
+	 * The ending colour of the gradient
+	 */
 	private Color endCol;
 
-	/** True if the graident is defined in shape coordinates */
+	/**
+	 * True if the graident is defined in shape coordinates
+	 */
 	private boolean local = false;
 
 	/**
 	 * Create a gradient fill
-	 * 
+	 * <p>
 	 * @param sx The x coordinate of the starting control point
 	 * @param sy The y coordinate of the starting control point
 	 * @param startCol The colour to apply at the starting control point
@@ -50,7 +61,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Create a gradient fill
-	 * 
+	 * <p>
 	 * @param sx The x coordinate of the starting control point
 	 * @param sy The y coordinate of the starting control point
 	 * @param startCol The colour to apply at the starting control point
@@ -65,7 +76,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Create a gradient fill
-	 * 
+	 * <p>
 	 * @param start The position of the starting control point
 	 * @param startCol The colour to apply at the starting control point
 	 * @param end The position of the ending control point
@@ -82,7 +93,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Get an inverted copy of the gradient
-	 * 
+	 * <p>
 	 * @return The copy with the colours inverted
 	 */
 	public GradientFill getInvertedCopy() {
@@ -91,7 +102,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Indicate if the gradient is defined in shape local coordinates
-	 * 
+	 * <p>
 	 * @param local True if the gradient is defined in shape local coordinates
 	 */
 	public void setLocal(boolean local) {
@@ -100,7 +111,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Get the position of the start control point
-	 * 
+	 * <p>
 	 * @return The position of the start control point
 	 */
 	public Vector2f getStart() {
@@ -109,7 +120,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Get the position of the end control point
-	 * 
+	 * <p>
 	 * @return The position of the end control point
 	 */
 	public Vector2f getEnd() {
@@ -118,7 +129,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Get the colour at the start control point
-	 * 
+	 * <p>
 	 * @return The color at the start control point
 	 */
 	public Color getStartColor() {
@@ -127,7 +138,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Get the colour at the end control point
-	 * 
+	 * <p>
 	 * @return The color at the end control point
 	 */
 	public Color getEndColor() {
@@ -136,7 +147,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Set the start point's position
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the start control point
 	 * @param y The y coordinate of the start control point
 	 */
@@ -146,7 +157,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Set the start control point's position
-	 * 
+	 * <p>
 	 * @param start The new poisition for the start point
 	 */
 	public void setStart(Vector2f start) {
@@ -155,7 +166,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Set the end control point's position
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the end control point
 	 * @param y The y coordinate of the end control point
 	 */
@@ -165,7 +176,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Set the end control point's position
-	 * 
+	 * <p>
 	 * @param end The new position for the end point
 	 */
 	public void setEnd(Vector2f end) {
@@ -174,7 +185,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Set the colour to apply at the start control's position
-	 * 
+	 * <p>
 	 * @param color The colour to apply at the start control point
 	 */
 	public void setStartColor(Color color) {
@@ -183,7 +194,7 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Set the colour to apply at the end control's position
-	 * 
+	 * <p>
 	 * @param color The colour to apply at the end control point
 	 */
 	public void setEndColor(Color color) {
@@ -192,10 +203,11 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Get the colour that should be applied at the specified location
-	 * 
+	 * <p>
 	 * @param shape The shape being filled
-	 * @param x The x coordinate of the point being coloured 
+	 * @param x The x coordinate of the point being coloured
 	 * @param y The y coordinate of the point being coloured
+	 * <p>
 	 * @return The colour that should be applied based on the control points of this gradient
 	 */
 	public Color colorAt(Shape shape, float x, float y) {
@@ -208,9 +220,10 @@ public class GradientFill implements ShapeFill {
 
 	/**
 	 * Get the colour that should be applied at the specified location
-	 * 
-	 * @param x The x coordinate of the point being coloured 
+	 * <p>
+	 * @param x The x coordinate of the point being coloured
 	 * @param y The y coordinate of the point being coloured
+	 * <p>
 	 * @return The colour that should be applied based on the control points of this gradient
 	 */
 	public Color colorAt(float x, float y) {

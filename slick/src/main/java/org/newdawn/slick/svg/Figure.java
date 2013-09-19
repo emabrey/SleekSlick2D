@@ -5,41 +5,59 @@ import org.newdawn.slick.geom.Transform;
 
 /**
  * A figure that is part of diagram loaded from SVG
- *
+ * <p>
  * @author kevin
  */
 public class Figure {
 
-	/** Ellipse Type */
+	/**
+	 * Ellipse Type
+	 */
 	public static final int ELLIPSE = 1;
 
-	/** Line Type */
+	/**
+	 * Line Type
+	 */
 	public static final int LINE = 2;
 
-	/** Rectangle Type */
+	/**
+	 * Rectangle Type
+	 */
 	public static final int RECTANGLE = 3;
 
-	/** Path Type */
+	/**
+	 * Path Type
+	 */
 	public static final int PATH = 4;
 
-	/** Polygon Type */
+	/**
+	 * Polygon Type
+	 */
 	public static final int POLYGON = 5;
 
-	/** The type of this figure */
+	/**
+	 * The type of this figure
+	 */
 	private int type;
 
-	/** The geometric shape of the figure */
+	/**
+	 * The geometric shape of the figure
+	 */
 	private Shape shape;
 
-	/** The other bits of data assocaited with the SVG element */
+	/**
+	 * The other bits of data assocaited with the SVG element
+	 */
 	private NonGeometricData data;
 
-	/** The transform that has already been applied to the shape */
+	/**
+	 * The transform that has already been applied to the shape
+	 */
 	private Transform transform;
 
 	/**
 	 * Create a new figure
-	 *
+	 * <p>
 	 * @param type The type of the figure
 	 * @param shape The shape of the figure
 	 * @param data The other associated data
@@ -53,9 +71,8 @@ public class Figure {
 	}
 
 	/**
-	 * Get the transform that was applied to the shape given in the SVG 
-	 * to get it to it's currently state
-	 * 
+	 * Get the transform that was applied to the shape given in the SVG to get it to it's currently state
+	 * <p>
 	 * @return The transform specified in the SVG
 	 */
 	public Transform getTransform() {
@@ -64,7 +81,7 @@ public class Figure {
 
 	/**
 	 * Get the type of this figure
-	 * 
+	 * <p>
 	 * @return The type of this figure
 	 */
 	public int getType() {
@@ -73,7 +90,7 @@ public class Figure {
 
 	/**
 	 * Get the shape of this figure
-	 * 
+	 * <p>
 	 * @return The shape of this figure
 	 */
 	public Shape getShape() {
@@ -82,7 +99,7 @@ public class Figure {
 
 	/**
 	 * Get the data associated with this figure
-	 * 
+	 * <p>
 	 * @return The data associated with this figure
 	 */
 	public NonGeometricData getData() {

@@ -11,29 +11,37 @@ import org.lwjgl.BufferUtils;
 
 /**
  * A utility to load TGAs. Note: NOT THREAD SAFE
- * 
- * Fresh cut of code but largely influeneced by the TGA loading class
- * provided as part of the Java Monkey Engine (JME). Why not check out 
- * what they're doing over at http://www.jmonkeyengine.com. kudos to 
- * Mark Powell.
- * 
+ * <p>
+ * Fresh cut of code but largely influeneced by the TGA loading class provided as part of the Java Monkey Engine (JME).
+ * Why not check out what they're doing over at http://www.jmonkeyengine.com. kudos to Mark Powell.
+ * <p>
  * @author Kevin Glass
  */
 public class TGAImageData implements LoadableImageData {
 
-	/** The width of the texture that needs to be generated */
+	/**
+	 * The width of the texture that needs to be generated
+	 */
 	private int texWidth;
 
-	/** The height of the texture that needs to be generated */
+	/**
+	 * The height of the texture that needs to be generated
+	 */
 	private int texHeight;
 
-	/** The width of the TGA image */
+	/**
+	 * The width of the TGA image
+	 */
 	private int width;
 
-	/** The height of the TGA image */
+	/**
+	 * The height of the TGA image
+	 */
 	private int height;
 
-	/** The bit depth of the image */
+	/**
+	 * The bit depth of the image
+	 */
 	private short pixelDepth;
 
 	/**
@@ -44,8 +52,9 @@ public class TGAImageData implements LoadableImageData {
 
 	/**
 	 * Flip the endian-ness of the short
-	 * 
+	 * <p>
 	 * @param signedShort The short to flip
+	 * <p>
 	 * @return The flipped short
 	 */
 	private short flipEndian(short signedShort) {
@@ -105,7 +114,8 @@ public class TGAImageData implements LoadableImageData {
 	/**
 	 * @see org.newdawn.slick.opengl.LoadableImageData#loadImage(java.io.InputStream, boolean, boolean, int[])
 	 */
-	public ByteBuffer loadImage(InputStream fis, boolean flipped, boolean forceAlpha, int[] transparent) throws IOException {
+	public ByteBuffer loadImage(InputStream fis, boolean flipped, boolean forceAlpha, int[] transparent) throws
+			IOException {
 		if (transparent != null) {
 			forceAlpha = true;
 		}
@@ -297,8 +307,9 @@ public class TGAImageData implements LoadableImageData {
 
 	/**
 	 * Get the closest greater power of 2 to the fold number
-	 * 
+	 * <p>
 	 * @param fold The target number
+	 * <p>
 	 * @return The power of 2
 	 */
 	private int get2Fold(int fold) {

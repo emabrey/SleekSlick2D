@@ -4,26 +4,34 @@ import java.util.ArrayList;
 
 /**
  * A shape that morphs between a set of other shapes
- *  
+ * <p>
  * @author kevin
  */
 public class MorphShape extends Shape {
 
-	/** The shapes to morph between */
+	/**
+	 * The shapes to morph between
+	 */
 	private ArrayList shapes = new ArrayList();
 
-	/** The offset between the shapes */
+	/**
+	 * The offset between the shapes
+	 */
 	private float offset;
 
-	/** The current shape */
+	/**
+	 * The current shape
+	 */
 	private Shape current;
 
-	/** The next shape */
+	/**
+	 * The next shape
+	 */
 	private Shape next;
 
 	/**
 	 * Create a new mighty morphin shape
-	 * 
+	 * <p>
 	 * @param base The base shape we're starting the morph from
 	 */
 	public MorphShape(Shape base) {
@@ -37,7 +45,7 @@ public class MorphShape extends Shape {
 
 	/**
 	 * Add a subsequent shape that we should morph too in order
-	 * 
+	 * <p>
 	 * @param shape The new shape that forms part of the morphing shape
 	 */
 	public void addShape(Shape shape) {
@@ -59,9 +67,10 @@ public class MorphShape extends Shape {
 
 	/**
 	 * Check if the shape's points are all equal
-	 * 
+	 * <p>
 	 * @param a The first shape to compare
 	 * @param b The second shape to compare
+	 * <p>
 	 * @return True if the shapes are equal
 	 */
 	private boolean equalShapes(Shape a, Shape b) {
@@ -78,9 +87,9 @@ public class MorphShape extends Shape {
 	}
 
 	/**
-	 * Set the "time" index for this morph. This is given in terms of shapes, so
-	 * 0.5f would give you the position half way between the first and second shapes.
-	 * 
+	 * Set the "time" index for this morph. This is given in terms of shapes, so 0.5f would give you the position half
+	 * way between the first and second shapes.
+	 * <p>
 	 * @param time The time index to represent on this shape
 	 */
 	public void setMorphTime(float time) {
@@ -96,7 +105,7 @@ public class MorphShape extends Shape {
 
 	/**
 	 * Update the morph time and hence the curent frame
-	 * 
+	 * <p>
 	 * @param delta The amount to change the morph time by
 	 */
 	public void updateMorphTime(float delta) {
@@ -126,7 +135,7 @@ public class MorphShape extends Shape {
 
 	/**
 	 * Set the current frame
-	 * 
+	 * <p>
 	 * @param current The current frame
 	 */
 	public void setExternalFrame(Shape current) {
@@ -137,8 +146,9 @@ public class MorphShape extends Shape {
 
 	/**
 	 * Get an index that is rational, i.e. fits inside this set of shapes
-	 * 
+	 * <p>
 	 * @param n The index to rationalize
+	 * <p>
 	 * @return The index rationalized
 	 */
 	private int rational(int n) {
@@ -153,8 +163,8 @@ public class MorphShape extends Shape {
 	}
 
 	/**
-	 * Set the frame to be represented 
-	 * 
+	 * Set the frame to be represented
+	 * <p>
 	 * @param a The index of the first shape
 	 * @param b The index of the second shape
 	 * @param offset The offset between the two shapes to represent

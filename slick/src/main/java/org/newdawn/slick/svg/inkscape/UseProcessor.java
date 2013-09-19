@@ -10,9 +10,8 @@ import org.newdawn.slick.svg.ParsingException;
 import org.w3c.dom.Element;
 
 /**
- * Processor for the "use", a tag that allows references to other elements
- * and cloning.
- * 
+ * Processor for the "use", a tag that allows references to other elements and cloning.
+ * <p>
  * @author kevin
  */
 public class UseProcessor implements ElementProcessor {
@@ -25,10 +24,11 @@ public class UseProcessor implements ElementProcessor {
 	}
 
 	/**
-	 * @see org.newdawn.slick.svg.inkscape.ElementProcessor#process(org.newdawn.slick.svg.Loader, org.w3c.dom.Element, org.newdawn.slick.svg.Diagram, org.newdawn.slick.geom.Transform)
+	 * @see org.newdawn.slick.svg.inkscape.ElementProcessor#process(org.newdawn.slick.svg.Loader, org.w3c.dom.Element,
+	 * org.newdawn.slick.svg.Diagram, org.newdawn.slick.geom.Transform)
 	 */
 	public void process(Loader loader, Element element, Diagram diagram,
-			Transform transform) throws ParsingException {
+						Transform transform) throws ParsingException {
 
 		String ref = element.getAttributeNS("http://www.w3.org/1999/xlink", "href");
 		String href = Util.getAsReference(ref);

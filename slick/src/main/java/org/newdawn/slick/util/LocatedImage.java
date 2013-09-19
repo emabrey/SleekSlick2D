@@ -4,34 +4,45 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
 /**
- * An image along with state information that allows it to be drawn without
- * specifing the state in which to render.
- * 
+ * An image along with state information that allows it to be drawn without specifing the state in which to render.
+ * <p>
  * @author kevin
  */
 public class LocatedImage {
 
-	/** The image to be rendered - prefer aggregation */
+	/**
+	 * The image to be rendered - prefer aggregation
+	 */
 	private Image image;
 
-	/** The x coordinate at which the image should be rendered */
+	/**
+	 * The x coordinate at which the image should be rendered
+	 */
 	private int x;
 
-	/** The y coordinate at which the image should be rendered */
+	/**
+	 * The y coordinate at which the image should be rendered
+	 */
 	private int y;
 
-	/** The filter to apply across the image */
+	/**
+	 * The filter to apply across the image
+	 */
 	private Color filter = Color.white;
 
-	/** The width to render the image */
+	/**
+	 * The width to render the image
+	 */
 	private float width;
 
-	/** The height to render the image */
+	/**
+	 * The height to render the image
+	 */
 	private float height;
 
 	/**
 	 * Create a new located image
-	 * 
+	 * <p>
 	 * @param image The image to be drawn
 	 * @param x The x location at which the image should be drawn
 	 * @param y The y location at which the image should be drawn
@@ -46,7 +57,7 @@ public class LocatedImage {
 
 	/**
 	 * Get the height the image will be drawn at
-	 * 
+	 * <p>
 	 * @return The height
 	 */
 	public float getHeight() {
@@ -55,7 +66,7 @@ public class LocatedImage {
 
 	/**
 	 * Get the width the image will be drawn at
-	 * 
+	 * <p>
 	 * @return The width
 	 */
 	public float getWidth() {
@@ -64,7 +75,7 @@ public class LocatedImage {
 
 	/**
 	 * Set the height the image should be drawn at
-	 * 
+	 * <p>
 	 * @param height The height the image should be drawn at
 	 */
 	public void setHeight(float height) {
@@ -73,7 +84,7 @@ public class LocatedImage {
 
 	/**
 	 * Set the width the image should be drawn at
-	 * 
+	 * <p>
 	 * @param width The width the image should be drawn at
 	 */
 	public void setWidth(float width) {
@@ -82,7 +93,7 @@ public class LocatedImage {
 
 	/**
 	 * Set the colour filter to apply to the image
-	 * 
+	 * <p>
 	 * @param c The color filter to apply to the image
 	 */
 	public void setColor(Color c) {
@@ -91,7 +102,7 @@ public class LocatedImage {
 
 	/**
 	 * Get the colour filter being applied
-	 * 
+	 * <p>
 	 * @return The color the being applied
 	 */
 	public Color getColor() {
@@ -100,7 +111,7 @@ public class LocatedImage {
 
 	/**
 	 * Set the x position at which the image should be drawn
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the position
 	 */
 	public void setX(int x) {
@@ -109,7 +120,7 @@ public class LocatedImage {
 
 	/**
 	 * Set the y position at which the image should be drawn
-	 * 
+	 * <p>
 	 * @param y The y coordinate of the position
 	 */
 	public void setY(int y) {
@@ -118,7 +129,7 @@ public class LocatedImage {
 
 	/**
 	 * Get the x position at which the image will be drawn
-	 * 
+	 * <p>
 	 * @return The x position at which the image will be drawn
 	 */
 	public int getX() {
@@ -127,7 +138,7 @@ public class LocatedImage {
 
 	/**
 	 * Get the y position at which the image will be drawn
-	 * 
+	 * <p>
 	 * @return The y position at which the image will be drawn
 	 */
 	public int getY() {

@@ -4,18 +4,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * A path determined by some path finding algorithm. A series of steps from
- * the starting location to the target location. This includes a step for the
- * initial location.
- * 
+ * A path determined by some path finding algorithm. A series of steps from the starting location to the target
+ * location. This includes a step for the initial location.
+ * <p>
  * @author Kevin Glass
  */
 public class Path implements Serializable {
 
-	/** The serial identifier for this class */
+	/**
+	 * The serial identifier for this class
+	 */
 	private static final long serialVersionUID = 1L;
 
-	/** The list of steps building up this path */
+	/**
+	 * The list of steps building up this path
+	 */
 	private ArrayList steps = new ArrayList();
 
 	/**
@@ -27,7 +30,7 @@ public class Path implements Serializable {
 
 	/**
 	 * Get the length of the path, i.e. the number of steps
-	 * 
+	 * <p>
 	 * @return The number of steps in this path
 	 */
 	public int getLength() {
@@ -36,10 +39,9 @@ public class Path implements Serializable {
 
 	/**
 	 * Get the step at a given index in the path
-	 * 
-	 * @param index The index of the step to retrieve. Note this should
-	 * be >= 0 and < getLength();
-	 * @return The step information, the position on the map.
+	 * <p>
+	 * @param index The index of the step to retrieve. Note this should be >= 0 and < getLength(); @return T <p>
+	 * he step information, the position on the map.
 	 */
 	public Step getStep(int index) {
 		return (Step) steps.get(index);
@@ -47,8 +49,9 @@ public class Path implements Serializable {
 
 	/**
 	 * Get the x coordinate for the step at the given index
-	 * 
+	 * <p>
 	 * @param index The index of the step whose x coordinate should be retrieved
+	 * <p>
 	 * @return The x coordinate at the step
 	 */
 	public int getX(int index) {
@@ -57,8 +60,9 @@ public class Path implements Serializable {
 
 	/**
 	 * Get the y coordinate for the step at the given index
-	 * 
+	 * <p>
 	 * @param index The index of the step whose y coordinate should be retrieved
+	 * <p>
 	 * @return The y coordinate at the step
 	 */
 	public int getY(int index) {
@@ -66,8 +70,8 @@ public class Path implements Serializable {
 	}
 
 	/**
-	 * Append a step to the path.  
-	 * 
+	 * Append a step to the path.
+	 * <p>
 	 * @param x The x coordinate of the new step
 	 * @param y The y coordinate of the new step
 	 */
@@ -76,8 +80,8 @@ public class Path implements Serializable {
 	}
 
 	/**
-	 * Prepend a step to the path.  
-	 * 
+	 * Prepend a step to the path.
+	 * <p>
 	 * @param x The x coordinate of the new step
 	 * @param y The y coordinate of the new step
 	 */
@@ -87,9 +91,10 @@ public class Path implements Serializable {
 
 	/**
 	 * Check if this path contains the given step
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the step to check for
 	 * @param y The y coordinate of the step to check for
+	 * <p>
 	 * @return True if the path contains the given step
 	 */
 	public boolean contains(int x, int y) {
@@ -98,20 +103,24 @@ public class Path implements Serializable {
 
 	/**
 	 * A single step within the path
-	 * 
+	 * <p>
 	 * @author Kevin Glass
 	 */
 	public class Step implements Serializable {
 
-		/** The x coordinate at the given step */
+		/**
+		 * The x coordinate at the given step
+		 */
 		private int x;
 
-		/** The y coordinate at the given step */
+		/**
+		 * The y coordinate at the given step
+		 */
 		private int y;
 
 		/**
 		 * Create a new step
-		 * 
+		 * <p>
 		 * @param x The x coordinate of the new step
 		 * @param y The y coordinate of the new step
 		 */
@@ -122,7 +131,7 @@ public class Path implements Serializable {
 
 		/**
 		 * Get the x coordinate of the new step
-		 * 
+		 * <p>
 		 * @return The x coodindate of the new step
 		 */
 		public int getX() {
@@ -131,7 +140,7 @@ public class Path implements Serializable {
 
 		/**
 		 * Get the y coordinate of the new step
-		 * 
+		 * <p>
 		 * @return The y coodindate of the new step
 		 */
 		public int getY() {

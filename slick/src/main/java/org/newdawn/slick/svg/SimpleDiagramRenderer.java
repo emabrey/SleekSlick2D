@@ -10,25 +10,31 @@ import org.newdawn.slick.opengl.renderer.Renderer;
 import org.newdawn.slick.opengl.renderer.SGL;
 
 /**
- * A very primtive implementation for rendering a diagram. This simply
- * sticks the shapes on the screen in the right fill and stroke colours
- *
+ * A very primtive implementation for rendering a diagram. This simply sticks the shapes on the screen in the right fill
+ * and stroke colours
+ * <p>
  * @author kevin
  */
 public class SimpleDiagramRenderer {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
-	/** The diagram to be rendered */
+	/**
+	 * The diagram to be rendered
+	 */
 	public Diagram diagram;
 
-	/** The display list representing the diagram */
+	/**
+	 * The display list representing the diagram
+	 */
 	public int list = -1;
 
 	/**
 	 * Create a new simple renderer
-	 * 
+	 * <p>
 	 * @param diagram The diagram to be rendered
 	 */
 	public SimpleDiagramRenderer(Diagram diagram) {
@@ -37,7 +43,7 @@ public class SimpleDiagramRenderer {
 
 	/**
 	 * Render the diagram to the given graphics context
-	 * 
+	 * <p>
 	 * @param g The graphics context to which we should render the diagram
 	 */
 	public void render(Graphics g) {
@@ -56,7 +62,7 @@ public class SimpleDiagramRenderer {
 
 	/**
 	 * Utility method to render a diagram in immediate mode
-	 * 
+	 * <p>
 	 * @param g The graphics context to render to
 	 * @param diagram The diagram to render
 	 */

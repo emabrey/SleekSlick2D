@@ -11,7 +11,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for music listeners which notify you when the music has eneded
- *
+ * <p>
  * @author kevin
  */
 public class MusicListenerTest extends BasicGame implements MusicListener {
@@ -106,7 +106,7 @@ public class MusicListenerTest extends BasicGame implements MusicListener {
 
 	/**
 	 * Entry point to the sound test
-	 *
+	 * <p>
 	 * @param argv The arguments provided to the test
 	 */
 	public static void main(String[] argv) {
@@ -114,7 +114,8 @@ public class MusicListenerTest extends BasicGame implements MusicListener {
 			AppGameContainer container = new AppGameContainer(new MusicListenerTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

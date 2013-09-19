@@ -10,7 +10,7 @@ import org.newdawn.slick.tiled.TiledMap;
 
 /**
  * A test of the tile map system based around the TilED (http://www.mapeditor.org) tool
- *
+ * <p>
  * @author kevin
  */
 public class TileMapTest extends BasicGame {
@@ -122,7 +122,7 @@ public class TileMapTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -130,7 +130,8 @@ public class TileMapTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new TileMapTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

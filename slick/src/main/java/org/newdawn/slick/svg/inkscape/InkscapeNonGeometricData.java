@@ -4,19 +4,20 @@ import org.newdawn.slick.svg.NonGeometricData;
 import org.w3c.dom.Element;
 
 /**
- * A custom non-geometric data type that can pass back any attribute
- * on the field.
- * 
+ * A custom non-geometric data type that can pass back any attribute on the field.
+ * <p>
  * @author kevin
  */
 public class InkscapeNonGeometricData extends NonGeometricData {
 
-	/** The element read from the SVG */
+	/**
+	 * The element read from the SVG
+	 */
 	private Element element;
 
 	/**
 	 * Create a new non-geometric data holder
-	 * 
+	 * <p>
 	 * @param metaData The metadata provided
 	 * @param element The XML element from the SVG document
 	 */
@@ -40,7 +41,7 @@ public class InkscapeNonGeometricData extends NonGeometricData {
 
 	/**
 	 * Returns the XML element that is wrapped by this instance.
-	 *
+	 * <p>
 	 * @return The XML element for this instance
 	 */
 	public Element getElement() {

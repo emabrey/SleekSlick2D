@@ -5,7 +5,7 @@ import org.newdawn.slick.util.Log;
 
 /**
  * Tests the SpriteSheetFont.
- *
+ * <p>
  * @author Onno Scheffers
  */
 public class SpriteSheetFontTest extends BasicGame {
@@ -55,7 +55,8 @@ public class SpriteSheetFontTest extends BasicGame {
 		if (key == Input.KEY_SPACE) {
 			try {
 				container.setDisplayMode(640, 480, false);
-			} catch (SlickException e) {
+			}
+			catch (SlickException e) {
 				Log.error(e);
 			}
 		}
@@ -68,7 +69,7 @@ public class SpriteSheetFontTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed in the test
 	 */
 	public static void main(String[] argv) {
@@ -76,7 +77,8 @@ public class SpriteSheetFontTest extends BasicGame {
 			container = new AppGameContainer(new SpriteSheetFontTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

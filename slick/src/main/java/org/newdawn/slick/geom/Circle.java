@@ -2,17 +2,19 @@ package org.newdawn.slick.geom;
 
 /**
  * A simple Circle geometry
- * 
+ * <p>
  * @author Kevin Glass
  */
 public strictfp class Circle extends Ellipse {
 
-	/** The radius of the circle */
+	/**
+	 * The radius of the circle
+	 */
 	public float radius;
 
 	/**
 	 * Create a new circle based on its radius
-	 * 
+	 * <p>
 	 * @param centerPointX The x location of the center of the circle
 	 * @param centerPointY The y location of the center of the circle
 	 * @param radius The radius of the circle
@@ -23,7 +25,7 @@ public strictfp class Circle extends Ellipse {
 
 	/**
 	 * Create a new circle based on its radius
-	 * 
+	 * <p>
 	 * @param centerPointX The x location of the center of the circle
 	 * @param centerPointY The y location of the center of the circle
 	 * @param radius The radius of the circle
@@ -37,27 +39,27 @@ public strictfp class Circle extends Ellipse {
 		boundingCircleRadius = radius;
 	}
 
-	/** 
+	/**
 	 * Get the x coordinate of the centre of the circle
-	 * 
+	 * <p>
 	 * @return The x coordinate of the centre of the circle
 	 */
 	public float getCenterX() {
 		return getX() + radius;
 	}
 
-	/** 
+	/**
 	 * Get the y coordinate of the centre of the circle
-	 * 
+	 * <p>
 	 * @return The y coordinate of the centre of the circle
 	 */
 	public float getCenterY() {
 		return getY() + radius;
 	}
 
-	/** 
+	/**
 	 * Get the coordinates of the center of the circle
-	 * 
+	 * <p>
 	 * @return 2-element array with the center of the circle.
 	 */
 	@Override
@@ -67,7 +69,7 @@ public strictfp class Circle extends Ellipse {
 
 	/**
 	 * Set the radius of this circle
-	 * 
+	 * <p>
 	 * @param radius The radius of this circle
 	 */
 	public void setRadius(float radius) {
@@ -80,7 +82,7 @@ public strictfp class Circle extends Ellipse {
 
 	/**
 	 * Get the radius of the circle
-	 * 
+	 * <p>
 	 * @return The radius of the circle
 	 */
 	public float getRadius() {
@@ -89,8 +91,9 @@ public strictfp class Circle extends Ellipse {
 
 	/**
 	 * Check if this circle touches another
-	 * 
+	 * <p>
 	 * @param shape The other circle
+	 * <p>
 	 * @return True if they touch
 	 */
 	public boolean intersects(Shape shape) {
@@ -120,9 +123,10 @@ public strictfp class Circle extends Ellipse {
 
 	/**
 	 * Check if a point is contained by this circle
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the point to check
 	 * @param y The y coorindate of the point to check
+	 * <p>
 	 * @return True if the point is contained by this circle
 	 */
 	public boolean contains(float x, float y) {
@@ -131,9 +135,11 @@ public strictfp class Circle extends Ellipse {
 	}
 
 	/**
-	 * Check if circle contains the line 
-	 * @param line Line to check against 
-	 * @return True if line inside circle 
+	 * Check if circle contains the line
+	 * <p>
+	 * @param line Line to check against
+	 * <p>
+	 * @return True if line inside circle
 	 */
 	private boolean contains(Line line) {
 		return contains(line.getX1(), line.getY1()) && contains(line.getX2(), line.getY2());
@@ -157,8 +163,9 @@ public strictfp class Circle extends Ellipse {
 
 	/**
 	 * Check if this circle touches a rectangle
-	 * 
+	 * <p>
 	 * @param other The rectangle to check against
+	 * <p>
 	 * @return True if they touch
 	 */
 	private boolean intersects(Rectangle other) {
@@ -194,10 +201,12 @@ public strictfp class Circle extends Ellipse {
 		return false;
 	}
 
-	/** 
-	 * Check if circle touches a line. 
-	 * @param other The line to check against 
-	 * @return True if they touch 
+	/**
+	 * Check if circle touches a line.
+	 * <p>
+	 * @param other The line to check against
+	 * <p>
+	 * @return True if they touch
 	 */
 	private boolean intersects(Line other) {
 		// put it nicely into vectors 

@@ -1,9 +1,8 @@
 package org.newdawn.slick.openal;
 
 /**
- * A null implementation used to provide an object reference when sound
- * has failed.
- * 
+ * A null implementation used to provide an object reference when sound has failed.
+ * <p>
  * @author kevin
  */
 public class NullAudio implements Audio {
@@ -47,7 +46,7 @@ public class NullAudio implements Audio {
 	 * @see org.newdawn.slick.openal.Audio#playAsSoundEffect(float, float, boolean, float, float, float)
 	 */
 	public int playAsSoundEffect(float pitch, float gain, boolean loop,
-			float x, float y, float z) {
+								 float x, float y, float z) {
 		return 0;
 	}
 

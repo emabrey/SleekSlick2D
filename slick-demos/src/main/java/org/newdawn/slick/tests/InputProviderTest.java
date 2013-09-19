@@ -17,7 +17,7 @@ import org.newdawn.slick.command.MouseButtonControl;
 
 /**
  * A test for abstract input via InputProvider
- *
+ * <p>
  * @author kevin
  */
 public class InputProviderTest extends BasicGame implements InputProviderListener {
@@ -102,7 +102,7 @@ public class InputProviderTest extends BasicGame implements InputProviderListene
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -110,7 +110,8 @@ public class InputProviderTest extends BasicGame implements InputProviderListene
 			AppGameContainer container = new AppGameContainer(new InputProviderTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

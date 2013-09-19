@@ -3,23 +3,30 @@ package org.newdawn.slick.geom;
 import java.util.ArrayList;
 
 /**
- * Triangulates a polygon into triangles - duh. Doesn't handle
- * holes in polys
- * 
+ * Triangulates a polygon into triangles - duh. Doesn't handle holes in polys
+ * <p>
  * @author Based on Public Source from FlipCode
  */
 public class BasicTriangulator implements Triangulator {
 
-	/** The accepted error value */
+	/**
+	 * The accepted error value
+	 */
 	private static final float EPSILON = 0.0000000001f;
 
-	/** The list of points to be triangulated */
+	/**
+	 * The list of points to be triangulated
+	 */
 	private PointList poly = new PointList();
 
-	/** The list of points describing the triangles */
+	/**
+	 * The list of points describing the triangles
+	 */
 	private PointList tris = new PointList();
 
-	/** True if we've tried to triangulate */
+	/**
+	 * True if we've tried to triangulate
+	 */
 	private boolean tried;
 
 	/**
@@ -30,7 +37,7 @@ public class BasicTriangulator implements Triangulator {
 
 	/**
 	 * Add a point describing the polygon to be triangulated
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the point
 	 * @param y the y coordinate of the point
 	 */
@@ -43,7 +50,7 @@ public class BasicTriangulator implements Triangulator {
 
 	/**
 	 * Get the number of points in the polygon
-	 * 
+	 * <p>
 	 * @return The number of points in the polygon
 	 */
 	public int getPolyPointCount() {
@@ -52,8 +59,9 @@ public class BasicTriangulator implements Triangulator {
 
 	/**
 	 * Get the coordinates of the point at the specified index
-	 * 
+	 * <p>
 	 * @param index The index of the point to retrieve
+	 * <p>
 	 * @return The oordinates of the point at the specified index
 	 */
 	public float[] getPolyPoint(int index) {
@@ -62,7 +70,7 @@ public class BasicTriangulator implements Triangulator {
 
 	/**
 	 * Cause the triangulator to split the polygon
-	 * 
+	 * <p>
 	 * @return True if we managed the task
 	 */
 	public boolean triangulate() {
@@ -74,7 +82,7 @@ public class BasicTriangulator implements Triangulator {
 
 	/**
 	 * Get a count of the number of triangles produced
-	 * 
+	 * <p>
 	 * @return The number of triangles produced
 	 */
 	public int getTriangleCount() {
@@ -86,10 +94,10 @@ public class BasicTriangulator implements Triangulator {
 
 	/**
 	 * Get a point on a specified generated triangle
-	 * 
+	 * <p>
 	 * @param tri The index of the triangle to interegate
-	 * @param i The index of the point within the triangle to retrieve
-	 * (0 - 2)
+	 * @param i The index of the point within the triangle to retrieve (0 - 2)
+	 * <p>
 	 * @return The x,y coordinate pair for the point
 	 */
 	public float[] getTrianglePoint(int tri, int i) {
@@ -100,12 +108,11 @@ public class BasicTriangulator implements Triangulator {
 		return tris.get((tri * 3) + i).toArray();
 	}
 
-	/** 
-	 * Find the area of a polygon defined by the series of points
-	 * in the list
-	 * 
-	 * @param contour The list of points defined the contour of the polygon
-	 * (Vector2f)
+	/**
+	 * Find the area of a polygon defined by the series of points in the list
+	 * <p>
+	 * @param contour The list of points defined the contour of the polygon (Vector2f)
+	 * <p>
 	 * @return The area of the polygon defined
 	 */
 	private float area(PointList contour) {
@@ -124,9 +131,8 @@ public class BasicTriangulator implements Triangulator {
 	}
 
 	/**
-	 * Check if the point P is inside the triangle defined by
-	 * the points A,B,C
-	 * 
+	 * Check if the point P is inside the triangle defined by the points A,B,C
+	 * <p>
 	 * @param Ax Point A x-coordinate
 	 * @param Ay Point A y-coordinate
 	 * @param Bx Point B x-coordinate
@@ -135,10 +141,11 @@ public class BasicTriangulator implements Triangulator {
 	 * @param Cy Point C y-coordinate
 	 * @param Px Point P x-coordinate
 	 * @param Py Point P y-coordinate
+	 * <p>
 	 * @return True if the point specified is within the triangle
 	 */
 	private boolean insideTriangle(float Ax, float Ay, float Bx,
-			float By, float Cx, float Cy, float Px, float Py) {
+								   float By, float Cx, float Cy, float Px, float Py) {
 		float ax, ay, bx, by, cx, cy, apx, apy, bpx, bpy, cpx, cpy;
 		float cCROSSap, bCROSScp, aCROSSbp;
 
@@ -163,19 +170,19 @@ public class BasicTriangulator implements Triangulator {
 	}
 
 	/**
-	 * Cut a the contour and add a triangle into V to describe the 
-	 * location of the cut
-	 * 
+	 * Cut a the contour and add a triangle into V to describe the location of the cut
+	 * <p>
 	 * @param contour The list of points defining the polygon
 	 * @param u The index of the first point
 	 * @param v The index of the second point
 	 * @param w The index of the third point
 	 * @param n ?
 	 * @param V The array to populate with indicies of triangles
+	 * <p>
 	 * @return True if a triangle was found
 	 */
 	private boolean snip(PointList contour, int u, int v, int w, int n,
-			int[] V) {
+						 int[] V) {
 		int p;
 		float Ax, Ay, Bx, By, Cx, Cy, Px, Py;
 
@@ -210,10 +217,10 @@ public class BasicTriangulator implements Triangulator {
 
 	/**
 	 * Process a list of points defining a polygon
+	 * <p>
 	 * @param contour The list of points describing the polygon
-	 * @param result The list of points describing the triangles. Groups
-	 * of 3 describe each triangle 
-	 * 
+	 * @param result The list of points describing the triangles. Groups of 3 describe each triangle
+	 * <p>
 	 * @return True if we succeeded in completing triangulation
 	 */
 	private boolean process(PointList contour, PointList result) {
@@ -298,23 +305,29 @@ public class BasicTriangulator implements Triangulator {
 
 	/**
 	 * A single point handled by the triangulator
-	 * 
+	 * <p>
 	 * @author Kevin Glass
 	 */
 	private class Point {
 
-		/** The x coorindate of this point */
+		/**
+		 * The x coorindate of this point
+		 */
 		private float x;
 
-		/** The y coorindate of this point */
+		/**
+		 * The y coorindate of this point
+		 */
 		private float y;
 
-		/** The points in an array */
+		/**
+		 * The points in an array
+		 */
 		private float[] array;
 
 		/**
 		 * Create a new point
-		 * 
+		 * <p>
 		 * @param x The x coordindate of the point
 		 * @param y The y coordindate of the point
 		 */
@@ -326,7 +339,7 @@ public class BasicTriangulator implements Triangulator {
 
 		/**
 		 * Get the x coordinate of the point
-		 * 
+		 * <p>
 		 * @return The x coordinate of the point
 		 */
 		public float getX() {
@@ -335,7 +348,7 @@ public class BasicTriangulator implements Triangulator {
 
 		/**
 		 * Get the y coordinate of the point
-		 * 
+		 * <p>
 		 * @return The y coordinate of the point
 		 */
 		public float getY() {
@@ -344,7 +357,7 @@ public class BasicTriangulator implements Triangulator {
 
 		/**
 		 * Convert this point into a float array
-		 * 
+		 * <p>
 		 * @return The contents of this point as a float array
 		 */
 		public float[] toArray() {
@@ -374,12 +387,14 @@ public class BasicTriangulator implements Triangulator {
 
 	/**
 	 * A list of type <code>Point</code>
-	 * 
+	 * <p>
 	 * @author Kevin Glass
 	 */
 	private class PointList {
 
-		/** The list of points */
+		/**
+		 * The list of points
+		 */
 		private ArrayList points = new ArrayList();
 
 		/**
@@ -390,8 +405,9 @@ public class BasicTriangulator implements Triangulator {
 
 		/**
 		 * Check if the list contains a point
-		 * 
+		 * <p>
 		 * @param p The point to look for
+		 * <p>
 		 * @return True if the point is in the list
 		 */
 		public boolean contains(Point p) {
@@ -399,8 +415,8 @@ public class BasicTriangulator implements Triangulator {
 		}
 
 		/**
-		 * Add a point to the list 
-		 * 
+		 * Add a point to the list
+		 * <p>
 		 * @param point The point to add
 		 */
 		public void add(Point point) {
@@ -409,7 +425,7 @@ public class BasicTriangulator implements Triangulator {
 
 		/**
 		 * Remove a point from the list
-		 * 
+		 * <p>
 		 * @param point The point to remove
 		 */
 		public void remove(Point point) {
@@ -418,7 +434,7 @@ public class BasicTriangulator implements Triangulator {
 
 		/**
 		 * Get the size of the list
-		 * 
+		 * <p>
 		 * @return The size of the list
 		 */
 		public int size() {
@@ -427,8 +443,9 @@ public class BasicTriangulator implements Triangulator {
 
 		/**
 		 * Get a point a specific index in the list
-		 * 
+		 * <p>
 		 * @param i The index of the point to retrieve
+		 * <p>
 		 * @return The point
 		 */
 		public Point get(int i) {

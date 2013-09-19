@@ -5,37 +5,48 @@ import java.io.UnsupportedEncodingException;
 import org.newdawn.slick.util.Log;
 
 /**
- * A font implementation that will use the graphics inside a SpriteSheet for its data.
- * This is useful when your font has a fixed width and height for each character as
- * opposed to the more complex AngelCodeFont that allows different sizes and kerning
- * for each character.
- *
+ * A font implementation that will use the graphics inside a SpriteSheet for its data. This is useful when your font has
+ * a fixed width and height for each character as opposed to the more complex AngelCodeFont that allows different sizes
+ * and kerning for each character.
+ * <p>
  * @author Onno Scheffers
  */
 public class SpriteSheetFont implements Font {
 
-	/** The SpriteSheet containing the bitmap font */
+	/**
+	 * The SpriteSheet containing the bitmap font
+	 */
 	private SpriteSheet font;
 
-	/** First character in the SpriteSheet */
+	/**
+	 * First character in the SpriteSheet
+	 */
 	private char startingCharacter;
 
-	/** Width of each character in pixels */
+	/**
+	 * Width of each character in pixels
+	 */
 	private int charWidth;
 
-	/** Height of each character in pixels */
+	/**
+	 * Height of each character in pixels
+	 */
 	private int charHeight;
 
-	/** Number of characters in SpriteSheet horizontally */
+	/**
+	 * Number of characters in SpriteSheet horizontally
+	 */
 	private int horizontalCount;
 
-	/** Total number of characters in SpriteSheet */
+	/**
+	 * Total number of characters in SpriteSheet
+	 */
 	private int numChars;
 
 	/**
-	 * Create a new font based on a SpriteSheet. The SpriteSheet should hold your
-	 * fixed-width character set in ASCII order. To only get upper-case characters
-	 * working you would usually set up a SpriteSheet with characters for these values:
+	 * Create a new font based on a SpriteSheet. The SpriteSheet should hold your fixed-width character set in ASCII
+	 * order. To only get upper-case characters working you would usually set up a SpriteSheet with characters for these
+	 * values:
 	 * <pre>
 	 *   !"#$%&'()*+,-./
 	 *  0123456789:;<=>?
@@ -88,7 +99,8 @@ public class SpriteSheetFont implements Font {
 					}
 				}
 			}
-		} catch (UnsupportedEncodingException e) {
+		}
+		catch (UnsupportedEncodingException e) {
 			// Should never happen, ASCII is supported pretty much anywhere
 			Log.error(e);
 		}

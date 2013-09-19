@@ -11,18 +11,24 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for image flashes
- *
+ * <p>
  * @author kevin
  */
 public class FlashTest extends BasicGame {
 
-	/** The TGA image loaded */
+	/**
+	 * The TGA image loaded
+	 */
 	private Image image;
 
-	/** True if the image is rendered flashed */
+	/**
+	 * True if the image is rendered flashed
+	 */
 	private boolean flash;
 
-	/** The container for the test */
+	/**
+	 * The container for the test
+	 */
 	private GameContainer container;
 
 	/**
@@ -61,7 +67,7 @@ public class FlashTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -69,7 +75,8 @@ public class FlashTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new FlashTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

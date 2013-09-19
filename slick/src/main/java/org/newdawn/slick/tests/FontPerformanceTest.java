@@ -13,21 +13,29 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test of the font rendering capabilities
- *
+ * <p>
  * @author kevin
  */
 public class FontPerformanceTest extends BasicGame {
 
-	/** The font we're going to use to render */
+	/**
+	 * The font we're going to use to render
+	 */
 	private AngelCodeFont font;
 
-	/** The test text */
+	/**
+	 * The test text
+	 */
 	private String text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin bibendum. Aliquam ac sapien a elit congue iaculis. Quisque et justo quis mi mattis euismod. Donec elementum, mi quis aliquet varius, nisi leo volutpat magna, quis ultricies eros augue at risus. Integer non magna at lorem sodales molestie. Integer diam nulla, ornare sit amet, mattis quis, euismod et, mauris. Proin eget tellus non nisl mattis laoreet. Nunc at nunc id elit pretium tempor. Duis vulputate, nibh eget rhoncus eleifend, tellus lectus sollicitudin mi, rhoncus tincidunt nisi massa vitae ipsum. Praesent tellus diam, luctus ut, eleifend nec, auctor et, orci. Praesent eu elit. Pellentesque ante orci, volutpat placerat, ornare eget, cursus sit amet, eros. Duis pede sapien, euismod a, volutpat pellentesque, convallis eu, mauris. Nunc eros. Ut eu risus et felis laoreet viverra. Curabitur a metus.";
 
-	/** The text broken into lines */
+	/**
+	 * The text broken into lines
+	 */
 	private ArrayList lines = new ArrayList();
 
-	/** True if the text is visible */
+	/**
+	 * True if the text is visible
+	 */
 	private boolean visible = true;
 
 	/**
@@ -89,7 +97,7 @@ public class FontPerformanceTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed in the test
 	 */
 	public static void main(String[] argv) {
@@ -97,7 +105,8 @@ public class FontPerformanceTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new FontPerformanceTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

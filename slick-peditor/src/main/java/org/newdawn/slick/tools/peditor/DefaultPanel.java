@@ -4,9 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * A panel to get round the stupidity that disabling a JPanel doesn't disable
- * it's children.
- *
+ * A panel to get round the stupidity that disabling a JPanel doesn't disable it's children.
+ * <p>
  * @author kevin
  */
 public class DefaultPanel extends JPanel {

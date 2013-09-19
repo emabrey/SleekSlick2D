@@ -13,37 +13,51 @@ import org.newdawn.slick.state.transition.EmptyTransition;
 import org.newdawn.slick.state.transition.Transition;
 
 /**
- * A state based game isolated different stages of the game (menu, ingame, hiscores, etc) into 
- * different states so they can be easily managed and maintained.
- *
+ * A state based game isolated different stages of the game (menu, ingame, hiscores, etc) into different states so they
+ * can be easily managed and maintained.
+ * <p>
  * @author kevin
  */
 public abstract class StateBasedGame implements Game, InputListener {
 
-	/** The list of states making up this game */
+	/**
+	 * The list of states making up this game
+	 */
 	private HashMap states = new HashMap();
 
-	/** The current state */
+	/**
+	 * The current state
+	 */
 	private GameState currentState;
 
-	/** The next state we're moving into */
+	/**
+	 * The next state we're moving into
+	 */
 	private GameState nextState;
 
-	/** The container holding this game */
+	/**
+	 * The container holding this game
+	 */
 	private GameContainer container;
 
-	/** The title of the game */
+	/**
+	 * The title of the game
+	 */
 	private String title;
 
-	/** The transition being used to enter the state */
+	/**
+	 * The transition being used to enter the state
+	 */
 	private Transition enterTransition;
 
-	/** The transition being used to leave the state */
+	/**
+	 * The transition being used to leave the state
+	 */
 	private Transition leaveTransition;
 
 	/**
 	 * Create a new state based game
-	 * 
+	 * <p>
 	 * @param name The name of the game
 	 */
 	public StateBasedGame(String name) {
@@ -78,7 +92,7 @@ public abstract class StateBasedGame implements Game, InputListener {
 
 	/**
 	 * Get the number of states that have been added to this game
-	 * 
+	 * <p>
 	 * @return The number of states that have been added to this game
 	 */
 	public int getStateCount() {
@@ -87,7 +101,7 @@ public abstract class StateBasedGame implements Game, InputListener {
 
 	/**
 	 * Get the ID of the state the game is currently in
-	 * 
+	 * <p>
 	 * @return The ID of the state the game is currently in
 	 */
 	public int getCurrentStateID() {
@@ -96,7 +110,7 @@ public abstract class StateBasedGame implements Game, InputListener {
 
 	/**
 	 * Get the state the game is currently in
-	 * 
+	 * <p>
 	 * @return The state the game is currently in
 	 */
 	public GameState getCurrentState() {
@@ -110,9 +124,8 @@ public abstract class StateBasedGame implements Game, InputListener {
 	}
 
 	/**
-	 * Add a state to the game. The state will be updated and maintained
-	 * by the game
-	 * 
+	 * Add a state to the game. The state will be updated and maintained by the game
+	 * <p>
 	 * @param state The state to be added
 	 */
 	public void addState(GameState state) {
@@ -125,8 +138,9 @@ public abstract class StateBasedGame implements Game, InputListener {
 
 	/**
 	 * Get a state based on it's identifier
-	 * 
+	 * <p>
 	 * @param id The ID of the state to retrieve
+	 * <p>
 	 * @return The state requested or null if no state with the specified ID exists
 	 */
 	public GameState getState(int id) {
@@ -135,7 +149,7 @@ public abstract class StateBasedGame implements Game, InputListener {
 
 	/**
 	 * Enter a particular game state with no transition
-	 * 
+	 * <p>
 	 * @param id The ID of the state to enter
 	 */
 	public void enterState(int id) {
@@ -144,7 +158,7 @@ public abstract class StateBasedGame implements Game, InputListener {
 
 	/**
 	 * Enter a particular game state with the transitions provided
-	 * 
+	 * <p>
 	 * @param id The ID of the state to enter
 	 * @param leave The transition to use when leaving the current state
 	 * @param enter The transition to use when entering the new state
@@ -189,8 +203,9 @@ public abstract class StateBasedGame implements Game, InputListener {
 
 	/**
 	 * Initialise the list of states making up this game
-	 * 
+	 * <p>
 	 * @param container The container holding the game
+	 * <p>
 	 * @throws SlickException Indicates a failure to initialise the state based game resources
 	 */
 	public abstract void initStatesList(GameContainer container) throws SlickException;
@@ -219,11 +234,11 @@ public abstract class StateBasedGame implements Game, InputListener {
 	}
 
 	/**
-	 * User hook for rendering at the before the current state
-	 * and/or transition have been rendered
-	 * 
+	 * User hook for rendering at the before the current state and/or transition have been rendered
+	 * <p>
 	 * @param container The container in which the game is hosted
 	 * @param g The graphics context on which to draw
+	 * <p>
 	 * @throws SlickException Indicates a failure within render
 	 */
 	protected void preRenderState(GameContainer container, Graphics g) throws SlickException {
@@ -231,11 +246,11 @@ public abstract class StateBasedGame implements Game, InputListener {
 	}
 
 	/**
-	 * User hook for rendering at the game level after the current state
-	 * and/or transition have been rendered
-	 * 
+	 * User hook for rendering at the game level after the current state and/or transition have been rendered
+	 * <p>
 	 * @param container The container in which the game is hosted
 	 * @param g The graphics context on which to draw
+	 * <p>
 	 * @throws SlickException Indicates a failure within render
 	 */
 	protected void postRenderState(GameContainer container, Graphics g) throws SlickException {
@@ -280,11 +295,11 @@ public abstract class StateBasedGame implements Game, InputListener {
 	}
 
 	/**
-	 * User hook for updating at the game before the current state
-	 * and/or transition have been updated
-	 * 
+	 * User hook for updating at the game before the current state and/or transition have been updated
+	 * <p>
 	 * @param container The container in which the game is hosted
 	 * @param delta The amount of time in milliseconds since last update
+	 * <p>
 	 * @throws SlickException Indicates a failure within render
 	 */
 	protected void preUpdateState(GameContainer container, int delta) throws SlickException {
@@ -292,11 +307,11 @@ public abstract class StateBasedGame implements Game, InputListener {
 	}
 
 	/**
-	 * User hook for rendering at the game level after the current state
-	 * and/or transition have been updated
-	 * 
+	 * User hook for rendering at the game level after the current state and/or transition have been updated
+	 * <p>
 	 * @param container The container in which the game is hosted
 	 * @param delta The amount of time in milliseconds since last update
+	 * <p>
 	 * @throws SlickException Indicates a failure within render
 	 */
 	protected void postUpdateState(GameContainer container, int delta) throws SlickException {
@@ -305,8 +320,8 @@ public abstract class StateBasedGame implements Game, InputListener {
 
 	/**
 	 * Check if the game is transitioning between states
-	 * 
-	 * @return True if we're transitioning between states 
+	 * <p>
+	 * @return True if we're transitioning between states
 	 */
 	private boolean transitioning() {
 		return (leaveTransition != null) || (enterTransition != null);
@@ -328,7 +343,7 @@ public abstract class StateBasedGame implements Game, InputListener {
 
 	/**
 	 * Get the container holding this game
-	 * 
+	 * <p>
 	 * @return The game container holding this game
 	 */
 	public GameContainer getContainer() {

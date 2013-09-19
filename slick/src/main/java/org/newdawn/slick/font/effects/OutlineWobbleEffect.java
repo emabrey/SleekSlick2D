@@ -24,16 +24,20 @@ import java.util.List;
 
 /**
  * An effect that genrates a wobbly line around the outline of the text
- * 
+ * <p>
  * @author Jerry Huxtable
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class OutlineWobbleEffect extends OutlineEffect {
 
-	/** How often the line wobbles */
+	/**
+	 * How often the line wobbles
+	 */
 	private float detail = 1;
 
-	/** The amount of the line wobbles */
+	/**
+	 * The amount of the line wobbles
+	 */
 	private float amplitude = 1;
 
 	/**
@@ -45,7 +49,7 @@ public class OutlineWobbleEffect extends OutlineEffect {
 
 	/**
 	 * Gets the detail of the wobble effect.
-	 * 
+	 * <p>
 	 * @return The detail of the wobble effect
 	 */
 	public float getDetail() {
@@ -54,7 +58,7 @@ public class OutlineWobbleEffect extends OutlineEffect {
 
 	/**
 	 * Sets the detail of the wobble effect.
-	 * 
+	 * <p>
 	 * @param detail The detail of the wobble effect
 	 */
 	public void setDetail(float detail) {
@@ -63,7 +67,7 @@ public class OutlineWobbleEffect extends OutlineEffect {
 
 	/**
 	 * Gets the amplitude of the wobble effect.
-	 * 
+	 * <p>
 	 * @return The amplitude of the wobble effect
 	 */
 	public float getAmplitude() {
@@ -72,7 +76,7 @@ public class OutlineWobbleEffect extends OutlineEffect {
 
 	/**
 	 * Sets the amplitude of the wobble effect.
-	 * 
+	 * <p>
 	 * @param amplitude The detail of the wobble effect
 	 */
 	public void setAmplitude(float amplitude) {
@@ -81,7 +85,7 @@ public class OutlineWobbleEffect extends OutlineEffect {
 
 	/**
 	 * Create a new effect that generates a wobbly line around the text
-	 * 
+	 * <p>
 	 * @param width The width of the line
 	 * @param color The colour of the line
 	 */
@@ -125,13 +129,15 @@ public class OutlineWobbleEffect extends OutlineEffect {
 
 	/**
 	 * A stroke that generate a wobbly line
-	 * 
+	 * <p>
 	 * @author Jerry Huxtable
 	 * @author Nathan Sweet <misc@n4te.com>
 	 */
 	private class WobbleStroke implements Stroke {
 
-		/** The flattening factor of the stroke */
+		/**
+		 * The flattening factor of the stroke
+		 */
 		private static final float FLATNESS = 1;
 
 		/**
@@ -190,8 +196,9 @@ public class OutlineWobbleEffect extends OutlineEffect {
 
 		/**
 		 * Get a random wobble factor
-		 * 
+		 * <p>
 		 * @param x The position on the line
+		 * <p>
 		 * @return The wobble factor
 		 */
 		private float randomize(float x) {

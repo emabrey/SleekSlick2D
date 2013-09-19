@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 /**
  * A simple GUI on the front of the packing tool
- *
+ * <p>
  * @author kevin
  */
 public class Packer extends JFrame {
@@ -200,7 +200,8 @@ public class Packer extends JFrame {
 					for (int i = 0; i < selected.length; i++) {
 						try {
 							sprites.addElement(new Sprite(selected[i]));
-						} catch (IOException x) {
+						}
+						catch (IOException x) {
 							x.printStackTrace();
 							JOptionPane.showMessageDialog(Packer.this, "Unable to load: " + selected[i].getName());
 						}
@@ -284,9 +285,10 @@ public class Packer extends JFrame {
 
 	/**
 	 * Get the sprite a given location on the current sheet
-	 *
+	 * <p>
 	 * @param x The x coordinate to look for the sprite
 	 * @param y The y coordinate to look for the sprite
+	 * <p>
 	 * @return The sprite found at the given location or null if no sprite can be found
 	 */
 	public Sprite getSpriteAt(int x, int y) {
@@ -301,7 +303,7 @@ public class Packer extends JFrame {
 
 	/**
 	 * Select a series of sprites
-	 *
+	 * <p>
 	 * @param selection The series of sprites to be selected (Sprite objects)
 	 */
 	public void select(ArrayList selection) {
@@ -331,7 +333,8 @@ public class Packer extends JFrame {
 			try {
 				int b = ((Integer) border.getValue()).intValue();
 				pack.packImages(list, twidth, theight, b, out);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				// shouldn't happen
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(this, "Failed to write output");
@@ -352,7 +355,8 @@ public class Packer extends JFrame {
 			int b = ((Integer) border.getValue()).intValue();
 			Sheet sheet = pack.packImages(list, twidth, theight, b, null);
 			sheetPanel.setImage(sheet);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			// shouldn't happen
 			e.printStackTrace();
 		}
@@ -360,15 +364,17 @@ public class Packer extends JFrame {
 
 	/**
 	 * A list cell renderer to show just the plain names
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	private class FileListRenderer extends DefaultListCellRenderer {
 
 		/**
-		 * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int, boolean, boolean)
+		 * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object,
+		 * int, boolean, boolean)
 		 */
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+													  boolean cellHasFocus) {
 			JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected,
 					cellHasFocus);
 
@@ -382,7 +388,7 @@ public class Packer extends JFrame {
 
 	/**
 	 * Entry point to the simple UI
-	 *
+	 * <p>
 	 * @param argv The arguments to the program
 	 */
 	public static void main(String[] argv) {

@@ -9,7 +9,7 @@ import org.newdawn.slick.util.Bootstrap;
 
 /**
  * Simple test for isometric map rendering
- *
+ * <p>
  * @author kevin
  */
 public class IsoTiledTest extends BasicGame {
@@ -53,7 +53,7 @@ public class IsoTiledTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed in from the command line
 	 */
 	public static void main(String[] argv) {

@@ -10,7 +10,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for a scalable game
- *
+ * <p>
  * @author kevin
  */
 public class ScalableTest extends BasicGame {
@@ -51,7 +51,7 @@ public class ScalableTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -95,7 +95,8 @@ public class ScalableTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(game);
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

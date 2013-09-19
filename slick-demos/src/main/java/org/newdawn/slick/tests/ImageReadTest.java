@@ -10,7 +10,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for reading image data from a teture
- *
+ * <p>
  * @author kevin
  */
 public class ImageReadTest extends BasicGame {
@@ -93,7 +93,7 @@ public class ImageReadTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -101,7 +101,8 @@ public class ImageReadTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ImageReadTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

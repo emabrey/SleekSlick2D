@@ -5,32 +5,44 @@ import java.util.HashMap;
 
 /**
  * A diagram read from SVG containing multiple figures
- *
+ * <p>
  * @author kevin
  */
 public class Diagram {
 
-	/** The figures in the diagram */
+	/**
+	 * The figures in the diagram
+	 */
 	private ArrayList figures = new ArrayList();
 
-	/** The pattern definitions */
+	/**
+	 * The pattern definitions
+	 */
 	private HashMap patterns = new HashMap();
 
-	/** The linear gradients defined within the diagram */
+	/**
+	 * The linear gradients defined within the diagram
+	 */
 	private HashMap gradients = new HashMap();
 
-	/** The figures mapping */
+	/**
+	 * The figures mapping
+	 */
 	private HashMap figureMap = new HashMap();
 
-	/** The width of the diagram */
+	/**
+	 * The width of the diagram
+	 */
 	private float width;
 
-	/** The height of the diagram */
+	/**
+	 * The height of the diagram
+	 */
 	private float height;
 
 	/**
 	 * Create a new empty diagram
-	 * 
+	 * <p>
 	 * @param width The width of the diagram
 	 * @param height The height of the diagram
 	 */
@@ -41,7 +53,7 @@ public class Diagram {
 
 	/**
 	 * Get the width of the diagram
-	 * 
+	 * <p>
 	 * @return The width of the diagram
 	 */
 	public float getWidth() {
@@ -50,7 +62,7 @@ public class Diagram {
 
 	/**
 	 * Get the height of the diagram
-	 * 
+	 * <p>
 	 * @return The height of the diagram
 	 */
 	public float getHeight() {
@@ -59,7 +71,7 @@ public class Diagram {
 
 	/**
 	 * Add a pattern definition basd on a image
-	 * 
+	 * <p>
 	 * @param name The name of the pattern
 	 * @param href The href to the image specified in the doc
 	 */
@@ -68,8 +80,8 @@ public class Diagram {
 	}
 
 	/**
-	 * Add gradient to the diagram 
-	 * 
+	 * Add gradient to the diagram
+	 * <p>
 	 * @param name The name of the gradient
 	 * @param gradient The gradient to be added
 	 */
@@ -79,8 +91,9 @@ public class Diagram {
 
 	/**
 	 * Get a pattern definition from the diagram
-	 * 
+	 * <p>
 	 * @param name The name of the pattern
+	 * <p>
 	 * @return The href to the image that was specified for the given pattern
 	 */
 	public String getPatternDef(String name) {
@@ -89,8 +102,9 @@ public class Diagram {
 
 	/**
 	 * Get the gradient defined in this document
-	 * 
+	 * <p>
 	 * @param name The name of the gradient
+	 * <p>
 	 * @return The gradient definition
 	 */
 	public Gradient getGradient(String name) {
@@ -98,8 +112,8 @@ public class Diagram {
 	}
 
 	/**
-	 * Get the names of the patterns defined 
-	 * 
+	 * Get the names of the patterns defined
+	 * <p>
 	 * @return The names of the pattern
 	 */
 	public String[] getPatternDefNames() {
@@ -108,8 +122,9 @@ public class Diagram {
 
 	/**
 	 * Get a figure by a given ID
-	 * 
+	 * <p>
 	 * @param id The ID of the figure
+	 * <p>
 	 * @return The figure with the given ID
 	 */
 	public Figure getFigureByID(String id) {
@@ -118,7 +133,7 @@ public class Diagram {
 
 	/**
 	 * Add a figure to the diagram
-	 * 
+	 * <p>
 	 * @param figure The figure to add
 	 */
 	public void addFigure(Figure figure) {
@@ -138,7 +153,7 @@ public class Diagram {
 
 	/**
 	 * Get the number of figures in the diagram
-	 * 
+	 * <p>
 	 * @return The number of figures in the diagram
 	 */
 	public int getFigureCount() {
@@ -147,8 +162,9 @@ public class Diagram {
 
 	/**
 	 * Get the figure at a given index
-	 * 
+	 * <p>
 	 * @param index The index of the figure to retrieve
+	 * <p>
 	 * @return The figure at the given index
 	 */
 	public Figure getFigure(int index) {
@@ -157,7 +173,7 @@ public class Diagram {
 
 	/**
 	 * Remove a figure from the diagram
-	 * 
+	 * <p>
 	 * @param figure The figure to be removed
 	 */
 	public void removeFigure(Figure figure) {

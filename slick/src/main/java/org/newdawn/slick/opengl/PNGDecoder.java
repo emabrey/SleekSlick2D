@@ -40,7 +40,7 @@ import java.util.zip.Inflater;
 
 /**
  * A PNGDecoder. The slick PNG decoder is based on this class :)
- * 
+ * <p>
  * @author Matthias Mann
  */
 public class PNGDecoder {
@@ -186,9 +186,11 @@ public class PNGDecoder {
 
 	/**
 	 * Computes the implemented format conversion for the desired format.
-	 *
+	 * <p>
 	 * @param fmt the desired format
+	 * <p>
 	 * @return format which best matches the desired format
+	 * <p>
 	 * @throws UnsupportedOperationException if this PNG file can't be decoded
 	 */
 	public Format decideTextureFormat(Format fmt) {
@@ -317,7 +319,8 @@ public class PNGDecoder {
 				curLine = prevLine;
 				prevLine = tmp;
 			}
-		} finally {
+		}
+		finally {
 			inflater.end();
 		}
 	}
@@ -778,7 +781,8 @@ public class PNGDecoder {
 					length -= read;
 				}
 			} while (length > 0);
-		} catch (DataFormatException ex) {
+		}
+		catch (DataFormatException ex) {
 			throw (IOException) (new IOException("inflate error").initCause(ex));
 		}
 	}

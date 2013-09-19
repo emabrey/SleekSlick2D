@@ -23,8 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Reads a TrueType font file into a byte array and
- * provides file like functions for array access.
+ * Reads a TrueType font file into a byte array and provides file like functions for array access.
  */
 public class FontFileReader {
 
@@ -45,8 +44,9 @@ public class FontFileReader {
 
 	/**
 	 * Initializes class and reads stream. Init does not close stream.
-	 *
+	 * <p>
 	 * @param in InputStream to read from new array with size + inc
+	 * <p>
 	 * @throws IOException In case of an I/O problem
 	 */
 	private void init(InputStream in) throws java.io.IOException {
@@ -63,8 +63,9 @@ public class FontFileReader {
 
 	/**
 	 * Constructor
-	 *
+	 * <p>
 	 * @param fileName filename to read
+	 * <p>
 	 * @throws IOException In case of an I/O problem
 	 */
 	public FontFileReader(String fileName) throws IOException {
@@ -76,16 +77,17 @@ public class FontFileReader {
 		InputStream in = new java.io.FileInputStream(f);
 		try {
 			init(in);
-		} finally {
+		}
+		finally {
 			in.close();
 		}
 	}
 
 	/**
-	 * Generate a font file reader based on the contents of a byte array rather than
-	 * an actual file
-	 *
+	 * Generate a font file reader based on the contents of a byte array rather than an actual file
+	 * <p>
 	 * @param data The data to use as the font file
+	 * <p>
 	 * @throws IOException Indicates a failure to process the array
 	 */
 	public FontFileReader(byte[] data) throws IOException {
@@ -99,8 +101,9 @@ public class FontFileReader {
 
 	/**
 	 * Constructor
-	 *
+	 * <p>
 	 * @param in InputStream to read from
+	 * <p>
 	 * @throws IOException In case of an I/O problem
 	 */
 	public FontFileReader(InputStream in) throws IOException {
@@ -109,8 +112,9 @@ public class FontFileReader {
 
 	/**
 	 * Set current file position to offset
-	 *
+	 * <p>
 	 * @param offset The new offset to set
+	 * <p>
 	 * @throws IOException In case of an I/O problem
 	 */
 	public void seekSet(long offset) throws IOException {
@@ -123,8 +127,9 @@ public class FontFileReader {
 
 	/**
 	 * Set current file position to offset
-	 *
+	 * <p>
 	 * @param add The number of bytes to advance
+	 * <p>
 	 * @throws IOException In case of an I/O problem
 	 */
 	public void seekAdd(long add) throws IOException {
@@ -133,8 +138,9 @@ public class FontFileReader {
 
 	/**
 	 * Skip a given number of bytes.
-	 *
+	 * <p>
 	 * @param add The number of bytes to advance
+	 * <p>
 	 * @throws IOException In case of an I/O problem
 	 */
 	public void skip(long add) throws IOException {
@@ -143,7 +149,7 @@ public class FontFileReader {
 
 	/**
 	 * Returns current file position.
-	 *
+	 * <p>
 	 * @return int The current position.
 	 */
 	public int getCurrentPos() {
@@ -152,7 +158,7 @@ public class FontFileReader {
 
 	/**
 	 * Returns the size of the file.
-	 *
+	 * <p>
 	 * @return int The filesize
 	 */
 	public int getFileSize() {
@@ -161,8 +167,9 @@ public class FontFileReader {
 
 	/**
 	 * Read 1 byte.
-	 *
+	 * <p>
 	 * @return One byte
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public byte read() throws IOException {
@@ -176,8 +183,9 @@ public class FontFileReader {
 
 	/**
 	 * Read 1 signed byte.
-	 *
+	 * <p>
 	 * @return One byte
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final byte readTTFByte() throws IOException {
@@ -186,8 +194,9 @@ public class FontFileReader {
 
 	/**
 	 * Read 1 unsigned byte.
-	 *
+	 * <p>
 	 * @return One unsigned byte
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final int readTTFUByte() throws IOException {
@@ -202,8 +211,9 @@ public class FontFileReader {
 
 	/**
 	 * Read 2 bytes signed.
-	 *
+	 * <p>
 	 * @return One signed short
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final short readTTFShort() throws IOException {
@@ -214,8 +224,9 @@ public class FontFileReader {
 
 	/**
 	 * Read 2 bytes unsigned.
-	 *
+	 * <p>
 	 * @return One unsigned short
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final int readTTFUShort() throws IOException {
@@ -225,9 +236,10 @@ public class FontFileReader {
 
 	/**
 	 * Write a USHort at a given position.
-	 *
+	 * <p>
 	 * @param pos The absolute position to write to
 	 * @param val The value to write
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final void writeTTFUShort(int pos, int val) throws IOException {
@@ -242,9 +254,11 @@ public class FontFileReader {
 
 	/**
 	 * Read 2 bytes signed at position pos without changing current position.
-	 *
+	 * <p>
 	 * @param pos The absolute position to read from
+	 * <p>
 	 * @return One signed short
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final short readTTFShort(long pos) throws IOException {
@@ -257,9 +271,11 @@ public class FontFileReader {
 
 	/**
 	 * Read 2 bytes unsigned at position pos without changing current position.
-	 *
+	 * <p>
 	 * @param pos The absolute position to read from
+	 * <p>
 	 * @return One unsigned short
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final int readTTFUShort(long pos) throws IOException {
@@ -272,8 +288,9 @@ public class FontFileReader {
 
 	/**
 	 * Read 4 bytes.
-	 *
+	 * <p>
 	 * @return One signed integer
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final int readTTFLong() throws IOException {
@@ -287,8 +304,9 @@ public class FontFileReader {
 
 	/**
 	 * Read 4 bytes.
-	 *
+	 * <p>
 	 * @return One unsigned integer
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final long readTTFULong() throws IOException {
@@ -302,8 +320,9 @@ public class FontFileReader {
 
 	/**
 	 * Read a NUL terminated ISO-8859-1 string.
-	 *
+	 * <p>
 	 * @return A String
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final String readTTFString() throws IOException {
@@ -322,9 +341,11 @@ public class FontFileReader {
 
 	/**
 	 * Read an ISO-8859-1 string of len bytes.
-	 *
+	 * <p>
 	 * @param len The length of the string to read
+	 * <p>
 	 * @return A String
+	 * <p>
 	 * @throws IOException If EOF is reached
 	 */
 	public final String readTTFString(int len) throws IOException {
@@ -346,14 +367,16 @@ public class FontFileReader {
 
 	/**
 	 * Return a copy of the internal array
-	 *
+	 * <p>
 	 * @param offset The absolute offset to start reading from
 	 * @param length The number of bytes to read
+	 * <p>
 	 * @return An array of bytes
+	 * <p>
 	 * @throws IOException if out of bounds
 	 */
 	public byte[] getBytes(int offset,
-			int length) throws IOException {
+						   int length) throws IOException {
 		if ((offset + length) > fsize) {
 			throw new java.io.IOException("Reached EOF");
 		}

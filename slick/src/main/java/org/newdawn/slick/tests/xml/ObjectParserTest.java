@@ -4,18 +4,18 @@ import org.newdawn.slick.util.xml.ObjectTreeParser;
 import org.newdawn.slick.util.xml.SlickXMLException;
 
 /**
- * A simple test to check that the object parser from XML works. Read the Javadoc of 
- * ObjectParser to work out whats going on here
- * 
+ * A simple test to check that the object parser from XML works. Read the Javadoc of ObjectParser to work out whats
+ * going on here
+ * <p>
  * @author kevin
  */
 public class ObjectParserTest {
 
 	/**
-	 * Entity point to our test. Simple read some XML which should
-	 * generate an object tree.
-	 * 
+	 * Entity point to our test. Simple read some XML which should generate an object tree.
+	 * <p>
 	 * @param argv The arguments passed into the test
+	 * <p>
 	 * @throws SlickXMLException Indicates a failure to parse XML or generate objects
 	 */
 	public static void main(String[] argv) throws SlickXMLException {

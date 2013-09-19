@@ -7,52 +7,80 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A utility to hold and render animations
- *
+ * <p>
  * @author kevin
  * @author DeX (speed updates)
  */
 public class Animation implements Renderable {
 
-	/** The list of frames to render in this animation */
+	/**
+	 * The list of frames to render in this animation
+	 */
 	private ArrayList frames = new ArrayList();
 
-	/** The frame currently being displayed */
+	/**
+	 * The frame currently being displayed
+	 */
 	private int currentFrame = -1;
 
-	/** The time the next frame change should take place */
+	/**
+	 * The time the next frame change should take place
+	 */
 	private long nextChange = 0;
 
-	/** True if the animation is stopped */
+	/**
+	 * True if the animation is stopped
+	 */
 	private boolean stopped = false;
 
-	/** The time left til the next frame */
+	/**
+	 * The time left til the next frame
+	 */
 	private long timeLeft;
 
-	/** The current speed of the animation */
+	/**
+	 * The current speed of the animation
+	 */
 	private float speed = 1.0f;
 
-	/** The frame to stop at */
+	/**
+	 * The frame to stop at
+	 */
 	private int stopAt = -2;
 
-	/** The last time the frame was automagically updated */
+	/**
+	 * The last time the frame was automagically updated
+	 */
 	private long lastUpdate;
 
-	/** True if this is the first update */
+	/**
+	 * True if this is the first update
+	 */
 	private boolean firstUpdate = true;
 
-	/** True if we should auto update the animation - default true */
+	/**
+	 * True if we should auto update the animation - default true
+	 */
 	private boolean autoUpdate = true;
 
-	/** The direction the animation is running */
+	/**
+	 * The direction the animation is running
+	 */
 	private int direction = 1;
 
-	/** True if the animation in ping ponging back and forth */
+	/**
+	 * True if the animation in ping ponging back and forth
+	 */
 	private boolean pingPong;
 
-	/** True if the animation should loop (default) */
+	/**
+	 * True if the animation should loop (default)
+	 */
 	private boolean loop = true;
 
-	/** The spriteSheet backing this animation */
+	/**
+	 * The spriteSheet backing this animation
+	 */
 	private SpriteSheet spriteSheet = null;
 
 	/**
@@ -64,7 +92,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Create a new animation from a set of images
-	 * 
+	 * <p>
 	 * @param frames The images for the animation frames
 	 * @param duration The duration to show each frame
 	 */
@@ -74,7 +102,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Create a new animation from a set of images
-	 * 
+	 * <p>
 	 * @param frames The images for the animation frames
 	 * @param durations The duration to show each frame
 	 */
@@ -84,9 +112,9 @@ public class Animation implements Renderable {
 
 	/**
 	 * Create an empty animation
-	 * 
-	 * @param autoUpdate True if this animation should automatically update. This means that the
-	 * current frame will be caculated based on the time between renders
+	 * <p>
+	 * @param autoUpdate True if this animation should automatically update. This means that the current frame will be
+	 * caculated based on the time between renders
 	 */
 	public Animation(boolean autoUpdate) {
 		currentFrame = 0;
@@ -95,11 +123,11 @@ public class Animation implements Renderable {
 
 	/**
 	 * Create a new animation from a set of images
-	 * 
+	 * <p>
 	 * @param frames The images for the animation frames
 	 * @param duration The duration to show each frame
-	 * @param autoUpdate True if this animation should automatically update. This means that the
-	 * current frame will be caculated based on the time between renders
+	 * @param autoUpdate True if this animation should automatically update. This means that the current frame will be
+	 * caculated based on the time between renders
 	 */
 	public Animation(Image[] frames, int duration, boolean autoUpdate) {
 		for (int i = 0; i < frames.length; i++) {
@@ -111,11 +139,11 @@ public class Animation implements Renderable {
 
 	/**
 	 * Create a new animation from a set of images
-	 * 
+	 * <p>
 	 * @param frames The images for the animation frames
 	 * @param durations The duration to show each frame
-	 * @param autoUpdate True if this animation should automatically update. This means that the
-	 * current frame will be caculated based on the time between renders
+	 * @param autoUpdate True if this animation should automatically update. This means that the current frame will be
+	 * caculated based on the time between renders
 	 */
 	public Animation(Image[] frames, int[] durations, boolean autoUpdate) {
 		this.autoUpdate = autoUpdate;
@@ -130,10 +158,9 @@ public class Animation implements Renderable {
 	}
 
 	/**
-	 * Create a new animation based on the sprite from a sheet. It assumed that
-	 * the sprites are organised on horizontal scan lines and that every sprite
-	 * in the sheet should be used.
-	 * 
+	 * Create a new animation based on the sprite from a sheet. It assumed that the sprites are organised on horizontal
+	 * scan lines and that every sprite in the sheet should be used.
+	 * <p>
 	 * @param frames The sprite sheet containing the frames
 	 * @param duration The duration each frame should be displayed for
 	 */
@@ -143,18 +170,18 @@ public class Animation implements Renderable {
 
 	/**
 	 * Create a new animation based on a selection of sprites from a sheet
-	 * 
+	 * <p>
 	 * @param frames The sprite sheet containing the frames
 	 * @param x1 The x coordinate of the first sprite from the sheet to appear in the animation
 	 * @param y1 The y coordinate of the first sprite from the sheet to appear in the animation
 	 * @param x2 The x coordinate of the last sprite from the sheet to appear in the animation
 	 * @param y2 The y coordinate of the last sprite from the sheet to appear in the animation
-	 * @param horizontalScan True if the sprites are arranged in hoizontal scan lines. Otherwise 
-	 * vertical is assumed
+	 * @param horizontalScan True if the sprites are arranged in hoizontal scan lines. Otherwise vertical is assumed
 	 * @param duration The duration each frame should be displayed for
 	 * @param autoUpdate True if this animation should automatically update based on the render times
 	 */
-	public Animation(SpriteSheet frames, int x1, int y1, int x2, int y2, boolean horizontalScan, int duration, boolean autoUpdate) {
+	public Animation(SpriteSheet frames, int x1, int y1, int x2, int y2, boolean horizontalScan, int duration,
+					 boolean autoUpdate) {
 		this.autoUpdate = autoUpdate;
 
 		if (!horizontalScan) {
@@ -174,6 +201,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Creates a new Animation where each frame is a sub-image of <tt>SpriteSheet</tt> ss.
+	 * <p>
 	 * @param ss The <tt>SpriteSheet</tt> backing this animation
 	 * @param frames An array of coordinates of sub-image locations for each frame
 	 * @param duration The duration each frame should be displayed for
@@ -192,6 +220,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Add animation frame to the animation.
+	 * <p>
 	 * @param duration The duration to display the frame for
 	 * @param x The x location of the frame on the <tt>SpriteSheet</tt>
 	 * @param y The y location of the frame on the <tt>spriteSheet</tt>
@@ -211,10 +240,9 @@ public class Animation implements Renderable {
 	}
 
 	/**
-	 * Indicate if this animation should automatically update based on the
-	 * time between renders or if it should need updating via the update()
-	 * method.
-	 * 
+	 * Indicate if this animation should automatically update based on the time between renders or if it should need
+	 * updating via the update() method.
+	 * <p>
 	 * @param auto True if this animation should automatically update
 	 */
 	public void setAutoUpdate(boolean auto) {
@@ -223,7 +251,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Indicate if this animation should ping pong back and forth
-	 * 
+	 * <p>
 	 * @param pingPong True if the animation should ping pong
 	 */
 	public void setPingPong(boolean pingPong) {
@@ -232,7 +260,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Check if this animation has stopped (either explictly or because it's reached its target frame)
-	 * 
+	 * <p>
 	 * @see #stopAt
 	 * @return True if the animation has stopped
 	 */
@@ -242,7 +270,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Adjust the overall speed of the animation.
-	 *
+	 * <p>
 	 * @param spd The speed to run the animation. Default: 1.0
 	 */
 	public void setSpeed(float spd) {
@@ -256,7 +284,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Returns the current speed of the animation.
-	 * 
+	 * <p>
 	 * @return The speed this animation is being played back at
 	 */
 	public float getSpeed() {
@@ -304,7 +332,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Add animation frame to the animation
-	 * 
+	 * <p>
 	 * @param frame The image to display for the frame
 	 * @param duration The duration to display the frame for
 	 */
@@ -331,7 +359,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Draw the animation at a specific location
-	 * 
+	 * <p>
 	 * @param x The x position to draw the animation at
 	 * @param y The y position to draw the animation at
 	 */
@@ -341,7 +369,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Draw the animation at a specific location
-	 * 
+	 * <p>
 	 * @param x The x position to draw the animation at
 	 * @param y The y position to draw the animation at
 	 * @param filter The filter to apply
@@ -352,7 +380,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Draw the animation
-	 * 
+	 * <p>
 	 * @param x The x position to draw the animation at
 	 * @param y The y position to draw the animation at
 	 * @param width The width to draw the animation at
@@ -364,7 +392,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Draw the animation
-	 * 
+	 * <p>
 	 * @param x The x position to draw the animation at
 	 * @param y The y position to draw the animation at
 	 * @param width The width to draw the animation at
@@ -393,6 +421,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Render the appropriate frame when the spriteSheet backing this Animation is in use.
+	 * <p>
 	 * @param x The x position to draw the animation at
 	 * @param y The y position to draw the animation at
 	 */
@@ -418,7 +447,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Get the width of the current frame
-	 * 
+	 * <p>
 	 * @return The width of the current frame
 	 */
 	public int getWidth() {
@@ -427,7 +456,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Get the height of the current frame
-	 * 
+	 * <p>
 	 * @return The height of the current frame
 	 */
 	public int getHeight() {
@@ -436,7 +465,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Draw the animation
-	 * 
+	 * <p>
 	 * @param x The x position to draw the animation at
 	 * @param y The y position to draw the animation at
 	 * @param width The width to draw the animation at
@@ -448,7 +477,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Draw the animation
-	 * 
+	 * <p>
 	 * @param x The x position to draw the animation at
 	 * @param y The y position to draw the animation at
 	 * @param width The width to draw the animation at
@@ -476,9 +505,8 @@ public class Animation implements Renderable {
 	}
 
 	/**
-	 * Update the animation cycle without draw the image, useful
-	 * for keeping two animations in sync
-	 * 
+	 * Update the animation cycle without draw the image, useful for keeping two animations in sync
+	 * <p>
 	 * @deprecated
 	 */
 	public void updateNoDraw() {
@@ -495,9 +523,8 @@ public class Animation implements Renderable {
 	}
 
 	/**
-	 * Update the animation, note that this will have odd effects if auto update
-	 * is also turned on
-	 * 
+	 * Update the animation, note that this will have odd effects if auto update is also turned on
+	 * <p>
 	 * @see #autoUpdate
 	 * @param delta The amount of time thats passed since last update
 	 */
@@ -507,7 +534,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Get the index of the current frame
-	 * 
+	 * <p>
 	 * @return The index of the current frame
 	 */
 	public int getFrame() {
@@ -516,7 +543,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Set the current frame to be rendered
-	 * 
+	 * <p>
 	 * @param index The index of the frame to rendered
 	 */
 	public void setCurrentFrame(int index) {
@@ -525,8 +552,9 @@ public class Animation implements Renderable {
 
 	/**
 	 * Get the image assocaited with a given frame index
-	 * 
+	 * <p>
 	 * @param index The index of the frame image to retrieve
+	 * <p>
 	 * @return The image of the specified animation frame
 	 */
 	public Image getImage(int index) {
@@ -536,7 +564,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Get the number of frames that are in the animation
-	 * 
+	 * <p>
 	 * @return The number of frames that are in the animation
 	 */
 	public int getFrameCount() {
@@ -545,7 +573,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Get the image associated with the current animation frame
-	 * 
+	 * <p>
 	 * @return The image associated with the current animation frame
 	 */
 	public Image getCurrentFrame() {
@@ -555,7 +583,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Check if we need to move to the next frame
-	 * 
+	 * <p>
 	 * @param delta The amount of time thats passed since last update
 	 */
 	private void nextFrame(long delta) {
@@ -599,7 +627,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Indicate if this animation should loop or stop at the last frame
-	 * 
+	 * <p>
 	 * @param loop True if this animation should loop (true = default)
 	 */
 	public void setLooping(boolean loop) {
@@ -608,7 +636,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Get the accurate system time
-	 * 
+	 * <p>
 	 * @return The system time in milliseconds
 	 */
 	private long getTime() {
@@ -616,9 +644,9 @@ public class Animation implements Renderable {
 	}
 
 	/**
-	 * Indicate the animation should stop when it reaches the specified
-	 * frame index (note, not frame number but index in the animation
-	 * 
+	 * Indicate the animation should stop when it reaches the specified frame index (note, not frame number but index in
+	 * the animation
+	 * <p>
 	 * @param frameIndex The index of the frame to stop at
 	 */
 	public void stopAt(int frameIndex) {
@@ -627,8 +655,9 @@ public class Animation implements Renderable {
 
 	/**
 	 * Get the duration of a particular frame
-	 * 
+	 * <p>
 	 * @param index The index of the given frame
+	 * <p>
 	 * @return The duration in (ms) of the given frame
 	 */
 	public int getDuration(int index) {
@@ -637,7 +666,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Set the duration of the given frame
-	 * 
+	 * <p>
 	 * @param index The index of the given frame
 	 * @param duration The duration in (ms) for the given frame
 	 */
@@ -647,7 +676,7 @@ public class Animation implements Renderable {
 
 	/**
 	 * Get the durations of all the frames in this animation
-	 * 
+	 * <p>
 	 * @return The durations of all the frames in this animation
 	 */
 	public int[] getDurations() {
@@ -674,9 +703,8 @@ public class Animation implements Renderable {
 	}
 
 	/**
-	 * Create a copy of this animation. Note that the frames
-	 * are not duplicated but shared with the original
-	 * 
+	 * Create a copy of this animation. Note that the frames are not duplicated but shared with the original
+	 * <p>
 	 * @return A copy of this animation
 	 */
 	public Animation copy() {
@@ -695,26 +723,34 @@ public class Animation implements Renderable {
 
 	/**
 	 * A single frame within the animation
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	private class Frame {
 
-		/** The image to display for this frame */
+		/**
+		 * The image to display for this frame
+		 */
 		public Image image;
 
-		/** The duration to display the image fro */
+		/**
+		 * The duration to display the image fro
+		 */
 		public int duration;
 
-		/** The x location of this frame on a SpriteSheet*/
+		/**
+		 * The x location of this frame on a SpriteSheet
+		 */
 		public int x = -1;
 
-		/** The y location of this frame on a SpriteSheet*/
+		/**
+		 * The y location of this frame on a SpriteSheet
+		 */
 		public int y = -1;
 
 		/**
 		 * Create a new animation frame
-		 * 
+		 * <p>
 		 * @param image The image to display for the frame
 		 * @param duration The duration in millisecond to display the image for
 		 */
@@ -725,6 +761,7 @@ public class Animation implements Renderable {
 
 		/**
 		 * Creates a new animation frame with the frames image location on a sprite sheet
+		 * <p>
 		 * @param duration The duration in millisecond to display the image for
 		 * @param x the x location of the frame on the <tt>SpriteSheet</tt>
 		 * @param y the y location of the frame on the <tt>SpriteSheet</tt>

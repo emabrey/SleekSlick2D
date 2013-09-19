@@ -10,9 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * A panel allowing the configuration of the colour and alpha values of the
- * particles.
- *
+ * A panel allowing the configuration of the colour and alpha values of the particles.
+ * <p>
  * @author kevin
  */
 public class ColorPanel extends ControlPanel {
@@ -226,9 +225,8 @@ public class ColorPanel extends ControlPanel {
 	}
 
 	/**
-	 * Get the panel controlling the alpha value of particles at the
-	 * end of their life
-	 *
+	 * Get the panel controlling the alpha value of particles at the end of their life
+	 * <p>
 	 * @return The panel controlling the alpha value
 	 */
 	public ValuePanel getEndAlpha() {
@@ -236,9 +234,8 @@ public class ColorPanel extends ControlPanel {
 	}
 
 	/**
-	 * Get the panel controlling the alpha value of particles at the
-	 * start of their life
-	 *
+	 * Get the panel controlling the alpha value of particles at the start of their life
+	 * <p>
 	 * @return The panel controlling the alpha value
 	 */
 	public ValuePanel getStartAlpha() {

@@ -12,21 +12,29 @@ import org.newdawn.slick.svg.SimpleDiagramRenderer;
 
 /**
  * A test to try shape morphing
- * 
+ * <p>
  * @author Kevin Glass
  */
 public class MorphSVGTest extends BasicGame {
 
-	/** The morphing SVG */
+	/**
+	 * The morphing SVG
+	 */
 	private SVGMorph morph;
 
-	/** First shape of the morph */
+	/**
+	 * First shape of the morph
+	 */
 	private Diagram base;
 
-	/** The time index of the morph being display */
+	/**
+	 * The time index of the morph being display
+	 */
 	private float time;
 
-	/** The current x position */
+	/**
+	 * The current x position
+	 */
 	private float x = -300;
 
 	/**
@@ -73,9 +81,8 @@ public class MorphSVGTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
-	 * @param argv
-	 *            The arguments passed to the test
+	 * <p>
+	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
 		try {
@@ -83,7 +90,8 @@ public class MorphSVGTest extends BasicGame {
 					new MorphSVGTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

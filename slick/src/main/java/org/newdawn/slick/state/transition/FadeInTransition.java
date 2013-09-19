@@ -8,15 +8,19 @@ import org.newdawn.slick.state.StateBasedGame;
 
 /**
  * A transition to fade in from a given colour
- *
+ * <p>
  * @author kevin
  */
 public class FadeInTransition implements Transition {
 
-	/** The color to fade to */
+	/**
+	 * The color to fade to
+	 */
 	private Color color;
 
-	/** The time it takes to fade in */
+	/**
+	 * The time it takes to fade in
+	 */
 	private int fadeTime = 500;
 
 	/**
@@ -28,7 +32,7 @@ public class FadeInTransition implements Transition {
 
 	/**
 	 * Create a new fade in transition
-	 * 
+	 * <p>
 	 * @param color The color we're going to fade in from
 	 */
 	public FadeInTransition(Color color) {
@@ -37,7 +41,7 @@ public class FadeInTransition implements Transition {
 
 	/**
 	 * Create a new fade in transition
-	 * 
+	 * <p>
 	 * @param color The color we're going to fade in from
 	 * @param fadeTime The time it takes for the fade to occur
 	 */
@@ -55,7 +59,8 @@ public class FadeInTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void postRender(StateBasedGame game, GameContainer container, Graphics g) {
 		Color old = g.getColor();
@@ -66,7 +71,8 @@ public class FadeInTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, int)
+	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, int)
 	 */
 	public void update(StateBasedGame game, GameContainer container, int delta) {
 		color.a -= delta * (1.0f / fadeTime);
@@ -76,7 +82,8 @@ public class FadeInTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void preRender(StateBasedGame game, GameContainer container, Graphics g) {
 	}

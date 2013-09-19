@@ -7,41 +7,59 @@ import org.newdawn.slick.util.FastTrig;
 
 /**
  * Class to create rounded rectangles with.
- * 
+ * <p>
  * @author Mark Bernard
  */
 public class RoundedRectangle extends Rectangle {
 
-	/** Indicates the top left corner should be rounded */
+	/**
+	 * Indicates the top left corner should be rounded
+	 */
 	public static final int TOP_LEFT = 1;
 
-	/** Indicates the top right corner should be rounded */
+	/**
+	 * Indicates the top right corner should be rounded
+	 */
 	public static final int TOP_RIGHT = 2;
 
-	/** Indicates the bottom right corner should be rounded */
+	/**
+	 * Indicates the bottom right corner should be rounded
+	 */
 	public static final int BOTTOM_RIGHT = 4;
 
-	/** Indicates the bottom left corner should be rounded */
+	/**
+	 * Indicates the bottom left corner should be rounded
+	 */
 	public static final int BOTTOM_LEFT = 8;
 
-	/** Indicates the all cornders should be rounded */
+	/**
+	 * Indicates the all cornders should be rounded
+	 */
 	public static final int ALL = TOP_LEFT | TOP_RIGHT | BOTTOM_RIGHT | BOTTOM_LEFT;
 
-	/** Default number of segments to draw the rounded corners with */
+	/**
+	 * Default number of segments to draw the rounded corners with
+	 */
 	private static final int DEFAULT_SEGMENT_COUNT = 25;
 
-	/** radius of each corner */
+	/**
+	 * radius of each corner
+	 */
 	private float cornerRadius;
 
-	/** number of segments for each corner */
+	/**
+	 * number of segments for each corner
+	 */
 	private int segmentCount;
 
-	/** The flags indicating which corners should be rounded */
+	/**
+	 * The flags indicating which corners should be rounded
+	 */
 	private int cornerFlags;
 
 	/**
 	 * Construct a rectangle with rounded corners.
-	 * 
+	 * <p>
 	 * @param x The x position of the rectangle.
 	 * @param y The y position of the rectangle.
 	 * @param width The width of the rectangle.
@@ -54,7 +72,7 @@ public class RoundedRectangle extends Rectangle {
 
 	/**
 	 * Construct a rectangle with rounded corners.
-	 * 
+	 * <p>
 	 * @param x The x position of the rectangle.
 	 * @param y The y position of the rectangle.
 	 * @param width The width of the rectangle.
@@ -68,17 +86,17 @@ public class RoundedRectangle extends Rectangle {
 
 	/**
 	 * Construct a rectangle with rounded corners.
-	 * 
+	 * <p>
 	 * @param x The x position of the rectangle.
 	 * @param y The y position of the rectangle.
 	 * @param width The width of the rectangle.
 	 * @param height The hieght of the rectangle.
 	 * @param cornerRadius The radius to use for the arc in each corner.
 	 * @param segmentCount The number of segments to use to draw each corner arc.
-	 * @param cornerFlags Indicates which corners should be rounded 
+	 * @param cornerFlags Indicates which corners should be rounded
 	 */
 	public RoundedRectangle(float x, float y, float width, float height,
-			float cornerRadius, int segmentCount, int cornerFlags) {
+							float cornerRadius, int segmentCount, int cornerFlags) {
 		super(x, y, width, height);
 
 		if (cornerRadius < 0) {
@@ -96,7 +114,7 @@ public class RoundedRectangle extends Rectangle {
 
 	/**
 	 * Get the radius for each corner.
-	 * 
+	 * <p>
 	 * @return The radius for each corner.
 	 */
 	public float getCornerRadius() {
@@ -105,7 +123,7 @@ public class RoundedRectangle extends Rectangle {
 
 	/**
 	 * Set the radius for each corner.
-	 * 
+	 * <p>
 	 * @param cornerRadius The radius for each corner to set.
 	 */
 	public void setCornerRadius(float cornerRadius) {
@@ -119,7 +137,7 @@ public class RoundedRectangle extends Rectangle {
 
 	/**
 	 * Get the height of this rectangle.
-	 * 
+	 * <p>
 	 * @return The height of this rectangle.
 	 */
 	public float getHeight() {
@@ -128,7 +146,7 @@ public class RoundedRectangle extends Rectangle {
 
 	/**
 	 * Set the height of this rectangle.
-	 * 
+	 * <p>
 	 * @param height The height to set.
 	 */
 	public void setHeight(float height) {
@@ -140,7 +158,7 @@ public class RoundedRectangle extends Rectangle {
 
 	/**
 	 * Get the width of this rectangle.
-	 * 
+	 * <p>
 	 * @return The width of this rectangle.
 	 */
 	public float getWidth() {
@@ -149,7 +167,7 @@ public class RoundedRectangle extends Rectangle {
 
 	/**
 	 * Set the width of this rectangle.
-	 * 
+	 * <p>
 	 * @param width The width to set.
 	 */
 	public void setWidth(float width) {
@@ -239,13 +257,14 @@ public class RoundedRectangle extends Rectangle {
 
 	/**
 	 * Generate the points to fill a corner arc.
-	 *
+	 * <p>
 	 * @param numberOfSegments How fine to make the ellipse.
 	 * @param radius The radius of the arc.
 	 * @param cx The x center of the arc.
 	 * @param cy The y center of the arc.
 	 * @param start The start angle of the arc.
 	 * @param end The end angle of the arc.
+	 * <p>
 	 * @return The points created.
 	 */
 	private List createPoints(int numberOfSegments, float radius, float cx, float cy, float start, float end) {
@@ -269,10 +288,11 @@ public class RoundedRectangle extends Rectangle {
 	}
 
 	/**
-	 * Apply a transformation and return a new shape.  This will not alter the current shape but will 
-	 * return the transformed shape.
-	 * 
+	 * Apply a transformation and return a new shape. This will not alter the current shape but will return the
+	 * transformed shape.
+	 * <p>
 	 * @param transform The transform to be applied
+	 * <p>
 	 * @return The transformed shape.
 	 */
 	public Shape transform(Transform transform) {

@@ -9,24 +9,31 @@ import org.w3c.dom.Element;
 
 /**
  * A set of utility for processing the SVG documents produced by Inkscape
- *
+ * <p>
  * @author kevin
  */
 public class Util {
 
-	/** The namespace for inkscape */
+	/**
+	 * The namespace for inkscape
+	 */
 	public static final String INKSCAPE = "http://www.inkscape.org/namespaces/inkscape";
 
-	/** The namespace for sodipodi */
+	/**
+	 * The namespace for sodipodi
+	 */
 	public static final String SODIPODI = "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd";
 
-	/** The namespace for xlink */
+	/**
+	 * The namespace for xlink
+	 */
 	public static final String XLINK = "http://www.w3.org/1999/xlink";
 
 	/**
 	 * Get the non-geometric data information from an XML element
-	 * 
+	 * <p>
 	 * @param element The element to be processed
+	 * <p>
 	 * @return The non-geometric data (i.e. stroke, fill, etc)
 	 */
 	static NonGeometricData getNonGeometricData(Element element) {
@@ -47,10 +54,10 @@ public class Util {
 	}
 
 	/**
-	 * Get the meta data store within an element either in the label or
-	 * id atributes
-	 * 
+	 * Get the meta data store within an element either in the label or id atributes
+	 * <p>
 	 * @param element The element to be processed
+	 * <p>
 	 * @return The meta data stored
 	 */
 	static String getMetaData(Element element) {
@@ -64,9 +71,10 @@ public class Util {
 
 	/**
 	 * Get the style attribute setting for a given style information element (i.e. fill, stroke)
-	 * 
+	 * <p>
 	 * @param element The element to be processed
 	 * @param styleName The name of the attribute to retrieve
+	 * <p>
 	 * @return The style value
 	 */
 	static String getStyle(Element element, String styleName) {
@@ -82,9 +90,10 @@ public class Util {
 
 	/**
 	 * Extract the style value from a Inkscape encoded string
-	 * 
-	 * @param style The style string to be decoded 
-	 * @param attribute The style attribute to retrieve 
+	 * <p>
+	 * @param style The style string to be decoded
+	 * @param attribute The style attribute to retrieve
+	 * <p>
 	 * @return The value for the given attribute
 	 */
 	static String extractStyle(String style, String attribute) {
@@ -107,8 +116,9 @@ public class Util {
 
 	/**
 	 * Get a transform defined in the XML
-	 * 
+	 * <p>
 	 * @param element The element from which the transform should be read
+	 * <p>
 	 * @return The transform to be applied
 	 */
 	static Transform getTransform(Element element) {
@@ -117,9 +127,10 @@ public class Util {
 
 	/**
 	 * Get a transform defined in the XML
-	 * 
+	 * <p>
 	 * @param element The element from which the transform should be read
 	 * @param attribute The name of the attribute holding the transform
+	 * <p>
 	 * @return The transform to be applied
 	 */
 	static Transform getTransform(Element element, String attribute) {
@@ -162,12 +173,13 @@ public class Util {
 	}
 
 	/**
-	 * Get a floating point attribute that may appear in either the default or
-	 * SODIPODI namespace
-	 * 
+	 * Get a floating point attribute that may appear in either the default or SODIPODI namespace
+	 * <p>
 	 * @param element The element from which the attribute should be read
 	 * @param attr The attribute to be read
+	 * <p>
 	 * @return The value from the given attribute
+	 * <p>
 	 * @throws ParsingException Indicates the value in the attribute was not a float
 	 */
 	static float getFloatAttribute(Element element, String attr) throws ParsingException {
@@ -178,15 +190,17 @@ public class Util {
 
 		try {
 			return Float.parseFloat(cx);
-		} catch (NumberFormatException e) {
+		}
+		catch (NumberFormatException e) {
 			throw new ParsingException(element, "Invalid value for: " + attr, e);
 		}
 	}
 
 	/**
 	 * Get the attribute value as a reference to another entity
-	 * 
+	 * <p>
 	 * @param value The value to treat as reference
+	 * <p>
 	 * @return The reference part of the attribute value
 	 */
 	public static String getAsReference(String value) {

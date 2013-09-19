@@ -13,9 +13,8 @@ import org.newdawn.slick.util.Log;
 import java.util.ArrayList;
 
 /**
- * A test box containing a bunch of tests that can be used for quickly sanity
- * checking tests.
- *
+ * A test box containing a bunch of tests that can be used for quickly sanity checking tests.
+ * <p>
  * @author kevin
  */
 public class TestBox extends BasicGame {
@@ -49,7 +48,7 @@ public class TestBox extends BasicGame {
 
 	/**
 	 * Add a game to the box
-	 *
+	 * <p>
 	 * @param game The game to add to the test box
 	 */
 	public void addGame(Class game) {
@@ -81,7 +80,8 @@ public class TestBox extends BasicGame {
 			container.getGraphics().setBackground(Color.black);
 			currentGame.init(container);
 			currentGame.render(container, container.getGraphics());
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 		}
 
@@ -247,7 +247,7 @@ public class TestBox extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -280,7 +280,8 @@ public class TestBox extends BasicGame {
 			AppGameContainer container = new AppGameContainer(box);
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

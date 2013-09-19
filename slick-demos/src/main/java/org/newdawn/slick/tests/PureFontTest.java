@@ -12,7 +12,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test of the font rendering capabilities
- *
+ * <p>
  * @author kevin
  */
 public class PureFontTest extends BasicGame {
@@ -73,7 +73,7 @@ public class PureFontTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed in the test
 	 */
 	public static void main(String[] argv) {
@@ -81,7 +81,8 @@ public class PureFontTest extends BasicGame {
 			container = new AppGameContainer(new PureFontTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

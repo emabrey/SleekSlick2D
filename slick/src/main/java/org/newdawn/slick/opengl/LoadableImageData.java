@@ -6,23 +6,23 @@ import java.nio.ByteBuffer;
 
 /**
  * An image data source that can load images from a stream
- *
+ * <p>
  * @author kevin
  */
 public interface LoadableImageData extends ImageData {
 
 	/**
-	 * Configure the edging that can be used to make texture edges
-	 * loop more cleanly
-	 * 
+	 * Configure the edging that can be used to make texture edges loop more cleanly
+	 * <p>
 	 * @param edging True if we should edge
 	 */
 	public void configureEdging(boolean edging);
 
 	/**
 	 * Load a image from the specified stream
-	 * 
+	 * <p>
 	 * @param fis The stream from which we'll load the TGA
+	 * <p>
 	 * @throws IOException Indicates a failure to read the TGA
 	 * @return The byte buffer containing texture data
 	 */
@@ -30,11 +30,13 @@ public interface LoadableImageData extends ImageData {
 
 	/**
 	 * Load a image from the specified stream
-	 * 
+	 * <p>
 	 * @param fis The stream from which we'll load the TGA
 	 * @param flipped True if we loading in flipped mode (used for cursors)
 	 * @param transparent The colour to interpret as transparent or null if none
+	 * <p>
 	 * @return The byte buffer containing texture data
+	 * <p>
 	 * @throws IOException Indicates a failure to read the TGA
 	 */
 	public ByteBuffer loadImage(InputStream fis, boolean flipped, int[] transparent)
@@ -42,12 +44,14 @@ public interface LoadableImageData extends ImageData {
 
 	/**
 	 * Load a image from the specified stream
-	 * 
+	 * <p>
 	 * @param fis The stream from which we'll load the TGA
 	 * @param flipped True if we loading in flipped mode (used for cursors)
 	 * @param forceAlpha Force the output to have an alpha channel
 	 * @param transparent The colour to interpret as transparent or null if none
+	 * <p>
 	 * @return The byte buffer containing texture data
+	 * <p>
 	 * @throws IOException Indicates a failure to read the TGA
 	 */
 	public ByteBuffer loadImage(InputStream fis, boolean flipped, boolean forceAlpha, int[] transparent)

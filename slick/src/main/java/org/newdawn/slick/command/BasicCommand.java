@@ -2,17 +2,19 @@ package org.newdawn.slick.command;
 
 /**
  * A simple named command
- * 
+ * <p>
  * @author kevin
  */
 public class BasicCommand implements Command {
 
-	/** The name of the command */
+	/**
+	 * The name of the command
+	 */
 	private String name;
 
-	/** 
+	/**
 	 * Create a new basic command
-	 * 
+	 * <p>
 	 * @param name The name to give this command
 	 */
 	public BasicCommand(String name) {
@@ -21,7 +23,7 @@ public class BasicCommand implements Command {
 
 	/**
 	 * Get the name given for this basic command
-	 * 
+	 * <p>
 	 * @return The name given for this basic command
 	 */
 	public String getName() {

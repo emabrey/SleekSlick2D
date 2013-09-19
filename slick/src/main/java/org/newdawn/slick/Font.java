@@ -2,37 +2,39 @@ package org.newdawn.slick;
 
 /**
  * The proprites of any font implementation
- * 
+ * <p>
  * @author Kevin Glass
  */
 public interface Font {
 
 	/**
 	 * Get the width of the given string
-	 * 
+	 * <p>
 	 * @param str The string to obtain the rendered with of
+	 * <p>
 	 * @return The width of the given string
 	 */
 	public abstract int getWidth(String str);
 
 	/**
 	 * Get the height of the given string
-	 * 
+	 * <p>
 	 * @param str The string to obtain the rendered with of
+	 * <p>
 	 * @return The width of the given string
 	 */
 	public abstract int getHeight(String str);
 
 	/**
 	 * Get the maximum height of any line drawn by this font
-	 * 
+	 * <p>
 	 * @return The maxium height of any line drawn by this font
 	 */
 	public int getLineHeight();
 
 	/**
 	 * Draw a string to the screen
-	 * 
+	 * <p>
 	 * @param x The x location at which to draw the string
 	 * @param y The y location at which to draw the string
 	 * @param text The text to be displayed
@@ -41,7 +43,7 @@ public interface Font {
 
 	/**
 	 * Draw a string to the screen
-	 * 
+	 * <p>
 	 * @param x The x location at which to draw the string
 	 * @param y The y location at which to draw the string
 	 * @param text The text to be displayed
@@ -50,9 +52,9 @@ public interface Font {
 	public abstract void drawString(float x, float y, String text, Color col);
 
 	/**
-	 * Draw part of a string to the screen. Note that this will
-	 * still position the text as though it's part of the bigger string.
-	 * 
+	 * Draw part of a string to the screen. Note that this will still position the text as though it's part of the
+	 * bigger string.
+	 * <p>
 	 * @param x The x location at which to draw the string
 	 * @param y The y location at which to draw the string
 	 * @param text The text to be displayed

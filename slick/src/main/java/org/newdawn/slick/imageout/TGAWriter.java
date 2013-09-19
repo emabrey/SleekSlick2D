@@ -10,15 +10,16 @@ import org.newdawn.slick.Image;
 
 /**
  * A utility to save TGA's given a Slick image.
- *
+ * <p>
  * @author Jon
  */
 public class TGAWriter implements ImageWriter {
 
 	/**
 	 * Flip the endian-ness of the short
-	 * 
+	 * <p>
 	 * @param signedShort The short to flip
+	 * <p>
 	 * @return The flipped short
 	 */
 	private static short flipEndian(short signedShort) {
@@ -27,7 +28,8 @@ public class TGAWriter implements ImageWriter {
 	}
 
 	/**
-	 * @see org.newdawn.slick.imageout.ImageWriter#saveImage(org.newdawn.slick.Image, java.lang.String, java.io.OutputStream, boolean)
+	 * @see org.newdawn.slick.imageout.ImageWriter#saveImage(org.newdawn.slick.Image, java.lang.String,
+	 * java.io.OutputStream, boolean)
 	 */
 	public void saveImage(Image image, String format, OutputStream output, boolean writeAlpha) throws IOException {
 		DataOutputStream out = new DataOutputStream(new BufferedOutputStream(output));

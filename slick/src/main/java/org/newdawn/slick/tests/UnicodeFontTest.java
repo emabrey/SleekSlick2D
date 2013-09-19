@@ -15,12 +15,14 @@ import org.newdawn.slick.font.effects.ShadowEffect;
 
 /**
  * A simple test of the unicode font functionality provided
- * 
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class UnicodeFontTest extends BasicGame {
 
-	/** The font we're going to display in the test */
+	/**
+	 * The font we're going to display in the test
+	 */
 	private UnicodeFont unicodeFont;
 
 	/**
@@ -81,9 +83,10 @@ public class UnicodeFontTest extends BasicGame {
 
 	/**
 	 * Entry point to our simple test
-	 * 
+	 * <p>
 	 * @param args The arguments supplied to the test
-	 * @throws SlickException Indicates a failure loading or processing resources 
+	 * <p>
+	 * @throws SlickException Indicates a failure loading or processing resources
 	 * @throws IOException Indicates a failure loading the font
 	 */
 	public static void main(String[] args) throws SlickException, IOException {

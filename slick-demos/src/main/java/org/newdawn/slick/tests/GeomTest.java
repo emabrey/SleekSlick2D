@@ -17,7 +17,7 @@ import org.newdawn.slick.opengl.renderer.Renderer;
 
 /**
  * A geomertry test
- *
+ * <p>
  * @author kevin
  */
 public class GeomTest extends BasicGame {
@@ -156,7 +156,7 @@ public class GeomTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -166,7 +166,8 @@ public class GeomTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new GeomTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

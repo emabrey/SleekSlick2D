@@ -31,18 +31,20 @@ import org.newdawn.slick.font.effects.ConfigurableEffect.Value;
 
 /**
  * Provides utility methods for effects.
- * 
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class EffectUtil {
 
-	/** A graphics 2D temporary surface to be used when generating effects */
+	/**
+	 * A graphics 2D temporary surface to be used when generating effects
+	 */
 	static private BufferedImage scratchImage = new BufferedImage(GlyphPage.MAX_GLYPH_SIZE, GlyphPage.MAX_GLYPH_SIZE,
 			BufferedImage.TYPE_INT_ARGB);
 
 	/**
 	 * Returns an image that can be used by effects as a temp image.
-	 * 
+	 * <p>
 	 * @return The scratch image used for temporary operations
 	 */
 	static public BufferedImage getScratchImage() {
@@ -56,9 +58,10 @@ public class EffectUtil {
 
 	/**
 	 * Prompts the user for a colour value
-	 * 
+	 * <p>
 	 * @param name Thename of the value being configured
 	 * @param currentValue The default value that should be selected
+	 * <p>
 	 * @return The value selected
 	 */
 	static public Value colorValue(String name, Color currentValue) {
@@ -79,10 +82,11 @@ public class EffectUtil {
 
 	/**
 	 * Prompts the user for int value
-	 * 
+	 * <p>
 	 * @param name The name of the dialog to show
 	 * @param currentValue The current value to be displayed
 	 * @param description The help text to provide
+	 * <p>
 	 * @return The value selected by the user
 	 */
 	static public Value intValue(String name, final int currentValue, final String description) {
@@ -103,16 +107,17 @@ public class EffectUtil {
 
 	/**
 	 * Prompts the user for float value
-	 * 
+	 * <p>
 	 * @param name The name of the dialog to show
 	 * @param currentValue The current value to be displayed
 	 * @param description The help text to provide
 	 * @param min The minimum value to allow
 	 * @param max The maximum value to allow
+	 * <p>
 	 * @return The value selected by the user
 	 */
 	static public Value floatValue(String name, final float currentValue, final float min, final float max,
-			final String description) {
+								   final String description) {
 		return new DefaultValue(name, String.valueOf(currentValue)) {
 			public void showDialog() {
 				JSpinner spinner = new JSpinner(new SpinnerNumberModel(currentValue, min, max, 0.1f));
@@ -130,10 +135,11 @@ public class EffectUtil {
 
 	/**
 	 * Prompts the user for boolean value
-	 * 
+	 * <p>
 	 * @param name The name of the dialog to show
 	 * @param currentValue The current value to be displayed
 	 * @param description The help text to provide
+	 * <p>
 	 * @return The value selected by the user
 	 */
 	static public Value booleanValue(String name, final boolean currentValue, final String description) {
@@ -154,18 +160,20 @@ public class EffectUtil {
 	}
 
 	/**
-	 * Prompts the user for a value that represents a fixed number of options. 
-	 * All options are strings.
-	 * 
-	 * @param options The first array has an entry for each option. Each entry is either a String[1] that is both the display value
-	 *           and actual value, or a String[2] whose first element is the display value and second element is the actual value.
-	 *
+	 * Prompts the user for a value that represents a fixed number of options. All options are strings.
+	 * <p>
+	 * @param options The first array has an entry for each option. Each entry is either a String[1] that is both the
+	 * display value and actual value, or a String[2] whose first element is the display value and second element is the
+	 * actual value.
+	 * <p>
 	 * @param name The name of the value being prompted for
 	 * @param currentValue The current value to show as default
 	 * @param description The description of the value
+	 * <p>
 	 * @return The value selected by the user
 	 */
-	static public Value optionValue(String name, final String currentValue, final String[][] options, final String description) {
+	static public Value optionValue(String name, final String currentValue, final String[][] options,
+									final String description) {
 		return new DefaultValue(name, currentValue.toString()) {
 			public void showDialog() {
 				int selectedIndex = -1;
@@ -208,8 +216,9 @@ public class EffectUtil {
 
 	/**
 	 * Convers a color to a string.
-	 * 
+	 * <p>
 	 * @param color The color to encode to a string
+	 * <p>
 	 * @return The colour as a string
 	 */
 	static public String toString(Color color) {
@@ -233,8 +242,9 @@ public class EffectUtil {
 
 	/**
 	 * Converts a string to a color.
-	 * 
+	 * <p>
 	 * @param rgb The string encoding the colour
+	 * <p>
 	 * @return The colour represented by the given encoded string
 	 */
 	static public Color fromString(String rgb) {
@@ -250,16 +260,20 @@ public class EffectUtil {
 	 */
 	static private abstract class DefaultValue implements Value {
 
-		/** The value being held */
+		/**
+		 * The value being held
+		 */
 		String value;
 
-		/** The key/name of the value */
+		/**
+		 * The key/name of the value
+		 */
 		String name;
 
 		/**
 		 * Create a default value
-		 * 
-		 * @param name The name of the value being configured  
+		 * <p>
+		 * @param name The name of the value being configured
 		 * @param value The value to use for the default
 		 */
 		public DefaultValue(String name, String value) {
@@ -300,9 +314,10 @@ public class EffectUtil {
 
 		/**
 		 * Prompt the user for a value
-		 * 
+		 * <p>
 		 * @param component The component to use as parent for the prompting dialog
 		 * @param description The description of the value being prompted for
+		 * <p>
 		 * @return True if the value was configured
 		 */
 		public boolean showValueDialog(final JComponent component, String description) {
@@ -330,12 +345,14 @@ public class EffectUtil {
 	 */
 	static private class ValueDialog extends JDialog {
 
-		/** True if OK was pressed */
+		/**
+		 * True if OK was pressed
+		 */
 		public boolean okPressed = false;
 
 		/**
 		 * Create a new dialog to configure a specific value
-		 * 
+		 * <p>
 		 * @param component The component to use as the parent of the dialog prompting the user
 		 * @param name The name of the value being configured
 		 * @param description The description of the value being configured

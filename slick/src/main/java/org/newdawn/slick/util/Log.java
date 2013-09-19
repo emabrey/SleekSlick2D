@@ -5,21 +5,24 @@ import java.security.PrivilegedAction;
 
 /**
  * A simple central logging system
- * 
+ * <p>
  * @author kevin
  */
 public final class Log {
 
-	/** True if we're doing verbose logging INFO and DEBUG */
+	/**
+	 * True if we're doing verbose logging INFO and DEBUG
+	 */
 	private static boolean verbose = true;
 
-	/** true if activated by the system property "org.newdawn.slick.forceVerboseLog" */
+	/**
+	 * true if activated by the system property "org.newdawn.slick.forceVerboseLog"
+	 */
 	private static boolean forcedVerbose = false;
 
 	/**
-	 * The debug property which can be set via JNLP or startup parameter to switch
-	 * logging mode to verbose for games that were released without verbose logging
-	 * value must be "true"
+	 * The debug property which can be set via JNLP or startup parameter to switch logging mode to verbose for games
+	 * that were released without verbose logging value must be "true"
 	 */
 	private static final String forceVerboseProperty = "org.newdawn.slick.forceVerboseLog";
 
@@ -28,7 +31,9 @@ public final class Log {
 	 */
 	private static final String forceVerbosePropertyOnValue = "true";
 
-	/** The log system plugin in use */
+	/**
+	 * The log system plugin in use
+	 */
 	private static LogSystem logSystem = new DefaultLogSystem();
 
 	/**
@@ -39,9 +44,8 @@ public final class Log {
 	}
 
 	/**
-	 * Set the log system that will have all of the log info 
-	 * sent to it.
-	 * 
+	 * Set the log system that will have all of the log info sent to it.
+	 * <p>
 	 * @param system The system to use for logging.
 	 */
 	public static void setLogSystem(LogSystem system) {
@@ -49,10 +53,9 @@ public final class Log {
 	}
 
 	/**
-	 * Indicate that we want verbose logging.
-	 * The call is ignored if verbose logging is forced by the system property
+	 * Indicate that we want verbose logging. The call is ignored if verbose logging is forced by the system property
 	 * "org.newdawn.slick.forceVerboseLog"
-	 * 
+	 * <p>
 	 * @param v True if we want verbose logging (INFO and DEBUG)
 	 */
 	public static void setVerbose(boolean v) {
@@ -63,8 +66,8 @@ public final class Log {
 	}
 
 	/**
-	 * Check if the system property org.newdawn.slick.verboseLog is set to true.
-	 * If this is the case we activate the verbose logging mode
+	 * Check if the system property org.newdawn.slick.verboseLog is set to true. If this is the case we activate the
+	 * verbose logging mode
 	 */
 	public static void checkVerboseLogSetting() {
 		try {
@@ -79,15 +82,15 @@ public final class Log {
 				}
 
 			});
-		} catch (Throwable e) {
+		}
+		catch (Throwable e) {
 			// ignore, security failure - probably an applet
 		}
 	}
 
 	/**
-	 * Indicate that we want verbose logging, even if switched off in game code.
-	 * Only be called when system property "org.newdawn.slick.forceVerboseLog" is set to true.
-	 * You must not call this method directly.
+	 * Indicate that we want verbose logging, even if switched off in game code. Only be called when system property
+	 * "org.newdawn.slick.forceVerboseLog" is set to true. You must not call this method directly.
 	 */
 	public static void setForcedVerboseOn() {
 		forcedVerbose = true;
@@ -96,7 +99,7 @@ public final class Log {
 
 	/**
 	 * Log an error
-	 * 
+	 * <p>
 	 * @param message The message describing the error
 	 * @param e The exception causing the error
 	 */
@@ -106,7 +109,7 @@ public final class Log {
 
 	/**
 	 * Log an error
-	 * 
+	 * <p>
 	 * @param e The exception causing the error
 	 */
 	public static void error(Throwable e) {
@@ -115,7 +118,7 @@ public final class Log {
 
 	/**
 	 * Log an error
-	 * 
+	 * <p>
 	 * @param message The message describing the error
 	 */
 	public static void error(String message) {
@@ -124,7 +127,7 @@ public final class Log {
 
 	/**
 	 * Log a warning
-	 * 
+	 * <p>
 	 * @param message The message describing the warning
 	 */
 	public static void warn(String message) {
@@ -133,7 +136,7 @@ public final class Log {
 
 	/**
 	 * Log a warning
-	 * 
+	 * <p>
 	 * @param message The message describing the warning
 	 * @param e The issue causing the warning
 	 */
@@ -143,7 +146,7 @@ public final class Log {
 
 	/**
 	 * Log an information message
-	 * 
+	 * <p>
 	 * @param message The message describing the infomation
 	 */
 	public static void info(String message) {
@@ -154,7 +157,7 @@ public final class Log {
 
 	/**
 	 * Log a debug message
-	 * 
+	 * <p>
 	 * @param message The message describing the debug
 	 */
 	public static void debug(String message) {

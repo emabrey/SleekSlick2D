@@ -10,78 +10,109 @@ import org.newdawn.slick.geom.Shape;
 
 /**
  * A mouse over area that can be used for menus or buttons
- * 
+ * <p>
  * @author kevin
  */
 public class MouseOverArea extends AbstractComponent {
 
-	/** The default state */
+	/**
+	 * The default state
+	 */
 	private static final int NORMAL = 1;
 
-	/** The mouse down state */
+	/**
+	 * The mouse down state
+	 */
 	private static final int MOUSE_DOWN = 2;
 
-	/** The mouse over state */
+	/**
+	 * The mouse over state
+	 */
 	private static final int MOUSE_OVER = 3;
 
-	/** The normalImage being displayed in normal state */
+	/**
+	 * The normalImage being displayed in normal state
+	 */
 	private Image normalImage;
 
-	/** The normalImage being displayed in mouseOver state */
+	/**
+	 * The normalImage being displayed in mouseOver state
+	 */
 	private Image mouseOverImage;
 
-	/** The normalImage being displayed in mouseDown state */
+	/**
+	 * The normalImage being displayed in mouseDown state
+	 */
 	private Image mouseDownImage;
 
-	/** The colour used in normal state */
+	/**
+	 * The colour used in normal state
+	 */
 	private Color normalColor = Color.white;
 
-	/** The colour used in mouseOver state */
+	/**
+	 * The colour used in mouseOver state
+	 */
 	private Color mouseOverColor = Color.white;
 
-	/** The colour used in mouseDown state */
+	/**
+	 * The colour used in mouseDown state
+	 */
 	private Color mouseDownColor = Color.white;
 
-	/** The sound for mouse over */
+	/**
+	 * The sound for mouse over
+	 */
 	private Sound mouseOverSound;
 
-	/** The sound for mouse down */
+	/**
+	 * The sound for mouse down
+	 */
 	private Sound mouseDownSound;
 
-	/** The shape defining the area */
+	/**
+	 * The shape defining the area
+	 */
 	private Shape area;
 
-	/** The current normalImage being displayed */
+	/**
+	 * The current normalImage being displayed
+	 */
 	private Image currentImage;
 
-	/** The current color being used */
+	/**
+	 * The current color being used
+	 */
 	private Color currentColor;
 
-	/** True if the mouse is over the area */
+	/**
+	 * True if the mouse is over the area
+	 */
 	private boolean over;
 
-	/** True if the mouse button is pressed */
+	/**
+	 * True if the mouse button is pressed
+	 */
 	private boolean mouseDown;
 
-	/** The state of the area */
+	/**
+	 * The state of the area
+	 */
 	private int state = NORMAL;
 
-	/** True if the mouse has been up since last press */
+	/**
+	 * True if the mouse has been up since last press
+	 */
 	private boolean mouseUp;
 
 	/**
 	 * Create a new mouse over area
-	 * 
-	 * @param container
-	 *            The container displaying the mouse over area
-	 * @param image
-	 *            The normalImage to display
-	 * @param x
-	 *            The position of the area
-	 * @param y
-	 *            the position of the area
-	 * @param listener
-	 *            A listener to add to the area
+	 * <p>
+	 * @param container The container displaying the mouse over area
+	 * @param image The normalImage to display
+	 * @param x The position of the area
+	 * @param y the position of the area
+	 * @param listener A listener to add to the area
 	 */
 	public MouseOverArea(GUIContext container, Image image, int x, int y, ComponentListener listener) {
 		this(container, image, x, y, image.getWidth(), image.getHeight());
@@ -90,15 +121,11 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Create a new mouse over area
-	 * 
-	 * @param container
-	 *            The container displaying the mouse over area
-	 * @param image
-	 *            The normalImage to display
-	 * @param x
-	 *            The position of the area
-	 * @param y
-	 *            the position of the area
+	 * <p>
+	 * @param container The container displaying the mouse over area
+	 * @param image The normalImage to display
+	 * @param x The position of the area
+	 * @param y the position of the area
 	 */
 	public MouseOverArea(GUIContext container, Image image, int x, int y) {
 		this(container, image, x, y, image.getWidth(), image.getHeight());
@@ -106,58 +133,42 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Create a new mouse over area
-	 * 
-	 * @param container
-	 *            The container displaying the mouse over area
-	 * @param image
-	 *            The normalImage to display
-	 * @param x
-	 *            The position of the area
-	 * @param y
-	 *            the position of the area
-	 * @param width
-	 *            The width of the area
-	 * @param height
-	 *            The height of the area
-	 * @param listener
-	 *            A listener to add to the area
+	 * <p>
+	 * @param container The container displaying the mouse over area
+	 * @param image The normalImage to display
+	 * @param x The position of the area
+	 * @param y the position of the area
+	 * @param width The width of the area
+	 * @param height The height of the area
+	 * @param listener A listener to add to the area
 	 */
 	public MouseOverArea(GUIContext container, Image image, int x, int y,
-			int width, int height, ComponentListener listener) {
+						 int width, int height, ComponentListener listener) {
 		this(container, image, x, y, width, height);
 		addListener(listener);
 	}
 
 	/**
 	 * Create a new mouse over area
-	 * 
-	 * @param container
-	 *            The container displaying the mouse over area
-	 * @param image
-	 *            The normalImage to display
-	 * @param x
-	 *            The position of the area
-	 * @param y
-	 *            the position of the area
-	 * @param width
-	 *            The width of the area
-	 * @param height
-	 *            The height of the area
+	 * <p>
+	 * @param container The container displaying the mouse over area
+	 * @param image The normalImage to display
+	 * @param x The position of the area
+	 * @param y the position of the area
+	 * @param width The width of the area
+	 * @param height The height of the area
 	 */
 	public MouseOverArea(GUIContext container, Image image, int x, int y,
-			int width, int height) {
+						 int width, int height) {
 		this(container, image, new Rectangle(x, y, width, height));
 	}
 
 	/**
 	 * Create a new mouse over area
-	 * 
-	 * @param container
-	 *            The container displaying the mouse over area
-	 * @param image
-	 *            The normalImage to display
-	 * @param shape
-	 *            The shape defining the area of the mouse sensitive zone
+	 * <p>
+	 * @param container The container displaying the mouse over area
+	 * @param image The normalImage to display
+	 * @param shape The shape defining the area of the mouse sensitive zone
 	 */
 	public MouseOverArea(GUIContext container, Image image, Shape shape) {
 		super(container);
@@ -179,7 +190,7 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Moves the component.
-	 * 
+	 * <p>
 	 * @param x X coordinate
 	 * @param y Y coordinate
 	 */
@@ -192,7 +203,7 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the x coordinate of this area
-	 * 
+	 * <p>
 	 * @param x The new x coordinate of this area
 	 */
 	public void setX(float x) {
@@ -201,7 +212,7 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the y coordinate of this area
-	 * 
+	 * <p>
 	 * @param y The new y coordinate of this area
 	 */
 	public void setY(float y) {
@@ -210,7 +221,7 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Returns the position in the X coordinate
-	 * 
+	 * <p>
 	 * @return x
 	 */
 	public int getX() {
@@ -219,7 +230,7 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Returns the position in the Y coordinate
-	 * 
+	 * <p>
 	 * @return y
 	 */
 	public int getY() {
@@ -228,9 +239,8 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the normal color used on the image in the default state
-	 * 
-	 * @param color
-	 *            The color to be used
+	 * <p>
+	 * @param color The color to be used
 	 */
 	public void setNormalColor(Color color) {
 		normalColor = color;
@@ -238,9 +248,8 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the color to be used when the mouse is over the area
-	 * 
-	 * @param color
-	 *            The color to be used when the mouse is over the area
+	 * <p>
+	 * @param color The color to be used when the mouse is over the area
 	 */
 	public void setMouseOverColor(Color color) {
 		mouseOverColor = color;
@@ -248,9 +257,8 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the color to be used when the mouse is down the area
-	 * 
-	 * @param color
-	 *            The color to be used when the mouse is down the area
+	 * <p>
+	 * @param color The color to be used when the mouse is down the area
 	 */
 	public void setMouseDownColor(Color color) {
 		mouseDownColor = color;
@@ -258,9 +266,8 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the normal image used on the image in the default state
-	 * 
-	 * @param image
-	 *            The image to be used
+	 * <p>
+	 * @param image The image to be used
 	 */
 	public void setNormalImage(Image image) {
 		normalImage = image;
@@ -268,9 +275,8 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the image to be used when the mouse is over the area
-	 * 
-	 * @param image
-	 *            The image to be used when the mouse is over the area
+	 * <p>
+	 * @param image The image to be used when the mouse is over the area
 	 */
 	public void setMouseOverImage(Image image) {
 		mouseOverImage = image;
@@ -278,17 +284,15 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the image to be used when the mouse is down the area
-	 * 
-	 * @param image
-	 *            The image to be used when the mouse is down the area
+	 * <p>
+	 * @param image The image to be used when the mouse is down the area
 	 */
 	public void setMouseDownImage(Image image) {
 		mouseDownImage = image;
 	}
 
 	/**
-	 * @see org.newdawn.slick.gui.AbstractComponent#render(org.newdawn.slick.gui.GUIContext,
-	 *      org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.gui.AbstractComponent#render(org.newdawn.slick.gui.GUIContext, org.newdawn.slick.Graphics)
 	 */
 	public void render(GUIContext container, Graphics g) {
 		if (currentImage != null) {
@@ -347,9 +351,8 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the mouse over sound effect
-	 * 
-	 * @param sound
-	 *            The mouse over sound effect
+	 * <p>
+	 * @param sound The mouse over sound effect
 	 */
 	public void setMouseOverSound(Sound sound) {
 		mouseOverSound = sound;
@@ -357,9 +360,8 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the mouse down sound effect
-	 * 
-	 * @param sound
-	 *            The mouse down sound effect
+	 * <p>
+	 * @param sound The mouse down sound effect
 	 */
 	public void setMouseDownSound(Sound sound) {
 		mouseDownSound = sound;
@@ -415,7 +417,7 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Check if the mouse is over this area
-	 * 
+	 * <p>
 	 * @return True if the mouse is over this area
 	 */
 	public boolean isMouseOver() {
@@ -424,7 +426,7 @@ public class MouseOverArea extends AbstractComponent {
 
 	/**
 	 * Set the location of this area
-	 * 
+	 * <p>
 	 * @param x The x coordinate of this area
 	 * @param y The y coordiante of this area
 	 */

@@ -1265,10 +1265,10 @@ public class Glyphs {
 	};
 
 	/**
-	 * Return the glyphname from a character,
-	 * eg, charToGlyphName('\\') returns "backslash"
-	 *
+	 * Return the glyphname from a character, eg, charToGlyphName('\\') returns "backslash"
+	 * <p>
 	 * @param ch glyph to evaluate
+	 * <p>
 	 * @return the name of the glyph
 	 */
 	public static final String charToGlyphName(char ch) {
@@ -1276,13 +1276,12 @@ public class Glyphs {
 	}
 
 	/**
-	 * Return the glyphname from a string,
-	 * eg, glyphToString("\\") returns "backslash"
-	 *
+	 * Return the glyphname from a string, eg, glyphToString("\\") returns "backslash"
+	 * <p>
 	 * @param name glyph to evaluate
-	 * @return the name of the glyph
-	 *         TODO: javadocs for glyphToString and stringToGlyph are confused
-	 *         TODO: Improve method names
+	 * <p>
+	 * @return the name of the glyph TODO: javadocs for glyphToString and stringToGlyph are confused TODO: Improve
+	 * method names
 	 */
 	public static final String glyphToString(String name) {
 		for (int i = 0; i < UNICODE_GLYPHS.length; i += 2) {
@@ -1294,10 +1293,10 @@ public class Glyphs {
 	}
 
 	/**
-	 * Return the string representation of a glyphname,
-	 * eg stringToGlyph("backslash") returns "\\"
-	 *
+	 * Return the string representation of a glyphname, eg stringToGlyph("backslash") returns "\\"
+	 * <p>
 	 * @param name name of the glyph
+	 * <p>
 	 * @return the string representation
 	 */
 	public static String stringToGlyph(String name) {

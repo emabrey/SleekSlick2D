@@ -20,9 +20,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- * A simple utility test to use the internal slick API without
- * the slick framework.
- *
+ * A simple utility test to use the internal slick API without the slick framework.
+ * <p>
  * @author kevin
  */
 public class TestUtils {
@@ -85,8 +84,8 @@ public class TestUtils {
 
 	/**
 	 * Initialise the GL display
-	 *
-	 * @param width  The width of the display
+	 * <p>
+	 * @param width The width of the display
 	 * @param height The height of the display
 	 */
 	private void initGL(int width, int height) {
@@ -94,7 +93,8 @@ public class TestUtils {
 			Display.setDisplayMode(new DisplayMode(width, height));
 			Display.create();
 			Display.setVSyncEnabled(true);
-		} catch (LWJGLException e) {
+		}
+		catch (LWJGLException e) {
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -129,7 +129,7 @@ public class TestUtils {
 		java.awt.Font awtFont = new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 16);
 		font = new TrueTypeFont(awtFont, false);
 
-        // texture load, the second argument is a name assigned to the texture to
+		// texture load, the second argument is a name assigned to the texture to
 		// allow for caching in the texture loader. The 3rd argument indicates whether
 		// the image should be flipped on loading
 		try {
@@ -141,36 +141,38 @@ public class TestUtils {
 			System.out.println(">> Texture width: " + texture.getTextureWidth());
 			System.out.println(">> Texture height: " + texture.getTextureHeight());
 			System.out.println(">> Texture ID: " + texture.getTextureID());
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		try {
-            // you can play oggs by loading the complete thing into
+			// you can play oggs by loading the complete thing into
 			// a sound
 			oggEffect = AudioLoader.getAudio("OGG", new FileInputStream("testdata/restart.ogg"));
 
-            // or setting up a stream to read from. Note that the argument becomes
+			// or setting up a stream to read from. Note that the argument becomes
 			// a URL here so it can be reopened when the stream is complete. Probably
 			// should have reset the stream by thats not how the original stuff worked
 			oggStream = AudioLoader.getStreamingAudio("OGG", new File("testdata/bongos.ogg").toURL());
 
-            // can load mods (XM, MOD) using ibxm which is then played through OpenAL. MODs
+			// can load mods (XM, MOD) using ibxm which is then played through OpenAL. MODs
 			// are always streamed based on the way IBXM works
 			modStream = AudioLoader.getStreamingAudio("MOD", new File("testdata/SMB-X.XM").toURL());
 
-            // playing as music uses that reserved source to play the sound. The first
+			// playing as music uses that reserved source to play the sound. The first
 			// two arguments are pitch and gain, the boolean is whether to loop the content
 			modStream.playAsMusic(1.0f, 1.0f, true);
 
-            // you can play aifs by loading the complete thing into
+			// you can play aifs by loading the complete thing into
 			// a sound
 			aifEffect = AudioLoader.getAudio("AIF", new FileInputStream("testdata/burp.aif"));
 
-            // you can play wavs by loading the complete thing into
+			// you can play wavs by loading the complete thing into
 			// a sound
 			wavEffect = AudioLoader.getAudio("WAV", new FileInputStream("testdata/cbrown01.wav"));
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -186,12 +188,12 @@ public class TestUtils {
 					oggEffect.playAsSoundEffect(1.0f, 1.0f, false);
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_W) {
-                    // replace the music thats curretly playing with
+					// replace the music thats curretly playing with
 					// the ogg
 					oggStream.playAsMusic(1.0f, 1.0f, true);
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_E) {
-                    // replace the music thats curretly playing with
+					// replace the music thats curretly playing with
 					// the mod
 					modStream.playAsMusic(1.0f, 1.0f, true);
 				}
@@ -206,7 +208,7 @@ public class TestUtils {
 			}
 		}
 
-        // polling is required to allow streaming to get a chance to
+		// polling is required to allow streaming to get a chance to
 		// queue buffers.
 		SoundStore.get().poll(0);
 	}
@@ -234,7 +236,7 @@ public class TestUtils {
 
 	/**
 	 * Entry point to the tests
-	 *
+	 * <p>
 	 * @param argv The arguments to the test
 	 */
 	public static void main(String[] argv) {

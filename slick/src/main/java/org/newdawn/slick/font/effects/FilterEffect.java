@@ -8,14 +8,16 @@ import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.Glyph;
 
 /**
- * Applys a {@link BufferedImageOp} filter to glyphs. Many filters can be found 
- * here: http://www.jhlabs.com/ip/filters/index.html
- * 
+ * Applys a {@link BufferedImageOp} filter to glyphs. Many filters can be found here:
+ * http://www.jhlabs.com/ip/filters/index.html
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class FilterEffect implements Effect {
 
-	/** The filter to be applied */
+	/**
+	 * The filter to be applied
+	 */
 	private BufferedImageOp filter;
 
 	/**
@@ -26,7 +28,7 @@ public class FilterEffect implements Effect {
 
 	/**
 	 * Create a new filtering effect based on a convolution operation
-	 * 
+	 * <p>
 	 * @param filter The filter to apply
 	 */
 	public FilterEffect(BufferedImageOp filter) {
@@ -34,7 +36,8 @@ public class FilterEffect implements Effect {
 	}
 
 	/**
-	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D, org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
+	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D,
+	 * org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
 	 */
 	public void draw(BufferedImage image, Graphics2D g, UnicodeFont unicodeFont, Glyph glyph) {
 		BufferedImage scratchImage = EffectUtil.getScratchImage();
@@ -44,7 +47,7 @@ public class FilterEffect implements Effect {
 
 	/**
 	 * Get the filter being applied by this effect
-	 * 
+	 * <p>
 	 * @return The filter being applied by this effect
 	 */
 	public BufferedImageOp getFilter() {
@@ -53,7 +56,7 @@ public class FilterEffect implements Effect {
 
 	/**
 	 * Set the filter being applied by this effect
-	 * 
+	 * <p>
 	 * @param filter The filter being used by this effect
 	 */
 	public void setFilter(BufferedImageOp filter) {

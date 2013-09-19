@@ -8,34 +8,45 @@ import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.opengl.renderer.SGL;
 
 /**
- * A texture proxy that can be used to load a texture at a later date while still
- * allowing elements to reference it
- *
+ * A texture proxy that can be used to load a texture at a later date while still allowing elements to reference it
+ * <p>
  * @author kevin
  */
 public class DeferredTexture extends TextureImpl implements DeferredResource {
 
-	/** The stream to read the texture from */
+	/**
+	 * The stream to read the texture from
+	 */
 	private InputStream in;
 
-	/** The name of the resource to load */
+	/**
+	 * The name of the resource to load
+	 */
 	private String resourceName;
 
-	/** True if the image should be flipped */
+	/**
+	 * True if the image should be flipped
+	 */
 	private boolean flipped;
 
-	/** The filter to apply to the texture */
+	/**
+	 * The filter to apply to the texture
+	 */
 	private int filter;
 
-	/** The texture we're proxying for */
+	/**
+	 * The texture we're proxying for
+	 */
 	private TextureImpl target;
 
-	/** The color to be transparent */
+	/**
+	 * The color to be transparent
+	 */
 	private int[] trans;
 
 	/**
 	 * Create a new deferred texture
-	 * 
+	 * <p>
 	 * @param in The input stream from which to read the texture
 	 * @param resourceName The name to give the resource
 	 * @param flipped True if the image should be flipped
@@ -71,7 +82,8 @@ public class DeferredTexture extends TextureImpl implements DeferredResource {
 				load();
 				LoadingList.get().remove(this);
 				return;
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				throw new RuntimeException("Attempt to use deferred texture before loading and resource not found: " + resourceName);
 			}
 		}

@@ -7,14 +7,16 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * A simple wrapper around resource loading should anyone decide to change
- * their minds how this is meant to work in the future.
- * 
+ * A simple wrapper around resource loading should anyone decide to change their minds how this is meant to work in the
+ * future.
+ * <p>
  * @author Kevin Glass
  */
 public class ResourceLoader {
 
-	/** The list of locations to be searched */
+	/**
+	 * The list of locations to be searched
+	 */
 	private static ArrayList locations = new ArrayList();
 
 	static {
@@ -24,7 +26,7 @@ public class ResourceLoader {
 
 	/**
 	 * Add a location that will be searched for resources
-	 * 
+	 * <p>
 	 * @param location The location that will be searched for resoruces
 	 */
 	public static void addResourceLocation(ResourceLocation location) {
@@ -33,7 +35,7 @@ public class ResourceLoader {
 
 	/**
 	 * Remove a location that will be no longer be searched for resources
-	 * 
+	 * <p>
 	 * @param location The location that will be removed from the search list
 	 */
 	public static void removeResourceLocation(ResourceLocation location) {
@@ -41,8 +43,7 @@ public class ResourceLoader {
 	}
 
 	/**
-	 * Remove all the locations, no resources will be found until
-	 * new locations have been added
+	 * Remove all the locations, no resources will be found until new locations have been added
 	 */
 	public static void removeAllResourceLocations() {
 		locations.clear();
@@ -50,8 +51,9 @@ public class ResourceLoader {
 
 	/**
 	 * Get a resource
-	 * 
+	 * <p>
 	 * @param ref The reference to the resource to retrieve
+	 * <p>
 	 * @return A stream from which the resource can be read
 	 */
 	public static InputStream getResourceAsStream(String ref) {
@@ -74,8 +76,9 @@ public class ResourceLoader {
 
 	/**
 	 * Check if a resource is available from any given resource loader
-	 * 
+	 * <p>
 	 * @param ref A reference to the resource that should be checked
+	 * <p>
 	 * @return True if the resource can be located
 	 */
 	public static boolean resourceExists(String ref) {
@@ -94,8 +97,9 @@ public class ResourceLoader {
 
 	/**
 	 * Get a resource as a URL
-	 * 
+	 * <p>
 	 * @param ref The reference to the resource to retrieve
+	 * <p>
 	 * @return A URL from which the resource can be read
 	 */
 	public static URL getResource(String ref) {

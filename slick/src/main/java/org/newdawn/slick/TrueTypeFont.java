@@ -17,7 +17,7 @@ import org.newdawn.slick.util.BufferedImageUtil;
 
 /**
  * A TrueType font implementation for Slick
- * 
+ * <p>
  * @author James Chambers (Jimmy)
  * @author Jeremy Adams (elias4444)
  * @author Kevin Glass (kevglass)
@@ -25,71 +25,96 @@ import org.newdawn.slick.util.BufferedImageUtil;
  */
 public class TrueTypeFont implements org.newdawn.slick.Font {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	private static final SGL GL = Renderer.get();
 
-	/** Array that holds necessary information about the font characters */
+	/**
+	 * Array that holds necessary information about the font characters
+	 */
 	private IntObject[] charArray = new IntObject[256];
 
-	/** Map of user defined font characters (Character <-> IntObject) */
+	/**
+	 * Map of user defined font characters (Character <-> IntObject)
+	 */
 	private Map customChars = new HashMap();
 
-	/** Boolean flag on whether AntiAliasing is enabled or not */
+	/**
+	 * Boolean flag on whether AntiAliasing is enabled or not
+	 */
 	private boolean antiAlias;
 
-	/** Font's size */
+	/**
+	 * Font's size
+	 */
 	private int fontSize = 0;
 
-	/** Font's height */
+	/**
+	 * Font's height
+	 */
 	private int fontHeight = 0;
 
-	/** Texture used to cache the font 0-255 characters */
+	/**
+	 * Texture used to cache the font 0-255 characters
+	 */
 	private Texture fontTexture;
 
-	/** Default font texture width */
+	/**
+	 * Default font texture width
+	 */
 	private int textureWidth = 512;
 
-	/** Default font texture height */
+	/**
+	 * Default font texture height
+	 */
 	private int textureHeight = 512;
 
-	/** A reference to Java's AWT Font that we create our font texture from */
+	/**
+	 * A reference to Java's AWT Font that we create our font texture from
+	 */
 	private java.awt.Font font;
 
-	/** The font metrics for our Java AWT font */
+	/**
+	 * The font metrics for our Java AWT font
+	 */
 	private FontMetrics fontMetrics;
 
 	/**
-	 * This is a special internal class that holds our necessary information for
-	 * the font characters. This includes width, height, and where the character
-	 * is stored on the font texture.
+	 * This is a special internal class that holds our necessary information for the font characters. This includes
+	 * width, height, and where the character is stored on the font texture.
 	 */
 	private class IntObject {
 
-		/** Character's width */
+		/**
+		 * Character's width
+		 */
 		public int width;
 
-		/** Character's height */
+		/**
+		 * Character's height
+		 */
 		public int height;
 
-		/** Character's stored x position */
+		/**
+		 * Character's stored x position
+		 */
 		public int storedX;
 
-		/** Character's stored y position */
+		/**
+		 * Character's stored y position
+		 */
 		public int storedY;
 
 	}
 
 	/**
-	 * Constructor for the TrueTypeFont class Pass in the preloaded standard
-	 * Java TrueType font, and whether you want it to be cached with
-	 * AntiAliasing applied.
-	 * 
-	 * @param font
-	 *            Standard Java AWT font
-	 * @param antiAlias
-	 *            Whether or not to apply AntiAliasing to the cached font
-	 * @param additionalChars
-	 *            Characters of font that will be used in addition of first 256 (by unicode).
+	 * Constructor for the TrueTypeFont class Pass in the preloaded standard Java TrueType font, and whether you want it
+	 * to be cached with AntiAliasing applied.
+	 * <p>
+	 * @param font Standard Java AWT font
+	 * @param antiAlias Whether or not to apply AntiAliasing to the cached font
+	 * @param additionalChars Characters of font that will be used in addition of first 256 (by unicode).
 	 */
 	public TrueTypeFont(java.awt.Font font, boolean antiAlias, char[] additionalChars) {
 		GLUtils.checkGLContext();
@@ -102,14 +127,11 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 	}
 
 	/**
-	 * Constructor for the TrueTypeFont class Pass in the preloaded standard
-	 * Java TrueType font, and whether you want it to be cached with
-	 * AntiAliasing applied.
-	 * 
-	 * @param font
-	 *            Standard Java AWT font
-	 * @param antiAlias
-	 *            Whether or not to apply AntiAliasing to the cached font
+	 * Constructor for the TrueTypeFont class Pass in the preloaded standard Java TrueType font, and whether you want it
+	 * to be cached with AntiAliasing applied.
+	 * <p>
+	 * @param font Standard Java AWT font
+	 * @param antiAlias Whether or not to apply AntiAliasing to the cached font
 	 */
 	public TrueTypeFont(java.awt.Font font, boolean antiAlias) {
 		this(font, antiAlias, null);
@@ -117,10 +139,9 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
 	/**
 	 * Create a standard Java2D BufferedImage of the given character
-	 * 
-	 * @param ch
-	 *            The character to create a BufferedImage for
-	 * 
+	 * <p>
+	 * @param ch The character to create a BufferedImage for
+	 * <p>
 	 * @return A BufferedImage containing the character
 	 */
 	private BufferedImage getFontImage(char ch) {
@@ -167,7 +188,7 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
 	/**
 	 * Create and store the font
-	 * 
+	 * <p>
 	 * @param customCharsArray Characters that should be also added to the cache.
 	 */
 	private void createSet(char[] customCharsArray) {
@@ -239,7 +260,8 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 			fontTexture = BufferedImageUtil
 					.getTexture(font.toString(), imgTemp);
 
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			System.err.println("Failed to create font.");
 			e.printStackTrace();
 		}
@@ -247,26 +269,18 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
 	/**
 	 * Draw a textured quad
-	 * 
-	 * @param drawX
-	 *            The left x position to draw to
-	 * @param drawY
-	 *            The top y position to draw to
-	 * @param drawX2
-	 *            The right x position to draw to
-	 * @param drawY2
-	 *            The bottom y position to draw to
-	 * @param srcX
-	 *            The left source x position to draw from
-	 * @param srcY
-	 *            The top source y position to draw from
-	 * @param srcX2
-	 *            The right source x position to draw from
-	 * @param srcY2
-	 *            The bottom source y position to draw from
+	 * <p>
+	 * @param drawX The left x position to draw to
+	 * @param drawY The top y position to draw to
+	 * @param drawX2 The right x position to draw to
+	 * @param drawY2 The bottom y position to draw to
+	 * @param srcX The left source x position to draw from
+	 * @param srcY The top source y position to draw from
+	 * @param srcX2 The right source x position to draw from
+	 * @param srcY2 The bottom source y position to draw from
 	 */
 	private void drawQuad(float drawX, float drawY, float drawX2, float drawY2,
-			float srcX, float srcY, float srcX2, float srcY2) {
+						  float srcX, float srcY, float srcX2, float srcY2) {
 		float DrawWidth = drawX2 - drawX;
 		float DrawHeight = drawY2 - drawY;
 		float TextureSrcX = srcX / textureWidth;
@@ -288,10 +302,9 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
 	/**
 	 * Get the width of a given String
-	 * 
-	 * @param whatchars
-	 *            The characters to get the width of
-	 * 
+	 * <p>
+	 * @param whatchars The characters to get the width of
+	 * <p>
 	 * @return The width of the characters
 	 */
 	public int getWidth(String whatchars) {
@@ -315,7 +328,7 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
 	/**
 	 * Get the font's height
-	 * 
+	 * <p>
 	 * @return The height of the font
 	 */
 	public int getHeight() {
@@ -324,7 +337,7 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
 	/**
 	 * Get the height of a String
-	 * 
+	 * <p>
 	 * @return The height of a given string
 	 */
 	public int getHeight(String HeightString) {
@@ -333,7 +346,7 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
 	/**
 	 * Get the font's line height
-	 * 
+	 * <p>
 	 * @return The line height of the font
 	 */
 	public int getLineHeight() {
@@ -342,18 +355,14 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
 	/**
 	 * Draw a string
-	 * 
-	 * @param x
-	 *            The x position to draw the string
-	 * @param y
-	 *            The y position to draw the string
-	 * @param whatchars
-	 *            The string to draw
-	 * @param color
-	 *            The color to draw the text
+	 * <p>
+	 * @param x The x position to draw the string
+	 * @param y The y position to draw the string
+	 * @param whatchars The string to draw
+	 * @param color The color to draw the text
 	 */
 	public void drawString(float x, float y, String whatchars,
-			org.newdawn.slick.Color color) {
+						   org.newdawn.slick.Color color) {
 		drawString(x, y, whatchars, color, 0, whatchars.length() - 1);
 	}
 
@@ -361,7 +370,7 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 	 * @see Font#drawString(float, float, String, org.newdawn.slick.Color, int, int)
 	 */
 	public void drawString(float x, float y, String whatchars,
-			org.newdawn.slick.Color color, int startIndex, int endIndex) {
+						   org.newdawn.slick.Color color, int startIndex, int endIndex) {
 		color.bind();
 		fontTexture.bind();
 
@@ -396,13 +405,10 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
 	/**
 	 * Draw a string
-	 * 
-	 * @param x
-	 *            The x position to draw the string
-	 * @param y
-	 *            The y position to draw the string
-	 * @param whatchars
-	 *            The string to draw
+	 * <p>
+	 * @param x The x position to draw the string
+	 * @param y The y position to draw the string
+	 * @param whatchars The string to draw
 	 */
 	public void drawString(float x, float y, String whatchars) {
 		drawString(x, y, whatchars, org.newdawn.slick.Color.white);

@@ -7,7 +7,7 @@ import java.io.OutputStream;
 
 /**
  * TODO: Document this class
- *
+ * <p>
  * @author kevin
  */
 public class IOUtils {
@@ -18,17 +18,17 @@ public class IOUtils {
 	private static final int DEFAULT_BUFFER_SIZE = 1024 * 4;
 
 	/**
-	 * Copy bytes from an <code>InputStream</code> to an
-	 * <code>OutputStream</code>.
+	 * Copy bytes from an <code>InputStream</code> to an <code>OutputStream</code>.
 	 * <p/>
-	 * This method buffers the input internally, so there is no need to use a
-	 * <code>BufferedInputStream</code>.
-	 *
-	 * @param input  the <code>InputStream</code> to read from
+	 * This method buffers the input internally, so there is no need to use a <code>BufferedInputStream</code>.
+	 * <p>
+	 * @param input the <code>InputStream</code> to read from
 	 * @param output the <code>OutputStream</code> to write to
+	 * <p>
 	 * @return the number of bytes copied
+	 * <p>
 	 * @throws NullPointerException if the input or output is null
-	 * @throws IOException          if an I/O error occurs
+	 * @throws IOException if an I/O error occurs
 	 * @since Commons IO 1.1
 	 */
 	public static int copy(InputStream input, OutputStream output)
@@ -46,13 +46,14 @@ public class IOUtils {
 	/**
 	 * Get the contents of an <code>InputStream</code> as a <code>byte[]</code>.
 	 * <p/>
-	 * This method buffers the input internally, so there is no need to use a
-	 * <code>BufferedInputStream</code>.
-	 *
+	 * This method buffers the input internally, so there is no need to use a <code>BufferedInputStream</code>.
+	 * <p>
 	 * @param input the <code>InputStream</code> to read from
+	 * <p>
 	 * @return the requested byte array
+	 * <p>
 	 * @throws NullPointerException if the input is null
-	 * @throws IOException          if an I/O error occurs
+	 * @throws IOException if an I/O error occurs
 	 */
 	public static byte[] toByteArray(InputStream input) throws IOException {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();

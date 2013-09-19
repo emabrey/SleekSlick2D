@@ -4,18 +4,20 @@ import java.util.ArrayList;
 
 /**
  * A test example of some object data that can be configured via XML
- * 
+ * <p>
  * @author kevin
  */
 public class Inventory {
 
-	/** The items held in the inventory */
+	/**
+	 * The items held in the inventory
+	 */
 	private ArrayList items = new ArrayList();
 
 	/**
-	 * Called by XML parser to add a configured item to the entity 
-	 * 
-	 * @param item The item to be added 
+	 * Called by XML parser to add a configured item to the entity
+	 * <p>
+	 * @param item The item to be added
 	 */
 	private void add(Item item) {
 		items.add(item);
@@ -23,7 +25,7 @@ public class Inventory {
 
 	/**
 	 * Dump this object to sysout
-	 * 
+	 * <p>
 	 * @param prefix The prefix to apply to all lines
 	 */
 	public void dump(String prefix) {

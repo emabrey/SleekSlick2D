@@ -3,52 +3,75 @@ package org.newdawn.slick.geom;
 import java.io.Serializable;
 
 /**
- * The description of any 2D shape that can be transformed. The points provided approximate the intent
- * of the shape. 
- * 
+ * The description of any 2D shape that can be transformed. The points provided approximate the intent of the shape.
+ * <p>
  * @author Mark
  */
 public abstract class Shape implements Serializable {
 
-	/** The points representing this polygon. */
+	/**
+	 * The points representing this polygon.
+	 */
 	protected float points[];
 
-	/** Center point of the polygon. */
+	/**
+	 * Center point of the polygon.
+	 */
 	protected float center[];
 
-	/** The left most point of this shape. */
+	/**
+	 * The left most point of this shape.
+	 */
 	protected float x;
 
-	/** The top most point of this shape. */
+	/**
+	 * The top most point of this shape.
+	 */
 	protected float y;
 
-	/** The right most point of this shape */
+	/**
+	 * The right most point of this shape
+	 */
 	protected float maxX;
 
-	/** The bottom most point of this shape */
+	/**
+	 * The bottom most point of this shape
+	 */
 	protected float maxY;
 
-	/** The left most point of this shape. */
+	/**
+	 * The left most point of this shape.
+	 */
 	protected float minX;
 
-	/** The top most point of this shape. */
+	/**
+	 * The top most point of this shape.
+	 */
 	protected float minY;
 
-	/** Radius of a circle that can completely enclose this shape. */
+	/**
+	 * Radius of a circle that can completely enclose this shape.
+	 */
 	protected float boundingCircleRadius;
 
-	/** Flag to tell whether points need to be generated */
+	/**
+	 * Flag to tell whether points need to be generated
+	 */
 	protected boolean pointsDirty;
 
-	/** The triangles that define the shape */
+	/**
+	 * The triangles that define the shape
+	 */
 	protected transient Triangulator tris;
 
-	/** True if the triangles need updating */
+	/**
+	 * True if the triangles need updating
+	 */
 	protected boolean trianglesDirty;
 
 	/**
 	 * Shape constructor.
-	 *
+	 * <p>
 	 */
 	public Shape() {
 		pointsDirty = true;
@@ -56,7 +79,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Set the top-left location of this shape
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the new location of the shape
 	 * @param y The y coordinate of the new location of the shape
 	 */
@@ -66,23 +89,24 @@ public abstract class Shape implements Serializable {
 	}
 
 	/**
-	 * Apply a transformation and return a new shape.  This will not alter the current shape but will 
-	 * return the transformed shape.
-	 * 
+	 * Apply a transformation and return a new shape. This will not alter the current shape but will return the
+	 * transformed shape.
+	 * <p>
 	 * @param transform The transform to be applied
+	 * <p>
 	 * @return The transformed shape.
 	 */
 	public abstract Shape transform(Transform transform);
 
 	/**
 	 * Subclasses implement this to create the points of the shape.
-	 *
+	 * <p>
 	 */
 	protected abstract void createPoints();
 
 	/**
 	 * Get the x location of the left side of this shape.
-	 * 
+	 * <p>
 	 * @return The x location of the left side of this shape.
 	 */
 	public float getX() {
@@ -91,7 +115,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Set the x position of the left side this shape.
-	 * 
+	 * <p>
 	 * @param x The new x position of the left side this shape.
 	 */
 	public void setX(float x) {
@@ -116,7 +140,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Set the y position of the top of this shape.
-	 * 
+	 * <p>
 	 * @param y The new y position of the top of this shape.
 	 */
 	public void setY(float y) {
@@ -141,7 +165,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the y position of the top of this shape.
-	 * 
+	 * <p>
 	 * @return The y position of the top of this shape.
 	 */
 	public float getY() {
@@ -150,7 +174,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the top-left location of this shape.
-	 *
+	 * <p>
 	 * @return The coordinate of the top-left of this shape
 	 */
 	public Vector2f getLocation() {
@@ -159,7 +183,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Set the top-left location of this shape
-	 * 
+	 * <p>
 	 * @param loc The new coordinate of the top-left of this shape
 	 */
 	public void setLocation(Vector2f loc) {
@@ -169,7 +193,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the x center of this shape.
-	 * 
+	 * <p>
 	 * @return The x center of this shape.
 	 */
 	public float getCenterX() {
@@ -180,7 +204,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Set the x center of this shape.
-	 * 
+	 * <p>
 	 * @param centerX The center point to set.
 	 */
 	public void setCenterX(float centerX) {
@@ -194,7 +218,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the y center of this shape.
-	 * 
+	 * <p>
 	 * @return The y center of this shape.
 	 */
 	public float getCenterY() {
@@ -205,7 +229,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Set the y center of this shape.
-	 * 
+	 * <p>
 	 * @param centerY The center point to set.
 	 */
 	public void setCenterY(float centerY) {
@@ -219,7 +243,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the right most point of this shape.
-	 * 
+	 * <p>
 	 * @return The right most point of this shape.
 	 */
 	public float getMaxX() {
@@ -229,7 +253,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the bottom most point of this shape.
-	 * 
+	 * <p>
 	 * @return The bottom most point of this shape.
 	 */
 	public float getMaxY() {
@@ -239,7 +263,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the left most point of this shape.
-	 * 
+	 * <p>
 	 * @return The left most point of this shape.
 	 */
 	public float getMinX() {
@@ -249,7 +273,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the top most point of this shape.
-	 * 
+	 * <p>
 	 * @return The top most point of this shape.
 	 */
 	public float getMinY() {
@@ -259,7 +283,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the radius of a circle that can completely enclose this shape.
-	 * 
+	 * <p>
 	 * @return The radius of the circle.
 	 */
 	public float getBoundingCircleRadius() {
@@ -269,7 +293,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the point closet to the center of all the points in this Shape
-	 * 
+	 * <p>
 	 * @return The x,y coordinates of the center.
 	 */
 	public float[] getCenter() {
@@ -278,8 +302,8 @@ public abstract class Shape implements Serializable {
 	}
 
 	/**
-	 * Get the points that outline this shape.  Use CW winding rule
-	 * 
+	 * Get the points that outline this shape. Use CW winding rule
+	 * <p>
 	 * @return an array of x,y points
 	 */
 	public float[] getPoints() {
@@ -289,7 +313,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the number of points in this polygon
-	 * 
+	 * <p>
 	 * @return The number of points in this polygon
 	 */
 	public int getPointCount() {
@@ -299,8 +323,9 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get a single point in this polygon
-	 * 
+	 * <p>
 	 * @param index The index of the point to retrieve
+	 * <p>
 	 * @return The point's coordinates
 	 */
 	public float[] getPoint(int index) {
@@ -316,8 +341,9 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the combine normal of a given point
-	 * 
+	 * <p>
 	 * @param index The index of the point whose normal should be retrieved
+	 * <p>
 	 * @return The combined normal of a given point
 	 */
 	public float[] getNormal(int index) {
@@ -342,12 +368,11 @@ public abstract class Shape implements Serializable {
 	}
 
 	/**
-	 * Check if the shape passed is entirely contained within 
-	 * this shape.
-	 * 
+	 * Check if the shape passed is entirely contained within this shape.
+	 * <p>
 	 * @param other The other shape to test against this one
-	 * @return True if the other shape supplied is entirely contained
-	 * within this one.
+	 * <p>
+	 * @return True if the other shape supplied is entirely contained within this one.
 	 */
 	public boolean contains(Shape other) {
 		if (other.intersects(this)) {
@@ -366,9 +391,10 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the normal of the line between two points
-	 * 
+	 * <p>
 	 * @param start The start point
 	 * @param end The end point
+	 * <p>
 	 * @return The normal of the line between the two points
 	 */
 	private float[] getNormal(float[] start, float[] end) {
@@ -381,11 +407,11 @@ public abstract class Shape implements Serializable {
 	}
 
 	/**
-	 * Check if the given point is part of the path that
-	 * forms this shape
-	 * 
+	 * Check if the given point is part of the path that forms this shape
+	 * <p>
 	 * @param x The x position of the point to check
 	 * @param y The y position of the point to check
+	 * <p>
 	 * @return True if the point is includes in the path of the polygon
 	 */
 	public boolean includes(float x, float y) {
@@ -415,9 +441,10 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the index of a given point
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the point
 	 * @param y The y coordinate of the point
+	 * <p>
 	 * @return The index of the point or -1 if the point is not part of this shape path
 	 */
 	public int indexOf(float x, float y) {
@@ -432,9 +459,10 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Check if this polygon contains the given point
-	 * 
+	 * <p>
 	 * @param x The x position of the point to check
 	 * @param y The y position of the point to check
+	 * <p>
 	 * @return True if the point is contained in the polygon
 	 */
 	public boolean contains(float x, float y) {
@@ -480,8 +508,9 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Check if this shape intersects with the shape provided.
-	 * 
+	 * <p>
 	 * @param shape The shape to check if it intersects with this one.
+	 * <p>
 	 * @return True if the shapes do intersect, false otherwise.
 	 */
 	public boolean intersects(Shape shape) {
@@ -560,9 +589,10 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Check if a particular location is a vertex of this polygon
-	 * 
+	 * <p>
 	 * @param x The x coordinate to check
 	 * @param y The y coordinate to check
+	 * <p>
 	 * @return True if the cordinates supplied are a vertex of this polygon
 	 */
 	public boolean hasVertex(float x, float y) {
@@ -583,7 +613,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the center of this polygon.
-	 *
+	 * <p>
 	 */
 	protected void findCenter() {
 		center = new float[]{0, 0};
@@ -598,7 +628,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Calculate the radius of a circle that can completely enclose this shape.
-	 *
+	 * <p>
 	 */
 	protected void calculateRadius() {
 		boundingCircleRadius = 0;
@@ -654,8 +684,8 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * The triangles that define the filled version of this shape
-	 * 
-	 * @return The triangles that define the 
+	 * <p>
+	 * @return The triangles that define the
 	 */
 	public Triangulator getTriangles() {
 		checkPoints();
@@ -699,7 +729,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * True if this is a closed shape
-	 * 
+	 * <p>
 	 * @return True if this is a closed shape
 	 */
 	public boolean closed() {
@@ -708,7 +738,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Prune any required points in this shape
-	 * 
+	 * <p>
 	 * @return The new shape with points pruned
 	 */
 	public Shape prune() {
@@ -739,10 +769,11 @@ public abstract class Shape implements Serializable {
 	}
 
 	/**
-	 * Subtract the given shape from this one. Note that this method only deals
-	 * with edges, it will not create holes in polygons.
-	 * 
+	 * Subtract the given shape from this one. Note that this method only deals with edges, it will not create holes in
+	 * polygons.
+	 * <p>
 	 * @param other The other shape to subtract from this one
+	 * <p>
 	 * @return The newly created set of shapes resulting from the operation
 	 */
 	public Shape[] subtract(Shape other) {
@@ -751,8 +782,9 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Join this shape with another.
-	 * 
+	 * <p>
 	 * @param other The other shape to join with this one
+	 * <p>
 	 * @return The newly created set of shapes resulting from the operation
 	 */
 	public Shape[] union(Shape other) {
@@ -761,7 +793,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the width of the shape
-	 * 
+	 * <p>
 	 * @return The width of the shape
 	 */
 	public float getWidth() {
@@ -770,7 +802,7 @@ public abstract class Shape implements Serializable {
 
 	/**
 	 * Get the height of the shape
-	 * 
+	 * <p>
 	 * @return The height of the shape
 	 */
 	public float getHeight() {

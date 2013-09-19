@@ -9,31 +9,39 @@ import org.newdawn.slick.util.Log;
 import org.newdawn.slick.util.ResourceLoader;
 
 /**
- * A sprite sheet packed and defined by the Pacific Software Image Packer available
- * from:
- * 
+ * A sprite sheet packed and defined by the Pacific Software Image Packer available from:
+ * <p>
  * http://homepage.ntlworld.com/config/imagepacker/
- *
+ * <p>
  * @author kevin
  */
 public class PackedSpriteSheet {
 
-	/** The image loaded for the sheet */
+	/**
+	 * The image loaded for the sheet
+	 */
 	private Image image;
 
-	/** The base path where the image is expected to be found based on the original definition file */
+	/**
+	 * The base path where the image is expected to be found based on the original definition file
+	 */
 	private String basePath;
 
-	/** The section definitions */
+	/**
+	 * The section definitions
+	 */
 	private HashMap sections = new HashMap();
 
-	/** The filter used when loading the image */
+	/**
+	 * The filter used when loading the image
+	 */
 	private int filter = Image.FILTER_NEAREST;
 
 	/**
 	 * Create a new packed sprite sheet based on a ImagePacker definition file
-	 * 
+	 * <p>
 	 * @param def The location of the definition file to read
+	 * <p>
 	 * @throws SlickException Indicates a failure to read the definition file
 	 */
 	public PackedSpriteSheet(String def) throws SlickException {
@@ -42,9 +50,10 @@ public class PackedSpriteSheet {
 
 	/**
 	 * Create a new packed sprite sheet based on a ImagePacker definition file
-	 * 
+	 * <p>
 	 * @param def The location of the definition file to read
 	 * @param trans The color to be treated as transparent
+	 * <p>
 	 * @throws SlickException Indicates a failure to read the definition file
 	 */
 	public PackedSpriteSheet(String def, Color trans) throws SlickException {
@@ -56,9 +65,10 @@ public class PackedSpriteSheet {
 
 	/**
 	 * Create a new packed sprite sheet based on a ImagePacker definition file
-	 * 
+	 * <p>
 	 * @param def The location of the definition file to read
 	 * @param filter The image filter to use when loading the packed sprite image
+	 * <p>
 	 * @throws SlickException Indicates a failure to read the definition file
 	 */
 	public PackedSpriteSheet(String def, int filter) throws SlickException {
@@ -67,10 +77,11 @@ public class PackedSpriteSheet {
 
 	/**
 	 * Create a new packed sprite sheet based on a ImagePacker definition file
-	 * 
+	 * <p>
 	 * @param def The location of the definition file to read
 	 * @param filter The image filter to use when loading the packed sprite image
 	 * @param trans The color to be treated as transparent
+	 * <p>
 	 * @throws SlickException Indicates a failure to read the definition file
 	 */
 	public PackedSpriteSheet(String def, int filter, Color trans) throws SlickException {
@@ -84,7 +95,7 @@ public class PackedSpriteSheet {
 
 	/**
 	 * Get the full image contaning all the sprites/sections
-	 * 
+	 * <p>
 	 * @return The full image containing all the sprites/sections
 	 */
 	public Image getFullImage() {
@@ -93,8 +104,9 @@ public class PackedSpriteSheet {
 
 	/**
 	 * Get a single named sprite from the sheet
-	 * 
+	 * <p>
 	 * @param name The name of the sprite to retrieve
+	 * <p>
 	 * @return The sprite requested (image of)
 	 */
 	public Image getSprite(String name) {
@@ -109,8 +121,9 @@ public class PackedSpriteSheet {
 
 	/**
 	 * Get a sprite sheet that has been packed into the greater image
-	 * 
+	 * <p>
 	 * @param name The name of the sprite sheet to retrieve
+	 * <p>
 	 * @return The sprite sheet from the packed sheet
 	 */
 	public SpriteSheet getSpriteSheet(String name) {
@@ -122,11 +135,11 @@ public class PackedSpriteSheet {
 
 	/**
 	 * Load the definition file and parse each of the sections
-	 * 
+	 * <p>
 	 * @param def The location of the definitions file
 	 * @param trans The color to be treated as transparent
-	 * @throws SlickException Indicates a failure to read or parse the definitions file
-	 * or referenced image.
+	 * <p>
+	 * @throws SlickException Indicates a failure to read or parse the definitions file or referenced image.
 	 */
 	private void loadDefinition(String def, Color trans) throws SlickException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceLoader.getResourceAsStream(def)));
@@ -145,7 +158,8 @@ public class PackedSpriteSheet {
 					break;
 				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new SlickException("Failed to process definitions file - invalid format?", e);
 		}
@@ -153,36 +167,51 @@ public class PackedSpriteSheet {
 
 	/**
 	 * A single section defined within the packed sheet
-	 * 
+	 * <p>
 	 * @author kevin
 	 */
 	private class Section {
 
-		/** The x position of the section */
+		/**
+		 * The x position of the section
+		 */
 		public int x;
 
-		/** The y position of the section */
+		/**
+		 * The y position of the section
+		 */
 		public int y;
 
-		/** The width of the section */
+		/**
+		 * The width of the section
+		 */
 		public int width;
 
-		/** The height of the section */
+		/**
+		 * The height of the section
+		 */
 		public int height;
 
-		/** The number of sprites across this section */
+		/**
+		 * The number of sprites across this section
+		 */
 		public int tilesx;
 
-		/** The number of sprites down this section */
+		/**
+		 * The number of sprites down this section
+		 */
 		public int tilesy;
 
-		/** The name of this section */
+		/**
+		 * The name of this section
+		 */
 		public String name;
 
 		/**
 		 * Create a new section by reading the stream provided
-		 * 
+		 * <p>
 		 * @param reader The reader from which the definition can be read
+		 * <p>
 		 * @throws IOException Indicates a failure toread the provided stream
 		 */
 		public Section(BufferedReader reader) throws IOException {

@@ -9,22 +9,25 @@ import java.util.ArrayList;
 import org.newdawn.slick.util.Log;
 
 /**
- * A composite data source that checks multiple loaders in order of
- * preference
- * 
+ * A composite data source that checks multiple loaders in order of preference
+ * <p>
  * @author kevin
  */
 public class CompositeImageData implements LoadableImageData {
 
-	/** The list of images sources in order of preference to try loading the data with */
+	/**
+	 * The list of images sources in order of preference to try loading the data with
+	 */
 	private ArrayList sources = new ArrayList();
 
-	/** The data source that worked and was used - or null if no luck */
+	/**
+	 * The data source that worked and was used - or null if no luck
+	 */
 	private LoadableImageData picked;
 
 	/**
 	 * Add a potentional source of image data
-	 * 
+	 * <p>
 	 * @param data The data source to try
 	 */
 	public void add(LoadableImageData data) {
@@ -48,7 +51,8 @@ public class CompositeImageData implements LoadableImageData {
 	/**
 	 * @see org.newdawn.slick.opengl.LoadableImageData#loadImage(java.io.InputStream, boolean, boolean, int[])
 	 */
-	public ByteBuffer loadImage(InputStream is, boolean flipped, boolean forceAlpha, int[] transparent) throws IOException {
+	public ByteBuffer loadImage(InputStream is, boolean flipped, boolean forceAlpha, int[] transparent) throws
+			IOException {
 		CompositeIOException exception = new CompositeIOException();
 		ByteBuffer buffer = null;
 
@@ -64,7 +68,8 @@ public class CompositeImageData implements LoadableImageData {
 				buffer = data.loadImage(in, flipped, forceAlpha, transparent);
 				picked = data;
 				break;
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				Log.warn(sources.get(i).getClass() + " failed to read the data", e);
 				exception.addException(e);
 			}
@@ -78,8 +83,7 @@ public class CompositeImageData implements LoadableImageData {
 	}
 
 	/**
-	 * Check the state of the image data and throw a
-	 * runtime exception if theres a problem
+	 * Check the state of the image data and throw a runtime exception if theres a problem
 	 */
 	private void checkPicked() {
 		if (picked == null) {

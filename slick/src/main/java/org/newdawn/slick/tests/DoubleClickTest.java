@@ -8,7 +8,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * The double click testing
- * 
+ * <p>
  * @author kevin
  */
 public class DoubleClickTest extends BasicGame {
@@ -20,7 +20,9 @@ public class DoubleClickTest extends BasicGame {
 		super("Double Click Test");
 	}
 
-	/** The test message to display */
+	/**
+	 * The test message to display
+	 */
 	private String message = "Click or Double Click";
 
 	/**
@@ -44,7 +46,7 @@ public class DoubleClickTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test, not used here
 	 */
 	public static void main(String[] argv) {
@@ -52,7 +54,8 @@ public class DoubleClickTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new DoubleClickTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

@@ -20,70 +20,110 @@ import org.newdawn.slick.util.ResourceLoader;
 
 /**
  * Responsible for holding and playing the sounds used in the game.
- * 
+ * <p>
  * @author Kevin Glass
- * @author Rockstar setVolume cleanup 
+ * @author Rockstar setVolume cleanup
  */
 public class SoundStore {
 
-	/** The single instance of this class */
+	/**
+	 * The single instance of this class
+	 */
 	private static SoundStore store = new SoundStore();
 
-	/** True if sound effects are turned on */
+	/**
+	 * True if sound effects are turned on
+	 */
 	private boolean sounds;
 
-	/** True if music is turned on */
+	/**
+	 * True if music is turned on
+	 */
 	private boolean music;
 
-	/** True if sound initialisation succeeded */
+	/**
+	 * True if sound initialisation succeeded
+	 */
 	private boolean soundWorks;
 
-	/** The number of sound sources enabled - default 8 */
+	/**
+	 * The number of sound sources enabled - default 8
+	 */
 	private int sourceCount;
 
-	/** The map of references to IDs of previously loaded sounds */
+	/**
+	 * The map of references to IDs of previously loaded sounds
+	 */
 	private HashMap loaded = new HashMap();
 
-	/** The ID of the buffer containing the music currently being played */
+	/**
+	 * The ID of the buffer containing the music currently being played
+	 */
 	private int currentMusic = -1;
 
-	/** The OpenGL AL sound sources in use */
+	/**
+	 * The OpenGL AL sound sources in use
+	 */
 	private IntBuffer sources;
 
-	/** The next source to be used for sound effects */
+	/**
+	 * The next source to be used for sound effects
+	 */
 	private int nextSource;
 
-	/** True if the sound system has been initialise */
+	/**
+	 * True if the sound system has been initialise
+	 */
 	private boolean inited = false;
 
-	/** The MODSound to be updated */
+	/**
+	 * The MODSound to be updated
+	 */
 	private MODSound mod;
 
-	/** The stream to be updated */
+	/**
+	 * The stream to be updated
+	 */
 	private OpenALStreamPlayer stream;
 
-	/** The global music volume setting */
+	/**
+	 * The global music volume setting
+	 */
 	private float musicVolume = 1.0f;
 
-	/** The global sound fx volume setting */
+	/**
+	 * The global sound fx volume setting
+	 */
 	private float soundVolume = 1.0f;
 
-	/** The volume given for the last current music */
+	/**
+	 * The volume given for the last current music
+	 */
 	private float lastCurrentMusicVolume = 1.0f;
 
-	/** True if the music is paused */
+	/**
+	 * True if the music is paused
+	 */
 	private boolean paused;
 
-	/** True if we're returning deferred versions of resources */
+	/**
+	 * True if we're returning deferred versions of resources
+	 */
 	private boolean deferred;
 
-	/** The buffer used to set the velocity of a source */
+	/**
+	 * The buffer used to set the velocity of a source
+	 */
 	private FloatBuffer sourceVel = BufferUtils.createFloatBuffer(3).put(new float[]{0.0f, 0.0f, 0.0f});
 
-	/** The buffer used to set the position of a source */
+	/**
+	 * The buffer used to set the position of a source
+	 */
 	private FloatBuffer sourcePos = BufferUtils.createFloatBuffer(3);
 
-	/** The maximum number of sources */
+	/**
+	 * The maximum number of sources
+	 */
 	private int maxSources = 64;
 
 	/**
@@ -107,9 +147,8 @@ public class SoundStore {
 	}
 
 	/**
-	 * True if we should only record the request to load in the intention
-	 * of loading the sound later
-	 * 
+	 * True if we should only record the request to load in the intention of loading the sound later
+	 * <p>
 	 * @param deferred True if the we should load a token
 	 */
 	public void setDeferredLoading(boolean deferred) {
@@ -118,7 +157,7 @@ public class SoundStore {
 
 	/**
 	 * Check if we're using deferred loading
-	 * 
+	 * <p>
 	 * @return True if we're loading deferred sounds
 	 */
 	public boolean isDeferredLoading() {
@@ -127,7 +166,7 @@ public class SoundStore {
 
 	/**
 	 * Inidicate whether music should be playing
-	 * 
+	 * <p>
 	 * @param music True if music should be played
 	 */
 	public void setMusicOn(boolean music) {
@@ -144,7 +183,7 @@ public class SoundStore {
 
 	/**
 	 * Check if music should currently be playing
-	 * 
+	 * <p>
 	 * @return True if music is currently playing
 	 */
 	public boolean isMusicOn() {
@@ -153,7 +192,7 @@ public class SoundStore {
 
 	/**
 	 * Set the music volume
-	 * 
+	 * <p>
 	 * @param volume The volume for music
 	 */
 	public void setMusicVolume(float volume) {
@@ -172,7 +211,7 @@ public class SoundStore {
 
 	/**
 	 * Get the volume scalar of the music that is currently playing.
-	 * 
+	 * <p>
 	 * @return The volume of the music currently playing
 	 */
 	public float getCurrentMusicVolume() {
@@ -181,7 +220,7 @@ public class SoundStore {
 
 	/**
 	 * Set the music volume of the current playing music. Does NOT affect the global volume
-	 * 
+	 * <p>
 	 * @param volume The volume for the current playing music
 	 */
 	public void setCurrentMusicVolume(float volume) {
@@ -200,7 +239,7 @@ public class SoundStore {
 
 	/**
 	 * Set the sound volume
-	 * 
+	 * <p>
 	 * @param volume The volume for sound fx
 	 */
 	public void setSoundVolume(float volume) {
@@ -212,7 +251,7 @@ public class SoundStore {
 
 	/**
 	 * Check if sound works at all
-	 * 
+	 * <p>
 	 * @return True if sound works at all
 	 */
 	public boolean soundWorks() {
@@ -221,7 +260,7 @@ public class SoundStore {
 
 	/**
 	 * Check if music is currently enabled
-	 * 
+	 * <p>
 	 * @return True if music is currently enabled
 	 */
 	public boolean musicOn() {
@@ -230,7 +269,7 @@ public class SoundStore {
 
 	/**
 	 * Get the volume for sounds
-	 * 
+	 * <p>
 	 * @return The volume for sounds
 	 */
 	public float getSoundVolume() {
@@ -239,7 +278,7 @@ public class SoundStore {
 
 	/**
 	 * Get the volume for music
-	 * 
+	 * <p>
 	 * @return The volume for music
 	 */
 	public float getMusicVolume() {
@@ -248,8 +287,9 @@ public class SoundStore {
 
 	/**
 	 * Get the ID of a given source
-	 * 
+	 * <p>
 	 * @param index The ID of a given source
+	 * <p>
 	 * @return The ID of the given source
 	 */
 	public int getSource(int index) {
@@ -263,8 +303,8 @@ public class SoundStore {
 	}
 
 	/**
-	 * Indicate whether sound effects should be played 
-	 * 
+	 * Indicate whether sound effects should be played
+	 * <p>
 	 * @param sounds True if sound effects should be played
 	 */
 	public void setSoundsOn(boolean sounds) {
@@ -275,7 +315,7 @@ public class SoundStore {
 
 	/**
 	 * Check if sound effects are currently enabled
-	 * 
+	 * <p>
 	 * @return True if sound effects are currently enabled
 	 */
 	public boolean soundsOn() {
@@ -283,9 +323,8 @@ public class SoundStore {
 	}
 
 	/**
-	 * Set the maximum number of concurrent sound effects that will be 
-	 * attempted
-	 * 
+	 * Set the maximum number of concurrent sound effects that will be attempted
+	 * <p>
 	 * @param max The maximum number of sound effects/music to mix
 	 */
 	public void setMaxSources(int max) {
@@ -293,8 +332,7 @@ public class SoundStore {
 	}
 
 	/**
-	 * Initialise the sound effects stored. This must be called
-	 * before anything else will work
+	 * Initialise the sound effects stored. This must be called before anything else will work
 	 */
 	public void init() {
 		if (inited) {
@@ -311,7 +349,8 @@ public class SoundStore {
 					sounds = true;
 					music = true;
 					Log.info("- Sound works");
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					Log.error("Sound initialisation failure.");
 					Log.error(e);
 					soundWorks = false;
@@ -340,7 +379,8 @@ public class SoundStore {
 							break;
 						}
 					}
-				} catch (OpenALException e) {
+				}
+				catch (OpenALException e) {
 					// expected at the end
 					break;
 				}
@@ -373,7 +413,7 @@ public class SoundStore {
 
 	/**
 	 * Stop a particular sound source
-	 * 
+	 * <p>
 	 * @param index The index of the source to stop
 	 */
 	void stopSource(int index) {
@@ -381,13 +421,13 @@ public class SoundStore {
 	}
 
 	/**
-	 * Play the specified buffer as a sound effect with the specified
-	 * pitch and gain.
-	 * 
+	 * Play the specified buffer as a sound effect with the specified pitch and gain.
+	 * <p>
 	 * @param buffer The ID of the buffer to play
 	 * @param pitch The pitch to play at
 	 * @param gain The gain to play at
 	 * @param loop True if the sound should loop
+	 * <p>
 	 * @return source The source that will be used
 	 */
 	int playAsSound(int buffer, float pitch, float gain, boolean loop) {
@@ -395,9 +435,8 @@ public class SoundStore {
 	}
 
 	/**
-	 * Play the specified buffer as a sound effect with the specified
-	 * pitch and gain.
-	 * 
+	 * Play the specified buffer as a sound effect with the specified pitch and gain.
+	 * <p>
 	 * @param buffer The ID of the buffer to play
 	 * @param pitch The pitch to play at
 	 * @param gain The gain to play at
@@ -405,6 +444,7 @@ public class SoundStore {
 	 * @param x The x position to play the sound from
 	 * @param y The y position to play the sound from
 	 * @param z The z position to play the sound from
+	 * <p>
 	 * @return source The source that will be used
 	 */
 	int playAsSoundAt(int buffer, float pitch, float gain, boolean loop, float x, float y, float z) {
@@ -446,8 +486,9 @@ public class SoundStore {
 
 	/**
 	 * Check if a particular source is playing
-	 * 
+	 * <p>
 	 * @param index The index of the source to check
+	 * <p>
 	 * @return True if the source is playing
 	 */
 	boolean isPlaying(int index) {
@@ -458,7 +499,7 @@ public class SoundStore {
 
 	/**
 	 * Find a free sound source
-	 * 
+	 * <p>
 	 * @return The index of the free sound source
 	 */
 	private int findFreeSource() {
@@ -475,7 +516,7 @@ public class SoundStore {
 
 	/**
 	 * Play the specified buffer as music (i.e. use the music channel)
-	 * 
+	 * <p>
 	 * @param buffer The buffer to be played
 	 * @param pitch The pitch to play the music at
 	 * @param gain The gaing to play the music at
@@ -509,7 +550,7 @@ public class SoundStore {
 
 	/**
 	 * Get the OpenAL source used for music
-	 * 
+	 * <p>
 	 * @return The open al source used for music
 	 */
 	private int getMusicSource() {
@@ -518,7 +559,7 @@ public class SoundStore {
 
 	/**
 	 * Set the pitch at which the current music is being played
-	 * 
+	 * <p>
 	 * @param pitch The pitch at which the current music is being played
 	 */
 	public void setMusicPitch(float pitch) {
@@ -548,10 +589,10 @@ public class SoundStore {
 	}
 
 	/**
-	 * Check if the supplied player is currently being polled by this
-	 * sound store.
-	 * 
+	 * Check if the supplied player is currently being polled by this sound store.
+	 * <p>
 	 * @param player The player to check
+	 * <p>
 	 * @return True if this player is currently in use by this sound store
 	 */
 	boolean isPlaying(OpenALStreamPlayer player) {
@@ -560,9 +601,11 @@ public class SoundStore {
 
 	/**
 	 * Get a MOD sound (mod/xm etc)
-	 * 
+	 * <p>
 	 * @param ref The refernece to the mod to load
-	 * @return The sound for play back 
+	 * <p>
+	 * @return The sound for play back
+	 * <p>
 	 * @throws IOException Indicates a failure to read the data
 	 */
 	public Audio getMOD(String ref) throws IOException {
@@ -571,9 +614,11 @@ public class SoundStore {
 
 	/**
 	 * Get a MOD sound (mod/xm etc)
-	 * 
+	 * <p>
 	 * @param in The stream to the MOD to load
-	 * @return The sound for play back 
+	 * <p>
+	 * @return The sound for play back
+	 * <p>
 	 * @throws IOException Indicates a failure to read the data
 	 */
 	public Audio getMOD(InputStream in) throws IOException {
@@ -582,10 +627,12 @@ public class SoundStore {
 
 	/**
 	 * Get a MOD sound (mod/xm etc)
-	 * 
+	 * <p>
 	 * @param ref The stream to the MOD to load
 	 * @param in The stream to the MOD to load
-	 * @return The sound for play back 
+	 * <p>
+	 * @return The sound for play back
+	 * <p>
 	 * @throws IOException Indicates a failure to read the data
 	 */
 	public Audio getMOD(String ref, InputStream in) throws IOException {
@@ -604,9 +651,11 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified AIF file
-	 * 
+	 * <p>
 	 * @param ref The reference to the AIF file in the classpath
+	 * <p>
 	 * @return The Sound read from the AIF file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the AIF
 	 */
 	public Audio getAIF(String ref) throws IOException {
@@ -615,9 +664,11 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified AIF file
-	 * 
+	 * <p>
 	 * @param in The stream to the MOD to load
+	 * <p>
 	 * @return The Sound read from the AIF file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the AIF
 	 */
 	public Audio getAIF(InputStream in) throws IOException {
@@ -626,10 +677,12 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified AIF file
-	 * 
+	 * <p>
 	 * @param ref The reference to the AIF file in the classpath
 	 * @param in The stream to the AIF to load
+	 * <p>
 	 * @return The Sound read from the AIF file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the AIF
 	 */
 	public Audio getAIF(String ref, InputStream in) throws IOException {
@@ -659,7 +712,8 @@ public class SoundStore {
 
 				loaded.put(ref, new Integer(buf.get(0)));
 				buffer = buf.get(0);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				Log.error(e);
 				IOException x = new IOException("Failed to load: " + ref);
 				x.initCause(e);
@@ -677,9 +731,11 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified WAV file
-	 * 
+	 * <p>
 	 * @param ref The reference to the WAV file in the classpath
+	 * <p>
 	 * @return The Sound read from the WAV file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the WAV
 	 */
 	public Audio getWAV(String ref) throws IOException {
@@ -688,9 +744,11 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified WAV file
-	 * 
+	 * <p>
 	 * @param in The stream to the WAV to load
+	 * <p>
 	 * @return The Sound read from the WAV file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the WAV
 	 */
 	public Audio getWAV(InputStream in) throws IOException {
@@ -699,10 +757,12 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified WAV file
-	 * 
+	 * <p>
 	 * @param ref The reference to the WAV file in the classpath
 	 * @param in The stream to the WAV to load
+	 * <p>
 	 * @return The Sound read from the WAV file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the WAV
 	 */
 	public Audio getWAV(String ref, InputStream in) throws IOException {
@@ -730,7 +790,8 @@ public class SoundStore {
 
 				loaded.put(ref, new Integer(buf.get(0)));
 				buffer = buf.get(0);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				Log.error(e);
 				IOException x = new IOException("Failed to load: " + ref);
 				x.initCause(e);
@@ -748,9 +809,11 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified OGG file
-	 * 
+	 * <p>
 	 * @param ref The reference to the OGG file in the classpath
+	 * <p>
 	 * @return The Sound read from the OGG file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the OGG
 	 */
 	public Audio getOggStream(String ref) throws IOException {
@@ -773,9 +836,11 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified OGG file
-	 * 
+	 * <p>
 	 * @param ref The reference to the OGG file in the classpath
+	 * <p>
 	 * @return The Sound read from the OGG file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the OGG
 	 */
 	public Audio getOggStream(URL ref) throws IOException {
@@ -798,9 +863,11 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified OGG file
-	 * 
+	 * <p>
 	 * @param ref The reference to the OGG file in the classpath
+	 * <p>
 	 * @return The Sound read from the OGG file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the OGG
 	 */
 	public Audio getOgg(String ref) throws IOException {
@@ -809,9 +876,11 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified OGG file
-	 * 
+	 * <p>
 	 * @param in The stream to the OGG to load
+	 * <p>
 	 * @return The Sound read from the OGG file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the OGG
 	 */
 	public Audio getOgg(InputStream in) throws IOException {
@@ -820,10 +889,12 @@ public class SoundStore {
 
 	/**
 	 * Get the Sound based on a specified OGG file
-	 * 
+	 * <p>
 	 * @param ref The reference to the OGG file in the classpath
 	 * @param in The stream to the OGG to load
+	 * <p>
 	 * @return The Sound read from the OGG file
+	 * <p>
 	 * @throws IOException Indicates a failure to load the OGG
 	 */
 	public Audio getOgg(String ref, InputStream in) throws IOException {
@@ -854,7 +925,8 @@ public class SoundStore {
 				loaded.put(ref, new Integer(buf.get(0)));
 
 				buffer = buf.get(0);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				Log.error(e);
 				Sys.alert("Error", "Failed to load: " + ref + " - " + e.getMessage());
 				throw new IOException("Unable to load: " + ref);
@@ -870,7 +942,7 @@ public class SoundStore {
 
 	/**
 	 * Set the mod thats being streamed if any
-	 * 
+	 * <p>
 	 * @param sound The mod being streamed
 	 */
 	void setMOD(MODSound sound) {
@@ -890,7 +962,7 @@ public class SoundStore {
 
 	/**
 	 * Set the stream being played
-	 * 
+	 * <p>
 	 * @param stream The stream being streamed
 	 */
 	void setStream(OpenALStreamPlayer stream) {
@@ -908,7 +980,7 @@ public class SoundStore {
 
 	/**
 	 * Poll the streaming system
-	 * 
+	 * <p>
 	 * @param delta The amount of time passed since last poll (in milliseconds)
 	 */
 	public void poll(int delta) {
@@ -923,7 +995,8 @@ public class SoundStore {
 			if (mod != null) {
 				try {
 					mod.poll();
-				} catch (OpenALException e) {
+				}
+				catch (OpenALException e) {
 					Log.error("Error with OpenGL MOD Player on this this platform");
 					Log.error(e);
 					mod = null;
@@ -932,7 +1005,8 @@ public class SoundStore {
 			if (stream != null) {
 				try {
 					stream.update();
-				} catch (OpenALException e) {
+				}
+				catch (OpenALException e) {
 					Log.error("Error with OpenGL Streaming Player on this this platform");
 					Log.error(e);
 					mod = null;
@@ -943,7 +1017,7 @@ public class SoundStore {
 
 	/**
 	 * Check if the music is currently playing
-	 * 
+	 * <p>
 	 * @return True if the music is playing
 	 */
 	public boolean isMusicPlaying() {
@@ -957,7 +1031,7 @@ public class SoundStore {
 
 	/**
 	 * Get the single instance of this class
-	 * 
+	 * <p>
 	 * @return The single instnace of this class
 	 */
 	public static SoundStore get() {
@@ -965,10 +1039,9 @@ public class SoundStore {
 	}
 
 	/**
-	 * Stop a playing sound identified by the ID returned from playing. This utility method
-	 * should only be used when needing to stop sound effects that may have been played 
-	 * more than once and need to be explicitly stopped. 
-	 * 
+	 * Stop a playing sound identified by the ID returned from playing. This utility method should only be used when
+	 * needing to stop sound effects that may have been played more than once and need to be explicitly stopped.
+	 * <p>
 	 * @param id The ID of the underlying OpenAL source as returned from playAsSoundEffect
 	 */
 	public void stopSoundEffect(int id) {
@@ -976,9 +1049,8 @@ public class SoundStore {
 	}
 
 	/**
-	 * Retrieve the number of OpenAL sound sources that have been
-	 * determined at initialisation.
-	 * 
+	 * Retrieve the number of OpenAL sound sources that have been determined at initialisation.
+	 * <p>
 	 * @return The number of sources available
 	 */
 	public int getSourceCount() {

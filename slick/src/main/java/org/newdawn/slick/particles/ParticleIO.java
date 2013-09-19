@@ -32,20 +32,20 @@ import org.w3c.dom.NodeList;
 
 /**
  * Utility methods to (de)serialize ConfigureEmitters to and from XML
- * 
+ * <p>
  * @author kevin
  */
 public class ParticleIO {
 
 	/**
 	 * Load a set of configured emitters into a single system
-	 * 
-	 * @param ref
-	 *            The reference to the XML file (file or classpath)
+	 * <p>
+	 * @param ref The reference to the XML file (file or classpath)
 	 * @param mask
+	 * <p>
 	 * @return A configured particle system
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ParticleSystem loadConfiguredSystem(String ref, Color mask)
 			throws IOException {
@@ -55,12 +55,12 @@ public class ParticleIO {
 
 	/**
 	 * Load a set of configured emitters into a single system
-	 * 
-	 * @param ref
-	 *            The reference to the XML file (file or classpath)
+	 * <p>
+	 * @param ref The reference to the XML file (file or classpath)
+	 * <p>
 	 * @return A configured particle system
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ParticleSystem loadConfiguredSystem(String ref)
 			throws IOException {
@@ -70,12 +70,12 @@ public class ParticleIO {
 
 	/**
 	 * Load a set of configured emitters into a single system
-	 * 
-	 * @param ref
-	 *            The XML file to read
+	 * <p>
+	 * @param ref The XML file to read
+	 * <p>
 	 * @return A configured particle system
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ParticleSystem loadConfiguredSystem(File ref)
 			throws IOException {
@@ -84,13 +84,13 @@ public class ParticleIO {
 
 	/**
 	 * Load a set of configured emitters into a single system
-	 * 
-	 * @param ref
-	 *            The stream to read the XML from
+	 * <p>
+	 * @param ref The stream to read the XML from
 	 * @param mask The mask used to make the particle image transparent
+	 * <p>
 	 * @return A configured particle system
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ParticleSystem loadConfiguredSystem(InputStream ref, Color mask)
 			throws IOException {
@@ -99,12 +99,12 @@ public class ParticleIO {
 
 	/**
 	 * Load a set of configured emitters into a single system
-	 * 
-	 * @param ref
-	 *            The stream to read the XML from
+	 * <p>
+	 * @param ref The stream to read the XML from
+	 * <p>
 	 * @return A configured particle system
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ParticleSystem loadConfiguredSystem(InputStream ref)
 			throws IOException {
@@ -113,72 +113,68 @@ public class ParticleIO {
 
 	/**
 	 * Load a set of configured emitters into a single system
-	 * 
-	 * @param ref
-	 *            The reference to the XML file (file or classpath)
+	 * <p>
+	 * @param ref The reference to the XML file (file or classpath)
+	 * <p>
 	 * @return A configured particle system
-	 * @param factory
-	 *            The factory used to create the emitter than will be poulated
-	 *            with loaded data.
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @param factory The factory used to create the emitter than will be poulated with loaded data.
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ParticleSystem loadConfiguredSystem(String ref,
-			ConfigurableEmitterFactory factory) throws IOException {
+													  ConfigurableEmitterFactory factory) throws IOException {
 		return loadConfiguredSystem(ResourceLoader.getResourceAsStream(ref),
 				factory, null, null);
 	}
 
 	/**
 	 * Load a set of configured emitters into a single system
-	 * 
-	 * @param ref
-	 *            The XML file to read
+	 * <p>
+	 * @param ref The XML file to read
+	 * <p>
 	 * @return A configured particle system
-	 * @param factory
-	 *            The factory used to create the emitter than will be poulated
-	 *            with loaded data.
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @param factory The factory used to create the emitter than will be poulated with loaded data.
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ParticleSystem loadConfiguredSystem(File ref,
-			ConfigurableEmitterFactory factory) throws IOException {
+													  ConfigurableEmitterFactory factory) throws IOException {
 		return loadConfiguredSystem(new FileInputStream(ref), factory, null, null);
 	}
 
 	/**
 	 * Load a set of configured emitters into a single system
-	 * 
-	 * @param ref
-	 *            The stream to read the XML from
+	 * <p>
+	 * @param ref The stream to read the XML from
+	 * <p>
 	 * @return A configured particle system
-	 * @param factory
-	 *            The factory used to create the emitter than will be poulated
-	 *            with loaded data.
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @param factory The factory used to create the emitter than will be poulated with loaded data.
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ParticleSystem loadConfiguredSystem(InputStream ref,
-			ConfigurableEmitterFactory factory) throws IOException {
+													  ConfigurableEmitterFactory factory) throws IOException {
 		return loadConfiguredSystem(ref, factory, null, null);
 	}
 
 	/**
 	 * Load a set of configured emitters into a single system
-	 *
-	 * @param ref
-	 *            The stream to read the XML from
-	 * @param factory
-	 *            The factory used to create the emitter than will be poulated
-	 *            with loaded data.
+	 * <p>
+	 * @param ref The stream to read the XML from
+	 * @param factory The factory used to create the emitter than will be poulated with loaded data.
 	 * @param system The particle system that will be loaded into
 	 * @param mask The mask used to make the image background transparent
+	 * <p>
 	 * @return A configured particle system
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ParticleSystem loadConfiguredSystem(InputStream ref,
-			ConfigurableEmitterFactory factory, ParticleSystem system, Color mask) throws IOException {
+													  ConfigurableEmitterFactory factory, ParticleSystem system,
+													  Color mask) throws IOException {
 		if (factory == null) {
 			factory = new ConfigurableEmitterFactory() {
 				public ConfigurableEmitter createEmitter(String name) {
@@ -221,10 +217,12 @@ public class ParticleIO {
 
 			system.setRemoveCompletedEmitters(false);
 			return system;
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			Log.error(e);
 			throw e;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new IOException("Unable to load particle system config");
 		}
@@ -232,13 +230,11 @@ public class ParticleIO {
 
 	/**
 	 * Save a particle system with only ConfigurableEmitters in to an XML file
-	 * 
-	 * @param file
-	 *            The file to save to
-	 * @param system
-	 *            The system to store
-	 * @throws IOException
-	 *             Indicates a failure to save or encode the system XML.
+	 * <p>
+	 * @param file The file to save to
+	 * @param system The system to store
+	 * <p>
+	 * @throws IOException Indicates a failure to save or encode the system XML.
 	 */
 	public static void saveConfiguredSystem(File file, ParticleSystem system)
 			throws IOException {
@@ -247,16 +243,14 @@ public class ParticleIO {
 
 	/**
 	 * Save a particle system with only ConfigurableEmitters in to an XML file
-	 * 
-	 * @param out
-	 *            The location to which we'll save
-	 * @param system
-	 *            The system to store
-	 * @throws IOException
-	 *             Indicates a failure to save or encode the system XML.
+	 * <p>
+	 * @param out The location to which we'll save
+	 * @param system The system to store
+	 * <p>
+	 * @throws IOException Indicates a failure to save or encode the system XML.
 	 */
 	public static void saveConfiguredSystem(OutputStream out,
-			ParticleSystem system) throws IOException {
+											ParticleSystem system) throws IOException {
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder();
@@ -292,7 +286,8 @@ public class ParticleIO {
 			xformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
 			xformer.transform(source, result);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new IOException("Unable to save configured particle system");
 		}
@@ -300,13 +295,12 @@ public class ParticleIO {
 
 	/**
 	 * Load a single emitter from an XML file
-	 * 
-	 * @param ref
-	 *            The reference to the emitter XML file to load (classpath or
-	 *            file)
+	 * <p>
+	 * @param ref The reference to the emitter XML file to load (classpath or file)
+	 * <p>
 	 * @return The configured emitter
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ConfigurableEmitter loadEmitter(String ref)
 			throws IOException {
@@ -315,12 +309,12 @@ public class ParticleIO {
 
 	/**
 	 * Load a single emitter from an XML file
-	 * 
-	 * @param ref
-	 *            The XML file to read
+	 * <p>
+	 * @param ref The XML file to read
+	 * <p>
 	 * @return The configured emitter
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ConfigurableEmitter loadEmitter(File ref) throws IOException {
 		return loadEmitter(new FileInputStream(ref), null);
@@ -329,12 +323,12 @@ public class ParticleIO {
 
 	/**
 	 * Load a single emitter from an XML file
-	 * 
-	 * @param ref
-	 *            The stream to read the XML from
+	 * <p>
+	 * @param ref The stream to read the XML from
+	 * <p>
 	 * @return The configured emitter
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ConfigurableEmitter loadEmitter(InputStream ref)
 			throws IOException {
@@ -343,54 +337,49 @@ public class ParticleIO {
 
 	/**
 	 * Load a single emitter from an XML file
-	 * 
-	 * @param ref
-	 *            The reference to the emitter XML file to load (classpath or
-	 *            file)
+	 * <p>
+	 * @param ref The reference to the emitter XML file to load (classpath or file)
+	 * <p>
 	 * @return The configured emitter
-	 * @param factory
-	 *            The factory used to create the emitter than will be poulated
-	 *            with loaded data.
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @param factory The factory used to create the emitter than will be poulated with loaded data.
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ConfigurableEmitter loadEmitter(String ref,
-			ConfigurableEmitterFactory factory) throws IOException {
+												  ConfigurableEmitterFactory factory) throws IOException {
 		return loadEmitter(ResourceLoader.getResourceAsStream(ref), factory);
 	}
 
 	/**
 	 * Load a single emitter from an XML file
-	 * 
-	 * @param ref
-	 *            The XML file to read
+	 * <p>
+	 * @param ref The XML file to read
+	 * <p>
 	 * @return The configured emitter
-	 * @param factory
-	 *            The factory used to create the emitter than will be poulated
-	 *            with loaded data.
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @param factory The factory used to create the emitter than will be poulated with loaded data.
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ConfigurableEmitter loadEmitter(File ref,
-			ConfigurableEmitterFactory factory) throws IOException {
+												  ConfigurableEmitterFactory factory) throws IOException {
 		return loadEmitter(new FileInputStream(ref), factory);
 
 	}
 
 	/**
 	 * Load a single emitter from an XML file
-	 * 
-	 * @param ref
-	 *            The stream to read the XML from
-	 * @param factory
-	 *            The factory used to create the emitter than will be poulated
-	 *            with loaded data.
+	 * <p>
+	 * @param ref The stream to read the XML from
+	 * @param factory The factory used to create the emitter than will be poulated with loaded data.
+	 * <p>
 	 * @return The configured emitter
-	 * @throws IOException
-	 *             Indicates a failure to find, read or parse the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to find, read or parse the XML file
 	 */
 	public static ConfigurableEmitter loadEmitter(InputStream ref,
-			ConfigurableEmitterFactory factory) throws IOException {
+												  ConfigurableEmitterFactory factory) throws IOException {
 		if (factory == null) {
 			factory = new ConfigurableEmitterFactory() {
 				public ConfigurableEmitter createEmitter(String name) {
@@ -412,10 +401,12 @@ public class ParticleIO {
 			elementToEmitter(document.getDocumentElement(), emitter);
 
 			return emitter;
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			Log.error(e);
 			throw e;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new IOException("Unable to load emitter");
 		}
@@ -423,13 +414,11 @@ public class ParticleIO {
 
 	/**
 	 * Save a single emitter to the XML file
-	 * 
-	 * @param file
-	 *            The file to save the emitter to
-	 * @param emitter
-	 *            The emitter to store to the XML file
-	 * @throws IOException
-	 *             Indicates a failure to write or encode the XML
+	 * <p>
+	 * @param file The file to save the emitter to
+	 * @param emitter The emitter to store to the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to write or encode the XML
 	 */
 	public static void saveEmitter(File file, ConfigurableEmitter emitter)
 			throws IOException {
@@ -438,13 +427,11 @@ public class ParticleIO {
 
 	/**
 	 * Save a single emitter to the XML file
-	 * 
-	 * @param out
-	 *            The location to which we should save
-	 * @param emitter
-	 *            The emitter to store to the XML file
-	 * @throws IOException
-	 *             Indicates a failure to write or encode the XML
+	 * <p>
+	 * @param out The location to which we should save
+	 * @param emitter The emitter to store to the XML file
+	 * <p>
+	 * @throws IOException Indicates a failure to write or encode the XML
 	 */
 	public static void saveEmitter(OutputStream out, ConfigurableEmitter emitter)
 			throws IOException {
@@ -463,7 +450,8 @@ public class ParticleIO {
 			xformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
 			xformer.transform(source, result);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new IOException("Failed to save emitter");
 		}
@@ -471,11 +459,10 @@ public class ParticleIO {
 
 	/**
 	 * Get the first child named as specified from the passed XML element
-	 * 
-	 * @param element
-	 *            The element whose children are interogated
-	 * @param name
-	 *            The name of the element to retrieve
+	 * <p>
+	 * @param element The element whose children are interogated
+	 * @param name The name of the element to retrieve
+	 * <p>
 	 * @return The requested element
 	 */
 	private static Element getFirstNamedElement(Element element, String name) {
@@ -489,14 +476,12 @@ public class ParticleIO {
 
 	/**
 	 * Convert from an XML element to an configured emitter
-	 * 
-	 * @param element
-	 *            The XML element to convert
-	 * @param emitter
-	 *            The emitter that will be configured based on the XML
+	 * <p>
+	 * @param element The XML element to convert
+	 * @param emitter The emitter that will be configured based on the XML
 	 */
 	private static void elementToEmitter(Element element,
-			ConfigurableEmitter emitter) {
+										 ConfigurableEmitter emitter) {
 		emitter.name = element.getAttribute("name");
 		emitter.setImageName(element.getAttribute("imageName"));
 
@@ -579,15 +564,14 @@ public class ParticleIO {
 
 	/**
 	 * Convert from an emitter to a XML element description
-	 * 
-	 * @param document
-	 *            The document the element will be part of
-	 * @param emitter
-	 *            The emitter to convert
+	 * <p>
+	 * @param document The document the element will be part of
+	 * @param emitter The emitter to convert
+	 * <p>
 	 * @return The XML element based on the configured emitter
 	 */
 	private static Element emitterToElement(Document document,
-			ConfigurableEmitter emitter) {
+											ConfigurableEmitter emitter) {
 		Element root = document.createElement("emitter");
 		root.setAttribute("name", emitter.name);
 		root.setAttribute("imageName", emitter.imageName == null ? ""
@@ -673,17 +657,15 @@ public class ParticleIO {
 
 	/**
 	 * Create an XML element based on a configured range
-	 * 
-	 * @param document
-	 *            The document the element will be part of
-	 * @param name
-	 *            The name to give the new element
-	 * @param range
-	 *            The configured range
+	 * <p>
+	 * @param document The document the element will be part of
+	 * @param name The name to give the new element
+	 * @param range The configured range
+	 * <p>
 	 * @return A configured XML element on the range
 	 */
 	private static Element createRangeElement(Document document, String name,
-			ConfigurableEmitter.Range range) {
+											  ConfigurableEmitter.Range range) {
 		Element element = document.createElement(name);
 		element.setAttribute("min", "" + range.getMin());
 		element.setAttribute("max", "" + range.getMax());
@@ -694,17 +676,15 @@ public class ParticleIO {
 
 	/**
 	 * Create an XML element based on a configured value
-	 * 
-	 * @param document
-	 *            The document the element will be part of
-	 * @param name
-	 *            The name to give the new element
-	 * @param value
-	 *            The configured value
+	 * <p>
+	 * @param document The document the element will be part of
+	 * @param name The name to give the new element
+	 * @param value The configured value
+	 * <p>
 	 * @return A configure XML element based on the value
 	 */
 	private static Element createValueElement(Document document, String name,
-			ConfigurableEmitter.Value value) {
+											  ConfigurableEmitter.Value value) {
 		Element element = document.createElement(name);
 
 		// void: now writes the value type
@@ -744,14 +724,12 @@ public class ParticleIO {
 
 	/**
 	 * Parse an XML element into a configured range
-	 * 
-	 * @param element
-	 *            The XML element to parse
-	 * @param range
-	 *            The range to configure based on the XML
+	 * <p>
+	 * @param element The XML element to parse
+	 * @param range The range to configure based on the XML
 	 */
 	private static void parseRangeElement(Element element,
-			ConfigurableEmitter.Range range) {
+										  ConfigurableEmitter.Range range) {
 		if (element == null) {
 			return;
 		}
@@ -762,14 +740,12 @@ public class ParticleIO {
 
 	/**
 	 * Parse an XML element into a configured value
-	 * 
-	 * @param element
-	 *            The XML element to parse
-	 * @param value
-	 *            The value to configure based on the XML
+	 * <p>
+	 * @param element The XML element to parse
+	 * @param value The value to configure based on the XML
 	 */
 	private static void parseValueElement(Element element,
-			ConfigurableEmitter.Value value) {
+										  ConfigurableEmitter.Value value) {
 		if (element == null) {
 			return;
 		}

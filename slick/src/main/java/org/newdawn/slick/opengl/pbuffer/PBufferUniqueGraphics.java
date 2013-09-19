@@ -15,23 +15,27 @@ import org.newdawn.slick.opengl.InternalTextureLoader;
 import org.newdawn.slick.util.Log;
 
 /**
- * A graphics implementation that renders to a PBuffer using a unique context, i.e.
- * without render to texture
- *
+ * A graphics implementation that renders to a PBuffer using a unique context, i.e. without render to texture
+ * <p>
  * @author kevin
  */
 public class PBufferUniqueGraphics extends Graphics {
 
-	/** The pbuffer we're going to render to */
+	/**
+	 * The pbuffer we're going to render to
+	 */
 	private Pbuffer pbuffer;
 
-	/** The image we're we're sort of rendering to */
+	/**
+	 * The image we're we're sort of rendering to
+	 */
 	private Image image;
 
 	/**
 	 * Create a new graphics context around a pbuffer
-	 * 
+	 * <p>
 	 * @param image The image we're rendering to
+	 * <p>
 	 * @throws SlickException Indicates a failure to use pbuffers
 	 */
 	public PBufferUniqueGraphics(Image image) throws SlickException {
@@ -48,7 +52,7 @@ public class PBufferUniqueGraphics extends Graphics {
 
 	/**
 	 * Initialise the PBuffer that will be used to render to
-	 * 
+	 * <p>
 	 * @throws SlickException
 	 */
 	private void init() throws SlickException {
@@ -68,7 +72,8 @@ public class PBufferUniqueGraphics extends Graphics {
 			image.setTexture(tex);
 
 			Display.makeCurrent();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new SlickException("Failed to create PBuffer for dynamic image. OpenGL driver failure?");
 		}
@@ -86,7 +91,8 @@ public class PBufferUniqueGraphics extends Graphics {
 
 		try {
 			Display.makeCurrent();
-		} catch (LWJGLException e) {
+		}
+		catch (LWJGLException e) {
 			Log.error(e);
 		}
 
@@ -106,7 +112,8 @@ public class PBufferUniqueGraphics extends Graphics {
 			}
 
 			pbuffer.makeCurrent();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error("Failed to recreate the PBuffer");
 			Log.error(e);
 			throw new RuntimeException(e);
@@ -140,7 +147,7 @@ public class PBufferUniqueGraphics extends Graphics {
 	}
 
 	/**
-	 * Enter the orthographic mode 
+	 * Enter the orthographic mode
 	 */
 	protected void enterOrtho() {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);

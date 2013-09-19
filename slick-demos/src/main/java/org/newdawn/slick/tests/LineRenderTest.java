@@ -13,7 +13,7 @@ import org.newdawn.slick.opengl.renderer.Renderer;
 
 /**
  * A test for the line rendering capability
- *
+ * <p>
  * @author kevin
  */
 public class LineRenderTest extends BasicGame {
@@ -96,7 +96,7 @@ public class LineRenderTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -107,7 +107,8 @@ public class LineRenderTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new LineRenderTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

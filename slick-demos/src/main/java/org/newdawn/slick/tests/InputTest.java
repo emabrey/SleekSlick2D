@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  * A test for input
- *
+ * <p>
  * @author kevin
  */
 public class InputTest extends BasicGame {
@@ -161,7 +161,8 @@ public class InputTest extends BasicGame {
 				try {
 					app.setDisplayMode(600, 600, false);
 					app.reinit();
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					Log.error(e);
 				}
 			}
@@ -229,7 +230,7 @@ public class InputTest extends BasicGame {
 
 	/**
 	 * A line that has been drawn by the user
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	private class Line {
@@ -256,7 +257,7 @@ public class InputTest extends BasicGame {
 
 		/**
 		 * Create a new line
-		 *
+		 * <p>
 		 * @param oldx The start x position
 		 * @param oldy The start y position
 		 * @param newx The end x position
@@ -271,7 +272,7 @@ public class InputTest extends BasicGame {
 
 		/**
 		 * Draw the line to the provided graphics context
-		 *
+		 * <p>
 		 * @param g The graphics context on which to draw the line
 		 */
 		public void draw(Graphics g) {
@@ -292,7 +293,7 @@ public class InputTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed into our test
 	 */
 	public static void main(String[] argv) {
@@ -300,7 +301,8 @@ public class InputTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new InputTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

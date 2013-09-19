@@ -13,7 +13,7 @@ import org.newdawn.slick.util.ResourceLoader;
 
 /**
  * A test for the sound system of the library
- *
+ * <p>
  * @author kevin
  * @author aaron
  */
@@ -177,7 +177,7 @@ public class SoundURLTest extends BasicGame {
 
 	/**
 	 * Entry point to the sound test
-	 *
+	 * <p>
 	 * @param argv The arguments provided to the test
 	 */
 	public static void main(String[] argv) {
@@ -185,7 +185,8 @@ public class SoundURLTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new SoundURLTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

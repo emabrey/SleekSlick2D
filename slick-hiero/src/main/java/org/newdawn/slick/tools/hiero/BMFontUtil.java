@@ -43,7 +43,7 @@ public class BMFontUtil {
 	}
 
 	public void save(File outputBMFontFile, boolean flip,
-			boolean antiAliasing) throws IOException, SlickException {
+					 boolean antiAliasing) throws IOException, SlickException {
 		File outputDir = outputBMFontFile.getParentFile();
 		String outputName = outputBMFontFile.getName();
 		if (outputName.endsWith(".fnt")) {
@@ -116,7 +116,8 @@ public class BMFontUtil {
 			Kerning kerning = new Kerning();
 			try {
 				kerning.load(ResourceLoader.getResourceAsStream(ttfFileRef), font.getSize());
-			} catch (IOException ex) {
+			}
+			catch (IOException ex) {
 				Log.warn("Unable to read kerning information from font: " + ttfFileRef);
 			}
 
@@ -174,10 +175,11 @@ public class BMFontUtil {
 			FileOutputStream imageOutput = new FileOutputStream(imageOutputFile);
 			try {
 				imageWriter.saveImage(page.getImage(), "png", imageOutput, true);
-			} finally {
+			}
+			finally {
 				imageOutput.close();
 			}
-            // TOOD: fix this for all systems!
+			// TOOD: fix this for all systems!
 			// Flip output image.
 			if (flip) { //flips horizontally and re-saves
 				Image image = new ImageIcon(imageOutputFile.getAbsolutePath()).getImage();
@@ -189,7 +191,8 @@ public class BMFontUtil {
 					tx.translate(0, -image.getHeight(null));
 					AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 					bufferedImage = op.filter(bufferedImage, null);
-				} catch (RasterFormatException ex) {
+				}
+				catch (RasterFormatException ex) {
 					Log.error(ex);
 				}
 				ImageIO.write(bufferedImage, "png", imageOutputFile);
@@ -206,7 +209,7 @@ public class BMFontUtil {
 	}
 
 	private int[] getGlyphMetrics(Font font, int codePoint) {
-        // xOffset and xAdvance will be incorrect for unicode characters such as combining marks or non-spacing characters
+		// xOffset and xAdvance will be incorrect for unicode characters such as combining marks or non-spacing characters
 		// (eg Pnujabi's "\u0A1C\u0A47") that require the context of surrounding glyphs to determine spacing, but thisis the
 		// best we can do with the BMFont format.
 		char[] chars = Character.toChars(codePoint);

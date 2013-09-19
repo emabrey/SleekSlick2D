@@ -26,7 +26,7 @@ import java.util.prefs.Preferences;
 
 /**
  * The bootstrap and main frame for the particle editor Pedigree.
- *
+ * <p>
  * @author kevin
  */
 public class ParticleEditor extends JFrame {
@@ -175,7 +175,7 @@ public class ParticleEditor extends JFrame {
 
 	/**
 	 * Create a new editor
-	 *
+	 * <p>
 	 * @throws LWJGLException Indicates a failure to create an OpenGL context
 	 * @throws SlickException
 	 */
@@ -426,7 +426,8 @@ public class ParticleEditor extends JFrame {
 
 		try {
 			container.start();
-		} catch (Exception e1) {
+		}
+		catch (Exception e1) {
 			Log.error(e1);
 		}
 	}
@@ -482,7 +483,7 @@ public class ParticleEditor extends JFrame {
 
 	/**
 	 * Set the movement of the system
-	 *
+	 * <p>
 	 * @param move The movement of the system
 	 */
 	public void setSystemMove(int move) {
@@ -543,7 +544,8 @@ public class ParticleEditor extends JFrame {
 
 				addEmitter(emitter);
 				emitters.setSelected(emitter);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				Log.error(e);
 				JOptionPane.showMessageDialog(this, e.getMessage());
 			}
@@ -567,7 +569,8 @@ public class ParticleEditor extends JFrame {
 
 			addEmitter(emitter);
 			emitters.setSelected(emitter);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			Log.error(e);
 			JOptionPane.showMessageDialog(this, e.getMessage());
 		}
@@ -595,7 +598,8 @@ public class ParticleEditor extends JFrame {
 
 			try {
 				ParticleIO.saveEmitter(file, selected);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				Log.error(e);
 				JOptionPane.showMessageDialog(this, e.getMessage());
 			}
@@ -675,7 +679,8 @@ public class ParticleEditor extends JFrame {
 				pointsEnabled.setSelected(system.usePoints());
 
 				emitters.setSelected(0);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				Log.error(e);
 				JOptionPane.showMessageDialog(this, e.getMessage());
 			}
@@ -700,7 +705,8 @@ public class ParticleEditor extends JFrame {
 
 			try {
 				ParticleIO.saveConfiguredSystem(file, game.getSystem());
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				Log.error(e);
 				JOptionPane.showMessageDialog(this, e.getMessage());
 			}
@@ -709,7 +715,7 @@ public class ParticleEditor extends JFrame {
 
 	/**
 	 * Add a new emitter to the editor
-	 *
+	 * <p>
 	 * @param emitter The emitter to add
 	 */
 	public void addEmitter(ConfigurableEmitter emitter) {
@@ -719,7 +725,7 @@ public class ParticleEditor extends JFrame {
 
 	/**
 	 * Remove a particle emitter from the editor
-	 *
+	 * <p>
 	 * @param emitter The emitter to be removed
 	 */
 	public void removeEmitter(ConfigurableEmitter emitter) {
@@ -729,7 +735,7 @@ public class ParticleEditor extends JFrame {
 
 	/**
 	 * Set the currently selected and edited particle emitter
-	 *
+	 * <p>
 	 * @param emitter The emitter that should be selected or null for none
 	 */
 	public void setCurrentEmitter(ConfigurableEmitter emitter) {
@@ -761,8 +767,7 @@ public class ParticleEditor extends JFrame {
 	}
 
 	/**
-	 * Change the visual indicator for the current particle system
-	 * blend mode
+	 * Change the visual indicator for the current particle system blend mode
 	 */
 	public void updateBlendMode() {
 		if (additive.isSelected()) {
@@ -774,7 +779,7 @@ public class ParticleEditor extends JFrame {
 
 	/**
 	 * Entry point in the editor
-	 *
+	 * <p>
 	 * @param argv The arguments passed on the command line
 	 */
 	public static void main(String[] argv) {
@@ -782,7 +787,8 @@ public class ParticleEditor extends JFrame {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
 			new ParticleEditor();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 		}
 	}

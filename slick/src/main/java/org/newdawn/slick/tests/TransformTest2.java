@@ -10,36 +10,54 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for transforming the graphics context
- *
+ * <p>
  * @author Jesse Aldridge
  */
 public class TransformTest2 extends BasicGame {
 
-	/** The current scale applied to the graphics context */
+	/**
+	 * The current scale applied to the graphics context
+	 */
 	private float scale = 1;
 
-	/** True if we should be scaling up */
+	/**
+	 * True if we should be scaling up
+	 */
 	private boolean scaleUp;
 
-	/** True if we should be scaling down */
+	/**
+	 * True if we should be scaling down
+	 */
 	private boolean scaleDown;
 
-	/** The camera's position */
+	/**
+	 * The camera's position
+	 */
 	private float camX = 320;
 
-	/** The camera's position */
+	/**
+	 * The camera's position
+	 */
 	private float camY = 240;
 
-	/** True if the camera should be moving in the given direction */
+	/**
+	 * True if the camera should be moving in the given direction
+	 */
 	private boolean moveLeft;
 
-	/** True if the camera should be moving in the given direction */
+	/**
+	 * True if the camera should be moving in the given direction
+	 */
 	private boolean moveUp;
 
-	/** True if the camera should be moving in the given direction */
+	/**
+	 * True if the camera should be moving in the given direction
+	 */
 	private boolean moveRight;
 
-	/** True if the camera should be moving in the given direction */
+	/**
+	 * True if the camera should be moving in the given direction
+	 */
 	private boolean moveDown;
 
 	/**
@@ -161,7 +179,7 @@ public class TransformTest2 extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -169,7 +187,8 @@ public class TransformTest2 extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new TransformTest2());
 			container.setDisplayMode(640, 480, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

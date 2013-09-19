@@ -27,28 +27,37 @@ import org.newdawn.slick.opengl.InternalTextureLoader;
 import org.newdawn.slick.util.Log;
 
 /**
- * A game container that displays the game as an applet. Note however that the
- * actual game container implementation is an internal class which can be
- * obtained with the getContainer() method - this is due to the Applet being a
- * class wrap than an interface.
- *
+ * A game container that displays the game as an applet. Note however that the actual game container implementation is
+ * an internal class which can be obtained with the getContainer() method - this is due to the Applet being a class wrap
+ * than an interface.
+ * <p>
  * @author kevin
  */
 public class AppletGameContainer extends Applet {
 
-	/** The GL Canvas used for this container */
+	/**
+	 * The GL Canvas used for this container
+	 */
 	protected ContainerPanel canvas;
 
-	/** The actual container implementation */
+	/**
+	 * The actual container implementation
+	 */
 	protected Container container;
 
-	/** The parent of the display */
+	/**
+	 * The parent of the display
+	 */
 	protected Canvas displayParent;
 
-	/** The thread that is looping for the game */
+	/**
+	 * The thread that is looping for the game
+	 */
 	protected Thread gameThread;
 
-	/** Alpha background supported */
+	/**
+	 * Alpha background supported
+	 */
 	protected boolean alphaSupport = true;
 
 	/**
@@ -71,7 +80,8 @@ public class AppletGameContainer extends Applet {
 
 		try {
 			gameThread.join();
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e) {
 			Log.error(e);
 		}
 	}
@@ -95,7 +105,8 @@ public class AppletGameContainer extends Applet {
 			public void run() {
 				try {
 					canvas.start();
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					e.printStackTrace();
 					if (Display.isCreated()) {
 						Display.destroy();
@@ -149,7 +160,8 @@ public class AppletGameContainer extends Applet {
 			displayParent.requestFocus();
 			displayParent.setIgnoreRepaint(true);
 			setVisible(true);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new RuntimeException("Unable to create game container");
 		}
@@ -157,7 +169,7 @@ public class AppletGameContainer extends Applet {
 
 	/**
 	 * Get the GameContainer providing this applet
-	 *
+	 * <p>
 	 * @return The game container providing this applet
 	 */
 	public GameContainer getContainer() {
@@ -166,17 +178,19 @@ public class AppletGameContainer extends Applet {
 
 	/**
 	 * Create a new panel to display the GL context
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	public class ContainerPanel {
 
-		/** The container being displayed on this canvas */
+		/**
+		 * The container being displayed on this canvas
+		 */
 		private Container container;
 
 		/**
 		 * Create a new panel
-		 *
+		 * <p>
 		 * @param container The container we're running
 		 */
 		public ContainerPanel(Container container) {
@@ -185,7 +199,7 @@ public class AppletGameContainer extends Applet {
 
 		/**
 		 * Create the LWJGL display
-		 * 
+		 * <p>
 		 * @throws Exception Failure to create display
 		 */
 		private void createDisplay() throws Exception {
@@ -193,7 +207,8 @@ public class AppletGameContainer extends Applet {
 				// create display with alpha
 				Display.create(new PixelFormat(8, 8, GameContainer.stencil ? 8 : 0));
 				alphaSupport = true;
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				// if we couldn't get alpha, let us know
 				alphaSupport = false;
 				Display.destroy();
@@ -204,7 +219,7 @@ public class AppletGameContainer extends Applet {
 
 		/**
 		 * Start the game container
-		 * 
+		 * <p>
 		 * @throws Exception Failure to create display
 		 */
 		public void start() throws Exception {
@@ -213,7 +228,8 @@ public class AppletGameContainer extends Applet {
 
 			try {
 				createDisplay();
-			} catch (LWJGLException e) {
+			}
+			catch (LWJGLException e) {
 				e.printStackTrace();
 				// failed to create Display, apply workaround (sleep for 1 second) and try again
 				Thread.sleep(1000);
@@ -234,7 +250,8 @@ public class AppletGameContainer extends Applet {
 				SoundStore.get().clear();
 
 				container.initApplet();
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				Log.error(e);
 				container.stopApplet();
 			}
@@ -244,14 +261,14 @@ public class AppletGameContainer extends Applet {
 
 	/**
 	 * A game container to provide the applet context
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	public class Container extends GameContainer {
 
 		/**
 		 * Create a new container wrapped round the game
-		 *
+		 * <p>
 		 * @param game The game to be held in this container
 		 */
 		public Container(Game game) {
@@ -263,7 +280,7 @@ public class AppletGameContainer extends Applet {
 
 		/**
 		 * Initiliase based on Applet init
-		 *
+		 * <p>
 		 * @throws SlickException Indicates a failure to inialise the basic framework
 		 */
 		public void initApplet() throws SlickException {
@@ -272,9 +289,11 @@ public class AppletGameContainer extends Applet {
 
 			try {
 				getInput().initControllers();
-			} catch (SlickException e) {
+			}
+			catch (SlickException e) {
 				Log.info("Controllers not available");
-			} catch (Throwable e) {
+			}
+			catch (Throwable e) {
 				Log.info("Controllers not available");
 			}
 
@@ -284,7 +303,7 @@ public class AppletGameContainer extends Applet {
 
 		/**
 		 * Check if the applet is currently running
-		 *
+		 * <p>
 		 * @return True if the applet is running
 		 */
 		public boolean isRunning() {
@@ -314,7 +333,7 @@ public class AppletGameContainer extends Applet {
 
 		/**
 		 * Check if the display created supported alpha in the back buffer
-		 *
+		 * <p>
 		 * @return True if the back buffer supported alpha
 		 */
 		public boolean supportsAlphaInBackBuffer() {
@@ -330,6 +349,7 @@ public class AppletGameContainer extends Applet {
 
 		/**
 		 * Returns the Applet Object
+		 * <p>
 		 * @return Applet Object
 		 */
 		public Applet getApplet() {
@@ -358,14 +378,14 @@ public class AppletGameContainer extends Applet {
 		}
 
 		/**
-		 * @see org.newdawn.slick.GameContainer#setMouseCursor(java.lang.String,
-		 *      int, int)
+		 * @see org.newdawn.slick.GameContainer#setMouseCursor(java.lang.String, int, int)
 		 */
 		public void setMouseCursor(String ref, int hotSpotX, int hotSpotY) throws SlickException {
 			try {
 				Cursor cursor = CursorLoader.get().getCursor(ref, hotSpotX, hotSpotY);
 				Mouse.setNativeCursor(cursor);
-			} catch (Throwable e) {
+			}
+			catch (Throwable e) {
 				Log.error("Failed to load and apply cursor.", e);
 				throw new SlickException("Failed to set mouse cursor", e);
 			}
@@ -373,8 +393,9 @@ public class AppletGameContainer extends Applet {
 
 		/**
 		 * Get the closest greater power of 2 to the fold number
-		 * 
+		 * <p>
 		 * @param fold The target number
+		 * <p>
 		 * @return The power of 2
 		 */
 		private int get2Fold(int fold) {
@@ -400,7 +421,8 @@ public class AppletGameContainer extends Applet {
 
 				Cursor cursor = CursorLoader.get().getCursor(buffer, hotSpotX, hotSpotY, temp.getWidth(), temp.getHeight());
 				Mouse.setNativeCursor(cursor);
-			} catch (Throwable e) {
+			}
+			catch (Throwable e) {
 				Log.error("Failed to load and apply cursor.", e);
 				throw new SlickException("Failed to set mouse cursor", e);
 			}
@@ -420,7 +442,8 @@ public class AppletGameContainer extends Applet {
 			try {
 				Cursor cursor = CursorLoader.get().getCursor(data, hotSpotX, hotSpotY);
 				Mouse.setNativeCursor(cursor);
-			} catch (Throwable e) {
+			}
+			catch (Throwable e) {
 				Log.error("Failed to load and apply cursor.", e);
 				throw new SlickException("Failed to set mouse cursor", e);
 			}
@@ -432,7 +455,8 @@ public class AppletGameContainer extends Applet {
 		public void setMouseCursor(Cursor cursor, int hotSpotX, int hotSpotY) throws SlickException {
 			try {
 				Mouse.setNativeCursor(cursor);
-			} catch (Throwable e) {
+			}
+			catch (Throwable e) {
 				Log.error("Failed to load and apply cursor.", e);
 				throw new SlickException("Failed to set mouse cursor", e);
 			}
@@ -508,7 +532,8 @@ public class AppletGameContainer extends Applet {
 
 					Display.setFullscreen(false);
 				}
-			} catch (LWJGLException e) {
+			}
+			catch (LWJGLException e) {
 				Log.error(e);
 			}
 
@@ -516,7 +541,7 @@ public class AppletGameContainer extends Applet {
 
 		/**
 		 * The running game loop
-		 * 
+		 * <p>
 		 * @throws Exception Indicates a failure within the game's loop rather than the framework
 		 */
 		public void runloop() throws Exception {
@@ -535,19 +560,20 @@ public class AppletGameContainer extends Applet {
 	}
 
 	/**
-	 * A basic console to display an error message if the applet crashes.
-	 * This will prevent the applet from just freezing in the browser
-	 * and give the end user an a nice gui where the error message can easily
-	 * be viewed and copied.
+	 * A basic console to display an error message if the applet crashes. This will prevent the applet from just
+	 * freezing in the browser and give the end user an a nice gui where the error message can easily be viewed and
+	 * copied.
 	 */
 	public class ConsolePanel extends Panel {
 
-		/** The area display the console output */
+		/**
+		 * The area display the console output
+		 */
 		TextArea textArea = new TextArea();
 
 		/**
 		 * Create a new panel to display the console output
-		 * 
+		 * <p>
 		 * @param e The exception causing the console to be displayed
 		 */
 		public ConsolePanel(Exception e) {

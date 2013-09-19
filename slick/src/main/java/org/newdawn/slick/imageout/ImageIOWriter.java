@@ -21,14 +21,14 @@ import org.newdawn.slick.Image;
 
 /**
  * A utility to write a Slick image out using ImageIO
- * 
+ * <p>
  * @author Jon
  */
 public class ImageIOWriter implements ImageWriter {
 
 	/**
-	 * @see org.newdawn.slick.imageout.ImageWriter#saveImage(org.newdawn.slick.Image, 
-	 * java.lang.String, java.io.OutputStream, boolean)
+	 * @see org.newdawn.slick.imageout.ImageWriter#saveImage(org.newdawn.slick.Image, java.lang.String,
+	 * java.io.OutputStream, boolean)
 	 */
 	public void saveImage(Image image, String format, OutputStream output, boolean hasAlpha)
 			throws IOException {

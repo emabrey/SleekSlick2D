@@ -10,32 +10,40 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.util.Log;
 
 /**
- * A factory to produce an appropriate render to texture graphics context based on current
- * hardware
- *
+ * A factory to produce an appropriate render to texture graphics context based on current hardware
+ * <p>
  * @author kevin
  */
 public class GraphicsFactory {
 
-	/** The graphics list of graphics contexts created */
+	/**
+	 * The graphics list of graphics contexts created
+	 */
 	private static HashMap graphics = new HashMap();
 
-	/** True if pbuffers are supported */
+	/**
+	 * True if pbuffers are supported
+	 */
 	private static boolean pbuffer = true;
 
-	/** True if pbuffer render to texture are supported */
+	/**
+	 * True if pbuffer render to texture are supported
+	 */
 	private static boolean pbufferRT = true;
 
-	/** True if fbo are supported */
+	/**
+	 * True if fbo are supported
+	 */
 	private static boolean fbo = true;
 
-	/** True if we've initialised */
+	/**
+	 * True if we've initialised
+	 */
 	private static boolean init = false;
 
 	/**
-	 * Initialise offscreen rendering by checking what buffers are supported
-	 * by the card
-	 * 
+	 * Initialise offscreen rendering by checking what buffers are supported by the card
+	 * <p>
 	 * @throws SlickException Indicates no buffers are supported
 	 */
 	private static void init() throws SlickException {
@@ -56,7 +64,7 @@ public class GraphicsFactory {
 
 	/**
 	 * Force FBO use on or off
-	 * 
+	 * <p>
 	 * @param useFBO True if we should try and use FBO for offscreen images
 	 */
 	public static void setUseFBO(boolean useFBO) {
@@ -65,7 +73,7 @@ public class GraphicsFactory {
 
 	/**
 	 * Check if we're using FBO for dynamic textures
-	 * 
+	 * <p>
 	 * @return True if we're using FBOs
 	 */
 	public static boolean usingFBO() {
@@ -74,7 +82,7 @@ public class GraphicsFactory {
 
 	/**
 	 * Check if we're using PBuffer for dynamic textures
-	 * 
+	 * <p>
 	 * @return True if we're using PBuffer
 	 */
 	public static boolean usingPBuffer() {
@@ -83,11 +91,12 @@ public class GraphicsFactory {
 
 	/**
 	 * Get a graphics context for a particular image
-	 * 
+	 * <p>
 	 * @param image The image for which to retrieve the graphics context
+	 * <p>
 	 * @return The graphics context
-	 * @throws SlickException Indicates it wasn't possible to create a graphics context
-	 * given available hardware.
+	 * <p>
+	 * @throws SlickException Indicates it wasn't possible to create a graphics context given available hardware.
 	 */
 	public static Graphics getGraphicsForImage(Image image) throws SlickException {
 		Graphics g = (Graphics) graphics.get(image.getTexture());
@@ -102,8 +111,9 @@ public class GraphicsFactory {
 
 	/**
 	 * Release any graphics context that is assocaited with the given image
-	 * 
+	 * <p>
 	 * @param image The image to release
+	 * <p>
 	 * @throws SlickException Indicates a failure to release the context
 	 */
 	public static void releaseGraphicsForImage(Image image) throws SlickException {
@@ -114,11 +124,13 @@ public class GraphicsFactory {
 		}
 	}
 
-	/** 
+	/**
 	 * Create an underlying graphics context for the given image
-	 * 
+	 * <p>
 	 * @param image The image we want to render to
+	 * <p>
 	 * @return The graphics context created
+	 * <p>
 	 * @throws SlickException
 	 */
 	private static Graphics createGraphics(Image image) throws SlickException {
@@ -127,7 +139,8 @@ public class GraphicsFactory {
 		if (fbo) {
 			try {
 				return new FBOGraphics(image);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				fbo = false;
 				Log.warn("FBO failed in use, falling back to PBuffer");
 			}

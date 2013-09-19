@@ -13,9 +13,8 @@ import org.newdawn.slick.opengl.renderer.Renderer;
 import org.newdawn.slick.opengl.renderer.SGL;
 
 /**
- * This is a utility class that allows you to convert a BufferedImage into a
- * texture.
- * 
+ * This is a utility class that allows you to convert a BufferedImage into a texture.
+ * <p>
  * @author James Chambers (Jimmy)
  * @author Jeremy Adams (elias_naur)
  * @author Kevin Glass (kevglass)
@@ -24,17 +23,16 @@ public class BufferedImageUtil {
 
 	/**
 	 * Load a texture
-	 * 
-	 * @param resourceName
-	 *            The location of the resource to load
-	 * @param resourceImage
-	 *            The BufferedImage we are converting
+	 * <p>
+	 * @param resourceName The location of the resource to load
+	 * @param resourceImage The BufferedImage we are converting
+	 * <p>
 	 * @return The loaded texture
-	 * @throws IOException
-	 *             Indicates a failure to access the resource
+	 * <p>
+	 * @throws IOException Indicates a failure to access the resource
 	 */
 	public static Texture getTexture(String resourceName,
-			BufferedImage resourceImage) throws IOException {
+									 BufferedImage resourceImage) throws IOException {
 		Texture tex = getTexture(resourceName, resourceImage,
 				SGL.GL_TEXTURE_2D, // target
 				SGL.GL_RGBA8, // dest pixel format
@@ -46,17 +44,16 @@ public class BufferedImageUtil {
 
 	/**
 	 * Load a texture
-	 * 
-	 * @param resourceName
-	 *            The location of the resource to load
-	 * @param resourceImage
-	 *            The BufferedImage we are converting
+	 * <p>
+	 * @param resourceName The location of the resource to load
+	 * @param resourceImage The BufferedImage we are converting
+	 * <p>
 	 * @return The loaded texture
-	 * @throws IOException
-	 *             Indicates a failure to access the resource
+	 * <p>
+	 * @throws IOException Indicates a failure to access the resource
 	 */
 	public static Texture getTexture(String resourceName,
-			BufferedImage resourceImage, int filter) throws IOException {
+									 BufferedImage resourceImage, int filter) throws IOException {
 		Texture tex = getTexture(resourceName, resourceImage,
 				SGL.GL_TEXTURE_2D, // target
 				SGL.GL_RGBA8, // dest pixel format
@@ -68,26 +65,21 @@ public class BufferedImageUtil {
 
 	/**
 	 * Load a texture into OpenGL from a BufferedImage
-	 * 
-	 * @param resourceName
-	 *            The location of the resource to load
-	 * @param resourceimage
-	 *            The BufferedImage we are converting
-	 * @param target
-	 *            The GL target to load the texture against
-	 * @param dstPixelFormat
-	 *            The pixel format of the screen
-	 * @param minFilter
-	 *            The minimising filter
-	 * @param magFilter
-	 *            The magnification filter
+	 * <p>
+	 * @param resourceName The location of the resource to load
+	 * @param resourceimage The BufferedImage we are converting
+	 * @param target The GL target to load the texture against
+	 * @param dstPixelFormat The pixel format of the screen
+	 * @param minFilter The minimising filter
+	 * @param magFilter The magnification filter
+	 * <p>
 	 * @return The loaded texture
-	 * @throws IOException
-	 *             Indicates a failure to access the resource
+	 * <p>
+	 * @throws IOException Indicates a failure to access the resource
 	 */
 	public static Texture getTexture(String resourceName,
-			BufferedImage resourceimage, int target, int dstPixelFormat,
-			int minFilter, int magFilter) throws IOException {
+									 BufferedImage resourceimage, int target, int dstPixelFormat,
+									 int minFilter, int magFilter) throws IOException {
 		ImageIOImageData data = new ImageIOImageData();
 		int srcPixelFormat = 0;
 
@@ -145,7 +137,7 @@ public class BufferedImageUtil {
 
 	/**
 	 * Implement of transform copy area for 1.4
-	 * 
+	 * <p>
 	 * @param image The image to copy
 	 * @param x The x position to copy to
 	 * @param y The y position to copy to

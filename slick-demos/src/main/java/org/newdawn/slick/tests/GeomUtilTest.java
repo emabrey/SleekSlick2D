@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 /**
  * A test to try shape cutting
- *
+ * <p>
  * @author Kevin Glass
  */
 public class GeomUtilTest extends BasicGame implements GeomUtilListener {
@@ -245,7 +245,7 @@ public class GeomUtilTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -253,7 +253,8 @@ public class GeomUtilTest extends BasicGame implements GeomUtilListener {
 			AppGameContainer container = new AppGameContainer(new GeomUtilTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

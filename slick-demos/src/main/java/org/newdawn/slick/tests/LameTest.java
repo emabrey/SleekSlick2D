@@ -11,7 +11,7 @@ import org.newdawn.slick.geom.Polygon;
 
 /**
  * Lame test
- *
+ * <p>
  * @author kevin
  */
 public class LameTest extends BasicGame {
@@ -61,7 +61,7 @@ public class LameTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -69,7 +69,8 @@ public class LameTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new LameTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

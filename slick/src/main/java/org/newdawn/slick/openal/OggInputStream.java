@@ -18,78 +18,118 @@ import com.jcraft.jorbis.DspState;
 import com.jcraft.jorbis.Info;
 
 /**
- * An input stream that can extract ogg data. This class is a bit of an experiment with continuations
- * so uses thread where possibly not required. It's just a test to see if continuations make sense in 
- * some cases.
- *
+ * An input stream that can extract ogg data. This class is a bit of an experiment with continuations so uses thread
+ * where possibly not required. It's just a test to see if continuations make sense in some cases.
+ * <p>
  * @author kevin
  */
 public class OggInputStream extends InputStream implements AudioInputStream {
 
-	/** The conversion buffer size */
+	/**
+	 * The conversion buffer size
+	 */
 	private int convsize = 4096 * 4;
 
-	/** The buffer used to read OGG file */
+	/**
+	 * The buffer used to read OGG file
+	 */
 	private byte[] convbuffer = new byte[convsize]; // take 8k out of the data segment, not the stack
 
-	/** The stream we're reading the OGG file from */
+	/**
+	 * The stream we're reading the OGG file from
+	 */
 	private InputStream input;
 
-	/** The audio information from the OGG header */
+	/**
+	 * The audio information from the OGG header
+	 */
 	private Info oggInfo = new Info(); // struct that stores all the static vorbis bitstream settings
 
-	/** True if we're at the end of the available data */
+	/**
+	 * True if we're at the end of the available data
+	 */
 	private boolean endOfStream;
 
-	/** The Vorbis SyncState used to decode the OGG */
+	/**
+	 * The Vorbis SyncState used to decode the OGG
+	 */
 	private SyncState syncState = new SyncState(); // sync and verify incoming physical bitstream
 
-	/** The Vorbis Stream State used to decode the OGG */
+	/**
+	 * The Vorbis Stream State used to decode the OGG
+	 */
 	private StreamState streamState = new StreamState(); // take physical pages, weld into a logical stream of packets
 
-	/** The current OGG page */
+	/**
+	 * The current OGG page
+	 */
 	private Page page = new Page(); // one Ogg bitstream page.  Vorbis packets are inside
 
-	/** The current packet page */
+	/**
+	 * The current packet page
+	 */
 	private Packet packet = new Packet(); // one raw packet of data for decode
 
-	/** The comment read from the OGG file */
+	/**
+	 * The comment read from the OGG file
+	 */
 	private Comment comment = new Comment(); // struct that stores all the bitstream user comments
 
-	/** The Vorbis DSP stat eused to decode the OGG */
+	/**
+	 * The Vorbis DSP stat eused to decode the OGG
+	 */
 	private DspState dspState = new DspState(); // central working state for the packet->PCM decoder
 
-	/** The OGG block we're currently working with to convert PCM */
+	/**
+	 * The OGG block we're currently working with to convert PCM
+	 */
 	private Block vorbisBlock = new Block(dspState); // local working space for packet->PCM decode
 
-	/** Temporary scratch buffer */
+	/**
+	 * Temporary scratch buffer
+	 */
 	byte[] buffer;
 
-	/** The number of bytes read */
+	/**
+	 * The number of bytes read
+	 */
 	int bytes = 0;
 
-	/** The true if we should be reading big endian */
+	/**
+	 * The true if we should be reading big endian
+	 */
 	boolean bigEndian = ByteOrder.nativeOrder().equals(ByteOrder.BIG_ENDIAN);
 
-	/** True if we're reached the end of the current bit stream */
+	/**
+	 * True if we're reached the end of the current bit stream
+	 */
 	boolean endOfBitStream = true;
 
-	/** True if we're initialise the OGG info block */
+	/**
+	 * True if we're initialise the OGG info block
+	 */
 	boolean inited = false;
 
-	/** The index into the byte array we currently read from */
+	/**
+	 * The index into the byte array we currently read from
+	 */
 	private int readIndex;
 
-	/** The byte array store used to hold the data read from the ogg */
+	/**
+	 * The byte array store used to hold the data read from the ogg
+	 */
 	private ByteBuffer pcmBuffer = BufferUtils.createByteBuffer(4096 * 500);
 
-	/** The total number of bytes */
+	/**
+	 * The total number of bytes
+	 */
 	private int total;
 
 	/**
 	 * Create a new stream to decode OGG data
-	 * 
+	 * <p>
 	 * @param input The input stream from which to read the OGG file
+	 * <p>
 	 * @throws IOException Indicates a failure to read from the supplied stream
 	 */
 	public OggInputStream(InputStream input) throws IOException {
@@ -101,7 +141,7 @@ public class OggInputStream extends InputStream implements AudioInputStream {
 
 	/**
 	 * Get the number of bytes on the stream
-	 * 
+	 * <p>
 	 * @return The number of the bytes on the stream
 	 */
 	public int getLength() {
@@ -124,7 +164,7 @@ public class OggInputStream extends InputStream implements AudioInputStream {
 
 	/**
 	 * Initialise the streams and thread involved in the streaming of OGG data
-	 * 
+	 * <p>
 	 * @throws IOException Indicates a failure to link up the streams
 	 */
 	private void init() throws IOException {
@@ -148,7 +188,7 @@ public class OggInputStream extends InputStream implements AudioInputStream {
 
 	/**
 	 * Get a page and packet from that page
-	 *
+	 * <p>
 	 * @return True if there was a page available
 	 */
 	private boolean getPageAndPacket() {
@@ -168,7 +208,8 @@ public class OggInputStream extends InputStream implements AudioInputStream {
 
 		try {
 			bytes = input.read(buffer, index, 4096);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error("Failure reading in vorbis");
 			Log.error(e);
 			endOfStream = true;
@@ -267,7 +308,8 @@ public class OggInputStream extends InputStream implements AudioInputStream {
 			buffer = syncState.data;
 			try {
 				bytes = input.read(buffer, index, 4096);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				Log.error("Failed to read Vorbis: ");
 				Log.error(e);
 				endOfStream = true;
@@ -297,7 +339,7 @@ public class OggInputStream extends InputStream implements AudioInputStream {
 
 	/**
 	 * Decode the OGG file as shown in the jogg/jorbis examples
-	 * 
+	 * <p>
 	 * @throws IOException Indicates a failure to read from the supplied stream
 	 */
 	private void readPCM() throws IOException {
@@ -419,7 +461,8 @@ public class OggInputStream extends InputStream implements AudioInputStream {
 						buffer = syncState.data;
 						try {
 							bytes = input.read(buffer, index, 4096);
-						} catch (Exception e) {
+						}
+						catch (Exception e) {
 							Log.error("Failure during vorbis decoding");
 							Log.error(e);
 							endOfStream = true;
@@ -496,7 +539,8 @@ public class OggInputStream extends InputStream implements AudioInputStream {
 						return i;
 					}
 				}
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				Log.error(e);
 				return i;
 			}

@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 
 /**
  * TODO: Document this class
- *
+ * <p>
  * @author kevin
  */
 public class GroupProcessor implements ElementProcessor {
@@ -23,8 +23,11 @@ public class GroupProcessor implements ElementProcessor {
 		return false;
 	}
 
-	/**O
-	 * @see org.newdawn.slick.svg.inkscape.ElementProcessor#process(org.newdawn.slick.svg.Loader, org.w3c.dom.Element, org.newdawn.slick.svg.Diagram, org.newdawn.slick.geom.Transform)
+	/**
+	 * O
+	 * <p>
+	 * @see org.newdawn.slick.svg.inkscape.ElementProcessor#process(org.newdawn.slick.svg.Loader, org.w3c.dom.Element,
+	 * org.newdawn.slick.svg.Diagram, org.newdawn.slick.geom.Transform)
 	 */
 	public void process(Loader loader, Element element, Diagram diagram, Transform t) throws ParsingException {
 		Transform transform = Util.getTransform(element);

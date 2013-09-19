@@ -7,52 +7,75 @@ import java.util.List;
 import org.newdawn.slick.util.pathfinding.heuristics.ClosestHeuristic;
 
 /**
- * A path finder implementation that uses the AStar heuristic based algorithm
- * to determine a path. 
- * 
+ * A path finder implementation that uses the AStar heuristic based algorithm to determine a path.
+ * <p>
  * @author Kevin Glass
  */
 public class AStarPathFinder implements PathFinder, PathFindingContext {
 
-	/** The set of nodes that have been searched through */
+	/**
+	 * The set of nodes that have been searched through
+	 */
 	private ArrayList closed = new ArrayList();
 
-	/** The set of nodes that we do not yet consider fully searched */
+	/**
+	 * The set of nodes that we do not yet consider fully searched
+	 */
 	private PriorityList open = new PriorityList();
 
-	/** The map being searched */
+	/**
+	 * The map being searched
+	 */
 	private TileBasedMap map;
 
-	/** The maximum depth of search we're willing to accept before giving up */
+	/**
+	 * The maximum depth of search we're willing to accept before giving up
+	 */
 	private int maxSearchDistance;
 
-	/** The complete set of nodes across the map */
+	/**
+	 * The complete set of nodes across the map
+	 */
 	private Node[][] nodes;
 
-	/** True if we allow diaganol movement */
+	/**
+	 * True if we allow diaganol movement
+	 */
 	private boolean allowDiagMovement;
 
-	/** The heuristic we're applying to determine which nodes to search first */
+	/**
+	 * The heuristic we're applying to determine which nodes to search first
+	 */
 	private AStarHeuristic heuristic;
 
-	/** The node we're currently searching from */
+	/**
+	 * The node we're currently searching from
+	 */
 	private Node current;
 
-	/** The mover going through the path */
+	/**
+	 * The mover going through the path
+	 */
 	private Mover mover;
 
-	/** The x coordinate of the source tile we're moving from */
+	/**
+	 * The x coordinate of the source tile we're moving from
+	 */
 	private int sourceX;
 
-	/** The y coordinate of the source tile we're moving from */
+	/**
+	 * The y coordinate of the source tile we're moving from
+	 */
 	private int sourceY;
 
-	/** The distance searched so far */
+	/**
+	 * The distance searched so far
+	 */
 	private int distance;
 
 	/**
 	 * Create a path finder with the default heuristic - closest to target.
-	 * 
+	 * <p>
 	 * @param map The map to be searched
 	 * @param maxSearchDistance The maximum depth we'll search before giving up
 	 * @param allowDiagMovement True if the search should try diaganol movement
@@ -62,15 +85,15 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	}
 
 	/**
-	 * Create a path finder 
-	 * 
+	 * Create a path finder
+	 * <p>
 	 * @param heuristic The heuristic used to determine the search order of the map
 	 * @param map The map to be searched
 	 * @param maxSearchDistance The maximum depth we'll search before giving up
 	 * @param allowDiagMovement True if the search should try diaganol movement
 	 */
 	public AStarPathFinder(TileBasedMap map, int maxSearchDistance,
-			boolean allowDiagMovement, AStarHeuristic heuristic) {
+						   boolean allowDiagMovement, AStarHeuristic heuristic) {
 		this.heuristic = heuristic;
 		this.map = map;
 		this.maxSearchDistance = maxSearchDistance;
@@ -219,7 +242,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Get the X coordinate of the node currently being evaluated
-	 * 
+	 * <p>
 	 * @return The X coordinate of the node currently being evaluated
 	 */
 	public int getCurrentX() {
@@ -232,7 +255,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Get the Y coordinate of the node currently being evaluated
-	 * 
+	 * <p>
 	 * @return The Y coordinate of the node currently being evaluated
 	 */
 	public int getCurrentY() {
@@ -244,9 +267,8 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	}
 
 	/**
-	 * Get the first element from the open list. This is the next
-	 * one to be searched.
-	 * 
+	 * Get the first element from the open list. This is the next one to be searched.
+	 * <p>
 	 * @return The first element in the open list
 	 */
 	protected Node getFirstInOpen() {
@@ -255,7 +277,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Add a node to the open list
-	 * 
+	 * <p>
 	 * @param node The node to be added to the open list
 	 */
 	protected void addToOpen(Node node) {
@@ -265,8 +287,9 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Check if a node is in the open list
-	 * 
+	 * <p>
 	 * @param node The node to check for
+	 * <p>
 	 * @return True if the node given is in the open list
 	 */
 	protected boolean inOpenList(Node node) {
@@ -275,7 +298,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Remove a node from the open list
-	 * 
+	 * <p>
 	 * @param node The node to remove from the open list
 	 */
 	protected void removeFromOpen(Node node) {
@@ -285,7 +308,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Add a node to the closed list
-	 * 
+	 * <p>
 	 * @param node The node to add to the closed list
 	 */
 	protected void addToClosed(Node node) {
@@ -295,8 +318,9 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Check if the node supplied is in the closed list
-	 * 
+	 * <p>
 	 * @param node The node to search for
+	 * <p>
 	 * @return True if the node specified is in the closed list
 	 */
 	protected boolean inClosedList(Node node) {
@@ -305,7 +329,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Remove a node from the closed list
-	 * 
+	 * <p>
 	 * @param node The node to remove from the closed list
 	 */
 	protected void removeFromClosed(Node node) {
@@ -315,12 +339,13 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Check if a given location is valid for the supplied mover
-	 * 
+	 * <p>
 	 * @param mover The mover that would hold a given location
 	 * @param sx The starting x coordinate
 	 * @param sy The starting y coordinate
 	 * @param x The x coordinate of the location to check
 	 * @param y The y coordinate of the location to check
+	 * <p>
 	 * @return True if the location is valid for the given mover
 	 */
 	protected boolean isValidLocation(Mover mover, int sx, int sy, int x, int y) {
@@ -338,12 +363,13 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * Get the cost to move through a given location
-	 * 
+	 * <p>
 	 * @param mover The entity that is being moved
 	 * @param sx The x coordinate of the tile whose cost is being determined
 	 * @param sy The y coordiante of the tile whose cost is being determined
 	 * @param tx The x coordinate of the target location
 	 * @param ty The y coordinate of the target location
+	 * <p>
 	 * @return The cost of movement through the given tile
 	 */
 	public float getMovementCost(Mover mover, int sx, int sy, int tx, int ty) {
@@ -355,14 +381,14 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	}
 
 	/**
-	 * Get the heuristic cost for the given location. This determines in which 
-	 * order the locations are processed.
-	 * 
+	 * Get the heuristic cost for the given location. This determines in which order the locations are processed.
+	 * <p>
 	 * @param mover The entity that is being moved
 	 * @param x The x coordinate of the tile whose cost is being determined
 	 * @param y The y coordiante of the tile whose cost is being determined
 	 * @param tx The x coordinate of the target location
 	 * @param ty The y coordinate of the target location
+	 * <p>
 	 * @return The heuristic cost assigned to the tile
 	 */
 	public float getHeuristicCost(Mover mover, int x, int y, int tx, int ty) {
@@ -371,17 +397,19 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 	/**
 	 * A list that sorts any element provided into the list
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	private class PriorityList {
 
-		/** The list of elements */
+		/**
+		 * The list of elements
+		 */
 		private List list = new LinkedList();
 
 		/**
 		 * Retrieve the first element from the list
-		 *  
+		 * <p>
 		 * @return The first element from the list
 		 */
 		public Object first() {
@@ -397,7 +425,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 		/**
 		 * Add an element to the list - causes sorting
-		 * 
+		 * <p>
 		 * @param o The element to add
 		 */
 		public void add(Object o) {
@@ -416,7 +444,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 		/**
 		 * Remove an element from the list
-		 * 
+		 * <p>
 		 * @param o The element to remove
 		 */
 		public void remove(Object o) {
@@ -425,7 +453,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 		/**
 		 * Get the number of elements in the list
-		 * 
+		 * <p>
 		 * @return The number of element in the list
 		 */
 		public int size() {
@@ -434,8 +462,9 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 		/**
 		 * Check if an element is in the list
-		 * 
+		 * <p>
 		 * @param o The element to search for
+		 * <p>
 		 * @return True if the element is in the list
 		 */
 		public boolean contains(Object o) {
@@ -459,33 +488,49 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 	 */
 	private class Node implements Comparable {
 
-		/** The x coordinate of the node */
+		/**
+		 * The x coordinate of the node
+		 */
 		private int x;
 
-		/** The y coordinate of the node */
+		/**
+		 * The y coordinate of the node
+		 */
 		private int y;
 
-		/** The path cost for this node */
+		/**
+		 * The path cost for this node
+		 */
 		private float cost;
 
-		/** The parent of this node, how we reached it in the search */
+		/**
+		 * The parent of this node, how we reached it in the search
+		 */
 		private Node parent;
 
-		/** The heuristic cost of this node */
+		/**
+		 * The heuristic cost of this node
+		 */
 		private float heuristic;
 
-		/** The search depth of this node */
+		/**
+		 * The search depth of this node
+		 */
 		private int depth;
 
-		/** In the open list */
+		/**
+		 * In the open list
+		 */
 		private boolean open;
 
-		/** In the closed list */
+		/**
+		 * In the closed list
+		 */
 		private boolean closed;
 
 		/**
 		 * Create a new node
-		 * 
+		 * <p>
 		 * @param x The x coordinate of the node
 		 * @param y The y coordinate of the node
 		 */
@@ -496,8 +541,9 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 		/**
 		 * Set the parent of this node
-		 * 
+		 * <p>
 		 * @param parent The parent node which lead us to this node
+		 * <p>
 		 * @return The depth we have no reached in searching
 		 */
 		public int setParent(Node parent) {
@@ -527,7 +573,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 		/**
 		 * Indicate whether the node is in the open list
-		 * 
+		 * <p>
 		 * @param open True if the node is in the open list
 		 */
 		public void setOpen(boolean open) {
@@ -536,7 +582,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 		/**
 		 * Check if the node is in the open list
-		 * 
+		 * <p>
 		 * @return True if the node is in the open list
 		 */
 		public boolean isOpen() {
@@ -545,7 +591,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 		/**
 		 * Indicate whether the node is in the closed list
-		 * 
+		 * <p>
 		 * @param closed True if the node is in the closed list
 		 */
 		public void setClosed(boolean closed) {
@@ -554,7 +600,7 @@ public class AStarPathFinder implements PathFinder, PathFindingContext {
 
 		/**
 		 * Check if the node is in the closed list
-		 * 
+		 * <p>
 		 * @return True if the node is in the closed list
 		 */
 		public boolean isClosed() {

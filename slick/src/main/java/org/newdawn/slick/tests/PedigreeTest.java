@@ -15,27 +15,39 @@ import org.newdawn.slick.particles.ParticleSystem;
 
 /**
  * A test for loading editing particle systems
- *
+ * <p>
  * @author kevin
  */
 public class PedigreeTest extends BasicGame {
 
-	/** The image we're currently displaying */
+	/**
+	 * The image we're currently displaying
+	 */
 	private Image image;
 
-	/** The game container */
+	/**
+	 * The game container
+	 */
 	private GameContainer container;
 
-	/** The smoke trail particle system */
+	/**
+	 * The smoke trail particle system
+	 */
 	private ParticleSystem trail;
 
-	/** The fire particle system */
+	/**
+	 * The fire particle system
+	 */
 	private ParticleSystem fire;
 
-	/** The rocket x position */
+	/**
+	 * The rocket x position
+	 */
 	private float rx;
 
-	/** The rocket y position */
+	/**
+	 * The rocket y position
+	 */
 	private float ry = 900;
 
 	/**
@@ -55,7 +67,8 @@ public class PedigreeTest extends BasicGame {
 			fire = ParticleIO.loadConfiguredSystem("testdata/system.xml");
 			trail = ParticleIO.loadConfiguredSystem("testdata/smoketrail.xml");
 
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load particle systems", e);
 		}
 		image = new Image("testdata/rocket.png");
@@ -64,7 +77,7 @@ public class PedigreeTest extends BasicGame {
 	}
 
 	/**
-	 * Spawn a test rocket 
+	 * Spawn a test rocket
 	 */
 	private void spawnRocket() {
 		ry = 700;
@@ -106,7 +119,7 @@ public class PedigreeTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -114,7 +127,8 @@ public class PedigreeTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new PedigreeTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

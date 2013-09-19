@@ -2,45 +2,67 @@ package org.newdawn.slick.opengl.renderer;
 
 /**
  * A line strip renderer that uses quads to generate lines
- * 
+ * <p>
  * @author kevin
  */
 public class QuadBasedLineStripRenderer implements LineStripRenderer {
 
-	/** The renderer used to interact with GL */
+	/**
+	 * The renderer used to interact with GL
+	 */
 	private SGL GL = Renderer.get();
 
-	/** Maximum number of points allowed in a single strip */
+	/**
+	 * Maximum number of points allowed in a single strip
+	 */
 	public static int MAX_POINTS = 10000;
 
-	/** True if antialiasing is currently enabled */
+	/**
+	 * True if antialiasing is currently enabled
+	 */
 	private boolean antialias;
 
-	/** The width of the lines to draw */
+	/**
+	 * The width of the lines to draw
+	 */
 	private float width = 1;
 
-	/** The points to draw */
+	/**
+	 * The points to draw
+	 */
 	private float[] points;
 
-	/** The colours to draw */
+	/**
+	 * The colours to draw
+	 */
 	private float[] colours;
 
-	/** The number of points to draw */
+	/**
+	 * The number of points to draw
+	 */
 	private int pts;
 
-	/** The number of colour points recorded */
+	/**
+	 * The number of colour points recorded
+	 */
 	private int cpt;
 
-	/** The default renderer used when width = 1 */
+	/**
+	 * The default renderer used when width = 1
+	 */
 	private DefaultLineStripRenderer def = new DefaultLineStripRenderer();
 
-	/** Indicates need to render half colour */
+	/**
+	 * Indicates need to render half colour
+	 */
 	private boolean renderHalf;
 
-	/** True if we shoudl render end caps */
+	/**
+	 * True if we shoudl render end caps
+	 */
 	private boolean lineCaps = false;
 
-	/** 
+	/**
 	 * Create a new strip renderer
 	 */
 	public QuadBasedLineStripRenderer() {
@@ -50,7 +72,7 @@ public class QuadBasedLineStripRenderer implements LineStripRenderer {
 
 	/**
 	 * Indicate if we should render end caps
-	 * 
+	 * <p>
 	 * @param caps True if we should render end caps
 	 */
 	public void setLineCaps(boolean caps) {
@@ -120,7 +142,7 @@ public class QuadBasedLineStripRenderer implements LineStripRenderer {
 
 	/**
 	 * Render the lines applying antialiasing if required
-	 * 
+	 * <p>
 	 * @param points The points to be rendered as lines
 	 * @param count The number of points to render
 	 */
@@ -140,7 +162,7 @@ public class QuadBasedLineStripRenderer implements LineStripRenderer {
 
 	/**
 	 * Render the lines given
-	 * 
+	 * <p>
 	 * @param points The points building up the lines
 	 * @param count The number of points to render
 	 * @param w The width to render at
@@ -259,8 +281,8 @@ public class QuadBasedLineStripRenderer implements LineStripRenderer {
 	}
 
 	/**
-	 * Bind the colour at a given index in the array 
-	 * 
+	 * Bind the colour at a given index in the array
+	 * <p>
 	 * @param index The index of the colour to bind
 	 */
 	private void bindColor(int index) {

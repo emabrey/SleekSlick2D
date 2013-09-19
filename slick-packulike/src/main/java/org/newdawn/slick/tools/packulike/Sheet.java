@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * A sprite sheet generated with pack-u-like
- *
+ * <p>
  * @author kevin
  */
 public class Sheet {
@@ -22,8 +22,8 @@ public class Sheet {
 
 	/**
 	 * Create a new sheet
-	 *
-	 * @param image   The image built for the sheet
+	 * <p>
+	 * @param image The image built for the sheet
 	 * @param sprites The sprite descriptors
 	 */
 	public Sheet(BufferedImage image, ArrayList sprites) {
@@ -33,7 +33,7 @@ public class Sheet {
 
 	/**
 	 * Get the image built for this sheet
-	 *
+	 * <p>
 	 * @return The image build for this sheet
 	 */
 	public BufferedImage getImage() {
@@ -42,7 +42,7 @@ public class Sheet {
 
 	/**
 	 * Get the list of sprites for this sheet
-	 *
+	 * <p>
 	 * @return The list of sprites for this sheet
 	 */
 	public ArrayList getSprites() {

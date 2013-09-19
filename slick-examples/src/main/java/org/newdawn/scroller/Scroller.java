@@ -12,9 +12,9 @@ import org.newdawn.slick.tiled.TiledMap;
 import org.newdawn.slick.util.Log;
 
 /**
- * An example to show scrolling around a tilemap smoothly. This seems to have caused confusion
- * a couple of times so here's "a" way to do it.
- *
+ * An example to show scrolling around a tilemap smoothly. This seems to have caused confusion a couple of times so
+ * here's "a" way to do it.
+ * <p>
  * @author kevin
  */
 public class Scroller extends BasicGame {
@@ -110,7 +110,7 @@ public class Scroller extends BasicGame {
 	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
 	 */
 	public void init(GameContainer container) throws SlickException {
-        // load the sprites and tiles, note that underneath the texture
+		// load the sprites and tiles, note that underneath the texture
 		// will be shared between the sprite sheet and tilemap
 		SpriteSheet sheet = new SpriteSheet("testdata/scroller/sprites.png", 32, 32);
 		// load the tilemap created the TileD tool
@@ -128,7 +128,7 @@ public class Scroller extends BasicGame {
 			}
 		}
 
-        // caculate some layout values for rendering the tilemap. How many tiles
+		// caculate some layout values for rendering the tilemap. How many tiles
 		// do we need to render to fill the screen in each dimension and how far is
 		// it from the centre of the screen
 		widthInTiles = container.getWidth() / TILE_SIZE;
@@ -136,7 +136,7 @@ public class Scroller extends BasicGame {
 		topOffsetInTiles = heightInTiles / 2;
 		leftOffsetInTiles = widthInTiles / 2;
 
-        // create the player sprite based on a set of sprites from the sheet loaded
+		// create the player sprite based on a set of sprites from the sheet loaded
 		// above (tank tracks moving)
 		player = new Animation();
 		for (int frame = 0; frame < 7; frame++) {
@@ -154,7 +154,7 @@ public class Scroller extends BasicGame {
 	 * @see org.newdawn.slick.BasicGame#update(org.newdawn.slick.GameContainer, int)
 	 */
 	public void update(GameContainer container, int delta) throws SlickException {
-        // check the controls, left/right adjust the rotation of the tank, up/down
+		// check the controls, left/right adjust the rotation of the tank, up/down
 		// move backwards and forwards
 		if (container.getInput().isKeyDown(Input.KEY_LEFT)) {
 			ang -= delta * TANK_ROTATE_SPEED;
@@ -179,11 +179,11 @@ public class Scroller extends BasicGame {
 	}
 
 	/**
-	 * Check if a specific location of the tank would leave it
-	 * on a blocked tile
-	 *
+	 * Check if a specific location of the tank would leave it on a blocked tile
+	 * <p>
 	 * @param x The x coordinate of the tank's location
 	 * @param y The y coordinate of the tank's location
+	 * <p>
 	 * @return True if the location is blocked
 	 */
 	private boolean blocked(float x, float y) {
@@ -191,18 +191,18 @@ public class Scroller extends BasicGame {
 	}
 
 	/**
-	 * Try to move in the direction specified. If it's blocked, try sliding. If that
-	 * doesn't work just don't bother
-	 *
+	 * Try to move in the direction specified. If it's blocked, try sliding. If that doesn't work just don't bother
+	 * <p>
 	 * @param x The amount on the X axis to move
 	 * @param y The amount on the Y axis to move
+	 * <p>
 	 * @return True if we managed to move
 	 */
 	private boolean tryMove(float x, float y) {
 		float newx = playerX + x;
 		float newy = playerY + y;
 
-        // first we try the real move, if that doesn't work
+		// first we try the real move, if that doesn't work
 		// we try moving on just one of the axis (X and then Y)
 		// this allows us to slide against edges
 		if (blocked(newx, newy)) {
@@ -226,8 +226,7 @@ public class Scroller extends BasicGame {
 	}
 
 	/**
-	 * Update the direction that will be moved in based on the
-	 * current angle of rotation
+	 * Update the direction that will be moved in based on the current angle of rotation
 	 */
 	private void updateMovementVector() {
 		dirX = (float) Math.sin(Math.toRadians(ang));
@@ -238,18 +237,18 @@ public class Scroller extends BasicGame {
 	 * @see org.newdawn.slick.Game#render(org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void render(GameContainer container, Graphics g) throws SlickException {
-        // draw the appropriate section of the tilemap based on the centre (hence the -(TANK_SIZE/2)) of
+		// draw the appropriate section of the tilemap based on the centre (hence the -(TANK_SIZE/2)) of
 		// the player
 		int playerTileX = (int) playerX;
 		int playerTileY = (int) playerY;
 
-        // caculate the offset of the player from the edge of the tile. As the player moves around this
+		// caculate the offset of the player from the edge of the tile. As the player moves around this
 		// varies and this tells us how far to offset the tile based rendering to give the smooth
 		// motion of scrolling
 		int playerTileOffsetX = (int) ((playerTileX - playerX) * TILE_SIZE);
 		int playerTileOffsetY = (int) ((playerTileY - playerY) * TILE_SIZE);
 
-        // render the section of the map that should be visible. Notice the -1 and +3 which renders
+		// render the section of the map that should be visible. Notice the -1 and +3 which renders
 		// a little extra map around the edge of the screen to cope with tiles scrolling on and off
 		// the screen
 		map.render(playerTileOffsetX - (TANK_SIZE / 2), playerTileOffsetY - (TANK_SIZE / 2),
@@ -268,14 +267,14 @@ public class Scroller extends BasicGame {
 
 	/**
 	 * Draw a single tank to the game
-	 *
-	 * @param g    The graphics context on which we're drawing
+	 * <p>
+	 * @param g The graphics context on which we're drawing
 	 * @param xpos The x coordinate in tiles the tank is at
 	 * @param ypos The y coordinate in tiles the tank is at
-	 * @param rot  The rotation of the tank
+	 * @param rot The rotation of the tank
 	 */
 	public void drawTank(Graphics g, float xpos, float ypos, float rot) {
-        // work out the centre of the tank in rendering coordinates and then
+		// work out the centre of the tank in rendering coordinates and then
 		// spit onto the screen
 		int cx = (int) (xpos * 32);
 		int cy = (int) (ypos * 32);
@@ -286,17 +285,18 @@ public class Scroller extends BasicGame {
 
 	/**
 	 * Entry point to the scroller example
-	 *
+	 * <p>
 	 * @param argv The argument passed on the command line (if any)
 	 */
 	public static void main(String[] argv) {
 		try {
-            // create a new container for our example game. This container
+			// create a new container for our example game. This container
 			// just creates a normal native window for rendering OpenGL accelerated
 			// elements to
 			AppGameContainer container = new AppGameContainer(new Scroller(), 800, 600, false);
 			container.start();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

@@ -20,51 +20,79 @@ import org.newdawn.slick.geom.Vector2f;
 
 /**
  * A test to try shape cutting
- * 
+ * <p>
  * @author Kevin Glass
  */
 public class GeomUtilTest extends BasicGame implements GeomUtilListener {
 
-	/** The shape we're cutting out of */
+	/**
+	 * The shape we're cutting out of
+	 */
 	private Shape source;
 
-	/** The shape we're cutting */
+	/**
+	 * The shape we're cutting
+	 */
 	private Shape cut;
 
-	/** The resulting shape */
+	/**
+	 * The resulting shape
+	 */
 	private Shape[] result;
 
-	/** The points used */
+	/**
+	 * The points used
+	 */
 	private ArrayList points = new ArrayList();
 
-	/** The points intersected */
+	/**
+	 * The points intersected
+	 */
 	private ArrayList marks = new ArrayList();
 
-	/** The points excluded */
+	/**
+	 * The points excluded
+	 */
 	private ArrayList exclude = new ArrayList();
 
-	/** True if we're moving the shape around */
+	/**
+	 * True if we're moving the shape around
+	 */
 	private boolean dynamic;
 
-	/** The util under test */
+	/**
+	 * The util under test
+	 */
 	private GeomUtil util = new GeomUtil();
 
-	/** The x position of the shape */
+	/**
+	 * The x position of the shape
+	 */
 	private int xp;
 
-	/** The y position of the shape */
+	/**
+	 * The y position of the shape
+	 */
 	private int yp;
 
-	/** The circle cutting tool */
+	/**
+	 * The circle cutting tool
+	 */
 	private Circle circle;
 
-	/** The rectangle cutting tool */
+	/**
+	 * The rectangle cutting tool
+	 */
 	private Shape rect;
 
-	/** The star cutting tool */
+	/**
+	 * The star cutting tool
+	 */
 	private Polygon star;
 
-	/** True if we're in union mode */
+	/**
+	 * True if we're in union mode
+	 */
 	private boolean union;
 
 	/**
@@ -217,7 +245,7 @@ public class GeomUtilTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -225,7 +253,8 @@ public class GeomUtilTest extends BasicGame implements GeomUtilListener {
 			AppGameContainer container = new AppGameContainer(new GeomUtilTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

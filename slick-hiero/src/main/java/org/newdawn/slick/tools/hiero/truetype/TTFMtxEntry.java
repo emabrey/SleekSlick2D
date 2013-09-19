@@ -67,8 +67,9 @@ class TTFMtxEntry {
 
 	/**
 	 * Returns a String representation of this object.
-	 *
+	 * <p>
 	 * @param t TTFFile to use for unit conversion
+	 * <p>
 	 * @return String String representation
 	 */
 	public String toString(TTFFile t) {
@@ -82,7 +83,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Returns the boundingBox.
-	 *
+	 * <p>
 	 * @return int[]
 	 */
 	public int[] getBoundingBox() {
@@ -91,7 +92,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Sets the boundingBox.
-	 *
+	 * <p>
 	 * @param boundingBox The boundingBox to set
 	 */
 	public void setBoundingBox(int[] boundingBox) {
@@ -100,7 +101,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Returns the found.
-	 *
+	 * <p>
 	 * @return byte
 	 */
 	public byte getFound() {
@@ -109,7 +110,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Returns the index.
-	 *
+	 * <p>
 	 * @return int
 	 */
 	public int getIndex() {
@@ -118,7 +119,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Determines whether this index represents a reserved character.
-	 *
+	 * <p>
 	 * @return True if it is reserved
 	 */
 	public boolean isIndexReserved() {
@@ -126,9 +127,8 @@ class TTFMtxEntry {
 	}
 
 	/**
-	 * Returns a String representation of the index taking into account if
-	 * the index is in the reserved range.
-	 *
+	 * Returns a String representation of the index taking into account if the index is in the reserved range.
+	 * <p>
 	 * @return index as String
 	 */
 	public String getIndexAsString() {
@@ -141,7 +141,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Returns the lsb.
-	 *
+	 * <p>
 	 * @return int
 	 */
 	public int getLsb() {
@@ -150,7 +150,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Returns the name.
-	 *
+	 * <p>
 	 * @return String
 	 */
 	public String getName() {
@@ -159,7 +159,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Returns the offset.
-	 *
+	 * <p>
 	 * @return long
 	 */
 	public long getOffset() {
@@ -168,7 +168,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Returns the unicodeIndex.
-	 *
+	 * <p>
 	 * @return List
 	 */
 	public List getUnicodeIndex() {
@@ -177,7 +177,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Returns the wx.
-	 *
+	 * <p>
 	 * @return int
 	 */
 	public int getWx() {
@@ -186,7 +186,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Sets the found.
-	 *
+	 * <p>
 	 * @param found The found to set
 	 */
 	public void setFound(byte found) {
@@ -195,7 +195,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Sets the index.
-	 *
+	 * <p>
 	 * @param index The index to set
 	 */
 	public void setIndex(int index) {
@@ -204,7 +204,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Sets the lsb.
-	 *
+	 * <p>
 	 * @param lsb The lsb to set
 	 */
 	public void setLsb(int lsb) {
@@ -213,7 +213,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Sets the name.
-	 *
+	 * <p>
 	 * @param name The name to set
 	 */
 	public void setName(String name) {
@@ -222,7 +222,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Sets the offset.
-	 *
+	 * <p>
 	 * @param offset The offset to set
 	 */
 	public void setOffset(long offset) {
@@ -231,7 +231,7 @@ class TTFMtxEntry {
 
 	/**
 	 * Sets the wx.
-	 *
+	 * <p>
 	 * @param wx The wx to set
 	 */
 	public void setWx(int wx) {

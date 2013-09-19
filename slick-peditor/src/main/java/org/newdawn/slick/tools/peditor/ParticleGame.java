@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 /**
  * A LWJGL canvas displaying a particle system
- *
+ * <p>
  * @author kevin
  */
 public class ParticleGame extends BasicGame {
@@ -90,8 +90,9 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Create a new canvas
-	 *
+	 * <p>
 	 * @param editor The editor which this canvas is part of
+	 * <p>
 	 * @throws LWJGLException Indicates a failure to create the OpenGL context
 	 */
 	public ParticleGame(ParticleEditor editor) throws LWJGLException {
@@ -100,7 +101,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Set the input listener to be added on init
-	 *
+	 * <p>
 	 * @param listener The listener to be added on init
 	 */
 	public void setListener(InputListener listener) {
@@ -109,7 +110,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Set the image to display behind the particle system
-	 *
+	 * <p>
 	 * @param file The file to load for the background image
 	 */
 	public void setBackgroundImage(File file) {
@@ -119,8 +120,8 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Set how much the system should move
-	 *
-	 * @param move  The amount of the system should move
+	 * <p>
+	 * @param move The amount of the system should move
 	 * @param reset True if the position should be reset
 	 */
 	public void setSystemMove(int move, boolean reset) {
@@ -132,7 +133,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Indicate if this canvas should pause
-	 *
+	 * <p>
 	 * @param paused True if the rendering should pause
 	 */
 	public void setPaused(boolean paused) {
@@ -141,7 +142,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Check if the canvas is paused
-	 *
+	 * <p>
 	 * @return True if the canvas is paused
 	 */
 	public boolean isPaused() {
@@ -150,7 +151,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Check if this hud is being displayed
-	 *
+	 * <p>
 	 * @return True if this hud is being displayed
 	 */
 	public boolean isHudOn() {
@@ -159,7 +160,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Indicate if the HUD should be drawn
-	 *
+	 * <p>
 	 * @param hud True if the HUD should be drawn
 	 */
 	public void setHud(boolean hud) {
@@ -168,7 +169,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Add an emitter to the particle system held here
-	 *
+	 * <p>
 	 * @param emitter The emitter to add
 	 */
 	public void addEmitter(ConfigurableEmitter emitter) {
@@ -183,7 +184,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Remove an emitter from the system held here
-	 *
+	 * <p>
 	 * @param emitter The emitter to be removed
 	 */
 	public void removeEmitter(ConfigurableEmitter emitter) {
@@ -194,7 +195,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Clear the particle system held in this canvas
-	 *
+	 * <p>
 	 * @param additive True if the particle system should be set to additive
 	 */
 	public void clearSystem(boolean additive) {
@@ -207,7 +208,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Set the particle system to be displayed
-	 *
+	 * <p>
 	 * @param system The system to be displayed
 	 */
 	public void setSystem(ParticleSystem system) {
@@ -238,7 +239,7 @@ public class ParticleGame extends BasicGame {
 
 	/**
 	 * Get the particle system being displayed
-	 *
+	 * <p>
 	 * @return The system being displayed
 	 */
 	public ParticleSystem getSystem() {
@@ -298,7 +299,8 @@ public class ParticleGame extends BasicGame {
 							backgroundImage.getAbsolutePath(), false);
 				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error("Failed to load backgroundImage: " + backgroundImage);
 			Log.error(e);
 			backgroundImage = null;

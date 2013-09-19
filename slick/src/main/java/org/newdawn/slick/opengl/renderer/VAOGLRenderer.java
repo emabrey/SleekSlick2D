@@ -7,53 +7,81 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
 /**
- * A renderer that caches all operations into an array, creates an opengl vertex array when
- * required and spits the data down to the card in batch mode
- * 
+ * A renderer that caches all operations into an array, creates an opengl vertex array when required and spits the data
+ * down to the card in batch mode
+ * <p>
  * @author kevin
  */
 public class VAOGLRenderer extends ImmediateModeOGLRenderer {
 
-	/** The tolerance to rendering immediate */
+	/**
+	 * The tolerance to rendering immediate
+	 */
 	private static final int TOLERANCE = 20;
 
-	/** Indicates there is no current geometry buffer */
+	/**
+	 * Indicates there is no current geometry buffer
+	 */
 	public static final int NONE = -1;
 
-	/** The maximum number of vertices draw in one batch */
+	/**
+	 * The maximum number of vertices draw in one batch
+	 */
 	public static final int MAX_VERTS = 5000;
 
-	/** The type of the geometry array currently being built - i.e. GL_QUADS */
+	/**
+	 * The type of the geometry array currently being built - i.e. GL_QUADS
+	 */
 	private int currentType = NONE;
 
-	/** The last colour applied */
+	/**
+	 * The last colour applied
+	 */
 	private float[] color = new float[]{1f, 1f, 1f, 1f};
 
-	/** The last texture applied */
+	/**
+	 * The last texture applied
+	 */
 	private float[] tex = new float[]{0f, 0f};
 
-	/** The index of the next vertex to be created */
+	/**
+	 * The index of the next vertex to be created
+	 */
 	private int vertIndex;
 
-	/** The vertex data cached */
+	/**
+	 * The vertex data cached
+	 */
 	private float[] verts = new float[MAX_VERTS * 3];
 
-	/** The vertex colour data cached */
+	/**
+	 * The vertex colour data cached
+	 */
 	private float[] cols = new float[MAX_VERTS * 4];
 
-	/** The vertex texture coordiante data cached */
+	/**
+	 * The vertex texture coordiante data cached
+	 */
 	private float[] texs = new float[MAX_VERTS * 3];
 
-	/** The buffer used to pass the vertex data to the card */
+	/**
+	 * The buffer used to pass the vertex data to the card
+	 */
 	private FloatBuffer vertices = BufferUtils.createFloatBuffer(MAX_VERTS * 3);
 
-	/** The buffer used to pass the vertex color data to the card */
+	/**
+	 * The buffer used to pass the vertex color data to the card
+	 */
 	private FloatBuffer colors = BufferUtils.createFloatBuffer(MAX_VERTS * 4);
 
-	/** The buffer used to pass the vertex texture coordinate data to the card */
+	/**
+	 * The buffer used to pass the vertex texture coordinate data to the card
+	 */
 	private FloatBuffer textures = BufferUtils.createFloatBuffer(MAX_VERTS * 2);
 
-	/** The stack for entering list creation mode - when we're creating a list we can't use our VAs */
+	/**
+	 * The stack for entering list creation mode - when we're creating a list we can't use our VAs
+	 */
 	private int listMode = 0;
 
 	/**
@@ -69,14 +97,14 @@ public class VAOGLRenderer extends ImmediateModeOGLRenderer {
 	}
 
 	/**
-	 * Start a new buffer for a vertex array 
+	 * Start a new buffer for a vertex array
 	 */
 	private void startBuffer() {
 		vertIndex = 0;
 	}
 
 	/**
-	 * Flush the currently cached data down to the card 
+	 * Flush the currently cached data down to the card
 	 */
 	private void flushBuffer() {
 		if (vertIndex == 0) {
@@ -240,9 +268,10 @@ public class VAOGLRenderer extends ImmediateModeOGLRenderer {
 
 	/**
 	 * Check if the geometry being created can be split at the current index
-	 * 
+	 * <p>
 	 * @param count The current index
 	 * @param type The type of geometry being built
+	 * <p>
 	 * @return True if the geometry can be split at the current index
 	 */
 	private boolean isSplittable(int count, int type) {

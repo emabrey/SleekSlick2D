@@ -4,7 +4,7 @@ import org.newdawn.slick.*;
 
 /**
  * A test for packed sprite sheets
- *
+ * <p>
  * @author kevin
  */
 public class PackedSheetTest extends BasicGame {
@@ -95,7 +95,7 @@ public class PackedSheetTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -103,7 +103,8 @@ public class PackedSheetTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new PackedSheetTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

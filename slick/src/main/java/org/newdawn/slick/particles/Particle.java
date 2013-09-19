@@ -8,73 +8,110 @@ import org.newdawn.slick.opengl.renderer.SGL;
 
 /**
  * A single particle within a system
- * 
+ * <p>
  * @author kevin
  */
 public class Particle {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
-	/** Indicates the particle should inherit it's use of points */
+	/**
+	 * Indicates the particle should inherit it's use of points
+	 */
 	public static final int INHERIT_POINTS = 1;
 
-	/** Indicates the particle should explicitly use points */
+	/**
+	 * Indicates the particle should explicitly use points
+	 */
 	public static final int USE_POINTS = 2;
 
-	/** Indicates the particle should explicitly not use points */
+	/**
+	 * Indicates the particle should explicitly not use points
+	 */
 	public static final int USE_QUADS = 3;
 
-	/** The x coordinate of the particle */
+	/**
+	 * The x coordinate of the particle
+	 */
 	protected float x;
 
-	/** The y coordinate of the particle */
+	/**
+	 * The y coordinate of the particle
+	 */
 	protected float y;
 
-	/** The x component of the direction vector of the particle */
+	/**
+	 * The x component of the direction vector of the particle
+	 */
 	protected float velx;
 
-	/** The y component of the direction vector of the particle */
+	/**
+	 * The y component of the direction vector of the particle
+	 */
 	protected float vely;
 
-	/** The current size in pixels of the particle */
+	/**
+	 * The current size in pixels of the particle
+	 */
 	protected float size = 10;
 
-	/** The colour of the particle */
+	/**
+	 * The colour of the particle
+	 */
 	protected Color color = Color.white;
 
-	/** The life left in the particle */
+	/**
+	 * The life left in the particle
+	 */
 	protected float life;
 
-	/** The original life of this particle */
+	/**
+	 * The original life of this particle
+	 */
 	protected float originalLife;
 
-	/** The engine this particle belongs to */
+	/**
+	 * The engine this particle belongs to
+	 */
 	private ParticleSystem engine;
 
-	/** The emitter controllng this particle */
+	/**
+	 * The emitter controllng this particle
+	 */
 	private ParticleEmitter emitter;
 
-	/** The image for this particle */
+	/**
+	 * The image for this particle
+	 */
 	protected Image image;
 
-	/** The type identifier of this particle */
+	/**
+	 * The type identifier of this particle
+	 */
 	protected int type;
 
-	/** How this particle should be rendered */
+	/**
+	 * How this particle should be rendered
+	 */
 	protected int usePoints = INHERIT_POINTS;
 
-	/** True if this particle's quad should be oritented based on it's direction */
+	/**
+	 * True if this particle's quad should be oritented based on it's direction
+	 */
 	protected boolean oriented = false;
 
-	/** The currently scalar applied on the y axis */
+	/**
+	 * The currently scalar applied on the y axis
+	 */
 	protected float scaleY = 1.0f;
 
 	/**
 	 * Create a new particle belonging to given engine
-	 * 
-	 * @param engine
-	 *            The engine the new particle belongs to
+	 * <p>
+	 * @param engine The engine the new particle belongs to
 	 */
 	public Particle(ParticleSystem engine) {
 		this.engine = engine;
@@ -82,7 +119,7 @@ public class Particle {
 
 	/**
 	 * Get the x offset of this particle
-	 * 
+	 * <p>
 	 * @return The x offset of this particle
 	 */
 	public float getX() {
@@ -91,7 +128,7 @@ public class Particle {
 
 	/**
 	 * Get the y offset of this particle
-	 * 
+	 * <p>
 	 * @return The y offset of this particle
 	 */
 	public float getY() {
@@ -100,7 +137,7 @@ public class Particle {
 
 	/**
 	 * Move this particle a fixed amount
-	 * 
+	 * <p>
 	 * @param x The amount to move the particle on the horizontal axis
 	 * @param y The amount to move the particle on the vertical axis
 	 */
@@ -111,7 +148,7 @@ public class Particle {
 
 	/**
 	 * Get the size of this particle
-	 * 
+	 * <p>
 	 * @return The size of this particle
 	 */
 	public float getSize() {
@@ -120,7 +157,7 @@ public class Particle {
 
 	/**
 	 * Get the color of this particle
-	 * 
+	 * <p>
 	 * @return The color of this particle
 	 */
 	public Color getColor() {
@@ -129,9 +166,8 @@ public class Particle {
 
 	/**
 	 * Set the image used to render this particle
-	 * 
-	 * @param image
-	 *            The image used to render this particle
+	 * <p>
+	 * @param image The image used to render this particle
 	 */
 	public void setImage(Image image) {
 		this.image = image;
@@ -139,7 +175,7 @@ public class Particle {
 
 	/**
 	 * Get the original life of this particle
-	 * 
+	 * <p>
 	 * @return The original life of this particle
 	 */
 	public float getOriginalLife() {
@@ -148,7 +184,7 @@ public class Particle {
 
 	/**
 	 * Get the life remaining in the particle in milliseconds
-	 * 
+	 * <p>
 	 * @return The life remaining in the particle
 	 */
 	public float getLife() {
@@ -157,7 +193,7 @@ public class Particle {
 
 	/**
 	 * Check if this particle is currently in use (i.e. is it rendering?)
-	 * 
+	 * <p>
 	 * @return True if the particle is currently in use
 	 */
 	public boolean inUse() {
@@ -202,9 +238,8 @@ public class Particle {
 
 	/**
 	 * Update the state of this particle
-	 * 
-	 * @param delta
-	 *            The time since the last update
+	 * <p>
+	 * @param delta The time since the last update
 	 */
 	public void update(int delta) {
 		emitter.updateParticle(this, delta);
@@ -220,11 +255,9 @@ public class Particle {
 
 	/**
 	 * Initialise the state of the particle as it's reused
-	 * 
-	 * @param emitter
-	 *            The emitter controlling this particle
-	 * @param life
-	 *            The life the particle should have (in milliseconds)
+	 * <p>
+	 * @param emitter The emitter controlling this particle
+	 * @param life The life the particle should have (in milliseconds)
 	 */
 	public void init(ParticleEmitter emitter, float life) {
 		x = 0;
@@ -241,9 +274,8 @@ public class Particle {
 
 	/**
 	 * Set the type of this particle
-	 * 
-	 * @param type
-	 *            The type of this particle
+	 * <p>
+	 * @param type The type of this particle
 	 */
 	public void setType(int type) {
 		this.type = type;
@@ -251,9 +283,9 @@ public class Particle {
 
 	/**
 	 * Indicate how this particle should be renered
-	 * 
-	 * @param usePoints
-	 *            The indicator for rendering
+	 * <p>
+	 * @param usePoints The indicator for rendering
+	 * <p>
 	 * @see #USE_POINTS
 	 * @see #USE_QUADS
 	 * @see #INHERIT_POINTS
@@ -264,7 +296,7 @@ public class Particle {
 
 	/**
 	 * Get the type of this particle
-	 * 
+	 * <p>
 	 * @return The type of this particle
 	 */
 	public int getType() {
@@ -273,9 +305,8 @@ public class Particle {
 
 	/**
 	 * Set the size of the particle
-	 * 
-	 * @param size
-	 *            The size of the particle (in pixels)
+	 * <p>
+	 * @param size The size of the particle (in pixels)
 	 */
 	public void setSize(float size) {
 		this.size = size;
@@ -283,9 +314,8 @@ public class Particle {
 
 	/**
 	 * Adjust the size of the particle
-	 * 
-	 * @param delta
-	 *            The amount to adjust the size by (in pixels)
+	 * <p>
+	 * @param delta The amount to adjust the size by (in pixels)
 	 */
 	public void adjustSize(float delta) {
 		size += delta;
@@ -294,9 +324,8 @@ public class Particle {
 
 	/**
 	 * Set the life of the particle
-	 * 
-	 * @param life
-	 *            The life of the particle in milliseconds
+	 * <p>
+	 * @param life The life of the particle in milliseconds
 	 */
 	public void setLife(float life) {
 		this.life = life;
@@ -304,17 +333,15 @@ public class Particle {
 
 	/**
 	 * Adjust the life othe particle
-	 * 
-	 * @param delta
-	 *            The amount to adjust the particle by (in milliseconds)
+	 * <p>
+	 * @param delta The amount to adjust the particle by (in milliseconds)
 	 */
 	public void adjustLife(float delta) {
 		life += delta;
 	}
 
 	/**
-	 * Kill the particle, stop it rendering and send it back to the engine for
-	 * use.
+	 * Kill the particle, stop it rendering and send it back to the engine for use.
 	 */
 	public void kill() {
 		life = 1;
@@ -322,15 +349,11 @@ public class Particle {
 
 	/**
 	 * Set the color of the particle
-	 * 
-	 * @param r
-	 *            The red component of the color
-	 * @param g
-	 *            The green component of the color
-	 * @param b
-	 *            The blue component of the color
-	 * @param a
-	 *            The alpha component of the color
+	 * <p>
+	 * @param r The red component of the color
+	 * @param g The green component of the color
+	 * @param b The blue component of the color
+	 * @param a The alpha component of the color
 	 */
 	public void setColor(float r, float g, float b, float a) {
 		if (color == Color.white) {
@@ -345,11 +368,9 @@ public class Particle {
 
 	/**
 	 * Set the position of this particle
-	 * 
-	 * @param x
-	 *            The new x position of the particle
-	 * @param y
-	 *            The new y position of the particle
+	 * <p>
+	 * @param x The new x position of the particle
+	 * @param y The new y position of the particle
 	 */
 	public void setPosition(float x, float y) {
 		this.x = x;
@@ -358,13 +379,10 @@ public class Particle {
 
 	/**
 	 * Set the velocity of the particle
-	 * 
-	 * @param dirx
-	 *            The x component of the new velocity
-	 * @param diry
-	 *            The y component of the new velocity
-	 * @param speed
-	 *            The speed in the given direction
+	 * <p>
+	 * @param dirx The x component of the new velocity
+	 * @param diry The y component of the new velocity
+	 * @param speed The speed in the given direction
 	 */
 	public void setVelocity(float dirx, float diry, float speed) {
 		this.velx = dirx * speed;
@@ -373,7 +391,7 @@ public class Particle {
 
 	/**
 	 * Set the current speed of this particle
-	 * 
+	 * <p>
 	 * @param speed The speed of this particle
 	 */
 	public void setSpeed(float speed) {
@@ -386,7 +404,7 @@ public class Particle {
 
 	/**
 	 * Set the velocity of the particle
-	 * 
+	 * <p>
 	 * @param velx The x component of the new velocity
 	 * @param vely The y component of the new velocity
 	 */
@@ -396,11 +414,9 @@ public class Particle {
 
 	/**
 	 * Adjust (add) the position of this particle
-	 * 
-	 * @param dx
-	 *            The amount to adjust the x component by
-	 * @param dy
-	 *            The amount to adjust the y component by
+	 * <p>
+	 * @param dx The amount to adjust the x component by
+	 * @param dy The amount to adjust the y component by
 	 */
 	public void adjustPosition(float dx, float dy) {
 		x += dx;
@@ -409,15 +425,11 @@ public class Particle {
 
 	/**
 	 * Adjust (add) the color of the particle
-	 * 
-	 * @param r
-	 *            The amount to adjust the red component by
-	 * @param g
-	 *            The amount to adjust the green component by
-	 * @param b
-	 *            The amount to adjust the blue component by
-	 * @param a
-	 *            The amount to adjust the alpha component by
+	 * <p>
+	 * @param r The amount to adjust the red component by
+	 * @param g The amount to adjust the green component by
+	 * @param b The amount to adjust the blue component by
+	 * @param a The amount to adjust the alpha component by
 	 */
 	public void adjustColor(float r, float g, float b, float a) {
 		if (color == Color.white) {
@@ -431,15 +443,11 @@ public class Particle {
 
 	/**
 	 * Adjust (add) the color of the particle
-	 * 
-	 * @param r
-	 *            The amount to adjust the red component by
-	 * @param g
-	 *            The amount to adjust the green component by
-	 * @param b
-	 *            The amount to adjust the blue component by
-	 * @param a
-	 *            The amount to adjust the alpha component by
+	 * <p>
+	 * @param r The amount to adjust the red component by
+	 * @param g The amount to adjust the green component by
+	 * @param b The amount to adjust the blue component by
+	 * @param a The amount to adjust the alpha component by
 	 */
 	public void adjustColor(int r, int g, int b, int a) {
 		if (color == Color.white) {
@@ -454,11 +462,9 @@ public class Particle {
 
 	/**
 	 * Adjust (add) the direction of this particle
-	 * 
-	 * @param dx
-	 *            The amount to adjust the x component by
-	 * @param dy
-	 *            The amount to adjust the y component by
+	 * <p>
+	 * @param dx The amount to adjust the x component by
+	 * @param dy The amount to adjust the y component by
 	 */
 	public void adjustVelocity(float dx, float dy) {
 		velx += dx;
@@ -467,7 +473,7 @@ public class Particle {
 
 	/**
 	 * Get the emitter that owns this particle
-	 * 
+	 * <p>
 	 * @return The emitter that owns this particle
 	 */
 	public ParticleEmitter getEmitter() {
@@ -483,7 +489,7 @@ public class Particle {
 
 	/**
 	 * Check if this particle is being oriented based on it's velocity
-	 * 
+	 * <p>
 	 * @return True if this particle being oriented based on it's velocity
 	 */
 	public boolean isOriented() {
@@ -492,7 +498,7 @@ public class Particle {
 
 	/**
 	 * Indicate if this particle should be oriented based on it's velocity
-	 * 
+	 * <p>
 	 * @param oriented True if this particle is being oriented based on it's velocity
 	 */
 	public void setOriented(boolean oriented) {
@@ -501,7 +507,7 @@ public class Particle {
 
 	/**
 	 * Get the current scalar applied on the y axis
-	 * 
+	 * <p>
 	 * @return The scalar applied on the y axis
 	 */
 	public float getScaleY() {
@@ -510,7 +516,7 @@ public class Particle {
 
 	/**
 	 * Set the current scalar applied on the y axis
-	 * 
+	 * <p>
 	 * @param scaleY The new scalar to apply on the y axis
 	 */
 	public void setScaleY(float scaleY) {

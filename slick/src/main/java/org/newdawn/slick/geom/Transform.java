@@ -2,33 +2,31 @@ package org.newdawn.slick.geom;
 
 import org.newdawn.slick.util.FastTrig;
 
-/**   
- * A 2 dimensional transformation that can be applied to <code>Shape</code> implemenations.   
- *    
- * @author Mark   
+/**
+ * A 2 dimensional transformation that can be applied to <code>Shape</code> implemenations.
+ * <p>
+ * @author Mark
  */
 public class Transform {
 
-	/**   
-	 * Value for each position in the matrix   
-	 *    
-	 * |0 1 2|   
-	 * |3 4 5|   
-	 * |6 7 8|   
+	/**
+	 * Value for each position in the matrix
+	 * <p>
+	 * |0 1 2| |3 4 5| |6 7 8|
 	 */
 	private float matrixPosition[];
 
-	/**   
-	 * Create and identity transform   
-	 *   
+	/**
+	 * Create and identity transform
+	 * <p>
 	 */
 	public Transform() {
 		matrixPosition = new float[]{1, 0, 0, 0, 1, 0, 0, 0, 1};
 	}
 
-	/**   
+	/**
 	 * Copy a transform
-	 * 
+	 * <p>
 	 * @param other The other transform to copy
 	 */
 	public Transform(Transform other) {
@@ -40,7 +38,7 @@ public class Transform {
 
 	/**
 	 * Concatanate to transform into one
-	 * 
+	 * <p>
 	 * @param t1 The first transform to join
 	 * @param t2 The second transform to join
 	 */
@@ -49,46 +47,49 @@ public class Transform {
 		concatenate(t2);
 	}
 
-	/**   
-	 * Create a transform for the given positions   
-	 *    
-	 * @param matrixPosition An array of float[6] to set up a transform   
-	 * @throws RuntimeException if the array is not of length 6   
+	/**
+	 * Create a transform for the given positions
+	 * <p>
+	 * @param matrixPosition An array of float[6] to set up a transform
+	 * <p>
+	 * @throws RuntimeException if the array is not of length 6
 	 */
 	public Transform(float matrixPosition[]) {
 		if (matrixPosition.length != 6) {
 			throw new RuntimeException("The parameter must be a float array of length 6.");
 		}
 		this.matrixPosition = new float[]{matrixPosition[0], matrixPosition[1], matrixPosition[2],
-			matrixPosition[3], matrixPosition[4], matrixPosition[5],
-			0, 0, 1};
+										  matrixPosition[3], matrixPosition[4], matrixPosition[5],
+										  0, 0, 1};
 	}
 
-	/**   
-	 * Create a transform for the given positions   
-	 *    
-	 * @param point00 float for the first position   
-	 * @param point01 float for the second position   
-	 * @param point02 float for the third position   
-	 * @param point10 float for the fourth position   
-	 * @param point11 float for the fifth position   
-	 * @param point12 float for the sixth position   
+	/**
+	 * Create a transform for the given positions
+	 * <p>
+	 * @param point00 float for the first position
+	 * @param point01 float for the second position
+	 * @param point02 float for the third position
+	 * @param point10 float for the fourth position
+	 * @param point11 float for the fifth position
+	 * @param point12 float for the sixth position
 	 */
 	public Transform(float point00, float point01, float point02, float point10, float point11, float point12) {
 		matrixPosition = new float[]{point00, point01, point02, point10, point11, point12, 0, 0, 1};
 	}
 
-	/**   
-	 * Transform the point pairs in the source array and store them in the destination array.   
-	 * All operations will be done before storing the results in the destination.  This way the source   
-	 * and destination array can be the same without worry of overwriting information before it is transformed.   
-	 *    
-	 * @param source Array of floats containing the points to be transformed   
-	 * @param sourceOffset Where in the array to start processing   
-	 * @param destination Array of floats to store the results.   
-	 * @param destOffset Where in the array to start storing   
-	 * @param numberOfPoints Number of points to be transformed   
-	 * @throws ArrayIndexOutOfBoundsException if sourceOffset + numberOfPoints * 2 > source.length or the same operation on the destination array   
+	/**
+	 * Transform the point pairs in the source array and store them in the destination array. All operations will be
+	 * done before storing the results in the destination. This way the source and destination array can be the same
+	 * without worry of overwriting information before it is transformed.
+	 * <p>
+	 * @param source Array of floats containing the points to be transformed
+	 * @param sourceOffset Where in the array to start processing
+	 * @param destination Array of floats to store the results.
+	 * @param destOffset Where in the array to start storing
+	 * @param numberOfPoints Number of points to be transformed
+	 * <p>
+	 * @throws ArrayIndexOutOfBoundsException if sourceOffset + numberOfPoints * 2 > source.length or the same operation
+	 * on the destination array
 	 */
 	public void transform(float source[], int sourceOffset, float destination[], int destOffset, int numberOfPoints) {
 		//TODO performance can be improved by removing the safety to the destination array   
@@ -109,11 +110,12 @@ public class Transform {
 		}
 	}
 
-	/**   
-	 * Update this Transform by concatenating the given Transform to this one.   
-	 *    
-	 * @param tx The Transfrom to concatenate to this one.   
-	 * @return The resulting Transform   
+	/**
+	 * Update this Transform by concatenating the given Transform to this one.
+	 * <p>
+	 * @param tx The Transfrom to concatenate to this one.
+	 * <p>
+	 * @return The resulting Transform
 	 */
 	public Transform concatenate(Transform tx) {
 		float[] mp = new float[9];
@@ -141,10 +143,10 @@ public class Transform {
 		return this;
 	}
 
-	/**   
-	 * Convert this Transform to a String.   
-	 *    
-	 * @return This Transform in human readable format.   
+	/**
+	 * Convert this Transform to a String.
+	 * <p>
+	 * @return This Transform in human readable format.
 	 */
 	public String toString() {
 		String result = "Transform[[" + matrixPosition[0] + "," + matrixPosition[1] + "," + matrixPosition[2]
@@ -154,32 +156,34 @@ public class Transform {
 		return result.toString();
 	}
 
-	/**   
-	 * Get an array representing this Transform.   
-	 *    
-	 * @return an array representing this Transform.    
+	/**
+	 * Get an array representing this Transform.
+	 * <p>
+	 * @return an array representing this Transform.
 	 */
 	public float[] getMatrixPosition() {
 		return matrixPosition;
 	}
 
-	/**   
-	 * Create a new rotation Transform   
-	 *    
-	 * @param angle The angle in radians to set the transform.   
-	 * @return The resulting Transform   
+	/**
+	 * Create a new rotation Transform
+	 * <p>
+	 * @param angle The angle in radians to set the transform.
+	 * <p>
+	 * @return The resulting Transform
 	 */
 	public static Transform createRotateTransform(float angle) {
 		return new Transform((float) FastTrig.cos(angle), -(float) FastTrig.sin(angle), 0, (float) FastTrig.sin(angle), (float) FastTrig.cos(angle), 0);
 	}
 
-	/**   
-	 * Create a new rotation Transform around the specified point   
-	 *    
-	 * @param angle The angle in radians to set the transform.   
-	 * @param x The x coordinate around which to rotate.   
-	 * @param y The y coordinate around which to rotate.   
-	 * @return The resulting Transform   
+	/**
+	 * Create a new rotation Transform around the specified point
+	 * <p>
+	 * @param angle The angle in radians to set the transform.
+	 * @param x The x coordinate around which to rotate.
+	 * @param y The y coordinate around which to rotate.
+	 * <p>
+	 * @return The resulting Transform
 	 */
 	public static Transform createRotateTransform(float angle, float x, float y) {
 		Transform temp = Transform.createRotateTransform(angle);
@@ -191,23 +195,25 @@ public class Transform {
 		return temp;
 	}
 
-	/**   
-	 * Create a new translation Transform   
-	 *    
-	 * @param xOffset The amount to move in the x direction   
-	 * @param yOffset The amount to move in the y direction   
-	 * @return The resulting Transform   
+	/**
+	 * Create a new translation Transform
+	 * <p>
+	 * @param xOffset The amount to move in the x direction
+	 * @param yOffset The amount to move in the y direction
+	 * <p>
+	 * @return The resulting Transform
 	 */
 	public static Transform createTranslateTransform(float xOffset, float yOffset) {
 		return new Transform(1, 0, xOffset, 0, 1, yOffset);
 	}
 
-	/**   
-	 * Create an new scaling Transform   
-	 *    
-	 * @param xScale The amount to scale in the x coordinate   
-	 * @param yScale The amount to scale in the x coordinate   
-	 * @return The resulting Transform   
+	/**
+	 * Create an new scaling Transform
+	 * <p>
+	 * @param xScale The amount to scale in the x coordinate
+	 * @param yScale The amount to scale in the x coordinate
+	 * <p>
+	 * @return The resulting Transform
 	 */
 	public static Transform createScaleTransform(float xScale, float yScale) {
 		return new Transform(xScale, 0, 0, 0, yScale, 0);
@@ -215,8 +221,9 @@ public class Transform {
 
 	/**
 	 * Transform the vector2f based on the matrix defined in this transform
-	 * 
+	 * <p>
 	 * @param pt The point to be transformed
+	 * <p>
 	 * @return The resulting point transformed by this matrix
 	 */
 	public Vector2f transform(Vector2f pt) {

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * A panel to allow editing on a single configurable value
- *
+ * <p>
  * @author kevin
  */
 public class ValuePanel extends DefaultPanel {
@@ -36,12 +36,12 @@ public class ValuePanel extends DefaultPanel {
 
 	/**
 	 * Create a new value panel for a single configurable emitter setting
-	 *
-	 * @param name          The name of the value
-	 * @param min           The minimum value allowed
-	 * @param max           The maximum value allowed
-	 * @param value         The initial value
-	 * @param toolTip       The description of the setting
+	 * <p>
+	 * @param name The name of the value
+	 * @param min The minimum value allowed
+	 * @param max The maximum value allowed
+	 * @param value The initial value
+	 * @param toolTip The description of the setting
 	 * @param linearEnabled True if this range should be able to be set to linear
 	 */
 	public ValuePanel(String name, int min, int max, int value, String toolTip, boolean linearEnabled) {
@@ -88,7 +88,7 @@ public class ValuePanel extends DefaultPanel {
 
 	/**
 	 * Indicate if this value is set to linear random numbers
-	 *
+	 * <p>
 	 * @param linear True if this vlaue is set to give linear random numbers
 	 */
 	public void setLinear(boolean linear) {
@@ -97,7 +97,7 @@ public class ValuePanel extends DefaultPanel {
 
 	/**
 	 * True if this value should give linear random numbers
-	 *
+	 * <p>
 	 * @return True if this value should give linear random numbers
 	 */
 	public boolean isLinear() {
@@ -106,7 +106,7 @@ public class ValuePanel extends DefaultPanel {
 
 	/**
 	 * Set the new value
-	 *
+	 * <p>
 	 * @param value The value to be assigned
 	 */
 	public void setValue(int value) {
@@ -115,7 +115,7 @@ public class ValuePanel extends DefaultPanel {
 
 	/**
 	 * Get the current value
-	 *
+	 * <p>
 	 * @return The current value
 	 */
 	public int getValue() {
@@ -124,7 +124,7 @@ public class ValuePanel extends DefaultPanel {
 
 	/**
 	 * Add a listener to be notified of updates to this panel
-	 *
+	 * <p>
 	 * @param listener The listener to be notified of updates to this panel
 	 */
 	public void addListener(InputPanelListener listener) {
@@ -133,7 +133,7 @@ public class ValuePanel extends DefaultPanel {
 
 	/**
 	 * Fire notification of updates to all listeners
-	 *
+	 * <p>
 	 * @param source The source of the update
 	 */
 	private void fireUpdated(Object source) {

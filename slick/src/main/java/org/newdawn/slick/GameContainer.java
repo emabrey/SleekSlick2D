@@ -20,100 +20,155 @@ import org.newdawn.slick.util.Log;
 import org.newdawn.slick.util.ResourceLoader;
 
 /**
- * A generic game container that handles the game loop, fps recording and
- * managing the input system
- *
+ * A generic game container that handles the game loop, fps recording and managing the input system
+ * <p>
  * @author kevin
  */
 public abstract class GameContainer implements GUIContext {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
-	/** The shared drawable if any */
+	/**
+	 * The shared drawable if any
+	 */
 	protected static Drawable SHARED_DRAWABLE;
 
-	/** The time the last frame was rendered */
+	/**
+	 * The time the last frame was rendered
+	 */
 	protected long lastFrame;
 
-	/** The last time the FPS recorded */
+	/**
+	 * The last time the FPS recorded
+	 */
 	protected long lastFPS;
 
-	/** The last recorded FPS */
+	/**
+	 * The last recorded FPS
+	 */
 	protected int recordedFPS;
 
-	/** The current count of FPS */
+	/**
+	 * The current count of FPS
+	 */
 	protected int fps;
 
-	/** True if we're currently running the game loop */
+	/**
+	 * True if we're currently running the game loop
+	 */
 	protected boolean running = true;
 
-	/** The width of the display */
+	/**
+	 * The width of the display
+	 */
 	protected int width;
 
-	/** The height of the display */
+	/**
+	 * The height of the display
+	 */
 	protected int height;
 
-	/** The game being managed */
+	/**
+	 * The game being managed
+	 */
 	protected Game game;
 
-	/** The default font to use in the graphics context */
+	/**
+	 * The default font to use in the graphics context
+	 */
 	private Font defaultFont;
 
-	/** The graphics context to be passed to the game */
+	/**
+	 * The graphics context to be passed to the game
+	 */
 	private Graphics graphics;
 
-	/** The input system to pass to the game */
+	/**
+	 * The input system to pass to the game
+	 */
 	protected Input input;
 
-	/** The FPS we want to lock to */
+	/**
+	 * The FPS we want to lock to
+	 */
 	protected int targetFPS = -1;
 
-	/** True if we should show the fps */
+	/**
+	 * True if we should show the fps
+	 */
 	private boolean showFPS = true;
 
-	/** The minimum logic update interval */
+	/**
+	 * The minimum logic update interval
+	 */
 	protected long minimumLogicInterval = 1;
 
-	/** The stored delta */
+	/**
+	 * The stored delta
+	 */
 	protected long storedDelta;
 
-	/** The maximum logic update interval */
+	/**
+	 * The maximum logic update interval
+	 */
 	protected long maximumLogicInterval = 0;
 
-	/** The last game started */
+	/**
+	 * The last game started
+	 */
 	protected Game lastGame;
 
-	/** True if we should clear the screen each frame */
+	/**
+	 * True if we should clear the screen each frame
+	 */
 	protected boolean clearEachFrame = true;
 
-	/** True if the game is paused */
+	/**
+	 * True if the game is paused
+	 */
 	protected boolean paused;
 
-	/** True if we should force exit */
+	/**
+	 * True if we should force exit
+	 */
 	protected boolean forceExit = true;
 
-	/** True if vsync has been requested */
+	/**
+	 * True if vsync has been requested
+	 */
 	protected boolean vsync;
 
-	/** Smoothed deltas requested */
+	/**
+	 * Smoothed deltas requested
+	 */
 	protected boolean smoothDeltas;
 
-	/** The number of samples we'll attempt through hardware */
+	/**
+	 * The number of samples we'll attempt through hardware
+	 */
 	protected int samples;
 
-	/** True if this context supports multisample */
+	/**
+	 * True if this context supports multisample
+	 */
 	protected boolean supportsMultiSample;
 
-	/** True if we should render when not focused */
+	/**
+	 * True if we should render when not focused
+	 */
 	protected boolean alwaysRender;
 
-	/** True if we require stencil bits */
+	/**
+	 * True if we require stencil bits
+	 */
 	protected static boolean stencil;
 
 	/**
 	 * Create a new game container wrapping a given game
-	 * 
+	 * <p>
 	 * @param game The game to be wrapped
 	 */
 	protected GameContainer(Game game) {
@@ -130,7 +185,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Set the default font that will be intialised in the graphics held in this container
-	 * 
+	 * <p>
 	 * @param font The font to use as default
 	 */
 	public void setDefaultFont(Font font) {
@@ -142,9 +197,9 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Indicate whether we want to try to use fullscreen multisampling. This will
-	 * give antialiasing across the whole scene using a hardware feature.
-	 * 
+	 * Indicate whether we want to try to use fullscreen multisampling. This will give antialiasing across the whole
+	 * scene using a hardware feature.
+	 * <p>
 	 * @param samples The number of samples to attempt (2 is safe)
 	 */
 	public void setMultiSample(int samples) {
@@ -153,7 +208,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Check if this hardware can support multi-sampling
-	 * 
+	 * <p>
 	 * @return True if the hardware supports multi-sampling
 	 */
 	public boolean supportsMultiSample() {
@@ -161,9 +216,8 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * The number of samples we're attempting to performing using
-	 * hardware multisampling
-	 * 
+	 * The number of samples we're attempting to performing using hardware multisampling
+	 * <p>
 	 * @return The number of samples requested
 	 */
 	public int getSamples() {
@@ -171,9 +225,8 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Indicate if we should force exitting the VM at the end
-	 * of the game (default = true)
-	 * 
+	 * Indicate if we should force exitting the VM at the end of the game (default = true)
+	 * <p>
 	 * @param forceExit True if we should force the VM exit
 	 */
 	public void setForceExit(boolean forceExit) {
@@ -181,10 +234,9 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Indicate if we want to smooth deltas. This feature will report
-	 * a delta based on the FPS not the time passed. This works well with 
-	 * vsync.
-	 * 
+	 * Indicate if we want to smooth deltas. This feature will report a delta based on the FPS not the time passed. This
+	 * works well with vsync.
+	 * <p>
 	 * @param smoothDeltas True if we should report smooth deltas
 	 */
 	public void setSmoothDeltas(boolean smoothDeltas) {
@@ -193,7 +245,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Check if the display is in fullscreen mode
-	 * 
+	 * <p>
 	 * @return True if the display is in fullscreen mode
 	 */
 	public boolean isFullscreen() {
@@ -202,7 +254,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Get the aspect ratio of the screen
-	 * 
+	 * <p>
 	 * @return The aspect ratio of the display
 	 */
 	public float getAspectRatio() {
@@ -210,32 +262,33 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Indicate whether we want to be in fullscreen mode. Note that the current
-	 * display mode must be valid as a fullscreen mode for this to work
-	 * 
+	 * Indicate whether we want to be in fullscreen mode. Note that the current display mode must be valid as a
+	 * fullscreen mode for this to work
+	 * <p>
 	 * @param fullscreen True if we want to be in fullscreen mode
+	 * <p>
 	 * @throws SlickException Indicates we failed to change the display mode
 	 */
 	public void setFullscreen(boolean fullscreen) throws SlickException {
 	}
 
 	/**
-	 * Enable shared OpenGL context. After calling this all containers created 
-	 * will shared a single parent context
-	 * 
+	 * Enable shared OpenGL context. After calling this all containers created will shared a single parent context
+	 * <p>
 	 * @throws SlickException Indicates a failure to create the shared drawable
 	 */
 	public static void enableSharedContext() throws SlickException {
 		try {
 			SHARED_DRAWABLE = new Pbuffer(64, 64, new PixelFormat(8, 0, 0), null);
-		} catch (LWJGLException e) {
+		}
+		catch (LWJGLException e) {
 			throw new SlickException("Unable to create the pbuffer used for shard context, buffers not supported", e);
 		}
 	}
 
 	/**
-	 * Get the context shared by all containers 
-	 * 
+	 * Get the context shared by all containers
+	 * <p>
 	 * @return The context shared by all the containers or null if shared context isn't enabled
 	 */
 	public static Drawable getSharedContext() {
@@ -243,10 +296,9 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Indicate if we should clear the screen at the beginning of each frame. If you're
-	 * rendering to the whole screen each frame then setting this to false can give
-	 * some performance improvements
-	 * 
+	 * Indicate if we should clear the screen at the beginning of each frame. If you're rendering to the whole screen
+	 * each frame then setting this to false can give some performance improvements
+	 * <p>
 	 * @param clear True if the the screen should be cleared each frame
 	 */
 	public void setClearEachFrame(boolean clear) {
@@ -255,7 +307,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Renitialise the game and the context in which it's being rendered
-	 * 
+	 * <p>
 	 * @throws SlickException Indicates a failure rerun initialisation routines
 	 */
 	public void reinit() throws SlickException {
@@ -277,7 +329,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Check if the container is currently paused.
-	 * 
+	 * <p>
 	 * @return True if the container is paused
 	 */
 	public boolean isPaused() {
@@ -285,27 +337,26 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Indicates if the game should be paused, i.e. if updates
-	 * should be propogated through to the game.
-	 * 
+	 * Indicates if the game should be paused, i.e. if updates should be propogated through to the game.
+	 * <p>
 	 * @param paused True if the game should be paused
 	 */
 	public void setPaused(boolean paused) {
 		this.paused = paused;
 	}
 
-	/** 
+	/**
 	 * True if this container should render when it has focus
-	 * 
+	 * <p>
 	 * @return True if this container should render when it has focus
 	 */
 	public boolean getAlwaysRender() {
 		return alwaysRender;
 	}
 
-	/** 
+	/**
 	 * Indicate whether we want this container to render when it has focus
-	 * 
+	 * <p>
 	 * @param alwaysRender True if this container should render when it has focus
 	 */
 	public void setAlwaysRender(boolean alwaysRender) {
@@ -313,8 +364,8 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Get the build number of slick 
-	 * 
+	 * Get the build number of slick
+	 * <p>
 	 * @return The build number of slick
 	 */
 	public static int getBuildVersion() {
@@ -326,7 +377,8 @@ public abstract class GameContainer implements GUIContext {
 			Log.info("Slick Build #" + build);
 
 			return build;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error("Unable to determine Slick build number");
 			return -1;
 		}
@@ -334,7 +386,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Get the default system font
-	 * 
+	 * <p>
 	 * @return The default system font
 	 */
 	public Font getDefaultFont() {
@@ -343,7 +395,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Check if sound effects are enabled
-	 * 
+	 * <p>
 	 * @return True if sound effects are enabled
 	 */
 	public boolean isSoundOn() {
@@ -352,7 +404,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Check if music is enabled
-	 * 
+	 * <p>
 	 * @return True if music is enabled
 	 */
 	public boolean isMusicOn() {
@@ -361,7 +413,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Indicate whether music should be enabled
-	 * 
+	 * <p>
 	 * @param on True if music should be enabled
 	 */
 	public void setMusicOn(boolean on) {
@@ -370,7 +422,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Indicate whether sound effects should be enabled
-	 * 
+	 * <p>
 	 * @param on True if sound effects should be enabled
 	 */
 	public void setSoundOn(boolean on) {
@@ -379,6 +431,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Retrieve the current default volume for music
+	 * <p>
 	 * @return the current default volume for music
 	 */
 	public float getMusicVolume() {
@@ -387,6 +440,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Retrieve the current default volume for sound fx
+	 * <p>
 	 * @return the current default volume for sound fx
 	 */
 	public float getSoundVolume() {
@@ -395,6 +449,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Set the default volume for sound fx
+	 * <p>
 	 * @param volume the new default value for sound fx volume
 	 */
 	public void setSoundVolume(float volume) {
@@ -403,6 +458,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Set the default volume for music
+	 * <p>
 	 * @param volume the new default value for music volume
 	 */
 	public void setMusicVolume(float volume) {
@@ -411,21 +467,21 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Get the width of the standard screen resolution
-	 * 
+	 * <p>
 	 * @return The screen width
 	 */
 	public abstract int getScreenWidth();
 
 	/**
 	 * Get the height of the standard screen resolution
-	 * 
+	 * <p>
 	 * @return The screen height
 	 */
 	public abstract int getScreenHeight();
 
 	/**
 	 * Get the width of the game canvas
-	 * 
+	 * <p>
 	 * @return The width of the game canvas
 	 */
 	public int getWidth() {
@@ -434,7 +490,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Get the height of the game canvas
-	 * 
+	 * <p>
 	 * @return The height of the game canvas
 	 */
 	public int getHeight() {
@@ -442,29 +498,30 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Set the icon to be displayed if possible in this type of
-	 * container
-	 * 
+	 * Set the icon to be displayed if possible in this type of container
+	 * <p>
 	 * @param ref The reference to the icon to be displayed
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the icon
 	 */
 	public abstract void setIcon(String ref) throws SlickException;
 
 	/**
-	 * Set the icons to be used for this application. Note that the size of the icon
-	 * defines how it will be used. Important ones to note
-	 * 
-	 * Windows window icon must be 16x16
-	 * Windows alt-tab icon must be 24x24 or 32x32 depending on Windows version (XP=32)
-	 * 
+	 * Set the icons to be used for this application. Note that the size of the icon defines how it will be used.
+	 * Important ones to note
+	 * <p>
+	 * Windows window icon must be 16x16 Windows alt-tab icon must be 24x24 or 32x32 depending on Windows version
+	 * (XP=32)
+	 * <p>
 	 * @param refs The reference to the icon to be displayed
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the icon
 	 */
 	public abstract void setIcons(String[] refs) throws SlickException;
 
 	/**
 	 * Get the accurate system time
-	 * 
+	 * <p>
 	 * @return The system time in milliseconds
 	 */
 	public long getTime() {
@@ -473,7 +530,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Sleep for a given period
-	 * 
+	 * <p>
 	 * @param milliseconds The period to sleep for in milliseconds
 	 */
 	public void sleep(int milliseconds) {
@@ -481,93 +538,95 @@ public abstract class GameContainer implements GUIContext {
 		while (getTime() < target) {
 			try {
 				Thread.sleep(1);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 			}
 		}
 	}
 
 	/**
-	 * Set the mouse cursor to be displayed - this is a hardware cursor and hence
-	 * shouldn't have any impact on FPS.
-	 * 
+	 * Set the mouse cursor to be displayed - this is a hardware cursor and hence shouldn't have any impact on FPS.
+	 * <p>
 	 * @param ref The location of the image to be loaded for the cursor
 	 * @param hotSpotX The x coordinate of the hotspot within the cursor image
 	 * @param hotSpotY The y coordinate of the hotspot within the cursor image
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the cursor image or create the hardware cursor
 	 */
 	public abstract void setMouseCursor(String ref, int hotSpotX, int hotSpotY) throws SlickException;
 
 	/**
-	 * Set the mouse cursor to be displayed - this is a hardware cursor and hence
-	 * shouldn't have any impact on FPS.
-	 * 
+	 * Set the mouse cursor to be displayed - this is a hardware cursor and hence shouldn't have any impact on FPS.
+	 * <p>
 	 * @param data The image data from which the cursor can be construted
 	 * @param hotSpotX The x coordinate of the hotspot within the cursor image
 	 * @param hotSpotY The y coordinate of the hotspot within the cursor image
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the cursor image or create the hardware cursor
 	 */
 	public abstract void setMouseCursor(ImageData data, int hotSpotX, int hotSpotY) throws SlickException;
 
 	/**
-	 * Set the mouse cursor based on the contents of the image. Note that this will not take
-	 * account of render state type changes to images (rotation and such). If these effects
-	 * are required it is recommended that an offscreen buffer be used to produce an appropriate
-	 * image. An offscreen buffer will always be used to produce the new cursor and as such
-	 * this operation an be very expensive
-	 * 
+	 * Set the mouse cursor based on the contents of the image. Note that this will not take account of render state
+	 * type changes to images (rotation and such). If these effects are required it is recommended that an offscreen
+	 * buffer be used to produce an appropriate image. An offscreen buffer will always be used to produce the new cursor
+	 * and as such this operation an be very expensive
+	 * <p>
 	 * @param image The image to use as the cursor
 	 * @param hotSpotX The x coordinate of the hotspot within the cursor image
 	 * @param hotSpotY The y coordinate of the hotspot within the cursor image
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the cursor image or create the hardware cursor
 	 */
 	public abstract void setMouseCursor(Image image, int hotSpotX, int hotSpotY) throws SlickException;
 
 	/**
-	 * Set the mouse cursor to be displayed - this is a hardware cursor and hence
-	 * shouldn't have any impact on FPS.
-	 * 
+	 * Set the mouse cursor to be displayed - this is a hardware cursor and hence shouldn't have any impact on FPS.
+	 * <p>
 	 * @param cursor The cursor to use
 	 * @param hotSpotX The x coordinate of the hotspot within the cursor image
 	 * @param hotSpotY The y coordinate of the hotspot within the cursor image
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the cursor image or create the hardware cursor
 	 */
 	public abstract void setMouseCursor(Cursor cursor, int hotSpotX, int hotSpotY) throws SlickException;
 
 	/**
-	 * Get a cursor based on a image reference on the classpath. The image 
-	 * is assumed to be a set/strip of cursor animation frames running from top to 
-	 * bottom.
-	 * 
+	 * Get a cursor based on a image reference on the classpath. The image is assumed to be a set/strip of cursor
+	 * animation frames running from top to bottom.
+	 * <p>
 	 * @param ref The reference to the image to be loaded
 	 * @param x The x-coordinate of the cursor hotspot (left -> right)
 	 * @param y The y-coordinate of the cursor hotspot (bottom -> top)
 	 * @param width The x width of the cursor
 	 * @param height The y height of the cursor
 	 * @param cursorDelays image delays between changing frames in animation
-	 * 					
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the image or a failure to create the hardware cursor
 	 */
-	public void setAnimatedMouseCursor(String ref, int x, int y, int width, int height, int[] cursorDelays) throws SlickException {
+	public void setAnimatedMouseCursor(String ref, int x, int y, int width, int height, int[] cursorDelays) throws
+			SlickException {
 		try {
 			Cursor cursor;
 			cursor = CursorLoader.get().getAnimatedCursor(ref, x, y, width, height, cursorDelays);
 			setMouseCursor(cursor, x, y);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to set mouse cursor", e);
-		} catch (LWJGLException e) {
+		}
+		catch (LWJGLException e) {
 			throw new SlickException("Failed to set mouse cursor", e);
 		}
 	}
 
 	/**
-	 * Set the default mouse cursor - i.e. the original cursor before any native 
-	 * cursor was set
+	 * Set the default mouse cursor - i.e. the original cursor before any native cursor was set
 	 */
 	public abstract void setDefaultMouseCursor();
 
 	/**
 	 * Get the input system
-	 * 
+	 * <p>
 	 * @return The input system available to this game container
 	 */
 	public Input getInput() {
@@ -576,7 +635,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Get the current recorded FPS (frames per second)
-	 * 
+	 * <p>
 	 * @return The current FPS
 	 */
 	public int getFPS() {
@@ -585,22 +644,21 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Indicate whether mouse cursor should be grabbed or not
-	 * 
+	 * <p>
 	 * @param grabbed True if mouse cursor should be grabbed
 	 */
 	public abstract void setMouseGrabbed(boolean grabbed);
 
 	/**
-	 * Check if the mouse cursor is current grabbed. This will cause it not
-	 * to be seen.
-	 * 
+	 * Check if the mouse cursor is current grabbed. This will cause it not to be seen.
+	 * <p>
 	 * @return True if the mouse is currently grabbed
 	 */
 	public abstract boolean isMouseGrabbed();
 
 	/**
 	 * Retrieve the time taken to render the last frame, i.e. the change in time - delta.
-	 * 
+	 * <p>
 	 * @return The time taken to render the last frame
 	 */
 	protected int getDelta() {
@@ -624,10 +682,9 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Set the minimum amount of time in milliseonds that has to 
-	 * pass before update() is called on the container game. This gives
-	 * a way to limit logic updates compared to renders.
-	 * 
+	 * Set the minimum amount of time in milliseonds that has to pass before update() is called on the container game.
+	 * This gives a way to limit logic updates compared to renders.
+	 * <p>
 	 * @param interval The minimum interval between logic updates
 	 */
 	public void setMinimumLogicUpdateInterval(int interval) {
@@ -635,10 +692,9 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Set the maximum amount of time in milliseconds that can passed
-	 * into the update method. Useful for collision detection without
-	 * sweeping.
-	 * 
+	 * Set the maximum amount of time in milliseconds that can passed into the update method. Useful for collision
+	 * detection without sweeping.
+	 * <p>
 	 * @param interval The maximum interval between logic updates
 	 */
 	public void setMaximumLogicUpdateInterval(int interval) {
@@ -647,8 +703,9 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Update and render the game
-	 * 
+	 * <p>
 	 * @param delta The change in time since last update and render
+	 * <p>
 	 * @throws SlickException Indicates an internal fault to the game.
 	 */
 	protected void updateAndRender(int delta) throws SlickException {
@@ -684,7 +741,8 @@ public abstract class GameContainer implements GUIContext {
 						storedDelta = 0;
 					}
 
-				} catch (Throwable e) {
+				}
+				catch (Throwable e) {
 					Log.error(e);
 					throw new SlickException("Game.update() failure - check the game code.");
 				}
@@ -706,7 +764,8 @@ public abstract class GameContainer implements GUIContext {
 			graphics.setAntiAlias(false);
 			try {
 				game.render(this, graphics);
-			} catch (Throwable e) {
+			}
+			catch (Throwable e) {
 				Log.error(e);
 				throw new SlickException("Game.render() failure - check the game code.");
 			}
@@ -725,9 +784,8 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Indicate if the display should update only when the game is visible
-	 * (the default is true)
-	 * 
+	 * Indicate if the display should update only when the game is visible (the default is true)
+	 * <p>
 	 * @param updateOnlyWhenVisible True if we should updated only when the display is visible
 	 */
 	public void setUpdateOnlyWhenVisible(boolean updateOnlyWhenVisible) {
@@ -735,7 +793,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Check if this game is only updating when visible to the user (default = true)
-	 * 
+	 * <p>
 	 * @return True if the game is only updated when the display is visible
 	 */
 	public boolean isUpdatingOnlyWhenVisible() {
@@ -768,7 +826,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Initialise the system components, OpenGL and OpenAL.
-	 * 
+	 * <p>
 	 * @throws SlickException Indicates a failure to create a native handler
 	 */
 	protected void initSystem() throws SlickException {
@@ -781,7 +839,7 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Enter the orthographic mode 
+	 * Enter the orthographic mode
 	 */
 	protected void enterOrtho() {
 		enterOrtho(width, height);
@@ -789,7 +847,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Indicate whether the container should show the FPS
-	 * 
+	 * <p>
 	 * @param show True if the container should show the FPS
 	 */
 	public void setShowFPS(boolean show) {
@@ -798,7 +856,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Check if the FPS is currently showing
-	 * 
+	 * <p>
 	 * @return True if the FPS is showing
 	 */
 	public boolean isShowingFPS() {
@@ -807,7 +865,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Set the target fps we're hoping to get
-	 * 
+	 * <p>
 	 * @param fps The target fps we're hoping to get
 	 */
 	public void setTargetFrameRate(int fps) {
@@ -815,9 +873,8 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Indicate whether the display should be synced to the 
-	 * vertical refresh (stops tearing)
-	 * 
+	 * Indicate whether the display should be synced to the vertical refresh (stops tearing)
+	 * <p>
 	 * @param vsync True if we want to sync to vertical refresh
 	 */
 	public void setVSync(boolean vsync) {
@@ -827,7 +884,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * True if vsync is requested
-	 * 
+	 * <p>
 	 * @return True if vsync is requested
 	 */
 	public boolean isVSyncRequested() {
@@ -836,7 +893,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * True if the game is running
-	 * 
+	 * <p>
 	 * @return True if the game is running
 	 */
 	protected boolean running() {
@@ -845,7 +902,7 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Inidcate we want verbose logging
-	 * 
+	 * <p>
 	 * @param verbose True if we want verbose logging (INFO and DEBUG)
 	 */
 	public void setVerbose(boolean verbose) {
@@ -861,15 +918,14 @@ public abstract class GameContainer implements GUIContext {
 
 	/**
 	 * Check if the game currently has focus
-	 * 
+	 * <p>
 	 * @return True if the game currently has focus
 	 */
 	public abstract boolean hasFocus();
 
 	/**
-	 * Get the graphics context used by this container. Note that this 
-	 * value may vary over the life time of the game.
-	 * 
+	 * Get the graphics context used by this container. Note that this value may vary over the life time of the game.
+	 * <p>
 	 * @return The graphics context used by this container
 	 */
 	public Graphics getGraphics() {
@@ -877,8 +933,8 @@ public abstract class GameContainer implements GUIContext {
 	}
 
 	/**
-	 * Enter the orthographic mode 
-	 * 
+	 * Enter the orthographic mode
+	 * <p>
 	 * @param xsize The size of the panel being used
 	 * @param ysize The size of the panel being used
 	 */

@@ -10,14 +10,16 @@ import org.newdawn.slick.util.ResourceLoader;
 import org.w3c.dom.Document;
 
 /**
- * A simple utility wrapper around the Java DOM implementation to hopefully
- * make XML parsing that bit easier without requiring YAL. 
- * 
+ * A simple utility wrapper around the Java DOM implementation to hopefully make XML parsing that bit easier without
+ * requiring YAL.
+ * <p>
  * @author kevin
  */
 public class XMLParser {
 
-	/** The factory used to to create document builders that parse XML into the DOM */
+	/**
+	 * The factory used to to create document builders that parse XML into the DOM
+	 */
 	private static DocumentBuilderFactory factory;
 
 	/**
@@ -27,13 +29,13 @@ public class XMLParser {
 	}
 
 	/**
-	 * Parse the XML document located by the slick resource loader using the
-	 * reference given.
-	 * 
+	 * Parse the XML document located by the slick resource loader using the reference given.
+	 * <p>
 	 * @param ref The reference to the XML document
+	 * <p>
 	 * @return The root element of the newly parse document
-	 * @throws SlickException Indicates a failure to parse the XML, most likely the 
-	 * XML is malformed in some way.
+	 * <p>
+	 * @throws SlickException Indicates a failure to parse the XML, most likely the XML is malformed in some way.
 	 */
 	public XMLElement parse(String ref) throws SlickException {
 		return parse(ref, ResourceLoader.getResourceAsStream(ref));
@@ -41,12 +43,13 @@ public class XMLParser {
 
 	/**
 	 * Parse the XML document that can be read from the given input stream
-	 * 
+	 * <p>
 	 * @param name The name of the document
 	 * @param in The input stream from which the document can be read
+	 * <p>
 	 * @return The root element of the newly parse document
-	 * @throws SlickXMLException Indicates a failure to parse the XML, most likely the 
-	 * XML is malformed in some way.
+	 * <p>
+	 * @throws SlickXMLException Indicates a failure to parse the XML, most likely the XML is malformed in some way.
 	 */
 	public XMLElement parse(String name, InputStream in) throws SlickXMLException {
 		try {
@@ -57,7 +60,8 @@ public class XMLParser {
 			Document doc = builder.parse(in);
 
 			return new XMLElement(doc.getDocumentElement());
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new SlickXMLException("Failed to parse document: " + name, e);
 		}
 	}

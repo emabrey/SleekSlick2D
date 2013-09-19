@@ -11,12 +11,14 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for image buffer maniupulation rendering
- *
+ * <p>
  * @author kevin
  */
 public class ImageBufferTest extends BasicGame {
 
-	/** The image we're currently displaying */
+	/**
+	 * The image we're currently displaying
+	 */
 	private Image image;
 
 	/**
@@ -67,7 +69,7 @@ public class ImageBufferTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -75,7 +77,8 @@ public class ImageBufferTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ImageBufferTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

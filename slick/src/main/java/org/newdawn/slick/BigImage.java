@@ -15,31 +15,29 @@ import org.newdawn.slick.util.OperationNotSupportedException;
 import org.newdawn.slick.util.ResourceLoader;
 
 /**
- * An image implementation that handles loaded images that are larger than the 
- * maximum texture size supported by the card. In most cases it makes sense
- * to make sure all of your image resources are less than 512x512 in size when
- * using OpenGL. However, in the rare circumstances where this isn't possible
- * this implementation can be used to draw a tiled version of the image built
- * from several smaller textures. 
- * 
- * This implementation does come with limitations and some performance impact
- * however - so use only when absolutely required.
- *
+ * An image implementation that handles loaded images that are larger than the maximum texture size supported by the
+ * card. In most cases it makes sense to make sure all of your image resources are less than 512x512 in size when using
+ * OpenGL. However, in the rare circumstances where this isn't possible this implementation can be used to draw a tiled
+ * version of the image built from several smaller textures.
+ * <p>
+ * This implementation does come with limitations and some performance impact however - so use only when absolutely
+ * required.
+ * <p>
  * TODO: The code in here isn't pretty, really needs revisiting with a comment stick.
- * 
+ * <p>
  * @author kevin
  */
 public class BigImage extends Image {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
 	/**
-	 * Get the maximum size of an image supported by the underlying
-	 * hardware.
-	 * 
-	 * @return The maximum size of the textures supported by the underlying
-	 * hardware.
+	 * Get the maximum size of an image supported by the underlying hardware.
+	 * <p>
+	 * @return The maximum size of the textures supported by the underlying hardware.
 	 */
 	public static final int getMaxSingleImageSize() {
 		IntBuffer buffer = BufferUtils.createIntBuffer(16);
@@ -48,22 +46,34 @@ public class BigImage extends Image {
 		return buffer.get(0);
 	}
 
-	/** The last image that we put into "in use" mode */
+	/**
+	 * The last image that we put into "in use" mode
+	 */
 	private static Image lastBind;
 
-	/** The images building up this sub-image */
+	/**
+	 * The images building up this sub-image
+	 */
 	private Image[][] images;
 
-	/** The number of images on the xaxis */
+	/**
+	 * The number of images on the xaxis
+	 */
 	private int xcount;
 
-	/** The number of images on the yaxis */
+	/**
+	 * The number of images on the yaxis
+	 */
 	private int ycount;
 
-	/** The real width of the whole image - maintained even when scaled */
+	/**
+	 * The real width of the whole image - maintained even when scaled
+	 */
 	private int realWidth;
 
-	/** The real hieght of the whole image - maintained even when scaled */
+	/**
+	 * The real hieght of the whole image - maintained even when scaled
+	 */
 	private int realHeight;
 
 	/**
@@ -75,8 +85,9 @@ public class BigImage extends Image {
 
 	/**
 	 * Create a new big image by loading it from the specified reference
-	 * 
+	 * <p>
 	 * @param ref The reference to the image to load
+	 * <p>
 	 * @throws SlickException Indicates we were unable to locate the resource
 	 */
 	public BigImage(String ref) throws SlickException {
@@ -85,9 +96,10 @@ public class BigImage extends Image {
 
 	/**
 	 * Create a new big image by loading it from the specified reference
-	 * 
+	 * <p>
 	 * @param ref The reference to the image to load
 	 * @param filter The image filter to apply (@see #Image.FILTER_NEAREST)
+	 * <p>
 	 * @throws SlickException Indicates we were unable to locate the resource
 	 */
 	public BigImage(String ref, int filter) throws SlickException {
@@ -97,10 +109,11 @@ public class BigImage extends Image {
 
 	/**
 	 * Create a new big image by loading it from the specified reference
-	 * 
+	 * <p>
 	 * @param ref The reference to the image to load
 	 * @param filter The image filter to apply (@see #Image.FILTER_NEAREST)
 	 * @param tileSize The maximum size of the tiles to use to build the bigger image
+	 * <p>
 	 * @throws SlickException Indicates we were unable to locate the resource
 	 */
 	public BigImage(String ref, int filter, int tileSize) throws SlickException {
@@ -109,7 +122,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Create a new big image by loading it from the specified image data
-	 * 
+	 * <p>
 	 * @param data The pixelData to use to create the image
 	 * @param imageBuffer The buffer containing texture data
 	 * @param filter The image filter to apply (@see #Image.FILTER_NEAREST)
@@ -120,7 +133,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Create a new big image by loading it from the specified image data
-	 * 
+	 * <p>
 	 * @param data The pixelData to use to create the image
 	 * @param imageBuffer The buffer containing texture data
 	 * @param filter The image filter to apply (@see #Image.FILTER_NEAREST)
@@ -132,9 +145,10 @@ public class BigImage extends Image {
 
 	/**
 	 * Get a sub tile of this big image. Useful for debugging
-	 * 
+	 * <p>
 	 * @param x The x tile index
 	 * @param y The y tile index
+	 * <p>
 	 * @return The image used for this tile
 	 */
 	public Image getTile(int x, int y) {
@@ -143,10 +157,11 @@ public class BigImage extends Image {
 
 	/**
 	 * Create a new big image by loading it from the specified reference
-	 * 
+	 * <p>
 	 * @param ref The reference to the image to load
 	 * @param filter The image filter to apply (@see #Image.FILTER_NEAREST)
 	 * @param tileSize The maximum size of the tiles to use to build the bigger image
+	 * <p>
 	 * @throws SlickException Indicates we were unable to locate the resource
 	 */
 	private void build(String ref, int filter, int tileSize) throws SlickException {
@@ -154,14 +169,15 @@ public class BigImage extends Image {
 			final LoadableImageData data = ImageDataFactory.getImageDataFor(ref);
 			final ByteBuffer imageBuffer = data.loadImage(ResourceLoader.getResourceAsStream(ref), false, null);
 			build(data, imageBuffer, filter, tileSize);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load: " + ref, e);
 		}
 	}
 
 	/**
-	 * Create an big image from a image data source. 
-	 * 
+	 * Create an big image from a image data source.
+	 * <p>
 	 * @param data The pixelData to use to create the image
 	 * @param imageBuffer The buffer containing texture data
 	 * @param filter The filter to use when scaling this image
@@ -273,7 +289,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Not supported in BigImage
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.Image#bind()
 	 */
 	public void bind() {
@@ -282,7 +298,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Not supported in BigImage
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.Image#copy()
 	 */
 	public Image copy() {
@@ -462,7 +478,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Not supported in BigImage
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.Image#endUse()
 	 */
 	public void endUse() {
@@ -474,7 +490,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Not supported in BigImage
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.Image#startUse()
 	 */
 	public void startUse() {
@@ -482,7 +498,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Not supported in BigImage
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.Image#ensureInverted()
 	 */
 	public void ensureInverted() {
@@ -491,7 +507,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Not supported in BigImage
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.Image#getColor(int, int)
 	 */
 	public Color getColor(int x, int y) {
@@ -539,14 +555,14 @@ public class BigImage extends Image {
 
 	/**
 	 * Not supported in BigImage
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.Image#getGraphics()
 	 */
 	public Graphics getGraphics() throws SlickException {
 		throw new OperationNotSupportedException("Can't use big images as offscreen buffers");
 	}
 
-	/** 
+	/**
 	 * @see org.newdawn.slick.Image#getScaledCopy(float)
 	 */
 	public Image getScaledCopy(float scale) {
@@ -639,7 +655,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Not supported in BigImage
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.Image#getTexture()
 	 */
 	public Texture getTexture() {
@@ -662,7 +678,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Not supported in BigImage
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.Image#setTexture(org.newdawn.slick.opengl.Texture)
 	 */
 	public void setTexture(Texture texture) {
@@ -670,11 +686,12 @@ public class BigImage extends Image {
 	}
 
 	/**
-	 * Get a sub-image that builds up this image. Note that the offsets 
-	 * used will depend on the maximum texture size on the OpenGL hardware
-	 * 
+	 * Get a sub-image that builds up this image. Note that the offsets used will depend on the maximum texture size on
+	 * the OpenGL hardware
+	 * <p>
 	 * @param offsetX The x position of the image to return
 	 * @param offsetY The y position of the image to return
+	 * <p>
 	 * @return The image at the specified offset into the big image
 	 */
 	public Image getSubImage(int offsetX, int offsetY) {
@@ -683,7 +700,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Get a count of the number images that build this image up horizontally
-	 * 
+	 * <p>
 	 * @return The number of sub-images across the big image
 	 */
 	public int getHorizontalImageCount() {
@@ -692,7 +709,7 @@ public class BigImage extends Image {
 
 	/**
 	 * Get a count of the number images that build this image up vertically
-	 * 
+	 * <p>
 	 * @return The number of sub-images down the big image
 	 */
 	public int getVerticalImageCount() {
@@ -707,8 +724,7 @@ public class BigImage extends Image {
 	}
 
 	/**
-	 * Destroy the image and release any native resources. 
-	 * Calls on a destroyed image have undefined results
+	 * Destroy the image and release any native resources. Calls on a destroyed image have undefined results
 	 */
 	public void destroy() throws SlickException {
 		for (int tx = 0; tx < xcount; tx++) {
@@ -720,10 +736,11 @@ public class BigImage extends Image {
 	}
 
 	/**
-	 * @see org.newdawn.slick.Image#draw(float, float, float, float, float, float, float, float, org.newdawn.slick.Color)
+	 * @see org.newdawn.slick.Image#draw(float, float, float, float, float, float, float, float,
+	 * org.newdawn.slick.Color)
 	 */
 	public void draw(float x, float y, float x2, float y2, float srcx,
-			float srcy, float srcx2, float srcy2, Color filter) {
+					 float srcy, float srcx2, float srcy2, Color filter) {
 		int srcwidth = (int) (srcx2 - srcx);
 		int srcheight = (int) (srcy2 - srcy);
 
@@ -743,10 +760,11 @@ public class BigImage extends Image {
 	}
 
 	/**
-	 * @see org.newdawn.slick.Image#drawEmbedded(float, float, float, float, float, float, float, float, org.newdawn.slick.Color)
+	 * @see org.newdawn.slick.Image#drawEmbedded(float, float, float, float, float, float, float, float,
+	 * org.newdawn.slick.Color)
 	 */
 	public void drawEmbedded(float x, float y, float x2, float y2, float srcx,
-			float srcy, float srcx2, float srcy2, Color filter) {
+							 float srcy, float srcx2, float srcy2, Color filter) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -754,7 +772,7 @@ public class BigImage extends Image {
 	 * @see org.newdawn.slick.Image#drawEmbedded(float, float, float, float, float, float, float, float)
 	 */
 	public void drawEmbedded(float x, float y, float x2, float y2, float srcx,
-			float srcy, float srcx2, float srcy2) {
+							 float srcy, float srcx2, float srcy2) {
 		throw new UnsupportedOperationException();
 	}
 

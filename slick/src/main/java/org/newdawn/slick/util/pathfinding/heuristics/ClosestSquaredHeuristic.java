@@ -5,10 +5,9 @@ import org.newdawn.slick.util.pathfinding.Mover;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
 
 /**
- * A heuristic that uses the tile that is closest to the target
- * as the next best tile. In this case the sqrt is removed
+ * A heuristic that uses the tile that is closest to the target as the next best tile. In this case the sqrt is removed
  * and the distance squared is used instead
- * 
+ * <p>
  * @author Kevin Glass
  */
 public class ClosestSquaredHeuristic implements AStarHeuristic {

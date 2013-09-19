@@ -19,36 +19,54 @@ import org.newdawn.slick.opengl.renderer.Renderer;
 
 /**
  * A geomertry test
- *
+ * <p>
  * @author kevin
  */
 public class ShapeTest extends BasicGame {
 
-	/** rectangle to display */
+	/**
+	 * rectangle to display
+	 */
 	private Rectangle rect;
 
-	/** rounded rectangle to display */
+	/**
+	 * rounded rectangle to display
+	 */
 	private RoundedRectangle roundRect;
 
-	/** ellipse to display */
+	/**
+	 * ellipse to display
+	 */
 	private Ellipse ellipse;
 
-	/** circle to display */
+	/**
+	 * circle to display
+	 */
 	private Circle circle;
 
-	/** polygon to display */
+	/**
+	 * polygon to display
+	 */
 	private Polygon polygon;
 
-	/** list for drawing the shapes*/
+	/**
+	 * list for drawing the shapes
+	 */
 	private ArrayList shapes;
 
-	/** track key presses */
+	/**
+	 * track key presses
+	 */
 	private boolean keys[];
 
-	/** since no modifiers, use this for shifted characters */
+	/**
+	 * since no modifiers, use this for shifted characters
+	 */
 	private char lastChar[];
 
-	/** The polgon randomly generated */
+	/**
+	 * The polgon randomly generated
+	 */
 	private Polygon randomShape = new Polygon();
 
 	/**
@@ -272,7 +290,7 @@ public class ShapeTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -281,7 +299,8 @@ public class ShapeTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ShapeTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

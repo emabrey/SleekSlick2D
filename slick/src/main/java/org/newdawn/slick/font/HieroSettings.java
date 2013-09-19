@@ -19,45 +19,69 @@ import org.newdawn.slick.util.ResourceLoader;
 
 /**
  * Holds the settings needed to configure a UnicodeFont.
- * 
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class HieroSettings {
 
-	/** The size of the font to be generated */
+	/**
+	 * The size of the font to be generated
+	 */
 	private int fontSize = 12;
 
-	/** True if the font is rendered bold */
+	/**
+	 * True if the font is rendered bold
+	 */
 	private boolean bold = false;
 
-	/** True fi the font if rendered italic */
+	/**
+	 * True fi the font if rendered italic
+	 */
 	private boolean italic = false;
 
-	/** The padding applied in pixels to the top of the glyph rendered area */
+	/**
+	 * The padding applied in pixels to the top of the glyph rendered area
+	 */
 	private int paddingTop;
 
-	/** The padding applied in pixels to the left of the glyph rendered area */
+	/**
+	 * The padding applied in pixels to the left of the glyph rendered area
+	 */
 	private int paddingLeft;
 
-	/** The padding applied in pixels to the bottom of the glyph rendered area */
+	/**
+	 * The padding applied in pixels to the bottom of the glyph rendered area
+	 */
 	private int paddingBottom;
 
-	/** The padding applied in pixels to the right of the glyph rendered area */
+	/**
+	 * The padding applied in pixels to the right of the glyph rendered area
+	 */
 	private int paddingRight;
 
-	/** The padding applied in pixels to horizontal advance for each glyph */
+	/**
+	 * The padding applied in pixels to horizontal advance for each glyph
+	 */
 	private int paddingAdvanceX;
 
-	/** The padding applied in pixels to vertical advance for each glyph */
+	/**
+	 * The padding applied in pixels to vertical advance for each glyph
+	 */
 	private int paddingAdvanceY;
 
-	/** The width of the glyph page generated */
+	/**
+	 * The width of the glyph page generated
+	 */
 	private int glyphPageWidth = 512;
 
-	/** The height of the glyph page generated */
+	/**
+	 * The height of the glyph page generated
+	 */
 	private int glyphPageHeight = 512;
 
-	/** The list of effects applied */
+	/**
+	 * The list of effects applied
+	 */
 	private final List effects = new ArrayList();
 
 	/**
@@ -68,8 +92,9 @@ public class HieroSettings {
 
 	/**
 	 * Create a new set of configuration from a file
-	 * 
+	 * <p>
 	 * @param hieroFileRef The file system or classpath location of the Hiero settings file.
+	 * <p>
 	 * @throws SlickException if the file could not be read.
 	 */
 	public HieroSettings(String hieroFileRef) throws SlickException {
@@ -78,8 +103,9 @@ public class HieroSettings {
 
 	/**
 	 * Create a new set of configuration from a file
-	 * 
+	 * <p>
 	 * @param in The stream from which to read the settings from
+	 * <p>
 	 * @throws SlickException if the file could not be read.
 	 */
 	public HieroSettings(InputStream in) throws SlickException {
@@ -122,7 +148,8 @@ public class HieroSettings {
 				} else if (name.equals("effect.class")) {
 					try {
 						effects.add(Class.forName(value).newInstance());
-					} catch (Exception ex) {
+					}
+					catch (Exception ex) {
 						throw new SlickException("Unable to create effect instance: " + value, ex);
 					}
 				} else if (name.startsWith("effect.")) {
@@ -141,14 +168,15 @@ public class HieroSettings {
 				}
 			}
 			reader.close();
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			throw new SlickException("Unable to load Hiero font file", ex);
 		}
 	}
 
 	/**
 	 * @see UnicodeFont#getPaddingTop()
-	 * 
+	 * <p>
 	 * @return The padding for the top of the glyph area in pixels
 	 */
 	public int getPaddingTop() {
@@ -157,7 +185,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#setPaddingTop(int)
-	 * 
+	 * <p>
 	 * @param paddingTop The padding for the top of the glyph area in pixels
 	 */
 	public void setPaddingTop(int paddingTop) {
@@ -166,7 +194,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#getPaddingLeft()
-	 * 
+	 * <p>
 	 * @return The padding for the left of the glyph area in pixels
 	 */
 	public int getPaddingLeft() {
@@ -175,7 +203,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#setPaddingLeft(int)
-	 * 
+	 * <p>
 	 * @param paddingLeft The padding for the left of the glyph area in pixels
 	 */
 	public void setPaddingLeft(int paddingLeft) {
@@ -184,7 +212,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#getPaddingBottom()
-	 * 
+	 * <p>
 	 * @return The padding for the bottom of the glyph area in pixels
 	 */
 	public int getPaddingBottom() {
@@ -193,7 +221,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#setPaddingBottom(int)
-	 * 
+	 * <p>
 	 * @param paddingBottom The padding for the bottom of the glyph area in pixels
 	 */
 	public void setPaddingBottom(int paddingBottom) {
@@ -202,7 +230,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#getPaddingRight()
-	 * 
+	 * <p>
 	 * @return The padding for the right of the glyph area in pixels
 	 */
 	public int getPaddingRight() {
@@ -211,7 +239,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#setPaddingRight(int)
-	 * 
+	 * <p>
 	 * @param paddingRight The padding for the right of the glyph area in pixels
 	 */
 	public void setPaddingRight(int paddingRight) {
@@ -220,7 +248,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#getPaddingAdvanceX()
-	 * 
+	 * <p>
 	 * @return The padding for the horizontal advance of each glyph
 	 */
 	public int getPaddingAdvanceX() {
@@ -229,7 +257,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#setPaddingAdvanceX(int)
-	 * 
+	 * <p>
 	 * @param paddingAdvanceX The padding for the horizontal advance of each glyph
 	 */
 	public void setPaddingAdvanceX(int paddingAdvanceX) {
@@ -238,7 +266,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#getPaddingAdvanceY()
-	 * 
+	 * <p>
 	 * @return The padding for the vertical advance of each glyph
 	 */
 	public int getPaddingAdvanceY() {
@@ -247,7 +275,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#setPaddingAdvanceY(int)
-	 * 
+	 * <p>
 	 * @param paddingAdvanceY The padding for the vertical advance of each glyph
 	 */
 	public void setPaddingAdvanceY(int paddingAdvanceY) {
@@ -256,7 +284,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#getGlyphPageWidth()
-	 * 
+	 * <p>
 	 * @return The width of the generate glyph pages
 	 */
 	public int getGlyphPageWidth() {
@@ -265,7 +293,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#setGlyphPageWidth(int)
-	 * 
+	 * <p>
 	 * @param glyphPageWidth The width of the generate glyph pages
 	 */
 	public void setGlyphPageWidth(int glyphPageWidth) {
@@ -274,7 +302,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#getGlyphPageHeight()
-	 * 
+	 * <p>
 	 * @return The height of the generate glyph pages
 	 */
 	public int getGlyphPageHeight() {
@@ -283,7 +311,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#setGlyphPageHeight(int)
-	 * 
+	 * <p>
 	 * @param glyphPageHeight The height of the generate glyph pages
 	 */
 	public void setGlyphPageHeight(int glyphPageHeight) {
@@ -293,7 +321,7 @@ public class HieroSettings {
 	/**
 	 * @see UnicodeFont#UnicodeFont(String, int, boolean, boolean)
 	 * @see UnicodeFont#UnicodeFont(java.awt.Font, int, boolean, boolean)
-	 * 
+	 * <p>
 	 * @return The point size of the font generated
 	 */
 	public int getFontSize() {
@@ -303,7 +331,7 @@ public class HieroSettings {
 	/**
 	 * @see UnicodeFont#UnicodeFont(String, int, boolean, boolean)
 	 * @see UnicodeFont#UnicodeFont(java.awt.Font, int, boolean, boolean)
-	 * 
+	 * <p>
 	 * @param fontSize The point size of the font generated
 	 */
 	public void setFontSize(int fontSize) {
@@ -313,7 +341,7 @@ public class HieroSettings {
 	/**
 	 * @see UnicodeFont#UnicodeFont(String, int, boolean, boolean)
 	 * @see UnicodeFont#UnicodeFont(java.awt.Font, int, boolean, boolean)
-	 * 
+	 * <p>
 	 * @return True if the font was generated in bold typeface
 	 */
 	public boolean isBold() {
@@ -323,7 +351,7 @@ public class HieroSettings {
 	/**
 	 * @see UnicodeFont#UnicodeFont(String, int, boolean, boolean)
 	 * @see UnicodeFont#UnicodeFont(java.awt.Font, int, boolean, boolean)
-	 * 
+	 * <p>
 	 * @param bold True if the font was generated in bold typeface
 	 */
 	public void setBold(boolean bold) {
@@ -333,7 +361,7 @@ public class HieroSettings {
 	/**
 	 * @see UnicodeFont#UnicodeFont(String, int, boolean, boolean)
 	 * @see UnicodeFont#UnicodeFont(java.awt.Font, int, boolean, boolean)
-	 * 
+	 * <p>
 	 * @return True if the font was generated in italic typeface
 	 */
 	public boolean isItalic() {
@@ -343,7 +371,7 @@ public class HieroSettings {
 	/**
 	 * @see UnicodeFont#UnicodeFont(String, int, boolean, boolean)
 	 * @see UnicodeFont#UnicodeFont(java.awt.Font, int, boolean, boolean)
-	 * 
+	 * <p>
 	 * @param italic True if the font was generated in italic typeface
 	 */
 	public void setItalic(boolean italic) {
@@ -352,7 +380,7 @@ public class HieroSettings {
 
 	/**
 	 * @see UnicodeFont#getEffects()
-	 * 
+	 * <p>
 	 * @return The list of effects applied to the text
 	 */
 	public List getEffects() {
@@ -361,8 +389,9 @@ public class HieroSettings {
 
 	/**
 	 * Saves the settings to a file.
-	 * 
+	 * <p>
 	 * @param file The file we're saving to
+	 * <p>
 	 * @throws IOException if the file could not be saved.
 	 */
 	public void save(File file) throws IOException {

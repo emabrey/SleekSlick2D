@@ -16,7 +16,7 @@ import java.util.Map.Entry;
  * Reads a TTF font file and provides access to kerning information.
  * <p/>
  * Thanks to the Apache FOP project for their inspiring work!
- *
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 class Kerning {
@@ -37,7 +37,8 @@ class Kerning {
 
 	/**
 	 * @param input The data for the TTF font.
-	 * @param size  The font size to use to determine kerning pixel offsets.
+	 * @param size The font size to use to determine kerning pixel offsets.
+	 * <p>
 	 * @throws IOException If the font could not be read.
 	 */
 	public void load(InputStream input, int size) throws IOException {
@@ -94,8 +95,8 @@ class Kerning {
 	}
 
 	/**
-	 * Returns the encoded kerning value for the specified glyph. The glyph code for a Unicode codepoint can be retrieved with
-	 * {@link GlyphVector#getGlyphCode(int)}.
+	 * Returns the encoded kerning value for the specified glyph. The glyph code for a Unicode codepoint can be
+	 * retrieved with {@link GlyphVector#getGlyphCode(int)}.
 	 */
 	public int[] getValues(int firstGlyphCode) {
 		return (int[]) values.get(new Integer(firstGlyphCode));

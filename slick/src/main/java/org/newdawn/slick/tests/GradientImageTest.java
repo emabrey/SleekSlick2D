@@ -15,33 +15,49 @@ import org.newdawn.slick.geom.Shape;
 
 /**
  * A test for applying gradients to images
- *
+ * <p>
  * @author kevin
  */
 public class GradientImageTest extends BasicGame {
 
-	/** The first image loaded */
+	/**
+	 * The first image loaded
+	 */
 	private Image image1;
 
-	/** The second image loaded */
+	/**
+	 * The second image loaded
+	 */
 	private Image image2;
 
-	/** The gradient paint we'll apply */
+	/**
+	 * The gradient paint we'll apply
+	 */
 	private GradientFill fill;
 
-	/** The shape we'll blend across */
+	/**
+	 * The shape we'll blend across
+	 */
 	private Shape shape;
 
-	/** The shape we'll blend across */
+	/**
+	 * The shape we'll blend across
+	 */
 	private Polygon poly;
 
-	/** The container for the test */
+	/**
+	 * The container for the test
+	 */
 	private GameContainer container;
 
-	/** The angle of rotation */
+	/**
+	 * The angle of rotation
+	 */
 	private float ang;
 
-	/** True if we're rotating */
+	/**
+	 * True if we're rotating
+	 */
 	private boolean rotating = false;
 
 	/**
@@ -103,7 +119,7 @@ public class GradientImageTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -111,7 +127,8 @@ public class GradientImageTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new GradientImageTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

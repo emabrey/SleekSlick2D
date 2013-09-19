@@ -10,69 +10,94 @@ import org.newdawn.slick.opengl.renderer.SGL;
 import org.newdawn.slick.util.Log;
 
 /**
- * A texture to be bound within JOGL. This object is responsible for 
- * keeping track of a given OpenGL texture and for calculating the
- * texturing mapping coordinates of the full image.
- * 
- * Since textures need to be powers of 2 the actual texture may be
- * considerably bigged that the source image and hence the texture
- * mapping coordinates need to be adjusted to matchup drawing the
- * sprite against the texture.
- *
+ * A texture to be bound within JOGL. This object is responsible for keeping track of a given OpenGL texture and for
+ * calculating the texturing mapping coordinates of the full image.
+ * <p>
+ * Since textures need to be powers of 2 the actual texture may be considerably bigged that the source image and hence
+ * the texture mapping coordinates need to be adjusted to matchup drawing the sprite against the texture.
+ * <p>
  * @author Kevin Glass
  * @author Brian Matzon
  */
 public class TextureImpl implements Texture {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
-	/** The last texture that was bound to */
+	/**
+	 * The last texture that was bound to
+	 */
 	static Texture lastBind;
 
 	/**
 	 * Retrieve the last texture bound through the texture interface
-	 * 
+	 * <p>
 	 * @return The last texture bound
 	 */
 	public static Texture getLastBind() {
 		return lastBind;
 	}
 
-	/** The GL target type */
+	/**
+	 * The GL target type
+	 */
 	private int target;
 
-	/** The GL texture ID */
+	/**
+	 * The GL texture ID
+	 */
 	private int textureID;
 
-	/** The height of the image */
+	/**
+	 * The height of the image
+	 */
 	private int height;
 
-	/** The width of the image */
+	/**
+	 * The width of the image
+	 */
 	private int width;
 
-	/** The width of the texture */
+	/**
+	 * The width of the texture
+	 */
 	private int texWidth;
 
-	/** The height of the texture */
+	/**
+	 * The height of the texture
+	 */
 	private int texHeight;
 
-	/** The ratio of the width of the image to the texture */
+	/**
+	 * The ratio of the width of the image to the texture
+	 */
 	private float widthRatio;
 
-	/** The ratio of the height of the image to the texture */
+	/**
+	 * The ratio of the height of the image to the texture
+	 */
 	private float heightRatio;
 
-	/** If this texture has alpha */
+	/**
+	 * If this texture has alpha
+	 */
 	private boolean alpha;
 
-	/** The reference this texture was loaded from */
+	/**
+	 * The reference this texture was loaded from
+	 */
 	private String ref;
 
-	/** The name the texture has in the cache */
+	/**
+	 * The name the texture has in the cache
+	 */
 	private String cacheName;
 
-	/** Data used to reload this texture */
+	/**
+	 * Data used to reload this texture
+	 */
 	private ReloadData reloadData;
 
 	/**
@@ -83,9 +108,9 @@ public class TextureImpl implements Texture {
 
 	/**
 	 * Create a new texture
-	 *
+	 * <p>
 	 * @param ref The reference this texture was loaded from
-	 * @param target The GL target 
+	 * @param target The GL target
 	 * @param textureID The GL texture ID
 	 */
 	public TextureImpl(String ref, int target, int textureID) {
@@ -97,7 +122,7 @@ public class TextureImpl implements Texture {
 
 	/**
 	 * Set the name this texture is stored against in the cache
-	 * 
+	 * <p>
 	 * @param cacheName The name the texture is stored against in the cache
 	 */
 	public void setCacheName(String cacheName) {
@@ -118,9 +143,9 @@ public class TextureImpl implements Texture {
 		return ref;
 	}
 
-	/** 
+	/**
 	 * If this texture has alpha
-	 * 
+	 * <p>
 	 * @param alpha True, If this texture has alpha
 	 */
 	public void setAlpha(boolean alpha) {
@@ -136,9 +161,8 @@ public class TextureImpl implements Texture {
 	}
 
 	/**
-	 * Clear slick caching of the last bound texture so that an 
-	 * external texture binder can play with the context before returning 
-	 * control to slick.
+	 * Clear slick caching of the last bound texture so that an external texture binder can play with the context before
+	 * returning control to slick.
 	 */
 	public static void unbind() {
 		lastBind = null;
@@ -157,7 +181,7 @@ public class TextureImpl implements Texture {
 
 	/**
 	 * Set the height of the image
-	 *
+	 * <p>
 	 * @param height The height of the image
 	 */
 	public void setHeight(int height) {
@@ -167,7 +191,7 @@ public class TextureImpl implements Texture {
 
 	/**
 	 * Set the width of the image
-	 *
+	 * <p>
 	 * @param width The width of the image
 	 */
 	public void setWidth(int width) {
@@ -218,8 +242,8 @@ public class TextureImpl implements Texture {
 	}
 
 	/**
-	 * Set the height of this texture 
-	 *
+	 * Set the height of this texture
+	 * <p>
 	 * @param texHeight The height of the texture
 	 */
 	public void setTextureHeight(int texHeight) {
@@ -228,8 +252,8 @@ public class TextureImpl implements Texture {
 	}
 
 	/**
-	 * Set the width of this texture 
-	 *
+	 * Set the width of this texture
+	 * <p>
 	 * @param texWidth The width of the texture
 	 */
 	public void setTextureWidth(int texWidth) {
@@ -238,8 +262,7 @@ public class TextureImpl implements Texture {
 	}
 
 	/**
-	 * Set the height of the texture. This will update the
-	 * ratio also.
+	 * Set the height of the texture. This will update the ratio also.
 	 */
 	private void setHeight() {
 		if (texHeight != 0) {
@@ -248,8 +271,7 @@ public class TextureImpl implements Texture {
 	}
 
 	/**
-	 * Set the width of the texture. This will update the
-	 * ratio also.
+	 * Set the width of the texture. This will update the ratio also.
 	 */
 	private void setWidth() {
 		if (texWidth != 0) {
@@ -287,7 +309,7 @@ public class TextureImpl implements Texture {
 
 	/**
 	 * Set the OpenGL texture ID for this texture
-	 * 
+	 * <p>
 	 * @param textureID The OpenGL texture ID
 	 */
 	public void setTextureID(int textureID) {
@@ -295,10 +317,10 @@ public class TextureImpl implements Texture {
 	}
 
 	/**
-	 * Creates an integer buffer to hold specified ints
-	 * - strictly a utility method
-	 *
+	 * Creates an integer buffer to hold specified ints - strictly a utility method
+	 * <p>
 	 * @param size how many int to contain
+	 * <p>
 	 * @return created IntBuffer
 	 */
 	protected IntBuffer createIntBuffer(int size) {
@@ -334,7 +356,7 @@ public class TextureImpl implements Texture {
 
 	/**
 	 * Set the texture data that this texture can be reloaded from
-	 * 
+	 * <p>
 	 * @param srcPixelFormat The pixel format
 	 * @param componentCount The component count
 	 * @param minFilter The OpenGL minification filter
@@ -342,7 +364,7 @@ public class TextureImpl implements Texture {
 	 * @param textureBuffer The texture buffer containing the data for the texture
 	 */
 	public void setTextureData(int srcPixelFormat, int componentCount,
-			int minFilter, int magFilter, ByteBuffer textureBuffer) {
+							   int minFilter, int magFilter, ByteBuffer textureBuffer) {
 		reloadData = new ReloadData();
 		reloadData.srcPixelFormat = srcPixelFormat;
 		reloadData.componentCount = componentCount;
@@ -360,29 +382,39 @@ public class TextureImpl implements Texture {
 		}
 	}
 
-	/** 
+	/**
 	 * Reload this texture from it's original source data
 	 */
 	private class ReloadData {
 
-		/** The src pixel format */
+		/**
+		 * The src pixel format
+		 */
 		private int srcPixelFormat;
 
-		/** The component count */
+		/**
+		 * The component count
+		 */
 		private int componentCount;
 
-		/** The OpenGL minification filter */
+		/**
+		 * The OpenGL minification filter
+		 */
 		private int minFilter;
 
-		/** The OpenGL magnification filter */
+		/**
+		 * The OpenGL magnification filter
+		 */
 		private int magFilter;
 
-		/** The texture buffer of pixel data */
+		/**
+		 * The texture buffer of pixel data
+		 */
 		private ByteBuffer textureBuffer;
 
 		/**
 		 * Reload this texture
-		 * 
+		 * <p>
 		 * @return The new texture ID assigned to this texture
 		 */
 		public int reload() {

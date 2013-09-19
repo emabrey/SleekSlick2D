@@ -6,26 +6,31 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
 /**
- * A utility wrapper round the standard DOM XML element. This provides a more simple API 
- * for accessing attributes, children and providing defaults when schemas arn't used - which
- * is generally a little simpler for most of us.
- * 
+ * A utility wrapper round the standard DOM XML element. This provides a more simple API for accessing attributes,
+ * children and providing defaults when schemas arn't used - which is generally a little simpler for most of us.
+ * <p>
  * @author kevin
  */
 public class XMLElement {
 
-	/** The Java DOM implementation XML element */
+	/**
+	 * The Java DOM implementation XML element
+	 */
 	private Element dom;
 
-	/** The list of children initialised on first access */
+	/**
+	 * The list of children initialised on first access
+	 */
 	private XMLElementList children;
 
-	/** The name of the element */
+	/**
+	 * The name of the element
+	 */
 	private String name;
 
 	/**
 	 * Create a new element wrapped round a DOM element
-	 * 
+	 * <p>
 	 * @param xmlElement The DOM element to present
 	 */
 	XMLElement(Element xmlElement) {
@@ -35,7 +40,7 @@ public class XMLElement {
 
 	/**
 	 * Get the names of the attributes specified on this element
-	 * 
+	 * <p>
 	 * @return The names of the elements specified
 	 */
 	public String[] getAttributeNames() {
@@ -51,7 +56,7 @@ public class XMLElement {
 
 	/**
 	 * Get the name of this element
-	 * 
+	 * <p>
 	 * @return The name of this element
 	 */
 	public String getName() {
@@ -60,8 +65,9 @@ public class XMLElement {
 
 	/**
 	 * Get the value specified for a given attribute on this element
-	 * 
+	 * <p>
 	 * @param name The name of the attribute whose value should be retrieved
+	 * <p>
 	 * @return The value given for the attribute
 	 */
 	public String getAttribute(String name) {
@@ -70,9 +76,10 @@ public class XMLElement {
 
 	/**
 	 * Get the value specified for a given attribute on this element
-	 * 
+	 * <p>
 	 * @param name The name of the attribute whose value should be retrieved
 	 * @param def The default value to return if the attribute is specified
+	 * <p>
 	 * @return The value given for the attribute
 	 */
 	public String getAttribute(String name, String def) {
@@ -85,72 +92,86 @@ public class XMLElement {
 	}
 
 	/**
-	 * Get the value specified for a given attribute on this element as an integer. 
-	 * 
+	 * Get the value specified for a given attribute on this element as an integer.
+	 * <p>
 	 * @param name The name of the attribute whose value should be retrieved
+	 * <p>
 	 * @return The value given for the attribute
+	 * <p>
 	 * @throws SlickXMLException Indicates a failure to convert the value into an integer
 	 */
 	public int getIntAttribute(String name) throws SlickXMLException {
 		try {
 			return Integer.parseInt(getAttribute(name));
-		} catch (NumberFormatException e) {
+		}
+		catch (NumberFormatException e) {
 			throw new SlickXMLException("Value read: '" + getAttribute(name) + "' is not an integer", e);
 		}
 	}
 
 	/**
-	 * Get the value specified for a given attribute on this element as an integer. 
-	 * 
+	 * Get the value specified for a given attribute on this element as an integer.
+	 * <p>
 	 * @param name The name of the attribute whose value should be retrieved
 	 * @param def The default value to return if the attribute is specified
+	 * <p>
 	 * @return The value given for the attribute
+	 * <p>
 	 * @throws SlickXMLException Indicates a failure to convert the value into an integer
 	 */
 	public int getIntAttribute(String name, int def) throws SlickXMLException {
 		try {
 			return Integer.parseInt(getAttribute(name, "" + def));
-		} catch (NumberFormatException e) {
+		}
+		catch (NumberFormatException e) {
 			throw new SlickXMLException("Value read: '" + getAttribute(name, "" + def) + "' is not an integer", e);
 		}
 	}
 
 	/**
-	 * Get the value specified for a given attribute on this element as an double. 
-	 * 
+	 * Get the value specified for a given attribute on this element as an double.
+	 * <p>
 	 * @param name The name of the attribute whose value should be retrieved
+	 * <p>
 	 * @return The value given for the attribute
+	 * <p>
 	 * @throws SlickXMLException Indicates a failure to convert the value into an double
 	 */
 	public double getDoubleAttribute(String name) throws SlickXMLException {
 		try {
 			return Double.parseDouble(getAttribute(name));
-		} catch (NumberFormatException e) {
+		}
+		catch (NumberFormatException e) {
 			throw new SlickXMLException("Value read: '" + getAttribute(name) + "' is not a double", e);
 		}
 	}
 
 	/**
-	 * Get the value specified for a given attribute on this element as an double. 
-	 * 
+	 * Get the value specified for a given attribute on this element as an double.
+	 * <p>
 	 * @param name The name of the attribute whose value should be retrieved
 	 * @param def The default value to return if the attribute is specified
+	 * <p>
 	 * @return The value given for the attribute
+	 * <p>
 	 * @throws SlickXMLException Indicates a failure to convert the value into an double
 	 */
 	public double getDoubleAttribute(String name, double def) throws SlickXMLException {
 		try {
 			return Double.parseDouble(getAttribute(name, "" + def));
-		} catch (NumberFormatException e) {
+		}
+		catch (NumberFormatException e) {
 			throw new SlickXMLException("Value read: '" + getAttribute(name, "" + def) + "' is not a double", e);
 		}
 	}
 
 	/**
-	 * Get the value specified for a given attribute on this element as a boolean. 
-	 * 
+	 * Get the value specified for a given attribute on this element as a boolean.
+	 * <p>
 	 * @param name The name of the attribute whose value should be retrieved
+	 * <p>
 	 * @return The value given for the attribute
+	 * <p>
 	 * @throws SlickXMLException Indicates a failure to convert the value into an boolean
 	 */
 	public boolean getBooleanAttribute(String name) throws SlickXMLException {
@@ -166,11 +187,13 @@ public class XMLElement {
 	}
 
 	/**
-	 * Get the value specified for a given attribute on this element as a boolean. 
-	 * 
+	 * Get the value specified for a given attribute on this element as a boolean.
+	 * <p>
 	 * @param name The name of the attribute whose value should be retrieved
 	 * @param def The default value to return if the attribute is specified
+	 * <p>
 	 * @return The value given for the attribute
+	 * <p>
 	 * @throws SlickXMLException Indicates a failure to convert the value into an boolean
 	 */
 	public boolean getBooleanAttribute(String name, boolean def) throws SlickXMLException {
@@ -185,9 +208,9 @@ public class XMLElement {
 		throw new SlickXMLException("Value read: '" + getAttribute(name, "" + def) + "' is not a boolean");
 	}
 
-	/** 
+	/**
 	 * Get the text content of the element, i.e. the bit between the tags
-	 * 
+	 * <p>
 	 * @return The text content of the node
 	 */
 	public String getContent() {
@@ -205,7 +228,7 @@ public class XMLElement {
 
 	/**
 	 * Get the complete list of children for this node
-	 * 
+	 * <p>
 	 * @return The list of children for this node
 	 */
 	public XMLElementList getChildren() {
@@ -227,8 +250,9 @@ public class XMLElement {
 
 	/**
 	 * Get a list of children with a given element name
-	 * 
+	 * <p>
 	 * @param name The name of the element type that should be retrieved
+	 * <p>
 	 * @return A list of elements
 	 */
 	public XMLElementList getChildrenByName(String name) {

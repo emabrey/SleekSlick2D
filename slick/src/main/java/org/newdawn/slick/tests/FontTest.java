@@ -13,18 +13,24 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A test of the font rendering capabilities
- *
+ * <p>
  * @author kevin
  */
 public class FontTest extends BasicGame {
 
-	/** The font we're going to use to render */
+	/**
+	 * The font we're going to use to render
+	 */
 	private AngelCodeFont font;
 
-	/** The font we're going to use to render */
+	/**
+	 * The font we're going to use to render
+	 */
 	private AngelCodeFont font2;
 
-	/** The image of the font to compare against */
+	/**
+	 * The image of the font to compare against
+	 */
 	private Image image;
 
 	/**
@@ -83,18 +89,21 @@ public class FontTest extends BasicGame {
 		if (key == Input.KEY_SPACE) {
 			try {
 				container.setDisplayMode(640, 480, false);
-			} catch (SlickException e) {
+			}
+			catch (SlickException e) {
 				Log.error(e);
 			}
 		}
 	}
 
-	/** The container we're using */
+	/**
+	 * The container we're using
+	 */
 	private static AppGameContainer container;
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed in the test
 	 */
 	public static void main(String[] argv) {
@@ -102,7 +111,8 @@ public class FontTest extends BasicGame {
 			container = new AppGameContainer(new FontTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

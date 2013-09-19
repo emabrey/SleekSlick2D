@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 /**
  * A geomertry test
- *
+ * <p>
  * @author kevin
  */
 public class ShapeTest extends BasicGame {
@@ -290,7 +290,7 @@ public class ShapeTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -299,7 +299,8 @@ public class ShapeTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ShapeTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

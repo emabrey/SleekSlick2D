@@ -4,7 +4,7 @@ import org.newdawn.slick.opengl.renderer.Renderer;
 
 /**
  * A collection of utilities to allow aid interaction with the GL provider
- * 
+ * <p>
  * @author kevin
  */
 public final class GLUtils {
@@ -15,7 +15,8 @@ public final class GLUtils {
 	public static void checkGLContext() {
 		try {
 			Renderer.get().glGetError();
-		} catch (NullPointerException e) {
+		}
+		catch (NullPointerException e) {
 			throw new RuntimeException("OpenGL based resources (images, fonts, sprites etc) must be loaded as part of init() or the game loop. They cannot be loaded before initialisation.");
 		}
 	}

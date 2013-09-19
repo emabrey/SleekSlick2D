@@ -5,44 +5,59 @@ import org.newdawn.slick.opengl.renderer.Renderer;
 import org.newdawn.slick.opengl.renderer.SGL;
 
 /**
- * A wrapper to allow any game to be scalable. This relies on knowing the 
- * normal width/height of the game - i.e. the dimensions that the game is
- * expecting to be run at. The wrapper then takes the size of the container
- * and scales rendering and input based on the ratio.
- *
+ * A wrapper to allow any game to be scalable. This relies on knowing the normal width/height of the game - i.e. the
+ * dimensions that the game is expecting to be run at. The wrapper then takes the size of the container and scales
+ * rendering and input based on the ratio.
+ * <p>
  * Note: Using OpenGL directly within a ScalableGame can break it
- * 
+ * <p>
  * @author kevin
  */
 public class ScalableGame implements Game {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	private static SGL GL = Renderer.get();
 
-	/** The normal or native width of the game */
+	/**
+	 * The normal or native width of the game
+	 */
 	private float normalWidth;
 
-	/** The normal or native height of the game */
+	/**
+	 * The normal or native height of the game
+	 */
 	private float normalHeight;
 
-	/** The game that is being wrapped */
+	/**
+	 * The game that is being wrapped
+	 */
 	private Game held;
 
-	/** True if we should maintain the aspect ratio */
+	/**
+	 * True if we should maintain the aspect ratio
+	 */
 	private boolean maintainAspect;
 
-	/** The target width */
+	/**
+	 * The target width
+	 */
 	private int targetWidth;
 
-	/** The target height */
+	/**
+	 * The target height
+	 */
 	private int targetHeight;
 
-	/** The game container wrapped */
+	/**
+	 * The game container wrapped
+	 */
 	private GameContainer container;
 
-	/** 
+	/**
 	 * Create a new scalable game wrapper
-	 * 
+	 * <p>
 	 * @param held The game to be wrapper and displayed at a different resolution
 	 * @param normalWidth The normal width of the game
 	 * @param normalHeight The noral height of the game
@@ -51,9 +66,9 @@ public class ScalableGame implements Game {
 		this(held, normalWidth, normalHeight, false);
 	}
 
-	/** 
+	/**
 	 * Create a new scalable game wrapper
-	 * 
+	 * <p>
 	 * @param held The game to be wrapper and displayed at a different resolution
 	 * @param normalWidth The normal width of the game
 	 * @param normalHeight The noral height of the game
@@ -78,7 +93,7 @@ public class ScalableGame implements Game {
 
 	/**
 	 * Recalculate the scale of the game
-	 * 
+	 * <p>
 	 * @throws SlickException Indicates a failure to reinit the game
 	 */
 	public void recalculateScale() throws SlickException {
@@ -171,7 +186,7 @@ public class ScalableGame implements Game {
 
 	/**
 	 * Render the overlay that will sit over the scaled screen
-	 * 
+	 * <p>
 	 * @param container The container holding the game being render
 	 * @param g Graphics context on which to render
 	 */

@@ -25,31 +25,43 @@ import org.newdawn.slick.opengl.renderer.SGL;
 
 /**
  * Stores a number of glyphs on a single texture.
- * 
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class GlyphPage {
 
-	/** The interface to OpenGL */
+	/**
+	 * The interface to OpenGL
+	 */
 	private static final SGL GL = Renderer.get();
 
-	/** The maxium size of an individual glyph */
+	/**
+	 * The maxium size of an individual glyph
+	 */
 	public static final int MAX_GLYPH_SIZE = 256;
 
-	/** A temporary working buffer */
+	/**
+	 * A temporary working buffer
+	 */
 	private static ByteBuffer scratchByteBuffer = ByteBuffer.allocateDirect(MAX_GLYPH_SIZE * MAX_GLYPH_SIZE * 4);
 
 	static {
 		scratchByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 	}
 
-	/** A temporary working buffer */
+	/**
+	 * A temporary working buffer
+	 */
 	private static IntBuffer scratchIntBuffer = scratchByteBuffer.asIntBuffer();
 
-	/** A temporary image used to generate the glyph page */
+	/**
+	 * A temporary image used to generate the glyph page
+	 */
 	private static BufferedImage scratchImage = new BufferedImage(MAX_GLYPH_SIZE, MAX_GLYPH_SIZE, BufferedImage.TYPE_INT_ARGB);
 
-	/** The graphics context form the temporary image */
+	/**
+	 * The graphics context form the temporary image
+	 */
 	private static Graphics2D scratchGraphics = (Graphics2D) scratchImage.getGraphics();
 
 	static {
@@ -58,51 +70,72 @@ public class GlyphPage {
 		scratchGraphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
 	}
 
-	/** The render context in which the glyphs will be generated */
+	/**
+	 * The render context in which the glyphs will be generated
+	 */
 	public static FontRenderContext renderContext = scratchGraphics.getFontRenderContext();
 
 	/**
 	 * Get the scratch graphics used to generate the page of glyphs
-	 * 
+	 * <p>
 	 * @return The scratch graphics used to build the page
 	 */
 	public static Graphics2D getScratchGraphics() {
 		return scratchGraphics;
 	}
 
-	/** The font this page is part of */
+	/**
+	 * The font this page is part of
+	 */
 	private final UnicodeFont unicodeFont;
 
-	/** The width of this page's image */
+	/**
+	 * The width of this page's image
+	 */
 	private final int pageWidth;
 
-	/** The height of this page's image */
+	/**
+	 * The height of this page's image
+	 */
 	private final int pageHeight;
 
-	/** The image containing the glyphs */
+	/**
+	 * The image containing the glyphs
+	 */
 	private final Image pageImage;
 
-	/** The x position of the page */
+	/**
+	 * The x position of the page
+	 */
 	private int pageX;
 
-	/** The y position of the page */
+	/**
+	 * The y position of the page
+	 */
 	private int pageY;
 
-	/** The height of the last row on the page */
+	/**
+	 * The height of the last row on the page
+	 */
 	private int rowHeight;
 
-	/** True if the glyphs are ordered */
+	/**
+	 * True if the glyphs are ordered
+	 */
 	private boolean orderAscending;
 
-	/** The list of glyphs on this page */
+	/**
+	 * The list of glyphs on this page
+	 */
 	private final List pageGlyphs = new ArrayList(32);
 
 	/**
 	 * Create a new page of glyphs
-	 * 
+	 * <p>
 	 * @param unicodeFont The font this page forms part of
 	 * @param pageWidth The width of the backing texture.
 	 * @param pageHeight The height of the backing texture.
+	 * <p>
 	 * @throws SlickException if the backing texture could not be created.
 	 */
 	public GlyphPage(UnicodeFont unicodeFont, int pageWidth, int pageHeight) throws SlickException {
@@ -114,14 +147,18 @@ public class GlyphPage {
 	}
 
 	/**
-	 * Loads glyphs to the backing texture and sets the image on each loaded glyph. Loaded glyphs are removed from the list.
-	 * 
-	 * If this page already has glyphs and maxGlyphsToLoad is -1, then this method will return 0 if all the new glyphs don't fit.
-	 * This reduces texture binds when drawing since glyphs loaded at once are typically displayed together.
+	 * Loads glyphs to the backing texture and sets the image on each loaded glyph. Loaded glyphs are removed from the
+	 * list.
+	 * <p>
+	 * If this page already has glyphs and maxGlyphsToLoad is -1, then this method will return 0 if all the new glyphs
+	 * don't fit. This reduces texture binds when drawing since glyphs loaded at once are typically displayed together.
+	 * <p>
 	 * @param glyphs The glyphs to load.
-	 * @param maxGlyphsToLoad This is the maximum number of glyphs to load from the list. Set to -1 to attempt to load all the
-	 *           glyphs.
+	 * @param maxGlyphsToLoad This is the maximum number of glyphs to load from the list. Set to -1 to attempt to load
+	 * all the glyphs.
+	 * <p>
 	 * @return The number of glyphs that were actually loaded.
+	 * <p>
 	 * @throws SlickException if the glyph could not be rendered.
 	 */
 	public int loadGlyphs(List glyphs, int maxGlyphsToLoad) throws SlickException {
@@ -201,10 +238,11 @@ public class GlyphPage {
 
 	/**
 	 * Loads a single glyph to the backing texture, if it fits.
-	 * 
+	 * <p>
 	 * @param glyph The glyph to be rendered
 	 * @param width The expected width of the glyph
 	 * @param height The expected height of the glyph
+	 * <p>
 	 * @throws SlickException if the glyph could not be rendered.
 	 */
 	private void renderGlyph(Glyph glyph, int width, int height) throws SlickException {
@@ -233,8 +271,9 @@ public class GlyphPage {
 
 	/**
 	 * Returns an iterator for the specified glyphs, sorted either ascending or descending.
-	 * 
+	 * <p>
 	 * @param glyphs The glyphs to return if present
+	 * <p>
 	 * @return An iterator of the sorted list of glyphs
 	 */
 	private Iterator getIterator(List glyphs) {
@@ -260,7 +299,7 @@ public class GlyphPage {
 
 	/**
 	 * Returns the glyphs stored on this page.
-	 * 
+	 * <p>
 	 * @return A list of {@link Glyph} elements on this page
 	 */
 	public List getGlyphs() {
@@ -269,7 +308,7 @@ public class GlyphPage {
 
 	/**
 	 * Returns the backing texture for this page.
-	 * 
+	 * <p>
 	 * @return The image of this page of glyphs
 	 */
 	public Image getImage() {

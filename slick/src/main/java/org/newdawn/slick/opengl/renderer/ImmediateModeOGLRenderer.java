@@ -11,21 +11,29 @@ import org.lwjgl.opengl.GLContext;
 
 /**
  * The default OpenGL renderer, uses immediate mode for everything
- * 
+ * <p>
  * @author kevin
  */
 public class ImmediateModeOGLRenderer implements SGL {
 
-	/** The width of the display */
+	/**
+	 * The width of the display
+	 */
 	private int width;
 
-	/** The height of the display */
+	/**
+	 * The height of the display
+	 */
 	private int height;
 
-	/** The current colour */
+	/**
+	 * The current colour
+	 */
 	private float[] current = new float[]{1, 1, 1, 1};
 
-	/** The global colour scale */
+	/**
+	 * The global colour scale
+	 */
 	protected float alphaScale = 1;
 
 	/**
@@ -138,7 +146,8 @@ public class ImmediateModeOGLRenderer implements SGL {
 	/**
 	 * @see org.newdawn.slick.opengl.renderer.SGL#glCopyTexImage2D(int, int, int, int, int, int, int, int)
 	 */
-	public void glCopyTexImage2D(int target, int level, int internalFormat, int x, int y, int width, int height, int border) {
+	public void glCopyTexImage2D(int target, int level, int internalFormat, int x, int y, int width, int height,
+								 int border) {
 		GL11.glCopyTexImage2D(target, level, internalFormat, x, y, width, height, border);
 	}
 
@@ -393,14 +402,14 @@ public class ImmediateModeOGLRenderer implements SGL {
 	 * @see org.newdawn.slick.opengl.renderer.SGL#glTexImage2D(int, int, int, int, int, int, int, int, java.nio.ByteBuffer)
 	 */
 	public void glTexImage2D(int target, int i, int dstPixelFormat,
-			int width, int height, int j, int srcPixelFormat,
-			int glUnsignedByte, ByteBuffer textureBuffer) {
+							 int width, int height, int j, int srcPixelFormat,
+							 int glUnsignedByte, ByteBuffer textureBuffer) {
 		GL11.glTexImage2D(target, i, dstPixelFormat, width, height, j, srcPixelFormat, glUnsignedByte, textureBuffer);
 	}
 
 	public void glTexSubImage2D(int glTexture2d, int i, int pageX, int pageY,
-			int width, int height, int glBgra, int glUnsignedByte,
-			ByteBuffer scratchByteBuffer) {
+								int width, int height, int glBgra, int glUnsignedByte,
+								ByteBuffer scratchByteBuffer) {
 		GL11.glTexSubImage2D(glTexture2d, i, pageX, pageY, width, height, glBgra, glUnsignedByte, scratchByteBuffer);
 	}
 

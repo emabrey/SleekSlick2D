@@ -10,33 +10,49 @@ import org.newdawn.slick.tiled.TiledMap;
 
 /**
  * A test of the tile map system based around the TilED (http://www.mapeditor.org) tool
- *
+ * <p>
  * @author kevin
  */
 public class TileMapTest extends BasicGame {
 
-	/** The tile map we're going to load and render */
+	/**
+	 * The tile map we're going to load and render
+	 */
 	private TiledMap map;
 
-	/** the name of the map, read from map properties, specified by TilED */
+	/**
+	 * the name of the map, read from map properties, specified by TilED
+	 */
 	private String mapName;
 
-	/** how hard are the monsters, read from layer properties, specified by TilED */
+	/**
+	 * how hard are the monsters, read from layer properties, specified by TilED
+	 */
 	private String monsterDifficulty;
 
-	/** we try to read a property from the map which doesn't exist so we expect the default value */
+	/**
+	 * we try to read a property from the map which doesn't exist so we expect the default value
+	 */
 	private String nonExistingMapProperty;
 
-	/** we try to read a property from the layer which doesn't exist so we expect the default value */
+	/**
+	 * we try to read a property from the layer which doesn't exist so we expect the default value
+	 */
 	private String nonExistingLayerProperty;
 
-	/** how long did we wait already until next update */
+	/**
+	 * how long did we wait already until next update
+	 */
 	private int updateCounter = 0;
 
-	/** changing some tile of the map every UPDATE_TIME milliseconds */
+	/**
+	 * changing some tile of the map every UPDATE_TIME milliseconds
+	 */
 	private static int UPDATE_TIME = 1000;
 
-	/** we want to store the originalTileID before we set a new one */
+	/**
+	 * we want to store the originalTileID before we set a new one
+	 */
 	private int originalTileID = 0;
 
 	/**
@@ -106,7 +122,7 @@ public class TileMapTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -114,7 +130,8 @@ public class TileMapTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new TileMapTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

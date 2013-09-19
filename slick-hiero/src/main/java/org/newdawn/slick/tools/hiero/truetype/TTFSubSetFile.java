@@ -26,12 +26,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Reads a TrueType file and generates a subset
- * that can be used to embed a TrueType CID font.
- * TrueType tables needed for embedded CID fonts are:
- * "head", "hhea", "loca", "maxp", "cvt ", "prep", "glyf", "hmtx" and "fpgm".
- * The TrueType spec can be found at the Microsoft
- * Typography site: http://www.microsoft.com/truetype/
+ * Reads a TrueType file and generates a subset that can be used to embed a TrueType CID font. TrueType tables needed
+ * for embedded CID fonts are: "head", "hhea", "loca", "maxp", "cvt ", "prep", "glyf", "hmtx" and "fpgm". The TrueType
+ * spec can be found at the Microsoft Typography site: http://www.microsoft.com/truetype/
  */
 public class TTFSubSetFile extends TTFFile {
 
@@ -51,56 +48,47 @@ public class TTFSubSetFile extends TTFFile {
 	private int currentPos = 0;
 
 	/**
-	 * Offsets in name table to be filled out by table.
-	 * The offsets are to the checkSum field
+	 * Offsets in name table to be filled out by table. The offsets are to the checkSum field
 	 */
 	private int cvtDirOffset = 0;
 
 	/**
-	 * Offsets in name table to be filled out by table.
-	 * The offsets are to the checkSum field
+	 * Offsets in name table to be filled out by table. The offsets are to the checkSum field
 	 */
 	private int fpgmDirOffset = 0;
 
 	/**
-	 * Offsets in name table to be filled out by table.
-	 * The offsets are to the checkSum field
+	 * Offsets in name table to be filled out by table. The offsets are to the checkSum field
 	 */
 	private int glyfDirOffset = 0;
 
 	/**
-	 * Offsets in name table to be filled out by table.
-	 * The offsets are to the checkSum field
+	 * Offsets in name table to be filled out by table. The offsets are to the checkSum field
 	 */
 	private int headDirOffset = 0;
 
 	/**
-	 * Offsets in name table to be filled out by table.
-	 * The offsets are to the checkSum field
+	 * Offsets in name table to be filled out by table. The offsets are to the checkSum field
 	 */
 	private int hheaDirOffset = 0;
 
 	/**
-	 * Offsets in name table to be filled out by table.
-	 * The offsets are to the checkSum field
+	 * Offsets in name table to be filled out by table. The offsets are to the checkSum field
 	 */
 	private int hmtxDirOffset = 0;
 
 	/**
-	 * Offsets in name table to be filled out by table.
-	 * The offsets are to the checkSum field
+	 * Offsets in name table to be filled out by table. The offsets are to the checkSum field
 	 */
 	private int locaDirOffset = 0;
 
 	/**
-	 * Offsets in name table to be filled out by table.
-	 * The offsets are to the checkSum field
+	 * Offsets in name table to be filled out by table. The offsets are to the checkSum field
 	 */
 	private int maxpDirOffset = 0;
 
 	/**
-	 * Offsets in name table to be filled out by table.
-	 * The offsets are to the checkSum field
+	 * Offsets in name table to be filled out by table. The offsets are to the checkSum field
 	 */
 	private int prepDirOffset = 0;
 
@@ -116,7 +104,7 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Initalize the output array
-	 *
+	 * <p>
 	 * @param size The size of the output array
 	 */
 	private void init(int size) {
@@ -205,8 +193,9 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Copy the cvt table as is from original font to subset font
-	 *
+	 * <p>
 	 * @param in The input to read the CVT from
+	 * <p>
 	 * @throws IOException Indicates a failure to read the entry
 	 */
 	private void createCvt(FontFileReader in) throws IOException {
@@ -230,7 +219,7 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * True if this subset has FPGM table
-	 *
+	 * <p>
 	 * @return True if the subset has FPGM
 	 */
 	private boolean hasFpgm() {
@@ -239,8 +228,9 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Copy the fpgm table as is from original font to subset font
-	 *
+	 * <p>
 	 * @param in The stream to read the FPGM table from
+	 * <p>
 	 * @throws IOException Indicates a failure to read the table
 	 */
 	private void createFpgm(FontFileReader in) throws IOException {
@@ -257,15 +247,16 @@ public class TTFSubSetFile extends TTFFile {
 			currentPos += (int) entry.getLength();
 			realSize += (int) entry.getLength();
 		} else {
-            //fpgm table is optional
+			//fpgm table is optional
 			//throw new IOException("Can't find fpgm table");
 		}
 	}
 
 	/**
 	 * Create an empty loca table without updating checksum
-	 *
+	 * <p>
 	 * @param size The size of the loca to create
+	 * <p>
 	 * @throws IOException Indicate a failure to store the loca
 	 */
 	private void createLoca(int size) throws IOException {
@@ -278,11 +269,11 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Copy the maxp table as is from original font to subset font
-	 * and set num glyphs to size
-	 *
-	 * @param in   The reader from which to obtain the info
+	 * Copy the maxp table as is from original font to subset font and set num glyphs to size
+	 * <p>
+	 * @param in The reader from which to obtain the info
 	 * @param size The size of the MAXP table to write
+	 * <p>
 	 * @throws IOException Indicates a failure to write
 	 */
 	private void createMaxp(FontFileReader in, int size) throws IOException {
@@ -307,8 +298,9 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Copy the prep table as is from original font to subset font
-	 *
+	 * <p>
 	 * @param in The reader to which we're adding
+	 * <p>
 	 * @throws IOException Indicates a failure to read the PREP table
 	 */
 	private void createPrep(FontFileReader in) throws IOException {
@@ -331,11 +323,11 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Copy the hhea table as is from original font to subset font
-	 * and fill in size of hmtx table
-	 *
-	 * @param in   The reader from which to grab the HHEA table
+	 * Copy the hhea table as is from original font to subset font and fill in size of hmtx table
+	 * <p>
+	 * @param in The reader from which to grab the HHEA table
 	 * @param size The size of the table
+	 * <p>
 	 * @throws IOException Indicates a failure to read data
 	 */
 	private void createHhea(FontFileReader in, int size) throws IOException {
@@ -359,12 +351,11 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Copy the head table as is from original font to subset font
-	 * and set indexToLocaFormat to long and set
-	 * checkSumAdjustment to 0, store offset to checkSumAdjustment
-	 * in checkSumAdjustmentOffset
-	 *
+	 * Copy the head table as is from original font to subset font and set indexToLocaFormat to long and set
+	 * checkSumAdjustment to 0, store offset to checkSumAdjustment in checkSumAdjustmentOffset
+	 * <p>
 	 * @param in The reader to read the HEAD table from
+	 * <p>
 	 * @throws IOException Failure to read the table
 	 */
 	private void createHead(FontFileReader in) throws IOException {
@@ -397,13 +388,14 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Create the glyf table and fill in loca table
-	 *
-	 * @param in     Reader to get the table from
+	 * <p>
+	 * @param in Reader to get the table from
 	 * @param glyphs The glpyhs table to populate
+	 * <p>
 	 * @throws IOException Indicates a failure to read data
 	 */
 	private void createGlyf(FontFileReader in,
-			Map glyphs) throws IOException {
+							Map glyphs) throws IOException {
 		TTFDirTabEntry entry = (TTFDirTabEntry) dirTabs.get("glyf");
 		int size = 0;
 		int start = 0;
@@ -474,17 +466,16 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Create the hmtx table by copying metrics from original
-	 * font to subset font. The glyphs Map contains an
-	 * Integer key and Integer value that maps the original
-	 * metric (key) to the subset metric (value)
-	 *
-	 * @param in     The reader from which to grab the HMTX table
+	 * Create the hmtx table by copying metrics from original font to subset font. The glyphs Map contains an Integer
+	 * key and Integer value that maps the original metric (key) to the subset metric (value)
+	 * <p>
+	 * @param in The reader from which to grab the HMTX table
 	 * @param glyphs The glyphs table to populate
+	 * <p>
 	 * @throws IOException Indicates a failure to read
 	 */
 	private void createHmtx(FontFileReader in,
-			Map glyphs) throws IOException {
+							Map glyphs) throws IOException {
 		TTFDirTabEntry entry = (TTFDirTabEntry) dirTabs.get("hmtx");
 
 		int longHorMetricSize = glyphs.size() * 2;
@@ -517,17 +508,18 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Returns a List containing the glyph itself plus all glyphs
-	 * that this composite glyph uses
-	 *
-	 * @param in          The input from which to determine the included glyphs
+	 * Returns a List containing the glyph itself plus all glyphs that this composite glyph uses
+	 * <p>
+	 * @param in The input from which to determine the included glyphs
 	 * @param glyphOffset The offset the glyph
-	 * @param glyphIdx    The index of the base glyph
+	 * @param glyphIdx The index of the base glyph
+	 * <p>
 	 * @return The list of glyphs building the composite
+	 * <p>
 	 * @throws IOException Indicates a failure to read from the font file
 	 */
 	private List getIncludedGlyphs(FontFileReader in, int glyphOffset,
-			Integer glyphIdx) throws IOException {
+								   Integer glyphIdx) throws IOException {
 		List ret = new ArrayList();
 		ret.add(glyphIdx);
 		int offset = glyphOffset + (int) mtxTab[glyphIdx.intValue()].getOffset() + 10;
@@ -567,16 +559,17 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Rewrite all compositepointers in glyphindex glyphIdx
-	 *
-	 * @param in          The input from which to remap
-	 * @param glyphs      The glyphs to remap
+	 * <p>
+	 * @param in The input from which to remap
+	 * @param glyphs The glyphs to remap
 	 * @param glyphOffset The offset to start at
-	 * @param glyphIdx    The index of the glyph
+	 * @param glyphIdx The index of the glyph
+	 * <p>
 	 * @throws IOException Indicates a failure to read from the font file.
 	 */
 	private void remapComposite(FontFileReader in, Map glyphs,
-			int glyphOffset,
-			Integer glyphIdx) throws IOException {
+								int glyphOffset,
+								Integer glyphIdx) throws IOException {
 		int offset = glyphOffset + (int) mtxTab[glyphIdx.intValue()].getOffset()
 				+ 10;
 
@@ -589,7 +582,7 @@ public class TTFSubSetFile extends TTFFile {
 			compositeIdx = new Integer(in.readTTFUShort(offset + 2));
 			Integer newIdx = (Integer) glyphs.get(compositeIdx);
 			if (newIdx == null) {
-                // This errormessage would look much better
+				// This errormessage would look much better
 				// if the fontname was printed to
 				//log.error("An embedded font "
 				//                     + "contains bad glyph data. "
@@ -627,16 +620,16 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Scan all the original glyphs for composite glyphs and add those glyphs
-	 * to the glyphmapping also rewrite the composite glyph pointers to the new
-	 * mapping
-	 *
-	 * @param in     The input stream to read the glyphs from
+	 * Scan all the original glyphs for composite glyphs and add those glyphs to the glyphmapping also rewrite the
+	 * composite glyph pointers to the new mapping
+	 * <p>
+	 * @param in The input stream to read the glyphs from
 	 * @param glyphs The glyphs map to populate
+	 * <p>
 	 * @throws IOException Indicates a failure to read from the reader
 	 */
 	private void scanGlyphs(FontFileReader in,
-			Map glyphs) throws IOException {
+							Map glyphs) throws IOException {
 		TTFDirTabEntry entry = (TTFDirTabEntry) dirTabs.get("glyf");
 		Map newComposites = null;
 		Map allComposites = new java.util.HashMap();
@@ -660,7 +653,7 @@ public class TTFSubSetFile extends TTFFile {
 								= getIncludedGlyphs(in, (int) entry.getOffset(),
 										origIndex);
 
-                        // Iterate through all composites pointed to
+						// Iterate through all composites pointed to
 						// by this composite and check if they exists
 						// in the glyphs map, add them if not.
 						Iterator cps = composites.iterator();
@@ -698,16 +691,17 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Returns a subset of the original font.
-	 *
-	 * @param in     FontFileReader to read from
-	 * @param name   Name to be checked for in the font file
-	 * @param glyphs Map of glyphs (glyphs has old index as (Integer) key and
-	 *               new index as (Integer) value)
+	 * <p>
+	 * @param in FontFileReader to read from
+	 * @param name Name to be checked for in the font file
+	 * @param glyphs Map of glyphs (glyphs has old index as (Integer) key and new index as (Integer) value)
+	 * <p>
 	 * @return A subset of the original font
+	 * <p>
 	 * @throws IOException in case of an I/O problem
 	 */
 	public byte[] readFont(FontFileReader in, String name,
-			Map glyphs) throws IOException {
+						   Map glyphs) throws IOException {
 
 		//Check if TrueType collection, and that the name exists in the collection
 		if (!checkTTC(in, name)) {
@@ -734,36 +728,41 @@ public class TTFSubSetFile extends TTFFile {
 
 		try {
 			createCvt(in);    // copy the cvt table
-		} catch (IOException ex) {
-            // Cvt is optional (only required for OpenType (MS) fonts)
+		}
+		catch (IOException ex) {
+			// Cvt is optional (only required for OpenType (MS) fonts)
 			//log.error("TrueType warning: " + ex.getMessage());
 		}
 
 		try {
 			createFpgm(in);    // copy fpgm table
-		} catch (IOException ex) {
-            // Fpgm is optional (only required for OpenType (MS) fonts)
+		}
+		catch (IOException ex) {
+			// Fpgm is optional (only required for OpenType (MS) fonts)
 			//log.error("TrueType warning: " + ex.getMessage());
 		}
 
 		try {
 			createPrep(in);    // copy prep table
-		} catch (IOException ex) {
-            // Prep is optional (only required for OpenType (MS) fonts)
+		}
+		catch (IOException ex) {
+			// Prep is optional (only required for OpenType (MS) fonts)
 			//log.error("TrueType warning: " + ex.getMessage());
 		}
 
 		try {
 			createLoca(glyphs.size());    // create empty loca table
-		} catch (IOException ex) {
-            // Loca is optional (only required for OpenType (MS) fonts)
+		}
+		catch (IOException ex) {
+			// Loca is optional (only required for OpenType (MS) fonts)
 			//log.error("TrueType warning: " + ex.getMessage());
 		}
 
 		try {
 			createGlyf(in, glyphs);
-		} catch (IOException ex) {
-            // Glyf is optional (only required for OpenType (MS) fonts)
+		}
+		catch (IOException ex) {
+			// Glyf is optional (only required for OpenType (MS) fonts)
 			//log.error("TrueType warning: " + ex.getMessage());
 		}
 
@@ -777,10 +776,10 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * writes a ISO-8859-1 string at the currentPosition
-	 * updates currentPosition but not realSize
-	 *
+	 * writes a ISO-8859-1 string at the currentPosition updates currentPosition but not realSize
+	 * <p>
 	 * @param str Write a string at the current position
+	 * <p>
 	 * @return number of bytes written
 	 */
 	private int writeString(String str) {
@@ -790,7 +789,8 @@ public class TTFSubSetFile extends TTFFile {
 			System.arraycopy(buf, 0, output, currentPos, buf.length);
 			length = buf.length;
 			currentPos += length;
-		} catch (UnsupportedEncodingException e) {
+		}
+		catch (UnsupportedEncodingException e) {
 			// This should never happen!
 		}
 
@@ -798,9 +798,8 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Appends a byte to the output array,
-	 * updates currentPost but not realSize
-	 *
+	 * Appends a byte to the output array, updates currentPost but not realSize
+	 * <p>
 	 * @param b The byte value to write out
 	 */
 	private void writeByte(byte b) {
@@ -808,9 +807,8 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Appends a USHORT to the output array,
-	 * updates currentPost but not realSize
-	 *
+	 * Appends a USHORT to the output array, updates currentPost but not realSize
+	 * <p>
 	 * @param s The short to write
 	 */
 	private void writeUShort(int s) {
@@ -821,11 +819,10 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Appends a USHORT to the output array,
-	 * at the given position without changing currentPos
-	 *
+	 * Appends a USHORT to the output array, at the given position without changing currentPos
+	 * <p>
 	 * @param pos The position to write to
-	 * @param s   The short to be written
+	 * @param s The short to be written
 	 */
 	private void writeUShort(int pos, int s) {
 		byte b1 = (byte) ((s >> 8) & 0xff);
@@ -835,9 +832,8 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Appends a ULONG to the output array,
-	 * updates currentPos but not realSize
-	 *
+	 * Appends a ULONG to the output array, updates currentPos but not realSize
+	 * <p>
 	 * @param s The value to write
 	 */
 	private void writeULong(int s) {
@@ -852,11 +848,10 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Appends a ULONG to the output array,
-	 * at the given position without changing currentPos
-	 *
+	 * Appends a ULONG to the output array, at the given position without changing currentPos
+	 * <p>
 	 * @param pos The position to write to
-	 * @param s   The value to write
+	 * @param s The value to write
 	 */
 	private void writeULong(int pos, int s) {
 		byte b1 = (byte) ((s >> 24) & 0xff);
@@ -871,8 +866,9 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Read a signed short value at given position
-	 *
+	 * <p>
 	 * @param pos The position from the file to read
+	 * <p>
 	 * @return The short read
 	 */
 	private short readShort(int pos) {
@@ -882,8 +878,9 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Read a unsigned short value at given position
-	 *
+	 * <p>
 	 * @param pos The position from the file to read
+	 * <p>
 	 * @return The short read
 	 */
 	private int readUShort(int pos) {
@@ -902,8 +899,7 @@ public class TTFSubSetFile extends TTFFile {
 	}
 
 	/**
-	 * Create a padding in the fontfile to align
-	 * on a 4-byte boundary
+	 * Create a padding in the fontfile to align on a 4-byte boundary
 	 */
 	private void pad4() {
 		int padSize = currentPos % 4;
@@ -915,8 +911,9 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Returns the maximum power of 2 <= max
-	 *
+	 * <p>
 	 * @param max The value to find the maximum power of 2
+	 * <p>
 	 * @return The maximum power of 2
 	 */
 	private int maxPow2(int max) {
@@ -930,8 +927,9 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Perform a log2
-	 *
+	 * <p>
 	 * @param num The number to log2
+	 * <p>
 	 * @return The log2 value
 	 */
 	private int log2(int num) {
@@ -940,9 +938,10 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Get the checksum for this entry
-	 *
+	 * <p>
 	 * @param start The start of the value
-	 * @param size  The size of the value
+	 * @param size The size of the value
+	 * <p>
 	 * @return The calculated check sum
 	 */
 	private int getCheckSum(int start, int size) {
@@ -951,13 +950,14 @@ public class TTFSubSetFile extends TTFFile {
 
 	/**
 	 * Get the checksum as a long
-	 *
+	 * <p>
 	 * @param start The start value
-	 * @param size  The size of the values to checksum
+	 * @param size The size of the values to checksum
+	 * <p>
 	 * @return The long checksum
 	 */
 	private long getLongCheckSum(int start, int size) {
-        // All the tables here are aligned on four byte boundaries
+		// All the tables here are aligned on four byte boundaries
 		// Add remainder to size if it's not a multiple of 4
 		int remainder = size % 4;
 		if (remainder != 0) {

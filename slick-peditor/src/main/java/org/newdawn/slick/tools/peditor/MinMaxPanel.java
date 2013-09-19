@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * A panel allowing the definition of a range of values
- *
+ * <p>
  * @author kevin
  */
 public class MinMaxPanel extends DefaultPanel {
@@ -51,12 +51,12 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Create a new panel for a range definition
-	 *
-	 * @param name    The name to display for this panel
-	 * @param min     The minimum lower bound
-	 * @param max     The maximum upper bound
-	 * @param defMin  The default lower bound
-	 * @param defMax  The default upper bound
+	 * <p>
+	 * @param name The name to display for this panel
+	 * @param min The minimum lower bound
+	 * @param max The maximum upper bound
+	 * @param defMin The default lower bound
+	 * @param defMax The default upper bound
 	 * @param toolTip The tooltip describing this function
 	 */
 	public MinMaxPanel(String name, int min, int max, int defMin, int defMax, String toolTip) {
@@ -65,17 +65,18 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Create a new panel for a range definition
-	 *
-	 * @param name       The name to display for this panel
-	 * @param min        The minimum lower bound
-	 * @param max        The maximum upper bound
-	 * @param defMin     The default lower bound
-	 * @param defMax     The default upper bound
+	 * <p>
+	 * @param name The name to display for this panel
+	 * @param min The minimum lower bound
+	 * @param max The maximum upper bound
+	 * @param defMin The default lower bound
+	 * @param defMax The default upper bound
 	 * @param enablement Indicates if this panel supports being enabled
-	 * @param offValue   The value to report when disabled
-	 * @param toolTip    The tooltip describing this function
+	 * @param offValue The value to report when disabled
+	 * @param toolTip The tooltip describing this function
 	 */
-	public MinMaxPanel(String name, int min, int max, int defMin, int defMax, boolean enablement, int offValue, String toolTip) {
+	public MinMaxPanel(String name, int min, int max, int defMin, int defMax, boolean enablement, int offValue,
+					   String toolTip) {
 		setLayout(null);
 
 		this.setToolTipText(toolTip);
@@ -145,7 +146,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Force the state of this component
-	 *
+	 * <p>
 	 * @param e True if we want this component to be enabled
 	 */
 	public void setEnabledForced(boolean e) {
@@ -156,7 +157,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Set the minimum value
-	 *
+	 * <p>
 	 * @param value The value to use as the lower bound
 	 */
 	public void setMin(int value) {
@@ -167,7 +168,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Set the maximum value
-	 *
+	 * <p>
 	 * @param value The value to use as the upper bound
 	 */
 	public void setMax(int value) {
@@ -178,7 +179,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Add a listener to be notified of changes
-	 *
+	 * <p>
 	 * @param listener The listener to be notified of changes
 	 */
 	public void addListener(InputPanelListener listener) {
@@ -187,7 +188,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Get the offset on the y axis for layout
-	 *
+	 * <p>
 	 * @return The offset on the y axis for layout
 	 */
 	public int getOffset() {
@@ -196,7 +197,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Notify listeners a change has occured on this panel
-	 *
+	 * <p>
 	 * @param source The source of this event
 	 */
 	void fireUpdated(Object source) {
@@ -222,7 +223,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Check if this panel is enabled
-	 *
+	 * <p>
 	 * @return True if this panel is enabeld
 	 */
 	public boolean getEnabled() {
@@ -231,7 +232,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Indicate if this panel should be enabled
-	 *
+	 * <p>
 	 * @param e True if this panel option should be enabled
 	 */
 	public void setEnabledValue(boolean e) {
@@ -244,7 +245,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Get the defined upper bound
-	 *
+	 * <p>
 	 * @return The defined upper bound
 	 */
 	public int getMax() {
@@ -257,7 +258,7 @@ public class MinMaxPanel extends DefaultPanel {
 
 	/**
 	 * Get the defined lower bound
-	 *
+	 * <p>
 	 * @return The defined lower bound
 	 */
 	public int getMin() {

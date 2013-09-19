@@ -11,32 +11,38 @@ import org.newdawn.slick.muffin.WebstartMuffin;
 import org.newdawn.slick.util.Log;
 
 /**
- * A utility to allow game setup/state to be stored locally. This utility will adapt to the
- * current enviornment (webstart or file based). Note that this will not currently
- * work in an applet.
- * 
+ * A utility to allow game setup/state to be stored locally. This utility will adapt to the current enviornment
+ * (webstart or file based). Note that this will not currently work in an applet.
+ * <p>
  * @author kappaOne
  */
 public class SavedState {
 
-	/** file name of where the scores will be saved */
+	/**
+	 * file name of where the scores will be saved
+	 */
 	private String fileName;
 
-	/** Type of Muffin to use */
+	/**
+	 * Type of Muffin to use
+	 */
 	private Muffin muffin;
 
-	/** hash map where int data will be stored */
+	/**
+	 * hash map where int data will be stored
+	 */
 	private HashMap numericData = new HashMap();
 
-	/** hash map where string data will be stored */
+	/**
+	 * hash map where string data will be stored
+	 */
 	private HashMap stringData = new HashMap();
 
 	/**
-	 * Create and Test to see if the app is running 
-	 * as webstart or local app and select the appropriate 
-	 * muffin type
-	 * 
+	 * Create and Test to see if the app is running as webstart or local app and select the appropriate muffin type
+	 * <p>
 	 * @param fileName name of muffin where data will be saved
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the stored state
 	 */
 	public SavedState(String fileName) throws SlickException {
@@ -50,15 +56,17 @@ public class SavedState {
 
 		try {
 			load();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load state on startup", e);
 		}
 	}
 
 	/**
 	 * Get number stored at given location
-	 * 
+	 * <p>
 	 * @param nameOfField The name of the number to retrieve
+	 * <p>
 	 * @return The number saved at this location
 	 */
 	public double getNumber(String nameOfField) {
@@ -67,9 +75,10 @@ public class SavedState {
 
 	/**
 	 * Get number stored at given location
-	 * 
+	 * <p>
 	 * @param nameOfField The name of the number to retrieve
 	 * @param defaultValue The value to return if the specified value hasn't been set
+	 * <p>
 	 * @return The number saved at this location
 	 */
 	public double getNumber(String nameOfField, double defaultValue) {
@@ -83,9 +92,8 @@ public class SavedState {
 	}
 
 	/**
-	 * Save the given value at the given location
-	 * will overwrite any previous value at this location
-	 * 
+	 * Save the given value at the given location will overwrite any previous value at this location
+	 * <p>
 	 * @param nameOfField The name to store the value against
 	 * @param value The value to store
 	 */
@@ -95,8 +103,9 @@ public class SavedState {
 
 	/**
 	 * Get the String at the given location
-	 * 
+	 * <p>
 	 * @param nameOfField location of string
+	 * <p>
 	 * @return String stored at the location given
 	 */
 	public String getString(String nameOfField) {
@@ -105,9 +114,10 @@ public class SavedState {
 
 	/**
 	 * Get the String at the given location
-	 * 
+	 * <p>
 	 * @param nameOfField location of string
 	 * @param defaultValue The value to return if the specified value hasn't been set
+	 * <p>
 	 * @return String stored at the location given
 	 */
 	public String getString(String nameOfField, String defaultValue) {
@@ -121,9 +131,8 @@ public class SavedState {
 	}
 
 	/**
-	 * Save the given value at the given location
-	 * will overwrite any previous value at this location
-	 * 
+	 * Save the given value at the given location will overwrite any previous value at this location
+	 * <p>
 	 * @param nameOfField location to store int
 	 * @param value The value to store
 	 */
@@ -133,7 +142,7 @@ public class SavedState {
 
 	/**
 	 * Save the stored data to file/muffin
-	 * 
+	 * <p>
 	 * @throws IOException Indicates it wasn't possible to store the state
 	 */
 	public void save() throws IOException {
@@ -143,7 +152,7 @@ public class SavedState {
 
 	/**
 	 * Load the data from file/muffin
-	 * 
+	 * <p>
 	 * @throws IOException Indicates it wasn't possible to load the state
 	 */
 	public void load() throws IOException {
@@ -161,7 +170,7 @@ public class SavedState {
 
 	/**
 	 * Quick test to see if running through Java webstart
-	 * 
+	 * <p>
 	 * @return True if jws running
 	 */
 	private boolean isWebstartAvailable() {
@@ -170,7 +179,8 @@ public class SavedState {
 			// this causes to go and see if the service is available
 			ServiceManager.lookup("javax.jnlp.PersistenceService");
 			Log.info("Webstart detected using Muffins");
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.info("Using Local File System");
 			return false;
 		}

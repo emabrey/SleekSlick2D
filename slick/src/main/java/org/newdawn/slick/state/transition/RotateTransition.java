@@ -8,28 +8,37 @@ import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 /**
- * A transition that causes the previous state to rotate and scale down into
- * the new state.
- * 
+ * A transition that causes the previous state to rotate and scale down into the new state.
+ * <p>
  * This is an enter transition
- * 
+ * <p>
  * @author kevin
  */
 public class RotateTransition implements Transition {
 
-	/** The previous state */
+	/**
+	 * The previous state
+	 */
 	private GameState prev;
 
-	/** The current angle of rotation */
+	/**
+	 * The current angle of rotation
+	 */
 	private float ang;
 
-	/** True if the state has finished */
+	/**
+	 * True if the state has finished
+	 */
 	private boolean finish;
 
-	/** The current scale */
+	/**
+	 * The current scale
+	 */
 	private float scale = 1;
 
-	/** The background applied under the previous state if any */
+	/**
+	 * The background applied under the previous state if any
+	 */
 	private Color background;
 
 	/**
@@ -41,7 +50,7 @@ public class RotateTransition implements Transition {
 
 	/**
 	 * Create a new transition
-	 * 
+	 * <p>
 	 * @param background The background colour to draw under the previous state
 	 */
 	public RotateTransition(Color background) {
@@ -49,7 +58,8 @@ public class RotateTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#init(org.newdawn.slick.state.GameState, org.newdawn.slick.state.GameState)
+	 * @see org.newdawn.slick.state.transition.Transition#init(org.newdawn.slick.state.GameState,
+	 * org.newdawn.slick.state.GameState)
 	 */
 	public void init(GameState firstState, GameState secondState) {
 		prev = secondState;
@@ -63,7 +73,8 @@ public class RotateTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void postRender(StateBasedGame game, GameContainer container, Graphics g) throws SlickException {
 		g.translate(container.getWidth() / 2, container.getHeight() / 2);
@@ -84,14 +95,16 @@ public class RotateTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void preRender(StateBasedGame game, GameContainer container,
-			Graphics g) throws SlickException {
+						  Graphics g) throws SlickException {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, int)
+	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, int)
 	 */
 	public void update(StateBasedGame game, GameContainer container, int delta)
 			throws SlickException {

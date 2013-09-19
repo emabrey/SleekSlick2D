@@ -5,27 +5,35 @@ import org.lwjgl.openal.AL11;
 
 /**
  * A sound that can be played through OpenAL
- * 
+ * <p>
  * @author Kevin Glass
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class AudioImpl implements Audio {
 
-	/** The store from which this sound was loaded */
+	/**
+	 * The store from which this sound was loaded
+	 */
 	private SoundStore store;
 
-	/** The buffer containing the sound */
+	/**
+	 * The buffer containing the sound
+	 */
 	private int buffer;
 
-	/** The index of the source being used to play this sound */
+	/**
+	 * The index of the source being used to play this sound
+	 */
 	private int index = -1;
 
-	/** The length of the audio */
+	/**
+	 * The length of the audio
+	 */
 	private float length;
 
 	/**
 	 * Create a new sound
-	 * 
+	 * <p>
 	 * @param store The sound store from which the sound was created
 	 * @param buffer The buffer containing the sound data
 	 */
@@ -43,10 +51,9 @@ public class AudioImpl implements Audio {
 	}
 
 	/**
-	 * Get the ID of the OpenAL buffer holding this data (if any). This method
-	 * is not valid with streaming resources.
-	 * 
-	 * @return The ID of the OpenAL buffer holding this data 
+	 * Get the ID of the OpenAL buffer holding this data (if any). This method is not valid with streaming resources.
+	 * <p>
+	 * @return The ID of the OpenAL buffer holding this data
 	 */
 	public int getBufferID() {
 		return buffer;

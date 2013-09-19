@@ -15,21 +15,29 @@ import org.newdawn.slick.geom.Vector2f;
 
 /**
  * Test to emulate texture paint
- * 
+ * <p>
  * @author kevin
  */
 public class TexturePaintTest extends BasicGame {
 
-	/** The poly being drawn */
+	/**
+	 * The poly being drawn
+	 */
 	private Polygon poly = new Polygon();
 
-	/** The image being textured */
+	/**
+	 * The image being textured
+	 */
 	private Image image;
 
-	/** The texture paint rectangle */
+	/**
+	 * The texture paint rectangle
+	 */
 	private Rectangle texRect = new Rectangle(50, 50, 100, 100);
 
-	/** The texture paint */
+	/**
+	 * The texture paint
+	 */
 	private TexCoordGenerator texPaint;
 
 	/**
@@ -79,7 +87,7 @@ public class TexturePaintTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -87,7 +95,8 @@ public class TexturePaintTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new TexturePaintTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

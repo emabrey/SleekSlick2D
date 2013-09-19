@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 /**
  * A collection of IOException that failed image data loading
- * 
+ * <p>
  * @author kevin
  */
 public class CompositeIOException extends IOException {
 
-	/** The list of exceptions causing this one */
+	/**
+	 * The list of exceptions causing this one
+	 */
 	private ArrayList exceptions = new ArrayList();
 
 	/**
@@ -22,7 +24,7 @@ public class CompositeIOException extends IOException {
 
 	/**
 	 * Add an exception that caused this exceptino
-	 * 
+	 * <p>
 	 * @param e The exception
 	 */
 	public void addException(Exception e) {

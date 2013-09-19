@@ -21,39 +21,59 @@ import org.newdawn.slick.util.pathfinding.navmesh.Space;
 
 /**
  * A test to show nav-mesh generation on tile based maps.
- * 
+ * <p>
  * @author kevin
  */
 public class NavMeshTest extends BasicGame implements PathFindingContext {
 
-	/** The mesh built for this map */
+	/**
+	 * The mesh built for this map
+	 */
 	private NavMesh navMesh;
 
-	/** The builder used to create the nav-mesh from the tile based map */
+	/**
+	 * The builder used to create the nav-mesh from the tile based map
+	 */
 	private NavMeshBuilder builder;
 
-	/** True if we're showing the open spaces from the mesh */
+	/**
+	 * True if we're showing the open spaces from the mesh
+	 */
 	private boolean showSpaces = true;
 
-	/** True if we're showing the linking points */
+	/**
+	 * True if we're showing the linking points
+	 */
 	private boolean showLinks = true;
 
-	/** The path if there is one current found between the two points */
+	/**
+	 * The path if there is one current found between the two points
+	 */
 	private NavPath path;
 
-	/** The x coordinate of the start of the search */
+	/**
+	 * The x coordinate of the start of the search
+	 */
 	private float sx;
 
-	/** The y coordinate of the start of the search */
+	/**
+	 * The y coordinate of the start of the search
+	 */
 	private float sy;
 
-	/** The x coordinate of the end of the search */
+	/**
+	 * The x coordinate of the end of the search
+	 */
 	private float ex;
 
-	/** The y coordinate of the end of the search */
+	/**
+	 * The y coordinate of the end of the search
+	 */
 	private float ey;
 
-	/** The tile based map we're searching across - loaded from a raw file */
+	/**
+	 * The tile based map we're searching across - loaded from a raw file
+	 */
 	private DataMap dataMap;
 
 	/**
@@ -65,15 +85,16 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 	/**
 	 * Initialise resources and the map data
-	 * 
-	 * @param container the container the game is running in 
+	 * <p>
+	 * @param container the container the game is running in
 	 */
 	public void init(GameContainer container) throws SlickException {
 		container.setShowFPS(false);
 
 		try {
 			dataMap = new DataMap("testdata/map.dat");
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load map data", e);
 		}
 		builder = new NavMeshBuilder();
@@ -97,7 +118,7 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 	/**
 	 * Render the game - in this case render the map and diagnostic data
-	 * 
+	 * <p>
 	 * @param container The container we're running the game in
 	 * @param g The graphics context on which to render
 	 */
@@ -195,18 +216,21 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 	/**
 	 * A simple raw map implementation for testing purposes
-	 * 
+	 * <p>
 	 * @author kevin
 	 */
 	private class DataMap implements TileBasedMap {
 
-		/** The map data */
+		/**
+		 * The map data
+		 */
 		private byte[] map = new byte[50 * 50];
 
 		/**
 		 * Create a new map loading it from a file
-		 * 
+		 * <p>
 		 * @param ref The location to load the map from
+		 * <p>
 		 * @throws IOException Indicatese a failure to access map data
 		 */
 		public DataMap(String ref) throws IOException {
@@ -260,7 +284,7 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
 	/**
 	 * Entry point to out application
-	 * 
+	 * <p>
 	 * @param argv The arguments passed to the application
 	 */
 	public static void main(String[] argv) {

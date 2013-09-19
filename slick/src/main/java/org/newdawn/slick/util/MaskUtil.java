@@ -5,17 +5,18 @@ import org.newdawn.slick.opengl.renderer.SGL;
 
 /**
  * A utility to provide full screen masking
- * 
+ * <p>
  * @author kevin
  */
 public class MaskUtil {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
 	/**
-	 * Start defining the screen mask. After calling this use graphics functions to 
-	 * mask out the area
+	 * Start defining the screen mask. After calling this use graphics functions to mask out the area
 	 */
 	public static void defineMask() {
 		GL.glDepthMask(true);

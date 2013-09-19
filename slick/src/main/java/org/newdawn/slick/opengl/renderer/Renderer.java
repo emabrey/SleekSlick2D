@@ -1,34 +1,46 @@
 package org.newdawn.slick.opengl.renderer;
 
 /**
- * The static holder for the current GL implementation. Note that this 
- * renderer can only be set before the game has been started.
- * 
+ * The static holder for the current GL implementation. Note that this renderer can only be set before the game has been
+ * started.
+ * <p>
  * @author kevin
  */
 public class Renderer {
 
-	/** The indicator for immediate mode renderering (the default) */
+	/**
+	 * The indicator for immediate mode renderering (the default)
+	 */
 	public static final int IMMEDIATE_RENDERER = 1;
 
-	/** The indicator for vertex array based rendering */
+	/**
+	 * The indicator for vertex array based rendering
+	 */
 	public static final int VERTEX_ARRAY_RENDERER = 2;
 
-	/** The indicator for direct GL line renderer (the default) */
+	/**
+	 * The indicator for direct GL line renderer (the default)
+	 */
 	public static final int DEFAULT_LINE_STRIP_RENDERER = 3;
 
-	/** The indicator for consistant quad based lines */
+	/**
+	 * The indicator for consistant quad based lines
+	 */
 	public static final int QUAD_BASED_LINE_STRIP_RENDERER = 4;
 
-	/** The renderer in use */
+	/**
+	 * The renderer in use
+	 */
 	private static SGL renderer = new ImmediateModeOGLRenderer();
 
-	/** The line strip renderer to use */
+	/**
+	 * The line strip renderer to use
+	 */
 	private static LineStripRenderer lineStripRenderer = new DefaultLineStripRenderer();
 
-	/** 
+	/**
 	 * Set the renderer to one of the known types
-	 * 
+	 * <p>
 	 * @param type The type of renderer to use
 	 */
 	public static void setRenderer(int type) {
@@ -46,7 +58,7 @@ public class Renderer {
 
 	/**
 	 * Set the line strip renderer to one of the known types
-	 * 
+	 * <p>
 	 * @param type The type of renderer to use
 	 */
 	public static void setLineStripRenderer(int type) {
@@ -64,7 +76,7 @@ public class Renderer {
 
 	/**
 	 * Set the line strip renderer to be used globally
-	 * 
+	 * <p>
 	 * @param renderer The line strip renderer to be used
 	 */
 	public static void setLineStripRenderer(LineStripRenderer renderer) {
@@ -73,7 +85,7 @@ public class Renderer {
 
 	/**
 	 * Set the renderer to be used
-	 * 
+	 * <p>
 	 * @param r The renderer to be used
 	 */
 	public static void setRenderer(SGL r) {
@@ -82,7 +94,7 @@ public class Renderer {
 
 	/**
 	 * Get the renderer to be used when accessing GL
-	 * 
+	 * <p>
 	 * @return The renderer to be used when accessing GL
 	 */
 	public static SGL get() {
@@ -90,8 +102,8 @@ public class Renderer {
 	}
 
 	/**
-	 * Get the line strip renderer to use 
-	 * 
+	 * Get the line strip renderer to use
+	 * <p>
 	 * @return The line strip renderer to use
 	 */
 	public static LineStripRenderer getLineStripRenderer() {

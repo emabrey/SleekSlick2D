@@ -10,18 +10,24 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test to demonstrate world clipping as opposed to screen clipping
- *
+ * <p>
  * @author kevin
  */
 public class ClipTest extends BasicGame {
 
-	/** The current angle of rotation */
+	/**
+	 * The current angle of rotation
+	 */
 	private float ang = 0;
 
-	/** True if we're showing world clipping */
+	/**
+	 * True if we're showing world clipping
+	 */
 	private boolean world;
 
-	/** True if we're showing screen clipping */
+	/**
+	 * True if we're showing screen clipping
+	 */
 	private boolean clip;
 
 	/**
@@ -98,7 +104,7 @@ public class ClipTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -106,7 +112,8 @@ public class ClipTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ClipTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

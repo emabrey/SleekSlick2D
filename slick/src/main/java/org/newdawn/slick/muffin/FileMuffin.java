@@ -12,16 +12,14 @@ import java.util.HashMap;
 import org.newdawn.slick.util.Log;
 
 /**
- * An implementation of the muffin load/save mechanism based around using the
- * local file system.
- * 
+ * An implementation of the muffin load/save mechanism based around using the local file system.
+ * <p>
  * @author kappaOne
  */
 public class FileMuffin implements Muffin {
 
 	/**
-	 * @see org.newdawn.slick.muffin.Muffin#saveFile(java.util.HashMap,
-	 *      java.lang.String)
+	 * @see org.newdawn.slick.muffin.Muffin#saveFile(java.util.HashMap, java.lang.String)
 	 */
 	public void saveFile(HashMap scoreMap, String fileName) throws IOException {
 		String userHome = System.getProperty("user.home");
@@ -61,9 +59,11 @@ public class FileMuffin implements Muffin {
 
 				ois.close();
 
-			} catch (EOFException e) {
+			}
+			catch (EOFException e) {
 				// End of the file reached, do nothing
-			} catch (ClassNotFoundException e) {
+			}
+			catch (ClassNotFoundException e) {
 				Log.error(e);
 				throw new IOException("Failed to pull state from store - class not found");
 			}

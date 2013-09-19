@@ -4,7 +4,7 @@ import org.newdawn.slick.particles.ConfigurableEmitter;
 
 /**
  * A colletion of controls for the limiting the emitter
- *
+ * <p>
  * @author kevin
  */
 public class LimitPanel extends ControlPanel {
@@ -21,7 +21,7 @@ public class LimitPanel extends ControlPanel {
 
 	/**
 	 * Create a new panel for limiting controls
-	 *
+	 * <p>
 	 * @param l The list to be notified when the name changes
 	 */
 	public LimitPanel(EmitterList l) {

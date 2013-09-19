@@ -12,12 +12,14 @@ import org.newdawn.slick.font.Glyph;
 
 /**
  * Makes glyphs a solid color.
- * 
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class ColorEffect implements ConfigurableEffect {
 
-	/** The colour that will be applied across the text */
+	/**
+	 * The colour that will be applied across the text
+	 */
 	private Color color = Color.white;
 
 	/**
@@ -28,7 +30,7 @@ public class ColorEffect implements ConfigurableEffect {
 
 	/**
 	 * Create a new effect to colour the text
-	 * 
+	 * <p>
 	 * @param color The colour to apply across the text
 	 */
 	public ColorEffect(Color color) {
@@ -36,7 +38,8 @@ public class ColorEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D, org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
+	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D,
+	 * org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
 	 */
 	public void draw(BufferedImage image, Graphics2D g, UnicodeFont unicodeFont, Glyph glyph) {
 		g.setColor(color);
@@ -45,7 +48,7 @@ public class ColorEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the colour being applied by this effect
-	 * 
+	 * <p>
 	 * @return The colour being applied by this effect
 	 */
 	public Color getColor() {
@@ -54,7 +57,7 @@ public class ColorEffect implements ConfigurableEffect {
 
 	/**
 	 * Set the colour being applied by this effect
-	 * 
+	 * <p>
 	 * @param color The colour being applied by this effect
 	 */
 	public void setColor(Color color) {

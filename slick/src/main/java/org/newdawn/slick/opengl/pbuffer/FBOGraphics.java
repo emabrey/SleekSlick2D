@@ -16,24 +16,31 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A graphics implementation that renders to an FBO
- *
+ * <p>
  * @author kevin
  */
 public class FBOGraphics extends Graphics {
 
-	/** The image we're we're sort of rendering to */
+	/**
+	 * The image we're we're sort of rendering to
+	 */
 	private Image image;
 
-	/** The ID of the FBO in use */
+	/**
+	 * The ID of the FBO in use
+	 */
 	private int FBO;
 
-	/** True if this context is valid */
+	/**
+	 * True if this context is valid
+	 */
 	private boolean valid = true;
 
 	/**
 	 * Create a new graphics context around an FBO
-	 * 
+	 * <p>
 	 * @param image The image we're rendering to
+	 * <p>
 	 * @throws SlickException Indicates a failure to use pbuffers
 	 */
 	public FBOGraphics(Image image) throws SlickException {
@@ -52,7 +59,7 @@ public class FBOGraphics extends Graphics {
 
 	/**
 	 * Check the FBO for completeness as shown in the LWJGL tutorial
-	 * 
+	 * <p>
 	 * @throws SlickException Indicates an incomplete FBO
 	 */
 	private void completeCheck() throws SlickException {
@@ -85,7 +92,7 @@ public class FBOGraphics extends Graphics {
 
 	/**
 	 * Initialise the FBO that will be used to render to
-	 * 
+	 * <p>
 	 * @throws SlickException
 	 */
 	private void init() throws SlickException {
@@ -114,7 +121,8 @@ public class FBOGraphics extends Graphics {
 			drawImage(image, 0, 0);
 			image.setTexture(tex);
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new SlickException("Failed to create new texture for FBO");
 		}
 	}
@@ -196,7 +204,7 @@ public class FBOGraphics extends Graphics {
 	}
 
 	/**
-	 * Enter the orthographic mode 
+	 * Enter the orthographic mode
 	 */
 	protected void enterOrtho() {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  * A test of the font rendering capabilities
- *
+ * <p>
  * @author kevin
  */
 public class FontPerformanceTest extends BasicGame {
@@ -97,7 +97,7 @@ public class FontPerformanceTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed in the test
 	 */
 	public static void main(String[] argv) {
@@ -105,7 +105,8 @@ public class FontPerformanceTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new FontPerformanceTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

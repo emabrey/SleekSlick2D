@@ -19,15 +19,16 @@ import java.util.Hashtable;
 import javax.imageio.ImageIO;
 
 /**
- * An image data provider that uses ImageIO to retrieve image data in a format
- * suitable for creating OpenGL textures. This implementation is used when
- * formats not natively supported by the library are required.
- *
+ * An image data provider that uses ImageIO to retrieve image data in a format suitable for creating OpenGL textures.
+ * This implementation is used when formats not natively supported by the library are required.
+ * <p>
  * @author kevin
  */
 public class ImageIOImageData implements LoadableImageData {
 
-	/** The colour model including alpha for the GL image */
+	/**
+	 * The colour model including alpha for the GL image
+	 */
 	private static final ColorModel glAlphaColorModel
 			= new ComponentColorModel(ColorSpace.getInstance(ColorSpace.CS_sRGB),
 					new int[]{8, 8, 8, 8},
@@ -36,7 +37,9 @@ public class ImageIOImageData implements LoadableImageData {
 					ComponentColorModel.TRANSLUCENT,
 					DataBuffer.TYPE_BYTE);
 
-	/** The colour model for the GL image */
+	/**
+	 * The colour model for the GL image
+	 */
 	private static final ColorModel glColorModel
 			= new ComponentColorModel(ColorSpace.getInstance(ColorSpace.CS_sRGB),
 					new int[]{8, 8, 8, 0},
@@ -45,22 +48,34 @@ public class ImageIOImageData implements LoadableImageData {
 					ComponentColorModel.OPAQUE,
 					DataBuffer.TYPE_BYTE);
 
-	/** The bit depth of the image */
+	/**
+	 * The bit depth of the image
+	 */
 	private int depth;
 
-	/** The height of the image */
+	/**
+	 * The height of the image
+	 */
 	private int height;
 
-	/** The width of the image */
+	/**
+	 * The width of the image
+	 */
 	private int width;
 
-	/** The width of the texture that should be created for the image */
+	/**
+	 * The width of the texture that should be created for the image
+	 */
 	private int texWidth;
 
-	/** The height of the texture that should be created for the image */
+	/**
+	 * The height of the texture that should be created for the image
+	 */
 	private int texHeight;
 
-	/** True if we should edge */
+	/**
+	 * True if we should edge
+	 */
 	private boolean edging = true;
 
 	/**
@@ -115,7 +130,8 @@ public class ImageIOImageData implements LoadableImageData {
 	/**
 	 * @see org.newdawn.slick.opengl.LoadableImageData#loadImage(java.io.InputStream, boolean, boolean, int[])
 	 */
-	public ByteBuffer loadImage(InputStream fis, boolean flipped, boolean forceAlpha, int[] transparent) throws IOException {
+	public ByteBuffer loadImage(InputStream fis, boolean flipped, boolean forceAlpha, int[] transparent) throws
+			IOException {
 		if (transparent != null) {
 			forceAlpha = true;
 		}
@@ -225,7 +241,7 @@ public class ImageIOImageData implements LoadableImageData {
 
 	/**
 	 * Implement of transform copy area for 1.4
-	 * 
+	 * <p>
 	 * @param image The image to copy
 	 * @param x The x position to copy to
 	 * @param y The y position to copy to

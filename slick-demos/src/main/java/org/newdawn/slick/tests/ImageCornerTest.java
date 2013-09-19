@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for basic image rendering
- *
+ * <p>
  * @author kevin
  */
 public class ImageCornerTest extends BasicGame {
@@ -51,9 +51,12 @@ public class ImageCornerTest extends BasicGame {
 		height = image.getHeight() / 3;
 
 		images = new Image[]{
-			image.getSubImage(0, 0, width, height), image.getSubImage(width, 0, width, height), image.getSubImage(width * 2, 0, width, height),
-			image.getSubImage(0, height, width, height), image.getSubImage(width, height, width, height), image.getSubImage(width * 2, height, width, height),
-			image.getSubImage(0, height * 2, width, height), image.getSubImage(width, height * 2, width, height), image.getSubImage(width * 2, height * 2, width, height),};
+			image.getSubImage(0, 0, width, height), image.getSubImage(width, 0, width, height),
+			image.getSubImage(width * 2, 0, width, height),
+			image.getSubImage(0, height, width, height), image.getSubImage(width, height, width, height),
+			image.getSubImage(width * 2, height, width, height),
+			image.getSubImage(0, height * 2, width, height), image.getSubImage(width, height * 2, width, height),
+			image.getSubImage(width * 2, height * 2, width, height),};
 
 		images[0].setColor(Image.BOTTOM_RIGHT, 0, 1, 1, 1);
 		images[1].setColor(Image.BOTTOM_LEFT, 0, 1, 1, 1);
@@ -88,7 +91,7 @@ public class ImageCornerTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -98,7 +101,8 @@ public class ImageCornerTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ImageCornerTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

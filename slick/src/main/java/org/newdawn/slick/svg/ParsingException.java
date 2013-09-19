@@ -5,15 +5,15 @@ import org.w3c.dom.Element;
 
 /**
  * Exception indicating a failure to parse XML, giving element information
- *
+ * <p>
  * @author kevin
  */
 public class ParsingException extends SlickException {
 
 	/**
 	 * Create a new exception
-	 * 
-	 * @param nodeID The ID of the node that failed validation 
+	 * <p>
+	 * @param nodeID The ID of the node that failed validation
 	 * @param message The description of the failure
 	 * @param cause The exception causing this one
 	 */
@@ -23,8 +23,8 @@ public class ParsingException extends SlickException {
 
 	/**
 	 * Create a new exception
-	 * 
-	 * @param element The element that failed validation 
+	 * <p>
+	 * @param element The element that failed validation
 	 * @param message The description of the failure
 	 * @param cause The exception causing this one
 	 */
@@ -34,8 +34,8 @@ public class ParsingException extends SlickException {
 
 	/**
 	 * Create a new exception
-	 * 
-	 * @param nodeID The ID of the node that failed validation 
+	 * <p>
+	 * @param nodeID The ID of the node that failed validation
 	 * @param message The description of the failure
 	 */
 	public ParsingException(String nodeID, String message) {
@@ -44,8 +44,8 @@ public class ParsingException extends SlickException {
 
 	/**
 	 * Create a new exception
-	 * 
-	 * @param element The element that failed validation 
+	 * <p>
+	 * @param element The element that failed validation
 	 * @param message The description of the failure
 	 */
 	public ParsingException(Element element, String message) {

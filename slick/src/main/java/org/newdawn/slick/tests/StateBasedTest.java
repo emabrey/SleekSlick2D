@@ -10,7 +10,7 @@ import org.newdawn.slick.tests.states.TestState3;
 
 /**
  * A test for the multi-state based functionality
- *
+ * <p>
  * @author kevin
  */
 public class StateBasedTest extends StateBasedGame {
@@ -33,7 +33,7 @@ public class StateBasedTest extends StateBasedGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -41,7 +41,8 @@ public class StateBasedTest extends StateBasedGame {
 			AppGameContainer container = new AppGameContainer(new StateBasedTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

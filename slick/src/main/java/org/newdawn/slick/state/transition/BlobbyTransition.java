@@ -13,34 +13,47 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.util.MaskUtil;
 
 /**
- * A transition that causes the previous state to rotate and scale down into
- * the new state.
- * 
+ * A transition that causes the previous state to rotate and scale down into the new state.
+ * <p>
  * This is an enter transition
- * 
+ * <p>
  * @author kevin
  */
 public class BlobbyTransition implements Transition {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
-	/** The previous state */
+	/**
+	 * The previous state
+	 */
 	private GameState prev;
 
-	/** True if the state has finished */
+	/**
+	 * True if the state has finished
+	 */
 	private boolean finish;
 
-	/** The background applied under the previous state if any */
+	/**
+	 * The background applied under the previous state if any
+	 */
 	private Color background;
 
-	/** ArrayList blobs */
+	/**
+	 * ArrayList blobs
+	 */
 	private ArrayList blobs = new ArrayList();
 
-	/** The time it will run for */
+	/**
+	 * The time it will run for
+	 */
 	private int timer = 1000;
 
-	/** The number of blobs to create */
+	/**
+	 * The number of blobs to create
+	 */
 	private int blobCount = 10;
 
 	/**
@@ -52,7 +65,7 @@ public class BlobbyTransition implements Transition {
 
 	/**
 	 * Create a new transition
-	 * 
+	 * <p>
 	 * @param background The background colour to draw under the previous state
 	 */
 	public BlobbyTransition(Color background) {
@@ -60,7 +73,8 @@ public class BlobbyTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#init(org.newdawn.slick.state.GameState, org.newdawn.slick.state.GameState)
+	 * @see org.newdawn.slick.state.transition.Transition#init(org.newdawn.slick.state.GameState,
+	 * org.newdawn.slick.state.GameState)
 	 */
 	public void init(GameState firstState, GameState secondState) {
 		prev = secondState;
@@ -74,17 +88,19 @@ public class BlobbyTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void postRender(StateBasedGame game, GameContainer container, Graphics g) throws SlickException {
 		MaskUtil.resetMask();
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void preRender(StateBasedGame game, GameContainer container,
-			Graphics g) throws SlickException {
+						  Graphics g) throws SlickException {
 		prev.render(container, game, g);
 
 		MaskUtil.defineMask();
@@ -103,7 +119,8 @@ public class BlobbyTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, int)
+	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, int)
 	 */
 	public void update(StateBasedGame game, GameContainer container, int delta)
 			throws SlickException {
@@ -123,28 +140,36 @@ public class BlobbyTransition implements Transition {
 		}
 	}
 
-	/** 
+	/**
 	 * A blob to show the new state
-	 * 
+	 * <p>
 	 * @author kevin
 	 */
 	private class Blob {
 
-		/** The x coordinate of the centre of this blob */
+		/**
+		 * The x coordinate of the centre of this blob
+		 */
 		private float x;
 
-		/** The y coordinate of the centre of this blob */
+		/**
+		 * The y coordinate of the centre of this blob
+		 */
 		private float y;
 
-		/** The speed at which this blob grows */
+		/**
+		 * The speed at which this blob grows
+		 */
 		private float growSpeed;
 
-		/** The radius of this blob */
+		/**
+		 * The radius of this blob
+		 */
 		private float rad;
 
 		/**
 		 * Create a new blob
-		 * 
+		 * <p>
 		 * @param container The container for dimensions
 		 */
 		public Blob(GameContainer container) {
@@ -154,8 +179,8 @@ public class BlobbyTransition implements Transition {
 		}
 
 		/**
-		 * Update the blob 
-		 * 
+		 * Update the blob
+		 * <p>
 		 * @param delta The change in time in milliseconds
 		 */
 		public void update(int delta) {
@@ -164,7 +189,7 @@ public class BlobbyTransition implements Transition {
 
 		/**
 		 * Render the blob - i.e. the mask
-		 * 
+		 * <p>
 		 * @param g The grphics context on which the mask should be drawn
 		 */
 		public void render(Graphics g) {

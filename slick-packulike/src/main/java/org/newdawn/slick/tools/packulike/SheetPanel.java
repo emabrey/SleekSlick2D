@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * The panel displaying the currently generated sprite sheet
- *
+ * <p>
  * @author kevin
  */
 public class SheetPanel extends JPanel {
@@ -51,7 +51,7 @@ public class SheetPanel extends JPanel {
 
 	/**
 	 * Create a panel showing a sprite sheet
-	 *
+	 * <p>
 	 * @param p The GUI tool this panel is part of
 	 */
 	public SheetPanel(Packer p) {
@@ -92,7 +92,7 @@ public class SheetPanel extends JPanel {
 
 	/**
 	 * Set the list of selected sprites
-	 *
+	 * <p>
 	 * @param sprites THe list of selected sprites
 	 */
 	public void setSelection(ArrayList sprites) {
@@ -102,8 +102,8 @@ public class SheetPanel extends JPanel {
 
 	/**
 	 * Set the size of the sprite sheet
-	 *
-	 * @param width  The width of the sheet
+	 * <p>
+	 * @param width The width of the sheet
 	 * @param height The height of the sheet
 	 */
 	public void setTextureSize(int width, int height) {
@@ -115,7 +115,7 @@ public class SheetPanel extends JPanel {
 
 	/**
 	 * Set the image to be displayed (the sprite sheet)
-	 *
+	 * <p>
 	 * @param sheet The sheet to be displayed
 	 */
 	public void setImage(Sheet sheet) {

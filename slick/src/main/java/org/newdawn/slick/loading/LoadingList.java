@@ -7,19 +7,21 @@ import org.newdawn.slick.opengl.InternalTextureLoader;
 import org.newdawn.slick.util.Log;
 
 /**
- * A central list where all deferred loading resoures end up when deferred loading is in use. Each
- * texture and sound loaded will be put in this list and can be loaded in one by one 
- *
+ * A central list where all deferred loading resoures end up when deferred loading is in use. Each texture and sound
+ * loaded will be put in this list and can be loaded in one by one
+ * <p>
  * @author kevin
  */
 public class LoadingList {
 
-	/** The single instance of this list */
+	/**
+	 * The single instance of this list
+	 */
 	private static LoadingList single = new LoadingList();
 
 	/**
 	 * Get the single global loading list
-	 * 
+	 * <p>
 	 * @return The single global loading list
 	 */
 	public static LoadingList get() {
@@ -28,7 +30,7 @@ public class LoadingList {
 
 	/**
 	 * Indicate if we're going to use deferred loading. (Also clears the current list)
-	 * 
+	 * <p>
 	 * @param loading True if we should use deferred loading
 	 */
 	public static void setDeferredLoading(boolean loading) {
@@ -39,18 +41,22 @@ public class LoadingList {
 	}
 
 	/**
-	 * Check if we're using deferred loading 
-	 * 
+	 * Check if we're using deferred loading
+	 * <p>
 	 * @return True if we're using deferred loading
 	 */
 	public static boolean isDeferredLoading() {
 		return InternalTextureLoader.get().isDeferredLoading();
 	}
 
-	/** The list of deferred resources to load */
+	/**
+	 * The list of deferred resources to load
+	 */
 	private ArrayList deferred = new ArrayList();
 
-	/** The total number of elements that have been added - does not go down as elements are removed */
+	/**
+	 * The total number of elements that have been added - does not go down as elements are removed
+	 */
 	private int total;
 
 	/**
@@ -61,7 +67,7 @@ public class LoadingList {
 
 	/**
 	 * Add a resource to be loaded at some later date
-	 * 
+	 * <p>
 	 * @param resource The resource to be added
 	 */
 	public void add(DeferredResource resource) {
@@ -70,9 +76,8 @@ public class LoadingList {
 	}
 
 	/**
-	 * Remove a resource from the list that has been loaded for
-	 * other reasons.
-	 * 
+	 * Remove a resource from the list that has been loaded for other reasons.
+	 * <p>
 	 * @param resource The resource to remove
 	 */
 	public void remove(DeferredResource resource) {
@@ -83,7 +88,7 @@ public class LoadingList {
 
 	/**
 	 * Get the total number of resources that were in the list originally
-	 * 
+	 * <p>
 	 * @return The total number of resources that were in the list originally
 	 */
 	public int getTotalResources() {
@@ -92,7 +97,7 @@ public class LoadingList {
 
 	/**
 	 * Get the number of remaining resources
-	 * 
+	 * <p>
 	 * @return The number of resources that still need to be loaded
 	 */
 	public int getRemainingResources() {
@@ -101,7 +106,7 @@ public class LoadingList {
 
 	/**
 	 * Get the next resource that requries loading
-	 * 
+	 * <p>
 	 * @return The next resource to load or null if there are no more remaining
 	 */
 	public DeferredResource getNext() {

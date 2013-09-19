@@ -13,24 +13,34 @@ import org.newdawn.slick.font.Glyph;
 
 /**
  * Paints glyphs with a gradient fill.
- * 
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class GradientEffect implements ConfigurableEffect {
 
-	/** The top of gradients colour */
+	/**
+	 * The top of gradients colour
+	 */
 	private Color topColor = Color.cyan;
 
-	/** The bottom of the gradient's colour */
+	/**
+	 * The bottom of the gradient's colour
+	 */
 	private Color bottomColor = Color.blue;
 
-	/** The offset the gradient starts at */
+	/**
+	 * The offset the gradient starts at
+	 */
 	private int offset = 0;
 
-	/** The scaling of the graident */
+	/**
+	 * The scaling of the graident
+	 */
 	private float scale = 1;
 
-	/** True if the graident should cycle back and forth across the surface */
+	/**
+	 * True if the graident should cycle back and forth across the surface
+	 */
 	private boolean cyclic;
 
 	/**
@@ -41,7 +51,7 @@ public class GradientEffect implements ConfigurableEffect {
 
 	/**
 	 * Create a new effect to apply a graident
-	 * 
+	 * <p>
 	 * @param topColor The colour at the top of the graident
 	 * @param bottomColor The colour at the bottom of the gradient
 	 * @param scale The scale of the graident
@@ -53,7 +63,8 @@ public class GradientEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D, org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
+	 * @see org.newdawn.slick.font.effects.Effect#draw(java.awt.image.BufferedImage, java.awt.Graphics2D,
+	 * org.newdawn.slick.UnicodeFont, org.newdawn.slick.font.Glyph)
 	 */
 	public void draw(BufferedImage image, Graphics2D g, UnicodeFont unicodeFont, Glyph glyph) {
 		int ascent = unicodeFont.getAscent();
@@ -65,7 +76,7 @@ public class GradientEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the colour at the top of the graident
-	 * 
+	 * <p>
 	 * @return The colour at the top of the gradient
 	 */
 	public Color getTopColor() {
@@ -74,7 +85,7 @@ public class GradientEffect implements ConfigurableEffect {
 
 	/**
 	 * Set the colour at the top of the graident
-	 * 
+	 * <p>
 	 * @param topColor The colour at the top of the graident
 	 */
 	public void setTopColor(Color topColor) {
@@ -83,7 +94,7 @@ public class GradientEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the colour at the bottom of the graident
-	 * 
+	 * <p>
 	 * @return The colour at the bottom of the gradient
 	 */
 	public Color getBottomColor() {
@@ -92,7 +103,7 @@ public class GradientEffect implements ConfigurableEffect {
 
 	/**
 	 * Set the colour at the bottom of the graident
-	 * 
+	 * <p>
 	 * @param bottomColor The colour at the bottom of the graident
 	 */
 	public void setBottomColor(Color bottomColor) {
@@ -101,7 +112,7 @@ public class GradientEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the offset the gradients starts at
-	 * 
+	 * <p>
 	 * @return The offset the gradient starts at
 	 */
 	public int getOffset() {
@@ -109,9 +120,8 @@ public class GradientEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * Sets the pixel offset to move the gradient up or down. 
-	 * The gradient is normally centered on the glyph.
-	 * 
+	 * Sets the pixel offset to move the gradient up or down. The gradient is normally centered on the glyph.
+	 * <p>
 	 * @param offset The offset the gradient is moved by
 	 */
 	public void setOffset(int offset) {
@@ -120,7 +130,7 @@ public class GradientEffect implements ConfigurableEffect {
 
 	/**
 	 * Get the percentage scaling being applied to the gradient across the surface
-	 * 
+	 * <p>
 	 * @return The scale of the graident
 	 */
 	public float getScale() {
@@ -128,9 +138,9 @@ public class GradientEffect implements ConfigurableEffect {
 	}
 
 	/**
-	 * Changes the height of the gradient by a percentage. The gradient is 
-	 * normally the height of most glyphs in the font.
-	 * 
+	 * Changes the height of the gradient by a percentage. The gradient is normally the height of most glyphs in the
+	 * font.
+	 * <p>
 	 * @param scale The scale to apply
 	 */
 	public void setScale(float scale) {
@@ -139,7 +149,7 @@ public class GradientEffect implements ConfigurableEffect {
 
 	/**
 	 * Check if the graident is repeating
-	 * 
+	 * <p>
 	 * @return True if the gradient is repeating
 	 */
 	public boolean isCyclic() {
@@ -148,7 +158,7 @@ public class GradientEffect implements ConfigurableEffect {
 
 	/**
 	 * If set to true, the gradient will repeat.
-	 * 
+	 * <p>
 	 * @param cyclic True if the graident repeats
 	 */
 	public void setCyclic(boolean cyclic) {

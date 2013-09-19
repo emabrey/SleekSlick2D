@@ -8,14 +8,14 @@ import org.newdawn.slick.font.Glyph;
 
 /**
  * A graphical effect that is applied to glyphs in a {@link UnicodeFont}.
- * 
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public interface Effect {
 
 	/**
 	 * Called to draw the effect.
-	 * 
+	 * <p>
 	 * @param image The image to draw into
 	 * @param g The graphics context to use for applying the effect
 	 * @param unicodeFont The font being rendered

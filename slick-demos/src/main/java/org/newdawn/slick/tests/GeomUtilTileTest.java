@@ -18,7 +18,7 @@ import java.util.HashSet;
 
 /**
  * A test to try shape building from multiple tiles
- *
+ * <p>
  * @author Kevin Glass
  */
 public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
@@ -81,15 +81,14 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 	}
 
 	/**
-	 * So this is going to generate a quad space that holds that segments the
-	 * shapes into quads across the map. This makes it tunable and limits the number
-	 * of comparisons that need to be done for each shape
-	 *
-	 * @param shapes   The shapes to be segments
-	 * @param minx     The minimum x value of the map
-	 * @param miny     The mimimum y value of the map
-	 * @param maxx     The maximum x value of the map
-	 * @param maxy     The maximum y value of the map
+	 * So this is going to generate a quad space that holds that segments the shapes into quads across the map. This
+	 * makes it tunable and limits the number of comparisons that need to be done for each shape
+	 * <p>
+	 * @param shapes The shapes to be segments
+	 * @param minx The minimum x value of the map
+	 * @param miny The mimimum y value of the map
+	 * @param maxx The maximum x value of the map
+	 * @param maxy The maximum y value of the map
 	 * @param segments The number of segments to split the map into
 	 */
 	private void generateSpace(ArrayList shapes, float minx, float miny, float maxx, float maxy, int segments) {
@@ -125,7 +124,7 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Remove the given shape from the quad space
-	 *
+	 * <p>
 	 * @param shape The shape to remove
 	 */
 	private void removeFromQuadSpace(Shape shape) {
@@ -140,7 +139,7 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Add a particular shape to quad space
-	 *
+	 * <p>
 	 * @param shape The shape to be added
 	 */
 	private void addToQuadSpace(Shape shape) {
@@ -236,7 +235,7 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 		generateSpace(original, 0, 0, (size + 1) * 32, (size + 1) * 32, 8);
 		combined = combineQuadSpace();
 
-        // the brute force method
+		// the brute force method
 		//combined = combine(original);
 		long after = System.currentTimeMillis();
 		System.out.println("Combine took: " + (after - before));
@@ -245,7 +244,7 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Combine the shapes in the quad space
-	 *
+	 * <p>
 	 * @return The newly combined list of shapes
 	 */
 	private ArrayList combineQuadSpace() {
@@ -265,7 +264,7 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 			}
 		}
 
-        // at this stage all the shapes that can be combined within their quads
+		// at this stage all the shapes that can be combined within their quads
 		// will have gone on - we may need to combine stuff on the boundary tho
 		HashSet result = new HashSet();
 
@@ -280,8 +279,9 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Combine a set of shapes together
-	 *
+	 * <p>
 	 * @param shapes The shapes to be combined
+	 * <p>
 	 * @return The list of combined shapes
 	 */
 	private ArrayList combine(ArrayList shapes) {
@@ -304,10 +304,10 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Attempt to find a simple combination that can be performed
-	 *
+	 * <p>
 	 * @param shapes The shapes to be combined
-	 * @return The new list of shapes - this will be the same length as the
-	 *         input if there are no new combinations
+	 * <p>
+	 * @return The new list of shapes - this will be the same length as the input if there are no new combinations
 	 */
 	private ArrayList combineImpl(ArrayList shapes) {
 		ArrayList result = new ArrayList(shapes);
@@ -345,9 +345,10 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Check if two shapes collide
-	 *
+	 * <p>
 	 * @param shape1 The first shape
 	 * @param shape2 The second shape
+	 * <p>
 	 * @return True if the shapes collide (i.e. intersection or overlap)
 	 */
 	public boolean collides(Shape shape1, Shape shape2) {
@@ -419,7 +420,7 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -428,7 +429,8 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 					new GeomUtilTileTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

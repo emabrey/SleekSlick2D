@@ -20,36 +20,49 @@ import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.Log;
 
 /**
- * A simple utility test to use the internal slick API without 
- * the slick framework.
- * 
+ * A simple utility test to use the internal slick API without the slick framework.
+ * <p>
  * @author kevin
  */
 public class TestUtils {
 
-	/** The texture that's been loaded */
+	/**
+	 * The texture that's been loaded
+	 */
 	private Texture texture;
 
-	/** The ogg sound effect */
+	/**
+	 * The ogg sound effect
+	 */
 	private Audio oggEffect;
 
-	/** The wav sound effect */
+	/**
+	 * The wav sound effect
+	 */
 	private Audio wavEffect;
 
-	/** The aif source effect */
+	/**
+	 * The aif source effect
+	 */
 	private Audio aifEffect;
 
-	/** The ogg stream thats been loaded */
+	/**
+	 * The ogg stream thats been loaded
+	 */
 	private Audio oggStream;
 
-	/** The mod stream thats been loaded */
+	/**
+	 * The mod stream thats been loaded
+	 */
 	private Audio modStream;
 
-	/** The font to draw to the screen */
+	/**
+	 * The font to draw to the screen
+	 */
 	private Font font;
 
 	/**
-	 * Start the test 
+	 * Start the test
 	 */
 	public void start() {
 		initGL(800, 600);
@@ -71,7 +84,7 @@ public class TestUtils {
 
 	/**
 	 * Initialise the GL display
-	 * 
+	 * <p>
 	 * @param width The width of the display
 	 * @param height The height of the display
 	 */
@@ -80,7 +93,8 @@ public class TestUtils {
 			Display.setDisplayMode(new DisplayMode(width, height));
 			Display.create();
 			Display.setVSyncEnabled(true);
-		} catch (LWJGLException e) {
+		}
+		catch (LWJGLException e) {
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -127,7 +141,8 @@ public class TestUtils {
 			System.out.println(">> Texture width: " + texture.getTextureWidth());
 			System.out.println(">> Texture height: " + texture.getTextureHeight());
 			System.out.println(">> Texture ID: " + texture.getTextureID());
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 
@@ -156,7 +171,8 @@ public class TestUtils {
 			// you can play wavs by loading the complete thing into 
 			// a sound
 			wavEffect = AudioLoader.getAudio("WAV", new FileInputStream("testdata/cbrown01.wav"));
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -220,7 +236,7 @@ public class TestUtils {
 
 	/**
 	 * Entry point to the tests
-	 * 
+	 * <p>
 	 * @param argv The arguments to the test
 	 */
 	public static void main(String[] argv) {

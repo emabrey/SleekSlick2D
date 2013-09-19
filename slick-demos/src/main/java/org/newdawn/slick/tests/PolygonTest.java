@@ -10,7 +10,7 @@ import org.newdawn.slick.geom.Polygon;
 
 /**
  * A test for polygon collision
- *
+ * <p>
  * @author kevin
  */
 public class PolygonTest extends BasicGame {
@@ -76,14 +76,15 @@ public class PolygonTest extends BasicGame {
 
 	/**
 	 * Entry point into our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed on the command line
 	 */
 	public static void main(String[] argv) {
 		try {
 			AppGameContainer container = new AppGameContainer(new PolygonTest(), 640, 480, false);
 			container.start();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

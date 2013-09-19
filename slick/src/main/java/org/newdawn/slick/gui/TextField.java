@@ -9,113 +9,140 @@ import org.newdawn.slick.geom.Rectangle;
 
 /**
  * A single text field supporting text entry
- * 
+ * <p>
  * @author kevin
  */
 public class TextField extends AbstractComponent {
 
-	/** The key repeat interval */
+	/**
+	 * The key repeat interval
+	 */
 	private static final int INITIAL_KEY_REPEAT_INTERVAL = 400;
 
-	/** The key repeat interval */
+	/**
+	 * The key repeat interval
+	 */
 	private static final int KEY_REPEAT_INTERVAL = 50;
 
-	/** The width of the field */
+	/**
+	 * The width of the field
+	 */
 	private int width;
 
-	/** The height of the field */
+	/**
+	 * The height of the field
+	 */
 	private int height;
 
-	/** The location in the X coordinate */
+	/**
+	 * The location in the X coordinate
+	 */
 	protected int x;
 
-	/** The location in the Y coordinate */
+	/**
+	 * The location in the Y coordinate
+	 */
 	protected int y;
 
-	/** The maximum number of characters allowed to be input */
+	/**
+	 * The maximum number of characters allowed to be input
+	 */
 	private int maxCharacter = 10000;
 
-	/** The value stored in the text field */
+	/**
+	 * The value stored in the text field
+	 */
 	private String value = "";
 
-	/** The font used to render text in the field */
+	/**
+	 * The font used to render text in the field
+	 */
 	private Font font;
 
-	/** The border color - null if no border */
+	/**
+	 * The border color - null if no border
+	 */
 	private Color border = Color.white;
 
-	/** The text color */
+	/**
+	 * The text color
+	 */
 	private Color text = Color.white;
 
-	/** The background color - null if no background */
+	/**
+	 * The background color - null if no background
+	 */
 	private Color background = new Color(0, 0, 0, 0.5f);
 
-	/** The current cursor position */
+	/**
+	 * The current cursor position
+	 */
 	private int cursorPos;
 
-	/** True if the cursor should be visible */
+	/**
+	 * True if the cursor should be visible
+	 */
 	private boolean visibleCursor = true;
 
-	/** The last key pressed */
+	/**
+	 * The last key pressed
+	 */
 	private int lastKey = -1;
 
-	/** The last character pressed */
+	/**
+	 * The last character pressed
+	 */
 	private char lastChar = 0;
 
-	/** The time since last key repeat */
+	/**
+	 * The time since last key repeat
+	 */
 	private long repeatTimer;
 
-	/** The text before the paste in */
+	/**
+	 * The text before the paste in
+	 */
 	private String oldText;
 
-	/** The cursor position before the paste */
+	/**
+	 * The cursor position before the paste
+	 */
 	private int oldCursorPos;
 
-	/** True if events should be consumed by the field */
+	/**
+	 * True if events should be consumed by the field
+	 */
 	private boolean consume = true;
 
 	/**
 	 * Create a new text field
-	 * 
-	 * @param container
-	 *            The container rendering this field
-	 * @param font
-	 *            The font to use in the text field
-	 * @param x
-	 *            The x coordinate of the top left corner of the text field
-	 * @param y
-	 *            The y coordinate of the top left corner of the text field
-	 * @param width
-	 *            The width of the text field
-	 * @param height
-	 *            The height of the text field
-	 * @param listener 
-	 * 			  The listener to add to the text field
+	 * <p>
+	 * @param container The container rendering this field
+	 * @param font The font to use in the text field
+	 * @param x The x coordinate of the top left corner of the text field
+	 * @param y The y coordinate of the top left corner of the text field
+	 * @param width The width of the text field
+	 * @param height The height of the text field
+	 * @param listener The listener to add to the text field
 	 */
 	public TextField(GUIContext container, Font font, int x, int y, int width,
-			int height, ComponentListener listener) {
+					 int height, ComponentListener listener) {
 		this(container, font, x, y, width, height);
 		addListener(listener);
 	}
 
 	/**
 	 * Create a new text field
-	 * 
-	 * @param container
-	 *            The container rendering this field
-	 * @param font
-	 *            The font to use in the text field
-	 * @param x
-	 *            The x coordinate of the top left corner of the text field
-	 * @param y
-	 *            The y coordinate of the top left corner of the text field
-	 * @param width
-	 *            The width of the text field
-	 * @param height
-	 *            The height of the text field
+	 * <p>
+	 * @param container The container rendering this field
+	 * @param font The font to use in the text field
+	 * @param x The x coordinate of the top left corner of the text field
+	 * @param y The y coordinate of the top left corner of the text field
+	 * @param width The width of the text field
+	 * @param height The height of the text field
 	 */
 	public TextField(GUIContext container, Font font, int x, int y, int width,
-			int height) {
+					 int height) {
 		super(container);
 
 		this.font = font;
@@ -127,7 +154,7 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Indicate if the input events should be consumed by this field
-	 * 
+	 * <p>
 	 * @param consume True if events should be consumed by this field
 	 */
 	public void setConsumeEvents(boolean consume) {
@@ -143,11 +170,9 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Moves the component.
-	 * 
-	 * @param x
-	 *            X coordinate
-	 * @param y
-	 *            Y coordinate
+	 * <p>
+	 * @param x X coordinate
+	 * @param y Y coordinate
 	 */
 	public void setLocation(int x, int y) {
 		this.x = x;
@@ -156,7 +181,7 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Returns the position in the X coordinate
-	 * 
+	 * <p>
 	 * @return x
 	 */
 	public int getX() {
@@ -165,7 +190,7 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Returns the position in the Y coordinate
-	 * 
+	 * <p>
 	 * @return y
 	 */
 	public int getY() {
@@ -174,7 +199,7 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Get the width of the component
-	 * 
+	 * <p>
 	 * @return The width of the component
 	 */
 	public int getWidth() {
@@ -183,7 +208,7 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Get the height of the component
-	 * 
+	 * <p>
 	 * @return The height of the component
 	 */
 	public int getHeight() {
@@ -192,9 +217,8 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Set the background color. Set to null to disable the background
-	 * 
-	 * @param color
-	 *            The color to use for the background
+	 * <p>
+	 * @param color The color to use for the background
 	 */
 	public void setBackgroundColor(Color color) {
 		background = color;
@@ -202,9 +226,8 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Set the border color. Set to null to disable the border
-	 * 
-	 * @param color
-	 *            The color to use for the border
+	 * <p>
+	 * @param color The color to use for the border
 	 */
 	public void setBorderColor(Color color) {
 		border = color;
@@ -212,17 +235,15 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Set the text color.
-	 * 
-	 * @param color
-	 *            The color to use for the text
+	 * <p>
+	 * @param color The color to use for the text
 	 */
 	public void setTextColor(Color color) {
 		text = color;
 	}
 
 	/**
-	 * @see org.newdawn.slick.gui.AbstractComponent#render(org.newdawn.slick.gui.GUIContext,
-	 *      org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.gui.AbstractComponent#render(org.newdawn.slick.gui.GUIContext, org.newdawn.slick.Graphics)
 	 */
 	public void render(GUIContext container, Graphics g) {
 		if (lastKey != -1) {
@@ -276,7 +297,7 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Get the value in the text field
-	 * 
+	 * <p>
 	 * @return The value in the text field
 	 */
 	public String getText() {
@@ -285,9 +306,8 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Set the value to be displayed in the text field
-	 * 
-	 * @param value
-	 *            The value to be displayed in the text field
+	 * <p>
+	 * @param value The value to be displayed in the text field
 	 */
 	public void setText(String value) {
 		this.value = value;
@@ -298,9 +318,8 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Set the position of the cursor
-	 * 
-	 * @param pos
-	 *            The new position of the cursor
+	 * <p>
+	 * @param pos The new position of the cursor
 	 */
 	public void setCursorPos(int pos) {
 		cursorPos = pos;
@@ -311,9 +330,8 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Indicate whether the mouse cursor should be visible or not
-	 * 
-	 * @param visibleCursor
-	 *            True if the mouse cursor should be visible
+	 * <p>
+	 * @param visibleCursor True if the mouse cursor should be visible
 	 */
 	public void setCursorVisible(boolean visibleCursor) {
 		this.visibleCursor = visibleCursor;
@@ -321,9 +339,8 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Set the length of the allowed input
-	 * 
-	 * @param length
-	 *            The length of the allowed input
+	 * <p>
+	 * @param length The length of the allowed input
 	 */
 	public void setMaxLength(int length) {
 		maxCharacter = length;
@@ -334,7 +351,7 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Do the paste into the field, overrideable for custom behaviour
-	 * 
+	 * <p>
 	 * @param text The text to be pasted in
 	 */
 	protected void doPaste(String text) {
@@ -355,7 +372,7 @@ public class TextField extends AbstractComponent {
 
 	/**
 	 * Do the undo of the paste, overrideable for custom behaviour
-	 * 
+	 * <p>
 	 * @param oldCursorPos before the paste
 	 * @param oldText The text before the last paste
 	 */

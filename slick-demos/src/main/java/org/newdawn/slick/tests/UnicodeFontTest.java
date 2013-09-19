@@ -14,7 +14,7 @@ import java.io.IOException;
 
 /**
  * A simple test of the unicode font functionality provided
- *
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class UnicodeFontTest extends BasicGame {
@@ -47,7 +47,7 @@ public class UnicodeFontTest extends BasicGame {
 
         // unicodeFont = new UnicodeFont("Arial", 25, false, false);
 		// unicodeFont = new UnicodeFont("Everson Mono", 44, false, false);
-        // font.addGlyphs(0, 255);
+		// font.addGlyphs(0, 255);
 		// font.addGlyphs("~!@#$%^&*()");
 		container.getGraphics().setBackground(Color.darkGray);
 	}
@@ -67,9 +67,9 @@ public class UnicodeFontTest extends BasicGame {
 		int yOffset = unicodeFont.getYOffset(text);
 		g.drawRect(10, 33 + yOffset, unicodeFont.getWidth(text), unicodeFont.getHeight(text) - yOffset);
 
-        // font.drawString(10, 73, "\u6880\u6881\u6882 (...) \u6883\u6884\u6885\u6886\u6887 hi?");
+		// font.drawString(10, 73, "\u6880\u6881\u6882 (...) \u6883\u6884\u6885\u6886\u6887 hi?");
 		unicodeFont.addGlyphs("~!@!#!#$%___--");
-        // Cypriot Syllabary glyphs (Everson Mono font): \uD802\uDC02\uD802\uDC03\uD802\uDC12 == 0x10802, 0x10803, s0x10812
+		// Cypriot Syllabary glyphs (Everson Mono font): \uD802\uDC02\uD802\uDC03\uD802\uDC12 == 0x10802, 0x10803, s0x10812
 		// g.drawLine(0, container.getHeight() - 512, container.getWidth(), container.getHeight() - 512);
 	}
 
@@ -82,10 +82,11 @@ public class UnicodeFontTest extends BasicGame {
 
 	/**
 	 * Entry point to our simple test
-	 *
+	 * <p>
 	 * @param args The arguments supplied to the test
+	 * <p>
 	 * @throws SlickException Indicates a failure loading or processing resources
-	 * @throws IOException    Indicates a failure loading the font
+	 * @throws IOException Indicates a failure loading the font
 	 */
 	public static void main(String[] args) throws SlickException, IOException {
 		Input.disableControllers();

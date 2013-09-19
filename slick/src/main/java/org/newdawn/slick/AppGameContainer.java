@@ -26,9 +26,8 @@ import org.newdawn.slick.util.Log;
 import org.newdawn.slick.util.ResourceLoader;
 
 /**
- * A game container that will display the game as an stand alone 
- * application.
- *
+ * A game container that will display the game as an stand alone application.
+ * <p>
  * @author kevin
  */
 public class AppGameContainer extends GameContainer {
@@ -38,7 +37,8 @@ public class AppGameContainer extends GameContainer {
 			public Object run() {
 				try {
 					Display.getDisplayMode();
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					Log.error(e);
 				}
 				return null;
@@ -47,22 +47,31 @@ public class AppGameContainer extends GameContainer {
 		});
 	}
 
-	/** The original display mode before we tampered with things */
+	/**
+	 * The original display mode before we tampered with things
+	 */
 	protected DisplayMode originalDisplayMode;
 
-	/** The display mode we're going to try and use */
+	/**
+	 * The display mode we're going to try and use
+	 */
 	protected DisplayMode targetDisplayMode;
 
-	/** True if we should update the game only when the display is visible */
+	/**
+	 * True if we should update the game only when the display is visible
+	 */
 	protected boolean updateOnlyOnVisible = true;
 
-	/** Alpha background supported */
+	/**
+	 * Alpha background supported
+	 */
 	protected boolean alphaSupport = false;
 
 	/**
 	 * Create a new container wrapping a game
-	 * 
+	 * <p>
 	 * @param game The game to be wrapped
+	 * <p>
 	 * @throws SlickException Indicates a failure to initialise the display
 	 */
 	public AppGameContainer(Game game) throws SlickException {
@@ -71,11 +80,12 @@ public class AppGameContainer extends GameContainer {
 
 	/**
 	 * Create a new container wrapping a game
-	 * 
+	 * <p>
 	 * @param game The game to be wrapped
 	 * @param width The width of the display required
 	 * @param height The height of the display required
 	 * @param fullscreen True if we want fullscreen mode
+	 * <p>
 	 * @throws SlickException Indicates a failure to initialise the display
 	 */
 	public AppGameContainer(Game game, int width, int height, boolean fullscreen) throws SlickException {
@@ -88,7 +98,7 @@ public class AppGameContainer extends GameContainer {
 
 	/**
 	 * Check if the display created supported alpha in the back buffer
-	 * 
+	 * <p>
 	 * @return True if the back buffer supported alpha
 	 */
 	public boolean supportsAlphaInBackBuffer() {
@@ -97,7 +107,7 @@ public class AppGameContainer extends GameContainer {
 
 	/**
 	 * Set the title of the window
-	 * 
+	 * <p>
 	 * @param title The title to set on the window
 	 */
 	public void setTitle(String title) {
@@ -105,11 +115,12 @@ public class AppGameContainer extends GameContainer {
 	}
 
 	/**
-	 * Set the display mode to be used 
-	 * 
+	 * Set the display mode to be used
+	 * <p>
 	 * @param width The width of the display required
 	 * @param height The height of the display required
 	 * @param fullscreen True if we want fullscreen mode
+	 * <p>
 	 * @throws SlickException Indicates a failure to initialise the display
 	 */
 	public void setDisplayMode(int width, int height, boolean fullscreen) throws SlickException {
@@ -166,7 +177,8 @@ public class AppGameContainer extends GameContainer {
 			if (targetDisplayMode.getBitsPerPixel() == 16) {
 				InternalTextureLoader.get().set16BitMode();
 			}
-		} catch (LWJGLException e) {
+		}
+		catch (LWJGLException e) {
 			throw new SlickException("Unable to setup mode " + width + "x" + height + " fullscreen=" + fullscreen, e);
 		}
 
@@ -175,7 +187,7 @@ public class AppGameContainer extends GameContainer {
 
 	/**
 	 * Check if the display is in fullscreen mode
-	 * 
+	 * <p>
 	 * @return True if the display is in fullscreen mode
 	 */
 	public boolean isFullscreen() {
@@ -183,10 +195,11 @@ public class AppGameContainer extends GameContainer {
 	}
 
 	/**
-	 * Indicate whether we want to be in fullscreen mode. Note that the current
-	 * display mode must be valid as a fullscreen mode for this to work
-	 * 
+	 * Indicate whether we want to be in fullscreen mode. Note that the current display mode must be valid as a
+	 * fullscreen mode for this to work
+	 * <p>
 	 * @param fullscreen True if we want to be in fullscreen mode
+	 * <p>
 	 * @throws SlickException Indicates we failed to change the display mode
 	 */
 	public void setFullscreen(boolean fullscreen) throws SlickException {
@@ -197,7 +210,8 @@ public class AppGameContainer extends GameContainer {
 		if (!fullscreen) {
 			try {
 				Display.setFullscreen(fullscreen);
-			} catch (LWJGLException e) {
+			}
+			catch (LWJGLException e) {
 				throw new SlickException("Unable to set fullscreen=" + fullscreen, e);
 			}
 		} else {
@@ -213,7 +227,8 @@ public class AppGameContainer extends GameContainer {
 		try {
 			Cursor cursor = CursorLoader.get().getCursor(ref, hotSpotX, hotSpotY);
 			Mouse.setNativeCursor(cursor);
-		} catch (Throwable e) {
+		}
+		catch (Throwable e) {
 			Log.error("Failed to load and apply cursor.", e);
 			throw new SlickException("Failed to set mouse cursor", e);
 		}
@@ -226,7 +241,8 @@ public class AppGameContainer extends GameContainer {
 		try {
 			Cursor cursor = CursorLoader.get().getCursor(data, hotSpotX, hotSpotY);
 			Mouse.setNativeCursor(cursor);
-		} catch (Throwable e) {
+		}
+		catch (Throwable e) {
 			Log.error("Failed to load and apply cursor.", e);
 			throw new SlickException("Failed to set mouse cursor", e);
 		}
@@ -238,7 +254,8 @@ public class AppGameContainer extends GameContainer {
 	public void setMouseCursor(Cursor cursor, int hotSpotX, int hotSpotY) throws SlickException {
 		try {
 			Mouse.setNativeCursor(cursor);
-		} catch (Throwable e) {
+		}
+		catch (Throwable e) {
 			Log.error("Failed to load and apply cursor.", e);
 			throw new SlickException("Failed to set mouse cursor", e);
 		}
@@ -246,8 +263,9 @@ public class AppGameContainer extends GameContainer {
 
 	/**
 	 * Get the closest greater power of 2 to the fold number
-	 * 
+	 * <p>
 	 * @param fold The target number
+	 * <p>
 	 * @return The power of 2
 	 */
 	private int get2Fold(int fold) {
@@ -273,7 +291,8 @@ public class AppGameContainer extends GameContainer {
 
 			Cursor cursor = CursorLoader.get().getCursor(buffer, hotSpotX, hotSpotY, temp.getWidth(), image.getHeight());
 			Mouse.setNativeCursor(cursor);
-		} catch (Throwable e) {
+		}
+		catch (Throwable e) {
 			Log.error("Failed to load and apply cursor.", e);
 			throw new SlickException("Failed to set mouse cursor", e);
 		}
@@ -290,7 +309,8 @@ public class AppGameContainer extends GameContainer {
 
 		try {
 			game.init(this);
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			Log.error(e);
 			running = false;
 		}
@@ -298,8 +318,9 @@ public class AppGameContainer extends GameContainer {
 
 	/**
 	 * Try creating a display with the given format
-	 * 
+	 * <p>
 	 * @param format The format to attempt
+	 * <p>
 	 * @throws LWJGLException Indicates a failure to support the given format
 	 */
 	private void tryCreateDisplay(PixelFormat format) throws LWJGLException {
@@ -312,7 +333,7 @@ public class AppGameContainer extends GameContainer {
 
 	/**
 	 * Start running the game
-	 * 
+	 * <p>
 	 * @throws SlickException Indicates a failure to initialise the system
 	 */
 	public void start() throws SlickException {
@@ -323,7 +344,8 @@ public class AppGameContainer extends GameContainer {
 			while (running()) {
 				gameLoop();
 			}
-		} finally {
+		}
+		finally {
 			destroy();
 		}
 
@@ -333,8 +355,8 @@ public class AppGameContainer extends GameContainer {
 	}
 
 	/**
-	 * Setup the environment 
-	 * 
+	 * Setup the environment
+	 * <p>
 	 * @throws SlickException Indicates a failure
 	 */
 	protected void setup() throws SlickException {
@@ -355,7 +377,8 @@ public class AppGameContainer extends GameContainer {
 
 					tryCreateDisplay(format);
 					supportsMultiSample = true;
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					Display.destroy();
 
 					try {
@@ -363,12 +386,14 @@ public class AppGameContainer extends GameContainer {
 
 						tryCreateDisplay(format);
 						alphaSupport = false;
-					} catch (Exception e2) {
+					}
+					catch (Exception e2) {
 						Display.destroy();
 						// if we couldn't get alpha, let us know
 						try {
 							tryCreateDisplay(new PixelFormat());
-						} catch (Exception e3) {
+						}
+						catch (Exception e3) {
 							Log.error(e3);
 						}
 					}
@@ -388,15 +413,18 @@ public class AppGameContainer extends GameContainer {
 
 		try {
 			getInput().initControllers();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			Log.info("Controllers not available");
-		} catch (Throwable e) {
+		}
+		catch (Throwable e) {
 			Log.info("Controllers not available");
 		}
 
 		try {
 			game.init(this);
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			Log.error(e);
 			running = false;
 		}
@@ -404,7 +432,7 @@ public class AppGameContainer extends GameContainer {
 
 	/**
 	 * Strategy for overloading game loop context handling
-	 * 
+	 * <p>
 	 * @throws SlickException Indicates a game failure
 	 */
 	protected void gameLoop() throws SlickException {
@@ -412,12 +440,14 @@ public class AppGameContainer extends GameContainer {
 		if (!Display.isVisible() && updateOnlyOnVisible) {
 			try {
 				Thread.sleep(100);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 			}
 		} else {
 			try {
 				updateAndRender(delta);
-			} catch (SlickException e) {
+			}
+			catch (SlickException e) {
 				Log.error(e);
 				running = false;
 				return;
@@ -502,7 +532,7 @@ public class AppGameContainer extends GameContainer {
 
 	/**
 	 * A null stream to clear out those horrid errors
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	private class NullOutputStream extends OutputStream {
@@ -534,7 +564,8 @@ public class AppGameContainer extends GameContainer {
 
 			try {
 				bufs[i] = data.loadImage(ResourceLoader.getResourceAsStream(refs[i]), flip, false, null);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				Log.error(e);
 				throw new SlickException("Failed to set the icon");
 			}
@@ -549,7 +580,8 @@ public class AppGameContainer extends GameContainer {
 	public void setDefaultMouseCursor() {
 		try {
 			Mouse.setNativeCursor(null);
-		} catch (LWJGLException e) {
+		}
+		catch (LWJGLException e) {
 			Log.error("Failed to reset mouse cursor", e);
 		}
 	}

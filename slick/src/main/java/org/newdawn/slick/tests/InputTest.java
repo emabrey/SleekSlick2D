@@ -13,48 +13,74 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A test for input
- * 
+ * <p>
  * @author kevin
  */
 public class InputTest extends BasicGame {
 
-	/** The message to be displayed */
+	/**
+	 * The message to be displayed
+	 */
 	private String message = "Press any key, mouse button, or drag the mouse";
 
-	/** The lines to be drawn on the screen */
+	/**
+	 * The lines to be drawn on the screen
+	 */
 	private ArrayList lines = new ArrayList();
 
-	/** True if the mouse button is down */
+	/**
+	 * True if the mouse button is down
+	 */
 	private boolean buttonDown;
 
-	/** The x position of our controlled stuff */
+	/**
+	 * The x position of our controlled stuff
+	 */
 	private float x;
 
-	/** The y position of our controlled stuff */
+	/**
+	 * The y position of our controlled stuff
+	 */
 	private float y;
 
-	/** The colors */
+	/**
+	 * The colors
+	 */
 	private Color[] cols = new Color[]{Color.red, Color.green, Color.blue, Color.white, Color.magenta, Color.cyan};
 
-	/** The current color index */
+	/**
+	 * The current color index
+	 */
 	private int index;
 
-	/** The input syste being polled */
+	/**
+	 * The input syste being polled
+	 */
 	private Input input;
 
-	/** The scroll box */
+	/**
+	 * The scroll box
+	 */
 	private int ypos;
 
-	/** The container holding this test */
+	/**
+	 * The container holding this test
+	 */
 	private AppGameContainer app;
 
-	/** True if space is down */
+	/**
+	 * True if space is down
+	 */
 	private boolean space;
 
-	/** True if left shift is down */
+	/**
+	 * True if left shift is down
+	 */
 	private boolean lshift;
 
-	/** True if right shift is down */
+	/**
+	 * True if right shift is down
+	 */
 	private boolean rshift;
 
 	/**
@@ -135,7 +161,8 @@ public class InputTest extends BasicGame {
 				try {
 					app.setDisplayMode(600, 600, false);
 					app.reinit();
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					Log.error(e);
 				}
 			}
@@ -203,26 +230,34 @@ public class InputTest extends BasicGame {
 
 	/**
 	 * A line that has been drawn by the user
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	private class Line {
 
-		/** The start x position */
+		/**
+		 * The start x position
+		 */
 		private int oldx;
 
-		/** The start y position */
+		/**
+		 * The start y position
+		 */
 		private int oldy;
 
-		/** The end x position */
+		/**
+		 * The end x position
+		 */
 		private int newx;
 
-		/** The end y position */
+		/**
+		 * The end y position
+		 */
 		private int newy;
 
 		/**
 		 * Create a new line
-		 * 
+		 * <p>
 		 * @param oldx The start x position
 		 * @param oldy The start y position
 		 * @param newx The end x position
@@ -237,7 +272,7 @@ public class InputTest extends BasicGame {
 
 		/**
 		 * Draw the line to the provided graphics context
-		 * 
+		 * <p>
 		 * @param g The graphics context on which to draw the line
 		 */
 		public void draw(Graphics g) {
@@ -258,7 +293,7 @@ public class InputTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed into our test
 	 */
 	public static void main(String[] argv) {
@@ -266,7 +301,8 @@ public class InputTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new InputTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

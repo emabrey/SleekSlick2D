@@ -45,7 +45,7 @@ import java.util.prefs.Preferences;
 
 /**
  * A tool to visualize settings for {@link UnicodeFont} and to export BMFont files for use with {@link AngelCodeFont}.
- *
+ * <p>
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class Hiero extends JFrame {
@@ -162,7 +162,8 @@ public class Hiero extends JFrame {
 		prefs = Preferences.userNodeForPackage(Hiero.class);
 		try {
 			initialize();
-		} catch (SlickException ex) {
+		}
+		catch (SlickException ex) {
 			dispose();
 			throw ex;
 		}
@@ -252,9 +253,11 @@ public class Hiero extends JFrame {
 					try {
 						BMFontUtil bmFont = new BMFontUtil(unicodeFont);
 						bmFont.save(saveBmFontFile, flipImageMenuItem.isSelected(), antiAliasTextMenuItem.isSelected());
-					} catch (Exception ex) {
+					}
+					catch (Exception ex) {
 						Log.error("Error saving BMFont files: " + saveBmFontFile.getAbsolutePath(), ex);
-					} finally {
+					}
+					finally {
 						saveBmFontFile = null;
 					}
 				}
@@ -267,7 +270,8 @@ public class Hiero extends JFrame {
 
 				try {
 					sampleText = sampleTextPane.getText();
-				} catch (Exception ex) {
+				}
+				catch (Exception ex) {
 				}
 
 				if (sampleTextRadio.isSelected()) {
@@ -341,7 +345,8 @@ public class Hiero extends JFrame {
 				unicodeFont = new UnicodeFont(fontFileText.getText(), fontSize, boldCheckBox.isSelected(), italicCheckBox
 						.isSelected());
 				//System.out.println("loaded font "+unicodeFont+" with "+unicodeFont.getFontFile());
-			} catch (Exception ex) {
+			}
+			catch (Exception ex) {
 				ex.printStackTrace();
 				updateFont(true);
 				return;
@@ -479,7 +484,8 @@ public class Hiero extends JFrame {
 							try {
 								spinner.setValue(Integer.valueOf(text));
 								textField.setCaretPosition(caretPosition);
-							} catch (Exception ignored) {
+							}
+							catch (Exception ignored) {
 							}
 						}
 
@@ -490,8 +496,9 @@ public class Hiero extends JFrame {
 		}
 		FontUpdateListener listener = new FontUpdateListener();
 
-		listener.addSpinners(new JSpinner[]{padTopSpinner, padRightSpinner, padBottomSpinner, padLeftSpinner, padAdvanceXSpinner,
-			padAdvanceYSpinner});
+		listener.addSpinners(new JSpinner[]{padTopSpinner, padRightSpinner, padBottomSpinner, padLeftSpinner,
+											padAdvanceXSpinner,
+											padAdvanceYSpinner});
 		fontSizeSpinner.addChangeListener(listener);
 
 		glyphPageWidthCombo.addActionListener(listener);
@@ -620,7 +627,8 @@ public class Hiero extends JFrame {
 				File file = new File(dialog.getDirectory(), fileName);
 				try {
 					open(file);
-				} catch (SlickException ex) {
+				}
+				catch (SlickException ex) {
 					throw new RuntimeException("Error opening Hiero settings file: " + file.getAbsolutePath(), ex);
 				}
 			}
@@ -640,7 +648,8 @@ public class Hiero extends JFrame {
 				File file = new File(dialog.getDirectory(), fileName);
 				try {
 					save(file);
-				} catch (IOException ex) {
+				}
+				catch (IOException ex) {
 					throw new RuntimeException("Error saving Hiero settings file: " + file.getAbsolutePath(), ex);
 				}
 			}
@@ -877,15 +886,25 @@ public class Hiero extends JFrame {
 							GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 5, 5, 5), 0, 0));
 				}
 				{
-					glyphPageWidthCombo = new JComboBox(new DefaultComboBoxModel(new Integer[]{new Integer(32), new Integer(64), new Integer(128), new Integer(256), new Integer(512),
-						new Integer(1024), new Integer(2048)}));
+					glyphPageWidthCombo = new JComboBox(new DefaultComboBoxModel(new Integer[]{new Integer(32),
+																							   new Integer(64),
+																							   new Integer(128),
+																							   new Integer(256),
+																							   new Integer(512),
+																							   new Integer(1024),
+																							   new Integer(2048)}));
 					glyphCachePanel.add(glyphPageWidthCombo, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
 							GridBagConstraints.NONE, new Insets(0, 0, 5, 5), 0, 0));
 					glyphPageWidthCombo.setSelectedIndex(prefs.getInt("glyphpage.width", 1));
 				}
 				{
-					glyphPageHeightCombo = new JComboBox(new DefaultComboBoxModel(new Integer[]{new Integer(32), new Integer(64), new Integer(128), new Integer(256), new Integer(512),
-						new Integer(1024), new Integer(2048)}));
+					glyphPageHeightCombo = new JComboBox(new DefaultComboBoxModel(new Integer[]{new Integer(32),
+																								new Integer(64),
+																								new Integer(128),
+																								new Integer(256),
+																								new Integer(512),
+																								new Integer(1024),
+																								new Integer(2048)}));
 					glyphCachePanel.add(glyphPageHeightCombo, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
 							GridBagConstraints.NONE, new Insets(0, 0, 5, 5), 0, 0));
 					glyphPageHeightCombo.setSelectedIndex(prefs.getInt("glyphpage.width", 2));
@@ -1328,7 +1347,8 @@ public class Hiero extends JFrame {
 						});
 						try {
 							Thread.sleep(minMillis - (endTime - startTime));
-						} catch (InterruptedException ignored) {
+						}
+						catch (InterruptedException ignored) {
 						}
 					}
 					EventQueue.invokeLater(new Runnable() {
@@ -1350,7 +1370,8 @@ public class Hiero extends JFrame {
 			if ("Nimbus".equals(lookAndFeels[i].getName())) {
 				try {
 					UIManager.setLookAndFeel(lookAndFeels[i].getClassName());
-				} catch (Exception ignored) {
+				}
+				catch (Exception ignored) {
 				}
 				break;
 			}

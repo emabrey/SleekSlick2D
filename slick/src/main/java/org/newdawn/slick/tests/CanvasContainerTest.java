@@ -15,30 +15,44 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for the AWT Canvas container
- *
+ * <p>
  * @author kevin
  */
 public class CanvasContainerTest extends BasicGame {
 
-	/** The TGA image loaded */
+	/**
+	 * The TGA image loaded
+	 */
 	private Image tga;
 
-	/** The TGA image loaded */
+	/**
+	 * The TGA image loaded
+	 */
 	private Image scaleMe;
 
-	/** The TGA image loaded */
+	/**
+	 * The TGA image loaded
+	 */
 	private Image scaled;
 
-	/** The GIF version of the image */
+	/**
+	 * The GIF version of the image
+	 */
 	private Image gif;
 
-	/** The image we're currently displaying */
+	/**
+	 * The image we're currently displaying
+	 */
 	private Image image;
 
-	/** A sub part of the logo image */
+	/**
+	 * A sub part of the logo image
+	 */
 	private Image subImage;
 
-	/** The current rotation of our test image */
+	/**
+	 * The current rotation of our test image
+	 */
 	private float rot;
 
 	/**
@@ -98,7 +112,7 @@ public class CanvasContainerTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -118,7 +132,8 @@ public class CanvasContainerTest extends BasicGame {
 			});
 			frame.setVisible(true);
 			container.start();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

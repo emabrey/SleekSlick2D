@@ -5,7 +5,7 @@ import java.net.URL;
 
 /**
  * A resource location that searches the classpath
- * 
+ * <p>
  * @author kevin
  */
 public class ClasspathLocation implements ResourceLocation {

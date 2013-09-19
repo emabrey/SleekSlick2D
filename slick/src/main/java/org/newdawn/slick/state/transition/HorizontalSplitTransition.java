@@ -10,28 +10,37 @@ import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 /**
- * Horitzonal split transition that causes the previous state to split horizontally
- * revealing the new state underneath.
- * 
+ * Horitzonal split transition that causes the previous state to split horizontally revealing the new state underneath.
+ * <p>
  * This state is an enter transition.
- * 
+ * <p>
  * @author kevin
  */
 public class HorizontalSplitTransition implements Transition {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
-	/** The previous game state */
+	/**
+	 * The previous game state
+	 */
 	private GameState prev;
 
-	/** The current offset */
+	/**
+	 * The current offset
+	 */
 	private float offset;
 
-	/** True if the transition is finished */
+	/**
+	 * True if the transition is finished
+	 */
 	private boolean finish;
 
-	/** The background to draw underneath the previous state (null for none) */
+	/**
+	 * The background to draw underneath the previous state (null for none)
+	 */
 	private Color background;
 
 	/**
@@ -43,7 +52,7 @@ public class HorizontalSplitTransition implements Transition {
 
 	/**
 	 * Create a new transition
-	 * 
+	 * <p>
 	 * @param background The background colour to draw under the previous state
 	 */
 	public HorizontalSplitTransition(Color background) {
@@ -51,7 +60,8 @@ public class HorizontalSplitTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#init(org.newdawn.slick.state.GameState, org.newdawn.slick.state.GameState)
+	 * @see org.newdawn.slick.state.transition.Transition#init(org.newdawn.slick.state.GameState,
+	 * org.newdawn.slick.state.GameState)
 	 */
 	public void init(GameState firstState, GameState secondState) {
 		prev = secondState;
@@ -65,7 +75,8 @@ public class HorizontalSplitTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void postRender(StateBasedGame game, GameContainer container, Graphics g) throws SlickException {
 		g.translate(-offset, 0);
@@ -97,14 +108,16 @@ public class HorizontalSplitTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void preRender(StateBasedGame game, GameContainer container,
-			Graphics g) throws SlickException {
+						  Graphics g) throws SlickException {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, int)
+	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, int)
 	 */
 	public void update(StateBasedGame game, GameContainer container, int delta)
 			throws SlickException {

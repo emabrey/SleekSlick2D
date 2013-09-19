@@ -5,16 +5,16 @@ import org.newdawn.slick.util.xml.XMLElement;
 import org.newdawn.slick.util.xml.XMLParser;
 
 /**
- * Silly test to check XML parsing functionality, note the JUnit like methods, 
- * want to move it to JUnit soon but not quite there yet.
- * 
+ * Silly test to check XML parsing functionality, note the JUnit like methods, want to move it to JUnit soon but not
+ * quite there yet.
+ * <p>
  * @author kevin
  */
 public class XMLTest {
 
 	/**
 	 * Fail the test
-	 * 
+	 * <p>
 	 * @param message The message to describe the failure
 	 */
 	private static void fail(String message) {
@@ -23,7 +23,7 @@ public class XMLTest {
 
 	/**
 	 * Ensure that the given object is not null, if it is fail the test
-	 * 
+	 * <p>
 	 * @param object1 The object to test
 	 */
 	private static void assertNotNull(Object object1) {
@@ -34,7 +34,7 @@ public class XMLTest {
 
 	/**
 	 * Ensure that the two values given are equal, if not fail the test
-	 * 
+	 * <p>
 	 * @param a1 The first value to compare
 	 * @param a2 The second value to compare
 	 */
@@ -46,7 +46,7 @@ public class XMLTest {
 
 	/**
 	 * Ensure that the two values given are equal, if not fail the test
-	 * 
+	 * <p>
 	 * @param a1 The first value to compare
 	 * @param a2 The second value to compare
 	 */
@@ -58,7 +58,7 @@ public class XMLTest {
 
 	/**
 	 * Ensure that the two values given are equal, if not fail the test
-	 * 
+	 * <p>
 	 * @param a1 The first value to compare
 	 * @param a2 The second value to compare
 	 */
@@ -70,8 +70,9 @@ public class XMLTest {
 
 	/**
 	 * Simple test for the XML parsing API
-	 * 
+	 * <p>
 	 * @param argv The arguments given to the test
+	 * <p>
 	 * @throws SlickException Indicates a failure
 	 */
 	public static void main(String[] argv) throws SlickException {
@@ -111,7 +112,8 @@ public class XMLTest {
 		try {
 			z = (float) other.getDoubleAttribute("z");
 			fail("Attribute z as a double should fail");
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			// expect exception
 		}
 	}

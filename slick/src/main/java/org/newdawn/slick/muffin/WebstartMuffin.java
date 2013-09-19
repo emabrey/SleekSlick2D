@@ -17,9 +17,8 @@ import javax.jnlp.ServiceManager;
 import org.newdawn.slick.util.Log;
 
 /**
- * A muffin load/save implementation based on using Webstart Muffins (a bit like cookies only 
- * for webstart)
- * 
+ * A muffin load/save implementation based on using Webstart Muffins (a bit like cookies only for webstart)
+ * <p>
  * @author kappaOne
  */
 public class WebstartMuffin implements Muffin {
@@ -41,14 +40,16 @@ public class WebstartMuffin implements Muffin {
 			URL baseURL = bs.getCodeBase();
 			// System.out.println("CodeBase was " + baseURL);
 			configURL = new URL(baseURL, fileName);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new IOException("Failed to save state: ");
 		}
 
 		try {
 			ps.delete(configURL);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.info("No exisiting Muffin Found - First Save");
 		}
 
@@ -79,7 +80,8 @@ public class WebstartMuffin implements Muffin {
 
 			oos.flush();
 			oos.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new IOException("Failed to store map of state data");
 		}
@@ -124,11 +126,14 @@ public class WebstartMuffin implements Muffin {
 			}
 
 			ois.close();
-		} catch (EOFException e) {
+		}
+		catch (EOFException e) {
 			// End of the file reached, do nothing
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			// No data there - thats ok, just not saved before
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new IOException("Failed to load state from webstart muffin");
 		}

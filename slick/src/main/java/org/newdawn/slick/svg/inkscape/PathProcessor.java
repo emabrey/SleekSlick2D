@@ -15,17 +15,19 @@ import org.w3c.dom.Element;
 
 /**
  * A processor for the <polygon> and <path> elements marked as not an arc.
- *
+ * <p>
  * @author kevin
  */
 public class PathProcessor implements ElementProcessor {
 
 	/**
 	 * Process the points in a polygon definition
-	 * 
+	 * <p>
 	 * @param element The XML element being read
 	 * @param tokens The tokens representing the path
+	 * <p>
 	 * @return The number of points found
+	 * <p>
 	 * @throws ParsingException Indicates an invalid token in the path
 	 */
 	private static Path processPoly(Element element, StringTokenizer tokens) throws ParsingException {
@@ -76,7 +78,8 @@ public class PathProcessor implements ElementProcessor {
 					path.curveTo(x, y, cx1, cy1, cx2, cy2);
 					continue;
 				}
-			} catch (NumberFormatException e) {
+			}
+			catch (NumberFormatException e) {
 				throw new ParsingException(element.getAttribute("id"), "Invalid token in points list", e);
 			}
 		}
@@ -89,7 +92,8 @@ public class PathProcessor implements ElementProcessor {
 	}
 
 	/**
-	 * @see org.newdawn.slick.svg.inkscape.ElementProcessor#process(org.newdawn.slick.svg.Loader, org.w3c.dom.Element, org.newdawn.slick.svg.Diagram, org.newdawn.slick.geom.Transform)
+	 * @see org.newdawn.slick.svg.inkscape.ElementProcessor#process(org.newdawn.slick.svg.Loader, org.w3c.dom.Element,
+	 * org.newdawn.slick.svg.Diagram, org.newdawn.slick.geom.Transform)
 	 */
 	public void process(Loader loader, Element element, Diagram diagram, Transform t) throws ParsingException {
 		Transform transform = Util.getTransform(element);

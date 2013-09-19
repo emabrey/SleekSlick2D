@@ -10,20 +10,25 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
- * A simple test to show performance gains from cache operations in situtations where
- * rendering is static and heavy
- * 
+ * A simple test to show performance gains from cache operations in situtations where rendering is static and heavy
+ * <p>
  * @author kevin
  */
 public class CachedRenderTest extends BasicGame {
 
-	/** The set of operations to be cached */
+	/**
+	 * The set of operations to be cached
+	 */
 	private Runnable operations;
 
-	/** The cached version of the operations */
+	/**
+	 * The cached version of the operations
+	 */
 	private CachedRender cached;
 
-	/** True if we're drawing the cached version */
+	/**
+	 * True if we're drawing the cached version
+	 */
 	private boolean drawCached;
 
 	/**
@@ -77,7 +82,7 @@ public class CachedRenderTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -85,7 +90,8 @@ public class CachedRenderTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new CachedRenderTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

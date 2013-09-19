@@ -13,7 +13,7 @@ import org.newdawn.slick.util.FastTrig;
 
 /**
  * A simple graphics test for the context allowing vector based graphics
- *
+ * <p>
  * @author kevin
  */
 public class GraphicsTest extends BasicGame {
@@ -163,7 +163,7 @@ public class GraphicsTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -171,7 +171,8 @@ public class GraphicsTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new GraphicsTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

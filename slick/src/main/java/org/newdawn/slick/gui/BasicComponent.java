@@ -5,29 +5,36 @@ import org.newdawn.slick.SlickException;
 
 /**
  * Renamed to provide backwards compatibility
- *
+ * <p>
  * @author kevin
  * @deprecated
  */
 public abstract class BasicComponent extends AbstractComponent {
 
-	/** The x position of the component */
+	/**
+	 * The x position of the component
+	 */
 	protected int x;
 
-	/** The y position of the component */
+	/**
+	 * The y position of the component
+	 */
 	protected int y;
 
-	/** The width of the component */
+	/**
+	 * The width of the component
+	 */
 	protected int width;
 
-	/** The height of the component */
+	/**
+	 * The height of the component
+	 */
 	protected int height;
 
 	/**
 	 * Create a new component
-	 * 
-	 * @param container
-	 *            The container displaying this component
+	 * <p>
+	 * @param container The container displaying this component
 	 */
 	public BasicComponent(GUIContext container) {
 		super(container);
@@ -63,7 +70,7 @@ public abstract class BasicComponent extends AbstractComponent {
 
 	/**
 	 * Allow the sub-component to render
-	 * 
+	 * <p>
 	 * @param container The container holding the GUI
 	 * @param g The graphics context into which we should render
 	 */

@@ -10,36 +10,54 @@ import org.newdawn.slick.SlickException;
 
 /**
  * A test for basic image rendering
- *
+ * <p>
  * @author kevin
  */
 public class ImageTest extends BasicGame {
 
-	/** The TGA image loaded */
+	/**
+	 * The TGA image loaded
+	 */
 	private Image tga;
 
-	/** The TGA image loaded */
+	/**
+	 * The TGA image loaded
+	 */
 	private Image scaleMe;
 
-	/** The TGA image loaded */
+	/**
+	 * The TGA image loaded
+	 */
 	private Image scaled;
 
-	/** The GIF version of the image */
+	/**
+	 * The GIF version of the image
+	 */
 	private Image gif;
 
-	/** The image we're currently displaying */
+	/**
+	 * The image we're currently displaying
+	 */
 	private Image image;
 
-	/** A sub part of the logo image */
+	/**
+	 * A sub part of the logo image
+	 */
 	private Image subImage;
 
-	/** Newer image rotation image. */
+	/**
+	 * Newer image rotation image.
+	 */
 	private Image rotImage;
 
-	/** The current rotation of our test image */
+	/**
+	 * The current rotation of our test image
+	 */
 	private float rot;
 
-	/** True if the test should just exit first time round, used for testing shared contexts */
+	/**
+	 * True if the test should just exit first time round, used for testing shared contexts
+	 */
 	public static boolean exitMe = true;
 
 	/**
@@ -116,7 +134,7 @@ public class ImageTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -141,7 +159,8 @@ public class ImageTest extends BasicGame {
 				container.setDisplayMode(800, 600, false);
 				container.start();
 			}
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

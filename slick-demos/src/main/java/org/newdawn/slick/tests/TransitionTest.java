@@ -21,7 +21,7 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A test to view the different transitions that are currently implemented
- *
+ * <p>
  * @author kevin
  */
 public class TransitionTest extends StateBasedGame {
@@ -60,7 +60,7 @@ public class TransitionTest extends StateBasedGame {
 
 	/**
 	 * Get the next transition pair that we'lluse
-	 *
+	 * <p>
 	 * @return The pair of transitions used to enter and leave the next state
 	 */
 	public Transition[] getNextTransitionPair() {
@@ -73,7 +73,8 @@ public class TransitionTest extends StateBasedGame {
 			if (transitions[index][1] != null) {
 				pair[1] = (Transition) transitions[index][1].newInstance();
 			}
-		} catch (Throwable e) {
+		}
+		catch (Throwable e) {
 			Log.error(e);
 		}
 
@@ -87,7 +88,7 @@ public class TransitionTest extends StateBasedGame {
 
 	/**
 	 * A test state that just displayed one image full scren
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	private class ImageState extends BasicGameState {
@@ -114,9 +115,9 @@ public class TransitionTest extends StateBasedGame {
 
 		/**
 		 * Create a new image state
-		 *
-		 * @param id   The id of the this state
-		 * @param ref  The reference to the image to display
+		 * <p>
+		 * @param id The id of the this state
+		 * @param ref The reference to the image to display
 		 * @param next The next state we'll mvoe to
 		 */
 		public ImageState(int id, String ref, int next) {
@@ -133,14 +134,16 @@ public class TransitionTest extends StateBasedGame {
 		}
 
 		/**
-		 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
+		 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer,
+		 * org.newdawn.slick.state.StateBasedGame)
 		 */
 		public void init(GameContainer container, StateBasedGame game) throws SlickException {
 			image = new Image(ref);
 		}
 
 		/**
-		 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
+		 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer,
+		 * org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
 		 */
 		public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 			image.draw(0, 0, 800, 600);
@@ -149,7 +152,8 @@ public class TransitionTest extends StateBasedGame {
 		}
 
 		/**
-		 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
+		 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer,
+		 * org.newdawn.slick.state.StateBasedGame, int)
 		 */
 		public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 			if (container.getInput().isKeyPressed(Input.KEY_SPACE)) {
@@ -162,7 +166,7 @@ public class TransitionTest extends StateBasedGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -171,7 +175,8 @@ public class TransitionTest extends StateBasedGame {
 					new TransitionTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

@@ -2,17 +2,19 @@ package org.newdawn.slick.command;
 
 /**
  * A control indicating that a mouse button must be pressed or released to cause an command
- * 
+ * <p>
  * @author joverton
  */
 public class MouseButtonControl implements Control {
 
-	/** The button to be pressed */
+	/**
+	 * The button to be pressed
+	 */
 	private int button;
 
 	/**
 	 * Create a new control that indicates a mouse button to be pressed or released
-	 * 
+	 * <p>
 	 * @param button The button that should be pressed to cause the command
 	 */
 	public MouseButtonControl(int button) {

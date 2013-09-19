@@ -6,17 +6,19 @@ import org.newdawn.slick.geom.MorphShape;
 
 /**
  * A utility to allow morphing between a set of similar SVG diagrams
- * 
+ * <p>
  * @author kevin
  */
 public class SVGMorph extends Diagram {
 
-	/** The list of figures being morphed */
+	/**
+	 * The list of figures being morphed
+	 */
 	private ArrayList figures = new ArrayList();
 
 	/**
 	 * Create a new morph with a first diagram base
-	 * 
+	 * <p>
 	 * @param diagram The base diagram which provides the first step of the morph
 	 */
 	public SVGMorph(Diagram diagram) {
@@ -32,7 +34,7 @@ public class SVGMorph extends Diagram {
 
 	/**
 	 * Add a subsquent step to the morphing
-	 * 
+	 * <p>
 	 * @param diagram The diagram to add as the next step in the morph
 	 */
 	public void addStep(Diagram diagram) {
@@ -55,10 +57,9 @@ public class SVGMorph extends Diagram {
 	}
 
 	/**
-	 * Set the current diagram we should morph from. This only really works with 
-	 * updateMorphTime() but can be used for smooth transitions between 
-	 * morphs.
-	 * 
+	 * Set the current diagram we should morph from. This only really works with updateMorphTime() but can be used for
+	 * smooth transitions between morphs.
+	 * <p>
 	 * @param diagram The diagram to use as the base of the morph
 	 */
 	public void setExternalDiagram(Diagram diagram) {
@@ -78,7 +79,7 @@ public class SVGMorph extends Diagram {
 
 	/**
 	 * Update the morph time index by the amount specified
-	 * 
+	 * <p>
 	 * @param delta The amount to update the morph by
 	 */
 	public void updateMorphTime(float delta) {
@@ -90,9 +91,9 @@ public class SVGMorph extends Diagram {
 	}
 
 	/**
-	 * Set the "time" index for this morph. This is given in terms of diagrams, so
-	 * 0.5f would give you the position half way between the first and second diagrams.
-	 * 
+	 * Set the "time" index for this morph. This is given in terms of diagrams, so 0.5f would give you the position half
+	 * way between the first and second diagrams.
+	 * <p>
 	 * @param time The time index to represent on this diagrams
 	 */
 	public void setMorphTime(float time) {

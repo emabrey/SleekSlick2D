@@ -10,22 +10,23 @@ import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.util.Log;
 
 /**
- * A piece of music loaded and playable within the game. Only one piece of music can
- * play at any given time and a channel is reserved so music will always play. 
- *
+ * A piece of music loaded and playable within the game. Only one piece of music can play at any given time and a
+ * channel is reserved so music will always play.
+ * <p>
  * @author kevin
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class Music {
 
-	/** The music currently being played or null if none */
+	/**
+	 * The music currently being played or null if none
+	 */
 	private static Music currentMusic;
 
 	/**
-	 * Poll the state of the current music. This causes streaming music
-	 * to stream and checks listeners. Note that if you're using a game container
-	 * this will be auto-magically called for you.
-	 * 
+	 * Poll the state of the current music. This causes streaming music to stream and checks listeners. Note that if
+	 * you're using a game container this will be auto-magically called for you.
+	 * <p>
 	 * @param delta The amount of time since last poll
 	 */
 	public static void poll(int delta) {
@@ -43,43 +44,66 @@ public class Music {
 		}
 	}
 
-	/** The sound from FECK representing this music */
+	/**
+	 * The sound from FECK representing this music
+	 */
 	private Audio sound;
 
-	/** True if the music is playing */
+	/**
+	 * True if the music is playing
+	 */
 	private boolean playing;
 
-	/** The list of listeners waiting for notification that the music ended */
+	/**
+	 * The list of listeners waiting for notification that the music ended
+	 */
 	private ArrayList listeners = new ArrayList();
 
-	/** The volume of this music */
+	/**
+	 * The volume of this music
+	 */
 	private float volume = 1.0f;
 
-	/** Start gain for fading in/out */
+	/**
+	 * Start gain for fading in/out
+	 */
 	private float fadeStartGain;
 
-	/** End gain for fading in/out */
+	/**
+	 * End gain for fading in/out
+	 */
 	private float fadeEndGain;
 
-	/** Countdown for fading in/out */
+	/**
+	 * Countdown for fading in/out
+	 */
 	private int fadeTime;
 
-	/** Duration for fading in/out */
+	/**
+	 * Duration for fading in/out
+	 */
 	private int fadeDuration;
 
-	/** True if music should be stopped after fading in/out */
+	/**
+	 * True if music should be stopped after fading in/out
+	 */
 	private boolean stopAfterFade;
 
-	/** True if the music is being repositioned and it is therefore normal that it's not playing */
+	/**
+	 * True if the music is being repositioned and it is therefore normal that it's not playing
+	 */
 	private boolean positioning;
 
-	/** The position that was requested */
+	/**
+	 * The position that was requested
+	 */
 	private float requiredPosition = -1;
 
 	/**
 	 * Create and load a piece of music (either OGG or MOD/XM)
-	 * 
+	 * <p>
 	 * @param ref The location of the music
+	 * <p>
 	 * @throws SlickException
 	 */
 	public Music(String ref) throws SlickException {
@@ -88,8 +112,9 @@ public class Music {
 
 	/**
 	 * Create and load a piece of music (either OGG or MOD/XM)
-	 * 
+	 * <p>
 	 * @param ref The location of the music
+	 * <p>
 	 * @throws SlickException
 	 */
 	public Music(URL ref) throws SlickException {
@@ -98,8 +123,10 @@ public class Music {
 
 	/**
 	 * Create and load a piece of music (either OGG or MOD/XM)
-	 * @param in The stream to read the music from 
-	 * @param ref  The symbolic name of this music 
+	 * <p>
+	 * @param in The stream to read the music from
+	 * @param ref The symbolic name of this music
+	 * <p>
 	 * @throws SlickException Indicates a failure to read the music from the stream
 	 */
 	public Music(InputStream in, String ref) throws SlickException {
@@ -117,7 +144,8 @@ public class Music {
 			} else {
 				throw new SlickException("Only .xm, .mod, .ogg, and .aif/f are currently supported.");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new SlickException("Failed to load music: " + ref);
 		}
@@ -125,9 +153,10 @@ public class Music {
 
 	/**
 	 * Create and load a piece of music (either OGG or MOD/XM)
-	 * 
+	 * <p>
 	 * @param url The location of the music
 	 * @param streamingHint A hint to indicate whether streaming should be used if possible
+	 * <p>
 	 * @throws SlickException
 	 */
 	public Music(URL url, boolean streamingHint) throws SlickException {
@@ -150,7 +179,8 @@ public class Music {
 			} else {
 				throw new SlickException("Only .xm, .mod, .ogg, and .aif/f are currently supported.");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new SlickException("Failed to load sound: " + url);
 		}
@@ -158,9 +188,10 @@ public class Music {
 
 	/**
 	 * Create and load a piece of music (either OGG or MOD/XM)
-	 * 
+	 * <p>
 	 * @param ref The location of the music
 	 * @param streamingHint A hint to indicate whether streaming should be used if possible
+	 * <p>
 	 * @throws SlickException
 	 */
 	public Music(String ref, boolean streamingHint) throws SlickException {
@@ -182,7 +213,8 @@ public class Music {
 			} else {
 				throw new SlickException("Only .xm, .mod, .ogg, and .aif/f are currently supported.");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new SlickException("Failed to load sound: " + ref);
 		}
@@ -190,7 +222,7 @@ public class Music {
 
 	/**
 	 * Add a listener to this music
-	 * 
+	 * <p>
 	 * @param listener The listener to add
 	 */
 	public void addListener(MusicListener listener) {
@@ -199,7 +231,7 @@ public class Music {
 
 	/**
 	 * Remove a listener from this music
-	 * 
+	 * <p>
 	 * @param listener The listener to remove
 	 */
 	public void removeListener(MusicListener listener) {
@@ -218,7 +250,7 @@ public class Music {
 
 	/**
 	 * Fire notifications that this music was swapped out
-	 * 
+	 * <p>
 	 * @param newMusic The new music that will be played
 	 */
 	private void fireMusicSwapped(Music newMusic) {
@@ -244,7 +276,7 @@ public class Music {
 
 	/**
 	 * Play the music at a given pitch and volume
-	 * 
+	 * <p>
 	 * @param pitch The pitch to play the music at (1.0 = default)
 	 * @param volume The volume to play the music at (1.0 = default)
 	 */
@@ -254,7 +286,7 @@ public class Music {
 
 	/**
 	 * Loop the music at a given pitch and volume
-	 * 
+	 * <p>
 	 * @param pitch The pitch to play the music at (1.0 = default)
 	 * @param volume The volume to play the music at (1.0 = default)
 	 */
@@ -264,6 +296,7 @@ public class Music {
 
 	/**
 	 * play or loop the music at a given pitch and volume
+	 * <p>
 	 * @param pitch The pitch to play the music at (1.0 = default)
 	 * @param volume The volume to play the music at (1.0 = default)
 	 * @param loop if false the music is played once, the music is looped otherwise
@@ -315,7 +348,7 @@ public class Music {
 
 	/**
 	 * Check if the music is being played
-	 * 
+	 * <p>
 	 * @return True if the music is being played
 	 */
 	public boolean playing() {
@@ -324,7 +357,7 @@ public class Music {
 
 	/**
 	 * Set the volume of the music as a factor of the global volume setting
-	 * 
+	 * <p>
 	 * @param volume The volume to play music at. 0 - 1, 1 is Max
 	 */
 	public void setVolume(float volume) {
@@ -344,6 +377,7 @@ public class Music {
 
 	/**
 	 * Get the individual volume of the music
+	 * <p>
 	 * @return The volume of this music, still effected by global SoundStore volume. 0 - 1, 1 is Max
 	 */
 	public float getVolume() {
@@ -352,7 +386,7 @@ public class Music {
 
 	/**
 	 * Fade this music to the volume specified
-	 * 
+	 * <p>
 	 * @param duration Fade time in milliseconds.
 	 * @param endVolume The target volume
 	 * @param stopAfterFade True if music should be stopped after fading in/out
@@ -366,9 +400,8 @@ public class Music {
 	}
 
 	/**
-	 * Update the current music applying any effects that need to updated per 
-	 * tick.
-	 * 
+	 * Update the current music applying any effects that need to updated per tick.
+	 * <p>
 	 * @param delta The amount of time in milliseconds thats passed since last update
 	 */
 	void update(int delta) {
@@ -392,10 +425,11 @@ public class Music {
 	}
 
 	/**
-	 * Seeks to a position in the music. For streaming music, seeking before the current position causes 
-	 * the stream to be reloaded.
-	 * 
+	 * Seeks to a position in the music. For streaming music, seeking before the current position causes the stream to
+	 * be reloaded.
+	 * <p>
 	 * @param position Position in seconds.
+	 * <p>
 	 * @return True if the seek was successful
 	 */
 	public boolean setPosition(float position) {
@@ -417,7 +451,7 @@ public class Music {
 
 	/**
 	 * The position into the sound thats being played
-	 * 
+	 * <p>
 	 * @return The current position in seconds.
 	 */
 	public float getPosition() {

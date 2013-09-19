@@ -7,10 +7,9 @@ import org.newdawn.slick.loading.LoadingList;
 import java.io.IOException;
 
 /**
- * A test for deferred loading. Each of the resources is requested then the loading list
- * is cycled to actual perform the resource allowing the rendering to be performed in
- * between
- *
+ * A test for deferred loading. Each of the resources is requested then the loading list is cycled to actual perform the
+ * resource allowing the rendering to be performed in between
+ * <p>
  * @author kevin
  */
 public class DeferredLoadingTest extends BasicGame {
@@ -109,9 +108,11 @@ public class DeferredLoadingTest extends BasicGame {
 				// slow down loading for example purposes
 				try {
 					Thread.sleep(50);
-				} catch (Exception e) {
 				}
-			} catch (IOException e) {
+				catch (Exception e) {
+				}
+			}
+			catch (IOException e) {
 				throw new SlickException("Failed to load: " + nextResource.getDescription(), e);
 			}
 
@@ -131,7 +132,7 @@ public class DeferredLoadingTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -139,7 +140,8 @@ public class DeferredLoadingTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new DeferredLoadingTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

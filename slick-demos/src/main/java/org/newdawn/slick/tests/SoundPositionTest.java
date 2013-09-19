@@ -12,7 +12,7 @@ import org.newdawn.slick.openal.SoundStore;
 
 /**
  * A test for the sound system (positioning) of the library
- *
+ * <p>
  * @author kevin
  */
 public class SoundPositionTest extends BasicGame {
@@ -84,7 +84,7 @@ public class SoundPositionTest extends BasicGame {
 
 	/**
 	 * Entry point to the sound test
-	 *
+	 * <p>
 	 * @param argv The arguments provided to the test
 	 */
 	public static void main(String[] argv) {
@@ -92,7 +92,8 @@ public class SoundPositionTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new SoundPositionTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

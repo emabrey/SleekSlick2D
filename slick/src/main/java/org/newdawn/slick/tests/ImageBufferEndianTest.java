@@ -12,25 +12,35 @@ import org.newdawn.slick.ImageBuffer;
 import org.newdawn.slick.SlickException;
 
 /**
- * Quick test for endianess in image buffers 
- * 
+ * Quick test for endianess in image buffers
+ * <p>
  * @author thaaks
  */
 public class ImageBufferEndianTest extends BasicGame {
 
-	/** The buffer filled with red pixels */
+	/**
+	 * The buffer filled with red pixels
+	 */
 	private ImageBuffer redImageBuffer;
 
-	/** The buffer filled with blue pixels */
+	/**
+	 * The buffer filled with blue pixels
+	 */
 	private ImageBuffer blueImageBuffer;
 
-	/** The image created from red pixels */
+	/**
+	 * The image created from red pixels
+	 */
 	private Image fromRed;
 
-	/** The image create from blue pixels */
+	/**
+	 * The image create from blue pixels
+	 */
 	private Image fromBlue;
 
-	/** The edian message */
+	/**
+	 * The edian message
+	 */
 	private String endian;
 
 	/**
@@ -42,7 +52,7 @@ public class ImageBufferEndianTest extends BasicGame {
 
 	/**
 	 * Entry point to the test
-	 * 
+	 * <p>
 	 * @param args The arguments passed into the test
 	 */
 	public static void main(String[] args) {
@@ -50,7 +60,8 @@ public class ImageBufferEndianTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ImageBufferEndianTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
@@ -95,7 +106,7 @@ public class ImageBufferEndianTest extends BasicGame {
 
 	/**
 	 * Fill a buffer with a given color
-	 *
+	 * <p>
 	 * @param buffer The buffer to fill
 	 * @param c The color to apply
 	 * @param width The width of the image

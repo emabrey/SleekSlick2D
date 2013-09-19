@@ -5,33 +5,44 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
- * A utility to provide a simple and rational interface to the
- * slick internals
- * 
+ * A utility to provide a simple and rational interface to the slick internals
+ * <p>
  * @author kevin
  */
 public class AudioLoader {
 
-	/** AIF Format Indicator */
+	/**
+	 * AIF Format Indicator
+	 */
 	private static final String AIF = "AIF";
 
-	/** WAV Format Indicator */
+	/**
+	 * WAV Format Indicator
+	 */
 	private static final String WAV = "WAV";
 
-	/** OGG Format Indicator */
+	/**
+	 * OGG Format Indicator
+	 */
 	private static final String OGG = "OGG";
 
-	/** MOD/XM Format Indicator */
+	/**
+	 * MOD/XM Format Indicator
+	 */
 	private static final String MOD = "MOD";
 
-	/** MOD/XM Format Indicator */
+	/**
+	 * MOD/XM Format Indicator
+	 */
 	private static final String XM = "XM";
 
-	/** True if the audio loader has be initialised */
+	/**
+	 * True if the audio loader has be initialised
+	 */
 	private static boolean inited = false;
 
 	/**
-	 * Initialise the audio loader 
+	 * Initialise the audio loader
 	 */
 	private static void init() {
 		if (!inited) {
@@ -41,12 +52,13 @@ public class AudioLoader {
 	}
 
 	/**
-	 * Get audio data in a playable state by loading the complete audio into 
-	 * memory.
-	 * 
+	 * Get audio data in a playable state by loading the complete audio into memory.
+	 * <p>
 	 * @param format The format of the audio to be loaded (something like "XM" or "OGG")
 	 * @param in The input stream from which to load the audio data
-	 * @return An object representing the audio data 
+	 * <p>
+	 * @return An object representing the audio data
+	 * <p>
 	 * @throws IOException Indicates a failure to access the audio data
 	 */
 	public static Audio getAudio(String format, InputStream in) throws IOException {
@@ -66,12 +78,13 @@ public class AudioLoader {
 	}
 
 	/**
-	 * Get audio data in a playable state by setting up a stream that can be piped into
-	 * OpenAL - i.e. streaming audio
-	 * 
+	 * Get audio data in a playable state by setting up a stream that can be piped into OpenAL - i.e. streaming audio
+	 * <p>
 	 * @param format The format of the audio to be loaded (something like "XM" or "OGG")
 	 * @param url The location of the data that should be streamed
-	 * @return An object representing the audio data 
+	 * <p>
+	 * @return An object representing the audio data
+	 * <p>
 	 * @throws IOException Indicates a failure to access the audio data
 	 */
 	public static Audio getStreamingAudio(String format, URL url) throws IOException {

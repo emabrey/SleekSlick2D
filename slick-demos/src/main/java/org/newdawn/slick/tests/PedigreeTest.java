@@ -15,7 +15,7 @@ import java.io.IOException;
 
 /**
  * A test for loading editing particle systems
- *
+ * <p>
  * @author kevin
  */
 public class PedigreeTest extends BasicGame {
@@ -67,7 +67,8 @@ public class PedigreeTest extends BasicGame {
 			fire = ParticleIO.loadConfiguredSystem("testdata/system.xml");
 			trail = ParticleIO.loadConfiguredSystem("testdata/smoketrail.xml");
 
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SlickException("Failed to load particle systems", e);
 		}
 		image = new Image("testdata/rocket.png");
@@ -118,7 +119,7 @@ public class PedigreeTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -126,7 +127,8 @@ public class PedigreeTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new PedigreeTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

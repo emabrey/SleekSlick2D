@@ -33,30 +33,44 @@ import java.util.List;
 
 /**
  * A 2D Triangulator. Graciously made available by the man(n) himself.
- * 
+ * <p>
  * @author Matthias Mann
  */
 public class MannTriangulator implements Triangulator {
 
-	/** The allowed error value */
+	/**
+	 * The allowed error value
+	 */
 	private static final double EPSILON = 1e-5;
 
-	/** The outer countour of the shape */
+	/**
+	 * The outer countour of the shape
+	 */
 	protected PointBag contour;
 
-	/** The holes defined in the polygon */
+	/**
+	 * The holes defined in the polygon
+	 */
 	protected PointBag holes;
 
-	/** The next available point bag */
+	/**
+	 * The next available point bag
+	 */
 	private PointBag nextFreePointBag;
 
-	/** The next available point */
+	/**
+	 * The next available point
+	 */
 	private Point nextFreePoint;
 
-	/** The list of triangles created (or rather points in triangles, 3xn) */
+	/**
+	 * The list of triangles created (or rather points in triangles, 3xn)
+	 */
 	private List triangles = new ArrayList();
 
-	/** Creates a new instance of Triangulator0 */
+	/**
+	 * Creates a new instance of Triangulator0
+	 */
 	public MannTriangulator() {
 		contour = getPointBag();
 	}
@@ -91,7 +105,7 @@ public class MannTriangulator implements Triangulator {
 
 	/**
 	 * Add a defined point to the current contour
-	 * 
+	 * <p>
 	 * @param pt The point to add
 	 */
 	private void addPoint(Vector2f pt) {
@@ -106,8 +120,9 @@ public class MannTriangulator implements Triangulator {
 
 	/**
 	 * Triangulate the points given
-	 * 
+	 * <p>
 	 * @param result The array to fill with the result or use to determine type
+	 * <p>
 	 * @return The resultng triangles
 	 */
 	private Vector2f[] triangulate(Vector2f[] result) {
@@ -230,7 +245,7 @@ public class MannTriangulator implements Triangulator {
 
 	/**
 	 * Create a new point bag (or recycle an old one)
-	 * 
+	 * <p>
 	 * @return The new point bag
 	 */
 	private PointBag getPointBag() {
@@ -245,8 +260,9 @@ public class MannTriangulator implements Triangulator {
 
 	/**
 	 * Release a pooled bag
-	 * 
+	 * <p>
 	 * @param pb The bag to release
+	 * <p>
 	 * @return The next available bag
 	 */
 	private PointBag freePointBag(PointBag pb) {
@@ -259,8 +275,9 @@ public class MannTriangulator implements Triangulator {
 
 	/**
 	 * Create or reuse a point
-	 * 
+	 * <p>
 	 * @param pt The point data to set
+	 * <p>
 	 * @return The new point
 	 */
 	private Point getPoint(Vector2f pt) {
@@ -278,7 +295,7 @@ public class MannTriangulator implements Triangulator {
 
 	/**
 	 * Release a point into the pool
-	 * 
+	 * <p>
 	 * @param p The point to release
 	 */
 	private void freePoint(Point p) {
@@ -288,7 +305,7 @@ public class MannTriangulator implements Triangulator {
 
 	/**
 	 * Release all points
-	 * 
+	 * <p>
 	 * @param head The head of the points bag
 	 */
 	private void freePoints(Point head) {
@@ -299,35 +316,49 @@ public class MannTriangulator implements Triangulator {
 
 	/**
 	 * A single point being considered during triangulation
-	 *
+	 * <p>
 	 * @author Matthias Mann
 	 */
 	private static class Point implements Serializable {
 
-		/** The location of the point */
+		/**
+		 * The location of the point
+		 */
 		protected Vector2f pt;
 
-		/** The previous point in the contour */
+		/**
+		 * The previous point in the contour
+		 */
 		protected Point prev;
 
-		/** The next point in the contour */
+		/**
+		 * The next point in the contour
+		 */
 		protected Point next;
 
-		/** The x component of the of the normal */
+		/**
+		 * The x component of the of the normal
+		 */
 		protected double nx;
 
-		/** The y component of the of the normal */
+		/**
+		 * The y component of the of the normal
+		 */
 		protected double ny;
 
-		/** The angle at this point in the path */
+		/**
+		 * The angle at this point in the path
+		 */
 		protected double angle;
 
-		/** The distance of this point from */
+		/**
+		 * The distance of this point from
+		 */
 		protected double dist;
 
 		/**
 		 * Create a new point
-		 * 
+		 * <p>
 		 * @param pt The points location
 		 */
 		public Point(Vector2f pt) {
@@ -346,7 +377,7 @@ public class MannTriangulator implements Triangulator {
 
 		/**
 		 * Insert a point before this one (see LinkedList)
-		 * 
+		 * <p>
 		 * @param p The point to insert
 		 */
 		public void insertBefore(Point p) {
@@ -358,7 +389,7 @@ public class MannTriangulator implements Triangulator {
 
 		/**
 		 * Insert a point after this one (see LinkedList)
-		 * 
+		 * <p>
 		 * @param p The point to insert
 		 */
 		public void insertAfter(Point p) {
@@ -370,9 +401,10 @@ public class MannTriangulator implements Triangulator {
 
 		/**
 		 * Java 5 hypot method
-		 * 
+		 * <p>
 		 * @param x The x component
 		 * @param y The y component
+		 * <p>
 		 * @return The hypotenuse
 		 */
 		private double hypot(double x, double y) {
@@ -422,8 +454,9 @@ public class MannTriangulator implements Triangulator {
 
 		/**
 		 * Get the angle of this point to another
-		 * 
+		 * <p>
 		 * @param p The other point
+		 * <p>
 		 * @return The angle between this point and another
 		 */
 		public double getAngle(Point p) {
@@ -436,7 +469,7 @@ public class MannTriangulator implements Triangulator {
 
 		/**
 		 * Check if this point is convave
-		 * 
+		 * <p>
 		 * @return True if this point remains concave
 		 */
 		public boolean isConcave() {
@@ -445,9 +478,10 @@ public class MannTriangulator implements Triangulator {
 
 		/**
 		 * Check if this point is infront of another
-		 * 
+		 * <p>
 		 * @param dx The other x
 		 * @param dy The other y
+		 * <p>
 		 * @return True if this point is infront (in the contour)
 		 */
 		public boolean isInfront(double dx, double dy) {
@@ -463,8 +497,9 @@ public class MannTriangulator implements Triangulator {
 
 		/**
 		 * Check if this point is infront of another
-		 * 
+		 * <p>
 		 * @param p The other point
+		 * <p>
 		 * @return True if this point is infront (in the contour)
 		 */
 		public boolean isInfront(Point p) {
@@ -475,15 +510,19 @@ public class MannTriangulator implements Triangulator {
 
 	/**
 	 * A bag/pool of point objects
-	 *
+	 * <p>
 	 * @author kevin
 	 */
 	protected class PointBag implements Serializable {
 
-		/** The first point in the bag - head of the list */
+		/**
+		 * The first point in the bag - head of the list
+		 */
 		protected Point first;
 
-		/** The next bag in the list of bags */
+		/**
+		 * The next bag in the list of bags
+		 */
 		protected PointBag next;
 
 		/**
@@ -498,7 +537,7 @@ public class MannTriangulator implements Triangulator {
 
 		/**
 		 * Add a point to the bag
-		 * 
+		 * <p>
 		 * @param p The point to add
 		 */
 		public void add(Point p) {
@@ -526,11 +565,11 @@ public class MannTriangulator implements Triangulator {
 		}
 
 		/**
-		 * Check if the points in this bag form a path intersecting
-		 * with the specified path
-		 * 
+		 * Check if the points in this bag form a path intersecting with the specified path
+		 * <p>
 		 * @param v1 The start point of the segment
 		 * @param v2 The end point of the segment
+		 * <p>
 		 * @return True if points in this contour intersect with the segment
 		 */
 		public boolean doesIntersectSegment(Vector2f v1, Vector2f v2) {
@@ -564,8 +603,8 @@ public class MannTriangulator implements Triangulator {
 		}
 
 		/**
-		 * Get the number of points in the bag 
-		 * 
+		 * Get the number of points in the bag
+		 * <p>
 		 * @return The number of points in the bag
 		 */
 		public int countPoints() {
@@ -583,8 +622,9 @@ public class MannTriangulator implements Triangulator {
 
 		/**
 		 * Check if the point provided was contained
-		 * 
+		 * <p>
 		 * @param point The point provided
+		 * <p>
 		 * @return True if it's in the bag
 		 */
 		public boolean contains(Vector2f point) {

@@ -24,16 +24,20 @@ import java.util.List;
 
 /**
  * An effect to generate a uniformly zigzaging line around text
- * 
+ * <p>
  * @author Jerry Huxtable
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class OutlineZigzagEffect extends OutlineEffect {
 
-	/** The amount the line moves away from the text */
+	/**
+	 * The amount the line moves away from the text
+	 */
 	private float amplitude = 1;
 
-	/** How often the line zigs and zags */
+	/**
+	 * How often the line zigs and zags
+	 */
 	private float wavelength = 3;
 
 	/**
@@ -45,7 +49,7 @@ public class OutlineZigzagEffect extends OutlineEffect {
 
 	/**
 	 * Gets the wavelength of the wobble effect.
-	 * 
+	 * <p>
 	 * @return The wavelength of the wobble effect
 	 */
 	public float getWavelength() {
@@ -54,7 +58,7 @@ public class OutlineZigzagEffect extends OutlineEffect {
 
 	/**
 	 * Sets the wavelength of the wobble effect.
-	 * 
+	 * <p>
 	 * @param wavelength The wavelength of the wobble effect
 	 */
 	public void setWavelength(float wavelength) {
@@ -63,7 +67,7 @@ public class OutlineZigzagEffect extends OutlineEffect {
 
 	/**
 	 * Gets the amplitude of the wobble effect.
-	 * 
+	 * <p>
 	 * @return The amplitude of the wobble effect
 	 */
 	public float getAmplitude() {
@@ -72,7 +76,7 @@ public class OutlineZigzagEffect extends OutlineEffect {
 
 	/**
 	 * Sets the amplitude of the wobble effect.
-	 * 
+	 * <p>
 	 * @param amplitude The detail of the wobble effect
 	 */
 	public void setAmplitude(float amplitude) {
@@ -81,7 +85,7 @@ public class OutlineZigzagEffect extends OutlineEffect {
 
 	/**
 	 * Create a new effect to generate a zigzagging line around the text
-	 * 
+	 * <p>
 	 * @param width The width of the line
 	 * @param color The colour of the line
 	 */
@@ -125,16 +129,18 @@ public class OutlineZigzagEffect extends OutlineEffect {
 
 	/**
 	 * A stroke to generate zigzags
-	 * 
+	 * <p>
 	 * @author Jerry Huxtable
 	 * @author Nathan Sweet <misc@n4te.com>
 	 */
 	private class ZigzagStroke implements Stroke {
 
-		/** The flattening factor applied to the path iterator */
+		/**
+		 * The flattening factor applied to the path iterator
+		 */
 		private static final float FLATNESS = 1;
 
-		/** 
+		/**
 		 * @see java.awt.Stroke#createStrokedShape(java.awt.Shape)
 		 */
 		public Shape createStrokedShape(Shape shape) {

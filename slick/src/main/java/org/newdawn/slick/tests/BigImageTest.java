@@ -13,39 +13,59 @@ import org.newdawn.slick.SpriteSheet;
 
 /**
  * A test for basic image rendering
- *
+ * <p>
  * @author kevin
  */
 public class BigImageTest extends BasicGame {
 
-	/** The original 1024x768 image loaded */
+	/**
+	 * The original 1024x768 image loaded
+	 */
 	private Image original;
 
-	/** The image scaled */
+	/**
+	 * The image scaled
+	 */
 	private Image image;
 
-	/** The scaled image flipped on the X axis */
+	/**
+	 * The scaled image flipped on the X axis
+	 */
 	private Image imageX;
 
-	/** The scaled image flipped on the Y axis */
+	/**
+	 * The scaled image flipped on the Y axis
+	 */
 	private Image imageY;
 
-	/** A sub part of the original image */
+	/**
+	 * A sub part of the original image
+	 */
 	private Image sub;
 
-	/** The scaled version of the sub-image */
+	/**
+	 * The scaled version of the sub-image
+	 */
 	private Image scaledSub;
 
-	/** The x position to draw at */
+	/**
+	 * The x position to draw at
+	 */
 	private float x;
 
-	/** The y position to draw at */
+	/**
+	 * The y position to draw at
+	 */
 	private float y;
 
-	/** The angle to draw the rortating sub part at */
+	/**
+	 * The angle to draw the rortating sub part at
+	 */
 	private float ang = 30f;
 
-	/** A sprite sheet made from the big image */
+	/**
+	 * A sprite sheet made from the big image
+	 */
 	private SpriteSheet bigSheet;
 
 	/**
@@ -90,7 +110,7 @@ public class BigImageTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -98,7 +118,8 @@ public class BigImageTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new BigImageTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * A filter to create a distance field from a source image
- *
+ * <p>
  * @author Orangy
  */
 public class DistanceFieldFilter {
@@ -19,11 +19,12 @@ public class DistanceFieldFilter {
 
 	/**
 	 * Caclulate the distance between two points
-	 *
+	 * <p>
 	 * @param x1 The x coordinate of the first point
 	 * @param y1 The y coordiante of the first point
 	 * @param x2 The x coordinate of the second point
 	 * @param y2 The y coordinate of the second point
+	 * <p>
 	 * @return The distance between two point
 	 */
 	private static float separation(final float x1, final float y1, final float x2, final float y2) {
@@ -34,15 +35,17 @@ public class DistanceFieldFilter {
 
 	/**
 	 * Process the image into a distance field
-	 *
-	 * @param inImage   The image to process
-	 * @param outWidth  The width of the output field
+	 * <p>
+	 * @param inImage The image to process
+	 * @param outWidth The width of the output field
 	 * @param outHeight The height of the output field
-	 * @param scanSize  The scan size, controls the quality
-	 * @param listener  The lisetener to report progress to
+	 * @param scanSize The scan size, controls the quality
+	 * @param listener The lisetener to report progress to
+	 * <p>
 	 * @return The distance field image
 	 */
-	public static BufferedImage process(BufferedImage inImage, int outWidth, int outHeight, int scanSize, ProgressListener listener) {
+	public static BufferedImage process(BufferedImage inImage, int outWidth, int outHeight, int scanSize,
+										ProgressListener listener) {
 		System.out.println("DistanceFieldFilter.process");
 
 		BufferedImage outImage = new BufferedImage(outWidth, outHeight, BufferedImage.TYPE_4BYTE_ABGR);
@@ -114,12 +117,12 @@ public class DistanceFieldFilter {
 					d = 0;
 				}
 
-                // As greyscale
+				// As greyscale
 				//	outImage.setRGB(x, y, new Color(d, d, d, 1.0f).getRGB());
 				// As alpha
 				outImage.setRGB(x, y, new Color(1.0f, 1.0f, 1.0f, d).getRGB());
 
-                // As both
+				// As both
 				//	outImage.setRGB(x, y, new Color(d, d, d, d).getRGB());
 			}
 		}
@@ -129,7 +132,7 @@ public class DistanceFieldFilter {
 
 	/**
 	 * Get the progress indicator
-	 *
+	 * <p>
 	 * @return The progress indicator
 	 */
 	public static int progress() {
@@ -138,15 +141,17 @@ public class DistanceFieldFilter {
 
 	/**
 	 * Find the signed distance for a given point
-	 *
-	 * @param pointX     The x coordinate of the point
-	 * @param pointY     The y coordinate of the point
-	 * @param inImage    The image on which the point exists
-	 * @param scanWidth  The scan line of the image
+	 * <p>
+	 * @param pointX The x coordinate of the point
+	 * @param pointY The y coordinate of the point
+	 * @param inImage The image on which the point exists
+	 * @param scanWidth The scan line of the image
 	 * @param scanHeight The scan height of the image
+	 * <p>
 	 * @return The signed distance
 	 */
-	private static float findSignedDistance(final int pointX, final int pointY, BufferedImage inImage, final int scanWidth, final int scanHeight) {
+	private static float findSignedDistance(final int pointX, final int pointY, BufferedImage inImage,
+											final int scanWidth, final int scanHeight) {
 		Color baseColour = new Color(inImage.getRGB(pointX, pointY));
 		final boolean baseIsSolid = baseColour.getRed() > 0;
 

@@ -19,55 +19,80 @@ import org.newdawn.slick.util.FastTrig;
 import org.newdawn.slick.util.Log;
 
 /**
- * A graphics context that can be used to render primatives to the accelerated
- * canvas provided by LWJGL.
- * 
+ * A graphics context that can be used to render primatives to the accelerated canvas provided by LWJGL.
+ * <p>
  * @author kevin
  */
 public class Graphics {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	protected static SGL GL = Renderer.get();
 
-	/** The renderer to use line strips */
+	/**
+	 * The renderer to use line strips
+	 */
 	private static LineStripRenderer LSR = Renderer.getLineStripRenderer();
 
-	/** The normal drawing mode */
+	/**
+	 * The normal drawing mode
+	 */
 	public static int MODE_NORMAL = 1;
 
-	/** Draw to the alpha map */
+	/**
+	 * Draw to the alpha map
+	 */
 	public static int MODE_ALPHA_MAP = 2;
 
-	/** Draw using the alpha blending */
+	/**
+	 * Draw using the alpha blending
+	 */
 	public static int MODE_ALPHA_BLEND = 3;
 
-	/** Draw multiplying the source and destination colours */
+	/**
+	 * Draw multiplying the source and destination colours
+	 */
 	public static int MODE_COLOR_MULTIPLY = 4;
 
-	/** Draw adding the existing colour to the new colour */
+	/**
+	 * Draw adding the existing colour to the new colour
+	 */
 	public static int MODE_ADD = 5;
 
-	/** Draw blending the new image into the old one by a factor of it's colour */
+	/**
+	 * Draw blending the new image into the old one by a factor of it's colour
+	 */
 	public static int MODE_SCREEN = 6;
 
-	/** The default number of segments that will be used when drawing an oval */
+	/**
+	 * The default number of segments that will be used when drawing an oval
+	 */
 	private static final int DEFAULT_SEGMENTS = 50;
 
-	/** The last graphics context in use */
+	/**
+	 * The last graphics context in use
+	 */
 	protected static Graphics currentGraphics = null;
 
-	/** The default font to use */
+	/**
+	 * The default font to use
+	 */
 	protected static Font DEFAULT_FONT;
 
-	/** The last set scale */
+	/**
+	 * The last set scale
+	 */
 	private float sx = 1;
 
-	/** The last set scale */
+	/**
+	 * The last set scale
+	 */
 	private float sy = 1;
 
 	/**
 	 * Set the current graphics context in use
-	 * 
+	 * <p>
 	 * @param current The graphics context that should be considered current
 	 */
 	public static void setCurrent(Graphics current) {
@@ -80,46 +105,74 @@ public class Graphics {
 		}
 	}
 
-	/** The font in use */
+	/**
+	 * The font in use
+	 */
 	private Font font;
 
-	/** The current color */
+	/**
+	 * The current color
+	 */
 	private Color currentColor = Color.white;
 
-	/** The width of the screen */
+	/**
+	 * The width of the screen
+	 */
 	protected int screenWidth;
 
-	/** The height of the screen */
+	/**
+	 * The height of the screen
+	 */
 	protected int screenHeight;
 
-	/** True if the matrix has been pushed to the stack */
+	/**
+	 * True if the matrix has been pushed to the stack
+	 */
 	private boolean pushed;
 
-	/** The graphics context clipping */
+	/**
+	 * The graphics context clipping
+	 */
 	private Rectangle clip;
 
-	/** Buffer used for setting the world clip */
+	/**
+	 * Buffer used for setting the world clip
+	 */
 	private DoubleBuffer worldClip = BufferUtils.createDoubleBuffer(4);
 
-	/** The buffer used to read a screen pixel */
+	/**
+	 * The buffer used to read a screen pixel
+	 */
 	private ByteBuffer readBuffer = BufferUtils.createByteBuffer(4);
 
-	/** True if we're antialias */
+	/**
+	 * True if we're antialias
+	 */
 	private boolean antialias;
 
-	/** The world clip recorded since last set */
+	/**
+	 * The world clip recorded since last set
+	 */
 	private Rectangle worldClipRecord;
 
-	/** The current drawing mode */
+	/**
+	 * The current drawing mode
+	 */
 	private int currentDrawingMode = MODE_NORMAL;
 
-	/** The current line width */
+	/**
+	 * The current line width
+	 */
 	private float lineWidth = 1;
 
-	/** The matrix stack */
+	/**
+	 * The matrix stack
+	 */
 	private ArrayList stack = new ArrayList();
 
-	/** The index into the stack we're using */
+	/**
+	 * The index into the stack we're using
+	 */
 	private int stackIndex;
 
 	/**
@@ -129,13 +182,10 @@ public class Graphics {
 	}
 
 	/**
-	 * Create a new graphics context. Only the container should be doing this
-	 * really
-	 * 
-	 * @param width
-	 *            The width of the screen for this context
-	 * @param height
-	 *            The height of the screen for this context
+	 * Create a new graphics context. Only the container should be doing this really
+	 * <p>
+	 * @param width The width of the screen for this context
+	 * @param height The height of the screen for this context
 	 */
 	public Graphics(int width, int height) {
 		if (DEFAULT_FONT == null) {
@@ -145,7 +195,8 @@ public class Graphics {
 						DEFAULT_FONT = new AngelCodeFont(
 								"org/newdawn/slick/data/defaultfont.fnt",
 								"org/newdawn/slick/data/defaultfont.png");
-					} catch (SlickException e) {
+					}
+					catch (SlickException e) {
 						Log.error(e);
 					}
 					return null; // nothing to return
@@ -161,7 +212,7 @@ public class Graphics {
 
 	/**
 	 * Set the dimensions considered by the graphics context
-	 * 
+	 * <p>
 	 * @param width The width of the graphics context
 	 * @param height The height of the graphics context
 	 */
@@ -171,14 +222,13 @@ public class Graphics {
 	}
 
 	/**
-	 * Set the drawing mode to use. This mode defines how pixels are drawn to
-	 * the graphics context. It can be used to draw into the alpha map.
-	 * 
-	 * The mode supplied should be one of {@link Graphics#MODE_NORMAL} or
-	 * {@link Graphics#MODE_ALPHA_MAP} or {@link Graphics#MODE_ALPHA_BLEND}
-	 * 
-	 * @param mode
-	 *            The mode to apply.
+	 * Set the drawing mode to use. This mode defines how pixels are drawn to the graphics context. It can be used to
+	 * draw into the alpha map.
+	 * <p>
+	 * The mode supplied should be one of {@link Graphics#MODE_NORMAL} or {@link Graphics#MODE_ALPHA_MAP} or
+	 * {@link Graphics#MODE_ALPHA_BLEND}
+	 * <p>
+	 * @param mode The mode to apply.
 	 */
 	public void setDrawMode(int mode) {
 		predraw();
@@ -216,9 +266,8 @@ public class Graphics {
 	}
 
 	/**
-	 * Clear the state of the alpha map across the entire screen. This sets
-	 * alpha to 0 everywhere, meaning in {@link Graphics#MODE_ALPHA_BLEND}
-	 * nothing will be drawn.
+	 * Clear the state of the alpha map across the entire screen. This sets alpha to 0 everywhere, meaning in
+	 * {@link Graphics#MODE_ALPHA_BLEND} nothing will be drawn.
 	 */
 	public void clearAlphaMap() {
 		pushTransform();
@@ -235,16 +284,14 @@ public class Graphics {
 	}
 
 	/**
-	 * Must be called before all OpenGL operations to maintain context for
-	 * dynamic images
+	 * Must be called before all OpenGL operations to maintain context for dynamic images
 	 */
 	private void predraw() {
 		setCurrent(this);
 	}
 
 	/**
-	 * Must be called after all OpenGL operations to maintain context for
-	 * dynamic images
+	 * Must be called after all OpenGL operations to maintain context for dynamic images
 	 */
 	private void postdraw() {
 	}
@@ -273,7 +320,7 @@ public class Graphics {
 
 	/**
 	 * Get the current font
-	 * 
+	 * <p>
 	 * @return The current font
 	 */
 	public Font getFont() {
@@ -281,12 +328,10 @@ public class Graphics {
 	}
 
 	/**
-	 * Set the background colour of the graphics context. This colour
-	 * is used when clearing the context. Note that calling this method
-	 * alone does not cause the context to be cleared.
-	 * 
-	 * @param color
-	 *            The background color of the graphics context
+	 * Set the background colour of the graphics context. This colour is used when clearing the context. Note that
+	 * calling this method alone does not cause the context to be cleared.
+	 * <p>
+	 * @param color The background color of the graphics context
 	 */
 	public void setBackground(Color color) {
 		predraw();
@@ -296,7 +341,7 @@ public class Graphics {
 
 	/**
 	 * Get the current graphics context background color
-	 * 
+	 * <p>
 	 * @return The background color of this graphics context
 	 */
 	public Color getBackground() {
@@ -346,11 +391,9 @@ public class Graphics {
 
 	/**
 	 * Apply a scaling factor to everything drawn on the graphics context
-	 * 
-	 * @param sx
-	 *            The scaling factor to apply to the x axis
-	 * @param sy
-	 *            The scaling factor to apply to the y axis
+	 * <p>
+	 * @param sx The scaling factor to apply to the x axis
+	 * @param sy The scaling factor to apply to the y axis
 	 */
 	public void scale(float sx, float sy) {
 		this.sx = this.sx * sx;
@@ -365,13 +408,10 @@ public class Graphics {
 
 	/**
 	 * Apply a rotation to everything draw on the graphics context
-	 * 
-	 * @param rx
-	 *            The x coordinate of the center of rotation
-	 * @param ry
-	 *            The y coordinate of the center of rotation
-	 * @param ang
-	 *            The angle (in degrees) to rotate by
+	 * <p>
+	 * @param rx The x coordinate of the center of rotation
+	 * @param ry The y coordinate of the center of rotation
+	 * @param ang The angle (in degrees) to rotate by
 	 */
 	public void rotate(float rx, float ry, float ang) {
 		checkPush();
@@ -385,11 +425,9 @@ public class Graphics {
 
 	/**
 	 * Apply a translation to everything drawn to the context
-	 * 
-	 * @param x
-	 *            The amount to translate on the x-axis
-	 * @param y
-	 *            The amount of translate on the y-axis
+	 * <p>
+	 * @param x The amount to translate on the x-axis
+	 * @param y The amount of translate on the y-axis
 	 */
 	public void translate(float x, float y) {
 		checkPush();
@@ -401,9 +439,8 @@ public class Graphics {
 
 	/**
 	 * Set the font to be used when rendering text
-	 * 
-	 * @param font
-	 *            The font to be used when rendering text
+	 * <p>
+	 * @param font The font to be used when rendering text
 	 */
 	public void setFont(Font font) {
 		this.font = font;
@@ -418,9 +455,8 @@ public class Graphics {
 
 	/**
 	 * Set the color to use when rendering to this context
-	 * 
-	 * @param color
-	 *            The color to use when rendering to this context
+	 * <p>
+	 * @param color The color to use when rendering to this context
 	 */
 	public void setColor(Color color) {
 		if (color == null) {
@@ -435,7 +471,7 @@ public class Graphics {
 
 	/**
 	 * Get the color in use by this graphics context
-	 * 
+	 * <p>
 	 * @return The color in use by this graphics context
 	 */
 	public Color getColor() {
@@ -444,15 +480,11 @@ public class Graphics {
 
 	/**
 	 * Draw a line on the canvas in the current colour
-	 * 
-	 * @param x1
-	 *            The x coordinate of the start point
-	 * @param y1
-	 *            The y coordinate of the start point
-	 * @param x2
-	 *            The x coordinate of the end point
-	 * @param y2
-	 *            The y coordinate of the end point
+	 * <p>
+	 * @param x1 The x coordinate of the start point
+	 * @param y1 The y coordinate of the start point
+	 * @param x2 The x coordinate of the end point
+	 * @param y2 The y coordinate of the end point
 	 */
 	public void drawLine(float x1, float y1, float x2, float y2) {
 		float lineWidth = this.lineWidth - 1;
@@ -495,11 +527,9 @@ public class Graphics {
 
 	/**
 	 * Draw the outline of the given shape.
-	 * 
-	 * @param shape
-	 *            The shape to draw.
-	 * @param fill
-	 *            The fill type to apply
+	 * <p>
+	 * @param shape The shape to draw.
+	 * @param fill The fill type to apply
 	 */
 	public void draw(Shape shape, ShapeFill fill) {
 		predraw();
@@ -513,11 +543,9 @@ public class Graphics {
 
 	/**
 	 * Draw the the given shape filled in.
-	 * 
-	 * @param shape
-	 *            The shape to fill.
-	 * @param fill
-	 *            The fill type to apply
+	 * <p>
+	 * @param shape The shape to fill.
+	 * @param fill The fill type to apply
 	 */
 	public void fill(Shape shape, ShapeFill fill) {
 		predraw();
@@ -531,9 +559,8 @@ public class Graphics {
 
 	/**
 	 * Draw the outline of the given shape.
-	 * 
-	 * @param shape
-	 *            The shape to draw.
+	 * <p>
+	 * @param shape The shape to draw.
 	 */
 	public void draw(Shape shape) {
 		predraw();
@@ -547,9 +574,8 @@ public class Graphics {
 
 	/**
 	 * Draw the the given shape filled in.
-	 * 
-	 * @param shape
-	 *            The shape to fill.
+	 * <p>
+	 * @param shape The shape to fill.
 	 */
 	public void fill(Shape shape) {
 		predraw();
@@ -563,11 +589,9 @@ public class Graphics {
 
 	/**
 	 * Draw the the given shape filled in with a texture
-	 * 
-	 * @param shape
-	 *            The shape to texture.
-	 * @param image
-	 *            The image to tile across the shape
+	 * <p>
+	 * @param shape The shape to texture.
+	 * @param image The image to tile across the shape
 	 */
 	public void texture(Shape shape, Image image) {
 		texture(shape, image, 0.01f, 0.01f, false);
@@ -575,13 +599,10 @@ public class Graphics {
 
 	/**
 	 * Draw the the given shape filled in with a texture
-	 * 
-	 * @param shape
-	 *            The shape to texture.
-	 * @param image
-	 *            The image to tile across the shape
-	 * @param fill
-	 *            The shape fill to apply
+	 * <p>
+	 * @param shape The shape to texture.
+	 * @param image The image to tile across the shape
+	 * @param fill The shape fill to apply
 	 */
 	public void texture(Shape shape, Image image, ShapeFill fill) {
 		texture(shape, image, 0.01f, 0.01f, fill);
@@ -589,13 +610,10 @@ public class Graphics {
 
 	/**
 	 * Draw the the given shape filled in with a texture
-	 * 
-	 * @param shape
-	 *            The shape to texture.
-	 * @param image
-	 *            The image to tile across the shape
-	 * @param fit
-	 *            True if we want to fit the image on to the shape
+	 * <p>
+	 * @param shape The shape to texture.
+	 * @param image The image to tile across the shape
+	 * @param fit True if we want to fit the image on to the shape
 	 */
 	public void texture(Shape shape, Image image, boolean fit) {
 		if (fit) {
@@ -607,15 +625,11 @@ public class Graphics {
 
 	/**
 	 * Draw the the given shape filled in with a texture
-	 * 
-	 * @param shape
-	 *            The shape to texture.
-	 * @param image
-	 *            The image to tile across the shape
-	 * @param scaleX
-	 *            The scale to apply on the x axis for texturing
-	 * @param scaleY
-	 *            The scale to apply on the y axis for texturing
+	 * <p>
+	 * @param shape The shape to texture.
+	 * @param image The image to tile across the shape
+	 * @param scaleX The scale to apply on the x axis for texturing
+	 * @param scaleY The scale to apply on the y axis for texturing
 	 */
 	public void texture(Shape shape, Image image, float scaleX, float scaleY) {
 		texture(shape, image, scaleX, scaleY, false);
@@ -623,20 +637,15 @@ public class Graphics {
 
 	/**
 	 * Draw the the given shape filled in with a texture
-	 * 
-	 * @param shape
-	 *            The shape to texture.
-	 * @param image
-	 *            The image to tile across the shape
-	 * @param scaleX
-	 *            The scale to apply on the x axis for texturing
-	 * @param scaleY
-	 *            The scale to apply on the y axis for texturing
-	 * @param fit
-	 *            True if we want to fit the image on to the shape
+	 * <p>
+	 * @param shape The shape to texture.
+	 * @param image The image to tile across the shape
+	 * @param scaleX The scale to apply on the x axis for texturing
+	 * @param scaleY The scale to apply on the y axis for texturing
+	 * @param fit True if we want to fit the image on to the shape
 	 */
 	public void texture(Shape shape, Image image, float scaleX, float scaleY,
-			boolean fit) {
+						boolean fit) {
 		predraw();
 		TextureImpl.bindNone();
 		currentColor.bind();
@@ -652,20 +661,15 @@ public class Graphics {
 
 	/**
 	 * Draw the the given shape filled in with a texture
-	 * 
-	 * @param shape
-	 *            The shape to texture.
-	 * @param image
-	 *            The image to tile across the shape
-	 * @param scaleX
-	 *            The scale to apply on the x axis for texturing
-	 * @param scaleY
-	 *            The scale to apply on the y axis for texturing
-	 * @param fill
-	 *            The shape fill to apply
+	 * <p>
+	 * @param shape The shape to texture.
+	 * @param image The image to tile across the shape
+	 * @param scaleX The scale to apply on the x axis for texturing
+	 * @param scaleY The scale to apply on the y axis for texturing
+	 * @param fill The shape fill to apply
 	 */
 	public void texture(Shape shape, Image image, float scaleX, float scaleY,
-			ShapeFill fill) {
+						ShapeFill fill) {
 		predraw();
 		TextureImpl.bindNone();
 		currentColor.bind();
@@ -677,15 +681,11 @@ public class Graphics {
 
 	/**
 	 * Draw a rectangle to the canvas in the current colour
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner
-	 * @param y1
-	 *            The y coordinate of the top left corner
-	 * @param width
-	 *            The width of the rectangle to draw
-	 * @param height
-	 *            The height of the rectangle to draw
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner
+	 * @param y1 The y coordinate of the top left corner
+	 * @param width The width of the rectangle to draw
+	 * @param height The height of the rectangle to draw
 	 */
 	public void drawRect(float x1, float y1, float width, float height) {
 		float lineWidth = getLineWidth();
@@ -697,8 +697,7 @@ public class Graphics {
 	}
 
 	/**
-	 * Clear the clipping being applied. This will allow graphics to be drawn
-	 * anywhere on the screen
+	 * Clear the clipping being applied. This will allow graphics to be drawn anywhere on the screen
 	 */
 	public void clearClip() {
 		clip = null;
@@ -708,19 +707,14 @@ public class Graphics {
 	}
 
 	/**
-	 * Set clipping that controls which areas of the world will be drawn to.
-	 * Note that world clip is different from standard screen clip in that it's
-	 * defined in the space of the current world coordinate - i.e. it's affected
-	 * by translate, rotate, scale etc.
-	 * 
-	 * @param x
-	 *            The x coordinate of the top left corner of the allowed area
-	 * @param y
-	 *            The y coordinate of the top left corner of the allowed area
-	 * @param width
-	 *            The width of the allowed area
-	 * @param height
-	 *            The height of the allowed area
+	 * Set clipping that controls which areas of the world will be drawn to. Note that world clip is different from
+	 * standard screen clip in that it's defined in the space of the current world coordinate - i.e. it's affected by
+	 * translate, rotate, scale etc.
+	 * <p>
+	 * @param x The x coordinate of the top left corner of the allowed area
+	 * @param y The y coordinate of the top left corner of the allowed area
+	 * @param width The width of the allowed area
+	 * @param height The height of the allowed area
 	 */
 	public void setWorldClip(float x, float y, float width, float height) {
 		predraw();
@@ -757,10 +751,9 @@ public class Graphics {
 
 	/**
 	 * Set the world clip to be applied
-	 * 
+	 * <p>
 	 * @see #setWorldClip(float, float, float, float)
-	 * @param clip
-	 *            The area still visible
+	 * @param clip The area still visible
 	 */
 	public void setWorldClip(Rectangle clip) {
 		if (clip == null) {
@@ -773,7 +766,7 @@ public class Graphics {
 
 	/**
 	 * Get the last set world clip or null of the world clip isn't set
-	 * 
+	 * <p>
 	 * @return The last set world clip rectangle
 	 */
 	public Rectangle getWorldClip() {
@@ -781,18 +774,13 @@ public class Graphics {
 	}
 
 	/**
-	 * Set the clipping to apply to the drawing. Note that this clipping takes
-	 * no note of the transforms that have been applied to the context and is
-	 * always in absolute screen space coordinates.
-	 * 
-	 * @param x
-	 *            The x coordinate of the top left corner of the allowed area
-	 * @param y
-	 *            The y coordinate of the top left corner of the allowed area
-	 * @param width
-	 *            The width of the allowed area
-	 * @param height
-	 *            The height of the allowed area
+	 * Set the clipping to apply to the drawing. Note that this clipping takes no note of the transforms that have been
+	 * applied to the context and is always in absolute screen space coordinates.
+	 * <p>
+	 * @param x The x coordinate of the top left corner of the allowed area
+	 * @param y The y coordinate of the top left corner of the allowed area
+	 * @param width The width of the allowed area
+	 * @param height The height of the allowed area
 	 */
 	public void setClip(int x, int y, int width, int height) {
 		predraw();
@@ -809,13 +797,10 @@ public class Graphics {
 	}
 
 	/**
-	 * Set the clipping to apply to the drawing. Note that this clipping takes
-	 * no note of the transforms that have been applied to the context and is
-	 * always in absolute screen space coordinates.
-	 * 
-	 * @param rect
-	 *            The rectangle describing the clipped area in screen
-	 *            coordinates
+	 * Set the clipping to apply to the drawing. Note that this clipping takes no note of the transforms that have been
+	 * applied to the context and is always in absolute screen space coordinates.
+	 * <p>
+	 * @param rect The rectangle describing the clipped area in screen coordinates
 	 */
 	public void setClip(Rectangle rect) {
 		if (rect == null) {
@@ -829,35 +814,26 @@ public class Graphics {
 
 	/**
 	 * Return the currently applied clipping rectangle
-	 * 
-	 * @return The current applied clipping rectangle or null if no clipping is
-	 *         applied
+	 * <p>
+	 * @return The current applied clipping rectangle or null if no clipping is applied
 	 */
 	public Rectangle getClip() {
 		return clip;
 	}
 
 	/**
-	 * Tile a rectangle with a pattern specifing the offset from the top corner
-	 * that one tile should match
-	 * 
-	 * @param x
-	 *            The x coordinate of the rectangle
-	 * @param y
-	 *            The y coordinate of the rectangle
-	 * @param width
-	 *            The width of the rectangle
-	 * @param height
-	 *            The height of the rectangle
-	 * @param pattern
-	 *            The image to tile across the rectangle
-	 * @param offX
-	 *            The offset on the x axis from the top left corner
-	 * @param offY
-	 *            The offset on the y axis from the top left corner
+	 * Tile a rectangle with a pattern specifing the offset from the top corner that one tile should match
+	 * <p>
+	 * @param x The x coordinate of the rectangle
+	 * @param y The y coordinate of the rectangle
+	 * @param width The width of the rectangle
+	 * @param height The height of the rectangle
+	 * @param pattern The image to tile across the rectangle
+	 * @param offX The offset on the x axis from the top left corner
+	 * @param offY The offset on the y axis from the top left corner
 	 */
 	public void fillRect(float x, float y, float width, float height,
-			Image pattern, float offX, float offY) {
+						 Image pattern, float offX, float offY) {
 		int cols = ((int) Math.ceil(width / pattern.getWidth())) + 2;
 		int rows = ((int) Math.ceil(height / pattern.getHeight())) + 2;
 
@@ -879,15 +855,11 @@ public class Graphics {
 
 	/**
 	 * Fill a rectangle on the canvas in the current color
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner
-	 * @param y1
-	 *            The y coordinate of the top left corner
-	 * @param width
-	 *            The width of the rectangle to fill
-	 * @param height
-	 *            The height of the rectangle to fill
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner
+	 * @param y1 The y coordinate of the top left corner
+	 * @param width The width of the rectangle to fill
+	 * @param height The height of the rectangle to fill
 	 */
 	public void fillRect(float x1, float y1, float width, float height) {
 		predraw();
@@ -905,17 +877,11 @@ public class Graphics {
 
 	/**
 	 * Draw an oval to the canvas
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner of a box containing
-	 *            the oval
-	 * @param y1
-	 *            The y coordinate of the top left corner of a box containing
-	 *            the oval
-	 * @param width
-	 *            The width of the oval
-	 * @param height
-	 *            The height of the oval
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner of a box containing the oval
+	 * @param y1 The y coordinate of the top left corner of a box containing the oval
+	 * @param width The width of the oval
+	 * @param height The height of the oval
 	 */
 	public void drawOval(float x1, float y1, float width, float height) {
 		drawOval(x1, y1, width, height, DEFAULT_SEGMENTS);
@@ -923,70 +889,46 @@ public class Graphics {
 
 	/**
 	 * Draw an oval to the canvas
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner of a box containing
-	 *            the oval
-	 * @param y1
-	 *            The y coordinate of the top left corner of a box containing
-	 *            the oval
-	 * @param width
-	 *            The width of the oval
-	 * @param height
-	 *            The height of the oval
-	 * @param segments
-	 *            The number of line segments to use when drawing the oval
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner of a box containing the oval
+	 * @param y1 The y coordinate of the top left corner of a box containing the oval
+	 * @param width The width of the oval
+	 * @param height The height of the oval
+	 * @param segments The number of line segments to use when drawing the oval
 	 */
 	public void drawOval(float x1, float y1, float width, float height,
-			int segments) {
+						 int segments) {
 		drawArc(x1, y1, width, height, segments, 0, 360);
 	}
 
 	/**
 	 * Draw an oval to the canvas
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner of a box containing
-	 *            the arc
-	 * @param y1
-	 *            The y coordinate of the top left corner of a box containing
-	 *            the arc
-	 * @param width
-	 *            The width of the arc
-	 * @param height
-	 *            The height of the arc
-	 * @param start
-	 *            The angle the arc starts at
-	 * @param end
-	 *            The angle the arc ends at
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner of a box containing the arc
+	 * @param y1 The y coordinate of the top left corner of a box containing the arc
+	 * @param width The width of the arc
+	 * @param height The height of the arc
+	 * @param start The angle the arc starts at
+	 * @param end The angle the arc ends at
 	 */
 	public void drawArc(float x1, float y1, float width, float height,
-			float start, float end) {
+						float start, float end) {
 		drawArc(x1, y1, width, height, DEFAULT_SEGMENTS, start, end);
 	}
 
 	/**
 	 * Draw an oval to the canvas
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner of a box containing
-	 *            the arc
-	 * @param y1
-	 *            The y coordinate of the top left corner of a box containing
-	 *            the arc
-	 * @param width
-	 *            The width of the arc
-	 * @param height
-	 *            The height of the arc
-	 * @param segments
-	 *            The number of line segments to use when drawing the arc
-	 * @param start
-	 *            The angle the arc starts at
-	 * @param end
-	 *            The angle the arc ends at
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner of a box containing the arc
+	 * @param y1 The y coordinate of the top left corner of a box containing the arc
+	 * @param width The width of the arc
+	 * @param height The height of the arc
+	 * @param segments The number of line segments to use when drawing the arc
+	 * @param start The angle the arc starts at
+	 * @param end The angle the arc ends at
 	 */
 	public void drawArc(float x1, float y1, float width, float height,
-			int segments, float start, float end) {
+						int segments, float start, float end) {
 		predraw();
 		TextureImpl.bindNone();
 		currentColor.bind();
@@ -1017,17 +959,11 @@ public class Graphics {
 
 	/**
 	 * Fill an oval to the canvas
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner of a box containing
-	 *            the oval
-	 * @param y1
-	 *            The y coordinate of the top left corner of a box containing
-	 *            the oval
-	 * @param width
-	 *            The width of the oval
-	 * @param height
-	 *            The height of the oval
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner of a box containing the oval
+	 * @param y1 The y coordinate of the top left corner of a box containing the oval
+	 * @param width The width of the oval
+	 * @param height The height of the oval
 	 */
 	public void fillOval(float x1, float y1, float width, float height) {
 		fillOval(x1, y1, width, height, DEFAULT_SEGMENTS);
@@ -1035,70 +971,46 @@ public class Graphics {
 
 	/**
 	 * Fill an oval to the canvas
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner of a box containing
-	 *            the oval
-	 * @param y1
-	 *            The y coordinate of the top left corner of a box containing
-	 *            the oval
-	 * @param width
-	 *            The width of the oval
-	 * @param height
-	 *            The height of the oval
-	 * @param segments
-	 *            The number of line segments to use when filling the oval
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner of a box containing the oval
+	 * @param y1 The y coordinate of the top left corner of a box containing the oval
+	 * @param width The width of the oval
+	 * @param height The height of the oval
+	 * @param segments The number of line segments to use when filling the oval
 	 */
 	public void fillOval(float x1, float y1, float width, float height,
-			int segments) {
+						 int segments) {
 		fillArc(x1, y1, width, height, segments, 0, 360);
 	}
 
 	/**
 	 * Fill an arc to the canvas (a wedge)
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner of a box containing
-	 *            the arc
-	 * @param y1
-	 *            The y coordinate of the top left corner of a box containing
-	 *            the arc
-	 * @param width
-	 *            The width of the arc
-	 * @param height
-	 *            The height of the arc
-	 * @param start
-	 *            The angle the arc starts at
-	 * @param end
-	 *            The angle the arc ends at
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner of a box containing the arc
+	 * @param y1 The y coordinate of the top left corner of a box containing the arc
+	 * @param width The width of the arc
+	 * @param height The height of the arc
+	 * @param start The angle the arc starts at
+	 * @param end The angle the arc ends at
 	 */
 	public void fillArc(float x1, float y1, float width, float height,
-			float start, float end) {
+						float start, float end) {
 		fillArc(x1, y1, width, height, DEFAULT_SEGMENTS, start, end);
 	}
 
 	/**
 	 * Fill an arc to the canvas (a wedge)
-	 * 
-	 * @param x1
-	 *            The x coordinate of the top left corner of a box containing
-	 *            the arc
-	 * @param y1
-	 *            The y coordinate of the top left corner of a box containing
-	 *            the arc
-	 * @param width
-	 *            The width of the arc
-	 * @param height
-	 *            The height of the arc
-	 * @param segments
-	 *            The number of line segments to use when filling the arc
-	 * @param start
-	 *            The angle the arc starts at
-	 * @param end
-	 *            The angle the arc ends at
+	 * <p>
+	 * @param x1 The x coordinate of the top left corner of a box containing the arc
+	 * @param y1 The y coordinate of the top left corner of a box containing the arc
+	 * @param width The width of the arc
+	 * @param height The height of the arc
+	 * @param segments The number of line segments to use when filling the arc
+	 * @param start The angle the arc starts at
+	 * @param end The angle the arc ends at
 	 */
 	public void fillArc(float x1, float y1, float width, float height,
-			int segments, float start, float end) {
+						int segments, float start, float end) {
 		predraw();
 		TextureImpl.bindNone();
 		currentColor.bind();
@@ -1156,41 +1068,30 @@ public class Graphics {
 
 	/**
 	 * Draw a rounded rectangle
-	 * 
-	 * @param x
-	 *            The x coordinate of the top left corner of the rectangle
-	 * @param y
-	 *            The y coordinate of the top left corner of the rectangle
-	 * @param width
-	 *            The width of the rectangle
-	 * @param height
-	 *            The height of the rectangle
-	 * @param cornerRadius
-	 *            The radius of the rounded edges on the corners
+	 * <p>
+	 * @param x The x coordinate of the top left corner of the rectangle
+	 * @param y The y coordinate of the top left corner of the rectangle
+	 * @param width The width of the rectangle
+	 * @param height The height of the rectangle
+	 * @param cornerRadius The radius of the rounded edges on the corners
 	 */
 	public void drawRoundRect(float x, float y, float width, float height,
-			int cornerRadius) {
+							  int cornerRadius) {
 		drawRoundRect(x, y, width, height, cornerRadius, DEFAULT_SEGMENTS);
 	}
 
 	/**
 	 * Draw a rounded rectangle
-	 * 
-	 * @param x
-	 *            The x coordinate of the top left corner of the rectangle
-	 * @param y
-	 *            The y coordinate of the top left corner of the rectangle
-	 * @param width
-	 *            The width of the rectangle
-	 * @param height
-	 *            The height of the rectangle
-	 * @param cornerRadius
-	 *            The radius of the rounded edges on the corners
-	 * @param segs
-	 *            The number of segments to make the corners out of
+	 * <p>
+	 * @param x The x coordinate of the top left corner of the rectangle
+	 * @param y The y coordinate of the top left corner of the rectangle
+	 * @param width The width of the rectangle
+	 * @param height The height of the rectangle
+	 * @param cornerRadius The radius of the rounded edges on the corners
+	 * @param segs The number of segments to make the corners out of
 	 */
 	public void drawRoundRect(float x, float y, float width, float height,
-			int cornerRadius, int segs) {
+							  int cornerRadius, int segs) {
 		if (cornerRadius < 0) {
 			throw new IllegalArgumentException("corner radius must be > 0");
 		}
@@ -1225,41 +1126,30 @@ public class Graphics {
 
 	/**
 	 * Fill a rounded rectangle
-	 * 
-	 * @param x
-	 *            The x coordinate of the top left corner of the rectangle
-	 * @param y
-	 *            The y coordinate of the top left corner of the rectangle
-	 * @param width
-	 *            The width of the rectangle
-	 * @param height
-	 *            The height of the rectangle
-	 * @param cornerRadius
-	 *            The radius of the rounded edges on the corners
+	 * <p>
+	 * @param x The x coordinate of the top left corner of the rectangle
+	 * @param y The y coordinate of the top left corner of the rectangle
+	 * @param width The width of the rectangle
+	 * @param height The height of the rectangle
+	 * @param cornerRadius The radius of the rounded edges on the corners
 	 */
 	public void fillRoundRect(float x, float y, float width, float height,
-			int cornerRadius) {
+							  int cornerRadius) {
 		fillRoundRect(x, y, width, height, cornerRadius, DEFAULT_SEGMENTS);
 	}
 
 	/**
 	 * Fill a rounded rectangle
-	 * 
-	 * @param x
-	 *            The x coordinate of the top left corner of the rectangle
-	 * @param y
-	 *            The y coordinate of the top left corner of the rectangle
-	 * @param width
-	 *            The width of the rectangle
-	 * @param height
-	 *            The height of the rectangle
-	 * @param cornerRadius
-	 *            The radius of the rounded edges on the corners
-	 * @param segs
-	 *            The number of segments to make the corners out of
+	 * <p>
+	 * @param x The x coordinate of the top left corner of the rectangle
+	 * @param y The y coordinate of the top left corner of the rectangle
+	 * @param width The width of the rectangle
+	 * @param height The height of the rectangle
+	 * @param cornerRadius The radius of the rounded edges on the corners
+	 * @param segs The number of segments to make the corners out of
 	 */
 	public void fillRoundRect(float x, float y, float width, float height,
-			int cornerRadius, int segs) {
+							  int cornerRadius, int segs) {
 		if (cornerRadius < 0) {
 			throw new IllegalArgumentException("corner radius must be > 0");
 		}
@@ -1296,10 +1186,8 @@ public class Graphics {
 
 	/**
 	 * Set the with of the line to be used when drawing line based primitives
-	 * 
-	 * @param width
-	 *            The width of the line to be used when drawing line based
-	 *            primitives
+	 * <p>
+	 * @param width The width of the line to be used when drawing line based primitives
 	 */
 	public void setLineWidth(float width) {
 		predraw();
@@ -1311,7 +1199,7 @@ public class Graphics {
 
 	/**
 	 * Get the width of lines being drawn in this context
-	 * 
+	 * <p>
 	 * @return The width of lines being draw in this context
 	 */
 	public float getLineWidth() {
@@ -1333,9 +1221,8 @@ public class Graphics {
 
 	/**
 	 * Indicate if we should antialias as we draw primitives
-	 * 
-	 * @param anti
-	 *            True if we should antialias
+	 * <p>
+	 * @param anti True if we should antialias
 	 */
 	public void setAntiAlias(boolean anti) {
 		predraw();
@@ -1351,7 +1238,7 @@ public class Graphics {
 
 	/**
 	 * True if antialiasing has been turned on for this graphics context
-	 * 
+	 * <p>
 	 * @return True if antialiasing has been turned on for this graphics context
 	 */
 	public boolean isAntiAlias() {
@@ -1360,13 +1247,10 @@ public class Graphics {
 
 	/**
 	 * Draw a string to the screen using the current font
-	 * 
-	 * @param str
-	 *            The string to draw
-	 * @param x
-	 *            The x coordinate to draw the string at
-	 * @param y
-	 *            The y coordinate to draw the string at
+	 * <p>
+	 * @param str The string to draw
+	 * @param x The x coordinate to draw the string at
+	 * @param y The y coordinate to draw the string at
 	 */
 	public void drawString(String str, float x, float y) {
 		predraw();
@@ -1376,15 +1260,11 @@ public class Graphics {
 
 	/**
 	 * Draw an image to the screen
-	 * 
-	 * @param image
-	 *            The image to draw to the screen
-	 * @param x
-	 *            The x location at which to draw the image
-	 * @param y
-	 *            The y location at which to draw the image
-	 * @param col
-	 *            The color to apply to the image as a filter
+	 * <p>
+	 * @param image The image to draw to the screen
+	 * @param x The x location at which to draw the image
+	 * @param y The y location at which to draw the image
+	 * @param col The color to apply to the image as a filter
 	 */
 	public void drawImage(Image image, float x, float y, Color col) {
 		predraw();
@@ -1395,13 +1275,10 @@ public class Graphics {
 
 	/**
 	 * Draw an animation to this graphics context
-	 * 
-	 * @param anim
-	 *            The animation to be drawn
-	 * @param x
-	 *            The x position to draw the animation at
-	 * @param y
-	 *            The y position to draw the animation at
+	 * <p>
+	 * @param anim The animation to be drawn
+	 * @param x The x position to draw the animation at
+	 * @param y The y position to draw the animation at
 	 */
 	public void drawAnimation(Animation anim, float x, float y) {
 		drawAnimation(anim, x, y, Color.white);
@@ -1409,15 +1286,11 @@ public class Graphics {
 
 	/**
 	 * Draw an animation to this graphics context
-	 * 
-	 * @param anim
-	 *            The animation to be drawn
-	 * @param x
-	 *            The x position to draw the animation at
-	 * @param y
-	 *            The y position to draw the animation at
-	 * @param col
-	 *            The color to apply to the animation as a filter
+	 * <p>
+	 * @param anim The animation to be drawn
+	 * @param x The x position to draw the animation at
+	 * @param y The y position to draw the animation at
+	 * @param col The color to apply to the animation as a filter
 	 */
 	public void drawAnimation(Animation anim, float x, float y, Color col) {
 		predraw();
@@ -1428,47 +1301,32 @@ public class Graphics {
 
 	/**
 	 * Draw an image to the screen
-	 * 
-	 * @param image
-	 *            The image to draw to the screen
-	 * @param x
-	 *            The x location at which to draw the image
-	 * @param y
-	 *            The y location at which to draw the image
+	 * <p>
+	 * @param image The image to draw to the screen
+	 * @param x The x location at which to draw the image
+	 * @param y The y location at which to draw the image
 	 */
 	public void drawImage(Image image, float x, float y) {
 		drawImage(image, x, y, Color.white);
 	}
 
 	/**
-	 * Draw a section of an image at a particular location and scale on the
-	 * screen
-	 * 
-	 * @param image
-	 *            The image to draw a section of
-	 * @param x
-	 *            The x position to draw the image
-	 * @param y
-	 *            The y position to draw the image
-	 * @param x2
-	 *            The x position of the bottom right corner of the drawn image
-	 * @param y2
-	 *            The y position of the bottom right corner of the drawn image
-	 * @param srcx
-	 *            The x position of the rectangle to draw from this image (i.e.
-	 *            relative to the image)
-	 * @param srcy
-	 *            The y position of the rectangle to draw from this image (i.e.
-	 *            relative to the image)
-	 * @param srcx2
-	 *            The x position of the bottom right cornder of rectangle to
-	 *            draw from this image (i.e. relative to the image)
-	 * @param srcy2
-	 *            The t position of the bottom right cornder of rectangle to
-	 *            draw from this image (i.e. relative to the image)
+	 * Draw a section of an image at a particular location and scale on the screen
+	 * <p>
+	 * @param image The image to draw a section of
+	 * @param x The x position to draw the image
+	 * @param y The y position to draw the image
+	 * @param x2 The x position of the bottom right corner of the drawn image
+	 * @param y2 The y position of the bottom right corner of the drawn image
+	 * @param srcx The x position of the rectangle to draw from this image (i.e. relative to the image)
+	 * @param srcy The y position of the rectangle to draw from this image (i.e. relative to the image)
+	 * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+	 * the image)
+	 * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+	 * the image)
 	 */
 	public void drawImage(Image image, float x, float y, float x2, float y2,
-			float srcx, float srcy, float srcx2, float srcy2) {
+						  float srcx, float srcy, float srcx2, float srcy2) {
 		predraw();
 		image.draw(x, y, x2, y2, srcx, srcy, srcx2, srcy2);
 		currentColor.bind();
@@ -1476,44 +1334,31 @@ public class Graphics {
 	}
 
 	/**
-	 * Draw a section of an image at a particular location and scale on the
-	 * screen
-	 * 
-	 * @param image
-	 *            The image to draw a section of
-	 * @param x
-	 *            The x position to draw the image
-	 * @param y
-	 *            The y position to draw the image
-	 * @param srcx
-	 *            The x position of the rectangle to draw from this image (i.e.
-	 *            relative to the image)
-	 * @param srcy
-	 *            The y position of the rectangle to draw from this image (i.e.
-	 *            relative to the image)
-	 * @param srcx2
-	 *            The x position of the bottom right cornder of rectangle to
-	 *            draw from this image (i.e. relative to the image)
-	 * @param srcy2
-	 *            The t position of the bottom right cornder of rectangle to
-	 *            draw from this image (i.e. relative to the image)
+	 * Draw a section of an image at a particular location and scale on the screen
+	 * <p>
+	 * @param image The image to draw a section of
+	 * @param x The x position to draw the image
+	 * @param y The y position to draw the image
+	 * @param srcx The x position of the rectangle to draw from this image (i.e. relative to the image)
+	 * @param srcy The y position of the rectangle to draw from this image (i.e. relative to the image)
+	 * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+	 * the image)
+	 * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+	 * the image)
 	 */
 	public void drawImage(Image image, float x, float y, float srcx,
-			float srcy, float srcx2, float srcy2) {
+						  float srcy, float srcx2, float srcy2) {
 		drawImage(image, x, y, x + image.getWidth(), y + image.getHeight(),
 				srcx, srcy, srcx2, srcy2);
 	}
 
 	/**
-	 * Copy an area of the rendered screen into an image. The width and height
-	 * of the area are assumed to match that of the image
-	 * 
-	 * @param target
-	 *            The target image
-	 * @param x
-	 *            The x position to copy from
-	 * @param y
-	 *            The y position to copy from
+	 * Copy an area of the rendered screen into an image. The width and height of the area are assumed to match that of
+	 * the image
+	 * <p>
+	 * @param target The target image
+	 * @param x The x position to copy from
+	 * @param y The y position to copy from
 	 */
 	public void copyArea(Image target, int x, int y) {
 		int format = target.getTexture().hasAlpha() ? SGL.GL_RGBA : SGL.GL_RGB;
@@ -1526,9 +1371,9 @@ public class Graphics {
 
 	/**
 	 * Translate an unsigned int into a signed integer
-	 * 
-	 * @param b
-	 *            The byte to convert
+	 * <p>
+	 * @param b The byte to convert
+	 * <p>
 	 * @return The integer value represented by the byte
 	 */
 	private int translate(byte b) {
@@ -1541,11 +1386,10 @@ public class Graphics {
 
 	/**
 	 * Get the colour of a single pixel in this graphics context
-	 * 
-	 * @param x
-	 *            The x coordinate of the pixel to read
-	 * @param y
-	 *            The y coordinate of the pixel to read
+	 * <p>
+	 * @param x The x coordinate of the pixel to read
+	 * @param y The y coordinate of the pixel to read
+	 * <p>
 	 * @return The colour of the pixel at the specified location
 	 */
 	public Color getPixel(int x, int y) {
@@ -1561,10 +1405,10 @@ public class Graphics {
 
 	/**
 	 * Get an ara of pixels as RGBA values into a buffer
-	 * 
+	 * <p>
 	 * @param x The x position in the context to grab from
 	 * @param y The y position in the context to grab from
-	 * @param width The width of the area to grab from 
+	 * @param width The width of the area to grab from
 	 * @param height The hiehgt of the area to grab from
 	 * @param target The target buffer to grab into
 	 */
@@ -1580,36 +1424,23 @@ public class Graphics {
 	}
 
 	/**
-	 * Draw a section of an image at a particular location and scale on the
-	 * screen
-	 * 
-	 * @param image
-	 *            The image to draw a section of
-	 * @param x
-	 *            The x position to draw the image
-	 * @param y
-	 *            The y position to draw the image
-	 * @param x2
-	 *            The x position of the bottom right corner of the drawn image
-	 * @param y2
-	 *            The y position of the bottom right corner of the drawn image
-	 * @param srcx
-	 *            The x position of the rectangle to draw from this image (i.e.
-	 *            relative to the image)
-	 * @param srcy
-	 *            The y position of the rectangle to draw from this image (i.e.
-	 *            relative to the image)
-	 * @param srcx2
-	 *            The x position of the bottom right cornder of rectangle to
-	 *            draw from this image (i.e. relative to the image)
-	 * @param srcy2
-	 *            The t position of the bottom right cornder of rectangle to
-	 *            draw from this image (i.e. relative to the image)
-	 * @param col
-	 *            The color to apply to the image as a filter
+	 * Draw a section of an image at a particular location and scale on the screen
+	 * <p>
+	 * @param image The image to draw a section of
+	 * @param x The x position to draw the image
+	 * @param y The y position to draw the image
+	 * @param x2 The x position of the bottom right corner of the drawn image
+	 * @param y2 The y position of the bottom right corner of the drawn image
+	 * @param srcx The x position of the rectangle to draw from this image (i.e. relative to the image)
+	 * @param srcy The y position of the rectangle to draw from this image (i.e. relative to the image)
+	 * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+	 * the image)
+	 * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+	 * the image)
+	 * @param col The color to apply to the image as a filter
 	 */
 	public void drawImage(Image image, float x, float y, float x2, float y2,
-			float srcx, float srcy, float srcx2, float srcy2, Color col) {
+						  float srcx, float srcy, float srcx2, float srcy2, Color col) {
 		predraw();
 		image.draw(x, y, x2, y2, srcx, srcy, srcx2, srcy2, col);
 		currentColor.bind();
@@ -1617,67 +1448,44 @@ public class Graphics {
 	}
 
 	/**
-	 * Draw a section of an image at a particular location and scale on the
-	 * screen
-	 * 
-	 * @param image
-	 *            The image to draw a section of
-	 * @param x
-	 *            The x position to draw the image
-	 * @param y
-	 *            The y position to draw the image
-	 * @param srcx
-	 *            The x position of the rectangle to draw from this image (i.e.
-	 *            relative to the image)
-	 * @param srcy
-	 *            The y position of the rectangle to draw from this image (i.e.
-	 *            relative to the image)
-	 * @param srcx2
-	 *            The x position of the bottom right cornder of rectangle to
-	 *            draw from this image (i.e. relative to the image)
-	 * @param srcy2
-	 *            The t position of the bottom right cornder of rectangle to
-	 *            draw from this image (i.e. relative to the image)
-	 * @param col
-	 *            The color to apply to the image as a filter
+	 * Draw a section of an image at a particular location and scale on the screen
+	 * <p>
+	 * @param image The image to draw a section of
+	 * @param x The x position to draw the image
+	 * @param y The y position to draw the image
+	 * @param srcx The x position of the rectangle to draw from this image (i.e. relative to the image)
+	 * @param srcy The y position of the rectangle to draw from this image (i.e. relative to the image)
+	 * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+	 * the image)
+	 * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+	 * the image)
+	 * @param col The color to apply to the image as a filter
 	 */
 	public void drawImage(Image image, float x, float y, float srcx,
-			float srcy, float srcx2, float srcy2, Color col) {
+						  float srcy, float srcx2, float srcy2, Color col) {
 		drawImage(image, x, y, x + image.getWidth(), y + image.getHeight(),
 				srcx, srcy, srcx2, srcy2, col);
 	}
 
 	/**
 	 * Draw a line with a gradient between the two points.
-	 * 
-	 * @param x1
-	 *            The starting x position to draw the line
-	 * @param y1
-	 *            The starting y position to draw the line
-	 * @param red1
-	 *            The starting position's shade of red
-	 * @param green1
-	 *            The starting position's shade of green
-	 * @param blue1
-	 *            The starting position's shade of blue
-	 * @param alpha1
-	 *            The starting position's alpha value
-	 * @param x2
-	 *            The ending x position to draw the line
-	 * @param y2
-	 *            The ending y position to draw the line
-	 * @param red2
-	 *            The ending position's shade of red
-	 * @param green2
-	 *            The ending position's shade of green
-	 * @param blue2
-	 *            The ending position's shade of blue
-	 * @param alpha2
-	 *            The ending position's alpha value
+	 * <p>
+	 * @param x1 The starting x position to draw the line
+	 * @param y1 The starting y position to draw the line
+	 * @param red1 The starting position's shade of red
+	 * @param green1 The starting position's shade of green
+	 * @param blue1 The starting position's shade of blue
+	 * @param alpha1 The starting position's alpha value
+	 * @param x2 The ending x position to draw the line
+	 * @param y2 The ending y position to draw the line
+	 * @param red2 The ending position's shade of red
+	 * @param green2 The ending position's shade of green
+	 * @param blue2 The ending position's shade of blue
+	 * @param alpha2 The ending position's alpha value
 	 */
 	public void drawGradientLine(float x1, float y1, float red1, float green1,
-			float blue1, float alpha1, float x2, float y2, float red2,
-			float green2, float blue2, float alpha2) {
+								 float blue1, float alpha1, float x2, float y2, float red2,
+								 float green2, float blue2, float alpha2) {
 		predraw();
 
 		TextureImpl.bindNone();
@@ -1697,22 +1505,16 @@ public class Graphics {
 
 	/**
 	 * Draw a line with a gradient between the two points.
-	 * 
-	 * @param x1
-	 *            The starting x position to draw the line
-	 * @param y1
-	 *            The starting y position to draw the line
-	 * @param Color1
-	 *            The starting position's color
-	 * @param x2
-	 *            The ending x position to draw the line
-	 * @param y2
-	 *            The ending y position to draw the line
-	 * @param Color2
-	 *            The ending position's color
+	 * <p>
+	 * @param x1 The starting x position to draw the line
+	 * @param y1 The starting y position to draw the line
+	 * @param Color1 The starting position's color
+	 * @param x2 The ending x position to draw the line
+	 * @param y2 The ending y position to draw the line
+	 * @param Color2 The ending position's color
 	 */
 	public void drawGradientLine(float x1, float y1, Color Color1, float x2,
-			float y2, Color Color2) {
+								 float y2, Color Color2) {
 		predraw();
 
 		TextureImpl.bindNone();
@@ -1731,10 +1533,9 @@ public class Graphics {
 	}
 
 	/**
-	 * Push the current state of the transform from this graphics contexts
-	 * onto the underlying graphics stack's transform stack. An associated 
-	 * popTransform() must be performed to restore the state before the end
-	 * of the rendering loop.
+	 * Push the current state of the transform from this graphics contexts onto the underlying graphics stack's
+	 * transform stack. An associated popTransform() must be performed to restore the state before the end of the
+	 * rendering loop.
 	 */
 	public void pushTransform() {
 		predraw();
@@ -1756,8 +1557,8 @@ public class Graphics {
 	}
 
 	/**
-	 * Pop a previously pushed transform from the stack to the current. This should
-	 * only be called if a transform has been previously pushed.
+	 * Pop a previously pushed transform from the stack to the current. This should only be called if a transform has
+	 * been previously pushed.
 	 */
 	public void popTransform() {
 		if (stackIndex == 0) {
@@ -1776,8 +1577,8 @@ public class Graphics {
 	}
 
 	/**
-	 * Dispose this graphics context, this will release any underlying resourses. However
-	 * this will also invalidate it's use
+	 * Dispose this graphics context, this will release any underlying resourses. However this will also invalidate it's
+	 * use
 	 */
 	public void destroy() {
 

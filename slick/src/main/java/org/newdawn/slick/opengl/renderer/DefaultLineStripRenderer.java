@@ -1,14 +1,16 @@
 package org.newdawn.slick.opengl.renderer;
 
 /**
- * The default version of the renderer relies of GL calls to do everything. 
- * Unfortunately this is driver dependent and often implemented inconsistantly
- * 
+ * The default version of the renderer relies of GL calls to do everything. Unfortunately this is driver dependent and
+ * often implemented inconsistantly
+ * <p>
  * @author kevin
  */
 public class DefaultLineStripRenderer implements LineStripRenderer {
 
-	/** The access to OpenGL */
+	/**
+	 * The access to OpenGL
+	 */
 	private SGL GL = Renderer.get();
 
 	/**

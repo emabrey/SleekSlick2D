@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  * A test of the font rendering capabilities
- *
+ * <p>
  * @author James Chambers (Jimmy)
  * @author Kevin Glass (kevglass)
  */
@@ -73,8 +73,7 @@ public class TrueTypeFontPerformanceTest extends BasicGame {
 	}
 
 	/**
-	 * @see org.newdawn.slick.BasicGame#render(org.newdawn.slick.GameContainer,
-	 *      org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.BasicGame#render(org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void render(GameContainer container, Graphics g) {
 		g.setFont(font);
@@ -88,8 +87,7 @@ public class TrueTypeFontPerformanceTest extends BasicGame {
 	}
 
 	/**
-	 * @see org.newdawn.slick.BasicGame#update(org.newdawn.slick.GameContainer,
-	 *      int)
+	 * @see org.newdawn.slick.BasicGame#update(org.newdawn.slick.GameContainer, int)
 	 */
 	public void update(GameContainer container, int delta)
 			throws SlickException {
@@ -109,7 +107,7 @@ public class TrueTypeFontPerformanceTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed in the test
 	 */
 	public static void main(String[] argv) {
@@ -118,7 +116,8 @@ public class TrueTypeFontPerformanceTest extends BasicGame {
 					new TrueTypeFontPerformanceTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

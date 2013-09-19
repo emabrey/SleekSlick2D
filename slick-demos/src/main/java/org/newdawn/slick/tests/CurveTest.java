@@ -12,7 +12,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 /**
  * A rudimentry test of loading SVG from inkscape
- *
+ * <p>
  * @author kevin
  */
 public class CurveTest extends BasicGame {
@@ -76,7 +76,7 @@ public class CurveTest extends BasicGame {
 
 	/**
 	 * Draw a marker for a given point
-	 *
+	 * <p>
 	 * @param g The graphics context on which to draw
 	 * @param p The point to draw
 	 */
@@ -105,7 +105,7 @@ public class CurveTest extends BasicGame {
 
 	/**
 	 * Entry point to our simple test
-	 *
+	 * <p>
 	 * @param argv The arguments passed in
 	 */
 	public static void main(String argv[]) {
@@ -113,7 +113,8 @@ public class CurveTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new CurveTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

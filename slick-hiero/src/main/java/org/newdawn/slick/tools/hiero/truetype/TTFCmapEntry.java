@@ -19,8 +19,7 @@
 package org.newdawn.slick.tools.hiero.truetype;
 
 /**
- * The CMap entry contains information of a Unicode range and the
- * the glyph indexes related to the range
+ * The CMap entry contains information of a Unicode range and the the glyph indexes related to the range
  */
 public class TTFCmapEntry {
 
@@ -50,9 +49,9 @@ public class TTFCmapEntry {
 
 	/**
 	 * Create a new entry
-	 *
-	 * @param unicodeStart    The first character available
-	 * @param unicodeEnd      The last character avaialble
+	 * <p>
+	 * @param unicodeStart The first character available
+	 * @param unicodeEnd The last character avaialble
 	 * @param glyphStartIndex The first glyph represented
 	 */
 	TTFCmapEntry(int unicodeStart, int unicodeEnd, int glyphStartIndex) {
@@ -78,7 +77,7 @@ public class TTFCmapEntry {
 
 	/**
 	 * Returns the glyphStartIndex.
-	 *
+	 * <p>
 	 * @return int
 	 */
 	public int getGlyphStartIndex() {
@@ -87,7 +86,7 @@ public class TTFCmapEntry {
 
 	/**
 	 * Returns the unicodeEnd.
-	 *
+	 * <p>
 	 * @return int
 	 */
 	public int getUnicodeEnd() {
@@ -96,7 +95,7 @@ public class TTFCmapEntry {
 
 	/**
 	 * Returns the unicodeStart.
-	 *
+	 * <p>
 	 * @return int
 	 */
 	public int getUnicodeStart() {
@@ -105,7 +104,7 @@ public class TTFCmapEntry {
 
 	/**
 	 * Sets the glyphStartIndex.
-	 *
+	 * <p>
 	 * @param glyphStartIndex The glyphStartIndex to set
 	 */
 	public void setGlyphStartIndex(int glyphStartIndex) {
@@ -114,7 +113,7 @@ public class TTFCmapEntry {
 
 	/**
 	 * Sets the unicodeEnd.
-	 *
+	 * <p>
 	 * @param unicodeEnd The unicodeEnd to set
 	 */
 	public void setUnicodeEnd(int unicodeEnd) {
@@ -123,7 +122,7 @@ public class TTFCmapEntry {
 
 	/**
 	 * Sets the unicodeStart.
-	 *
+	 * <p>
 	 * @param unicodeStart The unicodeStart to set
 	 */
 	public void setUnicodeStart(int unicodeStart) {

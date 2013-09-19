@@ -5,37 +5,51 @@ import java.util.HashMap;
 
 /**
  * A quad space within a navigation mesh
- * 
+ * <p>
  * @author kevin
  */
 public class Space {
 
-	/** The x coordinate of the top corner of the space */
+	/**
+	 * The x coordinate of the top corner of the space
+	 */
 	private float x;
 
-	/** The y coordinate of the top corner of the space */
+	/**
+	 * The y coordinate of the top corner of the space
+	 */
 	private float y;
 
-	/** The width of the space */
+	/**
+	 * The width of the space
+	 */
 	private float width;
 
-	/** The height of the space */
+	/**
+	 * The height of the space
+	 */
 	private float height;
 
-	/** A map from spaces to the links that connect them to this space */
+	/**
+	 * A map from spaces to the links that connect them to this space
+	 */
 	private HashMap links = new HashMap();
 
-	/** A list of the links from this space to others */
+	/**
+	 * A list of the links from this space to others
+	 */
 	private ArrayList linksList = new ArrayList();
 
-	/** The cost to get to this node */
+	/**
+	 * The cost to get to this node
+	 */
 	private float cost;
 
 	/**
-	 * Create a new space 
-	 * 
-	 * @param x The x coordinate of the top corner of the space 
-	 * @param y The y coordinate of the top corner of the space 
+	 * Create a new space
+	 * <p>
+	 * @param x The x coordinate of the top corner of the space
+	 * @param y The y coordinate of the top corner of the space
 	 * @param width The width of the space
 	 * @param height The height of the space
 	 */
@@ -48,7 +62,7 @@ public class Space {
 
 	/**
 	 * Get the width of the space
-	 * 
+	 * <p>
 	 * @return The width of the space
 	 */
 	public float getWidth() {
@@ -57,7 +71,7 @@ public class Space {
 
 	/**
 	 * Get the height of the space
-	 * 
+	 * <p>
 	 * @return The height of the space
 	 */
 	public float getHeight() {
@@ -66,7 +80,7 @@ public class Space {
 
 	/**
 	 * Get the x coordinate of the top corner of the space
-	 * 
+	 * <p>
 	 * @return The x coordinate of the top corner of the space
 	 */
 	public float getX() {
@@ -75,7 +89,7 @@ public class Space {
 
 	/**
 	 * Get the y coordinate of the top corner of the space
-	 * 
+	 * <p>
 	 * @return The y coordinate of the top corner of the space
 	 */
 	public float getY() {
@@ -83,9 +97,8 @@ public class Space {
 	}
 
 	/**
-	 * Link this space to another by creating a link and finding the point
-	 * at which the spaces link up
-	 * 
+	 * Link this space to another by creating a link and finding the point at which the spaces link up
+	 * <p>
 	 * @param other The other space to link to
 	 */
 	public void link(Space other) {
@@ -122,11 +135,12 @@ public class Space {
 	}
 
 	/**
-	 * Check whether two locations are within tolerance distance. This is
-	 * used when finding aligned edges to remove float rounding errors
-	 * 
+	 * Check whether two locations are within tolerance distance. This is used when finding aligned edges to remove
+	 * float rounding errors
+	 * <p>
 	 * @param a The first value
 	 * @param b The second value
+	 * <p>
 	 * @return True if the edges are close enough (tm)
 	 */
 	private boolean inTolerance(float a, float b) {
@@ -135,8 +149,9 @@ public class Space {
 
 	/**
 	 * Check if this space has an edge that is joined with another
-	 * 
+	 * <p>
 	 * @param other The other space to check against
+	 * <p>
 	 * @return True if the spaces have a shared edge
 	 */
 	public boolean hasJoinedEdge(Space other) {
@@ -175,9 +190,10 @@ public class Space {
 	}
 
 	/**
-	 * Merge this space with another 
-	 * 
+	 * Merge this space with another
+	 * <p>
 	 * @param other The other space to merge with
+	 * <p>
 	 * @return The result space created by joining the two
 	 */
 	public Space merge(Space other) {
@@ -195,10 +211,11 @@ public class Space {
 	}
 
 	/**
-	 * Check if the given space can be merged with this one. It must have
-	 * an adjacent edge and have the same height or width as this space.
-	 * 
+	 * Check if the given space can be merged with this one. It must have an adjacent edge and have the same height or
+	 * width as this space.
+	 * <p>
 	 * @param other The other space to be considered
+	 * <p>
 	 * @return True if the spaces can be joined together
 	 */
 	public boolean canMerge(Space other) {
@@ -218,7 +235,7 @@ public class Space {
 
 	/**
 	 * Get the number of links
-	 * 
+	 * <p>
 	 * @return The number of links from the space to others
 	 */
 	public int getLinkCount() {
@@ -227,8 +244,9 @@ public class Space {
 
 	/**
 	 * Get the link from this space to another at a particular index
-	 * 
+	 * <p>
 	 * @param index The index of the link to retrieve
+	 * <p>
 	 * @return The link from this space to another
 	 */
 	public Link getLink(int index) {
@@ -237,9 +255,10 @@ public class Space {
 
 	/**
 	 * Check if this space contains a given point
-	 * 
+	 * <p>
 	 * @param xp The x coordinate to check
 	 * @param yp The y coordinate to check
+	 * <p>
 	 * @return True if this space container the coordinate given
 	 */
 	public boolean contains(float xp, float yp) {
@@ -248,7 +267,7 @@ public class Space {
 
 	/**
 	 * Fill the spaces based on the cost from a given starting point
-	 * 
+	 * <p>
 	 * @param target The target space we're heading for
 	 * @param sx The x coordinate of the starting point
 	 * @param sy The y coordinate of the starting point
@@ -280,7 +299,7 @@ public class Space {
 
 	/**
 	 * Get the cost to get to this node at the moment
-	 * 
+	 * <p>
 	 * @return The cost to get to this node
 	 */
 	public float getCost() {
@@ -289,9 +308,10 @@ public class Space {
 
 	/**
 	 * Pick the lowest cost route from this space to another on the path
-	 *  
+	 * <p>
 	 * @param target The target space we're looking for
 	 * @param path The path to add the steps to
+	 * <p>
 	 * @return True if the path was found
 	 */
 	public boolean pickLowestCost(Space target, NavPath path) {
@@ -316,7 +336,7 @@ public class Space {
 
 	/**
 	 * Get the string representation of this instance
-	 * 
+	 * <p>
 	 * @return The string representation of this instance
 	 */
 	public String toString() {

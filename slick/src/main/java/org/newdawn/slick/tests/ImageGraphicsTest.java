@@ -13,36 +13,54 @@ import org.newdawn.slick.opengl.pbuffer.GraphicsFactory;
 
 /**
  * A test for rendering to an image
- *
+ * <p>
  * @author kevin
  */
 public class ImageGraphicsTest extends BasicGame {
 
-	/** The image loaded and then rendered to */
+	/**
+	 * The image loaded and then rendered to
+	 */
 	private Image preloaded;
 
-	/** The image rendered to */
+	/**
+	 * The image rendered to
+	 */
 	private Image target;
 
-	/** The image cut from the screen */
+	/**
+	 * The image cut from the screen
+	 */
 	private Image cut;
 
-	/** The offscreen graphics */
+	/**
+	 * The offscreen graphics
+	 */
 	private Graphics gTarget;
 
-	/** The offscreen graphics */
+	/**
+	 * The offscreen graphics
+	 */
 	private Graphics offscreenPreload;
 
-	/** The image loaded */
+	/**
+	 * The image loaded
+	 */
 	private Image testImage;
 
-	/** The font loaded */
+	/**
+	 * The font loaded
+	 */
 	private Font testFont;
 
-	/** The angle of the rotation */
+	/**
+	 * The angle of the rotation
+	 */
 	private float ang;
 
-	/** The name of the dynamic image technique in use */
+	/**
+	 * The name of the dynamic image technique in use
+	 */
 	private String using = "none";
 
 	/**
@@ -159,7 +177,7 @@ public class ImageGraphicsTest extends BasicGame {
 
 	/**
 	 * Entry point to our test
-	 * 
+	 * <p>
 	 * @param argv The arguments to pass into the test
 	 */
 	public static void main(String[] argv) {
@@ -169,7 +187,8 @@ public class ImageGraphicsTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new ImageGraphicsTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

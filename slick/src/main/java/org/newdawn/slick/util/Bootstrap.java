@@ -5,14 +5,14 @@ import org.newdawn.slick.Game;
 
 /**
  * Utility class to wrap up starting a game in a single line
- * 
+ * <p>
  * @author kevin
  */
 public class Bootstrap {
 
 	/**
 	 * Start the game as an application
-	 * 
+	 * <p>
 	 * @param game The game to be started
 	 * @param width The width of the window
 	 * @param height The height of the window
@@ -22,7 +22,8 @@ public class Bootstrap {
 		try {
 			AppGameContainer container = new AppGameContainer(game, width, height, fullscreen);
 			container.start();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

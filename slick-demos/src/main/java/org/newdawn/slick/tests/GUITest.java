@@ -9,7 +9,7 @@ import org.newdawn.slick.util.Log;
 
 /**
  * A test for the GUI components available in Slick. Very simple stuff
- *
+ * <p>
  * @author kevin
  */
 public class GUITest extends BasicGame implements ComponentListener {
@@ -60,7 +60,7 @@ public class GUITest extends BasicGame implements ComponentListener {
 	private AppGameContainer app;
 
 	/**
-	 * Create a new test of GUI  rendering
+	 * Create a new test of GUI rendering
 	 */
 	public GUITest() {
 		super("GUI Test");
@@ -141,7 +141,8 @@ public class GUITest extends BasicGame implements ComponentListener {
 			if (app != null) {
 				try {
 					app.setDisplayMode(640, 480, false);
-				} catch (SlickException e) {
+				}
+				catch (SlickException e) {
 					Log.error(e);
 				}
 			}
@@ -150,7 +151,7 @@ public class GUITest extends BasicGame implements ComponentListener {
 
 	/**
 	 * Entry point to our test
-	 *
+	 * <p>
 	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
@@ -158,7 +159,8 @@ public class GUITest extends BasicGame implements ComponentListener {
 			AppGameContainer container = new AppGameContainer(new GUITest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

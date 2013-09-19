@@ -6,7 +6,7 @@ import java.io.File;
 
 /**
  * A utility to perform the Scale3x algorithm on a Java Image
- *
+ * <p>
  * @author Kevin Glass
  */
 public class ImageScale3x {
@@ -28,7 +28,7 @@ public class ImageScale3x {
 
 	/**
 	 * Create a new scaler that will scale the passed image
-	 *
+	 * <p>
 	 * @param srcImage The image to be scaled
 	 */
 	public ImageScale3x(BufferedImage srcImage) {
@@ -40,9 +40,8 @@ public class ImageScale3x {
 	}
 
 	/**
-	 * Retrieve the scaled image. Note this is the method that actually
-	 * does the work so it may take some time to return
-	 *
+	 * Retrieve the scaled image. Note this is the method that actually does the work so it may take some time to return
+	 * <p>
 	 * @return The newly scaled image
 	 */
 	public BufferedImage getScaledImage() {
@@ -56,7 +55,7 @@ public class ImageScale3x {
 
 	/**
 	 * An entry point and a bit of test code
-	 *
+	 * <p>
 	 * @param argv The arguments passed in to the test code
 	 */
 	public static void main(String argv[]) {
@@ -72,7 +71,8 @@ public class ImageScale3x {
 			outFile += ".png";
 			System.out.println("Writing: " + outFile);
 			ImageIO.write(out, "PNG", new File(outFile));
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

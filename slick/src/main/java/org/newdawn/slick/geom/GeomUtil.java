@@ -4,29 +4,37 @@ import java.util.ArrayList;
 
 /**
  * A set of utilities to play with geometry
- * 
+ * <p>
  * @author kevin
  */
 public class GeomUtil {
 
-	/** The tolerance for determining changes and steps */
+	/**
+	 * The tolerance for determining changes and steps
+	 */
 	public float EPSILON = 0.0001f;
 
-	/** The tolerance for determining direction change */
+	/**
+	 * The tolerance for determining direction change
+	 */
 	public float EDGE_SCALE = 1f;
 
-	/** The maximum number of points returned by an operation - prevents full lockups */
+	/**
+	 * The maximum number of points returned by an operation - prevents full lockups
+	 */
 	public int MAX_POINTS = 10000;
 
-	/** The listener to notify of operations */
+	/**
+	 * The listener to notify of operations
+	 */
 	public GeomUtilListener listener;
 
 	/**
-	 * Subtract one shape from another - note this is experimental and doesn't
-	 * currently handle islands
-	 *  
+	 * Subtract one shape from another - note this is experimental and doesn't currently handle islands
+	 * <p>
 	 * @param target The target to be subtracted from
-	 * @param missing The shape to subtract 
+	 * @param missing The shape to subtract
+	 * <p>
 	 * @return The newly created shapes
 	 */
 	public Shape[] subtract(Shape target, Shape missing) {
@@ -73,10 +81,11 @@ public class GeomUtil {
 
 	/**
 	 * Check if the given point is on the path
-	 * 
+	 * <p>
 	 * @param path The path to check
 	 * @param x The x coordinate of the point to check
 	 * @param y The y coordiante of teh point to check
+	 * <p>
 	 * @return True if the point is on the path
 	 */
 	private boolean onPath(Shape path, float x, float y) {
@@ -93,7 +102,7 @@ public class GeomUtil {
 
 	/**
 	 * Set the listener to be notified of geometry based operations
-	 * 
+	 * <p>
 	 * @param listener The listener to be notified of geometry based operations
 	 */
 	public void setListener(GeomUtilListener listener) {
@@ -101,12 +110,12 @@ public class GeomUtil {
 	}
 
 	/**
-	 * Join to shapes together. Note that the shapes must be touching
-	 * for this method to work.
-	 * 
+	 * Join to shapes together. Note that the shapes must be touching for this method to work.
+	 * <p>
 	 * @param target The target shape to union with
 	 * @param other The additional shape to union
-	 * @return The newly created shapes 
+	 * <p>
+	 * @return The newly created shapes
 	 */
 	public Shape[] union(Shape target, Shape other) {
 		target = target.transform(new Transform());
@@ -150,10 +159,11 @@ public class GeomUtil {
 
 	/**
 	 * Perform the combination
-	 * 
+	 * <p>
 	 * @param target The target shape we're updating
 	 * @param other The other shape in the operation
 	 * @param subtract True if it's a subtract operation, otherwise it's union
+	 * <p>
 	 * @return The set of shapes produced
 	 */
 	private Shape[] combine(Shape target, Shape other, boolean subtract) {
@@ -205,11 +215,12 @@ public class GeomUtil {
 
 	/**
 	 * Combine two shapes
-	 * 
+	 * <p>
 	 * @param target The target shape
 	 * @param missing The second shape to apply
 	 * @param subtract True if we should subtract missing from target, otherwise union
 	 * @param start The point to start at
+	 * <p>
 	 * @return The newly created shape
 	 */
 	private Shape combineSingle(Shape target, Shape missing, boolean subtract, int start) {
@@ -355,9 +366,10 @@ public class GeomUtil {
 
 	/**
 	 * Intersect a line with a shape
-	 * 
+	 * <p>
 	 * @param shape The shape to compare
 	 * @param line The line to intersect against the shape
+	 * <p>
 	 * @return The result describing the intersection or null if none
 	 */
 	public HitResult intersect(Shape shape, Line line) {
@@ -387,9 +399,10 @@ public class GeomUtil {
 
 	/**
 	 * Rationalise a point in terms of a given shape
-	 * 
-	 * @param shape The shape 
+	 * <p>
+	 * @param shape The shape
 	 * @param p The index of the point
+	 * <p>
 	 * @return The index that is rational for the shape
 	 */
 	public static int rationalPoint(Shape shape, int p) {
@@ -405,10 +418,11 @@ public class GeomUtil {
 
 	/**
 	 * Get a line between two points in a shape
-	 * 
+	 * <p>
 	 * @param shape The shape
 	 * @param s The index of the start point
 	 * @param e The index of the end point
+	 * <p>
 	 * @return The line between the two points
 	 */
 	public Line getLine(Shape shape, int s, int e) {
@@ -421,11 +435,12 @@ public class GeomUtil {
 
 	/**
 	 * Get a line between two points in a shape
-	 * 
+	 * <p>
 	 * @param shape The shape
 	 * @param sx The x coordinate of the start point
 	 * @param sy The y coordinate of the start point
 	 * @param e The index of the end point
+	 * <p>
 	 * @return The line between the two points
 	 */
 	public Line getLine(Shape shape, float sx, float sy, int e) {
@@ -436,21 +451,28 @@ public class GeomUtil {
 	}
 
 	/**
-	 * A lightweigtht description of a intersection between a shape and 
-	 * line.
+	 * A lightweigtht description of a intersection between a shape and line.
 	 */
 	public class HitResult {
 
-		/** The line on the target shape that intersected */
+		/**
+		 * The line on the target shape that intersected
+		 */
 		public Line line;
 
-		/** The index of the first point on the target shape that forms the line */
+		/**
+		 * The index of the first point on the target shape that forms the line
+		 */
 		public int p1;
 
-		/** The index of the second point on the target shape that forms the line */
+		/**
+		 * The index of the second point on the target shape that forms the line
+		 */
 		public int p2;
 
-		/** The position of the intersection */
+		/**
+		 * The position of the intersection
+		 */
 		public Vector2f pt;
 
 	}

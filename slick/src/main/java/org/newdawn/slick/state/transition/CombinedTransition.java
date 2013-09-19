@@ -9,14 +9,15 @@ import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 /**
- * A transition thats built of a set of other transitions which are chained
- * together to build the overall effect.
- *
+ * A transition thats built of a set of other transitions which are chained together to build the overall effect.
+ * <p>
  * @author kevin
  */
 public class CombinedTransition implements Transition {
 
-	/** The list of transitions to be combined */
+	/**
+	 * The list of transitions to be combined
+	 */
 	private ArrayList transitions = new ArrayList();
 
 	/**
@@ -26,9 +27,8 @@ public class CombinedTransition implements Transition {
 	}
 
 	/**
-	 * Add a transition to the list that will be combined to form
-	 * the final transition
-	 * 
+	 * Add a transition to the list that will be combined to form the final transition
+	 * <p>
 	 * @param t The transition to add
 	 */
 	public void addTransition(Transition t) {
@@ -49,7 +49,8 @@ public class CombinedTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#postRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void postRender(StateBasedGame game, GameContainer container, Graphics g) throws SlickException {
 		for (int i = transitions.size() - 1; i >= 0; i--) {
@@ -58,7 +59,8 @@ public class CombinedTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 * @see org.newdawn.slick.state.transition.Transition#preRender(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 	 */
 	public void preRender(StateBasedGame game, GameContainer container, Graphics g) throws SlickException {
 		for (int i = 0; i < transitions.size(); i++) {
@@ -67,7 +69,8 @@ public class CombinedTransition implements Transition {
 	}
 
 	/**
-	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, int)
+	 * @see org.newdawn.slick.state.transition.Transition#update(org.newdawn.slick.state.StateBasedGame,
+	 * org.newdawn.slick.GameContainer, int)
 	 */
 	public void update(StateBasedGame game, GameContainer container, int delta) throws SlickException {
 		for (int i = 0; i < transitions.size(); i++) {

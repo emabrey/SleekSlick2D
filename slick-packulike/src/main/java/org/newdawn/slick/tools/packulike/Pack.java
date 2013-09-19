@@ -13,20 +13,22 @@ import java.util.Comparator;
 
 /**
  * A daft image packer
- *
+ * <p>
  * @author kevin
  */
 public class Pack {
 
 	/**
 	 * Pack the images provided
-	 *
-	 * @param files  The list of file objects pointing at the images to be packed
-	 * @param width  The width of the sheet to be generated
+	 * <p>
+	 * @param files The list of file objects pointing at the images to be packed
+	 * @param width The width of the sheet to be generated
 	 * @param height The height of the sheet to be generated
 	 * @param border The border between sprites
-	 * @param out    The file to write out to
+	 * @param out The file to write out to
+	 * <p>
 	 * @return The generated sprite sheet
+	 * <p>
 	 * @throws IOException Indicates a failure to write out files
 	 */
 	public Sheet pack(ArrayList files, int width, int height, int border, File out) throws IOException {
@@ -39,7 +41,8 @@ public class Pack {
 
 				images.add(sprite);
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -48,13 +51,15 @@ public class Pack {
 
 	/**
 	 * Pack the images provided
-	 *
+	 * <p>
 	 * @param images The list of sprite objects pointing at the images to be packed
-	 * @param width  The width of the sheet to be generated
+	 * @param width The width of the sheet to be generated
 	 * @param height The height of the sheet to be generated
 	 * @param border The border between sprites
-	 * @param out    The file to write out to
+	 * @param out The file to write out to
+	 * <p>
 	 * @return The generated sprite sheet
+	 * <p>
 	 * @throws IOException Indicates a failure to write out files
 	 */
 	public Sheet packImages(ArrayList images, int width, int height, int border, File out) throws IOException {
@@ -116,7 +121,8 @@ public class Pack {
 				pout.println("</sheet>");
 				pout.close();
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			IOException io = new IOException("Failed writing image XML");
 			io.initCause(e);
@@ -127,7 +133,8 @@ public class Pack {
 		if (out != null) {
 			try {
 				ImageIO.write(result, "PNG", out);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				e.printStackTrace();
 
 				IOException io = new IOException("Failed writing image");
@@ -142,8 +149,9 @@ public class Pack {
 
 	/**
 	 * Entry point to the tool, just pack the current directory of images
-	 *
+	 * <p>
 	 * @param argv The arguments to the program
+	 * <p>
 	 * @throws IOException Indicates a failure to write out files
 	 */
 	public static void main(String[] argv) throws IOException {

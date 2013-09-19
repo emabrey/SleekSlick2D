@@ -7,15 +7,19 @@ import java.nio.ByteBuffer;
 
 /**
  * Decode an OGG file to PCM data
- * 
+ * <p>
  * @author Kevin Glass
  */
 public class OggDecoder {
 
-	/** The conversion buffer size */
+	/**
+	 * The conversion buffer size
+	 */
 	private int convsize = 4096 * 4;
 
-	/** The buffer used to read OGG file */
+	/**
+	 * The buffer used to read OGG file
+	 */
 	private byte[] convbuffer = new byte[convsize]; // take 8k out of the data segment, not the stack
 
 	/**
@@ -25,10 +29,12 @@ public class OggDecoder {
 	}
 
 	/**
-	 * Get the data out of an OGG file 
-	 * 
+	 * Get the data out of an OGG file
+	 * <p>
 	 * @param input The input stream from which to read the OGG file
+	 * <p>
 	 * @return The data describing the OGG thats been read
+	 * <p>
 	 * @throws IOException Indicaites a failure to read the OGG file
 	 */
 	public OggData getData(InputStream input) throws IOException {

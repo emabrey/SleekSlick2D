@@ -3,9 +3,9 @@ package org.newdawn.slick.tools.peditor;
 import org.newdawn.slick.particles.ConfigurableEmitter;
 
 /**
- * A panel to control has the particles are initially emitted from the source and what
- * the range of their initial values are
- *
+ * A panel to control has the particles are initially emitted from the source and what the range of their initial values
+ * are
+ * <p>
  * @author kevin
  */
 public class EmissionControls extends ControlPanel {
@@ -44,7 +44,7 @@ public class EmissionControls extends ControlPanel {
 
 	/**
 	 * Get the panel displaying the initial size of the particles
-	 *
+	 * <p>
 	 * @return The panel displaying the initial size
 	 */
 	public MinMaxPanel getInitialSize() {

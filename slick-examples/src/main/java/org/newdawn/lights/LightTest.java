@@ -13,21 +13,18 @@ import org.newdawn.slick.util.Bootstrap;
 import java.util.ArrayList;
 
 /**
- * This example shows using vertex colours on a tile map to producing a lighting
- * effect. The approach is very efficient and pretty flexible. It can be extended
- * in many ways.
+ * This example shows using vertex colours on a tile map to producing a lighting effect. The approach is very efficient
+ * and pretty flexible. It can be extended in many ways.
  * <p/>
- * The down side is that the resolution of your lighting map is the same as that of your
- * tile map. So the small area you'll see a change in lighting across is 32x32 pixels in
- * this case (the size of a single tile). This can be worked round by rendering black tiles
- * over an existing map at a different resolution. For instance, you may use 16x16 black tiles
- * over a 32x32 pixels tiled map to get a better resolution of lighting.
+ * The down side is that the resolution of your lighting map is the same as that of your tile map. So the small area
+ * you'll see a change in lighting across is 32x32 pixels in this case (the size of a single tile). This can be worked
+ * round by rendering black tiles over an existing map at a different resolution. For instance, you may use 16x16 black
+ * tiles over a 32x32 pixels tiled map to get a better resolution of lighting.
  * <p/>
- * This example essentially generates a random map of tiles, creates a set of lights and calculates
- * their effect on each of vertexs in the tiled map. When rendering we apply those calculated values
- * to the tile image vertex colours before rendering it. This gives us the effect of lighting
- * the tiles.
- *
+ * This example essentially generates a random map of tiles, creates a set of lights and calculates their effect on each
+ * of vertexs in the tiled map. When rendering we apply those calculated values to the tile image vertex colours before
+ * rendering it. This gives us the effect of lighting the tiles.
+ * <p>
  * @author kevin
  */
 public class LightTest extends BasicGame {
@@ -63,9 +60,8 @@ public class LightTest extends BasicGame {
 	private int[][] map = new int[WIDTH][HEIGHT];
 
 	/**
-	 * The values calculated for each vertex of the tile map,
-	 * note how it's one more to account for the bottom corner of the map.
-	 * The 3 dimension is for colour components (red, green, blue) used for coloured lighting
+	 * The values calculated for each vertex of the tile map, note how it's one more to account for the bottom corner of
+	 * the map. The 3 dimension is for colour components (red, green, blue) used for coloured lighting
 	 */
 	private float[][][] lightValue = new float[WIDTH + 1][HEIGHT + 1][3];
 
@@ -88,7 +84,7 @@ public class LightTest extends BasicGame {
 
 	/**
 	 * Initialise our resources for the example
-	 *
+	 * <p>
 	 * @param container The game container the game is running in
 	 */
 	public void init(GameContainer container) throws SlickException {
@@ -126,8 +122,7 @@ public class LightTest extends BasicGame {
 	}
 
 	/**
-	 * Update the vertex values for lighting based on the current
-	 * light configuration.
+	 * Update the vertex values for lighting based on the current light configuration.
 	 */
 	private void updateLightMap() {
 		// for every vertex on the map (notice the +1 again accounting for the trailing vertex)
@@ -138,7 +133,7 @@ public class LightTest extends BasicGame {
 					lightValue[x][y][component] = 0;
 				}
 
-                // next cycle through all the lights. Ask each light how much effect
+				// next cycle through all the lights. Ask each light how much effect
 				// it'll have on the current vertex. Combine this value with the currently
 				// existing value for the vertex. This lets us blend coloured lighting and
 				// brightness
@@ -149,7 +144,7 @@ public class LightTest extends BasicGame {
 					}
 				}
 
-                // finally clamp the components to 1, since we don't want to
+				// finally clamp the components to 1, since we don't want to
 				// blow up over the colour values
 				for (int component = 0; component < 3; component++) {
 					if (lightValue[x][y][component] > 1) {
@@ -162,9 +157,9 @@ public class LightTest extends BasicGame {
 
 	/**
 	 * Update the game
-	 *
+	 * <p>
 	 * @param container The container the game is running in
-	 * @param delta     The amount of time that passed since last update (in seconds)
+	 * @param delta The amount of time that passed since last update (in seconds)
 	 */
 	public void update(GameContainer container, int delta)
 			throws SlickException {
@@ -175,7 +170,7 @@ public class LightTest extends BasicGame {
 		// toggle the use of coloured lighting on/off
 		if (container.getInput().isKeyPressed(Input.KEY_C)) {
 			colouredLights = !colouredLights;
-            // we need to recaculate the lighting values because
+			// we need to recaculate the lighting values because
 			// colours may now be involved
 			updateLightMap();
 		}
@@ -183,7 +178,7 @@ public class LightTest extends BasicGame {
 
 	/**
 	 * Notification that the mouse was dragged
-	 *
+	 * <p>
 	 * @param oldx The old x coordinate of the mouse
 	 * @param oldy The old y coordinate of the mouse
 	 * @param newx The new x coordinate of the mouse
@@ -195,10 +190,10 @@ public class LightTest extends BasicGame {
 
 	/**
 	 * Notification that mouse was pressed
-	 *
+	 * <p>
 	 * @param button The button that was pressed
-	 * @param x      The x coordinate the mouse was pressed at
-	 * @param y      The y coordinate the mouse was pressed at
+	 * @param x The x coordinate the mouse was pressed at
+	 * @param y The y coordinate the mouse was pressed at
 	 */
 	public void mousePressed(int button, int x, int y) {
 		mainLight.setLocation((x - 64) / 32.0f, (y - 50) / 32.0f);
@@ -207,9 +202,9 @@ public class LightTest extends BasicGame {
 
 	/**
 	 * Render the tile map and lighting to the game window
-	 *
+	 * <p>
 	 * @param container The container the game is running in
-	 * @param g         The graphics context to which we can render
+	 * @param g The graphics context to which we can render
 	 */
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
@@ -232,7 +227,7 @@ public class LightTest extends BasicGame {
 				Image image = tiles.getSubImage(tile % 4, tile / 4);
 
 				if (lightingOn) {
-                    // if lighting is on apply the lighting values we've
+					// if lighting is on apply the lighting values we've
 					// calculated for each vertex to the image. We can apply
 					// colour components here as well as just a single value.
 					image.setColor(Image.TOP_LEFT, lightValue[x][y][0], lightValue[x][y][1], lightValue[x][y][2], 1);
@@ -240,7 +235,7 @@ public class LightTest extends BasicGame {
 					image.setColor(Image.BOTTOM_RIGHT, lightValue[x + 1][y + 1][0], lightValue[x + 1][y + 1][1], lightValue[x + 1][y + 1][2], 1);
 					image.setColor(Image.BOTTOM_LEFT, lightValue[x][y + 1][0], lightValue[x][y + 1][1], lightValue[x][y + 1][2], 1);
 				} else {
-                    // if lighting is turned off then use "1" for every value
+					// if lighting is turned off then use "1" for every value
 					// so we just have full colour everywhere.
 					float light = 1;
 					image.setColor(Image.TOP_LEFT, light, light, light, 1);
@@ -249,7 +244,7 @@ public class LightTest extends BasicGame {
 					image.setColor(Image.BOTTOM_LEFT, light, light, light, 1);
 				}
 
-                // draw the image with it's newly declared vertex colours
+				// draw the image with it's newly declared vertex colours
 				// to the display
 				image.drawEmbedded(x * 32, y * 32, 32, 32);
 			}
@@ -259,7 +254,7 @@ public class LightTest extends BasicGame {
 
 	/**
 	 * Entry point to the example game
-	 *
+	 * <p>
 	 * @param argv The arguments provided at the command line
 	 */
 	public static void main(String[] argv) {

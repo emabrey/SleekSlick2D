@@ -18,39 +18,59 @@ import org.newdawn.slick.geom.Vector2f;
 
 /**
  * A test to try shape building from multiple tiles
- * 
+ * <p>
  * @author Kevin Glass
  */
 public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
-	/** The shape we're cutting out of */
+	/**
+	 * The shape we're cutting out of
+	 */
 	private Shape source;
 
-	/** The shape we're cutting */
+	/**
+	 * The shape we're cutting
+	 */
 	private Shape cut;
 
-	/** The resulting shape */
+	/**
+	 * The resulting shape
+	 */
 	private Shape[] result;
 
-	/** The util under test */
+	/**
+	 * The util under test
+	 */
 	private GeomUtil util = new GeomUtil();
 
-	/** The original list of shapes */
+	/**
+	 * The original list of shapes
+	 */
 	private ArrayList original = new ArrayList();
 
-	/** The original list of shapes */
+	/**
+	 * The original list of shapes
+	 */
 	private ArrayList combined = new ArrayList();
 
-	/** The list of intersection points */
+	/**
+	 * The list of intersection points
+	 */
 	private ArrayList intersections = new ArrayList();
 
-	/** The list of used points */
+	/**
+	 * The list of used points
+	 */
 	private ArrayList used = new ArrayList();
 
-	/** The quad space of shapes that need to be checked against each other */
+	/**
+	 * The quad space of shapes that need to be checked against each other
+	 */
 	private ArrayList[][] quadSpace;
 
-	/** The shapes present in each quad space - used to optimize generation */
+	/**
+	 * The shapes present in each quad space - used to optimize generation
+	 */
 	private Shape[][] quadSpaceShapes;
 
 	/**
@@ -61,10 +81,9 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 	}
 
 	/**
-	 * So this is going to generate a quad space that holds that segments the
-	 * shapes into quads across the map. This makes it tunable and limits the number
-	 * of comparisons that need to be done for each shape
-	 * 
+	 * So this is going to generate a quad space that holds that segments the shapes into quads across the map. This
+	 * makes it tunable and limits the number of comparisons that need to be done for each shape
+	 * <p>
 	 * @param shapes The shapes to be segments
 	 * @param minx The minimum x value of the map
 	 * @param miny The mimimum y value of the map
@@ -105,7 +124,7 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Remove the given shape from the quad space
-	 * 
+	 * <p>
 	 * @param shape The shape to remove
 	 */
 	private void removeFromQuadSpace(Shape shape) {
@@ -120,7 +139,7 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Add a particular shape to quad space
-	 * 
+	 * <p>
 	 * @param shape The shape to be added
 	 */
 	private void addToQuadSpace(Shape shape) {
@@ -225,7 +244,7 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Combine the shapes in the quad space
-	 *  
+	 * <p>
 	 * @return The newly combined list of shapes
 	 */
 	private ArrayList combineQuadSpace() {
@@ -260,9 +279,9 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Combine a set of shapes together
-	 * 
-	 * @param shapes
-	 *            The shapes to be combined
+	 * <p>
+	 * @param shapes The shapes to be combined
+	 * <p>
 	 * @return The list of combined shapes
 	 */
 	private ArrayList combine(ArrayList shapes) {
@@ -285,11 +304,10 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Attempt to find a simple combination that can be performed
-	 * 
-	 * @param shapes
-	 *            The shapes to be combined
-	 * @return The new list of shapes - this will be the same length as the
-	 *         input if there are no new combinations
+	 * <p>
+	 * @param shapes The shapes to be combined
+	 * <p>
+	 * @return The new list of shapes - this will be the same length as the input if there are no new combinations
 	 */
 	private ArrayList combineImpl(ArrayList shapes) {
 		ArrayList result = new ArrayList(shapes);
@@ -327,9 +345,10 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Check if two shapes collide
-	 * 
+	 * <p>
 	 * @param shape1 The first shape
 	 * @param shape2 The second shape
+	 * <p>
 	 * @return True if the shapes collide (i.e. intersection or overlap)
 	 */
 	public boolean collides(Shape shape1, Shape shape2) {
@@ -401,9 +420,8 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 
 	/**
 	 * Entry point to our test
-	 * 
-	 * @param argv
-	 *            The arguments passed to the test
+	 * <p>
+	 * @param argv The arguments passed to the test
 	 */
 	public static void main(String[] argv) {
 		try {
@@ -411,7 +429,8 @@ public class GeomUtilTileTest extends BasicGame implements GeomUtilListener {
 					new GeomUtilTileTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

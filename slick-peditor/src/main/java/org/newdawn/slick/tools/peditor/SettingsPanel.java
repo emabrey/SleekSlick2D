@@ -11,7 +11,7 @@ import java.io.File;
 
 /**
  * A colletion of controls for the global settings of an emitter
- *
+ * <p>
  * @author kevin
  */
 public class SettingsPanel extends ControlPanel {
@@ -42,7 +42,7 @@ public class SettingsPanel extends ControlPanel {
 
 	/**
 	 * Create a new panel for global settings controls
-	 *
+	 * <p>
 	 * @param l The list to be notified when the name changes
 	 */
 	public SettingsPanel(EmitterList l, JFileChooser chooser) {
@@ -95,8 +95,7 @@ public class SettingsPanel extends ControlPanel {
 	}
 
 	/**
-	 * Browse for a particle image and set the value into both the emitter and text field
-	 * on successful completion
+	 * Browse for a particle image and set the value into both the emitter and text field on successful completion
 	 */
 	private void browseForImage() {
 		if (emitter != null) {

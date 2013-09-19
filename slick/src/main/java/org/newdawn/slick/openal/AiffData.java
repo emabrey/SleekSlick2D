@@ -50,24 +50,30 @@ import org.lwjgl.openal.AL10;
 /**
  *
  * Utitlity class for loading wavefiles.
- *
+ * <p>
  * @author Brian Matzon <brian@matzon.dk>
  * @version $Revision: 2286 $
  */
 public class AiffData {
 
-	/** actual AIFF data */
+	/**
+	 * actual AIFF data
+	 */
 	public final ByteBuffer data;
 
-	/** format type of data */
+	/**
+	 * format type of data
+	 */
 	public final int format;
 
-	/** sample rate of data */
+	/**
+	 * sample rate of data
+	 */
 	public final int samplerate;
 
 	/**
 	 * Creates a new AiffData
-	 * 
+	 * <p>
 	 * @param data actual Aiffdata
 	 * @param format format of Aiff data
 	 * @param samplerate sample rate of data
@@ -87,8 +93,9 @@ public class AiffData {
 
 	/**
 	 * Creates a AiffData container from the specified url
-	 * 
-	 * @param path URL to file 
+	 * <p>
+	 * @param path URL to file
+	 * <p>
 	 * @return AiffData containing data, or null if a failure occured
 	 */
 	public static AiffData create(URL path) {
@@ -96,7 +103,8 @@ public class AiffData {
 			return create(
 					AudioSystem.getAudioInputStream(
 							new BufferedInputStream(path.openStream())));
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			org.lwjgl.LWJGLUtil.log("Unable to create from: " + path);
 			e.printStackTrace();
 			return null;
@@ -105,8 +113,9 @@ public class AiffData {
 
 	/**
 	 * Creates a AiffData container from the specified in the classpath
-	 * 
-	 * @param path path to file (relative, and in classpath) 
+	 * <p>
+	 * @param path path to file (relative, and in classpath)
+	 * <p>
 	 * @return AiffData containing data, or null if a failure occured
 	 */
 	public static AiffData create(String path) {
@@ -115,25 +124,28 @@ public class AiffData {
 
 	/**
 	 * Creates a AiffData container from the specified inputstream
-	 * 
-	 * @param is InputStream to read from 
+	 * <p>
+	 * @param is InputStream to read from
+	 * <p>
 	 * @return AiffData containing data, or null if a failure occured
 	 */
 	public static AiffData create(InputStream is) {
 		try {
 			return create(
 					AudioSystem.getAudioInputStream(is));
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			org.lwjgl.LWJGLUtil.log("Unable to create from inputstream");
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	/**	
+	/**
 	 * Creates a AiffData container from the specified bytes
-	 *
+	 * <p>
 	 * @param buffer array of bytes containing the complete Aiff file
+	 * <p>
 	 * @return AiffData containing data, or null if a failure occured
 	 */
 	public static AiffData create(byte[] buffer) {
@@ -141,18 +153,19 @@ public class AiffData {
 			return create(
 					AudioSystem.getAudioInputStream(
 							new BufferedInputStream(new ByteArrayInputStream(buffer))));
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	/**	
-	 * Creates a AiffData container from the specified ByetBuffer.
-	 * If the buffer is backed by an array, it will be used directly, 
-	 * else the contents of the buffer will be copied using get(byte[]).
-	 *
+	/**
+	 * Creates a AiffData container from the specified ByetBuffer. If the buffer is backed by an array, it will be used
+	 * directly, else the contents of the buffer will be copied using get(byte[]).
+	 * <p>
 	 * @param buffer ByteBuffer containing sound file
+	 * <p>
 	 * @return AiffData containing data, or null if a failure occured
 	 */
 	public static AiffData create(ByteBuffer buffer) {
@@ -166,7 +179,8 @@ public class AiffData {
 				buffer.get(bytes);
 			}
 			return create(bytes);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -174,8 +188,9 @@ public class AiffData {
 
 	/**
 	 * Creates a AiffData container from the specified stream
-	 * 
+	 * <p>
 	 * @param ais AudioInputStream to read from
+	 * <p>
 	 * @return AiffData containing data, or null if a failure occured
 	 */
 	public static AiffData create(AudioInputStream ais) {
@@ -216,7 +231,8 @@ public class AiffData {
 					&& total < buf.length) {
 				total += read;
 			}
-		} catch (IOException ioe) {
+		}
+		catch (IOException ioe) {
 			return null;
 		}
 
@@ -230,7 +246,8 @@ public class AiffData {
 		//close stream
 		try {
 			ais.close();
-		} catch (IOException ioe) {
+		}
+		catch (IOException ioe) {
 		}
 
 		return Aiffdata;
@@ -238,10 +255,11 @@ public class AiffData {
 
 	/**
 	 * Convert the audio bytes into the stream
-	 * 
+	 * <p>
 	 * @param format The audio format being decoded
 	 * @param audio_bytes The audio byts
 	 * @param two_bytes_data True if we using double byte data
+	 * <p>
 	 * @return The byte bufer of data
 	 */
 	private static ByteBuffer convertAudioBytes(AudioFormat format, byte[] audio_bytes, boolean two_bytes_data) {

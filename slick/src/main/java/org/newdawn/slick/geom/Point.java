@@ -5,14 +5,14 @@ import org.newdawn.slick.geom.Transform;
 
 /**
  * A single point shape
- * 
+ * <p>
  * @author Kova
  */
 public class Point extends Shape {
 
 	/**
 	 * Create a new point
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the point
 	 * @param y The y coordinate of the point
 	 */

@@ -10,36 +10,44 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.util.InputAdapter;
 
 /**
- * The central provider that maps real device input into abstract commands
- * defined by the developer. Registering a control against an command with this
- * class will cause the provider to produce an event for the command when the
- * input is pressed and released.
- * 
+ * The central provider that maps real device input into abstract commands defined by the developer. Registering a
+ * control against an command with this class will cause the provider to produce an event for the command when the input
+ * is pressed and released.
+ * <p>
  * @author joverton
  */
 public class InputProvider {
 
-	/** The commands that have been defined */
+	/**
+	 * The commands that have been defined
+	 */
 	private HashMap commands;
 
-	/** The list of listeners that may be listening */
+	/**
+	 * The list of listeners that may be listening
+	 */
 	private ArrayList listeners = new ArrayList();
 
-	/** The input context we're responding to */
+	/**
+	 * The input context we're responding to
+	 */
 	private Input input;
 
-	/** The command input states */
+	/**
+	 * The command input states
+	 */
 	private HashMap commandState = new HashMap();
 
-	/** True if this provider is actively sending events */
+	/**
+	 * True if this provider is actively sending events
+	 */
 	private boolean active = true;
 
 	/**
-	 * Create a new input proider which will provide abstract input descriptions
-	 * based on the input from the supplied context.
-	 * 
-	 * @param input
-	 *            The input from which this provider will receive events
+	 * Create a new input proider which will provide abstract input descriptions based on the input from the supplied
+	 * context.
+	 * <p>
+	 * @param input The input from which this provider will receive events
 	 */
 	public InputProvider(Input input) {
 		this.input = input;
@@ -49,11 +57,10 @@ public class InputProvider {
 	}
 
 	/**
-	 * Get the list of commands that have been registered with the provider,
-	 * i.e. the commands that can be issued to the listeners
-	 * 
-	 * @return The list of commands (@see Command) that can be issued from this
-	 *         provider
+	 * Get the list of commands that have been registered with the provider, i.e. the commands that can be issued to the
+	 * listeners
+	 * <p>
+	 * @return The list of commands (@see Command) that can be issued from this provider
 	 */
 	public List getUniqueCommands() {
 		List uniqueCommands = new ArrayList();
@@ -70,11 +77,10 @@ public class InputProvider {
 	}
 
 	/**
-	 * Get a list of the registered controls (@see Control) that can cause a
-	 * particular command to be invoked
-	 * 
-	 * @param command
-	 *            The command to be invoked
+	 * Get a list of the registered controls (@see Control) that can cause a particular command to be invoked
+	 * <p>
+	 * @param command The command to be invoked
+	 * <p>
 	 * @return The list of controls that can cause the command (@see Control)
 	 */
 	public List getControlsFor(Command command) {
@@ -94,9 +100,8 @@ public class InputProvider {
 
 	/**
 	 * Indicate whether this provider should be sending events
-	 * 
-	 * @param active
-	 *            True if this provider should be sending events
+	 * <p>
+	 * @param active True if this provider should be sending events
 	 */
 	public void setActive(boolean active) {
 		this.active = active;
@@ -104,7 +109,7 @@ public class InputProvider {
 
 	/**
 	 * Check if this provider should be sending events
-	 * 
+	 * <p>
 	 * @return True if this provider should be sending events
 	 */
 	public boolean isActive() {
@@ -112,22 +117,19 @@ public class InputProvider {
 	}
 
 	/**
-	 * Add a listener to the provider. This listener will be notified of
-	 * commands detected from the input.
-	 * 
-	 * @param listener
-	 *            The listener to be added
+	 * Add a listener to the provider. This listener will be notified of commands detected from the input.
+	 * <p>
+	 * @param listener The listener to be added
 	 */
 	public void addListener(InputProviderListener listener) {
 		listeners.add(listener);
 	}
 
 	/**
-	 * Remove a listener from this provider. The listener will no longer be
-	 * provided with notification of commands performe.
-	 * 
-	 * @param listener
-	 *            The listener to be removed
+	 * Remove a listener from this provider. The listener will no longer be provided with notification of commands
+	 * performe.
+	 * <p>
+	 * @param listener The listener to be removed
 	 */
 	public void removeListener(InputProviderListener listener) {
 		listeners.remove(listener);
@@ -135,11 +137,9 @@ public class InputProvider {
 
 	/**
 	 * Bind an command to a control.
-	 * 
-	 * @param command
-	 *            The command to bind to
-	 * @param control
-	 *            The control that is pressed/released to represent the command
+	 * <p>
+	 * @param command The command to bind to
+	 * @param control The control that is pressed/released to represent the command
 	 */
 	public void bindCommand(Control control, Command command) {
 		commands.put(control, command);
@@ -151,7 +151,7 @@ public class InputProvider {
 
 	/**
 	 * Clear all the controls that have been configured for a given command
-	 * 
+	 * <p>
 	 * @param command The command whose controls should be unbound
 	 */
 	public void clearCommand(Command command) {
@@ -164,9 +164,8 @@ public class InputProvider {
 
 	/**
 	 * Unbinds the command associated with this control
-	 * 
-	 * @param control
-	 *            The control to remove
+	 * <p>
+	 * @param control The control to remove
 	 */
 	public void unbindCommand(Control control) {
 		Command command = (Command) commands.remove(control);
@@ -179,9 +178,9 @@ public class InputProvider {
 
 	/**
 	 * Get the recorded state for a given command
-	 * 
-	 * @param command
-	 *            The command to get the state for
+	 * <p>
+	 * @param command The command to get the state for
+	 * <p>
 	 * @return The given command state
 	 */
 	private CommandState getState(Command command) {
@@ -189,11 +188,10 @@ public class InputProvider {
 	}
 
 	/**
-	 * Check if the last control event we recieved related to the given command
-	 * indicated that a control was down
-	 * 
-	 * @param command
-	 *            The command to check
+	 * Check if the last control event we recieved related to the given command indicated that a control was down
+	 * <p>
+	 * @param command The command to check
+	 * <p>
 	 * @return True if the last event indicated a button down
 	 */
 	public boolean isCommandControlDown(Command command) {
@@ -201,11 +199,10 @@ public class InputProvider {
 	}
 
 	/**
-	 * Check if one of the controls related to the command specified has been
-	 * pressed since we last called this method
-	 * 
-	 * @param command
-	 *            The command to check
+	 * Check if one of the controls related to the command specified has been pressed since we last called this method
+	 * <p>
+	 * @param command The command to check
+	 * <p>
 	 * @return True if one of the controls has been pressed
 	 */
 	public boolean isCommandControlPressed(Command command) {
@@ -213,11 +210,9 @@ public class InputProvider {
 	}
 
 	/**
-	 * Fire notification to any interested listeners that a control has been
-	 * pressed indication an particular command
-	 * 
-	 * @param command
-	 *            The command that has been pressed
+	 * Fire notification to any interested listeners that a control has been pressed indication an particular command
+	 * <p>
+	 * @param command The command that has been pressed
 	 */
 	protected void firePressed(Command command) {
 		getState(command).down = true;
@@ -233,11 +228,10 @@ public class InputProvider {
 	}
 
 	/**
-	 * Fire notification to any interested listeners that a control has been
-	 * released indication an particular command should be stopped
-	 * 
-	 * @param command
-	 *            The command that has been pressed
+	 * Fire notification to any interested listeners that a control has been released indication an particular command
+	 * should be stopped
+	 * <p>
+	 * @param command The command that has been pressed
 	 */
 	protected void fireReleased(Command command) {
 		getState(command).down = false;
@@ -252,22 +246,25 @@ public class InputProvider {
 	}
 
 	/**
-	 * A token representing the state of all the controls causing an command to
-	 * be invoked
-	 * 
+	 * A token representing the state of all the controls causing an command to be invoked
+	 * <p>
 	 * @author kevin
 	 */
 	private class CommandState {
 
-		/** True if one of the controls for this command is down */
+		/**
+		 * True if one of the controls for this command is down
+		 */
 		private boolean down;
 
-		/** True if one of the controls for this command is pressed */
+		/**
+		 * True if one of the controls for this command is pressed
+		 */
 		private boolean pressed;
 
 		/**
 		 * Check if a control for the command has been pressed since last call.
-		 * 
+		 * <p>
 		 * @return True if the command has been pressed
 		 */
 		public boolean isPressed() {
@@ -281,7 +278,7 @@ public class InputProvider {
 
 		/**
 		 * Check if the last event we had indicated the control was pressed
-		 * 
+		 * <p>
 		 * @return True if the control was pressed
 		 */
 		public boolean isDown() {
@@ -292,7 +289,7 @@ public class InputProvider {
 
 	/**
 	 * A simple listener to respond to input and look up any required commands
-	 * 
+	 * <p>
 	 * @author kevin
 	 */
 	private class InputListenerImpl extends InputAdapter {
@@ -443,8 +440,7 @@ public class InputProvider {
 		}
 
 		/**
-		 * @see org.newdawn.slick.util.InputAdapter#controllerButtonPressed(int,
-		 *      int)
+		 * @see org.newdawn.slick.util.InputAdapter#controllerButtonPressed(int, int)
 		 */
 		public void controllerButtonPressed(int controller, int button) {
 			Command command = (Command) commands
@@ -455,8 +451,7 @@ public class InputProvider {
 		}
 
 		/**
-		 * @see org.newdawn.slick.util.InputAdapter#controllerButtonReleased(int,
-		 *      int)
+		 * @see org.newdawn.slick.util.InputAdapter#controllerButtonReleased(int, int)
 		 */
 		public void controllerButtonReleased(int controller, int button) {
 			Command command = (Command) commands

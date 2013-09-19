@@ -6,18 +6,24 @@ import org.newdawn.slick.util.FastTrig;
 
 /**
  * A two dimensional vector
- * 
+ * <p>
  * @author Kevin Glass
  */
 public strictfp class Vector2f implements Serializable {
 
-	/** The version ID for this class  */
+	/**
+	 * The version ID for this class
+	 */
 	private static final long serialVersionUID = 1339934L;
 
-	/** The x component of this vector */
+	/**
+	 * The x component of this vector
+	 */
 	public float x;
 
-	/** The y component of this vector */
+	/**
+	 * The y component of this vector
+	 */
 	public float y;
 
 	/**
@@ -28,7 +34,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Create a vector based on the contents of a coordinate array
-	 * 
+	 * <p>
 	 * @param coords The coordinates array, index 0 = x, index 1 = y
 	 */
 	public Vector2f(float[] coords) {
@@ -38,7 +44,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Create a new vector based on an angle
-	 * 
+	 * <p>
 	 * @param theta The angle of the vector in degrees
 	 */
 	public Vector2f(double theta) {
@@ -49,7 +55,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Calculate the components of the vectors based on a angle
-	 * 
+	 * <p>
 	 * @param theta The angle to calculate the components from (in degrees)
 	 */
 	public void setTheta(double theta) {
@@ -81,11 +87,11 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Adjust this vector by a given angle
-	 * 
-	 * @param theta
-	 *            The angle to adjust the angle by (in degrees)
+	 * <p>
+	 * @param theta The angle to adjust the angle by (in degrees)
+	 * <p>
 	 * @return This vector - useful for chaining operations
-	 *           
+	 * <p>
 	 */
 	public Vector2f add(double theta) {
 		setTheta(getTheta() + theta);
@@ -95,8 +101,9 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Adjust this vector by a given angle
-	 * 
+	 * <p>
 	 * @param theta The angle to adjust the angle by (in degrees)
+	 * <p>
 	 * @return This vector - useful for chaining operations
 	 */
 	public Vector2f sub(double theta) {
@@ -107,7 +114,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Get the angle this vector is at
-	 * 
+	 * <p>
 	 * @return The angle this vector is at (in degrees)
 	 */
 	public double getTheta() {
@@ -124,7 +131,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Get the x component
-	 * 
+	 * <p>
 	 * @return The x component
 	 */
 	public float getX() {
@@ -133,7 +140,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Get the y component
-	 * 
+	 * <p>
 	 * @return The y component
 	 */
 	public float getY() {
@@ -142,7 +149,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Create a new vector based on another
-	 * 
+	 * <p>
 	 * @param other The other vector to copy into this one
 	 */
 	public Vector2f(Vector2f other) {
@@ -150,8 +157,8 @@ public strictfp class Vector2f implements Serializable {
 	}
 
 	/**
-	 * Create a new vector 
-	 * 
+	 * Create a new vector
+	 * <p>
 	 * @param x The x component to assign
 	 * @param y The y component to assign
 	 */
@@ -162,7 +169,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Set the value of this vector
-	 * 
+	 * <p>
 	 * @param other The values to set into the vector
 	 */
 	public void set(Vector2f other) {
@@ -171,8 +178,9 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Dot this vector against another
-	 * 
+	 * <p>
 	 * @param other The other vector dot agianst
+	 * <p>
 	 * @return The dot product of the two vectors
 	 */
 	public float dot(Vector2f other) {
@@ -181,9 +189,10 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Set the values in this vector
-	 * 
+	 * <p>
 	 * @param x The x component to set
 	 * @param y The y component to set
+	 * <p>
 	 * @return This vector - useful for chaining operations
 	 */
 	public Vector2f set(float x, float y) {
@@ -195,7 +204,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * A vector perpendicular to this vector.
-	 *
+	 * <p>
 	 * @return a vector perpendicular to this vector
 	 */
 	public Vector2f getPerpendicular() {
@@ -204,8 +213,9 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Set the values in this vector
-	 * 
+	 * <p>
 	 * @param pt The pair of values to set into the vector
+	 * <p>
 	 * @return This vector - useful for chaining operations
 	 */
 	public Vector2f set(float[] pt) {
@@ -213,8 +223,8 @@ public strictfp class Vector2f implements Serializable {
 	}
 
 	/**
-	 * Negate this vector 
-	 * 
+	 * Negate this vector
+	 * <p>
 	 * @return A copy of this vector negated
 	 */
 	public Vector2f negate() {
@@ -223,7 +233,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Negate this vector without creating a new copy
-	 * 
+	 * <p>
 	 * @return This vector - useful for chaning operations
 	 */
 	public Vector2f negateLocal() {
@@ -235,8 +245,9 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Add a vector to this vector
-	 * 
+	 * <p>
 	 * @param v The vector to add
+	 * <p>
 	 * @return This vector - useful for chaning operations
 	 */
 	public Vector2f add(Vector2f v) {
@@ -248,8 +259,9 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Subtract a vector from this vector
-	 * 
+	 * <p>
 	 * @param v The vector subtract
+	 * <p>
 	 * @return This vector - useful for chaining operations
 	 */
 	public Vector2f sub(Vector2f v) {
@@ -261,8 +273,9 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Scale this vector by a value
-	 * 
+	 * <p>
 	 * @param a The value to scale this vector by
+	 * <p>
 	 * @return This vector - useful for chaining operations
 	 */
 	public Vector2f scale(float a) {
@@ -274,7 +287,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Normalise the vector
-	 * 
+	 * <p>
 	 * @return This vector - useful for chaning operations
 	 */
 	public Vector2f normalise() {
@@ -291,7 +304,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * The normal of the vector
-	 * 
+	 * <p>
 	 * @return A unit vector with the same direction as the vector
 	 */
 	public Vector2f getNormal() {
@@ -302,7 +315,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * The length of the vector squared
-	 * 
+	 * <p>
 	 * @return The length of the vector squared
 	 */
 	public float lengthSquared() {
@@ -311,7 +324,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Get the length of this vector
-	 * 
+	 * <p>
 	 * @return The length of this vector
 	 */
 	public float length() {
@@ -320,7 +333,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Project this vector onto another
-	 * 
+	 * <p>
 	 * @param b The vector to project onto
 	 * @param result The projected vector
 	 */
@@ -334,7 +347,7 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Return a copy of this vector
-	 * 
+	 * <p>
 	 * @return The new instance that copies this vector
 	 */
 	public Vector2f copy() {
@@ -350,8 +363,9 @@ public strictfp class Vector2f implements Serializable {
 
 	/**
 	 * Get the distance from this point to another
-	 * 
+	 * <p>
 	 * @param other The other point we're measuring to
+	 * <p>
 	 * @return The distance to the other point
 	 */
 	public float distance(Vector2f other) {
@@ -359,11 +373,11 @@ public strictfp class Vector2f implements Serializable {
 	}
 
 	/**
-	 * Get the distance from this point to another, squared. This
-	 * can sometimes be used in place of distance and avoids the 
-	 * additional sqrt.
-	 * 
-	 * @param other The other point we're measuring to 
+	 * Get the distance from this point to another, squared. This can sometimes be used in place of distance and avoids
+	 * the additional sqrt.
+	 * <p>
+	 * @param other The other point we're measuring to
+	 * <p>
 	 * @return The distance to the other point squared
 	 */
 	public float distanceSquared(Vector2f other) {

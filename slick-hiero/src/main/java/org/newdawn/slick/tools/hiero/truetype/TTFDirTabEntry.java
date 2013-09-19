@@ -48,9 +48,11 @@ class TTFDirTabEntry {
 
 	/**
 	 * Read Dir Tab, return tag name
-	 *
+	 * <p>
 	 * @param in The stream to read from
+	 * <p>
 	 * @return The string read
+	 * <p>
 	 * @throws IOException Indicates a failure to read from the stream
 	 */
 	public String read(FontFileReader in) throws IOException {
@@ -81,7 +83,7 @@ class TTFDirTabEntry {
 
 	/**
 	 * Returns the checksum.
-	 *
+	 * <p>
 	 * @return The checksum
 	 */
 	public int getChecksum() {
@@ -90,7 +92,7 @@ class TTFDirTabEntry {
 
 	/**
 	 * Returns the length.
-	 *
+	 * <p>
 	 * @return The length
 	 */
 	public long getLength() {
@@ -99,7 +101,7 @@ class TTFDirTabEntry {
 
 	/**
 	 * Returns the offset.
-	 *
+	 * <p>
 	 * @return The offset
 	 */
 	public long getOffset() {
@@ -108,7 +110,7 @@ class TTFDirTabEntry {
 
 	/**
 	 * Returns the tag bytes.
-	 *
+	 * <p>
 	 * @return The tag
 	 */
 	public byte[] getTag() {
@@ -117,13 +119,14 @@ class TTFDirTabEntry {
 
 	/**
 	 * Returns the tag bytes.
-	 *
+	 * <p>
 	 * @return The tag as a string
 	 */
 	public String getTagString() {
 		try {
 			return new String(tag, "ISO-8859-1");
-		} catch (UnsupportedEncodingException e) {
+		}
+		catch (UnsupportedEncodingException e) {
 			return this.toString(); // Should never happen.
 		}
 	}

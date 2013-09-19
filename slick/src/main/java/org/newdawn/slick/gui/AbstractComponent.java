@@ -11,33 +11,41 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.util.InputAdapter;
 
 /**
- * The utility class to handle all the input related gubbins for basic GUI
- * components
- * 
+ * The utility class to handle all the input related gubbins for basic GUI components
+ * <p>
  * @author kevin
  */
 public abstract class AbstractComponent extends InputAdapter {
 
-	/** The component that currently has focus */
+	/**
+	 * The component that currently has focus
+	 */
 	private static AbstractComponent currentFocus = null;
 
-	/** The game container */
+	/**
+	 * The game container
+	 */
 	protected GUIContext container;
 
-	/** Listeners for the component to notify */
+	/**
+	 * Listeners for the component to notify
+	 */
 	protected Set listeners;
 
-	/** True if this component currently has focus */
+	/**
+	 * True if this component currently has focus
+	 */
 	private boolean focus = false;
 
-	/** The input we're responding to */
+	/**
+	 * The input we're responding to
+	 */
 	protected Input input;
 
 	/**
 	 * Create a new component
-	 * 
-	 * @param container
-	 *            The container displaying this component
+	 * <p>
+	 * @param container The container displaying this component
 	 */
 	public AbstractComponent(GUIContext container) {
 		this.container = container;
@@ -52,11 +60,10 @@ public abstract class AbstractComponent extends InputAdapter {
 
 	/**
 	 * Add a component listener to be informed when the component sees fit.
-	 * 
+	 * <p>
 	 * It will ignore listeners already added.
-	 * 
-	 * @param listener
-	 *            listener
+	 * <p>
+	 * @param listener listener
 	 */
 	public void addListener(ComponentListener listener) {
 		listeners.add(listener);
@@ -64,11 +71,10 @@ public abstract class AbstractComponent extends InputAdapter {
 
 	/**
 	 * Remove a component listener.
-	 * 
+	 * <p>
 	 * It will ignore if the listener wasn't added.
-	 * 
-	 * @param listener
-	 *            listener
+	 * <p>
+	 * @param listener listener
 	 */
 	public void removeListener(ComponentListener listener) {
 		listeners.remove(listener);
@@ -86,60 +92,55 @@ public abstract class AbstractComponent extends InputAdapter {
 
 	/**
 	 * Render this component to the screen
-	 * 
-	 * @param container
-	 *            The container displaying this component
-	 * @param g
-	 *            The graphics context used to render to the display
-	 * @throws SlickException
-	 *             If there has been an error rendering the component
+	 * <p>
+	 * @param container The container displaying this component
+	 * @param g The graphics context used to render to the display
+	 * <p>
+	 * @throws SlickException If there has been an error rendering the component
 	 */
 	public abstract void render(GUIContext container, Graphics g)
 			throws SlickException;
 
 	/**
 	 * Moves the component.
-	 * 
-	 * @param x
-	 *            X coordinate
-	 * @param y
-	 *            Y coordinate
+	 * <p>
+	 * @param x X coordinate
+	 * @param y Y coordinate
 	 */
 	public abstract void setLocation(int x, int y);
 
 	/**
 	 * Returns the position in the X coordinate
-	 * 
+	 * <p>
 	 * @return x
 	 */
 	public abstract int getX();
 
 	/**
 	 * Returns the position in the Y coordinate
-	 * 
+	 * <p>
 	 * @return y
 	 */
 	public abstract int getY();
 
 	/**
 	 * Get the width of the component
-	 * 
+	 * <p>
 	 * @return The width of the component
 	 */
 	public abstract int getWidth();
 
 	/**
 	 * Get the height of the component
-	 * 
+	 * <p>
 	 * @return The height of the component
 	 */
 	public abstract int getHeight();
 
 	/**
 	 * Indicate whether this component should be focused or not
-	 * 
-	 * @param focus
-	 *            if the component should be focused
+	 * <p>
+	 * @param focus if the component should be focused
 	 */
 	public void setFocus(boolean focus) {
 		if (focus) {
@@ -157,7 +158,7 @@ public abstract class AbstractComponent extends InputAdapter {
 
 	/**
 	 * Check if this component currently has focus
-	 * 
+	 * <p>
 	 * @return if this field currently has focus
 	 */
 	public boolean hasFocus() {
@@ -173,7 +174,7 @@ public abstract class AbstractComponent extends InputAdapter {
 
 	/**
 	 * Gives the focus to this component with a click of the mouse.
-	 * 
+	 * <p>
 	 * @see org.newdawn.slick.gui.AbstractComponent#mouseReleased(int, int, int)
 	 */
 	public void mouseReleased(int button, int x, int y) {

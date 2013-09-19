@@ -2,20 +2,24 @@ package org.newdawn.slick.geom;
 
 /**
  * An axis oriented used for shape bounds
- * 
+ * <p>
  * @author Kevin Glass
  */
 public class Rectangle extends Shape {
 
-	/** The width of the box */
+	/**
+	 * The width of the box
+	 */
 	protected float width;
 
-	/** The height of the box */
+	/**
+	 * The height of the box
+	 */
 	protected float height;
 
 	/**
 	 * Create a new bounding box
-	 * 
+	 * <p>
 	 * @param x The x position of the box
 	 * @param y The y position of the box
 	 * @param width The width of the box
@@ -33,9 +37,10 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Check if this rectangle contains a point
-	 * 
+	 * <p>
 	 * @param xp The x coordinate of the point to check
 	 * @param yp The y coordinate of the point to check
+	 * <p>
 	 * @return True if the point is within the rectangle
 	 */
 	public boolean contains(float xp, float yp) {
@@ -57,7 +62,7 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Set the bounds of this rectangle based on the given rectangle
-	 * 
+	 * <p>
 	 * @param other The other rectangle whose bounds should be applied
 	 */
 	public void setBounds(Rectangle other) {
@@ -66,7 +71,7 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Set the bounds of this rectangle
-	 * 
+	 * <p>
 	 * @param x The x coordinate of this rectangle
 	 * @param y The y coordinate of this rectangle
 	 * @param width The width to set in this rectangle
@@ -80,7 +85,7 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Set the size (widtha and height) of this rectangle
-	 * 
+	 * <p>
 	 * @param width The width to set in this rectangle
 	 * @param height The height to set in this rectangle
 	 */
@@ -91,7 +96,7 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Get the width of the box
-	 * 
+	 * <p>
 	 * @return The width of the box
 	 */
 	public float getWidth() {
@@ -100,7 +105,7 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Get the height of the box
-	 * 
+	 * <p>
 	 * @return The height of the box
 	 */
 	public float getHeight() {
@@ -108,9 +113,9 @@ public class Rectangle extends Shape {
 	}
 
 	/**
-	 * Grow the rectangle at all edges by the given amounts. This will result in the
-	 * rectangle getting larger around it's centre.
-	 * 
+	 * Grow the rectangle at all edges by the given amounts. This will result in the rectangle getting larger around
+	 * it's centre.
+	 * <p>
 	 * @param h The amount to adjust horizontally
 	 * @param v The amount to ajust vertically
 	 */
@@ -123,8 +128,8 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Grow the rectangle based on scaling it's size
-	 * 
-	 * @param h The scale to apply to the horizontal 
+	 * <p>
+	 * @param h The scale to apply to the horizontal
 	 * @param v The scale to appy to the vertical
 	 */
 	public void scaleGrow(float h, float v) {
@@ -133,7 +138,7 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Set the width of this box
-	 * 
+	 * <p>
 	 * @param width The new width of this box
 	 */
 	public void setWidth(float width) {
@@ -146,7 +151,7 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Set the heightof this box
-	 * 
+	 * <p>
 	 * @param height The height of this box
 	 */
 	public void setHeight(float height) {
@@ -159,8 +164,9 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Check if this box touches another
-	 * 
+	 * <p>
 	 * @param shape The other shape to check against
+	 * <p>
 	 * @return True if the rectangles touch
 	 */
 	public boolean intersects(Shape shape) {
@@ -208,8 +214,9 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Check if a circle touches this rectangle
-	 * 
+	 * <p>
 	 * @param other The circle to check against
+	 * <p>
 	 * @return True if they touch
 	 */
 	private boolean intersects(Circle other) {
@@ -225,31 +232,28 @@ public class Rectangle extends Shape {
 
 	/**
 	 * Check if a rectangle contains a point (static to use it everywhere)
-	 * 
-	 * @param xp
-	 *            The x coordinate of the point to check
-	 * @param yp
-	 *            The y coordinate of the point to check
-	 * @param xr
-	 *            The x coordinate of the rectangle
-	 * @param yr
-	 *            The y coordinate of the rectangle
-	 * @param widthr
-	 *            The width of the rectangle
+	 * <p>
+	 * @param xp The x coordinate of the point to check
+	 * @param yp The y coordinate of the point to check
+	 * @param xr The x coordinate of the rectangle
+	 * @param yr The y coordinate of the rectangle
+	 * @param widthr The width of the rectangle
 	 * @param heightr The height of the rectangle
+	 * <p>
 	 * @return True if the point is within the rectangle
 	 */
 	public static boolean contains(float xp, float yp, float xr, float yr,
-			float widthr, float heightr) {
+								   float widthr, float heightr) {
 		return (xp >= xr) && (yp >= yr) && (xp <= xr + widthr)
 				&& (yp <= yr + heightr);
 	}
 
 	/**
-	 * Apply a transformation and return a new shape.  This will not alter the current shape but will 
-	 * return the transformed shape.
-	 * 
+	 * Apply a transformation and return a new shape. This will not alter the current shape but will return the
+	 * transformed shape.
+	 * <p>
 	 * @param transform The transform to be applied
+	 * <p>
 	 * @return The transformed shape.
 	 */
 	public Shape transform(Transform transform) {

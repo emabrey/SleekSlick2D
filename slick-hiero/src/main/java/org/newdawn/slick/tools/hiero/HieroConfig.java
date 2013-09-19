@@ -5,7 +5,7 @@ import java.io.FilenameFilter;
 
 /**
  * A central configuration managed
- *
+ * <p>
  * @author kevin
  */
 public class HieroConfig {
@@ -41,8 +41,9 @@ public class HieroConfig {
 
 	/**
 	 * Get a file from the configuration
-	 *
+	 * <p>
 	 * @param name The name of the configuration file to retrieve
+	 * <p>
 	 * @return A handle to the requested file
 	 */
 	public static File getConfigFile(String name) {
@@ -53,8 +54,9 @@ public class HieroConfig {
 
 	/**
 	 * List the files with a given extension in the configuration directory
-	 *
+	 * <p>
 	 * @param ext The extension to search for
+	 * <p>
 	 * @return The list of files from the configuration directory
 	 */
 	public static File[] listFiles(final String ext) {

@@ -12,27 +12,39 @@ import org.newdawn.slick.geom.Vector2f;
 
 /**
  * A rudimentry test of loading SVG from inkscape
- *
+ * <p>
  * @author kevin
  */
 public class CurveTest extends BasicGame {
 
-	/** The curve being rendered */
+	/**
+	 * The curve being rendered
+	 */
 	private Curve curve;
 
-	/** The start point of the curve */
+	/**
+	 * The start point of the curve
+	 */
 	private Vector2f p1 = new Vector2f(100, 300);
 
-	/** The first control point */
+	/**
+	 * The first control point
+	 */
 	private Vector2f c1 = new Vector2f(100, 100);
 
-	/** The second control point */
+	/**
+	 * The second control point
+	 */
 	private Vector2f c2 = new Vector2f(300, 100);
 
-	/** The end point of the curve */
+	/**
+	 * The end point of the curve
+	 */
 	private Vector2f p2 = new Vector2f(300, 300);
 
-	/** The polygon drawn next done */
+	/**
+	 * The polygon drawn next done
+	 */
 	private Polygon poly;
 
 	/**
@@ -64,7 +76,7 @@ public class CurveTest extends BasicGame {
 
 	/**
 	 * Draw a marker for a given point
-	 * 
+	 * <p>
 	 * @param g The graphics context on which to draw
 	 * @param p The point to draw
 	 */
@@ -93,7 +105,7 @@ public class CurveTest extends BasicGame {
 
 	/**
 	 * Entry point to our simple test
-	 * 
+	 * <p>
 	 * @param argv The arguments passed in
 	 */
 	public static void main(String argv[]) {
@@ -101,7 +113,8 @@ public class CurveTest extends BasicGame {
 			AppGameContainer container = new AppGameContainer(new CurveTest());
 			container.setDisplayMode(800, 600, false);
 			container.start();
-		} catch (SlickException e) {
+		}
+		catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

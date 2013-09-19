@@ -13,63 +13,92 @@ import org.newdawn.slick.util.Log;
 import org.newdawn.slick.util.ResourceLoader;
 
 /**
- * A generic tool to work on a supplied stream, pulling out PCM data and buffered it to OpenAL
- * as required.
- * 
+ * A generic tool to work on a supplied stream, pulling out PCM data and buffered it to OpenAL as required.
+ * <p>
  * @author Kevin Glass
  * @author Nathan Sweet <misc@n4te.com>
- * @author Rockstar play and setPosition cleanup 
+ * @author Rockstar play and setPosition cleanup
  */
 public class OpenALStreamPlayer {
 
-	/** The number of buffers to maintain */
+	/**
+	 * The number of buffers to maintain
+	 */
 	public static final int BUFFER_COUNT = 3;
 
-	/** The size of the sections to stream from the stream */
+	/**
+	 * The size of the sections to stream from the stream
+	 */
 	private static final int sectionSize = 4096 * 20;
 
-	/** The buffer read from the data stream */
+	/**
+	 * The buffer read from the data stream
+	 */
 	private byte[] buffer = new byte[sectionSize];
 
-	/** Holds the OpenAL buffer names */
+	/**
+	 * Holds the OpenAL buffer names
+	 */
 	private IntBuffer bufferNames;
 
-	/** The byte buffer passed to OpenAL containing the section */
+	/**
+	 * The byte buffer passed to OpenAL containing the section
+	 */
 	private ByteBuffer bufferData = BufferUtils.createByteBuffer(sectionSize);
 
-	/** The buffer holding the names of the OpenAL buffer thats been fully played back */
+	/**
+	 * The buffer holding the names of the OpenAL buffer thats been fully played back
+	 */
 	private IntBuffer unqueued = BufferUtils.createIntBuffer(1);
 
-	/** The source we're playing back on */
+	/**
+	 * The source we're playing back on
+	 */
 	private int source;
 
-	/** The number of buffers remaining */
+	/**
+	 * The number of buffers remaining
+	 */
 	private int remainingBufferCount;
 
-	/** True if we should loop the track */
+	/**
+	 * True if we should loop the track
+	 */
 	private boolean loop;
 
-	/** True if we've completed play back */
+	/**
+	 * True if we've completed play back
+	 */
 	private boolean done = true;
 
-	/** The stream we're currently reading from */
+	/**
+	 * The stream we're currently reading from
+	 */
 	private AudioInputStream audio;
 
-	/** The source of the data */
+	/**
+	 * The source of the data
+	 */
 	private String ref;
 
-	/** The source of the data */
+	/**
+	 * The source of the data
+	 */
 	private URL url;
 
-	/** The pitch of the music */
+	/**
+	 * The pitch of the music
+	 */
 	private float pitch;
 
-	/** Position in seconds of the previously played buffers */
+	/**
+	 * Position in seconds of the previously played buffers
+	 */
 	private float positionOffset;
 
 	/**
 	 * Create a new player to work on an audio stream
-	 * 
+	 * <p>
 	 * @param source The source on which we'll play the audio
 	 * @param ref A reference to the audio file to stream
 	 */
@@ -83,7 +112,7 @@ public class OpenALStreamPlayer {
 
 	/**
 	 * Create a new player to work on an audio stream
-	 * 
+	 * <p>
 	 * @param source The source on which we'll play the audio
 	 * @param url A reference to the audio file to stream
 	 */
@@ -97,7 +126,7 @@ public class OpenALStreamPlayer {
 
 	/**
 	 * Initialise our connection to the underlying resource
-	 * 
+	 * <p>
 	 * @throws IOException Indicates a failure to open the underling resource
 	 */
 	private void initStreams() throws IOException {
@@ -119,7 +148,7 @@ public class OpenALStreamPlayer {
 
 	/**
 	 * Get the source of this stream
-	 * 
+	 * <p>
 	 * @return The name of the source of string
 	 */
 	public String getSource() {
@@ -141,8 +170,9 @@ public class OpenALStreamPlayer {
 
 	/**
 	 * Start this stream playing
-	 * 
-	 * @param loop True if the stream should loop 
+	 * <p>
+	 * @param loop True if the stream should loop
+	 * <p>
 	 * @throws IOException Indicates a failure to read from the stream
 	 */
 	public void play(boolean loop) throws IOException {
@@ -159,7 +189,7 @@ public class OpenALStreamPlayer {
 
 	/**
 	 * Setup the playback properties
-	 * 
+	 * <p>
 	 * @param pitch The pitch to play back at
 	 */
 	public void setup(float pitch) {
@@ -167,9 +197,8 @@ public class OpenALStreamPlayer {
 	}
 
 	/**
-	 * Check if the playback is complete. Note this will never
-	 * return true if we're looping
-	 * 
+	 * Check if the playback is complete. Note this will never return true if we're looping
+	 * <p>
 	 * @return True if we're looping
 	 */
 	public boolean done() {
@@ -177,9 +206,8 @@ public class OpenALStreamPlayer {
 	}
 
 	/**
-	 * Poll the bufferNames - check if we need to fill the bufferNames with another
-	 * section. 
-	 * 
+	 * Poll the bufferNames - check if we need to fill the bufferNames with another section.
+	 * <p>
 	 * Most of the time this should be reasonably quick
 	 */
 	public void update() {
@@ -225,8 +253,9 @@ public class OpenALStreamPlayer {
 
 	/**
 	 * Stream some data from the audio stream to the buffer indicates by the ID
-	 * 
+	 * <p>
 	 * @param bufferId The ID of the buffer to fill
+	 * <p>
 	 * @return True if another section was available
 	 */
 	public boolean stream(int bufferId) {
@@ -241,7 +270,8 @@ public class OpenALStreamPlayer {
 				int format = audio.getChannels() > 1 ? AL10.AL_FORMAT_STEREO16 : AL10.AL_FORMAT_MONO16;
 				try {
 					AL10.alBufferData(bufferId, format, bufferData, audio.getRate());
-				} catch (OpenALException e) {
+				}
+				catch (OpenALException e) {
 					Log.error("Failed to loop buffer: " + bufferId + " " + format + " " + count + " " + audio.getRate(), e);
 					return false;
 				}
@@ -256,7 +286,8 @@ public class OpenALStreamPlayer {
 			}
 
 			return true;
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			Log.error(e);
 			return false;
 		}
@@ -264,8 +295,9 @@ public class OpenALStreamPlayer {
 
 	/**
 	 * Seeks to a position in the music.
-	 * 
+	 * <p>
 	 * @param position Position in seconds.
+	 * <p>
 	 * @return True if the setting of the position was successful
 	 */
 	public boolean setPosition(float position) {
@@ -300,7 +332,8 @@ public class OpenALStreamPlayer {
 			startPlayback();
 
 			return true;
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			Log.error(e);
 			return false;
 		}
@@ -325,7 +358,7 @@ public class OpenALStreamPlayer {
 
 	/**
 	 * Return the current playing position in the sound
-	 * 
+	 * <p>
 	 * @return The current position in seconds.
 	 */
 	public float getPosition() {

@@ -4,23 +4,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * A polygon implementation meeting the <code>Shape</code> contract. 
- * 
+ * A polygon implementation meeting the <code>Shape</code> contract.
+ * <p>
  * @author Mark
  */
 public class Polygon extends Shape {
 
-	/** Allow duplicated points */
+	/**
+	 * Allow duplicated points
+	 */
 	private boolean allowDups = false;
 
-	/** True if the polygon is closed */
+	/**
+	 * True if the polygon is closed
+	 */
 	private boolean closed = true;
 
 	/**
-	 * Construct a new polygon with 3 or more points. 
-	 * This constructor will take the first set of points and copy them after
-	 * the last set of points to create a closed shape.
-	 * 
+	 * Construct a new polygon with 3 or more points. This constructor will take the first set of points and copy them
+	 * after the last set of points to create a closed shape.
+	 * <p>
 	 * @param points An array of points in x, y order.
 	 */
 	public Polygon(float points[]) {
@@ -66,7 +69,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * Create an empty polygon
-	 *
+	 * <p>
 	 */
 	public Polygon() {
 		points = new float[0];
@@ -78,7 +81,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * Indicate if duplicate points are allow
-	 * 
+	 * <p>
 	 * @param allowDups True if duplicate points are allowed
 	 */
 	public void setAllowDuplicatePoints(boolean allowDups) {
@@ -87,7 +90,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * Add a point to the polygon
-	 * 
+	 * <p>
 	 * @param x The x coordinate of the point
 	 * @param y The y coordinate of the point
 	 */
@@ -126,10 +129,11 @@ public class Polygon extends Shape {
 	}
 
 	/**
-	 * Apply a transformation and return a new shape.  This will not alter the current shape but will 
-	 * return the transformed shape.
-	 * 
+	 * Apply a transformation and return a new shape. This will not alter the current shape but will return the
+	 * transformed shape.
+	 * <p>
 	 * @param transform The transform to be applied
+	 * <p>
 	 * @return The transformed shape.
 	 */
 	public Shape transform(Transform transform) {
@@ -180,7 +184,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * Indicate if the polygon should be closed
-	 * 
+	 * <p>
 	 * @param closed True if the polygon should be closed
 	 */
 	public void setClosed(boolean closed) {
@@ -189,7 +193,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * Provide a copy of this polygon
-	 * 
+	 * <p>
 	 * @return A copy of this polygon
 	 */
 	public Polygon copy() {

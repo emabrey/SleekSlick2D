@@ -3,17 +3,18 @@ package org.newdawn.slick.util.pathfinding.navmesh;
 import java.util.ArrayList;
 
 /**
- * A nav-mesh is a set of shapes that describe the navigation of a map. These
- * shapes are linked together allow path finding but without the high
- * resolution that tile maps require. This leads to fast path finding and 
- * potentially much more accurate map definition.
- *  
+ * A nav-mesh is a set of shapes that describe the navigation of a map. These shapes are linked together allow path
+ * finding but without the high resolution that tile maps require. This leads to fast path finding and potentially much
+ * more accurate map definition.
+ * <p>
  * @author kevin
- *
+ * <p>
  */
 public class NavMesh {
 
-	/** The list of spaces that build up this navigation mesh */
+	/**
+	 * The list of spaces that build up this navigation mesh
+	 */
 	private ArrayList spaces = new ArrayList();
 
 	/**
@@ -25,7 +26,7 @@ public class NavMesh {
 
 	/**
 	 * Create a new mesh with a set of spaces
-	 * 
+	 * <p>
 	 * @param spaces The spaces included in the mesh
 	 */
 	public NavMesh(ArrayList spaces) {
@@ -34,7 +35,7 @@ public class NavMesh {
 
 	/**
 	 * Get the number of spaces that are in the mesh
-	 * 
+	 * <p>
 	 * @return The spaces in the mesh
 	 */
 	public int getSpaceCount() {
@@ -43,8 +44,9 @@ public class NavMesh {
 
 	/**
 	 * Get the space at a given index
-	 * 
+	 * <p>
 	 * @param index The index of the space to retrieve
+	 * <p>
 	 * @return The space at the given index
 	 */
 	public Space getSpace(int index) {
@@ -53,7 +55,7 @@ public class NavMesh {
 
 	/**
 	 * Add a single space to the mesh
-	 * 
+	 * <p>
 	 * @param space The space to be added
 	 */
 	public void addSpace(Space space) {
@@ -62,9 +64,10 @@ public class NavMesh {
 
 	/**
 	 * Find the space at a given location
-	 * 
-	 * @param x The x coordinate at which to find the space 
-	 * @param y The y coordinate at which to find the space 
+	 * <p>
+	 * @param x The x coordinate at which to find the space
+	 * @param y The y coordinate at which to find the space
+	 * <p>
 	 * @return The space at the given location
 	 */
 	public Space findSpace(float x, float y) {
@@ -79,13 +82,14 @@ public class NavMesh {
 	}
 
 	/**
-	 * Find a path from the source to the target coordinates 
-	 * 
+	 * Find a path from the source to the target coordinates
+	 * <p>
 	 * @param sx The x coordinate of the source location
-	 * @param sy The y coordinate of the source location 
+	 * @param sy The y coordinate of the source location
 	 * @param tx The x coordinate of the target location
 	 * @param ty The y coordinate of the target location
 	 * @param optimize True if paths should be optimized
+	 * <p>
 	 * @return The path between the two spaces
 	 */
 	public NavPath findPath(float sx, float sy, float tx, float ty, boolean optimize) {
@@ -122,12 +126,13 @@ public class NavMesh {
 
 	/**
 	 * Check if a particular path is clear
-	 * 
+	 * <p>
 	 * @param x1 The x coordinate of the starting point
 	 * @param y1 The y coordinate of the starting point
 	 * @param x2 The x coordinate of the ending point
 	 * @param y2 The y coordinate of the ending point
 	 * @param step The size of the step between points
+	 * <p>
 	 * @return True if there are no blockages along the path
 	 */
 	private boolean isClear(float x1, float y1, float x2, float y2, float step) {
@@ -153,9 +158,8 @@ public class NavMesh {
 	}
 
 	/**
-	 * Optimize a path by removing segments that arn't required
-	 * to reach the end point
-	 * 
+	 * Optimize a path by removing segments that arn't required to reach the end point
+	 * <p>
 	 * @param path The path to optimize. Redundant segments will be removed
 	 */
 	private void optimize(NavPath path) {

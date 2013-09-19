@@ -8,21 +8,24 @@ import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.util.Log;
 
 /**
- * A single sound effect loaded from either OGG or XM/MOD file. Sounds are allocated to 
- * channels dynamically - if not channel is available the sound will not play. 
- *
+ * A single sound effect loaded from either OGG or XM/MOD file. Sounds are allocated to channels dynamically - if not
+ * channel is available the sound will not play.
+ * <p>
  * @author kevin
  */
 public class Sound {
 
-	/** The internal sound effect represent this sound */
+	/**
+	 * The internal sound effect represent this sound
+	 */
 	private Audio sound;
 
 	/**
-	 * Create a new Sound 
-	 * 
+	 * Create a new Sound
+	 * <p>
 	 * @param in The location of the OGG or MOD/XM to load
 	 * @param ref The name to associate this stream
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the sound effect
 	 */
 	public Sound(InputStream in, String ref) throws SlickException {
@@ -40,16 +43,18 @@ public class Sound {
 			} else {
 				throw new SlickException("Only .xm, .mod, .aif, .wav and .ogg are currently supported.");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new SlickException("Failed to load sound: " + ref);
 		}
 	}
 
 	/**
-	 * Create a new Sound 
-	 * 
+	 * Create a new Sound
+	 * <p>
 	 * @param url The location of the OGG or MOD/XM to load
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the sound effect
 	 */
 	public Sound(URL url) throws SlickException {
@@ -68,16 +73,18 @@ public class Sound {
 			} else {
 				throw new SlickException("Only .xm, .mod, .aif, .wav and .ogg are currently supported.");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new SlickException("Failed to load sound: " + ref);
 		}
 	}
 
 	/**
-	 * Create a new Sound 
-	 * 
+	 * Create a new Sound
+	 * <p>
 	 * @param ref The location of the OGG or MOD/XM to load
+	 * <p>
 	 * @throws SlickException Indicates a failure to load the sound effect
 	 */
 	public Sound(String ref) throws SlickException {
@@ -95,7 +102,8 @@ public class Sound {
 			} else {
 				throw new SlickException("Only .xm, .mod, .aif, .wav and .ogg are currently supported.");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Log.error(e);
 			throw new SlickException("Failed to load sound: " + ref);
 		}
@@ -110,7 +118,7 @@ public class Sound {
 
 	/**
 	 * Play this sound effect at a given volume and pitch
-	 * 
+	 * <p>
 	 * @param pitch The pitch to play the sound effect at
 	 * @param volume The volumen to play the sound effect at
 	 */
@@ -120,7 +128,7 @@ public class Sound {
 
 	/**
 	 * Play a sound effect from a particular location
-	 * 
+	 * <p>
 	 * @param x The x position of the source of the effect
 	 * @param y The y position of the source of the effect
 	 * @param z The z position of the source of the effect
@@ -131,7 +139,7 @@ public class Sound {
 
 	/**
 	 * Play a sound effect from a particular location
-	 * 
+	 * <p>
 	 * @param pitch The pitch to play the sound effect at
 	 * @param volume The volumen to play the sound effect at
 	 * @param x The x position of the source of the effect
@@ -151,7 +159,7 @@ public class Sound {
 
 	/**
 	 * Loop this sound effect at a given volume and pitch
-	 * 
+	 * <p>
 	 * @param pitch The pitch to play the sound effect at
 	 * @param volume The volumen to play the sound effect at
 	 */
@@ -161,7 +169,7 @@ public class Sound {
 
 	/**
 	 * Check if the sound is currently playing
-	 * 
+	 * <p>
 	 * @return True if the sound is playing
 	 */
 	public boolean playing() {

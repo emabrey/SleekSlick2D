@@ -2,23 +2,29 @@ package org.newdawn.slick.util.pathfinding.navmesh;
 
 /**
  * A link between this space and another
- * 
+ * <p>
  * @author kevin
  */
 public class Link {
 
-	/** The x coordinate of the joining point */
+	/**
+	 * The x coordinate of the joining point
+	 */
 	private float px;
 
-	/** The y coordinate of the joining point */
+	/**
+	 * The y coordinate of the joining point
+	 */
 	private float py;
 
-	/** The target space we'd be linking to */
+	/**
+	 * The target space we'd be linking to
+	 */
 	private Space target;
 
 	/**
 	 * Create a new link
-	 * 
+	 * <p>
 	 * @param px The x coordinate of the linking point
 	 * @param py The y coordinate of the linking point
 	 * @param target The target space we're linking to
@@ -31,9 +37,10 @@ public class Link {
 
 	/**
 	 * Get the distance squared from this link to the given position
-	 * 
+	 * <p>
 	 * @param tx The x coordinate of the target location
 	 * @param ty The y coordinate of the target location
+	 * <p>
 	 * @return The distance squared from this link to the target
 	 */
 	public float distance2(float tx, float ty) {
@@ -45,7 +52,7 @@ public class Link {
 
 	/**
 	 * Get the x coordinate of the link
-	 * 
+	 * <p>
 	 * @return The x coordinate of the link
 	 */
 	public float getX() {
@@ -54,7 +61,7 @@ public class Link {
 
 	/**
 	 * Get the y coordinate of the link
-	 * 
+	 * <p>
 	 * @return The y coordinate of the link
 	 */
 	public float getY() {
@@ -63,7 +70,7 @@ public class Link {
 
 	/**
 	 * Get the space this object links to
-	 * 
+	 * <p>
 	 * @return The space this object links to
 	 */
 	public Space getTarget() {

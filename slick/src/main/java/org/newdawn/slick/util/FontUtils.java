@@ -7,9 +7,9 @@ import org.newdawn.slick.Font;
 
 /**
  * Simple utility class to support justified text
- * 
+ * <p>
  * http://slick.javaunlimited.net/viewtopic.php?t=2640
- * 
+ * <p>
  * @author zenzei
  */
 public class FontUtils {
@@ -19,23 +19,31 @@ public class FontUtils {
 	 */
 	public class Alignment {
 
-		/** Left alignment */
+		/**
+		 * Left alignment
+		 */
 		public static final int LEFT = 1;
 
-		/** Center alignment */
+		/**
+		 * Center alignment
+		 */
 		public static final int CENTER = 2;
 
-		/** Right alignment */
+		/**
+		 * Right alignment
+		 */
 		public static final int RIGHT = 3;
 
-		/** Justify alignment */
+		/**
+		 * Justify alignment
+		 */
 		public static final int JUSTIFY = 4;
 
 	}
 
 	/**
 	 * Draw text left justified
-	 * 
+	 * <p>
 	 * @param font The font to draw with
 	 * @param s The string to draw
 	 * @param x The x location to draw at
@@ -47,7 +55,7 @@ public class FontUtils {
 
 	/**
 	 * Draw text center justified
-	 * 
+	 * <p>
 	 * @param font The font to draw with
 	 * @param s The string to draw
 	 * @param x The x location to draw at
@@ -60,7 +68,7 @@ public class FontUtils {
 
 	/**
 	 * Draw text center justified
-	 * 
+	 * <p>
 	 * @param font The font to draw with
 	 * @param s The string to draw
 	 * @param x The x location to draw at
@@ -69,13 +77,13 @@ public class FontUtils {
 	 * @param color The color to draw in
 	 */
 	public static void drawCenter(Font font, String s, int x, int y, int width,
-			Color color) {
+								  Color color) {
 		drawString(font, s, Alignment.CENTER, x, y, width, color);
 	}
 
 	/**
 	 * Draw text right justified
-	 * 
+	 * <p>
 	 * @param font The font to draw with
 	 * @param s The string to draw
 	 * @param x The x location to draw at
@@ -88,7 +96,7 @@ public class FontUtils {
 
 	/**
 	 * Draw text right justified
-	 * 
+	 * <p>
 	 * @param font The font to draw with
 	 * @param s The string to draw
 	 * @param x The x location to draw at
@@ -97,25 +105,26 @@ public class FontUtils {
 	 * @param color The color to draw in
 	 */
 	public static void drawRight(Font font, String s, int x, int y, int width,
-			Color color) {
+								 Color color) {
 		drawString(font, s, Alignment.RIGHT, x, y, width, color);
 	}
 
 	/**
 	 * Draw a string
-	 * 
+	 * <p>
 	 * @param font The font to draw with
 	 * @param s The text to draw
 	 * @param alignment The alignment to apply
 	 * @param x The x location to draw at
 	 * @param y The y location to draw at
-	 * @param width The width to fill with the string 
-	 * @param color The color to draw in 
+	 * @param width The width to fill with the string
+	 * @param color The color to draw in
+	 * <p>
 	 * @return The final x coordinate of the text
 	 */
 	public static final int drawString(Font font, final String s,
-			final int alignment, final int x, final int y, final int width,
-			Color color) {
+									   final int alignment, final int x, final int y, final int width,
+									   Color color) {
 		int resultingXCoordinate = 0;
 		if (alignment == Alignment.LEFT) {
 			font.drawString(x, y, s, color);
@@ -141,22 +150,17 @@ public class FontUtils {
 	}
 
 	/**
-	 * Calculates and returns the width of a single justified space for the
-	 * given {@link String}, in pixels.
-	 * 
+	 * Calculates and returns the width of a single justified space for the given {@link String}, in pixels.
+	 * <p>
 	 * @param font The font to draw with
-	 * @param s
-	 *            The given non-null {@link String} to use to calculate the
-	 *            width of a space for.
-	 * @param leftWidth
-	 *            The integer specifying the left width buffer to use to
-	 *            calculate how much space a space should take up in
-	 *            justification.
-	 * @return The width of a single justified space for the given
-	 *         {@link String}, in pixels.
+	 * @param s The given non-null {@link String} to use to calculate the width of a space for.
+	 * @param leftWidth The integer specifying the left width buffer to use to calculate how much space a space should
+	 * take up in justification.
+	 * <p>
+	 * @return The width of a single justified space for the given {@link String}, in pixels.
 	 */
 	private static int calculateWidthOfJustifiedSpaceInPixels(final Font font,
-			final String s, final int leftWidth) {
+															  final String s, final int leftWidth) {
 		int space = 0; // hold total space; hold space width in pixel
 		int curpos = 0; // current string position
 
@@ -176,33 +180,22 @@ public class FontUtils {
 	}
 
 	/**
-	 * Draws justified-space separated substrings based on the given
-	 * {@link String} and the given starting x and y coordinates to the given
-	 * {@link Graphics2D} instance.
-	 * 
-	 * @param font
-	 *            The font to draw with
-	 * @param s
-	 *            The non-null {@link String} to draw as space-separated
-	 *            substrings.
-	 * @param x
-	 *            The given starting x-coordinate position to use to draw the
-	 *            {@link String}.
-	 * @param y
-	 *            The given starting y-coordinate position to use to draw the
-	 *            {@link String}.
-	 * @param justifiedSpaceWidth
-	 *            The integer specifying the width of a justified space
-	 *            {@link String}, in pixels.
-	 * @return The resulting x-coordinate of the current cursor after the
-	 *         drawing operation completes.
-	 * @throws NullPointerException
-	 *             Throws a {@link NullPointerException} if any of the given
-	 *             arguments are null.
+	 * Draws justified-space separated substrings based on the given {@link String} and the given starting x and y
+	 * coordinates to the given {@link Graphics2D} instance.
+	 * <p>
+	 * @param font The font to draw with
+	 * @param s The non-null {@link String} to draw as space-separated substrings.
+	 * @param x The given starting x-coordinate position to use to draw the {@link String}.
+	 * @param y The given starting y-coordinate position to use to draw the {@link String}.
+	 * @param justifiedSpaceWidth The integer specifying the width of a justified space {@link String}, in pixels.
+	 * <p>
+	 * @return The resulting x-coordinate of the current cursor after the drawing operation completes.
+	 * <p>
+	 * @throws NullPointerException Throws a {@link NullPointerException} if any of the given arguments are null.
 	 */
 	private static int drawJustifiedSpaceSeparatedSubstrings(Font font,
-			final String s, final int x, final int y,
-			final int justifiedSpaceWidth) {
+															 final String s, final int x, final int y,
+															 final int justifiedSpaceWidth) {
 		int curpos = 0;
 		int endpos = 0;
 		int resultingXCoordinate = x;

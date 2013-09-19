@@ -19,55 +19,72 @@ import org.newdawn.slick.util.Log;
 import org.newdawn.slick.util.ResourceLoader;
 
 /**
- * A font implementation that will parse BMFont format font files. The font files can be output
- * by Hiero, which is included with Slick, and also the AngelCode font tool available at:
- * 
- * <a
- * href="http://www.angelcode.com/products/bmfont/">http://www.angelcode.com/products/bmfont/</a>
- * 
- * This implementation copes with both the font display and kerning information
- * allowing nicer looking paragraphs of text. Note that this utility only
- * supports the text BMFont format definition file.
- * 
+ * A font implementation that will parse BMFont format font files. The font files can be output by Hiero, which is
+ * included with Slick, and also the AngelCode font tool available at:
+ * <p>
+ * <a href="http://www.angelcode.com/products/bmfont/">http://www.angelcode.com/products/bmfont/</a>
+ * <p>
+ * This implementation copes with both the font display and kerning information allowing nicer looking paragraphs of
+ * text. Note that this utility only supports the text BMFont format definition file.
+ * <p>
  * @author kevin
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class AngelCodeFont implements Font {
 
-	/** The renderer to use for all GL operations */
+	/**
+	 * The renderer to use for all GL operations
+	 */
 	private static SGL GL = Renderer.get();
 
 	/**
-	 * The line cache size, this is how many lines we can render before starting
-	 * to regenerate lists
+	 * The line cache size, this is how many lines we can render before starting to regenerate lists
 	 */
 	private static final int DISPLAY_LIST_CACHE_SIZE = 200;
 
-	/** The highest character that AngelCodeFont will support. */
+	/**
+	 * The highest character that AngelCodeFont will support.
+	 */
 	private static final int MAX_CHAR = 255;
 
-	/** True if this font should use display list caching */
+	/**
+	 * True if this font should use display list caching
+	 */
 	private boolean displayListCaching = true;
 
-	/** The image containing the bitmap font */
+	/**
+	 * The image containing the bitmap font
+	 */
 	private Image fontImage;
 
-	/** The characters building up the font */
+	/**
+	 * The characters building up the font
+	 */
 	private CharDef[] chars;
 
-	/** The height of a line */
+	/**
+	 * The height of a line
+	 */
 	private int lineHeight;
 
-	/** The first display list ID */
+	/**
+	 * The first display list ID
+	 */
 	private int baseDisplayListID = -1;
 
-	/** The eldest display list ID */
+	/**
+	 * The eldest display list ID
+	 */
 	private int eldestDisplayListID;
 
-	/** The eldest display list  */
+	/**
+	 * The eldest display list
+	 */
 	private DisplayList eldestDisplayList;
 
-	/** The display list cache for rendered lines */
+	/**
+	 * The display list cache for rendered lines
+	 */
 	private final LinkedHashMap displayLists = new LinkedHashMap(DISPLAY_LIST_CACHE_SIZE, 1, true) {
 		protected boolean removeEldestEntry(Entry eldest) {
 			eldestDisplayList = (DisplayList) eldest.getValue();
@@ -79,15 +96,12 @@ public class AngelCodeFont implements Font {
 	};
 
 	/**
-	 * Create a new font based on a font definition from AngelCode's tool and
-	 * the font image generated from the tool.
-	 * 
-	 * @param fntFile
-	 *            The location of the font defnition file
-	 * @param image
-	 *            The image to use for the font
-	 * @throws SlickException
-	 *             Indicates a failure to load either file
+	 * Create a new font based on a font definition from AngelCode's tool and the font image generated from the tool.
+	 * <p>
+	 * @param fntFile The location of the font defnition file
+	 * @param image The image to use for the font
+	 * <p>
+	 * @throws SlickException Indicates a failure to load either file
 	 */
 	public AngelCodeFont(String fntFile, Image image) throws SlickException {
 		fontImage = image;
@@ -96,15 +110,12 @@ public class AngelCodeFont implements Font {
 	}
 
 	/**
-	 * Create a new font based on a font definition from AngelCode's tool and
-	 * the font image generated from the tool.
-	 * 
-	 * @param fntFile
-	 *            The location of the font defnition file
-	 * @param imgFile
-	 *            The location of the font image
-	 * @throws SlickException
-	 *             Indicates a failure to load either file
+	 * Create a new font based on a font definition from AngelCode's tool and the font image generated from the tool.
+	 * <p>
+	 * @param fntFile The location of the font defnition file
+	 * @param imgFile The location of the font image
+	 * <p>
+	 * @throws SlickException Indicates a failure to load either file
 	 */
 	public AngelCodeFont(String fntFile, String imgFile) throws SlickException {
 		fontImage = new Image(imgFile);
@@ -113,17 +124,13 @@ public class AngelCodeFont implements Font {
 	}
 
 	/**
-	 * Create a new font based on a font definition from AngelCode's tool and
-	 * the font image generated from the tool.
-	 * 
-	 * @param fntFile
-	 *            The location of the font defnition file
-	 * @param image
-	 *            The image to use for the font
-	 * @param caching
-	 *            True if this font should use display list caching
-	 * @throws SlickException
-	 *             Indicates a failure to load either file
+	 * Create a new font based on a font definition from AngelCode's tool and the font image generated from the tool.
+	 * <p>
+	 * @param fntFile The location of the font defnition file
+	 * @param image The image to use for the font
+	 * @param caching True if this font should use display list caching
+	 * <p>
+	 * @throws SlickException Indicates a failure to load either file
 	 */
 	public AngelCodeFont(String fntFile, Image image, boolean caching)
 			throws SlickException {
@@ -133,17 +140,13 @@ public class AngelCodeFont implements Font {
 	}
 
 	/**
-	 * Create a new font based on a font definition from AngelCode's tool and
-	 * the font image generated from the tool.
-	 * 
-	 * @param fntFile
-	 *            The location of the font defnition file
-	 * @param imgFile
-	 *            The location of the font image
-	 * @param caching
-	 *            True if this font should use display list caching
-	 * @throws SlickException
-	 *             Indicates a failure to load either file
+	 * Create a new font based on a font definition from AngelCode's tool and the font image generated from the tool.
+	 * <p>
+	 * @param fntFile The location of the font defnition file
+	 * @param imgFile The location of the font image
+	 * @param caching True if this font should use display list caching
+	 * <p>
+	 * @throws SlickException Indicates a failure to load either file
 	 */
 	public AngelCodeFont(String fntFile, String imgFile, boolean caching)
 			throws SlickException {
@@ -153,17 +156,13 @@ public class AngelCodeFont implements Font {
 	}
 
 	/**
-	 * Create a new font based on a font definition from AngelCode's tool and
-	 * the font image generated from the tool.
-	 * 
-	 * @param name
-	 *            The name to assign to the font image in the image store
-	 * @param fntFile
-	 *            The stream of the font defnition file
-	 * @param imgFile
-	 *            The stream of the font image
-	 * @throws SlickException
-	 *             Indicates a failure to load either file
+	 * Create a new font based on a font definition from AngelCode's tool and the font image generated from the tool.
+	 * <p>
+	 * @param name The name to assign to the font image in the image store
+	 * @param fntFile The stream of the font defnition file
+	 * @param imgFile The stream of the font image
+	 * <p>
+	 * @throws SlickException Indicates a failure to load either file
 	 */
 	public AngelCodeFont(String name, InputStream fntFile, InputStream imgFile)
 			throws SlickException {
@@ -173,22 +172,17 @@ public class AngelCodeFont implements Font {
 	}
 
 	/**
-	 * Create a new font based on a font definition from AngelCode's tool and
-	 * the font image generated from the tool.
-	 * 
-	 * @param name
-	 *            The name to assign to the font image in the image store
-	 * @param fntFile
-	 *            The stream of the font defnition file
-	 * @param imgFile
-	 *            The stream of the font image
-	 * @param caching
-	 *            True if this font should use display list caching
-	 * @throws SlickException
-	 *             Indicates a failure to load either file
+	 * Create a new font based on a font definition from AngelCode's tool and the font image generated from the tool.
+	 * <p>
+	 * @param name The name to assign to the font image in the image store
+	 * @param fntFile The stream of the font defnition file
+	 * @param imgFile The stream of the font image
+	 * @param caching True if this font should use display list caching
+	 * <p>
+	 * @throws SlickException Indicates a failure to load either file
 	 */
 	public AngelCodeFont(String name, InputStream fntFile, InputStream imgFile,
-			boolean caching) throws SlickException {
+						 boolean caching) throws SlickException {
 		fontImage = new Image(imgFile, name, false);
 
 		displayListCaching = caching;
@@ -197,9 +191,9 @@ public class AngelCodeFont implements Font {
 
 	/**
 	 * Parse the font definition file
-	 * 
-	 * @param fntFile
-	 *            The stream from which the font file can be read
+	 * <p>
+	 * @param fntFile The stream from which the font file can be read
+	 * <p>
 	 * @throws SlickException
 	 */
 	private void parseFnt(InputStream fntFile) throws SlickException {
@@ -276,7 +270,8 @@ public class AngelCodeFont implements Font {
 				}
 				chars[first].kerning = valueArray;
 			}
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			Log.error(e);
 			throw new SlickException("Failed to parse font file: " + fntFile);
 		}
@@ -284,10 +279,11 @@ public class AngelCodeFont implements Font {
 
 	/**
 	 * Parse a single character line from the definition
-	 * 
-	 * @param line
-	 *            The line to be parsed
+	 * <p>
+	 * @param line The line to be parsed
+	 * <p>
 	 * @return The character definition from the line
+	 * <p>
 	 * @throws SlickException Indicates a given character is not valid in an angel code font
 	 */
 	private CharDef parseChar(String line) throws SlickException {
@@ -337,8 +333,7 @@ public class AngelCodeFont implements Font {
 	}
 
 	/**
-	 * @see org.newdawn.slick.Font#drawString(float, float, java.lang.String,
-	 *      org.newdawn.slick.Color)
+	 * @see org.newdawn.slick.Font#drawString(float, float, java.lang.String, org.newdawn.slick.Color)
 	 */
 	public void drawString(float x, float y, String text, Color col) {
 		drawString(x, y, text, col, 0, text.length() - 1);
@@ -348,7 +343,7 @@ public class AngelCodeFont implements Font {
 	 * @see Font#drawString(float, float, String, Color, int, int)
 	 */
 	public void drawString(float x, float y, String text, Color col,
-			int startIndex, int endIndex) {
+						   int startIndex, int endIndex) {
 		fontImage.bind();
 		col.bind();
 
@@ -383,7 +378,7 @@ public class AngelCodeFont implements Font {
 
 	/**
 	 * Render based on immediate rendering
-	 * 
+	 * <p>
 	 * @param text The text to be rendered
 	 * @param start The index of the first character in the string to render
 	 * @param end The index of the last character in the string to render
@@ -425,9 +420,9 @@ public class AngelCodeFont implements Font {
 
 	/**
 	 * Returns the distance from the y drawing location to the top most pixel of the specified text.
-	 * 
-	 * @param text
-	 *            The text that is to be tested
+	 * <p>
+	 * @param text The text that is to be tested
+	 * <p>
 	 * @return The yoffset from the y draw location at which text will start
 	 */
 	public int getYOffset(String text) {
@@ -554,49 +549,69 @@ public class AngelCodeFont implements Font {
 	}
 
 	/**
-	 * The definition of a single character as defined in the AngelCode file
-	 * format
-	 * 
+	 * The definition of a single character as defined in the AngelCode file format
+	 * <p>
 	 * @author kevin
 	 */
 	private class CharDef {
 
-		/** The id of the character */
+		/**
+		 * The id of the character
+		 */
 		public short id;
 
-		/** The x location on the sprite sheet */
+		/**
+		 * The x location on the sprite sheet
+		 */
 		public short x;
 
-		/** The y location on the sprite sheet */
+		/**
+		 * The y location on the sprite sheet
+		 */
 		public short y;
 
-		/** The width of the character image */
+		/**
+		 * The width of the character image
+		 */
 		public short width;
 
-		/** The height of the character image */
+		/**
+		 * The height of the character image
+		 */
 		public short height;
 
-		/** The amount the x position should be offset when drawing the image */
+		/**
+		 * The amount the x position should be offset when drawing the image
+		 */
 		public short xoffset;
 
-		/** The amount the y position should be offset when drawing the image */
+		/**
+		 * The amount the y position should be offset when drawing the image
+		 */
 		public short yoffset;
 
-		/** The amount to move the current position after drawing the character */
+		/**
+		 * The amount to move the current position after drawing the character
+		 */
 		public short xadvance;
 
-		/** The image containing the character */
+		/**
+		 * The image containing the character
+		 */
 		public Image image;
 
-		/** The display list index for this character */
+		/**
+		 * The display list index for this character
+		 */
 		public short dlIndex;
 
-		/** The kerning info for this character */
+		/**
+		 * The kerning info for this character
+		 */
 		public short[] kerning;
 
 		/**
-		 * Initialise the image by cutting the right section from the map
-		 * produced by the AngelCode tool.
+		 * Initialise the image by cutting the right section from the map produced by the AngelCode tool.
 		 */
 		public void init() {
 			image = fontImage.getSubImage(x, y, width, height);
@@ -611,11 +626,9 @@ public class AngelCodeFont implements Font {
 
 		/**
 		 * Draw this character embedded in a image draw
-		 * 
-		 * @param x
-		 *            The x position at which to draw the text
-		 * @param y
-		 *            The y position at which to draw the text
+		 * <p>
+		 * @param x The x position at which to draw the text
+		 * @param y The y position at which to draw the text
 		 */
 		public void draw(float x, float y) {
 			image.drawEmbedded(x + xoffset, y + yoffset, width, height);
@@ -623,8 +636,10 @@ public class AngelCodeFont implements Font {
 
 		/**
 		 * Get the kerning offset between this character and the specified character.
+		 * <p>
 		 * @param otherCodePoint The other code point
-		 * @return the kerning offset 
+		 * <p>
+		 * @return the kerning offset
 		 */
 		public int getKerning(int otherCodePoint) {
 			if (kerning == null) {
@@ -658,24 +673,34 @@ public class AngelCodeFont implements Font {
 
 	/**
 	 * A descriptor for a single display list
-	 * 
+	 * <p>
 	 * @author Nathan Sweet <misc@n4te.com>
 	 */
 	static private class DisplayList {
 
-		/** The if of the distance list */
+		/**
+		 * The if of the distance list
+		 */
 		int id;
 
-		/** The offset of the line rendered */
+		/**
+		 * The offset of the line rendered
+		 */
 		Short yOffset;
 
-		/** The width of the line rendered */
+		/**
+		 * The width of the line rendered
+		 */
 		Short width;
 
-		/** The height of the line rendered */
+		/**
+		 * The height of the line rendered
+		 */
 		Short height;
 
-		/** The text that the display list holds */
+		/**
+		 * The text that the display list holds
+		 */
 		String text;
 
 	}
