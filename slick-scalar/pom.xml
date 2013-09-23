@@ -8,13 +8,12 @@
     <parent>
         <groupId>org.newdawn.slick</groupId>
         <artifactId>slick-project</artifactId>
-        <version>237-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <name>slick-scalar</name>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class>org.newdawn.slick.tools.scalar.Scalar</main.class>
         <finalName>scalar.jar</finalName>
         <natives>${project.basedir}/target/natives/</natives>

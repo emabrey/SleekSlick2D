@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.newdawn.slick</groupId>
         <artifactId>slick-project</artifactId>
-        <version>237-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <packaging>jar</packaging>
@@ -15,29 +15,6 @@
     </description>
 
     <name>slick-util</name>
-
-    <properties>
-        <java.source.version>1.5</java.source.version>
-        <java.source.target.version>1.5</java.source.target.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <maven.jar.index>true</maven.jar.index>
-
-        <build.dir>${basedir}/target</build.dir>
-        <packages.output.dir>dist-packaged</packages.output.dir>
-        <output.dir>${basedir}/dist</output.dir>
-        <webstart.dir>${basedir}/dist/webstart</webstart.dir>
-        <ant.dir>${basedir}/maven_files</ant.dir>
-
-        <keystore.name>DefaultKeySigningName</keystore.name>
-
-        <keystore.dir>${basedir}/maven_files/keystore</keystore.dir>
-        <keystore.alias>DefaultKeySigningAlias</keystore.alias>
-        <keystore.company>DefaultKeySigningCompany</keystore.company>
-
-        <jnlp.template>src/main/jnlp/slickdemo.vm</jnlp.template>
-
-    </properties>
 
     <build>
         <sourceDirectory>../slick/src/main/java</sourceDirectory>

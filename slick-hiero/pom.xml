@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.newdawn.slick</groupId>
         <artifactId>slick-project</artifactId>
-        <version>237-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <description>
@@ -20,7 +20,6 @@
     <url>http://slick.cokeandcode.com</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class>org.newdawn.slick.tools.hiero.Hiero</main.class>
         <finalName>hiero.jar</finalName>
         <natives>${project.basedir}/target/natives/</natives>
@@ -115,34 +114,11 @@
                     <!-- SIGNING -->
                     <!-- defining this will automatically sign the jar and its dependencies, if necessary -->
                     <sign>
-                        <keystore>jendave</keystore>
-                        <keypass>testing</keypass>
-                        <!-- we need to override passwords easily from the command line. ${keypass} -->
-                        <storepass>fillme</storepass>
-                        <!-- ${storepass} -->
-                        <!--storetype>fillme</storetype-->
-                        <alias>fillme</alias>
-
-                        <!--validity>fillme</validity-->
-
-                        <!-- only required for generating the keystore -->
-                        <!--dnameCn>fillme</dnameCn>
-                        <dnameOu>fillme</dnameOu>
-                        <dnameO>fillme</dnameO>
-                        <dnameL>fillme</dnameL>
-                        <dnameSt>fillme</dnameSt>
-                        <dnameC>fillme</dnameC-->
-
+                        <keystore>${basedir}/src/keystore/sleekslick2D_default.jks</keystore>
+                        <alias>selfsigned</alias>
+						<storepass>sleekslick2D</storepass>
+                        <keypass>sleekslick2D</keypass>
                         <verify>true</verify>
-                        <!-- verify that the signing operation succeeded -->
-
-                        <!-- KEYSTORE MANAGEMENT -->
-                        <keystoreConfig>
-                            <delete>true</delete>
-                            <!-- delete the keystore -->
-                            <gen>true</gen>
-                            <!-- optional shortcut to generate the store. -->
-                        </keystoreConfig>
                     </sign>
 
                     <!-- BUILDING PROCESS -->
