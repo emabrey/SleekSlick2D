@@ -208,9 +208,10 @@ public class AngelCodeFont implements Font {
 			// now parse the font file
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					fntFile));
-			String info = in.readLine();
-			String common = in.readLine();
-			String page = in.readLine();
+
+			String info = in.readLine(); //NOPMD
+			String common = in.readLine(); //NOPMD
+			String page = in.readLine(); //NOPMD
 
 			Map kerning = new HashMap(64);
 			List charDefs = new ArrayList(MAX_CHAR);
@@ -221,18 +222,15 @@ public class AngelCodeFont implements Font {
 				if (line == null) {
 					done = true;
 				} else {
-					if (line.startsWith("chars c")) {
-						// ignore
-					} else if (line.startsWith("char")) {
+					if (line.startsWith("char") && !line.startsWith("chars c")) {
+
 						CharDef def = parseChar(line);
 						if (def != null) {
 							maxChar = Math.max(maxChar, def.id);
 							charDefs.add(def);
 						}
 					}
-					if (line.startsWith("kernings c")) {
-						// ignore
-					} else if (line.startsWith("kerning")) {
+					else if (line.startsWith("kerning") && !line.startsWith("kernings c")) {
 						StringTokenizer tokens = new StringTokenizer(line, " =");
 						tokens.nextToken(); // kerning
 						tokens.nextToken(); // first
