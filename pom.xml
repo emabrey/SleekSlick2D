@@ -1,24 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.newdawn.slick</groupId>
-    <artifactId>slick-project</artifactId>
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.newdawn.slick</groupId>
+	<artifactId>slick-project</artifactId>
 	<version>1.0-SNAPSHOT</version>    
 	<packaging>pom</packaging>
 
-    <description>
+	<description>
 		A port of Slick2D that aims to both streamline the complicated build process of Slick2D,
 		as well as to rewrite the codebase of Slick2D to be more readable and efficient.
-    </description>
+	</description>
 	
-    <url>https://github.com/emabrey/SleekSlick2D</url>
+	<url>https://github.com/emabrey/SleekSlick2D</url>
    
 	<issueManagement>
-         <system>GitHub</system>
-        <url>https://github.com/emabrey/SleekSlick2D/issues</url>
-    </issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/emabrey/SleekSlick2D/issues</url>
+	</issueManagement>
 
-    <developers>
+	<developers>
 		<developer>
 			<id>emabrey</id>
 			<name>Emily Mabrey</name>
@@ -54,183 +54,229 @@
 		</contributor>
 	</contributors>
 
-    <prerequisites>
-        <maven>3.0.4</maven>
-    </prerequisites>
+	<prerequisites>
+		<maven>3.0.4</maven>
+	</prerequisites>
 
-    <licenses>
-        <license>
-            <name>BSD</name>
-            <url>http://slick.cokeandcode.com/static.php?page=license</url>
-        </license>
-    </licenses>
+	<licenses>
+		<license>
+			<name>BSDv2</name>
+			<url>http://opensource.org/licenses/BSD-2-Clause</url>
+		</license>
+	</licenses>
 
-    <scm>
+	<scm>
 		<connection>scm:git:https://github.com/emabrey/SleekSlick2D.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/emabrey/SleekSlick2D.git</developerConnection>
 		<url>https://github.com/emabrey/SleekSlick2D.git</url>
 	</scm>
 
-    <properties>
-        <java.source.version>1.7</java.source.version>
-        <java.source.target.version>1.7</java.source.target.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<properties>
+		<java.source.version>1.7</java.source.version>
+		<java.source.target.version>1.7</java.source.target.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!--<skipTests>true</skipTests>  -->
+		<!--<skipTests>true</skipTests>  -->
 
-        <maven.jar.index>true</maven.jar.index>
+		<maven.jar.index>true</maven.jar.index>
 
-        <build.dir>${basedir}/target</build.dir>
-        <packages.output.dir>dist-packaged</packages.output.dir>
-        <output.dir>${basedir}/dist</output.dir>
-        <webstart.dir>${basedir}/dist/webstart</webstart.dir>
-        <ant.dir>${basedir}/maven_files</ant.dir>
+		<build.dir>${basedir}/target</build.dir>
+		<packages.output.dir>dist-packaged</packages.output.dir>
+		<output.dir>${basedir}/dist</output.dir>
+		<webstart.dir>${basedir}/dist/webstart</webstart.dir>
+		<ant.dir>${basedir}/maven_files</ant.dir>
 
-        <keystore.name>DefaultKeySigningName</keystore.name>
+	</properties>
 
-        <keystore.dir>${basedir}/maven_files/keystore</keystore.dir>
-        <keystore.alias>DefaultKeySigningAlias</keystore.alias>
-        <keystore.company>DefaultKeySigningCompany</keystore.company>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.12.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.5.1</version>
+					<configuration>
+						<source>${java.source.version}</source>
+						<target>${java.source.target.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.8.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.google.code.maven-svn-wagon</groupId>
+							<artifactId>maven-svn-wagon</artifactId>
+							<version>1.4</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<port>8081</port>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>com.google.code.maven-svn-wagon</groupId>
+							<artifactId>maven-svn-wagon</artifactId>
+							<version>1.4</version>
+						</dependency>
+					</dependencies>
+					<!--  <dependencies>
+						<dependency>
+							<groupId>org.apache.maven.scm</groupId>
+							<artifactId>maven-scm-api</artifactId>
+							<version>1.7</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.maven.scm</groupId>
+							<artifactId>maven-scm-provider-hg</artifactId>
+							<version>1.7</version>
+						</dependency>
+					</dependencies>   -->
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<goals>deploy</goals>
+						<!--<localCheckout>true</localCheckout> -->
+						<pushChanges>false</pushChanges>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		
+		<!-- Makes building this parent project a multithreaded build. Lowers build time substantially.-->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.16</version>
+				<configuration>
+					<forkCount>1C</forkCount>
+					<reuseForks>true</reuseForks>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-        <jnlp.template>src/main/jnlp/slickdemo.vm</jnlp.template>
-
-    </properties>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>2.3</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.7</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.5</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.12.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>2.5</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.4</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>2.5</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.5.1</version>
-                    <configuration>
-                        <source>${java.source.version}</source>
-                        <target>${java.source.target.version}</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.8.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>2.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.7</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.google.code.maven-svn-wagon</groupId>
-                            <artifactId>maven-svn-wagon</artifactId>
-                            <version>1.4</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.1</version>
-                    <configuration>
-                        <port>8081</port>
-                    </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.google.code.maven-svn-wagon</groupId>
-                            <artifactId>maven-svn-wagon</artifactId>
-                            <version>1.4</version>
-                        </dependency>
-                    </dependencies>
-                    <!--  <dependencies>
-                     <dependency>
-                         <groupId>org.apache.maven.scm</groupId>
-                         <artifactId>maven-scm-api</artifactId>
-                         <version>1.7</version>
-                     </dependency>
-                     <dependency>
-                         <groupId>org.apache.maven.scm</groupId>
-                         <artifactId>maven-scm-provider-hg</artifactId>
-                         <version>1.7</version>
-                     </dependency>
-                 </dependencies>   -->
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.3.2</version>
-                    <configuration>
-                        <goals>deploy</goals>
-                        <!--<localCheckout>true</localCheckout> -->
-                        <pushChanges>false</pushChanges>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
-    <!--
-        The artifacts obtained from this repo are noted in the dependency section. They need to be moved to Maven Central
-        before the Slick pom conforms to Maven Central requirements for pom inclusion. (Outside repos are =very= frowned upon)
-
-		Right now this repo is available on google code, but it can easily be moved to a slick webserver
+	<!--
+		The artifacts obtained from this repo are noted in the dependency section. They need to be moved to Maven Central
+		before the SleekSlick2D pom conforms to Maven Central requirements for pom inclusion. (Outside repos are not allowed)
 	-->
 
 	<repositories>
 		<repository>
-			<id>slick2d-maven-dependencies</id>
-			<url>http://slick2d-maven-dependencies.googlecode.com/svn/trunk/repository/</url>
+			<id>sleek-slick2d-maven-dependencies</id>
+			<url>http://sleek-slick2d-maven-dependencies.googlecode.com/svn/trunk/repository/</url>
 		</repository>
 	</repositories>
 
 	<distributionManagement>
 		<repository>
 			<id>googlecode</id>
-			<name>slick2d-maven-dependencies</name>
-			<url>svn:https://slick2d-maven-dependencies.googlecode.com/svn/trunk/repository</url>
+			<name>sleek-slick2d-maven-dependencies</name>
+			<url>svn:https://sleek-slick2d-maven-dependencies.googlecode.com/svn/trunk/repository</url>
 		</repository>
 		<site>
 			<id>googlecode-site</id>
-			<name>slick2d-maven-dependencies-site</name>
-			<url>svn:https://slick2d-maven-dependencies.googlecode.com/svn/site/${project.artifactId}</url>
+			<name>sleek-slick2d-maven-dependencies-site</name>
+			<url>svn:https://sleek-slick2d-maven-dependencies.googlecode.com/svn/site/${project.artifactId}</url>
 		</site>
 	</distributionManagement>
 
+	<dependencyManagement>
+		
+		<!-- Sets the version of TestNG that all children must use if they don't manually include a different version-->
+		<dependencies>
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>6.7</version>
+				<scope>test</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.lwjgl.lwjgl</groupId>
+				<artifactId>lwjgl</artifactId>
+				<version>2.9.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.lwjgl</groupId>
+				<artifactId>natives-windows</artifactId>
+				<version>2.8.4</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.lwjgl</groupId>
+				<artifactId>natives-mac</artifactId>
+				<version>2.8.4</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.lwjgl</groupId>
+				<artifactId>natives-linux</artifactId>
+				<version>2.8.4</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>jnlp</artifactId>
+				<version>1.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 	<modules>
 		<module>slick</module>
 		<module>slick-demos</module>
