@@ -27,3 +27,4 @@ nb-configuration.xml
 
 #IntelliJ IDEA files
 .idea/
+*.iml
