@@ -528,7 +528,7 @@ public class TTFSubSetFile extends TTFFile {
 		boolean moreComposites = true;
 		while (moreComposites) {
 			flags = in.readTTFUShort(offset);
-			compositeIdx = new Integer(in.readTTFUShort(offset + 2));
+			compositeIdx = Integer.valueOf(in.readTTFUShort(offset + 2));
 			ret.add(compositeIdx);
 
 			offset += 4;
@@ -579,7 +579,7 @@ public class TTFSubSetFile extends TTFFile {
 
 		while (moreComposites) {
 			flags = in.readTTFUShort(offset);
-			compositeIdx = new Integer(in.readTTFUShort(offset + 2));
+			compositeIdx = Integer.valueOf(in.readTTFUShort(offset + 2));
 			Integer newIdx = (Integer) glyphs.get(compositeIdx);
 			if (newIdx == null) {
 				// This errormessage would look much better
@@ -662,7 +662,7 @@ public class TTFSubSetFile extends TTFFile {
 							if (glyphs.get(cIdx) == null
 									&& newComposites.get(cIdx) == null) {
 								newComposites.put(cIdx,
-										new Integer(newIndex));
+                                        Integer.valueOf(newIndex));
 								newIndex++;
 							}
 						}

@@ -162,7 +162,7 @@ public class MinMaxPanel extends DefaultPanel {
 	 */
 	public void setMin(int value) {
 		updateDisable = true;
-		minSpinner.setValue(new Integer(value));
+		minSpinner.setValue(Integer.valueOf(value));
 		updateDisable = false;
 	}
 
@@ -173,7 +173,7 @@ public class MinMaxPanel extends DefaultPanel {
 	 */
 	public void setMax(int value) {
 		updateDisable = true;
-		maxSpinner.setValue(new Integer(value));
+		maxSpinner.setValue(Integer.valueOf(value));
 		updateDisable = false;
 	}
 

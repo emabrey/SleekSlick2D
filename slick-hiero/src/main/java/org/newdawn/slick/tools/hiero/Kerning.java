@@ -76,7 +76,7 @@ class Kerning {
 				if (offset == 0) {
 					valueIter.remove();
 				} else {
-					valueIter.set(new Integer((offset << 16) | glyphCode));
+					valueIter.set(Integer.valueOf((offset << 16) | glyphCode));
 				}
 			}
 			if (valueList.isEmpty()) {
@@ -99,7 +99,7 @@ class Kerning {
 	 * retrieved with {@link GlyphVector#getGlyphCode(int)}.
 	 */
 	public int[] getValues(int firstGlyphCode) {
-		return (int[]) values.get(new Integer(firstGlyphCode));
+		return (int[]) values.get(Integer.valueOf(firstGlyphCode));
 	}
 
 	public int getKerning(int[] values, int otherGlyphCode) {
@@ -180,12 +180,12 @@ class Kerning {
 				int offset = readShort(input);
 				int value = (offset << 16) | secondGlyphCode;
 
-				List firstGlyphValues = (List) values.get(new Integer(firstGlyphCode));
+				List firstGlyphValues = (List) values.get(Integer.valueOf(firstGlyphCode));
 				if (firstGlyphValues == null) {
 					firstGlyphValues = new ArrayList(256);
-					values.put(new Integer(firstGlyphCode), firstGlyphValues);
+					values.put(Integer.valueOf(firstGlyphCode), firstGlyphValues);
 				}
-				firstGlyphValues.add(new Integer(value));
+				firstGlyphValues.add(Integer.valueOf(value));
 			}
 		}
 	}

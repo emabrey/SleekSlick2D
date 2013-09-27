@@ -710,7 +710,7 @@ public class SoundStore {
 				AL10.alGenBuffers(buf);
 				AL10.alBufferData(buf.get(0), data.format, data.data, data.samplerate);
 
-				loaded.put(ref, new Integer(buf.get(0)));
+				loaded.put(ref, Integer.valueOf(buf.get(0)));
 				buffer = buf.get(0);
 			}
 			catch (Exception e) {
@@ -788,7 +788,7 @@ public class SoundStore {
 				AL10.alGenBuffers(buf);
 				AL10.alBufferData(buf.get(0), data.format, data.data, data.samplerate);
 
-				loaded.put(ref, new Integer(buf.get(0)));
+				loaded.put(ref, Integer.valueOf(buf.get(0)));
 				buffer = buf.get(0);
 			}
 			catch (Exception e) {
@@ -922,7 +922,7 @@ public class SoundStore {
 				AL10.alGenBuffers(buf);
 				AL10.alBufferData(buf.get(0), ogg.channels > 1 ? AL10.AL_FORMAT_STEREO16 : AL10.AL_FORMAT_MONO16, ogg.data, ogg.rate);
 
-				loaded.put(ref, new Integer(buf.get(0)));
+				loaded.put(ref, Integer.valueOf(buf.get(0)));
 
 				buffer = buf.get(0);
 			}

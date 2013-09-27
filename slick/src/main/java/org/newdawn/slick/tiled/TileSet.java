@@ -181,7 +181,7 @@ public class TileSet {
 				tileProps.setProperty(name, value);
 			}
 
-			props.put(new Integer(id), tileProps);
+			props.put(Integer.valueOf(id), tileProps);
 		}
 	}
 
@@ -250,7 +250,7 @@ public class TileSet {
 	 * @return The properties for the specified tile, or null if no properties are defined
 	 */
 	public Properties getProperties(int globalID) {
-		return (Properties) props.get(new Integer(globalID));
+		return (Properties) props.get(Integer.valueOf(globalID));
 	}
 
 	/**

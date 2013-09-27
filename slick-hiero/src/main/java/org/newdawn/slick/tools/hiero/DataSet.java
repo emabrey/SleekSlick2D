@@ -209,7 +209,7 @@ public class DataSet {
 					"utf-8"));
 			DOMSource source = new DOMSource(document);
 			TransformerFactory factory = TransformerFactory.newInstance();
-			factory.setAttribute("indent-number", new Integer(2));
+			factory.setAttribute("indent-number", Integer.valueOf(2));
 			Transformer xformer = factory.newTransformer();
 			xformer.setOutputProperty(OutputKeys.INDENT, "yes");
 

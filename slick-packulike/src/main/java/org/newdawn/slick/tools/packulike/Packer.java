@@ -123,18 +123,18 @@ public class Packer extends JFrame {
 
 		});
 
-		sizes.addElement(new Integer(64));
-		sizes.addElement(new Integer(128));
-		sizes.addElement(new Integer(256));
-		sizes.addElement(new Integer(512));
-		sizes.addElement(new Integer(1024));
-		sizes.addElement(new Integer(2048));
-		sizes2.addElement(new Integer(64));
-		sizes2.addElement(new Integer(128));
-		sizes2.addElement(new Integer(256));
-		sizes2.addElement(new Integer(512));
-		sizes2.addElement(new Integer(1024));
-		sizes2.addElement(new Integer(2048));
+		sizes.addElement(Integer.valueOf(64));
+		sizes.addElement(Integer.valueOf(128));
+		sizes.addElement(Integer.valueOf(256));
+		sizes.addElement(Integer.valueOf(512));
+		sizes.addElement(Integer.valueOf(1024));
+		sizes.addElement(Integer.valueOf(2048));
+		sizes2.addElement(Integer.valueOf(64));
+		sizes2.addElement(Integer.valueOf(128));
+		sizes2.addElement(Integer.valueOf(256));
+		sizes2.addElement(Integer.valueOf(512));
+		sizes2.addElement(Integer.valueOf(1024));
+		sizes2.addElement(Integer.valueOf(2048));
 
 		JMenuBar bar = new JMenuBar();
 		JMenu file = new JMenu("File");

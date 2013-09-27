@@ -869,7 +869,7 @@ public class UnicodeFont implements org.newdawn.slick.Font {
 		int yOffset = ascent + vector.getPixelBounds(null, 0, 0).y;
 
 		if (displayList != null) {
-			displayList.yOffset = new Short((short) yOffset);
+			displayList.yOffset = Short.valueOf((short) yOffset);
 		}
 
 		return yOffset;

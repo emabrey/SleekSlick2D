@@ -129,7 +129,7 @@ public abstract class StateBasedGame implements Game, InputListener {
 	 * @param state The state to be added
 	 */
 	public void addState(GameState state) {
-		states.put(new Integer(state.getID()), state);
+		states.put(Integer.valueOf(state.getID()), state);
 
 		if (currentState.getID() == -1) {
 			currentState = state;
@@ -144,7 +144,7 @@ public abstract class StateBasedGame implements Game, InputListener {
 	 * @return The state requested or null if no state with the specified ID exists
 	 */
 	public GameState getState(int id) {
-		return (GameState) states.get(new Integer(id));
+		return (GameState) states.get(Integer.valueOf(id));
 	}
 
 	/**

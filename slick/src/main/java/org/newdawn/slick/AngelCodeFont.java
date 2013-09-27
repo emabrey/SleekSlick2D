@@ -239,13 +239,13 @@ public class AngelCodeFont implements Font {
 						int second = Integer.parseInt(tokens.nextToken()); // second value
 						tokens.nextToken(); // offset
 						int offset = Integer.parseInt(tokens.nextToken()); // offset value
-						List values = (List) kerning.get(new Short(first));
+						List values = (List) kerning.get(Short.valueOf(first));
 						if (values == null) {
 							values = new ArrayList();
-							kerning.put(new Short(first), values);
+							kerning.put(Short.valueOf(first), values);
 						}
 						// Pack the character and kerning offset into a short.
-						values.add(new Short((short) ((offset << 8) | second)));
+						values.add(Short.valueOf((short) ((offset << 8) | second)));
 					}
 				}
 			}
@@ -448,7 +448,7 @@ public class AngelCodeFont implements Font {
 		}
 
 		if (displayList != null) {
-			displayList.yOffset = new Short((short) minYOffset);
+			displayList.yOffset = Short.valueOf((short) minYOffset);
 		}
 
 		return minYOffset;
@@ -491,7 +491,7 @@ public class AngelCodeFont implements Font {
 		maxHeight += lines * getLineHeight();
 
 		if (displayList != null) {
-			displayList.height = new Short((short) maxHeight);
+			displayList.height = Short.valueOf((short) maxHeight);
 		}
 
 		return maxHeight;
@@ -540,7 +540,7 @@ public class AngelCodeFont implements Font {
 		}
 
 		if (displayList != null) {
-			displayList.width = new Short((short) maxWidth);
+			displayList.width = Short.valueOf((short) maxWidth);
 		}
 
 		return maxWidth;

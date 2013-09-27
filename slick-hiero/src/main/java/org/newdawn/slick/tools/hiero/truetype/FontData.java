@@ -558,12 +558,12 @@ public class FontData {
 	 * @return The amount of kerning to apply between the two characters
 	 */
 	public int getKerning(char first, char second) {
-		Map toMap = (Map) ansiKerning.get(new Integer(first));
+		Map toMap = (Map) ansiKerning.get(Integer.valueOf(first));
 		if (toMap == null) {
 			return 0;
 		}
 
-		Integer kerning = (Integer) toMap.get(new Integer(second));
+		Integer kerning = (Integer) toMap.get(Integer.valueOf(second));
 		if (kerning == null) {
 			return 0;
 		}

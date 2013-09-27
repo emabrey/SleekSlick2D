@@ -410,17 +410,17 @@ public class Hiero extends JFrame {
 		}
 
 		HieroSettings settings = new HieroSettings(file.getAbsolutePath());
-		fontSizeSpinner.setValue(new Integer(settings.getFontSize()));
+		fontSizeSpinner.setValue(Integer.valueOf(settings.getFontSize()));
 		boldCheckBox.setSelected(settings.isBold());
 		italicCheckBox.setSelected(settings.isItalic());
-		padTopSpinner.setValue(new Integer(settings.getPaddingTop()));
-		padRightSpinner.setValue(new Integer(settings.getPaddingRight()));
-		padBottomSpinner.setValue(new Integer(settings.getPaddingBottom()));
-		padLeftSpinner.setValue(new Integer(settings.getPaddingLeft()));
-		padAdvanceXSpinner.setValue(new Integer(settings.getPaddingAdvanceX()));
-		padAdvanceYSpinner.setValue(new Integer(settings.getPaddingAdvanceY()));
-		glyphPageWidthCombo.setSelectedItem(new Integer(settings.getGlyphPageWidth()));
-		glyphPageHeightCombo.setSelectedItem(new Integer(settings.getGlyphPageHeight()));
+		padTopSpinner.setValue(Integer.valueOf(settings.getPaddingTop()));
+		padRightSpinner.setValue(Integer.valueOf(settings.getPaddingRight()));
+		padBottomSpinner.setValue(Integer.valueOf(settings.getPaddingBottom()));
+		padLeftSpinner.setValue(Integer.valueOf(settings.getPaddingLeft()));
+		padAdvanceXSpinner.setValue(Integer.valueOf(settings.getPaddingAdvanceX()));
+		padAdvanceYSpinner.setValue(Integer.valueOf(settings.getPaddingAdvanceY()));
+		glyphPageWidthCombo.setSelectedItem(Integer.valueOf(settings.getGlyphPageWidth()));
+		glyphPageHeightCombo.setSelectedItem(Integer.valueOf(settings.getGlyphPageHeight()));
 		for (Iterator iter = settings.getEffects().iterator(); iter.hasNext();) {
 			ConfigurableEffect settingsEffect = (ConfigurableEffect) iter.next();
 			for (int i = 0, n = effectsListModel.getSize(); i < n; i++) {
@@ -886,25 +886,25 @@ public class Hiero extends JFrame {
 							GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 5, 5, 5), 0, 0));
 				}
 				{
-					glyphPageWidthCombo = new JComboBox(new DefaultComboBoxModel(new Integer[]{new Integer(32),
-																							   new Integer(64),
-																							   new Integer(128),
-																							   new Integer(256),
-																							   new Integer(512),
-																							   new Integer(1024),
-																							   new Integer(2048)}));
+					glyphPageWidthCombo = new JComboBox(new DefaultComboBoxModel(new Integer[]{Integer.valueOf(32),
+																							   Integer.valueOf(64),
+																							   Integer.valueOf(128),
+																							   Integer.valueOf(256),
+																							   Integer.valueOf(512),
+																							   Integer.valueOf(1024),
+																							   Integer.valueOf(2048)}));
 					glyphCachePanel.add(glyphPageWidthCombo, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
 							GridBagConstraints.NONE, new Insets(0, 0, 5, 5), 0, 0));
 					glyphPageWidthCombo.setSelectedIndex(prefs.getInt("glyphpage.width", 1));
 				}
 				{
-					glyphPageHeightCombo = new JComboBox(new DefaultComboBoxModel(new Integer[]{new Integer(32),
-																								new Integer(64),
-																								new Integer(128),
-																								new Integer(256),
-																								new Integer(512),
-																								new Integer(1024),
-																								new Integer(2048)}));
+					glyphPageHeightCombo = new JComboBox(new DefaultComboBoxModel(new Integer[]{Integer.valueOf(32),
+																								Integer.valueOf(64),
+																								Integer.valueOf(128),
+																								Integer.valueOf(256),
+																								Integer.valueOf(512),
+																								Integer.valueOf(1024),
+																								Integer.valueOf(2048)}));
 					glyphCachePanel.add(glyphPageHeightCombo, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
 							GridBagConstraints.NONE, new Insets(0, 0, 5, 5), 0, 0));
 					glyphPageHeightCombo.setSelectedIndex(prefs.getInt("glyphpage.width", 2));

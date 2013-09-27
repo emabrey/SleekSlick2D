@@ -284,7 +284,7 @@ public class GraphEditorWindow extends JPanel {
 				panel.makeSureCurveFits();
 				panel.repaint();
 			} else {
-				minSpinner.setValue(new Integer((int) panel.getWorldMinY()));
+				minSpinner.setValue(Integer.valueOf((int) panel.getWorldMinY()));
 			}
 		} else if (control.equals(maxSpinner)) {
 			int maxY = ((Integer) maxSpinner.getValue()).intValue();
@@ -293,7 +293,7 @@ public class GraphEditorWindow extends JPanel {
 				panel.makeSureCurveFits();
 				panel.repaint();
 			} else {
-				maxSpinner.setValue(new Integer((int) panel.getWorldMaxY()));
+				maxSpinner.setValue(Integer.valueOf((int) panel.getWorldMaxY()));
 			}
 		}
 	}
@@ -530,8 +530,8 @@ public class GraphEditorWindow extends JPanel {
 				this.value = value;
 				curve = convertToCurvePointCurve(value.getCurve());
 
-				minSpinner.setValue(new Integer(value.getMin()));
-				maxSpinner.setValue(new Integer(value.getMax()));
+				minSpinner.setValue(Integer.valueOf(value.getMin()));
+				maxSpinner.setValue(Integer.valueOf(value.getMax()));
 
 				worldMinY = value.getMin();
 				worldMaxY = value.getMax();

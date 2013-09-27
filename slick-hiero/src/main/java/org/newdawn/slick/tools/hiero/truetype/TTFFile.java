@@ -309,8 +309,8 @@ public class TTFFile {
 		UnicodeMapping(int glyphIndex, int unicodeIndex) {
 			this.unicodeIndex = unicodeIndex;
 			this.glyphIndex = glyphIndex;
-			glyphToUnicodeMap.put(new Integer(glyphIndex), new Integer(unicodeIndex));
-			unicodeToGlyphMap.put(new Integer(unicodeIndex), new Integer(glyphIndex));
+			glyphToUnicodeMap.put(Integer.valueOf(glyphIndex), Integer.valueOf(unicodeIndex));
+			unicodeToGlyphMap.put(Integer.valueOf(unicodeIndex), Integer.valueOf(glyphIndex));
 		}
 
 		/**
@@ -499,10 +499,10 @@ public class TTFFile {
 									& 0xffff;
 
 							unicodeMapping.add(new UnicodeMapping(glyphIdx, j));
-							mtxTab[glyphIdx].getUnicodeIndex().add(new Integer(j));
+							mtxTab[glyphIdx].getUnicodeIndex().add(Integer.valueOf(j));
 
 							// Also add winAnsiWidth
-							List v = (List) ansiIndex.get(new Integer(j));
+							List v = (List) ansiIndex.get(Integer.valueOf(j));
 							if (v != null) {
 								Iterator e = v.listIterator();
 								while (e.hasNext()) {
@@ -530,7 +530,7 @@ public class TTFFile {
 							glyphIdx = (j + cmapDeltas[i]) & 0xffff;
 
 							if (glyphIdx < mtxTab.length) {
-								mtxTab[glyphIdx].getUnicodeIndex().add(new Integer(j));
+								mtxTab[glyphIdx].getUnicodeIndex().add(Integer.valueOf(j));
 							} else {
 								log.debug("Glyph " + glyphIdx
 										+ " out of range: "
@@ -539,7 +539,7 @@ public class TTFFile {
 
 							unicodeMapping.add(new UnicodeMapping(glyphIdx, j));
 							if (glyphIdx < mtxTab.length) {
-								mtxTab[glyphIdx].getUnicodeIndex().add(new Integer(j));
+								mtxTab[glyphIdx].getUnicodeIndex().add(Integer.valueOf(j));
 							} else {
 								log.debug("Glyph " + glyphIdx
 										+ " out of range: "
@@ -547,7 +547,7 @@ public class TTFFile {
 							}
 
 							// Also add winAnsiWidth
-							List v = (List) ansiIndex.get(new Integer(j));
+							List v = (List) ansiIndex.get(Integer.valueOf(j));
 							if (v != null) {
 								Iterator e = v.listIterator();
 								while (e.hasNext()) {
@@ -620,8 +620,8 @@ public class TTFFile {
 		// same char (eg bullet) is repeated more than one place
 		ansiIndex = new java.util.HashMap();
 		for (int i = 32; i < Glyphs.WINANSI_ENCODING.length; i++) {
-			Integer ansi = new Integer(i);
-			Integer uni = new Integer(Glyphs.WINANSI_ENCODING[i]);
+			Integer ansi = Integer.valueOf(i);
+			Integer uni = Integer.valueOf(Glyphs.WINANSI_ENCODING[i]);
 
 			List v = (List) ansiIndex.get(uni);
 			if (v == null) {
@@ -1654,7 +1654,7 @@ public class TTFFile {
 		List ret = new java.util.ArrayList();
 		for (int i = 32; i < Glyphs.WINANSI_ENCODING.length; i++) {
 			if (unicode == Glyphs.WINANSI_ENCODING[i]) {
-				ret.add(new Integer(i));
+				ret.add(Integer.valueOf(i));
 			}
 		}
 		return (Integer[]) ret.toArray(new Integer[0]);
@@ -1699,7 +1699,7 @@ public class TTFFile {
 	 * @throws IOException if glyphIndex not found
 	 */
 	private Integer glyphToUnicode(int glyphIndex) throws IOException {
-		return (Integer) glyphToUnicodeMap.get(new Integer(glyphIndex));
+		return (Integer) glyphToUnicodeMap.get(Integer.valueOf(glyphIndex));
 	}
 
 	/**
@@ -1713,7 +1713,7 @@ public class TTFFile {
 	 */
 	private Integer unicodeToGlyph(int unicodeIndex) throws IOException {
 		final Integer result
-				= (Integer) unicodeToGlyphMap.get(new Integer(unicodeIndex));
+				= (Integer) unicodeToGlyphMap.get(Integer.valueOf(unicodeIndex));
 		if (result == null) {
 			throw new IOException(
 					"Glyph index not found for unicode value " + unicodeIndex);
