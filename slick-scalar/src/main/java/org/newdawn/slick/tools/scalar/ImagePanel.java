@@ -6,79 +6,78 @@ import java.awt.image.BufferedImage;
 
 /**
  * A panel to display the current image
- * <p>
+ * <p/>
+ *
  * @author kevin
  */
 public class ImagePanel extends JPanel {
 
-	/**
-	 * The image to be displayed
-	 */
-	private BufferedImage image;
+    /**
+     * The image to be displayed
+     */
+    private BufferedImage image;
 
-	/**
-	 * The backgroud paint
-	 */
-	private TexturePaint background;
+    /**
+     * The backgroud paint
+     */
+    private TexturePaint background;
 
-	/**
-	 * Create a new empty image panel
-	 */
-	public ImagePanel() {
-		super();
+    /**
+     * Create a new empty image panel
+     */
+    public ImagePanel() {
+        super();
 
-		Color base = Color.gray;
-		BufferedImage image = new BufferedImage(50, 50,
-				BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g = (Graphics2D) image.getGraphics();
-		g.setColor(base);
-		g.fillRect(0, 0, image.getWidth(), image.getHeight());
-		g.setColor(base.darker());
-		g.fillRect(image.getWidth() / 2, 0, image.getWidth() / 2, image
-				.getHeight() / 2);
-		g.fillRect(0, image.getHeight() / 2, image.getWidth() / 2, image
-				.getHeight() / 2);
+        Color base = Color.gray;
+        BufferedImage image = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = (Graphics2D) image.getGraphics();
+        g.setColor(base);
+        g.fillRect(0, 0, image.getWidth(), image.getHeight());
+        g.setColor(base.darker());
+        g.fillRect(image.getWidth() / 2, 0, image.getWidth() / 2, image.getHeight() / 2);
+        g.fillRect(0, image.getHeight() / 2, image.getWidth() / 2, image.getHeight() / 2);
 
-		background = new TexturePaint(image, new Rectangle(0, 0, image
-				.getWidth(), image.getHeight()));
+        background = new TexturePaint(image, new Rectangle(0, 0, image.getWidth(), image.getHeight()));
 
-		setBackground(Color.black);
-	}
+        setBackground(Color.black);
+    }
 
-	/**
-	 * Set the image to be displayed
-	 * <p>
-	 * @param image The image to be displayed
-	 */
-	public void setImage(BufferedImage image) {
-		this.image = image;
-		setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
-		setSize(new Dimension(image.getWidth(), image.getHeight()));
-		getParent().repaint(0);
-	}
+    /**
+     * Set the image to be displayed
+     * <p/>
+     *
+     * @param image The image to be displayed
+     */
+    public void setImage(BufferedImage image) {
+        this.image = image;
+        setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
+        setSize(new Dimension(image.getWidth(), image.getHeight()));
+        getParent().repaint(0);
+    }
 
-	/**
-	 * Get the image currently being displayed
-	 * <p>
-	 * @return The image currently being displayed
-	 */
-	public BufferedImage getImage() {
-		return image;
-	}
+    /**
+     * Get the image currently being displayed
+     * <p/>
+     *
+     * @return The image currently being displayed
+     */
+    public BufferedImage getImage() {
+        return image;
+    }
 
-	/**
-	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
-	 */
-	public void paint(Graphics g1d) {
-		Graphics2D g = (Graphics2D) g1d;
-		super.paint(g);
+    /**
+     * @see javax.swing.JComponent#paint(java.awt.Graphics)
+     */
+    public void paint(Graphics g1d) {
+        Graphics2D g = (Graphics2D) g1d;
+        super.paint(g);
 
-		g.setPaint(background);
-		g.fillRect(0, 0, getWidth(), getHeight());
+        g.setPaint(background);
+        g.fillRect(0, 0, getWidth(), getHeight());
 
-		if (image != null) {
-			g.drawImage(image, 0, 0, null);
-		}
-	}
+        if (image != null) {
+            g.drawImage(image, 0, 0, null);
+        }
+    }
 
 }

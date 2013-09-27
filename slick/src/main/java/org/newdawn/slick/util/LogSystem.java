@@ -2,60 +2,68 @@ package org.newdawn.slick.util;
 
 /**
  * Plugin in interface for the logging of Slick
- * <p>
+ * <p/>
+ *
  * @author kevin
  */
 public interface LogSystem {
 
-	/**
-	 * Log an error
-	 * <p>
-	 * @param message The message describing the error
-	 * @param e The exception causing the error
-	 */
-	public void error(String message, Throwable e);
+    /**
+     * Log an error
+     * <p/>
+     *
+     * @param message The message describing the error
+     * @param e       The exception causing the error
+     */
+    public void error(String message, Throwable e);
 
-	/**
-	 * Log an error
-	 * <p>
-	 * @param e The exception causing the error
-	 */
-	public void error(Throwable e);
+    /**
+     * Log an error
+     * <p/>
+     *
+     * @param e The exception causing the error
+     */
+    public void error(Throwable e);
 
-	/**
-	 * Log an error
-	 * <p>
-	 * @param message The message describing the error
-	 */
-	public void error(String message);
+    /**
+     * Log an error
+     * <p/>
+     *
+     * @param message The message describing the error
+     */
+    public void error(String message);
 
-	/**
-	 * Log a warning
-	 * <p>
-	 * @param message The message describing the warning
-	 */
-	public void warn(String message);
+    /**
+     * Log a warning
+     * <p/>
+     *
+     * @param message The message describing the warning
+     */
+    public void warn(String message);
 
-	/**
-	 * Log a warning
-	 * <p>
-	 * @param message The message describing the warning
-	 * @param e The cause of the warning
-	 */
-	public void warn(String message, Throwable e);
+    /**
+     * Log a warning
+     * <p/>
+     *
+     * @param message The message describing the warning
+     * @param e       The cause of the warning
+     */
+    public void warn(String message, Throwable e);
 
-	/**
-	 * Log an information message
-	 * <p>
-	 * @param message The message describing the infomation
-	 */
-	public void info(String message);
+    /**
+     * Log an information message
+     * <p/>
+     *
+     * @param message The message describing the infomation
+     */
+    public void info(String message);
 
-	/**
-	 * Log a debug message
-	 * <p>
-	 * @param message The message describing the debug
-	 */
-	public void debug(String message);
+    /**
+     * Log a debug message
+     * <p/>
+     *
+     * @param message The message describing the debug
+     */
+    public void debug(String message);
 
 }

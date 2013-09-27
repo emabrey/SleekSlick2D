@@ -8,9 +8,9 @@ import org.testng.annotations.Test;
 @Test(groups = {"UnitTest"})
 public class AppTest {
 
-	@Test
-	public void AppTest() {
+    @Test
+    public void AppTest() {
 
-	}
+    }
 
 }

@@ -13,7 +13,8 @@
 
     <name>slick-demos</name>
 
-    <properties><finalName>slick-demos</finalName>
+    <properties>
+        <finalName>slick-demos</finalName>
         <natives>${project.basedir}/target/natives/</natives>
         <release.natives>natives/</release.natives>
     </properties>
@@ -85,11 +86,11 @@
             <artifactId>slick</artifactId>
             <version>${project.version}</version>
         </dependency>
-		
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<scope>test</scope>
-		</dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

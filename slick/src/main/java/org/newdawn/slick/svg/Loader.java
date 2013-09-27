@@ -5,19 +5,22 @@ import org.w3c.dom.Element;
 
 /**
  * Description of a simple XML loader
- * <p>
+ * <p/>
+ *
  * @author kevin
  */
 public interface Loader {
 
-	/**
-	 * Load the children of a given element
-	 * <p>
-	 * @param element The element whose children should be loaded
-	 * @param t The transform to apply to all the children
-	 * <p>
-	 * @throws ParsingException Indicates a failure to read the XML
-	 */
-	public void loadChildren(Element element, Transform t) throws ParsingException;
+    /**
+     * Load the children of a given element
+     * <p/>
+     *
+     * @param element The element whose children should be loaded
+     * @param t       The transform to apply to all the children
+     *                <p/>
+     *
+     * @throws ParsingException Indicates a failure to read the XML
+     */
+    public void loadChildren(Element element, Transform t) throws ParsingException;
 
 }

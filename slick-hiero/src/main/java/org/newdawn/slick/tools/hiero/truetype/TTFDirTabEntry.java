@@ -26,109 +26,113 @@ import java.io.UnsupportedEncodingException;
  */
 class TTFDirTabEntry {
 
-	/**
-	 * The tag for the entry
-	 */
-	private byte[] tag = new byte[4];
+    /**
+     * The tag for the entry
+     */
+    private byte[] tag = new byte[4];
 
-	/**
-	 * The checksum for the table
-	 */
-	private int checksum;
+    /**
+     * The checksum for the table
+     */
+    private int checksum;
 
-	/**
-	 * The offset into the directry
-	 */
-	private long offset;
+    /**
+     * The offset into the directry
+     */
+    private long offset;
 
-	/**
-	 * The length fo the entry
-	 */
-	private long length;
+    /**
+     * The length fo the entry
+     */
+    private long length;
 
-	/**
-	 * Read Dir Tab, return tag name
-	 * <p>
-	 * @param in The stream to read from
-	 * <p>
-	 * @return The string read
-	 * <p>
-	 * @throws IOException Indicates a failure to read from the stream
-	 */
-	public String read(FontFileReader in) throws IOException {
-		tag[0] = in.readTTFByte();
-		tag[1] = in.readTTFByte();
-		tag[2] = in.readTTFByte();
-		tag[3] = in.readTTFByte();
+    /**
+     * Read Dir Tab, return tag name
+     * <p/>
+     *
+     * @param in The stream to read from
+     *           <p/>
+     *
+     * @return The string read
+     *         <p/>
+     *
+     * @throws IOException Indicates a failure to read from the stream
+     */
+    public String read(FontFileReader in) throws IOException {
+        tag[0] = in.readTTFByte();
+        tag[1] = in.readTTFByte();
+        tag[2] = in.readTTFByte();
+        tag[3] = in.readTTFByte();
 
-		in.skip(4);    // Skip checksum
+        in.skip(4);    // Skip checksum
 
-		offset = in.readTTFULong();
-		length = in.readTTFULong();
-		String tagStr = new String(tag, "ISO-8859-1");
+        offset = in.readTTFULong();
+        length = in.readTTFULong();
+        String tagStr = new String(tag, "ISO-8859-1");
 
-		return tagStr;
-	}
+        return tagStr;
+    }
 
-	/**
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString() {
-		return "Read dir tab ["
-				+ tag[0] + " " + tag[1] + " " + tag[2] + " " + tag[3] + "]"
-				+ " offset: " + offset
-				+ " length: " + length
-				+ " name: " + tag;
-	}
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+        return "Read dir tab [" + tag[0] + " " + tag[1] + " " + tag[2] + " " + tag[3] + "]" + " offset: " + offset +
+                " length: " + length + " name: " + tag;
+    }
 
-	/**
-	 * Returns the checksum.
-	 * <p>
-	 * @return The checksum
-	 */
-	public int getChecksum() {
-		return checksum;
-	}
+    /**
+     * Returns the checksum.
+     * <p/>
+     *
+     * @return The checksum
+     */
+    public int getChecksum() {
+        return checksum;
+    }
 
-	/**
-	 * Returns the length.
-	 * <p>
-	 * @return The length
-	 */
-	public long getLength() {
-		return length;
-	}
+    /**
+     * Returns the length.
+     * <p/>
+     *
+     * @return The length
+     */
+    public long getLength() {
+        return length;
+    }
 
-	/**
-	 * Returns the offset.
-	 * <p>
-	 * @return The offset
-	 */
-	public long getOffset() {
-		return offset;
-	}
+    /**
+     * Returns the offset.
+     * <p/>
+     *
+     * @return The offset
+     */
+    public long getOffset() {
+        return offset;
+    }
 
-	/**
-	 * Returns the tag bytes.
-	 * <p>
-	 * @return The tag
-	 */
-	public byte[] getTag() {
-		return tag;
-	}
+    /**
+     * Returns the tag bytes.
+     * <p/>
+     *
+     * @return The tag
+     */
+    public byte[] getTag() {
+        return tag;
+    }
 
-	/**
-	 * Returns the tag bytes.
-	 * <p>
-	 * @return The tag as a string
-	 */
-	public String getTagString() {
-		try {
-			return new String(tag, "ISO-8859-1");
-		}
-		catch (UnsupportedEncodingException e) {
-			return this.toString(); // Should never happen.
-		}
-	}
+    /**
+     * Returns the tag bytes.
+     * <p/>
+     *
+     * @return The tag as a string
+     */
+    public String getTagString() {
+        try {
+            return new String(tag, "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            return this.toString(); // Should never happen.
+        }
+    }
 
 }

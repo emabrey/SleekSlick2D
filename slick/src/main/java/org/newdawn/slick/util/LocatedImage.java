@@ -5,151 +5,163 @@ import org.newdawn.slick.Image;
 
 /**
  * An image along with state information that allows it to be drawn without specifing the state in which to render.
- * <p>
+ * <p/>
+ *
  * @author kevin
  */
 public class LocatedImage {
 
-	/**
-	 * The image to be rendered - prefer aggregation
-	 */
-	private Image image;
+    /**
+     * The image to be rendered - prefer aggregation
+     */
+    private Image image;
 
-	/**
-	 * The x coordinate at which the image should be rendered
-	 */
-	private int x;
+    /**
+     * The x coordinate at which the image should be rendered
+     */
+    private int x;
 
-	/**
-	 * The y coordinate at which the image should be rendered
-	 */
-	private int y;
+    /**
+     * The y coordinate at which the image should be rendered
+     */
+    private int y;
 
-	/**
-	 * The filter to apply across the image
-	 */
-	private Color filter = Color.white;
+    /**
+     * The filter to apply across the image
+     */
+    private Color filter = Color.white;
 
-	/**
-	 * The width to render the image
-	 */
-	private float width;
+    /**
+     * The width to render the image
+     */
+    private float width;
 
-	/**
-	 * The height to render the image
-	 */
-	private float height;
+    /**
+     * The height to render the image
+     */
+    private float height;
 
-	/**
-	 * Create a new located image
-	 * <p>
-	 * @param image The image to be drawn
-	 * @param x The x location at which the image should be drawn
-	 * @param y The y location at which the image should be drawn
-	 */
-	public LocatedImage(Image image, int x, int y) {
-		this.image = image;
-		this.x = x;
-		this.y = y;
-		this.width = image.getWidth();
-		this.height = image.getHeight();
-	}
+    /**
+     * Create a new located image
+     * <p/>
+     *
+     * @param image The image to be drawn
+     * @param x     The x location at which the image should be drawn
+     * @param y     The y location at which the image should be drawn
+     */
+    public LocatedImage(Image image, int x, int y) {
+        this.image = image;
+        this.x = x;
+        this.y = y;
+        this.width = image.getWidth();
+        this.height = image.getHeight();
+    }
 
-	/**
-	 * Get the height the image will be drawn at
-	 * <p>
-	 * @return The height
-	 */
-	public float getHeight() {
-		return height;
-	}
+    /**
+     * Get the height the image will be drawn at
+     * <p/>
+     *
+     * @return The height
+     */
+    public float getHeight() {
+        return height;
+    }
 
-	/**
-	 * Get the width the image will be drawn at
-	 * <p>
-	 * @return The width
-	 */
-	public float getWidth() {
-		return width;
-	}
+    /**
+     * Get the width the image will be drawn at
+     * <p/>
+     *
+     * @return The width
+     */
+    public float getWidth() {
+        return width;
+    }
 
-	/**
-	 * Set the height the image should be drawn at
-	 * <p>
-	 * @param height The height the image should be drawn at
-	 */
-	public void setHeight(float height) {
-		this.height = height;
-	}
+    /**
+     * Set the height the image should be drawn at
+     * <p/>
+     *
+     * @param height The height the image should be drawn at
+     */
+    public void setHeight(float height) {
+        this.height = height;
+    }
 
-	/**
-	 * Set the width the image should be drawn at
-	 * <p>
-	 * @param width The width the image should be drawn at
-	 */
-	public void setWidth(float width) {
-		this.width = width;
-	}
+    /**
+     * Set the width the image should be drawn at
+     * <p/>
+     *
+     * @param width The width the image should be drawn at
+     */
+    public void setWidth(float width) {
+        this.width = width;
+    }
 
-	/**
-	 * Set the colour filter to apply to the image
-	 * <p>
-	 * @param c The color filter to apply to the image
-	 */
-	public void setColor(Color c) {
-		this.filter = c;
-	}
+    /**
+     * Set the colour filter to apply to the image
+     * <p/>
+     *
+     * @param c The color filter to apply to the image
+     */
+    public void setColor(Color c) {
+        this.filter = c;
+    }
 
-	/**
-	 * Get the colour filter being applied
-	 * <p>
-	 * @return The color the being applied
-	 */
-	public Color getColor() {
-		return filter;
-	}
+    /**
+     * Get the colour filter being applied
+     * <p/>
+     *
+     * @return The color the being applied
+     */
+    public Color getColor() {
+        return filter;
+    }
 
-	/**
-	 * Set the x position at which the image should be drawn
-	 * <p>
-	 * @param x The x coordinate of the position
-	 */
-	public void setX(int x) {
-		this.x = x;
-	}
+    /**
+     * Set the x position at which the image should be drawn
+     * <p/>
+     *
+     * @param x The x coordinate of the position
+     */
+    public void setX(int x) {
+        this.x = x;
+    }
 
-	/**
-	 * Set the y position at which the image should be drawn
-	 * <p>
-	 * @param y The y coordinate of the position
-	 */
-	public void setY(int y) {
-		this.y = y;
-	}
+    /**
+     * Set the y position at which the image should be drawn
+     * <p/>
+     *
+     * @param y The y coordinate of the position
+     */
+    public void setY(int y) {
+        this.y = y;
+    }
 
-	/**
-	 * Get the x position at which the image will be drawn
-	 * <p>
-	 * @return The x position at which the image will be drawn
-	 */
-	public int getX() {
-		return x;
-	}
+    /**
+     * Get the x position at which the image will be drawn
+     * <p/>
+     *
+     * @return The x position at which the image will be drawn
+     */
+    public int getX() {
+        return x;
+    }
 
-	/**
-	 * Get the y position at which the image will be drawn
-	 * <p>
-	 * @return The y position at which the image will be drawn
-	 */
-	public int getY() {
-		return y;
-	}
+    /**
+     * Get the y position at which the image will be drawn
+     * <p/>
+     *
+     * @return The y position at which the image will be drawn
+     */
+    public int getY() {
+        return y;
+    }
 
-	/**
-	 * Draw the image based on the current configured state
-	 */
-	public void draw() {
-		image.draw(x, y, width, height, filter);
-	}
+    /**
+     * Draw the image based on the current configured state
+     */
+    public void draw() {
+        image.draw(x, y, width, height, filter);
+    }
 
 }

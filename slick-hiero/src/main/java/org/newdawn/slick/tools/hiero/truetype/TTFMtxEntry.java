@@ -25,217 +25,232 @@ import java.util.List;
  */
 class TTFMtxEntry {
 
-	/**
-	 * The WX for this table entry
-	 */
-	private int wx;
+    /**
+     * The WX for this table entry
+     */
+    private int wx;
 
-	/**
-	 * The LSB
-	 */
-	private int lsb;
+    /**
+     * The LSB
+     */
+    private int lsb;
 
-	/**
-	 * the name for this MTX entry
-	 */
-	private String name = "";
+    /**
+     * the name for this MTX entry
+     */
+    private String name = "";
 
-	/**
-	 * The glyph index of this entry
-	 */
-	private int index;
+    /**
+     * The glyph index of this entry
+     */
+    private int index;
 
-	/**
-	 * The unicode indexes this entry relates to
-	 */
-	private List unicodeIndex = new java.util.ArrayList();
+    /**
+     * The unicode indexes this entry relates to
+     */
+    private List unicodeIndex = new java.util.ArrayList();
 
-	/**
-	 * The bounding box specified in this entry
-	 */
-	private int[] boundingBox = new int[4];
+    /**
+     * The bounding box specified in this entry
+     */
+    private int[] boundingBox = new int[4];
 
-	/**
-	 * The offset into the table for this entry
-	 */
-	private long offset;
+    /**
+     * The offset into the table for this entry
+     */
+    private long offset;
 
-	/**
-	 * The number of MTX found
-	 */
-	private byte found = 0;
+    /**
+     * The number of MTX found
+     */
+    private byte found = 0;
 
-	/**
-	 * Returns a String representation of this object.
-	 * <p>
-	 * @param t TTFFile to use for unit conversion
-	 * <p>
-	 * @return String String representation
-	 */
-	public String toString(TTFFile t) {
-		return "Glyph " + name + " index: " + getIndexAsString() + " bbox ["
-				+ (boundingBox[0]) + " "
-				+ (boundingBox[1]) + " "
-				+ (boundingBox[2]) + " "
-				+ (boundingBox[3]) + "] wx: "
-				+ (wx);
-	}
+    /**
+     * Returns a String representation of this object.
+     * <p/>
+     *
+     * @param t TTFFile to use for unit conversion
+     *          <p/>
+     *
+     * @return String String representation
+     */
+    public String toString(TTFFile t) {
+        return "Glyph " + name + " index: " + getIndexAsString() + " bbox [" + (boundingBox[0]) + " " +
+                (boundingBox[1]) + " " + (boundingBox[2]) + " " + (boundingBox[3]) + "] wx: " + (wx);
+    }
 
-	/**
-	 * Returns the boundingBox.
-	 * <p>
-	 * @return int[]
-	 */
-	public int[] getBoundingBox() {
-		return boundingBox;
-	}
+    /**
+     * Returns the boundingBox.
+     * <p/>
+     *
+     * @return int[]
+     */
+    public int[] getBoundingBox() {
+        return boundingBox;
+    }
 
-	/**
-	 * Sets the boundingBox.
-	 * <p>
-	 * @param boundingBox The boundingBox to set
-	 */
-	public void setBoundingBox(int[] boundingBox) {
-		this.boundingBox = boundingBox;
-	}
+    /**
+     * Sets the boundingBox.
+     * <p/>
+     *
+     * @param boundingBox The boundingBox to set
+     */
+    public void setBoundingBox(int[] boundingBox) {
+        this.boundingBox = boundingBox;
+    }
 
-	/**
-	 * Returns the found.
-	 * <p>
-	 * @return byte
-	 */
-	public byte getFound() {
-		return found;
-	}
+    /**
+     * Returns the found.
+     * <p/>
+     *
+     * @return byte
+     */
+    public byte getFound() {
+        return found;
+    }
 
-	/**
-	 * Returns the index.
-	 * <p>
-	 * @return int
-	 */
-	public int getIndex() {
-		return index;
-	}
+    /**
+     * Returns the index.
+     * <p/>
+     *
+     * @return int
+     */
+    public int getIndex() {
+        return index;
+    }
 
-	/**
-	 * Determines whether this index represents a reserved character.
-	 * <p>
-	 * @return True if it is reserved
-	 */
-	public boolean isIndexReserved() {
-		return (getIndex() >= 32768) && (getIndex() <= 65535);
-	}
+    /**
+     * Determines whether this index represents a reserved character.
+     * <p/>
+     *
+     * @return True if it is reserved
+     */
+    public boolean isIndexReserved() {
+        return (getIndex() >= 32768) && (getIndex() <= 65535);
+    }
 
-	/**
-	 * Returns a String representation of the index taking into account if the index is in the reserved range.
-	 * <p>
-	 * @return index as String
-	 */
-	public String getIndexAsString() {
-		if (isIndexReserved()) {
-			return Integer.toString(getIndex()) + " (reserved)";
-		} else {
-			return Integer.toString(getIndex());
-		}
-	}
+    /**
+     * Returns a String representation of the index taking into account if the index is in the reserved range.
+     * <p/>
+     *
+     * @return index as String
+     */
+    public String getIndexAsString() {
+        if (isIndexReserved()) {
+            return Integer.toString(getIndex()) + " (reserved)";
+        } else {
+            return Integer.toString(getIndex());
+        }
+    }
 
-	/**
-	 * Returns the lsb.
-	 * <p>
-	 * @return int
-	 */
-	public int getLsb() {
-		return lsb;
-	}
+    /**
+     * Returns the lsb.
+     * <p/>
+     *
+     * @return int
+     */
+    public int getLsb() {
+        return lsb;
+    }
 
-	/**
-	 * Returns the name.
-	 * <p>
-	 * @return String
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * Returns the name.
+     * <p/>
+     *
+     * @return String
+     */
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * Returns the offset.
-	 * <p>
-	 * @return long
-	 */
-	public long getOffset() {
-		return offset;
-	}
+    /**
+     * Returns the offset.
+     * <p/>
+     *
+     * @return long
+     */
+    public long getOffset() {
+        return offset;
+    }
 
-	/**
-	 * Returns the unicodeIndex.
-	 * <p>
-	 * @return List
-	 */
-	public List getUnicodeIndex() {
-		return unicodeIndex;
-	}
+    /**
+     * Returns the unicodeIndex.
+     * <p/>
+     *
+     * @return List
+     */
+    public List getUnicodeIndex() {
+        return unicodeIndex;
+    }
 
-	/**
-	 * Returns the wx.
-	 * <p>
-	 * @return int
-	 */
-	public int getWx() {
-		return wx;
-	}
+    /**
+     * Returns the wx.
+     * <p/>
+     *
+     * @return int
+     */
+    public int getWx() {
+        return wx;
+    }
 
-	/**
-	 * Sets the found.
-	 * <p>
-	 * @param found The found to set
-	 */
-	public void setFound(byte found) {
-		this.found = found;
-	}
+    /**
+     * Sets the found.
+     * <p/>
+     *
+     * @param found The found to set
+     */
+    public void setFound(byte found) {
+        this.found = found;
+    }
 
-	/**
-	 * Sets the index.
-	 * <p>
-	 * @param index The index to set
-	 */
-	public void setIndex(int index) {
-		this.index = index;
-	}
+    /**
+     * Sets the index.
+     * <p/>
+     *
+     * @param index The index to set
+     */
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
-	/**
-	 * Sets the lsb.
-	 * <p>
-	 * @param lsb The lsb to set
-	 */
-	public void setLsb(int lsb) {
-		this.lsb = lsb;
-	}
+    /**
+     * Sets the lsb.
+     * <p/>
+     *
+     * @param lsb The lsb to set
+     */
+    public void setLsb(int lsb) {
+        this.lsb = lsb;
+    }
 
-	/**
-	 * Sets the name.
-	 * <p>
-	 * @param name The name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * Sets the name.
+     * <p/>
+     *
+     * @param name The name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	/**
-	 * Sets the offset.
-	 * <p>
-	 * @param offset The offset to set
-	 */
-	public void setOffset(long offset) {
-		this.offset = offset;
-	}
+    /**
+     * Sets the offset.
+     * <p/>
+     *
+     * @param offset The offset to set
+     */
+    public void setOffset(long offset) {
+        this.offset = offset;
+    }
 
-	/**
-	 * Sets the wx.
-	 * <p>
-	 * @param wx The wx to set
-	 */
-	public void setWx(int wx) {
-		this.wx = wx;
-	}
+    /**
+     * Sets the wx.
+     * <p/>
+     *
+     * @param wx The wx to set
+     */
+    public void setWx(int wx) {
+        this.wx = wx;
+    }
 
 }

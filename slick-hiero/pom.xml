@@ -116,7 +116,7 @@
                     <sign>
                         <keystore>${basedir}/src/keystore/sleekslick2D_default.jks</keystore>
                         <alias>selfsigned</alias>
-						<storepass>sleekslick2D</storepass>
+                        <storepass>sleekslick2D</storepass>
                         <keypass>sleekslick2D</keypass>
                         <verify>true</verify>
                     </sign>
@@ -160,11 +160,11 @@
             <artifactId>slick</artifactId>
             <version>${project.version}</version>
         </dependency>
-		
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<scope>test</scope>
-		</dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

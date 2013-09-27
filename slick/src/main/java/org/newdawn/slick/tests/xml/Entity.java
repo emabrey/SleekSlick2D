@@ -2,58 +2,62 @@ package org.newdawn.slick.tests.xml;
 
 /**
  * A test example of some object data that can be configured via XML
- * <p>
+ * <p/>
+ *
  * @author kevin
  */
 public class Entity {
 
-	/**
-	 * X position for the entity
-	 */
-	private float x;
+    /**
+     * X position for the entity
+     */
+    private float x;
 
-	/**
-	 * Y position for the entity
-	 */
-	private float y;
+    /**
+     * Y position for the entity
+     */
+    private float y;
 
-	/**
-	 * items held
-	 */
-	private Inventory invent;
+    /**
+     * items held
+     */
+    private Inventory invent;
 
-	/**
-	 * Entity statistics
-	 */
-	private Stats stats;
+    /**
+     * Entity statistics
+     */
+    private Stats stats;
 
-	/**
-	 * Called by XML parser to add a configured inventory to the entity
-	 * <p>
-	 * @param inventory The inventory to be added
-	 */
-	private void add(Inventory inventory) {
-		this.invent = inventory;
-	}
+    /**
+     * Called by XML parser to add a configured inventory to the entity
+     * <p/>
+     *
+     * @param inventory The inventory to be added
+     */
+    private void add(Inventory inventory) {
+        this.invent = inventory;
+    }
 
-	/**
-	 * Called by XML parser to add a configured statistics object to the entity
-	 * <p>
-	 * @param stats The statistics to be added
-	 */
-	private void add(Stats stats) {
-		this.stats = stats;
-	}
+    /**
+     * Called by XML parser to add a configured statistics object to the entity
+     * <p/>
+     *
+     * @param stats The statistics to be added
+     */
+    private void add(Stats stats) {
+        this.stats = stats;
+    }
 
-	/**
-	 * Dump this object to sysout
-	 * <p>
-	 * @param prefix The prefix to apply to all lines
-	 */
-	public void dump(String prefix) {
-		System.out.println(prefix + "Entity " + x + "," + y);
-		invent.dump(prefix + "\t");
-		stats.dump(prefix + "\t");
-	}
+    /**
+     * Dump this object to sysout
+     * <p/>
+     *
+     * @param prefix The prefix to apply to all lines
+     */
+    public void dump(String prefix) {
+        System.out.println(prefix + "Entity " + x + "," + y);
+        invent.dump(prefix + "\t");
+        stats.dump(prefix + "\t");
+    }
 
 }

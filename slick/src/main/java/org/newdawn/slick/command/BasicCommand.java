@@ -2,57 +2,60 @@ package org.newdawn.slick.command;
 
 /**
  * A simple named command
- * <p>
+ * <p/>
+ *
  * @author kevin
  */
 public class BasicCommand implements Command {
 
-	/**
-	 * The name of the command
-	 */
-	private String name;
+    /**
+     * The name of the command
+     */
+    private String name;
 
-	/**
-	 * Create a new basic command
-	 * <p>
-	 * @param name The name to give this command
-	 */
-	public BasicCommand(String name) {
-		this.name = name;
-	}
+    /**
+     * Create a new basic command
+     * <p/>
+     *
+     * @param name The name to give this command
+     */
+    public BasicCommand(String name) {
+        this.name = name;
+    }
 
-	/**
-	 * Get the name given for this basic command
-	 * <p>
-	 * @return The name given for this basic command
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * Get the name given for this basic command
+     * <p/>
+     *
+     * @return The name given for this basic command
+     */
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * @see java.lang.Object#hashCode()
-	 */
-	public int hashCode() {
-		return name.hashCode();
-	}
+    /**
+     * @see java.lang.Object#hashCode()
+     */
+    public int hashCode() {
+        return name.hashCode();
+    }
 
-	/**
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	public boolean equals(Object other) {
-		if (other instanceof BasicCommand) {
-			return ((BasicCommand) other).name.equals(name);
-		}
+    /**
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    public boolean equals(Object other) {
+        if (other instanceof BasicCommand) {
+            return ((BasicCommand) other).name.equals(name);
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString() {
-		return "[Command=" + name + "]";
-	}
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+        return "[Command=" + name + "]";
+    }
 
 }
