@@ -248,16 +248,19 @@
 
 		<!-- Start slick2d google code repo dependencies -->
 		<dependency>
-			<groupId>org.lwjgl</groupId>
-			<artifactId>natives-windows</artifactId>
+			<groupId>org.lwjgl.lwjgl</groupId>
+			<artifactId>lwjgl-platform</artifactId>
+			<classifier>natives-windows</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.lwjgl</groupId>
-			<artifactId>natives-mac</artifactId>
+			<groupId>org.lwjgl.lwjgl</groupId>
+			<artifactId>lwjgl-platform</artifactId>
+			<classifier>natives-osx</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.lwjgl</groupId>
-			<artifactId>natives-linux</artifactId>
+			<groupId>org.lwjgl.lwjgl</groupId>
+			<artifactId>lwjgl-platform</artifactId>
+			<classifier>natives-linux</classifier>
 		</dependency>
 		<dependency>
 			<groupId>com.jcraft</groupId>
