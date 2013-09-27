@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.List;
+import java.util.Map.Entry;
 
 /**
  * A Slick bitmap font that can display unicode glyphs from a TrueTypeFont.
