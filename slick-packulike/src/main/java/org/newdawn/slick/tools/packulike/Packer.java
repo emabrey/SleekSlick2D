@@ -273,8 +273,8 @@ public class Packer extends JFrame {
 		twidth = 512;
 		theight = 512;
 		sheetPanel.setTextureSize(twidth, theight);
-		widths.setSelectedItem(new Integer(twidth));
-		heights.setSelectedItem(new Integer(theight));
+		widths.setSelectedItem(Integer.valueOf(twidth));
+		heights.setSelectedItem(Integer.valueOf(theight));
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setContentPane(panel);

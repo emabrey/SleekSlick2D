@@ -1522,7 +1522,7 @@ public class TTFFile {
 							if (adjTab == null) {
 								adjTab = new java.util.HashMap();
 							}
-							adjTab.put(u2, new Integer(kpx));
+							adjTab.put(u2, Integer.valueOf(kpx));
 							kerningTab.put(iObj, adjTab);
 						}
 					}

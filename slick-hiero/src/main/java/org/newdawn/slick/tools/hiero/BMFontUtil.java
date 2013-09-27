@@ -141,7 +141,7 @@ public class BMFontUtil {
 					continue;
 				}
 				for (int i = 0; i < values.length; i++) {
-					Integer secondCodePoint = (Integer) glyphCodeToCodePoint.get(new Integer(values[i] & 0xffff));
+					Integer secondCodePoint = (Integer) glyphCodeToCodePoint.get(Integer.valueOf(values[i] & 0xffff));
 					if (secondCodePoint == null) {
 						continue; // We may not be outputting the second character.
 					}
