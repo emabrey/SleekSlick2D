@@ -6,9 +6,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <description>
-        A port of Slick2D that aims to both streamline the complicated build process of Slick2D,
-        as well as to rewrite the codebase of Slick2D to be more readable and efficient.
+    <description>A port of Slick2D that aims to both streamline the complicated build process of Slick2D,as well as to
+        rewrite the codebase of Slick2D to be more readable and efficient.
     </description>
 
     <url>https://github.com/emabrey/SleekSlick2D</url>
@@ -61,7 +60,7 @@
     <licenses>
         <license>
             <name>BSDv2</name>
-            <url>http://opensource.org/licenses/BSD-2-Clause</url>
+            <url>http://pastebin.com/raw.php?i=PBn0fwDV</url>
         </license>
     </licenses>
 
