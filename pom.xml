@@ -6,16 +6,20 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <description>A port of Slick2D that aims to both streamline the complicated build process of Slick2D,as well as to
-        rewrite the codebase of Slick2D to be more readable and efficient.
-    </description>
+    <description>A redesign of Slick2D focusing on speed and maintainability.</description>
 
     <url>https://github.com/emabrey/SleekSlick2D</url>
 
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/emabrey/SleekSlick2D/issues</url>
-    </issueManagement>
+    <modules>
+        <module>slick</module>
+        <module>slick-demos</module>
+        <module>slick-examples</module>
+        <module>slick-hiero</module>
+        <module>slick-packulike</module>
+        <module>slick-peditor</module>
+        <module>slick-scalar</module>
+        <module>slick-util</module>
+    </modules>
 
     <developers>
         <developer>
@@ -23,7 +27,6 @@
             <name>Emily Mabrey</name>
             <email>emilymabrey93@gmail.com</email>
             <roles>
-                <role>creator</role>
                 <role>contact</role>
             </roles>
             <timezone>-5</timezone>
@@ -53,10 +56,6 @@
         </contributor>
     </contributors>
 
-    <prerequisites>
-        <maven>3.0.4</maven>
-    </prerequisites>
-
     <licenses>
         <license>
             <name>BSDv2</name>
@@ -70,6 +69,41 @@
         <url>https://github.com/emabrey/SleekSlick2D.git</url>
     </scm>
 
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/emabrey/SleekSlick2D/issues</url>
+    </issueManagement>
+
+    <prerequisites>
+        <maven>3.0.4</maven>
+    </prerequisites>
+
+    <!--
+        The artifacts obtained from this repo need to be moved to Maven Central before the SleekSlick2D pom conforms
+         to Maven Central requirements for pom inclusion.
+    -->
+
+    <repositories>
+        <repository>
+            <id>sleek-slick2d-maven-dependencies</id>
+            <url>http://sleek-slick2d-maven-dependencies.googlecode.com/svn/trunk/repository/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>googlecode</id>
+            <name>sleek-slick2d-maven-dependencies</name>
+            <url>svn:https://sleek-slick2d-maven-dependencies.googlecode.com/svn/trunk/repository</url>
+        </repository>
+        <site>
+            <id>googlecode-site</id>
+            <name>sleek-slick2d-maven-dependencies-site</name>
+            <url>svn:https://sleek-slick2d-maven-dependencies.googlecode.com/svn/site/${project.artifactId}</url>
+        </site>
+    </distributionManagement>
+
+
     <properties>
         <java.source.version>1.7</java.source.version>
         <java.source.target.version>1.7</java.source.target.version>
@@ -78,13 +112,6 @@
         <!--<skipTests>true</skipTests>  -->
 
         <maven.jar.index>true</maven.jar.index>
-
-        <build.dir>${basedir}/target</build.dir>
-        <packages.output.dir>dist-packaged</packages.output.dir>
-        <output.dir>${basedir}/dist</output.dir>
-        <webstart.dir>${basedir}/dist/webstart</webstart.dir>
-        <ant.dir>${basedir}/maven_files</ant.dir>
-
         <lwjgl.version>2.9.0</lwjgl.version>
 
     </properties>
@@ -197,6 +224,52 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencyManagement>
+
+        <!-- Sets the version of TestNG that all children must use if they don't manually include a different version-->
+        <dependencies>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>6.7</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.lwjgl.lwjgl</groupId>
+                <artifactId>lwjgl</artifactId>
+                <version>${lwjgl.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.lwjgl.lwjgl</groupId>
+                <artifactId>lwjgl-platform</artifactId>
+                <version>${lwjgl.version}</version>
+                <classifier>natives-windows</classifier>
+            </dependency>
+
+            <dependency>
+                <groupId>org.lwjgl.lwjgl</groupId>
+                <artifactId>lwjgl-platform</artifactId>
+                <version>${lwjgl.version}</version>
+                <classifier>natives-osx</classifier>
+            </dependency>
+
+            <dependency>
+                <groupId>org.lwjgl.lwjgl</groupId>
+                <artifactId>lwjgl-platform</artifactId>
+                <version>${lwjgl.version}</version>
+                <classifier>natives-linux</classifier>
+            </dependency>
+
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>jnlp</artifactId>
+                <version>1.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <reporting>
         <plugins>
@@ -331,87 +404,4 @@
             </plugin>
         </plugins>
     </reporting>
-
-    <!--
-        The artifacts obtained from this repo are noted in the dependency section. They need to be moved to Maven Central
-        before the SleekSlick2D pom conforms to Maven Central requirements for pom inclusion. (Outside repos are not allowed)
-    -->
-
-    <repositories>
-        <repository>
-            <id>sleek-slick2d-maven-dependencies</id>
-            <url>http://sleek-slick2d-maven-dependencies.googlecode.com/svn/trunk/repository/</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>googlecode</id>
-            <name>sleek-slick2d-maven-dependencies</name>
-            <url>svn:https://sleek-slick2d-maven-dependencies.googlecode.com/svn/trunk/repository</url>
-        </repository>
-        <site>
-            <id>googlecode-site</id>
-            <name>sleek-slick2d-maven-dependencies-site</name>
-            <url>svn:https://sleek-slick2d-maven-dependencies.googlecode.com/svn/site/${project.artifactId}</url>
-        </site>
-    </distributionManagement>
-
-    <dependencyManagement>
-
-        <!-- Sets the version of TestNG that all children must use if they don't manually include a different version-->
-        <dependencies>
-            <dependency>
-                <groupId>org.testng</groupId>
-                <artifactId>testng</artifactId>
-                <version>6.7</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.lwjgl.lwjgl</groupId>
-                <artifactId>lwjgl</artifactId>
-                <version>${lwjgl.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.lwjgl.lwjgl</groupId>
-                <artifactId>lwjgl-platform</artifactId>
-                <version>${lwjgl.version}</version>
-                <classifier>natives-windows</classifier>
-            </dependency>
-
-            <dependency>
-                <groupId>org.lwjgl.lwjgl</groupId>
-                <artifactId>lwjgl-platform</artifactId>
-                <version>${lwjgl.version}</version>
-                <classifier>natives-osx</classifier>
-            </dependency>
-
-            <dependency>
-                <groupId>org.lwjgl.lwjgl</groupId>
-                <artifactId>lwjgl-platform</artifactId>
-                <version>${lwjgl.version}</version>
-                <classifier>natives-linux</classifier>
-            </dependency>
-
-            <dependency>
-                <groupId>javax</groupId>
-                <artifactId>jnlp</artifactId>
-                <version>1.0</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <modules>
-        <module>slick</module>
-        <module>slick-demos</module>
-        <module>slick-examples</module>
-        <module>slick-hiero</module>
-        <module>slick-packulike</module>
-        <module>slick-peditor</module>
-        <module>slick-scalar</module>
-        <module>slick-util</module>
-    </modules>
-
 </project>
