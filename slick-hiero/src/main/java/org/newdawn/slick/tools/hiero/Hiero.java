@@ -7,6 +7,7 @@ import org.newdawn.slick.font.GlyphPage;
 import org.newdawn.slick.font.HieroSettings;
 import org.newdawn.slick.font.effects.*;
 import org.newdawn.slick.font.effects.ConfigurableEffect.Value;
+import org.newdawn.slick.lwjgl.LwjglLoader;
 import org.newdawn.slick.util.Log;
 
 import javax.swing.*;
@@ -31,6 +32,10 @@ import java.util.prefs.Preferences;
  * @author Nathan Sweet <misc@n4te.com>
  */
 public class Hiero extends JFrame {
+
+    static {
+        LwjglLoader.loadOSSpecificFiles();
+    }
 
     static final String NEHE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n" //
             + "abcdefghijklmnopqrstuvwxyz\n1234567890\n" //
@@ -1134,7 +1139,8 @@ public class Hiero extends JFrame {
 
             setLayout(new GridBagLayout());
             setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, java.awt.Color.black));
-            appliedEffectsPanel.add(this, new GridBagConstraints(0, -1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+            appliedEffectsPanel.add(this, new GridBagConstraints(0, -1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER,
+                    GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
             {
                 JPanel titlePanel = new JPanel();
                 titlePanel.setLayout(new LayoutManager() {
@@ -1151,10 +1157,12 @@ public class Hiero extends JFrame {
 
                     public void layoutContainer(Container parent) {
                         Dimension buttonSize = deleteButton.getPreferredSize();
-                        deleteButton.setBounds(getWidth() - buttonSize.width - 5, 0, buttonSize.width, buttonSize.height);
+                        deleteButton.setBounds(getWidth() - buttonSize.width - 5, 0, buttonSize.width,
+                                buttonSize.height);
 
                         Dimension labelSize = nameLabel.getPreferredSize();
-                        nameLabel.setBounds(5, buttonSize.height / 2 - labelSize.height / 2, getWidth() - buttonSize.width - 5 - 5, labelSize.height);
+                        nameLabel.setBounds(5, buttonSize.height / 2 - labelSize.height / 2,
+                                getWidth() - buttonSize.width - 5 - 5, labelSize.height);
                     }
 
                     public void addLayoutComponent(String name, Component comp) {
@@ -1175,15 +1183,18 @@ public class Hiero extends JFrame {
                     Font font = nameLabel.getFont();
                     nameLabel.setFont(new Font(font.getName(), Font.BOLD, font.getSize()));
                 }
-                titlePanel.setPreferredSize(new Dimension(0, Math.max(nameLabel.getPreferredSize().height, deleteButton.getPreferredSize().height)));
-                add(titlePanel, new GridBagConstraints(0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 0, 0, 5), 0, 0));
+                titlePanel.setPreferredSize(new Dimension(0, Math.max(nameLabel.getPreferredSize().height,
+                        deleteButton.getPreferredSize().height)));
+                add(titlePanel, new GridBagConstraints(0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER,
+                        GridBagConstraints.BOTH, new Insets(5, 0, 0, 5), 0, 0));
                 titlePanel.setOpaque(false);
             }
             {
                 valuesPanel = new JPanel();
                 valuesPanel.setOpaque(false);
                 valuesPanel.setLayout(new GridBagLayout());
-                add(valuesPanel, new GridBagConstraints(0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 10, 5, 0), 0, 0));
+                add(valuesPanel, new GridBagConstraints(0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER,
+                        GridBagConstraints.HORIZONTAL, new Insets(0, 10, 5, 0), 0, 0));
             }
 
             deleteButton.addActionListener(new ActionListener() {
@@ -1216,10 +1227,12 @@ public class Hiero extends JFrame {
 
         public void addValue(final Value value) {
             JLabel valueNameLabel = new JLabel(value.getName() + ":");
-            valuesPanel.add(valueNameLabel, new GridBagConstraints(0, -1, 1, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
+            valuesPanel.add(valueNameLabel, new GridBagConstraints(0, -1, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+                    GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
 
             final JLabel valueValueLabel = new JLabel();
-            valuesPanel.add(valueValueLabel, new GridBagConstraints(1, -1, 1, 1, 1.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(0, 0, 0, 5), 0, 0));
+            valuesPanel.add(valueValueLabel, new GridBagConstraints(1, -1, 1, 1, 1.0, 0.0, GridBagConstraints.WEST,
+                    GridBagConstraints.BOTH, new Insets(0, 0, 0, 5), 0, 0));
             valueValueLabel.setOpaque(true);
             if (value.getObject() instanceof java.awt.Color) {
                 valueValueLabel.setIcon(getColorIcon((java.awt.Color) value.getObject()));
