@@ -1,0 +1,2 @@
+# We want binaries in this directory to be seen by Git
+!*.jar

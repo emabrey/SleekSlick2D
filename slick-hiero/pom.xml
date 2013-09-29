@@ -22,7 +22,8 @@
     <properties>
         <main.class>org.newdawn.slick.tools.hiero.Hiero</main.class>
 
-        <getdown.server.location>https://google.com</getdown.server.location>
+        <getdown.server.location>https://raw.github.com/emabrey/SleekSlick2D/master/slick-hiero/getdown/server/
+        </getdown.server.location>
         <getdown.version>1</getdown.version>
         <getdown.output.server>${project.basedir}/getdown/server/</getdown.output.server>
         <getdown.output.client>${project.basedir}/getdown/client/</getdown.output.client>
@@ -60,13 +61,15 @@
                         <fileset>
                             <directory>${getdown.output.server}</directory>
                             <includes>
-                                <include>**/*</include>
+                                <include>**/*.jar</include>
+                                <include>**/*.txt</include>
                             </includes>
                         </fileset>
                         <fileset>
                             <directory>${getdown.output.client}</directory>
                             <includes>
-                                <include>**/*</include>
+                                <include>**/*.jar</include>
+                                <include>**/*.txt</include>
                             </includes>
                         </fileset>
                     </filesets>

@@ -1,5 +1,5 @@
 # The URL from which the client is downloaded
-appbase = https://google.com
+appbase = https://raw.github.com/emabrey/SleekSlick2D/master/slick-hiero/getdown/server/
 
 # UI Configuration
 ui.name = SleekSlick2D slick-hiero Launcher
