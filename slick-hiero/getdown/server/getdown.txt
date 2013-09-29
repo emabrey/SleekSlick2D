@@ -1,0 +1,14 @@
+# The URL from which the client is downloaded
+appbase = https://google.com
+
+# UI Configuration
+ui.name = SleekSlick2D slick-hiero Launcher
+#ui.background = loader-background.png
+
+# Application jar files
+code = slick-hiero-1.0-SNAPSHOT.jar
+
+# The main entry point for the application
+class = org.newdawn.slick.tools.hiero.Hiero
+
+version=1
