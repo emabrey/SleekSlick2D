@@ -18,7 +18,7 @@
         <module>slick-packulike</module>
         <module>slick-peditor</module>
         <module>slick-scalar</module>
-        <module>slick-util</module>
+        <module>Bundled_LWJGL</module>
     </modules>
 
     <developers>
@@ -112,8 +112,6 @@
         <!--<skipTests>true</skipTests>  -->
 
         <maven.jar.index>true</maven.jar.index>
-        <lwjgl.version>2.9.0</lwjgl.version>
-
     </properties>
 
     <build>
@@ -234,33 +232,6 @@
                 <artifactId>testng</artifactId>
                 <version>6.7</version>
                 <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.lwjgl.lwjgl</groupId>
-                <artifactId>lwjgl</artifactId>
-                <version>${lwjgl.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.lwjgl.lwjgl</groupId>
-                <artifactId>lwjgl-platform</artifactId>
-                <version>${lwjgl.version}</version>
-                <classifier>natives-windows</classifier>
-            </dependency>
-
-            <dependency>
-                <groupId>org.lwjgl.lwjgl</groupId>
-                <artifactId>lwjgl-platform</artifactId>
-                <version>${lwjgl.version}</version>
-                <classifier>natives-osx</classifier>
-            </dependency>
-
-            <dependency>
-                <groupId>org.lwjgl.lwjgl</groupId>
-                <artifactId>lwjgl-platform</artifactId>
-                <version>${lwjgl.version}</version>
-                <classifier>natives-linux</classifier>
             </dependency>
 
             <dependency>
