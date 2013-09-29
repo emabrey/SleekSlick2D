@@ -83,7 +83,7 @@ public class LightTest extends BasicGame {
      * @param container The game container the game is running in
      */
     public void init(GameContainer container) throws SlickException {
-        tiles = new SpriteSheet("testdata/tiles.png", 32, 32);
+        tiles = new SpriteSheet("org/newdawn/slick/testdata/tiles.png", 32, 32);
         generateMap();
     }
 
@@ -230,8 +230,10 @@ public class LightTest extends BasicGame {
                     image.setColor(Image.TOP_LEFT, lightValue[x][y][0], lightValue[x][y][1], lightValue[x][y][2], 1);
                     image.setColor(Image.TOP_RIGHT, lightValue[x + 1][y][0], lightValue[x + 1][y][1],
                             lightValue[x + 1][y][2], 1);
-                    image.setColor(Image.BOTTOM_RIGHT, lightValue[x + 1][y + 1][0], lightValue[x + 1][y + 1][1], lightValue[x + 1][y + 1][2], 1);
-                    image.setColor(Image.BOTTOM_LEFT, lightValue[x][y + 1][0], lightValue[x][y + 1][1], lightValue[x][y + 1][2], 1);
+                    image.setColor(Image.BOTTOM_RIGHT, lightValue[x + 1][y + 1][0], lightValue[x + 1][y + 1][1],
+                            lightValue[x + 1][y + 1][2], 1);
+                    image.setColor(Image.BOTTOM_LEFT, lightValue[x][y + 1][0], lightValue[x][y + 1][1],
+                            lightValue[x][y + 1][2], 1);
                 } else {
                     // if lighting is turned off then use "1" for every value
                     // so we just have full colour everywhere.

@@ -9,6 +9,7 @@ import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.PixelFormat;
+import org.newdawn.slick.lwjgl.LwjglLoader;
 import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.opengl.*;
 import org.newdawn.slick.util.Log;
@@ -29,6 +30,7 @@ import java.security.PrivilegedAction;
 public class AppGameContainer extends GameContainer {
 
     static {
+        LwjglLoader.loadOSSpecificFiles();
         AccessController.doPrivileged(new PrivilegedAction() {
             public Object run() {
                 try {
@@ -200,8 +202,7 @@ public class AppGameContainer extends GameContainer {
 
     /**
      * Indicate whether we want to be in fullscreen mode. Note that the current display mode must be valid as a
-     * fullscreen
-     * mode for this to work
+     * fullscreen mode for this to work
      * <p/>
      *
      * @param fullscreen True if we want to be in fullscreen mode
