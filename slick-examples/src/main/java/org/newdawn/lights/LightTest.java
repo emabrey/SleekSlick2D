@@ -3,6 +3,8 @@ package org.newdawn.lights;
 import org.newdawn.slick.*;
 import org.newdawn.slick.util.Bootstrap;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
