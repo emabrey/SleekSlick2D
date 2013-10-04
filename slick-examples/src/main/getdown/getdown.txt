@@ -1,0 +1,14 @@
+# The URL from which the client is downloaded
+appbase = ${getdown.server.location}
+
+# UI Configuration
+ui.name = SleekSlick2D ${project.artifactId} Launcher
+#ui.background = loader-background.png
+
+# Application jar files
+code = ${project.build.finalName}.jar
+
+# The main entry point for the application
+class = ${main.class}
+
+version=${getdown.version}

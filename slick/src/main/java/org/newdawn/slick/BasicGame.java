@@ -1,5 +1,7 @@
 package org.newdawn.slick;
 
+import org.newdawn.slick.lwjgl.LwjglLoader;
+
 /**
  * A basic implementation of a game to take out the boring bits
  * <p/>
@@ -7,6 +9,10 @@ package org.newdawn.slick;
  * @author kevin
  */
 public abstract class BasicGame implements Game, InputListener {
+
+    static {
+        LwjglLoader.loadOSSpecificFiles();
+    }
 
     /**
      * The maximum number of controllers supported by the basic game
