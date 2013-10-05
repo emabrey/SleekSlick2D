@@ -1,5 +1,0 @@
-#OS Specific Natives
-*.so
-*dll
-*.dylib
-*jnilib
