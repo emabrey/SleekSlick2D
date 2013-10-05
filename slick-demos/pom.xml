@@ -13,6 +13,16 @@
 
     <name>slick-demos</name>
 
+    <properties>
+        <main.class>org.newdawn.slick.tests.GUITest</main.class>
+
+        <getdown.server.location>https://raw.github.com/emabrey/SleekSlick2D/master/slick-demos/getdown/server/
+        </getdown.server.location>
+        <getdown.version>1</getdown.version>
+        <getdown.output.server>${project.basedir}/getdown/server/</getdown.output.server>
+        <getdown.output.client>${project.basedir}/getdown/client/</getdown.output.client>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -25,9 +35,151 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <Main-Class>${main.class}</Main-Class>
+                                </transformer>
+                            </transformers>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${getdown.output.server}</directory>
+                            <includes>
+                                <include>**/*.jar</include>
+                                <include>**/*.txt</include>
+                            </includes>
+                        </fileset>
+                        <fileset>
+                            <directory>${getdown.output.client}</directory>
+                            <includes>
+                                <include>**/*.jar</include>
+                                <include>**/*.txt</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>copy-getdown-server</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${getdown.output.server}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/getdown</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>getdown.txt</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-getdown-client</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${getdown.output.client}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/getdown</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>getdown.txt</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>getdown-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${getdown.output.server}</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.threerings</groupId>
+                                    <artifactId>getdown</artifactId>
+                                    <version>1.3.1</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${getdown.output.client}</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.bitbucket.joxley</groupId>
+                <artifactId>getdown-maven-plugin</artifactId>
+                <version>0.0.1</version>
+                <configuration>
+                    <appdir>${getdown.output.server}</appdir>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>digest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven</groupId>
+                        <artifactId>maven-plugin-api</artifactId>
+                        <version>3.1.1</version>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>com.threerings</groupId>
+                        <artifactId>getdown</artifactId>
+                        <version>1.3.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
         </plugins>
     </build>
 
