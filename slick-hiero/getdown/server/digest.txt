@@ -1,3 +1,3 @@
-getdown.txt = 0b3fe68fe84129124e04792693f94f71
+getdown.txt = 4aae00295e46aa694f4897bcf3a537c2
 slick-hiero-1.0-SNAPSHOT.jar = 198d2b8922a303cae37e6f10720b4000
-digest.txt = 04018aa3d7d73d29f311be9bea39db10
+digest.txt = b214e5c6c8ce67eb4c9983b20538e603

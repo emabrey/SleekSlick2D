@@ -1,3 +1,3 @@
-getdown.txt = d7117161b80777eb9ad31867850e2054
+getdown.txt = 1d45f3dbc5d9022c7d3a142d4ec6a1e1
 slick-examples-1.0-SNAPSHOT.jar = 3017b222811ef7f04b29951f128c8a81
-digest.txt = b3177b6fcdc6e340deca638bf24a494a
+digest.txt = 0035ed6d58207710d97f47ef63db417f

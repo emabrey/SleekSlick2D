@@ -1,3 +1,3 @@
-getdown.txt = e84c88f290bf75bc03af2d23275cd5ad
+getdown.txt = 33435535ff8205a5c3da607fb293e03e
 slick-peditor-1.0-SNAPSHOT.jar = 22b47b7f47b08e01a82d1248bb88bbf0
-digest.txt = 1d753498b7edb84846eb3e11765afba9
+digest.txt = ab146f29988a8f609cd2b72bec45d89e
