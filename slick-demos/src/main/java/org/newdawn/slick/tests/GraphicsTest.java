@@ -50,12 +50,12 @@ public class GraphicsTest extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         this.container = container;
 
-        image = new Image("testdata/logo.tga", true);
+        image = new Image("org/newdawn/slick/testdata/logo.tga", true);
 
-        Image temp = new Image("testdata/palette_tool.png");
+        Image temp = new Image("org/newdawn/slick/testdata/palette_tool.png");
         container.setMouseCursor(temp, 0, 0);
 
-        container.setIcons(new String[]{"testdata/icon.tga"});
+        container.setIcons(new String[]{"org/newdawn/slick/testdata/icon.tga"});
         container.setTargetFrameRate(100);
 
         poly = new Polygon();

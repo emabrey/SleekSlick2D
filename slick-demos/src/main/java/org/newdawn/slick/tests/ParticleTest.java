@@ -33,7 +33,7 @@ public class ParticleTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        Image image = new Image("testdata/particle.tga", true);
+        Image image = new Image("org/newdawn/slick/testdata/particle.tga", true);
         system = new ParticleSystem(image);
 
         system.addEmitter(new FireEmitter(400, 300, 45));

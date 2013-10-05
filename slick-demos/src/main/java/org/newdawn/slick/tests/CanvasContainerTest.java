@@ -62,9 +62,9 @@ public class CanvasContainerTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        image = tga = new Image("testdata/logo.tga");
-        scaleMe = new Image("testdata/logo.tga", true, Image.FILTER_NEAREST);
-        gif = new Image("testdata/logo.gif");
+        image = tga = new Image("org/newdawn/slick/testdata/logo.tga");
+        scaleMe = new Image("org/newdawn/slick/testdata/logo.tga", true, Image.FILTER_NEAREST);
+        gif = new Image("org/newdawn/slick/testdata/logo.gif");
         scaled = gif.getScaledCopy(120, 120);
         subImage = image.getSubImage(200, 0, 70, 260);
         rot = 0;

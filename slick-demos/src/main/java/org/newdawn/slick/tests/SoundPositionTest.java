@@ -40,7 +40,7 @@ public class SoundPositionTest extends BasicGame {
         SoundStore.get().setMaxSources(32);
 
         myContainer = container;
-        music = new Music("testdata/kirby.ogg", true);
+        music = new Music("org/newdawn/slick/testdata/kirby.ogg", true);
         music.play();
     }
 

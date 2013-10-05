@@ -53,7 +53,7 @@ public class PackedSheetTest extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         this.container = container;
 
-        sheet = new PackedSpriteSheet("testdata/testpack.def", Image.FILTER_NEAREST);
+        sheet = new PackedSpriteSheet("org/newdawn/slick/testdata/testpack.def", Image.FILTER_NEAREST);
         rocket = sheet.getSprite("rocket");
 
         SpriteSheet anim = sheet.getSpriteSheet("runner");

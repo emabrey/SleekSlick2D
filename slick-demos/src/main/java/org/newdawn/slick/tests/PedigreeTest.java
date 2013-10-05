@@ -59,13 +59,13 @@ public class PedigreeTest extends BasicGame {
         this.container = container;
 
         try {
-            fire = ParticleIO.loadConfiguredSystem("testdata/system.xml");
-            trail = ParticleIO.loadConfiguredSystem("testdata/smoketrail.xml");
+            fire = ParticleIO.loadConfiguredSystem("org/newdawn/slick/testdata/system.xml");
+            trail = ParticleIO.loadConfiguredSystem("org/newdawn/slick/testdata/smoketrail.xml");
 
         } catch (IOException e) {
             throw new SlickException("Failed to load particle systems", e);
         }
-        image = new Image("testdata/rocket.png");
+        image = new Image("org/newdawn/slick/testdata/rocket.png");
 
         spawnRocket();
     }

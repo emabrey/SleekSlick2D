@@ -45,11 +45,11 @@ public class MorphSVGTest extends BasicGame {
      * @see BasicGame#init(GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        base = InkscapeLoader.load("testdata/svg/walk1.svg");
+        base = InkscapeLoader.load("org/newdawn/slick/testdata/svg/walk1.svg");
         morph = new SVGMorph(base);
-        morph.addStep(InkscapeLoader.load("testdata/svg/walk2.svg"));
-        morph.addStep(InkscapeLoader.load("testdata/svg/walk3.svg"));
-        morph.addStep(InkscapeLoader.load("testdata/svg/walk4.svg"));
+        morph.addStep(InkscapeLoader.load("org/newdawn/slick/testdata/svg/walk2.svg"));
+        morph.addStep(InkscapeLoader.load("org/newdawn/slick/testdata/svg/walk3.svg"));
+        morph.addStep(InkscapeLoader.load("org/newdawn/slick/testdata/svg/walk4.svg"));
 
         container.setVSync(true);
     }

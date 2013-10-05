@@ -86,7 +86,7 @@ public class XMLTest {
     public static void main(String[] argv) throws SlickException {
         XMLParser parser = new XMLParser();
 
-        XMLElement root = parser.parse("testdata/test.xml");
+        XMLElement root = parser.parse("org/newdawn/slick/testdata/test.xml");
 
         assertEquals(root.getName(), "testRoot");
         System.out.println(root);

@@ -72,7 +72,7 @@ public class BigImageTest extends BasicGame {
      */
     public void init(GameContainer container) throws SlickException {
         // force a 256 pixel limit for testing
-        original = image = new BigImage("testdata/bigimage.tga", Image.FILTER_NEAREST, 512);
+        original = image = new BigImage("org/newdawn/slick/testdata/bigimage.tga", Image.FILTER_NEAREST, 512);
         sub = image.getSubImage(210, 210, 200, 130);
         scaledSub = sub.getScaledCopy(2);
         image = image.getScaledCopy(0.3f);

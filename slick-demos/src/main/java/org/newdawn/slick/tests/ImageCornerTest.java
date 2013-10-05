@@ -41,7 +41,7 @@ public class ImageCornerTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        image = new Image("testdata/logo.png");
+        image = new Image("org/newdawn/slick/testdata/logo.png");
 
         width = image.getWidth() / 3;
         height = image.getHeight() / 3;

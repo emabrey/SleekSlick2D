@@ -51,10 +51,10 @@ public class SlickCallableTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        image = new Image("testdata/rocket.png");
-        back = new Image("testdata/sky.jpg");
-        font = new AngelCodeFont("testdata/hiero.fnt", "testdata/hiero.png");
-        SpriteSheet sheet = new SpriteSheet("testdata/homeranim.png", 36, 65);
+        image = new Image("org/newdawn/slick/testdata/rocket.png");
+        back = new Image("org/newdawn/slick/testdata/sky.jpg");
+        font = new AngelCodeFont("org/newdawn/slick/testdata/hiero.fnt", "org/newdawn/slick/testdata/hiero.png");
+        SpriteSheet sheet = new SpriteSheet("org/newdawn/slick/testdata/homeranim.png", 36, 65);
         homer = new Animation(sheet, 0, 0, 7, 0, true, 150, true);
     }
 
@@ -84,9 +84,8 @@ public class SlickCallableTest extends BasicGame {
     }
 
     /**
-     * Render the GL scene, this isn't efficient and if you know OpenGL I'm assuming you can see why. If not,
-     * you probably
-     * don't want to use this feature anyway
+     * Render the GL scene, this isn't efficient and if you know OpenGL I'm assuming you can see why. If not, you
+     * probably don't want to use this feature anyway
      */
     public void renderGL() {
         FloatBuffer pos = BufferUtils.createFloatBuffer(4);

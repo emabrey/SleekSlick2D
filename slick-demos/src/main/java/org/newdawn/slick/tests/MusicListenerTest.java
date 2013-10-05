@@ -41,8 +41,8 @@ public class MusicListenerTest extends BasicGame implements MusicListener {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        music = new Music("testdata/restart.ogg", false);
-        stream = new Music("testdata/restart.ogg", false);
+        music = new Music("org/newdawn/slick/testdata/restart.ogg", false);
+        stream = new Music("org/newdawn/slick/testdata/restart.ogg", false);
 
         music.addListener(this);
         stream.addListener(this);

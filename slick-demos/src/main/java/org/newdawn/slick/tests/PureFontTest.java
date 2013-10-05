@@ -31,8 +31,8 @@ public class PureFontTest extends BasicGame {
      * @see org.newdawn.slick.Game#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        image = new Image("testdata/sky.jpg");
-        font = new AngelCodeFont("testdata/hiero.fnt", "testdata/hiero.png");
+        image = new Image("org/newdawn/slick/testdata/sky.jpg");
+        font = new AngelCodeFont("org/newdawn/slick/testdata/hiero.fnt", "org/newdawn/slick/testdata/hiero.png");
     }
 
     /**

@@ -37,9 +37,9 @@ public class FontTest extends BasicGame {
      * @see org.newdawn.slick.Game#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        font = new AngelCodeFont("testdata/demo2.fnt", "testdata/demo2_00.tga");
-        font2 = new AngelCodeFont("testdata/hiero.fnt", "testdata/hiero.png");
-        image = new Image("testdata/demo2_00.tga", false);
+        font = new AngelCodeFont("org/newdawn/slick/testdata/demo2.fnt", "org/newdawn/slick/testdata/demo2_00.tga");
+        font2 = new AngelCodeFont("org/newdawn/slick/testdata/hiero.fnt", "org/newdawn/slick/testdata/hiero.png");
+        image = new Image("org/newdawn/slick/testdata/demo2_00.tga", false);
     }
 
     /**

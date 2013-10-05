@@ -85,7 +85,7 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
         container.setShowFPS(false);
 
         try {
-            dataMap = new DataMap("testdata/map.dat");
+            dataMap = new DataMap("org/newdawn/slick/testdata/map.dat");
         } catch (IOException e) {
             throw new SlickException("Failed to load map data", e);
         }
@@ -246,7 +246,8 @@ public class NavMeshTest extends BasicGame implements PathFindingContext {
 
         /*
          * (non-Javadoc)
-         * @see org.newdawn.slick.util.pathfinding.TileBasedMap#getCost(org.newdawn.slick.util.pathfinding.PathFindingContext, int, int)
+         * @see org.newdawn.slick.util.pathfinding.TileBasedMap#getCost(org.newdawn.slick.util.pathfinding
+         * .PathFindingContext, int, int)
          */
         public float getCost(PathFindingContext context, int tx, int ty) {
             return 1;

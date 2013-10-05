@@ -81,17 +81,18 @@ public class SoundTest extends BasicGame {
         SoundStore.get().setMaxSources(32);
 
         myContainer = container;
-        sound = new Sound("testdata/restart.ogg");
-        charlie = new Sound("testdata/cbrown01.wav");
+        sound = new Sound("org/newdawn/slick/testdata/restart.ogg");
+        charlie = new Sound("org/newdawn/slick/testdata/cbrown01.wav");
         try {
-            engine = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("testdata/engine.wav"));
+            engine = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream
+                    ("org/newdawn/slick/testdata/engine.wav"));
         } catch (IOException e) {
             throw new SlickException("Failed to load engine", e);
         }
-        music = musica = new Music("testdata/SMB-X.XM");
-        //music = musica = new Music("testdata/theme.ogg", true);
-        musicb = new Music("testdata/kirby.ogg", true);
-        burp = new Sound("testdata/burp.aif");
+        music = musica = new Music("org/newdawn/slick/testdata/SMB-X.XM");
+        //music = musica = new Music("org/newdawn/slick/testdata/theme.ogg", true);
+        musicb = new Music("org/newdawn/slick/testdata/kirby.ogg", true);
+        burp = new Sound("org/newdawn/slick/testdata/burp.aif");
 
         music.play();
     }

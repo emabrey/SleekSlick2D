@@ -67,8 +67,8 @@ public class GradientImageTest extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         this.container = container;
 
-        image1 = new Image("testdata/grass.png");
-        image2 = new Image("testdata/rocks.png");
+        image1 = new Image("org/newdawn/slick/testdata/grass.png");
+        image2 = new Image("org/newdawn/slick/testdata/rocks.png");
 
         fill = new GradientFill(-64, 0, new Color(1, 1, 1, 1f), 64, 0, new Color(0, 0, 0, 0));
         shape = new Rectangle(336, 236, 128, 128);

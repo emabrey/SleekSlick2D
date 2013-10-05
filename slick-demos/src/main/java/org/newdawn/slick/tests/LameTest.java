@@ -37,7 +37,7 @@ public class LameTest extends BasicGame {
         poly.addPoint(120, 120);
         poly.addPoint(100, 120);
 
-        image = new Image("testdata/rocks.png");
+        image = new Image("org/newdawn/slick/testdata/rocks.png");
     }
 
     /**

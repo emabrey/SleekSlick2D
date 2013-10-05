@@ -48,7 +48,7 @@ public class DuplicateEmitterTest extends BasicGame {
 
         try {
             // load the particle system containing our explosion emitter
-            explosionSystem = ParticleIO.loadConfiguredSystem("testdata/endlessexplosion.xml");
+            explosionSystem = ParticleIO.loadConfiguredSystem("org/newdawn/slick/testdata/endlessexplosion.xml");
             // get the emitter, it's the first (and only one) in this particle system
             explosionEmitter = (ConfigurableEmitter) explosionSystem.getEmitter(0);
             // set the original emitter in the middle of the screen at the top

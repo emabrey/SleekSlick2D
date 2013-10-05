@@ -54,7 +54,7 @@ public class ImageOutTest extends BasicGame {
         this.container = container;
 
         try {
-            fire = ParticleIO.loadConfiguredSystem("testdata/system.xml");
+            fire = ParticleIO.loadConfiguredSystem("org/newdawn/slick/testdata/system.xml");
         } catch (IOException e) {
             throw new SlickException("Failed to load particle systems", e);
         }

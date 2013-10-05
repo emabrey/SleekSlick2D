@@ -52,7 +52,7 @@ public class FontPerformanceTest extends BasicGame {
      * @see org.newdawn.slick.Game#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        font = new AngelCodeFont("testdata/perffont.fnt", "testdata/perffont.png");
+        font = new AngelCodeFont("org/newdawn/slick/testdata/perffont.fnt", "org/newdawn/slick/testdata/perffont.png");
 
         for (int j = 0; j < 2; j++) {
             int lineLen = 90;

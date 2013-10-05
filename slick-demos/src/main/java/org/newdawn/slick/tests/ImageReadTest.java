@@ -36,7 +36,7 @@ public class ImageReadTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        image = new Image("testdata/testcard.png");
+        image = new Image("org/newdawn/slick/testdata/testcard.png");
         read[0] = image.getColor(0, 0);
         read[1] = image.getColor(30, 40);
         read[2] = image.getColor(55, 70);

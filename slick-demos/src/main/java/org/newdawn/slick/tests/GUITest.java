@@ -73,10 +73,10 @@ public class GUITest extends BasicGame implements ComponentListener {
     public void init(GameContainer container) throws SlickException {
         if (container instanceof AppGameContainer) {
             app = (AppGameContainer) container;
-            app.setIcon("testdata/icon.tga");
+            app.setIcon("org/newdawn/slick/testdata/icon.tga");
         }
 
-        font = new AngelCodeFont("testdata/demo2.fnt", "testdata/demo2_00.tga");
+        font = new AngelCodeFont("org/newdawn/slick/testdata/demo2.fnt", "org/newdawn/slick/testdata/demo2_00.tga");
         field = new TextField(container, font, 150, 20, 500, 35, new ComponentListener() {
             public void componentActivated(AbstractComponent source) {
                 message = "Entered1: " + field.getText();
@@ -95,9 +95,9 @@ public class GUITest extends BasicGame implements ComponentListener {
 
         this.container = container;
 
-        image = new Image("testdata/logo.tga");
-        background = new Image("testdata/dungeontiles.gif");
-        container.setMouseCursor("testdata/cursor.tga", 0, 0);
+        image = new Image("org/newdawn/slick/testdata/logo.tga");
+        background = new Image("org/newdawn/slick/testdata/dungeontiles.gif");
+        container.setMouseCursor("org/newdawn/slick/testdata/cursor.tga", 0, 0);
 
         for (int i = 0; i < 4; i++) {
             areas[i] = new MouseOverArea(container, image, 300, 100 + (i * 100), 200, 90, this);

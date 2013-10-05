@@ -53,7 +53,7 @@ public class AnimationTest extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         this.container = container;
 
-        SpriteSheet sheet = new SpriteSheet("testdata/homeranim.png", 36, 65);
+        SpriteSheet sheet = new SpriteSheet("org/newdawn/slick/testdata/homeranim.png", 36, 65);
         animation = new Animation();
         for (int i = 0; i < 8; i++) {
             animation.addFrame(sheet.getSprite(i, 0), 150);

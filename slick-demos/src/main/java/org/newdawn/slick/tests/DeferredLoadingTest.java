@@ -58,24 +58,24 @@ public class DeferredLoadingTest extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         LoadingList.setDeferredLoading(true);
 
-        new Sound("testdata/cbrown01.wav");
-        new Sound("testdata/engine.wav");
-        sound = new Sound("testdata/restart.ogg");
-        new Music("testdata/testloop.ogg");
-        music = new Music("testdata/SMB-X.XM");
+        new Sound("org/newdawn/slick/testdata/cbrown01.wav");
+        new Sound("org/newdawn/slick/testdata/engine.wav");
+        sound = new Sound("org/newdawn/slick/testdata/restart.ogg");
+        new Music("org/newdawn/slick/testdata/testloop.ogg");
+        music = new Music("org/newdawn/slick/testdata/SMB-X.XM");
 
-        new Image("testdata/cursor.png");
-        new Image("testdata/cursor.tga");
-        new Image("testdata/cursor.png");
-        new Image("testdata/cursor.png");
-        new Image("testdata/dungeontiles.gif");
-        new Image("testdata/logo.gif");
-        image = new Image("testdata/logo.tga");
-        new Image("testdata/logo.png");
-        new Image("testdata/rocket.png");
-        new Image("testdata/testpack.png");
+        new Image("org/newdawn/slick/testdata/cursor.png");
+        new Image("org/newdawn/slick/testdata/cursor.tga");
+        new Image("org/newdawn/slick/testdata/cursor.png");
+        new Image("org/newdawn/slick/testdata/cursor.png");
+        new Image("org/newdawn/slick/testdata/dungeontiles.gif");
+        new Image("org/newdawn/slick/testdata/logo.gif");
+        image = new Image("org/newdawn/slick/testdata/logo.tga");
+        new Image("org/newdawn/slick/testdata/logo.png");
+        new Image("org/newdawn/slick/testdata/rocket.png");
+        new Image("org/newdawn/slick/testdata/testpack.png");
 
-        font = new AngelCodeFont("testdata/demo.fnt", "testdata/demo_00.tga");
+        font = new AngelCodeFont("org/newdawn/slick/testdata/demo.fnt", "org/newdawn/slick/testdata/demo_00.tga");
     }
 
     /**

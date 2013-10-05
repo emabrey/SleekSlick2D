@@ -36,7 +36,7 @@ public class BigSpriteSheetTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        original = new BigImage("testdata/bigimage.tga", Image.FILTER_NEAREST, 256);
+        original = new BigImage("org/newdawn/slick/testdata/bigimage.tga", Image.FILTER_NEAREST, 256);
         bigSheet = new SpriteSheet(original, 16, 16);
     }
 

@@ -63,13 +63,13 @@ public class SoundURLTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        sound = new Sound(ResourceLoader.getResource("testdata/restart.ogg"));
-        charlie = new Sound(ResourceLoader.getResource("testdata/cbrown01.wav"));
-        engine = new Sound(ResourceLoader.getResource("testdata/engine.wav"));
-        //music = musica = new Music("testdata/SMB-X.XM");
-        music = musica = new Music(ResourceLoader.getResource("testdata/restart.ogg"), false);
-        musicb = new Music(ResourceLoader.getResource("testdata/kirby.ogg"), false);
-        burp = new Sound(ResourceLoader.getResource("testdata/burp.aif"));
+        sound = new Sound(ResourceLoader.getResource("org/newdawn/slick/testdata/restart.ogg"));
+        charlie = new Sound(ResourceLoader.getResource("org/newdawn/slick/testdata/cbrown01.wav"));
+        engine = new Sound(ResourceLoader.getResource("org/newdawn/slick/testdata/engine.wav"));
+        //music = musica = new Music("org/newdawn/slick/testdata/SMB-X.XM");
+        music = musica = new Music(ResourceLoader.getResource("org/newdawn/slick/testdata/restart.ogg"), false);
+        musicb = new Music(ResourceLoader.getResource("org/newdawn/slick/testdata/kirby.ogg"), false);
+        burp = new Sound(ResourceLoader.getResource("org/newdawn/slick/testdata/burp.aif"));
     }
 
     /**

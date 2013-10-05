@@ -31,8 +31,8 @@ public class AlphaMapTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        alphaMap = new Image("testdata/alphamap.png");
-        textureMap = new Image("testdata/grass.png");
+        alphaMap = new Image("org/newdawn/slick/testdata/alphamap.png");
+        textureMap = new Image("org/newdawn/slick/testdata/grass.png");
         container.getGraphics().setBackground(Color.black);
     }
 

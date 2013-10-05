@@ -67,9 +67,9 @@ public class ImageGraphicsTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        testImage = new Image("testdata/logo.png");
-        preloaded = new Image("testdata/logo.png");
-        testFont = new AngelCodeFont("testdata/hiero.fnt", "testdata/hiero.png");
+        testImage = new Image("org/newdawn/slick/testdata/logo.png");
+        preloaded = new Image("org/newdawn/slick/testdata/logo.png");
+        testFont = new AngelCodeFont("org/newdawn/slick/testdata/hiero.fnt", "org/newdawn/slick/testdata/hiero.png");
         target = new Image(400, 300);
         cut = new Image(100, 100);
         gTarget = target.getGraphics();

@@ -47,7 +47,7 @@ public class TexturePaintTest extends BasicGame {
         poly.addPoint(620, 420);
         poly.addPoint(300, 320);
 
-        image = new Image("testdata/rocks.png");
+        image = new Image("org/newdawn/slick/testdata/rocks.png");
 
         texPaint = new TexCoordGenerator() {
             public Vector2f getCoordFor(float x, float y) {

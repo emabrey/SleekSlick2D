@@ -38,7 +38,7 @@ public class FlashTest extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         this.container = container;
 
-        image = new Image("testdata/logo.tga");
+        image = new Image("org/newdawn/slick/testdata/logo.tga");
     }
 
     /**

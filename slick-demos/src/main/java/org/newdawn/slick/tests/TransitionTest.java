@@ -37,9 +37,9 @@ public class TransitionTest extends StateBasedGame {
      * @see org.newdawn.slick.state.StateBasedGame#initStatesList(org.newdawn.slick.GameContainer)
      */
     public void initStatesList(GameContainer container) throws SlickException {
-        addState(new ImageState(0, "testdata/wallpaper/paper1.png", 1));
-        addState(new ImageState(1, "testdata/wallpaper/paper2.png", 2));
-        addState(new ImageState(2, "testdata/bigimage.tga", 0));
+        addState(new ImageState(0, "org/newdawn/slick/testdata/wallpaper/paper1.png", 1));
+        addState(new ImageState(1, "org/newdawn/slick/testdata/wallpaper/paper2.png", 2));
+        addState(new ImageState(2, "org/newdawn/slick/testdata/bigimage.tga", 0));
     }
 
     /**
@@ -121,7 +121,7 @@ public class TransitionTest extends StateBasedGame {
 
         /**
          * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer,
-         * org.newdawn.slick.state.StateBasedGame)
+         *      org.newdawn.slick.state.StateBasedGame)
          */
         public void init(GameContainer container, StateBasedGame game) throws SlickException {
             image = new Image(ref);
@@ -129,8 +129,7 @@ public class TransitionTest extends StateBasedGame {
 
         /**
          * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer,
-         * org.newdawn.slick.state.StateBasedGame,
-         *      org.newdawn.slick.Graphics)
+         *      org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
          */
         public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
             image.draw(0, 0, 800, 600);
@@ -140,8 +139,7 @@ public class TransitionTest extends StateBasedGame {
 
         /**
          * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer,
-         * org.newdawn.slick.state.StateBasedGame,
-         *      int)
+         *      org.newdawn.slick.state.StateBasedGame, int)
          */
         public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
             if (container.getInput().isKeyPressed(Input.KEY_SPACE)) {

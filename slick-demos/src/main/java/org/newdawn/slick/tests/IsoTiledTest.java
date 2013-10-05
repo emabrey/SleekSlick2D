@@ -32,7 +32,7 @@ public class IsoTiledTest extends BasicGame {
      * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
      */
     public void init(GameContainer container) throws SlickException {
-        tilemap = new TiledMap("testdata/isoexample.tmx", "testdata/");
+        tilemap = new TiledMap("org/newdawn/slick/testdata/isoexample.tmx", "org/newdawn/slick/testdata/");
     }
 
     /*
