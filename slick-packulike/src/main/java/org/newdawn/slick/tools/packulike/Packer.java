@@ -1,5 +1,7 @@
 package org.newdawn.slick.tools.packulike;
 
+import org.newdawn.slick.lwjgl.LwjglLoader;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -20,6 +22,10 @@ import java.util.ArrayList;
  * @author kevin
  */
 public class Packer extends JFrame {
+
+    static {
+        LwjglLoader.loadOSSpecificFiles();
+    }
 
     /**
      * The panel showing the currently generated sprite sheet
@@ -370,10 +376,11 @@ public class Packer extends JFrame {
     private class FileListRenderer extends DefaultListCellRenderer {
 
         /**
-         * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int,
-         *      boolean, boolean)
+         * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object,
+         *      int, boolean, boolean)
          */
-        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+                                                      boolean cellHasFocus) {
             JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
             Sprite sprite = (Sprite) value;

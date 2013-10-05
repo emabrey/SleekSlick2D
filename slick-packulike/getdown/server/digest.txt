@@ -1,0 +1,3 @@
+getdown.txt = 3be2dfda256edc38181bb4b3a2f7140b
+slick-packulike-1.0-SNAPSHOT.jar = 318289afeeb33c37e2c21b2007a8a64e
+digest.txt = c8872ed33e21832d1aedfa1f14ab2a59
