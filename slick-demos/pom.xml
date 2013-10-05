@@ -18,7 +18,7 @@
 
         <getdown.server.location>https://raw.github.com/emabrey/SleekSlick2D/master/slick-demos/getdown/server/
         </getdown.server.location>
-        <maven.build.timestamp.format>yyMMddHHmmss</maven.build.timestamp.format>
+        <maven.build.timestamp.format>yyMMddHHmmssSSS</maven.build.timestamp.format>
         <getdown.version>${maven.build.timestamp}</getdown.version>
         <getdown.output.server>${project.basedir}/getdown/server/</getdown.output.server>
         <getdown.output.client>${project.basedir}/getdown/client/</getdown.output.client>
