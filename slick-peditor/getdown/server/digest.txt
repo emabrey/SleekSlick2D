@@ -1,0 +1,3 @@
+getdown.txt = e84c88f290bf75bc03af2d23275cd5ad
+slick-peditor-1.0-SNAPSHOT.jar = 029ed4d1bd9830cd0a3077ec7b319c8a
+digest.txt = c1851dbaad0bb0b56189861b2c118b80

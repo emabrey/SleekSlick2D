@@ -1,0 +1,5 @@
+# We want getdown configurations in this directory to be seen by Git
+!client/getdown.txt
+!client/digest.txt
+!client/getdown-*.jar
+!server/*.*
