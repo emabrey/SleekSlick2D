@@ -1,9 +1,9 @@
-package org.newdawn.slick.tests.xml;
+package org.newdawn.slick.demos.xml;
 
 import java.util.ArrayList;
 
 /**
- * The top level node of our test structure for XML -> object parsing
+ * The top level node of our Demo structure for XML -> object parsing
  * <p/>
  *
  * @author kevin

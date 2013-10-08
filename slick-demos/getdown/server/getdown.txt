@@ -9,6 +9,6 @@ ui.name = SleekSlick2D slick-demos Launcher
 code = slick-demos-1.0-SNAPSHOT.jar
 
 # The main entry point for the application
-class = org.newdawn.slick.tests.GUITest
+class = org.newdawn.slick.demos.DemoBox
 
-version=131004223907
+version=131008012044583

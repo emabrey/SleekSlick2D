@@ -1,7 +1,7 @@
-package org.newdawn.slick.tests.xml;
+package org.newdawn.slick.demos.xml;
 
 /**
- * A test example of some object data that can be configured via XML
+ * A Demo example of some object data that can be configured via XML
  * <p/>
  *
  * @author kevin

@@ -1,9 +1,9 @@
-package org.newdawn.slick.tests.xml;
+package org.newdawn.slick.demos.xml;
 
 import java.util.ArrayList;
 
 /**
- * A test example of some object data that can be configured via XML
+ * A Demo example of some object data that can be configured via XML
  * <p/>
  *
  * @author kevin
@@ -26,9 +26,8 @@ public class ItemContainer extends Item {
     }
 
     /**
-     * Called by the XML to set the name attribute. Note that set methods can be used as well as direct field
-     * injection. In
-     * this case the setter *has* to be used to access the protected field from the super class
+     * Called by the XML to set the name attribute. Note that set methods can be used as well as direct field injection.
+     * In this case the setter *has* to be used to access the protected field from the super class
      * <p/>
      *
      * @param name The value to set

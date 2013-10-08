@@ -1,14 +1,14 @@
-package org.newdawn.slick.tests;
+package org.newdawn.slick.demos;
 
 import org.newdawn.slick.*;
 
 /**
- * A test to demonstrate world clipping as opposed to screen clipping
+ * A Demo to Demonstrate world clipping as opposed to screen clipping
  * <p/>
  *
  * @author kevin
  */
-public class AlphaMapTest extends BasicGame {
+public class AlphaMapDemo extends BasicGame {
 
     /**
      * The alpha map being applied
@@ -23,8 +23,8 @@ public class AlphaMapTest extends BasicGame {
     /**
      * Create a new tester for the clip plane based clipping
      */
-    public AlphaMapTest() {
-        super("AlphaMap Test");
+    public AlphaMapDemo() {
+        super("AlphaMap Demo");
     }
 
     /**
@@ -67,14 +67,14 @@ public class AlphaMapTest extends BasicGame {
     }
 
     /**
-     * Entry point to our test
+     * Entry point to our Demo
      * <p/>
      *
-     * @param argv The arguments to pass into the test
+     * @param argv The arguments to pass into the Demo
      */
     public static void main(String[] argv) {
         try {
-            AppGameContainer container = new AppGameContainer(new AlphaMapTest());
+            AppGameContainer container = new AppGameContainer(new AlphaMapDemo());
             container.setDisplayMode(800, 600, false);
             container.start();
         } catch (SlickException e) {

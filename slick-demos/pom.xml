@@ -14,7 +14,7 @@
     <name>slick-demos</name>
 
     <properties>
-        <main.class>org.newdawn.slick.tests.GUITest</main.class>
+        <main.class>org.newdawn.slick.demos.DemoBox</main.class>
 
         <getdown.server.location>https://raw.github.com/emabrey/SleekSlick2D/master/slick-demos/getdown/server/
         </getdown.server.location>
