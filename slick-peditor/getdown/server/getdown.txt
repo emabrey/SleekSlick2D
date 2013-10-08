@@ -11,4 +11,4 @@ code = slick-peditor-1.0-SNAPSHOT.jar
 # The main entry point for the application
 class = org.newdawn.slick.tools.peditor.GraphEditorWindow
 
-version=131004223907
+version=131008020233334

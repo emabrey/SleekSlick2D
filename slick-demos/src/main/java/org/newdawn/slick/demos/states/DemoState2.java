@@ -52,7 +52,7 @@ public class DemoState2 extends BasicGameState {
      */
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.game = game;
-        font = new AngelCodeFont("org/newdawn/slick/testdata/Demo2.fnt", "org/newdawn/slick/testdata/Demo2_00.tga");
+        font = new AngelCodeFont("org/newdawn/slick/testdata/demo2.fnt", "org/newdawn/slick/testdata/demo2_00.tga");
         image = new Image("org/newdawn/slick/testdata/logo.tga");
     }
 

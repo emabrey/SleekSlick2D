@@ -192,6 +192,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.newdawn.slick</groupId>
+            <artifactId>slick-test-resources</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <scope>test</scope>

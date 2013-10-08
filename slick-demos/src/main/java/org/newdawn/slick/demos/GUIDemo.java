@@ -76,7 +76,7 @@ public class GUIDemo extends BasicGame implements ComponentListener {
             app.setIcon("org/newdawn/slick/testdata/icon.tga");
         }
 
-        font = new AngelCodeFont("org/newdawn/slick/testdata/Demo2.fnt", "org/newdawn/slick/testdata/Demo2_00.tga");
+        font = new AngelCodeFont("org/newdawn/slick/testdata/demo2.fnt", "org/newdawn/slick/testdata/demo2_00.tga");
         field = new TextField(container, font, 150, 20, 500, 35, new ComponentListener() {
             public void componentActivated(AbstractComponent source) {
                 message = "Entered1: " + field.getText();

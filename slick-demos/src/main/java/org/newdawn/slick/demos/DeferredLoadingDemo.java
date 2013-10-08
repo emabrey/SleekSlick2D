@@ -75,7 +75,7 @@ public class DeferredLoadingDemo extends BasicGame {
         new Image("org/newdawn/slick/testdata/rocket.png");
         new Image("org/newdawn/slick/testdata/testpack.png");
 
-        font = new AngelCodeFont("org/newdawn/slick/testdata/Demo.fnt", "org/newdawn/slick/testdata/Demo_00.tga");
+        font = new AngelCodeFont("org/newdawn/slick/testdata/demo.fnt", "org/newdawn/slick/testdata/demo_00.tga");
     }
 
     /**

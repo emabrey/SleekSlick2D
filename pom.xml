@@ -11,6 +11,7 @@
     <url>https://github.com/emabrey/SleekSlick2D</url>
 
     <modules>
+        <module>Bundled_LWJGL</module>
         <module>slick</module>
         <module>slick-demos</module>
         <module>slick-examples</module>
@@ -18,7 +19,7 @@
         <module>slick-packulike</module>
         <module>slick-peditor</module>
         <module>slick-scalar</module>
-        <module>Bundled_LWJGL</module>
+        <module>slick-test-resources</module>
     </modules>
 
     <developers>
