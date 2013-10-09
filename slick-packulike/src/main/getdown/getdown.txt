@@ -11,4 +11,4 @@ code = ${project.build.finalName}.jar
 # The main entry point for the application
 class = ${main.class}
 
-version=${getdown.version}
+version=${getdown.project.version}
