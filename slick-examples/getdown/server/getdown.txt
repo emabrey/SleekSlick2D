@@ -11,4 +11,4 @@ code = slick-examples-1.0-SNAPSHOT.jar
 # The main entry point for the application
 class = org.newdawn.lights.LightTest
 
-version=131008020233334
+version=131008220456824

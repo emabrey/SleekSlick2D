@@ -1,3 +1,3 @@
-getdown.txt = 827d137920f60ebba8e9499cd42d1a25
+getdown.txt = 6c986effe54fa474090efe4963a8e38b
 slick-scalar-1.0-SNAPSHOT.jar = 9120c3962f0de57edb90548c9283bf70
-digest.txt = 80f306c9a799880d3d10f1f85dea5586
+digest.txt = b345f7265c169a2d45f26e3ea6078f40
