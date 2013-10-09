@@ -203,8 +203,7 @@ public class Layer {
      * @param width         The number of tiles across to render
      * @param ty            The line of tiles to render
      * @param lineByLine    True if we should render line by line, i.e. giving us a chance to render something else
-     *                      between
-     *                      lines
+     *                      between lines
      * @param mapTileWidth  the tile width specified in the map file
      * @param mapTileHeight the tile height specified in the map file
      */
@@ -234,7 +233,8 @@ public class Layer {
 
                     // set.tiles.renderInUse(x+(tx*set.tileWidth),
                     // y+(ty*set.tileHeight), sheetX, sheetY);
-                    set.tiles.renderInUse(x + (tx * mapTileWidth), y + (ty * mapTileHeight) - tileOffsetY, sheetX, sheetY);
+                    set.tiles.renderInUse(x + (tx * mapTileWidth), y + (ty * mapTileHeight) - tileOffsetY, sheetX,
+                            sheetY);
                 }
             }
 
@@ -298,7 +298,8 @@ public class Layer {
         }
 
         if (index != out.length) {
-            throw new RuntimeException("Data length appears to be wrong (wrote " + index + " should be " + out.length + ")");
+            throw new RuntimeException("Data length appears to be wrong (wrote " + index + " should be " + out.length
+                    + ")");
         }
 
         return out;

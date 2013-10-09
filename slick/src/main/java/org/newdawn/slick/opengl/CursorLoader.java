@@ -172,8 +172,7 @@ public class CursorLoader {
 
     /**
      * Get a cursor based on a image reference on the classpath. The image is assumed to be a set/strip of cursor
-     * animation
-     * frames running from top to bottom.
+     * animation frames running from top to bottom.
      * <p/>
      *
      * @param ref          The reference to the image to be loaded
@@ -190,8 +189,10 @@ public class CursorLoader {
      * @throws IOException    Indicates a failure to load the image
      * @throws LWJGLException Indicates a failure to create the hardware cursor
      */
-    public Cursor getAnimatedCursor(String ref, int x, int y, int width, int height, int[] cursorDelays) throws IOException, LWJGLException {
-        IntBuffer cursorDelaysBuffer = ByteBuffer.allocateDirect(cursorDelays.length * 4).order(ByteOrder.nativeOrder()).asIntBuffer();
+    public Cursor getAnimatedCursor(String ref, int x, int y, int width, int height,
+                                    int[] cursorDelays) throws IOException, LWJGLException {
+        IntBuffer cursorDelaysBuffer = ByteBuffer.allocateDirect(cursorDelays.length * 4).order(ByteOrder.nativeOrder
+                ()).asIntBuffer();
         for (int i = 0; i < cursorDelays.length; i++) {
             cursorDelaysBuffer.put(cursorDelays[i]);
         }

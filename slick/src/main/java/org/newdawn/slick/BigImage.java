@@ -708,9 +708,8 @@ public class BigImage extends Image {
     }
 
     /**
-     * Get a sub-image that builds up this image. Note that the offsets used will depend on the maximum texture size
-     * on the
-     * OpenGL hardware
+     * Get a sub-image that builds up this image. Note that the offsets used will depend on the maximum texture size on
+     * the OpenGL hardware
      * <p/>
      *
      * @param offsetX The x position of the image to return
@@ -763,9 +762,11 @@ public class BigImage extends Image {
     }
 
     /**
-     * @see org.newdawn.slick.Image#draw(float, float, float, float, float, float, float, float, org.newdawn.slick.Color)
+     * @see org.newdawn.slick.Image#draw(float, float, float, float, float, float, float, float,
+     *      org.newdawn.slick.Color)
      */
-    public void draw(float x, float y, float x2, float y2, float srcx, float srcy, float srcx2, float srcy2, Color filter) {
+    public void draw(float x, float y, float x2, float y2, float srcx, float srcy, float srcx2, float srcy2,
+                     Color filter) {
         int srcwidth = (int) (srcx2 - srcx);
         int srcheight = (int) (srcy2 - srcy);
 
@@ -788,7 +789,8 @@ public class BigImage extends Image {
      * @see org.newdawn.slick.Image#drawEmbedded(float, float, float, float, float, float, float, float,
      *      org.newdawn.slick.Color)
      */
-    public void drawEmbedded(float x, float y, float x2, float y2, float srcx, float srcy, float srcx2, float srcy2, Color filter) {
+    public void drawEmbedded(float x, float y, float x2, float y2, float srcx, float srcy, float srcx2, float srcy2,
+                             Color filter) {
         throw new UnsupportedOperationException();
     }
 

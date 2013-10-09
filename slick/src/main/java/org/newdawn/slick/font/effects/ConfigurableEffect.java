@@ -12,9 +12,8 @@ import java.util.List;
 public interface ConfigurableEffect extends Effect {
 
     /**
-     * Returns the list of {@link Value}s for this effect. This list is not typically backed by the effect,
-     * so changes to
-     * the values will not take affect until {@link #setValues(List)} is called.
+     * Returns the list of {@link Value}s for this effect. This list is not typically backed by the effect, so changes
+     * to the values will not take affect until {@link #setValues(List)} is called.
      */
     public List getValues();
 

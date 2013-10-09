@@ -994,8 +994,7 @@ public class Input {
 
     /**
      * Set the double click interval, the time between the first and second clicks that should be interpreted as a
-     * double
-     * click.
+     * double click.
      * <p/>
      *
      * @param delay The delay between clicks
@@ -1328,8 +1327,7 @@ public class Input {
 
     /**
      * Clear the state for the <code>isKeyPressed</code> method. This will resort in all keys returning that they
-     * haven't
-     * been pressed, until they are pressed again
+     * haven't been pressed, until they are pressed again
      */
     public void clearKeyPressedRecord() {
         Arrays.fill(pressed, false);

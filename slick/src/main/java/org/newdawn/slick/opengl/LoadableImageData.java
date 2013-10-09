@@ -64,6 +64,7 @@ public interface LoadableImageData extends ImageData {
      *
      * @throws IOException Indicates a failure to read the TGA
      */
-    public ByteBuffer loadImage(InputStream fis, boolean flipped, boolean forceAlpha, int[] transparent) throws IOException;
+    public ByteBuffer loadImage(InputStream fis, boolean flipped, boolean forceAlpha,
+                                int[] transparent) throws IOException;
 
 }

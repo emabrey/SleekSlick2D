@@ -123,8 +123,7 @@ public class Rectangle extends Shape {
 
     /**
      * Grow the rectangle at all edges by the given amounts. This will result in the rectangle getting larger around
-     * it's
-     * centre.
+     * it's centre.
      * <p/>
      *
      * @param h The amount to adjust horizontally
@@ -267,8 +266,8 @@ public class Rectangle extends Shape {
     }
 
     /**
-     * Apply a transformation and return a new shape. This will not alter the current shape but will return the transformed
-     * shape.
+     * Apply a transformation and return a new shape. This will not alter the current shape but will return the
+     * transformed shape.
      * <p/>
      *
      * @param transform The transform to be applied

@@ -46,8 +46,7 @@ public class SpriteSheetFont implements Font {
 
     /**
      * Create a new font based on a SpriteSheet. The SpriteSheet should hold your fixed-width character set in ASCII
-     * order.
-     * To only get upper-case characters working you would usually set up a SpriteSheet with characters for these
+     * order. To only get upper-case characters working you would usually set up a SpriteSheet with characters for these
      * values:
      * <pre>
      *   !"#$%&'()*+,-./

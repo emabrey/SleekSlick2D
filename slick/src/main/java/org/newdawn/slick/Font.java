@@ -61,8 +61,7 @@ public interface Font {
 
     /**
      * Draw part of a string to the screen. Note that this will still position the text as though it's part of the
-     * bigger
-     * string.
+     * bigger string.
      * <p/>
      *
      * @param x          The x location at which to draw the string

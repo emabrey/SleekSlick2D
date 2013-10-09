@@ -481,8 +481,7 @@ public class TTFSubSetFile extends TTFFile {
 
     /**
      * Create the hmtx table by copying metrics from original font to subset font. The glyphs Map contains an Integer
-     * key
-     * and Integer value that maps the original metric (key) to the subset metric (value)
+     * key and Integer value that maps the original metric (key) to the subset metric (value)
      * <p/>
      *
      * @param in     The reader from which to grab the HMTX table

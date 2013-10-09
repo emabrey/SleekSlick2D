@@ -1298,7 +1298,8 @@ public class Hiero extends JFrame {
         public Splash(Frame frame, String imageFile, int minMillis) {
             super(frame);
             this.minMillis = minMillis;
-            getContentPane().add(new JLabel(new ImageIcon(Splash.class.getResource(imageFile).toString())), BorderLayout.CENTER);
+            getContentPane().add(new JLabel(new ImageIcon(Splash.class.getResource(imageFile).toString())),
+                    BorderLayout.CENTER);
             pack();
             setLocationRelativeTo(null);
             setVisible(true);

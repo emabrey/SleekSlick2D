@@ -290,9 +290,8 @@ public class ConfigurableEmitter implements ParticleEmitter {
     }
 
     /**
-     * Set the name of the image to use on a per particle basis. The complete reference to the image is required
-     * (based on
-     * the relative path)
+     * Set the name of the image to use on a per particle basis. The complete reference to the image is required (based
+     * on the relative path)
      * <p/>
      *
      * @param imageName The name of the image to use on a per particle reference
@@ -1072,7 +1071,8 @@ public class ConfigurableEmitter implements ParticleEmitter {
     }
 
     public boolean usePoints(ParticleSystem system) {
-        return (this.usePoints == Particle.INHERIT_POINTS) && (system.usePoints()) || (this.usePoints == Particle.USE_POINTS);
+        return (this.usePoints == Particle.INHERIT_POINTS) && (system.usePoints()) || (this.usePoints == Particle
+                .USE_POINTS);
     }
 
     public Image getImage() {

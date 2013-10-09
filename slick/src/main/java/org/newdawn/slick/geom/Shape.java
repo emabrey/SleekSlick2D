@@ -92,8 +92,7 @@ public abstract class Shape implements Serializable {
 
     /**
      * Apply a transformation and return a new shape. This will not alter the current shape but will return the
-     * transformed
-     * shape.
+     * transformed shape.
      * <p/>
      *
      * @param transform The transform to be applied
@@ -553,7 +552,7 @@ public abstract class Shape implements Serializable {
      */
     public boolean intersects(Shape shape) {
         /*
-		 * Intersection formula used:
+         * Intersection formula used:
 		 *      (x4 - x3)(y1 - y3) - (y4 - y3)(x1 - x3)
 		 * UA = ---------------------------------------
 		 *      (y4 - y3)(x2 - x1) - (x4 - x3)(y2 - y1)

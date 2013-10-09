@@ -225,8 +225,7 @@ public class Graphics {
 
     /**
      * Set the drawing mode to use. This mode defines how pixels are drawn to the graphics context. It can be used to
-     * draw
-     * into the alpha map.
+     * draw into the alpha map.
      * <p/>
      * The mode supplied should be one of {@link Graphics#MODE_NORMAL} or {@link Graphics#MODE_ALPHA_MAP} or {@link
      * Graphics#MODE_ALPHA_BLEND}
@@ -334,8 +333,7 @@ public class Graphics {
 
     /**
      * Set the background colour of the graphics context. This colour is used when clearing the context. Note that
-     * calling
-     * this method alone does not cause the context to be cleared.
+     * calling this method alone does not cause the context to be cleared.
      * <p/>
      *
      * @param color The background color of the graphics context
@@ -1358,11 +1356,9 @@ public class Graphics {
      * @param srcx  The x position of the rectangle to draw from this image (i.e. relative to the image)
      * @param srcy  The y position of the rectangle to draw from this image (i.e. relative to the image)
      * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              the
-     *              image)
+     *              the image)
      * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              the
-     *              image)
+     *              the image)
      */
     public void drawImage(Image image, float x, float y, float x2, float y2, float srcx, float srcy, float srcx2,
                           float srcy2) {
@@ -1382,20 +1378,17 @@ public class Graphics {
      * @param srcx  The x position of the rectangle to draw from this image (i.e. relative to the image)
      * @param srcy  The y position of the rectangle to draw from this image (i.e. relative to the image)
      * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              the
-     *              image)
+     *              the image)
      * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              the
-     *              image)
+     *              the image)
      */
     public void drawImage(Image image, float x, float y, float srcx, float srcy, float srcx2, float srcy2) {
         drawImage(image, x, y, x + image.getWidth(), y + image.getHeight(), srcx, srcy, srcx2, srcy2);
     }
 
     /**
-     * Copy an area of the rendered screen into an image. The width and height of the area are assumed to match that
-     * of the
-     * image
+     * Copy an area of the rendered screen into an image. The width and height of the area are assumed to match that of
+     * the image
      * <p/>
      *
      * @param target The target image
@@ -1478,11 +1471,9 @@ public class Graphics {
      * @param srcx  The x position of the rectangle to draw from this image (i.e. relative to the image)
      * @param srcy  The y position of the rectangle to draw from this image (i.e. relative to the image)
      * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              the
-     *              image)
+     *              the image)
      * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              the
-     *              image)
+     *              the image)
      * @param col   The color to apply to the image as a filter
      */
     public void drawImage(Image image, float x, float y, float x2, float y2, float srcx, float srcy, float srcx2,
@@ -1502,11 +1493,10 @@ public class Graphics {
      * @param y     The y position to draw the image
      * @param srcx  The x position of the rectangle to draw from this image (i.e. relative to the image)
      * @param srcy  The y position of the rectangle to draw from this image (i.e. relative to the image)
-     * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to the
-     *              image)
+     * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+     *              the image)
      * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              the
-     *              image)
+     *              the image)
      * @param col   The color to apply to the image as a filter
      */
     public void drawImage(Image image, float x, float y, float srcx, float srcy, float srcx2, float srcy2, Color col) {
@@ -1530,7 +1520,8 @@ public class Graphics {
      * @param blue2  The ending position's shade of blue
      * @param alpha2 The ending position's alpha value
      */
-    public void drawGradientLine(float x1, float y1, float red1, float green1, float blue1, float alpha1, float x2, float y2, float red2, float green2, float blue2, float alpha2) {
+    public void drawGradientLine(float x1, float y1, float red1, float green1, float blue1, float alpha1, float x2,
+                                 float y2, float red2, float green2, float blue2, float alpha2) {
         predraw();
 
         TextureImpl.bindNone();
@@ -1578,8 +1569,9 @@ public class Graphics {
     }
 
     /**
-     * Push the current state of the transform from this graphics contexts onto the underlying graphics stack's transform
-     * stack. An associated popTransform() must be performed to restore the state before the end of the rendering loop.
+     * Push the current state of the transform from this graphics contexts onto the underlying graphics stack's
+     * transform stack. An associated popTransform() must be performed to restore the state before the end of the
+     * rendering loop.
      */
     public void pushTransform() {
         predraw();
@@ -1601,8 +1593,8 @@ public class Graphics {
     }
 
     /**
-     * Pop a previously pushed transform from the stack to the current. This should only be called if a transform has been
-     * previously pushed.
+     * Pop a previously pushed transform from the stack to the current. This should only be called if a transform has
+     * been previously pushed.
      */
     public void popTransform() {
         if (stackIndex == 0) {

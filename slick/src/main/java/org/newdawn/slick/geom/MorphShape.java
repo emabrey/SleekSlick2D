@@ -92,9 +92,8 @@ public class MorphShape extends Shape {
     }
 
     /**
-     * Set the "time" index for this morph. This is given in terms of shapes, so 0.5f would give you the position
-     * half way
-     * between the first and second shapes.
+     * Set the "time" index for this morph. This is given in terms of shapes, so 0.5f would give you the position half
+     * way between the first and second shapes.
      * <p/>
      *
      * @param time The time index to represent on this shape

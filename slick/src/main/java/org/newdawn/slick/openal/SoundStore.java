@@ -676,8 +676,8 @@ public class SoundStore {
             return new NullAudio();
         }
         if (!inited) {
-            throw new RuntimeException("Can't load sounds until SoundStore is init(). Use the container init() method" +
-                    ".");
+            throw new RuntimeException("Can't load sounds until SoundStore is init(). Use the container init() " +
+                    "method" + ".");
         }
         if (deferred) {
             return new DeferredSound(ref, in, DeferredSound.MOD);
@@ -738,8 +738,8 @@ public class SoundStore {
             return new NullAudio();
         }
         if (!inited) {
-            throw new RuntimeException("Can't load sounds until SoundStore is init(). Use the container init() method" +
-                    ".");
+            throw new RuntimeException("Can't load sounds until SoundStore is init(). Use the container init() " +
+                    "method" + ".");
         }
         if (deferred) {
             return new DeferredSound(ref, in, DeferredSound.AIF);
@@ -825,8 +825,8 @@ public class SoundStore {
             return new NullAudio();
         }
         if (!inited) {
-            throw new RuntimeException("Can't load sounds until SoundStore is init(). Use the container init() method" +
-                    ".");
+            throw new RuntimeException("Can't load sounds until SoundStore is init(). Use the container init() " +
+                    "method" + ".");
         }
         if (deferred) {
             return new DeferredSound(ref, in, DeferredSound.WAV);
@@ -972,8 +972,8 @@ public class SoundStore {
             return new NullAudio();
         }
         if (!inited) {
-            throw new RuntimeException("Can't load sounds until SoundStore is init(). Use the container init() method" +
-                    ".");
+            throw new RuntimeException("Can't load sounds until SoundStore is init(). Use the container init() " +
+                    "method" + ".");
         }
         if (deferred) {
             return new DeferredSound(ref, in, DeferredSound.OGG);
@@ -991,7 +991,8 @@ public class SoundStore {
                 OggData ogg = decoder.getData(in);
 
                 AL10.alGenBuffers(buf);
-                AL10.alBufferData(buf.get(0), ogg.channels > 1 ? AL10.AL_FORMAT_STEREO16 : AL10.AL_FORMAT_MONO16, ogg.data, ogg.rate);
+                AL10.alBufferData(buf.get(0), ogg.channels > 1 ? AL10.AL_FORMAT_STEREO16 : AL10.AL_FORMAT_MONO16,
+                        ogg.data, ogg.rate);
 
                 loaded.put(ref, Integer.valueOf(buf.get(0)));
 

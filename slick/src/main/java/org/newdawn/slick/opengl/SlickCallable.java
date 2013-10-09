@@ -84,9 +84,8 @@ public abstract class SlickCallable {
     }
 
     /**
-     * Cause this callable to perform it's GL operations (@see performGLOperations()). This method will block until
-     * the GL
-     * operations have been performed.
+     * Cause this callable to perform it's GL operations (@see performGLOperations()). This method will block until the
+     * GL operations have been performed.
      * <p/>
      *
      * @throws SlickException Indicates a failure while performing the GL operations or maintaing SlickState

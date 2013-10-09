@@ -798,7 +798,8 @@ public class PNGDecoder {
     }
 
     private int readInt(byte[] buffer, int offset) {
-        return ((buffer[offset]) << 24) | ((buffer[offset + 1] & 255) << 16) | ((buffer[offset + 2] & 255) << 8) | ((buffer[offset + 3] & 255));
+        return ((buffer[offset]) << 24) | ((buffer[offset + 1] & 255) << 16) | ((buffer[offset + 2] & 255) << 8) | (
+                (buffer[offset + 3] & 255));
     }
 
     private void skip(long amount) throws IOException {

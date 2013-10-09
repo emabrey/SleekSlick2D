@@ -290,8 +290,7 @@ public class Image implements Renderable {
 
     /**
      * Set the image filtering to be used. Note that this will also affect any image that was derived from this one
-     * (i.e.
-     * sub-images etc)
+     * (i.e. sub-images etc)
      * <p/>
      *
      * @param f The filtering mode to use
@@ -436,8 +435,7 @@ public class Image implements Renderable {
 
     /**
      * Get the reference to the resource this image was loaded from, if any. Note that this can be null in the cases
-     * where
-     * an image was programatically generated.
+     * where an image was programatically generated.
      * <p/>
      *
      * @return The reference to the resource the reference was loaded from
@@ -479,8 +477,7 @@ public class Image implements Renderable {
 
     /**
      * Set the color of the given corner when this image is rendered. This is useful lots of visual effect but
-     * especially
-     * light maps
+     * especially light maps
      * <p/>
      *
      * @param corner The corner identifier for the corner to be set
@@ -503,8 +500,7 @@ public class Image implements Renderable {
 
     /**
      * Set the color of the given corner when this image is rendered. This is useful lots of visual effect but
-     * especially
-     * light maps
+     * especially light maps
      * <p/>
      *
      * @param corner The corner identifier for the corner to be set
@@ -1074,8 +1070,7 @@ public class Image implements Renderable {
 
     /**
      * Add the angle provided to the current rotation. The angle will be normalized to be 0 <= angle < 360. The image
-     * will
-     * be rotated around its center. <p>
+     * will be rotated around its center. <p>
      *
      * @param angle The angle to add.
      */
@@ -1131,11 +1126,9 @@ public class Image implements Renderable {
      * @param srcx  The x position of the rectangle to draw from this image (i.e. relative to this image)
      * @param srcy  The y position of the rectangle to draw from this image (i.e. relative to this image)
      * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              this
-     *              image)
+     *              this image)
      * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              this
-     *              image)
+     *              this image)
      */
     public void draw(float x, float y, float srcx, float srcy, float srcx2, float srcy2) {
         draw(x, y, x + width, y + height, srcx, srcy, srcx2, srcy2);
@@ -1152,11 +1145,9 @@ public class Image implements Renderable {
      * @param srcx  The x position of the rectangle to draw from this image (i.e. relative to this image)
      * @param srcy  The y position of the rectangle to draw from this image (i.e. relative to this image)
      * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              this
-     *              image)
+     *              this image)
      * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              this
-     *              image)
+     *              this image)
      */
     public void draw(float x, float y, float x2, float y2, float srcx, float srcy, float srcx2, float srcy2) {
         draw(x, y, x2, y2, srcx, srcy, srcx2, srcy2, Color.white);
@@ -1172,12 +1163,10 @@ public class Image implements Renderable {
      * @param y2     The y position of the bottom right corner of the drawn image
      * @param srcx   The x position of the rectangle to draw from this image (i.e. relative to this image)
      * @param srcy   The y position of the rectangle to draw from this image (i.e. relative to this image)
-     * @param srcx2  The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative
-     *               to this
-     *               image)
-     * @param srcy2  The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative
-     *               to this
-     *               image)
+     * @param srcx2  The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+     *               this image)
+     * @param srcy2  The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+     *               this image)
      * @param filter The colour filter to apply when drawing
      */
     public void draw(float x, float y, float x2, float y2, float srcx, float srcy, float srcx2, float srcy2,
@@ -1219,9 +1208,8 @@ public class Image implements Renderable {
     }
 
     /**
-     * Draw a section of this image at a particular location and scale on the screen,
-     * while this is image is "in use", i.e.
-     * between calls to startUse and endUse.
+     * Draw a section of this image at a particular location and scale on the screen, while this is image is "in use",
+     * i.e. between calls to startUse and endUse.
      * <p/>
      *
      * @param x     The x position to draw the image
@@ -1231,20 +1219,17 @@ public class Image implements Renderable {
      * @param srcx  The x position of the rectangle to draw from this image (i.e. relative to this image)
      * @param srcy  The y position of the rectangle to draw from this image (i.e. relative to this image)
      * @param srcx2 The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              this
-     *              image)
+     *              this image)
      * @param srcy2 The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
-     *              this
-     *              image)
+     *              this image)
      */
     public void drawEmbedded(float x, float y, float x2, float y2, float srcx, float srcy, float srcx2, float srcy2) {
         drawEmbedded(x, y, x2, y2, srcx, srcy, srcx2, srcy2, null);
     }
 
     /**
-     * Draw a section of this image at a particular location and scale on the screen,
-     * while this is image is "in use", i.e.
-     * between calls to startUse and endUse.
+     * Draw a section of this image at a particular location and scale on the screen, while this is image is "in use",
+     * i.e. between calls to startUse and endUse.
      * <p/>
      *
      * @param x      The x position to draw the image
@@ -1253,12 +1238,10 @@ public class Image implements Renderable {
      * @param y2     The y position of the bottom right corner of the drawn image
      * @param srcx   The x position of the rectangle to draw from this image (i.e. relative to this image)
      * @param srcy   The y position of the rectangle to draw from this image (i.e. relative to this image)
-     * @param srcx2  The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative
-     *               to this
-     *               image)
-     * @param srcy2  The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative
-     *               to this
-     *               image)
+     * @param srcx2  The x position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+     *               this image)
+     * @param srcy2  The t position of the bottom right cornder of rectangle to draw from this image (i.e. relative to
+     *               this image)
      * @param filter The colour filter to apply when drawing
      */
     public void drawEmbedded(float x, float y, float x2, float y2, float srcx, float srcy, float srcx2, float srcy2,
@@ -1288,7 +1271,8 @@ public class Image implements Renderable {
     }
 
     /**
-     * Draw the image in a warper rectangle. The effects this can have are many and varied, might be interesting though.
+     * Draw the image in a warper rectangle. The effects this can have are many and varied, might be interesting
+     * though.
      * <p/>
      *
      * @param x1 The top left corner x coordinate
@@ -1451,12 +1435,13 @@ public class Image implements Renderable {
 
     /**
      * Start using this sheet. This method can be used for optimal rendering of a collection of sprites from a single
-     * sprite sheet. First, startUse(). Then render each sprite by calling renderInUse(). Finally, endUse(). Between start
-     * and end there can be no rendering of other sprites since the rendering is locked for this sprite sheet.
+     * sprite sheet. First, startUse(). Then render each sprite by calling renderInUse(). Finally, endUse(). Between
+     * start and end there can be no rendering of other sprites since the rendering is locked for this sprite sheet.
      */
     public void startUse() {
         if (inUse != null) {
-            throw new RuntimeException("Attempt to start use of a sprite sheet before ending use with another - see endUse()");
+            throw new RuntimeException("Attempt to start use of a sprite sheet before ending use with another - see "
+                    + "endUse()");
         }
         inUse = this;
         init();
@@ -1472,7 +1457,8 @@ public class Image implements Renderable {
     public String toString() {
         init();
 
-        return "[Image " + ref + " " + width + "x" + height + "  " + textureOffsetX + "," + textureOffsetY + "," + textureWidth + "," + textureHeight + "]";
+        return "[Image " + ref + " " + width + "x" + height + "  " + textureOffsetX + "," + textureOffsetY + "," +
+                "" + textureWidth + "," + textureHeight + "]";
     }
 
     /**
@@ -1547,9 +1533,11 @@ public class Image implements Renderable {
         offset *= texture.hasAlpha() ? 4 : 3;
 
         if (texture.hasAlpha()) {
-            return new Color(translate(pixelData[offset]), translate(pixelData[offset + 1]), translate(pixelData[offset + 2]), translate(pixelData[offset + 3]));
+            return new Color(translate(pixelData[offset]), translate(pixelData[offset + 1]),
+                    translate(pixelData[offset + 2]), translate(pixelData[offset + 3]));
         } else {
-            return new Color(translate(pixelData[offset]), translate(pixelData[offset + 1]), translate(pixelData[offset + 2]));
+            return new Color(translate(pixelData[offset]), translate(pixelData[offset + 1]),
+                    translate(pixelData[offset + 2]));
         }
     }
 

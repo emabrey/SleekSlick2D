@@ -133,8 +133,7 @@ public class Polygon extends Shape {
 
     /**
      * Apply a transformation and return a new shape. This will not alter the current shape but will return the
-     * transformed
-     * shape.
+     * transformed shape.
      * <p/>
      *
      * @param transform The transform to be applied

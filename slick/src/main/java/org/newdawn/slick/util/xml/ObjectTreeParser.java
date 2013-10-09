@@ -105,8 +105,7 @@ public class ObjectTreeParser {
 
     /**
      * Set the name of the method to use to add child objects to their parents. This is sometimes useful to not clash
-     * with
-     * the existing data model methods.
+     * with the existing data model methods.
      * <p/>
      *
      * @param methodName The name of the method to call
@@ -391,9 +390,8 @@ public class ObjectTreeParser {
     }
 
     /**
-     * Find a field in a class by it's name. Note that this method is only needed because the general reflection
-     * method is
-     * case sensitive
+     * Find a field in a class by it's name. Note that this method is only needed because the general reflection method
+     * is case sensitive
      * <p/>
      *
      * @param clazz The clazz to search
@@ -419,9 +417,8 @@ public class ObjectTreeParser {
     }
 
     /**
-     * Find a method in a class by it's name. Note that this method is only needed because the general reflection
-     * method is
-     * case sensitive
+     * Find a method in a class by it's name. Note that this method is only needed because the general reflection method
+     * is case sensitive
      * <p/>
      *
      * @param clazz The clazz to search

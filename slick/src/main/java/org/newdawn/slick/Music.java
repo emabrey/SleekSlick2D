@@ -26,8 +26,7 @@ public class Music {
 
     /**
      * Poll the state of the current music. This causes streaming music to stream and checks listeners. Note that if
-     * you're
-     * using a game container this will be auto-magically called for you.
+     * you're using a game container this will be auto-magically called for you.
      * <p/>
      *
      * @param delta The amount of time since last poll
@@ -446,8 +445,8 @@ public class Music {
     }
 
     /**
-     * Seeks to a position in the music. For streaming music, seeking before the current position causes the stream to be
-     * reloaded.
+     * Seeks to a position in the music. For streaming music, seeking before the current position causes the stream to
+     * be reloaded.
      * <p/>
      *
      * @param position Position in seconds.

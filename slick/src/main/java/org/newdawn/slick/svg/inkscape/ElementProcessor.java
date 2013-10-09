@@ -16,8 +16,7 @@ public interface ElementProcessor {
 
     /**
      * Process a document extracting all the elements that the processor is interested in and producing appropriate
-     * diagram
-     * components for the element.
+     * diagram components for the element.
      * <p/>
      *
      * @param loader    The loader/context of the parsing

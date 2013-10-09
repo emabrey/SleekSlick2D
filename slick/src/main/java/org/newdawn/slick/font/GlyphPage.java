@@ -159,9 +159,8 @@ public class GlyphPage {
      * <p/>
      *
      * @param glyphs          The glyphs to load.
-     * @param maxGlyphsToLoad This is the maximum number of glyphs to load from the list. Set to -1 to attempt to
-     *                        load all
-     *                        the glyphs.
+     * @param maxGlyphsToLoad This is the maximum number of glyphs to load from the list. Set to -1 to attempt to load
+     *                        all the glyphs.
      *                        <p/>
      *
      * @return The number of glyphs that were actually loaded.

@@ -92,8 +92,7 @@ class Kerning {
 
     /**
      * Returns the encoded kerning value for the specified glyph. The glyph code for a Unicode codepoint can be
-     * retrieved
-     * with {@link GlyphVector#getGlyphCode(int)}.
+     * retrieved with {@link GlyphVector#getGlyphCode(int)}.
      */
     public int[] getValues(int firstGlyphCode) {
         return (int[]) values.get(Integer.valueOf(firstGlyphCode));

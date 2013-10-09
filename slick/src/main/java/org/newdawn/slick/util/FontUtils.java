@@ -158,9 +158,8 @@ public class FontUtils {
      *
      * @param font      The font to draw with
      * @param s         The given non-null {@link String} to use to calculate the width of a space for.
-     * @param leftWidth The integer specifying the left width buffer to use to calculate how much space a space
-     *                  should take
-     *                  up in justification.
+     * @param leftWidth The integer specifying the left width buffer to use to calculate how much space a space should
+     *                  take up in justification.
      *                  <p/>
      *
      * @return The width of a single justified space for the given {@link String}, in pixels.

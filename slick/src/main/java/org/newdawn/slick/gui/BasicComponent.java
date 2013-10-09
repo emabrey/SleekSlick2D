@@ -80,7 +80,8 @@ public abstract class BasicComponent extends AbstractComponent {
     public abstract void renderImpl(GUIContext container, Graphics g);
 
     /**
-     * @see org.newdawn.slick.gui.AbstractComponent#render(org.newdawn.slick.gui.GUIContext, org.newdawn.slick.Graphics)
+     * @see org.newdawn.slick.gui.AbstractComponent#render(org.newdawn.slick.gui.GUIContext,
+     *      org.newdawn.slick.Graphics)
      */
     public void render(GUIContext container, Graphics g) throws SlickException {
         renderImpl(container, g);

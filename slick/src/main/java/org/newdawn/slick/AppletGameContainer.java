@@ -507,7 +507,8 @@ public class AppletGameContainer extends Applet {
                     enterOrtho();
 
                     // fix input to match new resolution
-                    this.getInput().setOffset(-xoffset * (float) width / newWidth, -yoffset * (float) height / newHeight);
+                    this.getInput().setOffset(-xoffset * (float) width / newWidth,
+                            -yoffset * (float) height / newHeight);
 
                     this.getInput().setScale((float) width / newWidth, (float) height / newHeight);
 
@@ -555,8 +556,8 @@ public class AppletGameContainer extends Applet {
 
     /**
      * A basic console to display an error message if the applet crashes. This will prevent the applet from just
-     * freezing
-     * in the browser and give the end user an a nice gui where the error message can easily be viewed and copied.
+     * freezing in the browser and give the end user an a nice gui where the error message can easily be viewed and
+     * copied.
      */
     public class ConsolePanel extends Panel {
 

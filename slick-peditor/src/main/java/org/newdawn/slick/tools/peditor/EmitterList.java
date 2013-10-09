@@ -183,10 +183,11 @@ public class EmitterList extends JPanel {
     public class Renderer extends DefaultListCellRenderer {
 
         /**
-         * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int,
-         *      boolean, boolean)
+         * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object,
+         *      int, boolean, boolean)
          */
-        public Component getListCellRendererComponent(JList list, final Object value, int index, boolean isSelected, boolean cellHasFocus) {
+        public Component getListCellRendererComponent(JList list, final Object value, int index, boolean isSelected,
+                                                      boolean cellHasFocus) {
             JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
             final JCheckBox box = new JCheckBox(label.getText());

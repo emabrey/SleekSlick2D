@@ -563,7 +563,8 @@ public class InternalTextureLoader {
      *
      * @return The ID of the newly created texture
      */
-    public int reload(TextureImpl texture, int srcPixelFormat, int componentCount, int minFilter, int magFilter, ByteBuffer textureBuffer) {
+    public int reload(TextureImpl texture, int srcPixelFormat, int componentCount, int minFilter, int magFilter,
+                      ByteBuffer textureBuffer) {
         int target = SGL.GL_TEXTURE_2D;
         int textureID = createTextureID();
         GL.glBindTexture(target, textureID);
@@ -572,7 +573,8 @@ public class InternalTextureLoader {
         GL.glTexParameteri(target, SGL.GL_TEXTURE_MAG_FILTER, magFilter);
 
         // produce a texture from the byte buffer
-        GL.glTexImage2D(target, 0, dstPixelFormat, texture.getTextureWidth(), texture.getTextureHeight(), 0, srcPixelFormat, SGL.GL_UNSIGNED_BYTE, textureBuffer);
+        GL.glTexImage2D(target, 0, dstPixelFormat, texture.getTextureWidth(), texture.getTextureHeight(), 0,
+                srcPixelFormat, SGL.GL_UNSIGNED_BYTE, textureBuffer);
 
         return textureID;
     }

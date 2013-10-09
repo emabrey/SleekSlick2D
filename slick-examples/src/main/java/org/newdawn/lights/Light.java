@@ -69,8 +69,7 @@ class Light {
      *                       <p/>
      *
      * @return The effect on a given location of the light in terms of colour components (all the same if we don't
-     * support
-     *         coloured lights)
+     *         support coloured lights)
      */
     public float[] getEffectAt(float x, float y, boolean colouredLights) {
         // first work out what propotion of the strength distance the light

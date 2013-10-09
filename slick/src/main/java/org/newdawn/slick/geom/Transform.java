@@ -84,9 +84,8 @@ public class Transform {
 
     /**
      * Transform the point pairs in the source array and store them in the destination array. All operations will be
-     * done
-     * before storing the results in the destination. This way the source and destination array can be the same without
-     * worry of overwriting information before it is transformed.
+     * done before storing the results in the destination. This way the source and destination array can be the same
+     * without worry of overwriting information before it is transformed.
      * <p/>
      *
      * @param source         Array of floats containing the points to be transformed
@@ -96,9 +95,8 @@ public class Transform {
      * @param numberOfPoints Number of points to be transformed
      *                       <p/>
      *
-     * @throws ArrayIndexOutOfBoundsException if sourceOffset + numberOfPoints * 2 > source.length or the same
-     * operation on
-     *                                        the destination array
+     * @throws ArrayIndexOutOfBoundsException if sourceOffset + numberOfPoints * 2 > source.length or the same operation
+     *                                        on the destination array
      */
     public void transform(float source[], int sourceOffset, float destination[], int destOffset, int numberOfPoints) {
         //TODO performance can be improved by removing the safety to the destination array

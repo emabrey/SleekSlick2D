@@ -410,8 +410,8 @@ public strictfp class Vector2f implements Serializable {
     }
 
     /**
-     * Get the distance from this point to another, squared. This can sometimes be used in place of distance and avoids the
-     * additional sqrt.
+     * Get the distance from this point to another, squared. This can sometimes be used in place of distance and avoids
+     * the additional sqrt.
      * <p/>
      *
      * @param other The other point we're measuring to

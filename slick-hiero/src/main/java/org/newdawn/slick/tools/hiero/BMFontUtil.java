@@ -201,19 +201,24 @@ public class BMFontUtil {
 
     private int getGlyphCode(Font font, int codePoint) {
         char[] chars = Character.toChars(codePoint);
-        GlyphVector vector = font.layoutGlyphVector(GlyphPage.renderContext, chars, 0, chars.length, Font.LAYOUT_LEFT_TO_RIGHT);
+        GlyphVector vector = font.layoutGlyphVector(GlyphPage.renderContext, chars, 0, chars.length,
+                Font.LAYOUT_LEFT_TO_RIGHT);
         return vector.getGlyphCode(0);
     }
 
     private int[] getGlyphMetrics(Font font, int codePoint) {
-        // xOffset and xAdvance will be incorrect for unicode characters such as combining marks or non-spacing characters
-        // (eg Pnujabi's "\u0A1C\u0A47") that require the context of surrounding glyphs to determine spacing, but thisis the
+        // xOffset and xAdvance will be incorrect for unicode characters such as combining marks or non-spacing
+        // characters
+        // (eg Pnujabi's "\u0A1C\u0A47") that require the context of surrounding glyphs to determine spacing,
+        // but thisis the
         // best we can do with the BMFont format.
         char[] chars = Character.toChars(codePoint);
-        GlyphVector vector = font.layoutGlyphVector(GlyphPage.renderContext, chars, 0, chars.length, Font.LAYOUT_LEFT_TO_RIGHT);
+        GlyphVector vector = font.layoutGlyphVector(GlyphPage.renderContext, chars, 0, chars.length,
+                Font.LAYOUT_LEFT_TO_RIGHT);
         GlyphMetrics metrics = vector.getGlyphMetrics(0);
         int xOffset = vector.getGlyphPixelBounds(0, null, 0, 0).x - unicodeFont.getPaddingLeft();
-        int xAdvance = (int) (metrics.getAdvanceX() + unicodeFont.getPaddingAdvanceX() + unicodeFont.getPaddingLeft() + unicodeFont.getPaddingRight());
+        int xAdvance = (int) (metrics.getAdvanceX() + unicodeFont.getPaddingAdvanceX() + unicodeFont.getPaddingLeft()
+                + unicodeFont.getPaddingRight());
         return new int[]{xOffset, xAdvance};
     }
 

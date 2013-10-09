@@ -55,7 +55,8 @@ public interface GameState extends InputListener {
      * @param delta     The amount of time thats passed in millisecond since last update
      *                  <p/>
      *
-     * @throws SlickException Indicates an internal error that will be reported through the standard framework mechanism
+     * @throws SlickException Indicates an internal error that will be reported through the standard framework
+     *                        mechanism
      */
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException;
 
@@ -67,7 +68,8 @@ public interface GameState extends InputListener {
      * @param game      The game holding this state
      *                  <p/>
      *
-     * @throws SlickException Indicates an internal error that will be reported through the standard framework mechanism
+     * @throws SlickException Indicates an internal error that will be reported through the standard framework
+     *                        mechanism
      */
     public void enter(GameContainer container, StateBasedGame game) throws SlickException;
 
@@ -79,7 +81,8 @@ public interface GameState extends InputListener {
      * @param game      The game holding this state
      *                  <p/>
      *
-     * @throws SlickException Indicates an internal error that will be reported through the standard framework mechanism
+     * @throws SlickException Indicates an internal error that will be reported through the standard framework
+     *                        mechanism
      */
     public void leave(GameContainer container, StateBasedGame game) throws SlickException;
 

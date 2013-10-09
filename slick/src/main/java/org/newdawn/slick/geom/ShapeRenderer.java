@@ -167,8 +167,7 @@ public final class ShapeRenderer {
 
     /**
      * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
-     * independently
-     * of this method.
+     * independently of this method.
      * <p/>
      *
      * @param shape The shape to texture.
@@ -180,8 +179,7 @@ public final class ShapeRenderer {
 
     /**
      * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
-     * independently
-     * of this method. This method is required to fit the texture once across the shape.
+     * independently of this method. This method is required to fit the texture once across the shape.
      * <p/>
      *
      * @param shape The shape to texture.
@@ -193,8 +191,7 @@ public final class ShapeRenderer {
 
     /**
      * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
-     * independently
-     * of this method.
+     * independently of this method.
      * <p/>
      *
      * @param shape  The shape to texture.
@@ -235,10 +232,8 @@ public final class ShapeRenderer {
 
     /**
      * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
-     * independently
-     * of this method. This method is required to fit the texture scaleX times across the shape and scaleY times down
-     * the
-     * shape.
+     * independently of this method. This method is required to fit the texture scaleX times across the shape and scaleY
+     * times down the shape.
      * <p/>
      *
      * @param shape  The shape to texture.
@@ -324,8 +319,7 @@ public final class ShapeRenderer {
 
     /**
      * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
-     * independently
-     * of this method.
+     * independently of this method.
      * <p/>
      *
      * @param shape  The shape to texture.
@@ -373,8 +367,8 @@ public final class ShapeRenderer {
     }
 
     /**
-     * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set independently
-     * of this method.
+     * Draw the the given shape filled in with a texture. Only the vertices are set. The colour has to be set
+     * independently of this method.
      * <p/>
      *
      * @param shape The shape to texture.

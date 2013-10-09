@@ -23,8 +23,7 @@ public final class Log {
 
     /**
      * The debug property which can be set via JNLP or startup parameter to switch logging mode to verbose for games
-     * that
-     * were released without verbose logging value must be "true"
+     * that were released without verbose logging value must be "true"
      */
     private static final String forceVerboseProperty = "org.newdawn.slick.forceVerboseLog";
 

@@ -420,7 +420,8 @@ public class InputProvider {
          * @see org.newdawn.slick.util.InputAdapter#controllerUpReleased(int)
          */
         public void controllerUpReleased(int controller) {
-            Command command = (Command) commands.get(new ControllerDirectionControl(controller, ControllerDirectionControl.UP));
+            Command command = (Command) commands.get(new ControllerDirectionControl(controller,
+                    ControllerDirectionControl.UP));
             if (command != null) {
                 fireReleased(command);
             }
@@ -430,7 +431,8 @@ public class InputProvider {
          * @see org.newdawn.slick.util.InputAdapter#controllerDownPressed(int)
          */
         public void controllerDownPressed(int controller) {
-            Command command = (Command) commands.get(new ControllerDirectionControl(controller, ControllerDirectionControl.DOWN));
+            Command command = (Command) commands.get(new ControllerDirectionControl(controller,
+                    ControllerDirectionControl.DOWN));
             if (command != null) {
                 firePressed(command);
             }
@@ -440,7 +442,8 @@ public class InputProvider {
          * @see org.newdawn.slick.util.InputAdapter#controllerDownReleased(int)
          */
         public void controllerDownReleased(int controller) {
-            Command command = (Command) commands.get(new ControllerDirectionControl(controller, ControllerDirectionControl.DOWN));
+            Command command = (Command) commands.get(new ControllerDirectionControl(controller,
+                    ControllerDirectionControl.DOWN));
             if (command != null) {
                 fireReleased(command);
             }

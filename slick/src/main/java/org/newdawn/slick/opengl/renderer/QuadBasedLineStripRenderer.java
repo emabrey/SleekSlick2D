@@ -276,7 +276,8 @@ public class QuadBasedLineStripRenderer implements LineStripRenderer {
                 GL.glVertex2f(points[(count * 2) - 2], points[(count * 2) - 1]);
                 for (int i = 0; i < 180 + step; i += step) {
                     float ang = (float) Math.toRadians(fang + i);
-                    GL.glVertex2f(points[(count * 2) - 2] + ((float) (Math.cos(ang) * width)), points[(count * 2) - 1] + ((float) (Math.sin(ang) * width)));
+                    GL.glVertex2f(points[(count * 2) - 2] + ((float) (Math.cos(ang) * width)),
+                            points[(count * 2) - 1] + ((float) (Math.sin(ang) * width)));
                 }
                 GL.glEnd();
             }
@@ -292,9 +293,11 @@ public class QuadBasedLineStripRenderer implements LineStripRenderer {
     private void bindColor(int index) {
         if (index < cpt) {
             if (renderHalf) {
-                GL.glColor4f(colours[(index * 4)] * 0.5f, colours[(index * 4) + 1] * 0.5f, colours[(index * 4) + 2] * 0.5f, colours[(index * 4) + 3] * 0.5f);
+                GL.glColor4f(colours[(index * 4)] * 0.5f, colours[(index * 4) + 1] * 0.5f,
+                        colours[(index * 4) + 2] * 0.5f, colours[(index * 4) + 3] * 0.5f);
             } else {
-                GL.glColor4f(colours[(index * 4)], colours[(index * 4) + 1], colours[(index * 4) + 2], colours[(index * 4) + 3]);
+                GL.glColor4f(colours[(index * 4)], colours[(index * 4) + 1], colours[(index * 4) + 2],
+                        colours[(index * 4) + 3]);
             }
         }
     }

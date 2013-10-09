@@ -371,12 +371,10 @@ public class UnicodeFont implements org.newdawn.slick.Font {
 
     /**
      * Queues the glyphs in the specified codepoint range (inclusive) to be loaded. Note that the glyphs are not
-     * actually
-     * loaded until {@link #loadGlyphs()} is called.
+     * actually loaded until {@link #loadGlyphs()} is called.
      * <p/>
-     * Some characters like combining marks and non-spacing marks can only be rendered with the context of other
-     * glyphs. In
-     * this case, use {@link #addGlyphs(String)}.
+     * Some characters like combining marks and non-spacing marks can only be rendered with the context of other glyphs.
+     * In this case, use {@link #addGlyphs(String)}.
      * <p/>
      *
      * @param startCodePoint The code point of the first glyph to add
@@ -411,9 +409,8 @@ public class UnicodeFont implements org.newdawn.slick.Font {
     }
 
     /**
-     * Queues the glyphs in the ASCII character set (codepoints 32 through 255) to be loaded. Note that the glyphs
-     * are not
-     * actually loaded until {@link #loadGlyphs()} is called.
+     * Queues the glyphs in the ASCII character set (codepoints 32 through 255) to be loaded. Note that the glyphs are
+     * not actually loaded until {@link #loadGlyphs()} is called.
      */
     public void addAsciiGlyphs() {
         addGlyphs(32, 255);
@@ -421,8 +418,7 @@ public class UnicodeFont implements org.newdawn.slick.Font {
 
     /**
      * Queues the glyphs in the NEHE character set (codepoints 32 through 128) to be loaded. Note that the glyphs are
-     * not
-     * actually loaded until {@link #loadGlyphs()} is called.
+     * not actually loaded until {@link #loadGlyphs()} is called.
      */
     public void addNeheGlyphs() {
         addGlyphs(32, 32 + 96);
@@ -462,8 +458,8 @@ public class UnicodeFont implements org.newdawn.slick.Font {
         }
 
         if (effects.isEmpty()) {
-            throw new IllegalStateException("The UnicodeFont must have at least one effect before any glyphs can be " +
-                    "loaded.");
+            throw new IllegalStateException("The UnicodeFont must have at least one effect before any glyphs can be "
+                    + "loaded.");
         }
 
         for (Iterator iter = queuedGlyphs.iterator(); iter.hasNext(); ) {
@@ -539,9 +535,8 @@ public class UnicodeFont implements org.newdawn.slick.Font {
     }
 
     /**
-     * Releases all resources used by this UnicodeFont. This method should be called when this UnicodeFont instance
-     * is no
-     * longer needed.
+     * Releases all resources used by this UnicodeFont. This method should be called when this UnicodeFont instance is
+     * no longer needed.
      */
     public void destroy() {
         // The destroy() method is just to provide a consistent API for releasing resources.
@@ -1008,9 +1003,8 @@ public class UnicodeFont implements org.newdawn.slick.Font {
     }
 
     /**
-     * Sets the additional amount to offset glyphs on the x axis. This is typically set to a negative number when
-     * left or
-     * right padding is used so that glyphs are not spaced too far apart.
+     * Sets the additional amount to offset glyphs on the x axis. This is typically set to a negative number when left
+     * or right padding is used so that glyphs are not spaced too far apart.
      * <p/>
      *
      * @param paddingAdvanceX The padding applied for each horizontal advance (i.e. when a glyph is rendered)
@@ -1031,8 +1025,7 @@ public class UnicodeFont implements org.newdawn.slick.Font {
 
     /**
      * Sets the additional amount to offset a line of text on the y axis. This is typically set to a negative number
-     * when
-     * top or bottom padding is used so that lines of text are not spaced too far apart.
+     * when top or bottom padding is used so that lines of text are not spaced too far apart.
      * <p/>
      *
      * @param paddingAdvanceY The padding applied for each vertical advance (i.e. when a glyph is rendered)
@@ -1161,17 +1154,19 @@ public class UnicodeFont implements org.newdawn.slick.Font {
     }
 
     /**
-     * Returns the path to the TTF file for this UnicodeFont, or null. If this UnicodeFont was created without specifying
-     * the TTF file, it will try to determine the path using Sun classes. If this fails, null is returned.
+     * Returns the path to the TTF file for this UnicodeFont, or null. If this UnicodeFont was created without
+     * specifying the TTF file, it will try to determine the path using Sun classes. If this fails, null is returned.
      * <p/>
      *
      * @return The reference to the font file that the kerning was loaded from
      */
     public String getFontFile() {
         if (ttfFileRef == null) {
-            // Worst case if this UnicodeFont was loaded without a ttfFileRef, try to get the font file from Sun's classes.
+            // Worst case if this UnicodeFont was loaded without a ttfFileRef, try to get the font file from Sun's
+            // classes.
             try {
-                Object font2D = Class.forName("sun.font.FontManager").getDeclaredMethod("getFont2D", new Class[]{Font.class}).invoke(null, new Object[]{font});
+                Object font2D = Class.forName("sun.font.FontManager").getDeclaredMethod("getFont2D",
+                        new Class[]{Font.class}).invoke(null, new Object[]{font});
                 Field platNameField = Class.forName("sun.font.PhysicalFont").getDeclaredField("platName");
                 platNameField.setAccessible(true);
                 ttfFileRef = (String) platNameField.get(font2D);

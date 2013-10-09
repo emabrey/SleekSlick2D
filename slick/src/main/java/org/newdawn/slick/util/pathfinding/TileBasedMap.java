@@ -10,9 +10,8 @@ package org.newdawn.slick.util.pathfinding;
 public interface TileBasedMap {
 
     /**
-     * Get the width of the tile map. The slightly odd name is used to distiguish this method from commonly used
-     * names in
-     * game maps.
+     * Get the width of the tile map. The slightly odd name is used to distiguish this method from commonly used names
+     * in game maps.
      * <p/>
      *
      * @return The number of tiles across the map
@@ -20,9 +19,8 @@ public interface TileBasedMap {
     public int getWidthInTiles();
 
     /**
-     * Get the height of the tile map. The slightly odd name is used to distiguish this method from commonly used
-     * names in
-     * game maps.
+     * Get the height of the tile map. The slightly odd name is used to distiguish this method from commonly used names
+     * in game maps.
      * <p/>
      *
      * @return The number of tiles down the map
@@ -53,8 +51,7 @@ public interface TileBasedMap {
 
     /**
      * Get the cost of moving through the given tile. This can be used to make certain areas more desirable. A simple
-     * and
-     * valid implementation of this method would be to return 1 in all cases.
+     * and valid implementation of this method would be to return 1 in all cases.
      * <p/>
      *
      * @param context The context describing the pathfinding at the time of this request

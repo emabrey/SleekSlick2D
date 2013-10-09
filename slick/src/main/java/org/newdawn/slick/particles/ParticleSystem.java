@@ -117,8 +117,7 @@ public class ParticleSystem {
     /**
      * A map from emitter to a the particle pool holding the particles it uses void: this is now sorted by emitters to
      * allow emitter specfic state to be set for each emitter. actually this is used to allow setting an individual
-     * blend
-     * mode for each emitter
+     * blend mode for each emitter
      */
     protected HashMap particlesByEmitter = new HashMap();
 
@@ -339,9 +338,8 @@ public class ParticleSystem {
     }
 
     /**
-     * Create a particle specific to this system, override for your own implementations. These particles will be
-     * cached and
-     * reused within this system.
+     * Create a particle specific to this system, override for your own implementations. These particles will be cached
+     * and reused within this system.
      * <p/>
      *
      * @param system The system owning this particle

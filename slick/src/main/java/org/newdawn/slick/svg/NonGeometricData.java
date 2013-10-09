@@ -241,7 +241,8 @@ public class NonGeometricData {
         try {
             return Float.parseFloat(value);
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Attribute " + attribute + " is not specified as a float:" + getAttribute(attribute));
+            throw new RuntimeException("Attribute " + attribute + " is not specified as a float:" + getAttribute
+                    (attribute));
         }
     }
 

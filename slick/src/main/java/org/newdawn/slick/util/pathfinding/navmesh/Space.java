@@ -143,8 +143,7 @@ public class Space {
 
     /**
      * Check whether two locations are within tolerance distance. This is used when finding aligned edges to remove
-     * float
-     * rounding errors
+     * float rounding errors
      * <p/>
      *
      * @param a The first value

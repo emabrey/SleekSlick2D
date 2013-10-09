@@ -697,12 +697,14 @@ public interface SGL {
     /**
      * OpenGL Method - @url http://www.opengl.org/documentation/
      */
-    public void glTexImage2D(int target, int i, int dstPixelFormat, int get2Fold, int get2Fold2, int j, int srcPixelFormat, int glUnsignedByte, ByteBuffer textureBuffer);
+    public void glTexImage2D(int target, int i, int dstPixelFormat, int get2Fold, int get2Fold2, int j,
+                             int srcPixelFormat, int glUnsignedByte, ByteBuffer textureBuffer);
 
     /**
      * OpenGL Method - @url http://www.opengl.org/documentation/
      */
-    public void glTexSubImage2D(int glTexture2d, int i, int pageX, int pageY, int width, int height, int glBgra, int glUnsignedByte, ByteBuffer scratchByteBuffer);
+    public void glTexSubImage2D(int glTexture2d, int i, int pageX, int pageY, int width, int height, int glBgra,
+                                int glUnsignedByte, ByteBuffer scratchByteBuffer);
 
     /**
      * Check if the mirror clamp extension is available

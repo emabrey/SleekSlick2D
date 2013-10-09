@@ -434,7 +434,8 @@ public class OggInputStream extends InputStream implements AudioInputStream {
 
                                     int bytesToWrite = 2 * oggInfo.channels * bout;
                                     if (bytesToWrite >= pcmBuffer.remaining()) {
-                                        Log.warn("Read block from OGG that was too big to be buffered: " + bytesToWrite);
+                                        Log.warn("Read block from OGG that was too big to be buffered: " +
+                                                bytesToWrite);
                                     } else {
                                         pcmBuffer.put(convbuffer, 0, bytesToWrite);
                                     }

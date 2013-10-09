@@ -614,7 +614,8 @@ public class FontData {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-        return "[Font Data face='" + getName() + "' size=" + size + " bold=" + javaFont.isBold() + " italic=" + javaFont.isItalic() + "]";
+        return "[Font Data face='" + getName() + "' size=" + size + " bold=" + javaFont.isBold() + " italic=" +
+                javaFont.isItalic() + "]";
     }
 
 }

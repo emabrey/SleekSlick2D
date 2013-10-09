@@ -313,8 +313,7 @@ public class TiledMap {
 
     /**
      * Get a property given to the map. Note that this method will not perform well and should not be used as part of
-     * the
-     * default code path in the game loop.
+     * the default code path in the game loop.
      * <p/>
      *
      * @param propertyName The name of the property of the map to retrieve
@@ -351,9 +350,8 @@ public class TiledMap {
     }
 
     /**
-     * Get a propety given to a particular tile. Note that this method will not perform well and should not be used
-     * as part
-     * of the default code path in the game loop.
+     * Get a propety given to a particular tile. Note that this method will not perform well and should not be used as
+     * part of the default code path in the game loop.
      * <p/>
      *
      * @param tileID       The global ID of the tile to retrieve
@@ -615,7 +613,7 @@ public class TiledMap {
                 orientation = ISOMETRIC;
             }
             /*
-			 * if (!orient.equals("orthogonal")) { throw new
+             * if (!orient.equals("orthogonal")) { throw new
 			 * SlickException("Only orthogonal maps supported, found: "+orient);
 			 * }
 			 */

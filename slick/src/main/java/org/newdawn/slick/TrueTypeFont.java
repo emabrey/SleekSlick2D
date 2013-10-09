@@ -81,8 +81,7 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
     /**
      * This is a special internal class that holds our necessary information for the font characters. This includes
-     * width,
-     * height, and where the character is stored on the font texture.
+     * width, height, and where the character is stored on the font texture.
      */
     private class IntObject {
 
@@ -109,9 +108,8 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
     }
 
     /**
-     * Constructor for the TrueTypeFont class Pass in the preloaded standard Java TrueType font,
-     * and whether you want it to
-     * be cached with AntiAliasing applied.
+     * Constructor for the TrueTypeFont class Pass in the preloaded standard Java TrueType font, and whether you want it
+     * to be cached with AntiAliasing applied.
      * <p/>
      *
      * @param font            Standard Java AWT font
@@ -129,9 +127,8 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
     }
 
     /**
-     * Constructor for the TrueTypeFont class Pass in the preloaded standard Java TrueType font,
-     * and whether you want it to
-     * be cached with AntiAliasing applied.
+     * Constructor for the TrueTypeFont class Pass in the preloaded standard Java TrueType font, and whether you want it
+     * to be cached with AntiAliasing applied.
      * <p/>
      *
      * @param font      Standard Java AWT font
@@ -375,7 +372,8 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
     /**
      * @see Font#drawString(float, float, String, org.newdawn.slick.Color, int, int)
      */
-    public void drawString(float x, float y, String whatchars, org.newdawn.slick.Color color, int startIndex, int endIndex) {
+    public void drawString(float x, float y, String whatchars, org.newdawn.slick.Color color, int startIndex,
+                           int endIndex) {
         color.bind();
         fontTexture.bind();
 
@@ -395,7 +393,9 @@ public class TrueTypeFont implements org.newdawn.slick.Font {
 
             if (intObject != null) {
                 if ((i >= startIndex) || (i <= endIndex)) {
-                    drawQuad((x + totalwidth), y, (x + totalwidth + intObject.width), (y + intObject.height), intObject.storedX, intObject.storedY, intObject.storedX + intObject.width, intObject.storedY + intObject.height);
+                    drawQuad((x + totalwidth), y, (x + totalwidth + intObject.width), (y + intObject.height),
+                            intObject.storedX, intObject.storedY, intObject.storedX + intObject.width,
+                            intObject.storedY + intObject.height);
                 }
                 totalwidth += intObject.width;
             }

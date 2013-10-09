@@ -44,8 +44,7 @@ public class CanvasGameContainer extends Canvas {
      *
      * @param game   The game being held
      * @param shared True if shared GL context should be enabled. This allows multiple panels to share textures and
-     *               other
-     *               GL resources.
+     *               other GL resources.
      *               <p/>
      *
      * @throws SlickException Indicates a failure during creation of the container
@@ -142,9 +141,8 @@ public class CanvasGameContainer extends Canvas {
          * <p/>
          *
          * @param game   The game to be held in this container
-         * @param shared True if shared GL context should be enabled. This allows multiple panels to share textures
-         *               and other
-         *               GL resources.
+         * @param shared True if shared GL context should be enabled. This allows multiple panels to share textures and
+         *               other GL resources.
          *               <p/>
          *
          * @throws SlickException Indicates a failure to initialise

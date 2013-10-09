@@ -18,8 +18,7 @@ public interface MouseListener extends ControlledInputReciever {
 
     /**
      * Notification that a mouse button was clicked. Due to double click handling the single click may be delayed
-     * slightly.
-     * For absolute notification of single clicks use mousePressed().
+     * slightly. For absolute notification of single clicks use mousePressed().
      * <p/>
      * To be absolute this method should only be used when considering double clicks
      * <p/>

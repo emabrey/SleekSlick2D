@@ -432,7 +432,8 @@ public class TextureImpl implements Texture {
          */
         public int reload() {
             Log.error("Reloading texture: " + ref);
-            return InternalTextureLoader.get().reload(TextureImpl.this, srcPixelFormat, componentCount, minFilter, magFilter, textureBuffer);
+            return InternalTextureLoader.get().reload(TextureImpl.this, srcPixelFormat, componentCount, minFilter,
+                    magFilter, textureBuffer);
         }
 
     }

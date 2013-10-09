@@ -29,9 +29,8 @@ public class RawScale3x {
     private int height;
 
     /**
-     * Create a new scaler based on some raw data. Right now it doesn't matter what order the channels in,
-     * just that its an
-     * int per pixel
+     * Create a new scaler based on some raw data. Right now it doesn't matter what order the channels in, just that its
+     * an int per pixel
      * <p/>
      *
      * @param imageData  The source image data

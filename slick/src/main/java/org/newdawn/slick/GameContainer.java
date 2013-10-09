@@ -201,8 +201,7 @@ public abstract class GameContainer implements GUIContext {
 
     /**
      * Indicate whether we want to try to use fullscreen multisampling. This will give antialiasing across the whole
-     * scene
-     * using a hardware feature.
+     * scene using a hardware feature.
      * <p/>
      *
      * @param samples The number of samples to attempt (2 is safe)
@@ -274,8 +273,7 @@ public abstract class GameContainer implements GUIContext {
 
     /**
      * Indicate whether we want to be in fullscreen mode. Note that the current display mode must be valid as a
-     * fullscreen
-     * mode for this to work
+     * fullscreen mode for this to work
      * <p/>
      *
      * @param fullscreen True if we want to be in fullscreen mode
@@ -312,8 +310,7 @@ public abstract class GameContainer implements GUIContext {
 
     /**
      * Indicate if we should clear the screen at the beginning of each frame. If you're rendering to the whole screen
-     * each
-     * frame then setting this to false can give some performance improvements
+     * each frame then setting this to false can give some performance improvements
      * <p/>
      *
      * @param clear True if the the screen should be cleared each frame
@@ -545,8 +542,7 @@ public abstract class GameContainer implements GUIContext {
 
     /**
      * Set the icons to be used for this application. Note that the size of the icon defines how it will be used.
-     * Important
-     * ones to note
+     * Important ones to note
      * <p/>
      * Windows window icon must be 16x16 Windows alt-tab icon must be 24x24 or 32x32 depending on Windows version
      * (XP=32)
@@ -613,12 +609,9 @@ public abstract class GameContainer implements GUIContext {
 
     /**
      * Set the mouse cursor based on the contents of the image. Note that this will not take account of render state
-     * type
-     * changes to images (rotation and such). If these effects are required it is recommended that an offscreen
-     * buffer be
-     * used to produce an appropriate image. An offscreen buffer will always be used to produce the new cursor and as
-     * such
-     * this operation an be very expensive
+     * type changes to images (rotation and such). If these effects are required it is recommended that an offscreen
+     * buffer be used to produce an appropriate image. An offscreen buffer will always be used to produce the new cursor
+     * and as such this operation an be very expensive
      * <p/>
      *
      * @param image    The image to use as the cursor
@@ -645,8 +638,7 @@ public abstract class GameContainer implements GUIContext {
 
     /**
      * Get a cursor based on a image reference on the classpath. The image is assumed to be a set/strip of cursor
-     * animation
-     * frames running from top to bottom.
+     * animation frames running from top to bottom.
      * <p/>
      *
      * @param ref          The reference to the image to be loaded
@@ -740,9 +732,8 @@ public abstract class GameContainer implements GUIContext {
     }
 
     /**
-     * Set the minimum amount of time in milliseonds that has to pass before update() is called on the container game
-     * . This
-     * gives a way to limit logic updates compared to renders.
+     * Set the minimum amount of time in milliseonds that has to pass before update() is called on the container game .
+     * This gives a way to limit logic updates compared to renders.
      * <p/>
      *
      * @param interval The minimum interval between logic updates

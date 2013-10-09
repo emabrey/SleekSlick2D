@@ -41,13 +41,13 @@ public class Glyphs {
             "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "bracketleft", "backslash", /* 0x40 */
             "bracketright", "asciicircum", "underscore", "grave", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
             "k", "l",
-		/* 0x50 */
+        /* 0x50 */
             "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "braceleft", "bar", /* 0x60 */
             "braceright", "asciitilde", "Adieresis", "Aring", "Ccedilla", "Eacute", "Ntilde", "Odieresis",
             "Udieresis", "aacute", "agrave", "acircumflex", "adieresis", "atilde", "aring", "ccedilla", /* 0x70 */
             "eacute", "egrave", "ecircumflex", "edieresis", "iacute", "igrave", "icircumflex", "idieresis", "ntilde",
             "oacute", "ograve", "ocircumflex", "odieresis", "otilde", "uacute", "ugrave",
-		/* 0x80 */
+        /* 0x80 */
             "ucircumflex", "udieresis", "dagger", "degree", "cent", "sterling", "section", "bullet", "paragraph",
             "germandbls", "registered", "copyright", "trademark", "acute", "dieresis", "notequal", /* 0x90 */
             "AE", "Oslash", "infinity", "plusminus", "lessequal", "greaterequal", "yen", "mu", "partialdiff",
@@ -367,7 +367,24 @@ public class Glyphs {
             "\u0036", "six", "\u2086", "sixinferior", "\uF736", "sixoldstyle", "\u2076", "sixsuperior", "\u002F",
             "slash", "\u263A", "smileface", "\u0020", "space", "\u00A0", "space", "\u2660", "spade", "\uF6F2",
             "ssuperior", "\u00A3", "sterling", "\u220B", "suchthat", "\u2211", "summation", "\u263C", "sun",
-            "\u0074", "t", "\u03C4", "tau", "\u0167", "tbar", "\u0165", "tcaron", "\u0163", "tcommaaccent", "\u021B", "tcommaaccent", "\u2234", "therefore", "\u03B8", "theta", "\u03D1", "theta1", "\u00FE", "thorn", "\u0033", "three", "\u215C", "threeeighths", "\u2083", "threeinferior", "\uF733", "threeoldstyle", "\u00BE", "threequarters", "\uF6DE", "threequartersemdash", "\u00B3", "threesuperior", "\u02DC", "tilde", "\u0303", "tildecomb", "\u0384", "tonos", "\u2122", "trademark", "\uF8EA", "trademarksans", "\uF6DB", "trademarkserif", "\u25BC", "triagdn", "\u25C4", "triaglf", "\u25BA", "triagrt", "\u25B2", "triagup", "\uF6F3", "tsuperior", "\u0032", "two", "\u2025", "twodotenleader", "\u2082", "twoinferior", "\uF732", "twooldstyle", "\u00B2", "twosuperior", "\u2154", "twothirds", "\u0075", "u", "\u00FA", "uacute", "\u016D", "ubreve", "\u00FB", "ucircumflex", "\u00FC", "udieresis", "\u00F9", "ugrave", "\u01B0", "uhorn", "\u0171", "uhungarumlaut", "\u016B", "umacron", "\u005F", "underscore", "\u2017", "underscoredbl", "\u222A", "union", "\u2200", "universal", "\u0173", "uogonek", "\u2580", "upblock", "\u03C5", "upsilon", "\u03CB", "upsilondieresis", "\u03B0", "upsilondieresistonos", "\u03CD", "upsilontonos", "\u016F", "uring", "\u0169", "utilde", "\u0076", "v", "\u0077", "w", "\u1E83", "wacute", "\u0175", "wcircumflex", "\u1E85", "wdieresis", "\u2118", "weierstrass", "\u1E81", "wgrave", "\u0078", "x", "\u03BE", "xi", "\u0079", "y", "\u00FD", "yacute", "\u0177", "ycircumflex", "\u00FF", "ydieresis", "\u00A5", "yen", "\u1EF3", "ygrave", "\u007A", "z", "\u017A", "zacute", "\u017E", "zcaron", "\u017C", "zdotaccent", "\u0030", "zero", "\u2080", "zeroinferior", "\uF730", "zerooldstyle", "\u2070", "zerosuperior", "\u03B6", "zeta"};
+            "\u0074", "t", "\u03C4", "tau", "\u0167", "tbar", "\u0165", "tcaron", "\u0163", "tcommaaccent", "\u021B",
+            "tcommaaccent", "\u2234", "therefore", "\u03B8", "theta", "\u03D1", "theta1", "\u00FE", "thorn",
+            "\u0033", "three", "\u215C", "threeeighths", "\u2083", "threeinferior", "\uF733", "threeoldstyle",
+            "\u00BE", "threequarters", "\uF6DE", "threequartersemdash", "\u00B3", "threesuperior", "\u02DC", "tilde",
+            "\u0303", "tildecomb", "\u0384", "tonos", "\u2122", "trademark", "\uF8EA", "trademarksans", "\uF6DB",
+            "trademarkserif", "\u25BC", "triagdn", "\u25C4", "triaglf", "\u25BA", "triagrt", "\u25B2", "triagup",
+            "\uF6F3", "tsuperior", "\u0032", "two", "\u2025", "twodotenleader", "\u2082", "twoinferior", "\uF732",
+            "twooldstyle", "\u00B2", "twosuperior", "\u2154", "twothirds", "\u0075", "u", "\u00FA", "uacute",
+            "\u016D", "ubreve", "\u00FB", "ucircumflex", "\u00FC", "udieresis", "\u00F9", "ugrave", "\u01B0",
+            "uhorn", "\u0171", "uhungarumlaut", "\u016B", "umacron", "\u005F", "underscore", "\u2017",
+            "underscoredbl", "\u222A", "union", "\u2200", "universal", "\u0173", "uogonek", "\u2580", "upblock",
+            "\u03C5", "upsilon", "\u03CB", "upsilondieresis", "\u03B0", "upsilondieresistonos", "\u03CD",
+            "upsilontonos", "\u016F", "uring", "\u0169", "utilde", "\u0076", "v", "\u0077", "w", "\u1E83", "wacute",
+            "\u0175", "wcircumflex", "\u1E85", "wdieresis", "\u2118", "weierstrass", "\u1E81", "wgrave", "\u0078",
+            "x", "\u03BE", "xi", "\u0079", "y", "\u00FD", "yacute", "\u0177", "ycircumflex", "\u00FF", "ydieresis",
+            "\u00A5", "yen", "\u1EF3", "ygrave", "\u007A", "z", "\u017A", "zacute", "\u017E", "zcaron", "\u017C",
+            "zdotaccent", "\u0030", "zero", "\u2080", "zeroinferior", "\uF730", "zerooldstyle", "\u2070",
+            "zerosuperior", "\u03B6", "zeta"};
 
     /**
      * Return the glyphname from a character, eg, charToGlyphName('\\') returns "backslash"
@@ -389,8 +406,8 @@ public class Glyphs {
      * @param name glyph to evaluate
      *             <p/>
      *
-     * @return the name of the glyph TODO: javadocs for glyphToString and stringToGlyph are confused TODO: Improve method
-     *         names
+     * @return the name of the glyph TODO: javadocs for glyphToString and stringToGlyph are confused TODO: Improve
+     *         method names
      */
     public static final String glyphToString(String name) {
         for (int i = 0; i < UNICODE_GLYPHS.length; i += 2) {

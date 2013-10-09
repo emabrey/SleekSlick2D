@@ -304,8 +304,8 @@ public class RoundedRectangle extends Rectangle {
     }
 
     /**
-     * Apply a transformation and return a new shape. This will not alter the current shape but will return the transformed
-     * shape.
+     * Apply a transformation and return a new shape. This will not alter the current shape but will return the
+     * transformed shape.
      * <p/>
      *
      * @param transform The transform to be applied

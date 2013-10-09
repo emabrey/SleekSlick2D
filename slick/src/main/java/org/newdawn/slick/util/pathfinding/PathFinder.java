@@ -16,8 +16,7 @@ public interface PathFinder {
      * <p/>
      *
      * @param mover The entity that will be moving along the path. This provides a place to pass context information
-     *              about
-     *              the game entity doing the moving, e.g. can it fly? can it swim etc.
+     *              about the game entity doing the moving, e.g. can it fly? can it swim etc.
      *              <p/>
      * @param sx    The x coordinate of the start location
      * @param sy    The y coordinate of the start location

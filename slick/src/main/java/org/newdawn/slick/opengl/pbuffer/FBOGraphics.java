@@ -54,8 +54,8 @@ public class FBOGraphics extends Graphics {
 
         boolean FBOEnabled = GLContext.getCapabilities().GL_EXT_framebuffer_object;
         if (!FBOEnabled) {
-            throw new SlickException("Your OpenGL card does not support FBO and hence can't handle the dynamic images" +
-                    " required for this application.");
+            throw new SlickException("Your OpenGL card does not support FBO and hence can't handle the dynamic " +
+                    "images" + " required for this application.");
         }
 
         init();

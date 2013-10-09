@@ -40,7 +40,8 @@ public class ImageScale2x {
     }
 
     /**
-     * Retrieve the scaled image. Note this is the method that actually does the work so it may take some time to return
+     * Retrieve the scaled image. Note this is the method that actually does the work so it may take some time to
+     * return
      * <p/>
      *
      * @return The newly scaled image

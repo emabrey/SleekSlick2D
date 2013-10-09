@@ -1203,8 +1203,8 @@ public class TTFFile {
                 final int bbox0 = mtxTab[0].getBoundingBox()[0];
                 final int[] bbox = {bbox0, bbox0, bbox0, bbox0};
                 mtxTab[i].setBoundingBox(bbox);
-				/* Original code
-				 mtxTab[i].bbox[0] = mtxTab[0].bbox[0];
+                /* Original code
+                 mtxTab[i].bbox[0] = mtxTab[0].bbox[0];
 				 mtxTab[i].bbox[1] = mtxTab[0].bbox[0];
 				 mtxTab[i].bbox[2] = mtxTab[0].bbox[0];
 				 mtxTab[i].bbox[3] = mtxTab[0].bbox[0]; */

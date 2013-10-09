@@ -154,10 +154,9 @@ public class EffectUtil {
      * Prompts the user for a value that represents a fixed number of options. All options are strings.
      * <p/>
      *
-     * @param options      The first array has an entry for each option. Each entry is either a String[1] that is
-     *                     both the
-     *                     display value and actual value, or a String[2] whose first element is the display value and
-     *                     second element is the actual value.
+     * @param options      The first array has an entry for each option. Each entry is either a String[1] that is both
+     *                     the display value and actual value, or a String[2] whose first element is the display value
+     *                     and second element is the actual value.
      *                     <p/>
      * @param name         The name of the value being prompted for
      * @param currentValue The current value to show as default
@@ -372,12 +371,14 @@ public class EffectUtil {
 
             JPanel descriptionPanel = new JPanel();
             descriptionPanel.setLayout(new GridBagLayout());
-            getContentPane().add(descriptionPanel, new GridBagConstraints(0, 0, 2, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+            getContentPane().add(descriptionPanel, new GridBagConstraints(0, 0, 2, 1, 1.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
             descriptionPanel.setBackground(Color.white);
             descriptionPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
             {
                 JTextArea descriptionText = new JTextArea(description);
-                descriptionPanel.add(descriptionText, new GridBagConstraints(0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 0, 0));
+                descriptionPanel.add(descriptionText, new GridBagConstraints(0, 0, 1, 1, 1.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 0, 0));
                 descriptionText.setWrapStyleWord(true);
                 descriptionText.setLineWrap(true);
                 descriptionText.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -385,12 +386,14 @@ public class EffectUtil {
             }
 
             JPanel panel = new JPanel();
-            getContentPane().add(panel, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+            getContentPane().add(panel, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER,
+                    GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
             panel.add(new JLabel(name + ":"));
             panel.add(component);
 
             JPanel buttonPanel = new JPanel();
-            getContentPane().add(buttonPanel, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+            getContentPane().add(buttonPanel, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+                    GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
             {
                 JButton okButton = new JButton("OK");
                 buttonPanel.add(okButton);

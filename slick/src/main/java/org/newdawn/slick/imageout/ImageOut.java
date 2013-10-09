@@ -86,9 +86,8 @@ public class ImageOut {
     }
 
     /**
-     * Write an image out to a file on the local file system. The format of the output is determined based on the
-     * file name
-     * extension
+     * Write an image out to a file on the local file system. The format of the output is determined based on the file
+     * name extension
      * <p/>
      *
      * @param image The image to be written out
@@ -102,9 +101,8 @@ public class ImageOut {
     }
 
     /**
-     * Write an image out to a file on the local file system. The format of the output is determined based on the
-     * file name
-     * extension
+     * Write an image out to a file on the local file system. The format of the output is determined based on the file
+     * name extension
      * <p/>
      *
      * @param image      The image to be written out
