@@ -22,7 +22,7 @@
     <properties>
         <!-- Properties that shouldn't change between child modules -->
         <project.build.shaded.name>${project.build.finalName}.${project.packaging}</project.build.shaded.name>
-        <project.build.shaded.location>${project.build.directory</project.build.shaded.location>
+        <project.build.shaded.location>${project.build.directory}</project.build.shaded.location>
         <getdown.project.version>${maven.build.timestamp}</getdown.project.version>
         <getdown.input.template.location>src/main/getdown</getdown.input.template.location>
         <getdown.input.template.file>getdown.txt</getdown.input.template.file>
