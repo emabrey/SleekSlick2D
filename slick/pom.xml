@@ -11,18 +11,17 @@
 
     <packaging>jar</packaging>
 
-    <description>
-        Slick2D is a simple set of tools wrapped around the LWJGL OpenGL binding for Java.
-    </description>
+    <description>Slick2D is a simple set of tools wrapped around the LWJGL OpenGL binding for Java.</description>
 
     <name>slick</name>
 
     <build>
         <plugins>
+
+            <!-- Combine all project dependencies and resources into one UberJAR that is non-executable -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
