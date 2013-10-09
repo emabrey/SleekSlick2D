@@ -11,4 +11,4 @@ code = slick-scalar-1.0-SNAPSHOT.jar
 # The main entry point for the application
 class = org.newdawn.slick.tools.scalar.Scalar
 
-version=131008020233334
+version=131008214235500

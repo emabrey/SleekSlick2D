@@ -113,6 +113,7 @@
         <!--<skipTests>true</skipTests>  -->
 
         <maven.jar.index>true</maven.jar.index>
+        <maven.build.timestamp.format>yyMMddHHmmssSSS</maven.build.timestamp.format>
 
         <getdown.dependency.version>1.3.1</getdown.dependency.version>
     </properties>
@@ -256,6 +257,18 @@
                 <groupId>javax</groupId>
                 <artifactId>jnlp</artifactId>
                 <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.newdawn.slick</groupId>
+                <artifactId>slick</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.newdawn.slick</groupId>
+                <artifactId>slick-test-resources</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

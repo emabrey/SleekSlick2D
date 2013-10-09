@@ -14,21 +14,21 @@
     <name>slick-demos</name>
 
     <properties>
-        <main.class>org.newdawn.slick.demos.DemoBox</main.class>
 
-        <maven.build.timestamp.format>yyMMddHHmmssSSS</maven.build.timestamp.format>
-
+        <!-- Properties that shouldn't change between child modules -->
         <project.build.shaded.name>${project.build.finalName}.${project.packaging}</project.build.shaded.name>
-
         <project.build.shaded.location>${project.build.directory</project.build.shaded.location>
-
-        <getdown.server.location>https://raw.github.com/emabrey/SleekSlick2D/master/slick-demos/getdown/server/
-        </getdown.server.location>
         <getdown.project.version>${maven.build.timestamp}</getdown.project.version>
         <getdown.input.template.location>src/main/getdown</getdown.input.template.location>
         <getdown.input.template.file>getdown.txt</getdown.input.template.file>
         <getdown.output.server>${project.basedir}/getdown/server/</getdown.output.server>
         <getdown.output.client>${project.basedir}/getdown/client/</getdown.output.client>
+
+        <!-- Properties that should change between child modules -->
+        <main.class>org.newdawn.slick.demos.DemoBox</main.class>
+        <getdown.server.location>https://raw.github.com/emabrey/SleekSlick2D/master/slick-demos/getdown/server/
+        </getdown.server.location>
+
     </properties>
 
     <build>
@@ -260,14 +260,12 @@
         <dependency>
             <groupId>org.newdawn.slick</groupId>
             <artifactId>slick</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Resources used for the demos (such as images and 3d textures) -->
         <dependency>
             <groupId>org.newdawn.slick</groupId>
             <artifactId>slick-test-resources</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Testing library, version is controlled by parent POM -->
